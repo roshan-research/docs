@@ -1,0 +1,104 @@
+
+FORMAT: 1A
+HOST: http://api.sobhe.ir
+
+# الفبا
+
+<div dir=rtl>
+نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
+</div>
+
+<blockquote dir=rtl>
+برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@sobhe.ir بنویسید.
+</blockquote>
+
+
+## خواندن تصویر [/alefba/api/read_image]
+
+<div dir=rtl>
+این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. در بخش‌های نوشته و جدول ساختار متن تعیین شده است و نویسه‌های متناظر با هر عبارت به همراه احتمال صحت آن مشخص شده‌اند. این احتمال، نشان می‌دهد که نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+</div>
+
+### نمونه [POST]
+
+<div dir=rtl>
+می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+
+> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image=@FILENAME" http://HOSTNAME/alefba/api/read_image
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+                "image_url": "http://api.sobhe.ir/media/docs/boute/page1.jpg"
+            }
+
++ Response 200 (application/json)
+
+        {
+          "image_url": "http://api.sobhe.ir/media/docs/boute/page1.jpg",
+          "document": {
+            "text": "بوته\n\nدرس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
+            "parts": [
+              {
+                "type": "text",
+                "box": "230 367 2096 543",
+                "text": "درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
+                "lines": [
+                  {
+                    "box": "232 367 2093 73",
+                    "text": "درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها",
+                    "words": [
+                      {
+                        "box": "1917 367 386 73",
+                        "text": "درس‌های دانشگاهی",
+                        "probability": 0.99
+                      },
+                      ...
+                    ]
+                  },
+                  ...
+                ]
+              },
+              ...
+            ]
+          }
+        }
+
+
+
+## صفحات سند [/api/document_pages]
+
+<div dir=rtl>
+نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.
+</div>
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+                "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
+            }
+
++ Response 200 (application/json)
+
+        {
+          "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+          "pages": [
+            "http://api.sobhe.ir/media/docs/boute/page1.jpg",
+            "http://api.sobhe.ir/media/docs/boute/page2.jpg"
+          ]
+        }

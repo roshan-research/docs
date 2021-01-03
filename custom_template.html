@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{.Title}}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism-coy.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/line-numbers/prism-line-numbers.css" />
+
+    <style>
+      blockquote {
+        border-right: solid 4px #eee;
+        padding-right: 8px;
+        font-style: italic;
+        margin-right: 0;
+        padding: 8px;
+      }
+
+      pre {
+        background-color: #ddd
+      }
+
+      .rtl {
+        direction: rtl;
+        text-align: right;
+      }
+
+      .ui.micro.label {
+        font-size: .25rem;
+      }
+
+      .ui.transaction.accordion .title {
+        text-align: center;
+      }
+
+      .ui.transaction.accordion .content {
+        border-top: solid 1px #ddd !important;
+        border-bottom: solid 1px #ddd !important;
+        background-color: rgba(0,0,0,.03);
+        padding: 0.5em 1em !important;
+      }
+
+      .ui.transaction.accordion .content.active {
+        margin-top: 0.5em;
+      }
+
+      /* MGH */
+      .ui .orange .huge .ribbon .label{
+        text-align: right;
+        direction: rtl;
+      }
+      /* MGH */
+
+      .ui.basic.label {
+        text-align: left;
+        overflow: auto;
+      }
+      
+      .ui.basic.label.request-url {
+        user-select: text;
+      }
+
+      .resource .ui.sub.header {
+        text-transform: none;
+      }
+
+      .ui.padded.grid .twelve{
+        margin-left: .75rem
+      }
+
+      .title.center.aligned{
+        text-align: center
+      }
+
+      @media only screen and (min-width: 768px) {
+        .sidewrap {
+          margin-right: 0;
+        }
+        .title.center.aligned{
+          text-align: center
+        }
+
+        .sidenav {
+          right: 0;
+          top: 0;
+          margin-right: 2rem;
+          width: inherit;
+          position: fixed !important;
+          height: 100% !important;
+          overflow-y: auto !important;
+          padding-right: 0.5rem;
+        }
+
+        .ui.padded.grid .twelve{
+          margin-left: 2.5rem
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui padded grid">
+      <div class="twelve wide computer ten wide tablet fourteen wide mobile column">
+        {{template "Introduction" .}}
+        <div class="ui hidden divider"></div>
+        {{template "ResourceGroups" .}}
+      </div>
+      <div class="sidewrap three wide computer five wide tablet eleven wide mobile column">
+        <div class="sidenav">
+          {{template "Navigation" .}}
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/accordion.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/tab.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/transition.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/popup.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-json.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-bash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-python.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-csharp.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-java.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-php.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/line-numbers/prism-line-numbers.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/normalize-whitespace/prism-normalize-whitespace.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        $('.ui.accordion').accordion({ animateChildren: false, duration: 0 });
+        $('.content.tabbed').each(function(index) {
+          $('.ui.tabular .item', $(this)).tab({ context: $(this) });
+        });
+        $('.ui.vertical.menu').on('click', '.item', function() {
+          $('.ui.vertical.menu .item').removeClass('active');
+          $(this).addClass('active');
+        });
+        $('.ui.empty.circular.label').popup();
+      });
+    </script>
+  </body>
+</html>
+
+{{define "Navigation"}}
+<div class="ui fluid secondary vertical menu"></div>
+<div class="ui fluid secondary vertical menu"></div>
+{{range $groupN, $group := .ResourceGroups}}
+{{if $group.Title}}
+<div class="ui horizontal divider">
+  <a href="#{{$group.Title | parameterize}}">{{$group.Title}}</a>
+</div>
+{{end}}
+<div class="ui accordion fluid">
+  {{range $resourceN, $resource := $group.Resources}}
+    {{if $resource.Transitions}}
+      {{$length := len $resource.Transitions}}
+      {{if eq $length 1}}
+        <div class="ui fluid vertical menu">
+        {{range $transitionN, $transition := $resource.Transitions}}
+          <a class="rtl item" href="#{{$transition.Permalink}}">
+            <i class="ui empty chevron circle left icon"></i>
+            {{if $transition.Title}}
+              <span>{{$transition.Title}}</span>
+            {{else}}
+              <span>{{$transition.Method}}</span>
+            {{end}}
+          </a>
+        {{end}}
+        </div>
+      {{else}}
+        <div class="ui fluid vertical menu">
+        {{range $transitionN, $transition := $resource.Transitions}}
+          <a class="rtl item" href="#{{$transition.Permalink}}">
+            <i class="ui empty chevron circle left icon"></i>
+            {{if $transition.Title}}
+              <span>{{$transition.Title}}</span>
+            {{else}}
+              <span>{{$transition.Method}}</span>
+            {{end}}
+          </a>
+        {{end}}
+        </div>
+      {{end}}
+    {{end}}
+  {{end}}
+</div>
+{{end}}
+{{end}}
+
+{{define "Introduction"}}
+<div class="ui hidden divider header"></div>
+<h1 class="ui huge header rtl" id="introduction">{{.Title}}</h1>
+<hr class="ui divider">
+<div class="description rtl">
+  {{.Description | markdownize}}
+</div>
+{{end}}
+
+{{define "ResourceGroups"}}
+{{range $groupN, $group := .ResourceGroups}}
+  <div class="ui horizontal divider" {{if $group.Title}}id="{{$group.Title | parameterize}}"{{end}}>
+    {{$group.Title}}
+  </div>
+  <div class="ui header center aligned">
+    <div class="ui header">
+      <div class="sub header">
+        {{$group.Description | markdownize}}
+      </div>
+    </div>
+  </div>
+  {{range $resourceN, $resource := $group.Resources}}
+    {{if $resource.Transitions}}
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui orange huge ribbon label">
+            {{if $resource.Title}}{{$resource.Title}}{{else}}{{$resource.Href.Path}}{{end}}
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              {{$resource.Description | markdownize}}
+            </div>
+          </div>
+        </div>
+
+        {{range $transitionN, $transition := $resource.Transitions}}
+          {{$length := len $resource.Transitions}}
+          {{if eq $length 1}} {{else}}
+            {{template "Divider"}}
+          {{end}}
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="{{$transition.Permalink}}">
+              {{if $transition.Title}}{{$transition.Title}}{{else}}{{$transition.Method}}{{end}}
+            </h3>
+            <div class="description">{{$transition.Description | markdownize}}</div>
+
+            {{range $transactionN, $transaction := $transition.Transactions}}
+              <h4 class="ui horizontal divider">
+                REQUEST{{if $transaction.Request.Title}} {{$transaction.Request.Title}}{{end}}
+              </h4>
+              <div class="description">{{$transaction.Request.Description | markdownize}}</div>
+              <div class="fluid ui large labeled button">
+                <div class="ui {{$transaction.Request.Method | colorize}} large button">
+                  <h3>{{$transaction.Request.Method}}</h3>
+                </div>
+                <a class="ui basic fluid request-url {{$transaction.Request.Method | colorize}} label">
+                  <code>{{$transition.URL}}</code>
+                </a>
+              </div>
+              {{ if or (ne (len $transition.Href.Parameters) 0) (ne (len $resource.Href.Parameters) 0)}}
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    {{if $transition.Href.Parameters}}
+                      {{template "Parameters" $transition.Href.Parameters}}
+                    {{end}}
+                    {{if $resource.Href.Parameters}}
+                      {{template "Parameters" $resource.Href.Parameters}}
+                    {{end}}
+                  </tbody>
+                </table>
+              {{end}}
+              {{if $transaction.Request.Attributes}}
+                MGH
+              {{end}}
+              {{if $transaction.Request.Headers}}
+                {{template "Headers" $transaction.Request.Headers}}
+              {{end}}
+                {{if ne $transaction.Request.Method "GET"}}
+                  <div class="ui stacked segment">
+                    <div class="ui fluid transaction ">
+                      <div class="content tabbed">
+                        <div class="ui top attached tabular menu">
+                          <a data-tab="body" class="active item">RAW</a>
+                          <a data-tab="curl" class="item">CURL</a>
+                          <a data-tab="python" class="item">PYTHON</a>
+                          <a data-tab="java" class="item">JAVA</a>
+                          <a data-tab="php" class="item">PHP</a>
+                          <a data-tab="csharp" class="item">C#</a>
+                        </div>
+                        <div class="ui bottom attached active tab segment" data-tab="body">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-{{alias $transaction.Request.Body.ContentType}}">{{$transaction.Request.Body.Body}}</code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="curl">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-bash">
+curl  --request {{$transaction.Request.Method}} \
+      {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}--header "{{$m_header.Key}}: {{$m_header.Value}}" {{end}}{{end}}\
+      --data-binary "{{$transaction.Request.Body.Body}}" \
+      '{{$transition.URL}}'
+
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="python">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-python">
+  from urllib2 import Request, urlopen
+
+  values = """
+  {{$transaction.Request.Body.Body}}
+  """
+
+  headers = {
+    {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}'{{$m_header.Key}}': '{{$m_header.Value}}', {{end}}{{end}}
+  }
+  request = Request('{{$transition.URL}}', data=values, headers=headers)
+
+  response_body = urlopen(request).read()
+  print(response_body)
+                              </code>
+                            </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="java">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-java">
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("{{$transition.URL}}");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("{{$transaction.Request.Method}}");
+            http.setDoOutput(true);
+
+            byte[] out = "{{$transaction.Request.Body.Body}}" .getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}http.setRequestProperty("{{$m_header.Key}}", "{{$m_header.Value}}");
+            {{end}}{{end}}
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="php">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-php">
+<?php
+
+  $url = "{{$transition.URL}}";    
+  $content = json_encode(
+      '{{$transaction.Request.Body.Body}}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}"{{$m_header.Key}}: {{$m_header.Value}}", 
+              {{end}}{{end}});
+  curl_setopt($curl, CURLOPT_{{$transaction.Request.Method}}, true);
+  curl_setopt($curl, CURLOPT_{{$transaction.Request.Method}}FIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+                          
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="csharp">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-csharp">
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("{{$transition.URL}}");
+            {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}httpWebRequest.Headers["{{$m_header.Key}}"]= "{{$m_header.Value}}";
+            {{end}}{{end}}
+            httpWebRequest.Method = "{{$transaction.Request.Method}}";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{{$transaction.Request.Body.Body}}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+                              </code>
+                            </pre>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                {{else}}
+                  <div class="ui stacked segment">
+                    <div class="ui fluid transaction">
+                      <div class="content tabbed">
+                        <div class="ui top attached tabular menu">
+                          <a data-tab="body" class="active item">RAW</a>
+                          <a data-tab="curl" class="item">CURL</a>
+                          <a data-tab="python" class="item">PYTHON</a>
+                          <a data-tab="java" class="item">JAVA</a>
+                          <a data-tab="php" class="item">PHP</a>
+                          <a data-tab="csharp" class="item">C#</a>
+
+                        </div>
+                        <div class="ui bottom attached active tab segment" data-tab="body">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-{{alias $transaction.Request.Body.ContentType}}">'{{$transition.URL}}'</code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="curl">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-bash">
+curl  '{{$transition.URL}}'
+
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="python">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-python">
+import requests
+r = requests.get('{{$transition.URL}}')
+                              </code>
+                            </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="java">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-java">
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+
+        // GET
+        try{
+            URL url = new URL("{{$transition.URL}}");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("GET");
+            http.setDoOutput(true);
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
+            in.close();
+            
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="php">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-php">
+<?php
+  // Get cURL resource
+  $curl = curl_init();
+  // Set some options
+  curl_setopt($curl, CURLOPT_URL, '{{$transition.URL}}');
+  // Send the request & save response to $resp
+  $resp = curl_exec($curl);
+  // Close request to clear up some resources
+  curl_close($curl);
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="csharp">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-csharp">
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("{{$transition.URL}}");
+            httpWebRequest.Method = "GET";
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+                              </code>
+                            </pre>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                {{end}}
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description">{{$transaction.Response.Description | markdownize}}</div>
+              {{template "Headers" $transaction.Response.Headers}}
+              <div class="ui stacked {{$transaction.Response.StatusCode | colorize}} segment">
+                <div class="ui fluid transaction">
+                  <div class="title center aligned">
+                    <a class="ui {{$transaction.Response.StatusCode | colorize}} circular label">
+                      {{$transaction.Response.StatusCode}}
+                    </a>
+                    <code>{{$transaction.Response.Body.ContentType}}</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">RAW</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre class="line-numbers" style="white-space: inherit">
+                        <code class="language-{{alias $transaction.Response.Body.ContentType}}">{{$transaction.Response.Body.Body}}</code>
+                      </pre>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            {{end}}
+          </div>
+        {{end}}
+        </div>
+      <div class="ui hidden divider"></div>
+    {{end}}
+  {{end}}
+{{end}}
+{{end}}
+
+{{define "Headers"}}
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{range $index, $header := .}}
+    <tr>
+      <td class="four wide">{{.Key}}</td>
+      <td><code>{{.Value}}</code></td>
+    </tr>
+  {{end}}
+  </tbody>
+</table>
+{{end}}
+
+{{define "Parameters"}}
+  {{range $index, $param := .}}
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label {{if eq .Required true}}red{{else}}grey{{end}}" data-content="{{if eq .Required true}}required{{else}}optional{{end}}" data-position="top center"></i>
+      </td>
+      <td><code>{{.Key}}</code></td>
+      <td class="center aligned">
+        <code>{{.Kind}}</code>
+        {{if .Value}}<code class="ui label">{{.Value}}</code>{{end}}
+        {{if .Default}}<div class="ui violet image label">Default<div class="detail">{{.Default}}</div></div>{{end}}
+      </td>
+      <td class="eight wide">
+        {{if .Description}}{{.Description | markdownize}}{{else}}-{{end}}
+        {{if .Members}}
+          <ul class="ui bulleted list">
+            {{range .Members}}
+              <li class="item">{{.}}</li>
+            {{end}}
+          </ul>
+        {{end}}
+      </td>
+    </tr>
+  {{end}}
+{{end}}
+
+{{define "Divider"}}
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+{{end}}
