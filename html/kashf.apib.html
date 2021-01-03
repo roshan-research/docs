@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>کشف</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism-coy.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/line-numbers/prism-line-numbers.css" />
+
+    <style>
+      blockquote {
+        border-right: solid 4px #eee;
+        padding-right: 8px;
+        font-style: italic;
+        margin-right: 0;
+        padding: 8px;
+      }
+
+      pre {
+        background-color: #ddd
+      }
+
+      .rtl {
+        direction: rtl;
+        text-align: right;
+      }
+
+      .ui.micro.label {
+        font-size: .25rem;
+      }
+
+      .ui.transaction.accordion .title {
+        text-align: center;
+      }
+
+      .ui.transaction.accordion .content {
+        border-top: solid 1px #ddd !important;
+        border-bottom: solid 1px #ddd !important;
+        background-color: rgba(0,0,0,.03);
+        padding: 0.5em 1em !important;
+      }
+
+      .ui.transaction.accordion .content.active {
+        margin-top: 0.5em;
+      }
+
+       
+      .ui .orange .huge .ribbon .label{
+        text-align: right;
+        direction: rtl;
+      }
+       
+
+      .ui.basic.label {
+        text-align: left;
+        overflow: auto;
+      }
+      
+      .ui.basic.label.request-url {
+        user-select: text;
+      }
+
+      .resource .ui.sub.header {
+        text-transform: none;
+      }
+
+      .ui.padded.grid .twelve{
+        margin-left: .75rem
+      }
+
+      .title.center.aligned{
+        text-align: center
+      }
+
+      @media only screen and (min-width: 768px) {
+        .sidewrap {
+          margin-right: 0;
+        }
+        .title.center.aligned{
+          text-align: center
+        }
+
+        .sidenav {
+          right: 0;
+          top: 0;
+          margin-right: 2rem;
+          width: inherit;
+          position: fixed !important;
+          height: 100% !important;
+          overflow-y: auto !important;
+          padding-right: 0.5rem;
+        }
+
+        .ui.padded.grid .twelve{
+          margin-left: 2.5rem
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui padded grid">
+      <div class="twelve wide computer ten wide tablet fourteen wide mobile column">
+        
+<div class="ui hidden divider header"></div>
+<h1 class="ui huge header rtl" id="introduction">کشف</h1>
+<hr class="ui divider">
+<div class="description rtl">
+  <div dir=rtl>
+کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
+</div>
+
+<blockquote dir=rtl>
+برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@sobhe.ir بنویسید.
+</blockquote>
+
+</div>
+
+        <div class="ui hidden divider"></div>
+        
+
+  <div class="ui horizontal divider" >
+    
+  </div>
+  <div class="ui header center aligned">
+    <div class="ui header">
+      <div class="sub header">
+        
+      </div>
+    </div>
+  </div>
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui orange huge ribbon label">
+            تحلیل متن
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              
+            </div>
+          </div>
+        </div>
+
+        
+          
+           
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="thlyl-mtn-nmwnh">
+              نمونه
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui blue large button">
+                  <h3>POST</h3>
+                </div>
+                <a class="ui basic fluid request-url blue label">
+                  <code>http://kashf.sobhe.ir/api/tag_texts</code>
+                </a>
+              </div>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+    <tr>
+      <td class="four wide">Authorization</td>
+      <td><code>Token TOKEN_KEY</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+                
+                  <div class="ui stacked segment">
+                    <div class="ui fluid transaction ">
+                      <div class="content tabbed">
+                        <div class="ui top attached tabular menu">
+                          <a data-tab="body" class="active item">RAW</a>
+                          <a data-tab="curl" class="item">CURL</a>
+                          <a data-tab="python" class="item">PYTHON</a>
+                          <a data-tab="java" class="item">JAVA</a>
+                          <a data-tab="php" class="item">PHP</a>
+                          <a data-tab="csharp" class="item">C#</a>
+                        </div>
+                        <div class="ui bottom attached active tab segment" data-tab="body">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-json">{
+    &#34;dataset&#34;: &#34;digikala&#34;,
+    &#34;contents&#34;: [&#34;ارزش خریدنش رو بی شک داره&#34;, &#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;]
+}
+</code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="curl">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-bash">
+curl  --request POST \
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary "{
+    &#34;dataset&#34;: &#34;digikala&#34;,
+    &#34;contents&#34;: [&#34;ارزش خریدنش رو بی شک داره&#34;, &#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;]
+}
+" \
+      'http://kashf.sobhe.ir/api/tag_texts'
+
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="python">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-python">
+  from urllib2 import Request, urlopen
+
+  values = """
+  {
+    &#34;dataset&#34;: &#34;digikala&#34;,
+    &#34;contents&#34;: [&#34;ارزش خریدنش رو بی شک داره&#34;, &#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;]
+}
+
+  """
+
+  headers = {
+    'Content-Type': 'application/json', 'Authorization': 'Token TOKEN_KEY', 
+  }
+  request = Request('http://kashf.sobhe.ir/api/tag_texts', data=values, headers=headers)
+
+  response_body = urlopen(request).read()
+  print(response_body)
+                              </code>
+                            </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="java">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-java">
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("http://kashf.sobhe.ir/api/tag_texts");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    &#34;dataset&#34;: &#34;digikala&#34;,
+    &#34;contents&#34;: [&#34;ارزش خریدنش رو بی شک داره&#34;, &#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;]
+}
+" .getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="php">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-php">
+&lt;?php
+
+  $url = "http://kashf.sobhe.ir/api/tag_texts";    
+  $content = json_encode(
+      '{
+    &#34;dataset&#34;: &#34;digikala&#34;,
+    &#34;contents&#34;: [&#34;ارزش خریدنش رو بی شک داره&#34;, &#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;]
+}
+');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json", 
+              "Authorization: Token TOKEN_KEY", 
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+                          
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="csharp">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-csharp">
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/tag_texts");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+            
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    &#34;dataset&#34;: &#34;digikala&#34;,
+    &#34;contents&#34;: [&#34;ارزش خریدنش رو بی شک داره&#34;, &#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;]
+}
+";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+                              </code>
+                            </pre>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">RAW</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre class="line-numbers" style="white-space: inherit">
+                        <code class="language-json">[
+  [&#34;ارزش خریدنش رو بی شک داره&#34;, [[39, 0.9997, &#34;توصیه خرید&#34;]]],
+  [&#34;اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره&#34;, [[56, 0.9980, &#34;عدم رضایت بعد خرید&#34;]]]
+]
+</code>
+                      </pre>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui orange huge ribbon label">
+            تحلیل تصویر
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              
+            </div>
+          </div>
+        </div>
+
+        
+          
+           
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="thlyl-tswyr-nmwnh">
+              نمونه
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui blue large button">
+                  <h3>POST</h3>
+                </div>
+                <a class="ui basic fluid request-url blue label">
+                  <code>http://kashf.sobhe.ir/api/tag_images</code>
+                </a>
+              </div>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+    <tr>
+      <td class="four wide">Authorization</td>
+      <td><code>Token TOKEN_KEY</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+                
+                  <div class="ui stacked segment">
+                    <div class="ui fluid transaction ">
+                      <div class="content tabbed">
+                        <div class="ui top attached tabular menu">
+                          <a data-tab="body" class="active item">RAW</a>
+                          <a data-tab="curl" class="item">CURL</a>
+                          <a data-tab="python" class="item">PYTHON</a>
+                          <a data-tab="java" class="item">JAVA</a>
+                          <a data-tab="php" class="item">PHP</a>
+                          <a data-tab="csharp" class="item">C#</a>
+                        </div>
+                        <div class="ui bottom attached active tab segment" data-tab="body">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-json">{
+    &#34;dataset&#34;: &#34;scene&#34;,
+    &#34;image_urls&#34;: [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, &#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;]
+}
+</code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="curl">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-bash">
+curl  --request POST \
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary "{
+    &#34;dataset&#34;: &#34;scene&#34;,
+    &#34;image_urls&#34;: [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, &#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;]
+}
+" \
+      'http://kashf.sobhe.ir/api/tag_images'
+
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="python">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-python">
+  from urllib2 import Request, urlopen
+
+  values = """
+  {
+    &#34;dataset&#34;: &#34;scene&#34;,
+    &#34;image_urls&#34;: [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, &#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;]
+}
+
+  """
+
+  headers = {
+    'Content-Type': 'application/json', 'Authorization': 'Token TOKEN_KEY', 
+  }
+  request = Request('http://kashf.sobhe.ir/api/tag_images', data=values, headers=headers)
+
+  response_body = urlopen(request).read()
+  print(response_body)
+                              </code>
+                            </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="java">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-java">
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("http://kashf.sobhe.ir/api/tag_images");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    &#34;dataset&#34;: &#34;scene&#34;,
+    &#34;image_urls&#34;: [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, &#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;]
+}
+" .getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="php">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-php">
+&lt;?php
+
+  $url = "http://kashf.sobhe.ir/api/tag_images";    
+  $content = json_encode(
+      '{
+    &#34;dataset&#34;: &#34;scene&#34;,
+    &#34;image_urls&#34;: [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, &#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;]
+}
+');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json", 
+              "Authorization: Token TOKEN_KEY", 
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+                          
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="csharp">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-csharp">
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/tag_images");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+            
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    &#34;dataset&#34;: &#34;scene&#34;,
+    &#34;image_urls&#34;: [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, &#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;]
+}
+";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+                              </code>
+                            </pre>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">RAW</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre class="line-numbers" style="white-space: inherit">
+                        <code class="language-json">[
+  [&#34;https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg&#34;, [[1, 1.0, &#34;حرم رضوی&#34;]]],
+  [&#34;http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg&#34;, [[36, 0.9981, &#34;تئاتر شهر&#34;]]]
+]
+</code>
+                      </pre>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui orange huge ribbon label">
+            تحلیل ویدئو
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              
+            </div>
+          </div>
+        </div>
+
+        
+          
+           
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="thlyl-wydy-w-nmwnh">
+              نمونه
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui blue large button">
+                  <h3>POST</h3>
+                </div>
+                <a class="ui basic fluid request-url blue label">
+                  <code>http://kashf.sobhe.ir/api/tag_videos</code>
+                </a>
+              </div>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+    <tr>
+      <td class="four wide">Authorization</td>
+      <td><code>Token TOKEN_KEY</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+                
+                  <div class="ui stacked segment">
+                    <div class="ui fluid transaction ">
+                      <div class="content tabbed">
+                        <div class="ui top attached tabular menu">
+                          <a data-tab="body" class="active item">RAW</a>
+                          <a data-tab="curl" class="item">CURL</a>
+                          <a data-tab="python" class="item">PYTHON</a>
+                          <a data-tab="java" class="item">JAVA</a>
+                          <a data-tab="php" class="item">PHP</a>
+                          <a data-tab="csharp" class="item">C#</a>
+                        </div>
+                        <div class="ui bottom attached active tab segment" data-tab="body">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-json">{
+    &#34;dataset&#34;: &#34;aparat&#34;,
+    &#34;video_urls&#34;: [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, &#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;]
+}
+</code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="curl">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-bash">
+curl  --request POST \
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary "{
+    &#34;dataset&#34;: &#34;aparat&#34;,
+    &#34;video_urls&#34;: [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, &#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;]
+}
+" \
+      'http://kashf.sobhe.ir/api/tag_videos'
+
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="python">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-python">
+  from urllib2 import Request, urlopen
+
+  values = """
+  {
+    &#34;dataset&#34;: &#34;aparat&#34;,
+    &#34;video_urls&#34;: [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, &#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;]
+}
+
+  """
+
+  headers = {
+    'Content-Type': 'application/json', 'Authorization': 'Token TOKEN_KEY', 
+  }
+  request = Request('http://kashf.sobhe.ir/api/tag_videos', data=values, headers=headers)
+
+  response_body = urlopen(request).read()
+  print(response_body)
+                              </code>
+                            </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="java">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-java">
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("http://kashf.sobhe.ir/api/tag_videos");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    &#34;dataset&#34;: &#34;aparat&#34;,
+    &#34;video_urls&#34;: [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, &#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;]
+}
+" .getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="php">
+                          <pre class="line-numbers" style="white-space: inherit">
+                            <code class="language-php">
+&lt;?php
+
+  $url = "http://kashf.sobhe.ir/api/tag_videos";    
+  $content = json_encode(
+      '{
+    &#34;dataset&#34;: &#34;aparat&#34;,
+    &#34;video_urls&#34;: [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, &#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;]
+}
+');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json", 
+              "Authorization: Token TOKEN_KEY", 
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+                          
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="ui bottom attached tab segment" data-tab="csharp">
+                            <pre class="line-numbers" style="white-space: inherit">
+                              <code class="language-csharp">
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/tag_videos");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+            
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    &#34;dataset&#34;: &#34;aparat&#34;,
+    &#34;video_urls&#34;: [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, &#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;]
+}
+";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+                              </code>
+                            </pre>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">RAW</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre class="line-numbers" style="white-space: inherit">
+                        <code class="language-json">[
+  [&#34;https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4&#34;, [[38884, 0.9985, &#34;پینگ‌پنگ&#34;]]],
+  [&#34;https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4&#34;, [[38870, 0.9993, &#34;والیبال&#34;]]]
+]
+</code>
+                      </pre>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+
+
+      </div>
+      <div class="sidewrap three wide computer five wide tablet eleven wide mobile column">
+        <div class="sidenav">
+          
+<div class="ui fluid secondary vertical menu"></div>
+<div class="ui fluid secondary vertical menu"></div>
+
+
+<div class="ui accordion fluid">
+  
+    
+      
+      
+        <div class="ui fluid vertical menu">
+        
+          <a class="rtl item" href="#thlyl-mtn-nmwnh">
+            <i class="ui empty chevron circle left icon"></i>
+            
+              <span>نمونه</span>
+            
+          </a>
+        
+        </div>
+      
+    
+  
+    
+      
+      
+        <div class="ui fluid vertical menu">
+        
+          <a class="rtl item" href="#thlyl-tswyr-nmwnh">
+            <i class="ui empty chevron circle left icon"></i>
+            
+              <span>نمونه</span>
+            
+          </a>
+        
+        </div>
+      
+    
+  
+    
+      
+      
+        <div class="ui fluid vertical menu">
+        
+          <a class="rtl item" href="#thlyl-wydy-w-nmwnh">
+            <i class="ui empty chevron circle left icon"></i>
+            
+              <span>نمونه</span>
+            
+          </a>
+        
+        </div>
+      
+    
+  
+</div>
+
+
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/accordion.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/tab.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/transition.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/popup.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-json.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-bash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-python.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-csharp.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-java.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-php.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/line-numbers/prism-line-numbers.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/normalize-whitespace/prism-normalize-whitespace.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        $('.ui.accordion').accordion({ animateChildren: false, duration: 0 });
+        $('.content.tabbed').each(function(index) {
+          $('.ui.tabular .item', $(this)).tab({ context: $(this) });
+        });
+        $('.ui.vertical.menu').on('click', '.item', function() {
+          $('.ui.vertical.menu .item').removeClass('active');
+          $(this).addClass('active');
+        });
+        $('.ui.empty.circular.label').popup();
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
