@@ -13,7 +13,7 @@ HOST: http://kashf.sobhe.ir
 </blockquote>
 
 
-## تحلیل متن [/api/tag_texts]
+## تحلیل متن [/api/tag_texts/]
 
 ### نمونه [POST]
 
@@ -33,14 +33,38 @@ HOST: http://kashf.sobhe.ir
 + Response 200 (application/json)
 
         [
-          ["ارزش خریدنش رو بی شک داره", [[39, 0.9997, "توصیه خرید"]]],
-          ["اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره", [[56, 0.9980, "عدم رضایت بعد خرید"]]]
+          {
+            "content": "ارزش خریدنش رو بی شک داره",
+            "tags": [
+              {
+                "id": 39,
+                "probability": 1.0,
+                "title": "توصیه خرید"
+              }
+            ]
+          },
+          {
+            "content": "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره",
+            "tags": [
+              {
+                "id": 56,
+                "probability": 1.0,
+                "title": "عدم رضایت بعد خرید"
+              }
+            ]
+          }
         ]
 
 
-## تحلیل تصویر [/api/tag_images]
+## تحلیل تصویر [/api/tag_images/]
 
 ### نمونه [POST]
+
+<div dir=rtl>
+می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+
+> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.sobhe.ir/api/tag_images
 
 + Request (application/json)
 
@@ -51,19 +75,37 @@ HOST: http://kashf.sobhe.ir
     + Body
 
             {
-                "dataset": "scene",
+                "dataset": "iran",
                 "image_urls": ["https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg", "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"]
             }
 
 + Response 200 (application/json)
 
         [
-          ["https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg", [[1, 1.0, "حرم رضوی"]]],
-          ["http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg", [[36, 0.9981, "تئاتر شهر"]]]
+          {
+            "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+            "tags": [
+              {
+                "id": 1,
+                "probability": 1.0,
+                "title": "حرم رضوی"
+              }
+            ]
+          },
+          {
+            "image_url": "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg",
+            "tags": [
+              {
+                "id": 36,
+                "probability": 1.0,
+                "title": "تئاتر شهر"
+              }
+            ]
+          }
         ]
 
 
-## تحلیل ویدئو [/api/tag_videos]
+## تحلیل فریم‌های ویدئو [/api/tag_video_frames/]
 
 ### نمونه [POST]
 
@@ -76,13 +118,260 @@ HOST: http://kashf.sobhe.ir
     + Body
 
             {
-                "dataset": "aparat",
-                "video_urls": ["https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4", "https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4"]
+                "dataset": "iran",
+                "every_ms": 100,
+                "duration": 25,
+                "min_frame_diff": 50,
+                "video_urls": ["https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"]
             }
 
 + Response 200 (application/json)
 
         [
-          ["https://as10.cdn.asset.aparat.com/aparat-video/710669b04155e2303c5fdf705bc4bd1b8975415-360p__58369.mp4", [[38884, 0.9985, "پینگ‌پنگ"]]],
-          ["https://hw20.cdn.asset.aparat.com/aparat-video/399032a8c104391ddd212e49dd8af5c010655136-360p__59410.mp4", [[38870, 0.9993, "والیبال"]]]
+          {
+            "video_url": "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4",
+            "frames": [
+              {
+                "frame": 3,
+                "time": "0:00:00",
+                "tags": [
+                  {
+                    "id": 0,
+                    "probability": 1.0,
+                    "title": "ناآشنا"
+                  }
+                ]
+              },
+              {
+                "frame": 585,
+                "time": "0:00:23",
+                "tags": [
+                  {
+                    "id": 39127,
+                    "probability": 0.99,
+                    "title": "پل طبیعت"
+                  }
+                ]
+              },
+              {
+                "frame": 603,
+                "time": "0:00:24",
+                "tags": [
+                  {
+                    "id": 2,
+                    "probability": 1.0,
+                    "title": "میدان آزادی"
+                  }
+                ]
+              }
+            ]
+          }
         ]
+
+
+## آموزش مدل [/api/train_dataset/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+                "dataset": "iran"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "dataset": "iran",
+            "state": "waiting"
+        }
+
+
+## وضعیت داده‌ها [/api/dataset_info/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+                "dataset": "iran",
+                "tags": true
+            }
+
++ Response 200 (application/json)
+
+        {
+          "title": "لحظه",
+          "state": "trained",
+          "report_count": 935,
+          "data_count": 2404,
+          "evaluation": {
+            "recall": 87,
+            "precision": 91
+          },
+          "tags": [
+            {
+              "title": "برج میلاد"
+              "id": 3,
+              "reports": 116,
+              "predictions": 156,
+              "evaluation": {
+                "recall": 80.3,
+                "precision": 91.4,
+                "f1": 86.0
+              },
+            },
+            ...
+          ]
+        }
+
+
+## گزارش برچسب متن [/api/report_text_tags/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            [
+              {
+                "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+                "tag_id": 39,
+                "positive": true
+              }
+            ]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "report": "[[39,true]]",
+            "id": 1211592
+          }
+        ]
+
+
+
+## گزارش برچسب تصویر [/api/report_image_tags/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            [
+              {
+                "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+                "tag_id": 3,
+                "positive": true
+              }
+            ]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "report": "[[3,true]]",
+            "id": 1211593
+          }
+        ]
+
+
+## ایجاد برچسب [/api/create_tag/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "dataset": "iran",
+              "title": "New Place"
+            }
+
++ Response 200 (application/json)
+
+        {
+          "title": "New Place",
+          "tag_id": 111111111,
+          "active": true
+        }
+
+
+## ویرایش برچسب [/api/update_tag/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "dataset": "iran",
+              "tag_id": 111111111,
+              "title": "Old Place",
+              "active": true
+            }
+
++ Response 200 (application/json)
+
+        {
+          "title": "Old Place",
+          "tag_id": 111111111,
+          "active": true
+        }
+
+
+## حذف برچسب [/api/delete_tag/]
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "tag_id": 111111111
+            }
+
++ Response 200 (application/json)
+
+        {
+          "dataset": "iran",
+          "deleted_reports": 0
+        }
