@@ -1,0 +1,444 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>الفبا</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ff6a7c}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#ffa96a}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}@font-face{font-family:'Proxima Nova';font-weight:bold;font-style:normal;src:url('/assets/fonts/349715_0_0.eot');src:url('/assets/fonts/349715_0_0.eot?#iefix') format('embedded-opentype'),url('/assets/fonts/349715_0_0.woff2') format('woff2'),url('/assets/fonts/349715_0_0.woff') format('woff'),url('/assets/fonts/349715_0_0.ttf') format('truetype')}@font-face{font-family:'Proxima Nova';font-weight:normal;font-style:normal;src:url('/assets/fonts/349715_1_0.eot');src:url('/assets/fonts/349715_1_0.eot?#iefix') format('embedded-opentype'),url('/assets/fonts/349715_1_0.woff2') format('woff2'),url('/assets/fonts/349715_1_0.woff') format('woff'),url('/assets/fonts/349715_1_0.ttf') format('truetype')}body{color:#3b4151;background:#FFF;overflow-x:hidden;font:400 16px 'Proxima Nova','Helvetica','Arial',sans-serif;margin:8px}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}.middle article,.middle aside,.middle blockquote,.middle details,.middle figcaption,.middle figure,.middle footer,.middle h1,.middle h2,.middle h3,.middle h4,.middle h5,.middle h6,.middle header,.middle hgroup,.middle hr,.middle img,.middle li,.middle main,.middle nav,.middle ol,.middle p,.middle pre,.middle section,.middle summary,.middle ul{display:block;float:left;width:100%;height:auto}.middle li{display:list-item}h1,h2,h3,h4,h5{color:#3b4151;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.05}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:700 36px 'Proxima Nova','Helvetica','Arial',sans-serif;font-size:54px}h2{font:700 36px 'Proxima Nova','Helvetica','Arial',sans-serif;font-size:26px}h3{font-size:30px}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#318FA9;text-decoration:none}li p{margin:0}hr.split{display:none}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(59,65,81,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#3b4151;background-color:transparent;padding:0;border:none}code{color:#584773;background-color:#fafafc;font:'SFMono-Regular','Consolas','Liberation Mono','Menlo','Courier',monospace;padding:1px 4px;border:1px solid #e3e4e7;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:700 36px 'Proxima Nova','Helvetica','Arial',sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#3b4151;background-color:#f2fafc;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#3b4151;background-color:#fdf1f0;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px;margin-bottom:40px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto;padding-left:10px}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#3b4151;opacity:.7;border-left:2px solid transparent;margin:0}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:14.85714286px;color:#5d6576;padding:8px 12px;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{color:#3c4151}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav .badge{display:none}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:16px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:#318FA9;cursor:pointer}.collapse-button .open{color:#318FA9;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;margin-right:-8px;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-left:40px;padding-right:40px}.right{box-sizing:border-box;float:right;width:48.5%}.right a{color:#999}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#FFF}.right h5,.right>a,.right>.tabs{padding-left:40px}.right>.tabs{padding-right:40px}.right .inner>h5{padding-left:0;padding-bottom:8px;border-bottom:1px solid #373b48}.right pre{padding-left:0;padding-right:0;background:none;border:none}.right pre code{color:#a5a8ae}.right .description{margin-top:12px}.definition{margin-top:12px;margin-bottom:40px;padding:20px 10px 20px 40px;border-top:1px solid #3a3e4d;border-bottom:1px solid #3a3e4d;font-size:14px;line-height:20px}.definition .method{border:2px solid #c1c6d1;padding:1px 7px;border-radius:4px;font-size:13px;font-weight:bold}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.8}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#3b4151;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{margin-bottom:20px;padding-left:0;border-bottom:1px solid #373b48;background:none}.right .example-names .tab-button{color:#FFF;border:1px solid #2c303e;border-radius:6px}.right .example-names .tab-button.active{background-color:#353b48}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#FFF;border-right:1px solid transparent;z-index:-1}#right-panel-background{position:absolute;right:-8px;top:-8px;bottom:-8px;width:48.2%;background-color:#2c303e;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.2%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(59,65,81,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{margin:-12px -12px 12px -12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.middle .resource-group{margin-top:40px}.middle .resource-group h2.group-heading,.middle .resource-group .heading a{font-size:36px}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0}nav .resource-group .heading a{padding:12px;margin-bottom:0;font-size:14px;text-transform:uppercase;color:#318FA9}nav .resource-group .heading a:hover{color:#266e81}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding-top:12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{margin-top:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.action h4.action-heading .name{display:inline-block;margin-top:4px;font-size:20px;line-height:125%}.action h4.action-heading .method{float:left;padding:6px 12px;margin-right:12px;border-radius:3px}.action h4.action-heading .method.get{color:#fff;background-color:#318FA9}.action h4.action-heading .method.head{color:#fff;background-color:#318FA9}.action h4.action-heading .method.options{color:#fff;background-color:#318FA9}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{display:none}.action dl.inner{overflow:auto;margin:0;padding:20px 0}.action .title{border-bottom:1px solid #FFF;margin:0 -12px -1px -12px;padding:12px}.action dt{overflow:initial;width:90px;text-align:left;text-overflow:initial;white-space:initial;word-wrap:break-word}.action dd{display:flex;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;height:auto;margin-left:0}.action dd>code{padding:0;border:none;background:none;font:inherit;text-transform:capitalize;color:inherit}.action dd>code+span{order:-1;display:block;width:10px;height:10px;margin:7px 10px 0 0;background-position:30px 0;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAxMCI+PHBhdGggZmlsbD0iIzVENjU3NyIgZD0iTTUgMmMxLjY1NCAwIDMgMS4zNDYgMyAzUzYuNjU0IDggNSA4IDIgNi42NTQgMiA1czEuMzQ2LTMgMy0zbTAtMmE1IDUgMCAxIDAgLjAwMSAxMC4wMDFBNSA1IDAgMCAwIDUgMHoiLz48cGF0aCBmaWxsPSIjQzFDNkQxIiBkPSJNMTUgMmMxLjY1NCAwIDMgMS4zNDYgMyAzcy0xLjM0NiAzLTMgMy0zLTEuMzQ2LTMtMyAxLjM0Ni0zIDMtM20wLTJhNSA1IDAgMSAwIC4wMDEgMTAuMDAxQTUgNSAwIDAgMCAxNSAweiIvPjxjaXJjbGUgZmlsbD0iIzk1OUNBRCIgY3g9IjI1IiBjeT0iNSIgcj0iNSIvPjwvc3ZnPg==);background-size:30px 10px;font-size:3px;color:transparent;pointer-events:none;user-select:none}.action dd .required{background-position:10px 0;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAxMCI+PHBhdGggZmlsbD0iIzVENjU3NyIgZD0iTTUgMmMxLjY1NCAwIDMgMS4zNDYgMyAzUzYuNjU0IDggNSA4IDIgNi42NTQgMiA1czEuMzQ2LTMgMy0zbTAtMmE1IDUgMCAxIDAgLjAwMSAxMC4wMDFBNSA1IDAgMCAwIDUgMHoiLz48cGF0aCBmaWxsPSIjQzFDNkQxIiBkPSJNMTUgMmMxLjY1NCAwIDMgMS4zNDYgMyAzcy0xLjM0NiAzLTMgMy0zLTEuMzQ2LTMtMyAxLjM0Ni0zIDMtM20wLTJhNSA1IDAgMSAwIC4wMDEgMTAuMDAxQTUgNSAwIDAgMCAxNSAweiIvPjxjaXJjbGUgZmlsbD0iIzk1OUNBRCIgY3g9IjI1IiBjeT0iNSIgcj0iNSIvPjwvc3ZnPg==)}.action dd .example{display:none}.middle>p.text-muted{display:none}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#">Resource Group</a></div><div class="collapse-content"><ul><li><a href="#خواندن-سند">خواندن سند</a><ul><li><a href="#خواندن-سند-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#خواندن-صفحه">خواندن صفحه</a><ul><li><a href="#خواندن-صفحه-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#وضعیت-سند">وضعیت سند</a><ul><li><a href="#وضعیت-سند-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#صفحات-سند">صفحات سند</a><ul><li><a href="#صفحات-سند-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#دریافت-فایل-ورد">دریافت فایل ورد</a><ul><li><a href="#دریافت-فایل-ورد-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#دریافت-فایل-اکسل">دریافت فایل اکسل</a><ul><li><a href="#دریافت-فایل-اکسل-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#دریافت-فایل-قابل-جستجو">دریافت فایل قابل جستجو</a><ul><li><a href="#دریافت-فایل-قابل-جستجو-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li><li><a href="#حذف-سند">حذف سند</a><ul><li><a href="#حذف-سند-post"><span class="badge post"><i class="fa fa-plus"></i></span>نمونه</a></li></ul></li></ul></div></div></nav><div class="content"><header><h1 id="top">الفبا</h1></header><div dir=rtl>
+نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
+</div>
+<blockquote dir=rtl>
+برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
+</blockquote><section id="" class="resource-group"><h2 class="group-heading">Resource Group <a href="#" class="permalink">&para;</a></h2><div id="خواندن-سند" class="resource"><h3 class="resource-heading">خواندن سند <a href="#خواندن-سند" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+</div><div id="خواندن-سند-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#خواندن-سند-post" class="method post">POST</a><code class="uri">/api/read_document/</code></h4><div dir=rtl>
+می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+<blockquote>
+<p>curl -X POST --header “Authorization: Token TOKEN_KEY” -F “document=@example.pdf” <a href="http://alefba.roshan-ai.ir/api/read_document">http://alefba.roshan-ai.ir/api/read_document</a></p>
+</blockquote>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/read_document/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"general"</span></span>,
+  "<span class="hljs-attribute">fix_orientation</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">word_positions</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">wait</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">document_url</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"آدرس سند ورودی"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">enum</span>": <span class="hljs-value">[
+        <span class="hljs-string">"general"</span>,
+        <span class="hljs-string">"ID-card"</span>,
+        <span class="hljs-string">"excel"</span>
+      ]</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"این ویژگی نوع سند را مشخص می‌کند"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">fix_orientation</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">word_positions</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">wait</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"document_url"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span></span>,
+  "<span class="hljs-attribute">pages</span>": <span class="hljs-value">[{
+    "<span class="hljs-attribute">page_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"</span></span>,
+    "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">2125</span></span>,
+    "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-number">2750</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"بوته\n\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n..."</span></span>,
+    "<span class="hljs-attribute">parts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"text"</span></span>,
+        "<span class="hljs-attribute">direction</span>": <span class="hljs-value"><span class="hljs-string">"rtl"</span></span>,
+        "<span class="hljs-attribute">box</span>": <span class="hljs-value"><span class="hljs-string">"209 305 1711 449"</span></span>,
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n..."</span></span>,
+        "<span class="hljs-attribute">lines</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">probability</span>": <span class="hljs-value"><span class="hljs-number">1.0</span></span>,
+            "<span class="hljs-attribute">box</span>": <span class="hljs-value"><span class="hljs-string">"211 305 1707 57"</span></span>,
+            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"</span>
+          </span>},
+          ...
+        ]
+      </span>},
+      ...
+    ]
+  </span>},{
+    "<span class="hljs-attribute">page_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=2"</span></span>,
+    "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">2125</span></span>,
+    "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-number">2750</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\n..."</span></span>,
+    "<span class="hljs-attribute">parts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"text"</span></span>,
+        "<span class="hljs-attribute">direction</span>": <span class="hljs-value"><span class="hljs-string">"rtl"</span></span>,
+        "<span class="hljs-attribute">box</span>": <span class="hljs-value"><span class="hljs-string">"210 110 1714 294"</span></span>,
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\n..."</span></span>,
+        "<span class="hljs-attribute">lines</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">probability</span>": <span class="hljs-value"><span class="hljs-number">1.0</span></span>,
+            "<span class="hljs-attribute">box</span>": <span class="hljs-value"><span class="hljs-string">"210 110 1706 58"</span></span>,
+            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین"</span>
+          </span>},
+          ...
+        ]</span>,
+      },
+      ...
+    ]
+  </span>}]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="خواندن-صفحه" class="resource"><h3 class="resource-heading">خواندن صفحه <a href="#خواندن-صفحه" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+</div><div id="خواندن-صفحه-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#خواندن-صفحه-post" class="method post">POST</a><code class="uri">/api/read_pages/</code></h4><div dir=rtl>
+می‌توانید برای همین تابع، فایل صفحه را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+<blockquote>
+<p>curl -X POST --header “Authorization: Token TOKEN_KEY” -F “page=@example.jpg” <a href="http://alefba.roshan-ai.ir/api/read_pages">http://alefba.roshan-ai.ir/api/read_pages</a></p>
+</blockquote>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/read_pages/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">page_urls</span>": <span class="hljs-value">[
+    <span class="hljs-string">"URL1"</span>,
+    <span class="hljs-string">"URL2"</span>,
+    <span class="hljs-string">"..."</span>
+  ]</span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"general"</span></span>,
+  "<span class="hljs-attribute">fix_orientation</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">word_positions</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">wait</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">page_urls</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"آدرس صفحات ورودی"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">enum</span>": <span class="hljs-value">[
+        <span class="hljs-string">"general"</span>,
+        <span class="hljs-string">"ID-card"</span>,
+        <span class="hljs-string">"excel"</span>
+      ]</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"این ویژگی نوع سند را مشخص می‌کند"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">fix_orientation</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">word_positions</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">wait</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"page_urls"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[{
+  "<span class="hljs-attribute">page_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"</span></span>,
+  "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">2125</span></span>,
+  "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-number">2750</span></span>,
+  "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"بوته\n\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n..."</span></span>,
+  "<span class="hljs-attribute">parts</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"text"</span></span>,
+      "<span class="hljs-attribute">direction</span>": <span class="hljs-value"><span class="hljs-string">"rtl"</span></span>,
+      "<span class="hljs-attribute">box</span>": <span class="hljs-value"><span class="hljs-string">"209 305 1711 449"</span></span>,
+      "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n..."</span></span>,
+      "<span class="hljs-attribute">lines</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">probability</span>": <span class="hljs-value"><span class="hljs-number">1.0</span></span>,
+          "<span class="hljs-attribute">box</span>": <span class="hljs-value"><span class="hljs-string">"211 305 1707 57"</span></span>,
+          "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"</span>
+        </span>},
+        ...
+      ]
+    </span>},
+    ...
+  ]
+</span>}]</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="وضعیت-سند" class="resource"><h3 class="resource-heading">وضعیت سند <a href="#وضعیت-سند" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+این تابع برای هر کدام از سندهای ورودی مشخص می‌کند که چه تعداد از صفحات آنها تحلیل شده است.
+</div><div id="وضعیت-سند-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#وضعیت-سند-post" class="method post">POST</a><code class="uri">/api/document_status/</code></h4><h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/document_status/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_urls</span>": <span class="hljs-value">[
+    <span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">http://bayanbox.ir/view/5067853395275628881/boute.pdf</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">analyzed</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">processed_pages</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">all_pages</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+  </span>}
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="صفحات-سند" class="resource"><h3 class="resource-heading">صفحات سند <a href="#صفحات-سند" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.
+</div><div id="صفحات-سند-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#صفحات-سند-post" class="method post">POST</a><code class="uri">/api/document_pages/</code></h4><div dir=rtl>
+می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+<blockquote>
+<p>curl -X POST --header “Authorization: Token TOKEN_KEY” -F “document=@example.pdf” <a href="http://alefba.roshan-ai.ir/api/document_pages">http://alefba.roshan-ai.ir/api/document_pages</a></p>
+</blockquote>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/document_pages/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span></span>,
+  "<span class="hljs-attribute">pages</span>": <span class="hljs-value">[
+    <span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"</span>,
+    <span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=2"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="دریافت-فایل-ورد" class="resource"><h3 class="resource-heading">دریافت فایل ورد <a href="#دریافت-فایل-ورد" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.
+</div><div id="دریافت-فایل-ورد-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#دریافت-فایل-ورد-post" class="method post">POST</a><code class="uri">/api/download_word/</code></h4><h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/download_word/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/msword</span><br><span class="hljs-attribute">Content-Disposition</span>: <span class="hljs-string">attachment; filename=Alefba.docx</span></code></pre><div style="height: 1px;"></div></div></div></div></div><div id="دریافت-فایل-اکسل" class="resource"><h3 class="resource-heading">دریافت فایل اکسل <a href="#دریافت-فایل-اکسل" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.
+</div><div id="دریافت-فایل-اکسل-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#دریافت-فایل-اکسل-post" class="method post">POST</a><code class="uri">/api/download_excel/</code></h4><h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/download_excel/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/msword</span><br><span class="hljs-attribute">Content-Disposition</span>: <span class="hljs-string">attachment; filename=Alefba.xlsx</span></code></pre><div style="height: 1px;"></div></div></div></div></div><div id="دریافت-فایل-قابل-جستجو" class="resource"><h3 class="resource-heading">دریافت فایل قابل جستجو <a href="#دریافت-فایل-قابل-جستجو" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.
+</div><div id="دریافت-فایل-قابل-جستجو-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#دریافت-فایل-قابل-جستجو-post" class="method post">POST</a><code class="uri">/api/download_pdf/</code></h4><h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/download_pdf/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span></span>,
+  "<span class="hljs-attribute">quality</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+  "<span class="hljs-attribute">img_format</span>": <span class="hljs-value"><span class="hljs-string">"png"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/pdf</span><br><span class="hljs-attribute">Content-Disposition</span>: <span class="hljs-string">attachment; filename=Alefba.pdf</span></code></pre><div style="height: 1px;"></div></div></div></div></div><div id="حذف-سند" class="resource"><h3 class="resource-heading">حذف سند <a href="#حذف-سند" class="permalink">&nbsp;&para;</a></h3><div dir=rtl>
+با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.
+</div><div id="حذف-سند-post" class="action post"><h4 class="action-heading"><div class="name">نمونه</div><a href="#حذف-سند-post" class="method post">POST</a><code class="uri">/api/delete_document/</code></h4><h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://alefba.roshan-ai.ir</span>/api/delete_document/</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token TOKEN_KEY</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">document_url</span>": <span class="hljs-value"><span class="hljs-string">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Document deleted successfully."</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 07 Oct 2021</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
