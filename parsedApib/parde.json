@@ -1,0 +1,216 @@
+{
+    "title": "Parde",
+    "attributes": [
+        {
+            "key": "FORMAT",
+            "value": "1A"
+        },
+        {
+            "key": "HOST",
+            "value": "http://api.sobhe.ir"
+        }
+    ],
+    "copies": [
+        "Parde recognizes unsafe images.\n\n> For using Parde API you need a TOKEN_KEY, if you don't have one,\nplease contact parde@sobhe.ir."
+    ],
+    "resources": [
+        {
+            "title": "Process Images",
+            "href": "/parde/api/images_safety",
+            "hrefVariables": [],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "Request",
+                    "copies": [
+                        "You may ask safety of some images using this action. Safety is a float\nnumber between 0 (unsafe) and 1 (safe) that shows probability of input\nimage being safe.\n\n> Asking safety of multiple images in one request results in better\nperformance."
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"image_urls\": [\n        \"http://www.sobhe.ir/baaz/img/goshawk.jpg\"\n    ]\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "statusCode": "200",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"http://www.sobhe.ir/baaz/img/goshawk.jpg\": 1\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Report Image Safety",
+            "href": "/parde/api/report",
+            "hrefVariables": [],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "Request",
+                    "copies": [
+                        "You may report safety of one image using this action. Parde learns reported\nimages for predicting image safety more precisely."
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"image_url\": \"http://www.sobhe.ir/baaz/img/goshawk.jpg\",\n    \"is_safe\": true\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "statusCode": "200",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"id\": 1,\n    \"image_url\": \"http://www.sobhe.ir/baaz/img/goshawk.jpg\",\n    \"is_safe\": true\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Remove Image Report",
+            "href": "/parde/api/remove_report",
+            "hrefVariables": [],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "Request",
+                    "copies": [
+                        "You may remove reported images using this action. Parde removes all of your\nreports with input url and responds with their object id."
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"image_url\": \"http://www.sobhe.ir/baaz/img/goshawk.jpg\"\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "statusCode": "200",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"image_url\": \"http://www.sobhe.ir/baaz/img/goshawk.jpg\",\n    \"removed_reports\": [1]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Video Keyframes",
+            "href": "/api/video_frames",
+            "hrefVariables": [],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "Request",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"video_url\": \"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4\"\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "statusCode": "200",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"video_url\":\"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4\",\n    \"frames\":[\n        \"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:00.jpg\",\n        \"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:08.jpg\",\n        \"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:13.jpg\"\n    ]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
