@@ -4,10 +4,6 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "aglio": "^2.3.0",
-    "aglio-theme-custom": "^1.0.0",
-    "aglio-theme-onlicar": "^1.6.4",
-    "aglio-theme-otto": "^1.0.0",
     "drafter": "^2.0.0",
     "mustache": "^4.2.0"
   },

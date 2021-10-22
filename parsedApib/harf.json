@@ -1,0 +1,71 @@
+{
+    "title": "حرف",
+    "attributes": [
+        {
+            "key": "FORMAT",
+            "value": "1A"
+        },
+        {
+            "key": "HOST",
+            "value": "http://harf.roshan-ai.ir"
+        }
+    ],
+    "copies": [
+        "سامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می تواند متن صحبت ها را بنویسد.",
+        "برای دسترسی به واسط برنامه نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید."
+    ],
+    "resources": [
+        {
+            "title": "پیاده‌سازی متن فایل",
+            "href": "/api/transcribe_files/",
+            "hrefVariables": [],
+            "copies": [
+                "این تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [
+                        "می‌توانید برای همین تابع، فایل ورودی را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"media=@test.mp3\" http://harf.roshan-ai.ir/api/transcribe_files"
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"]\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "statusCode": "200",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "[\n  {\n    \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

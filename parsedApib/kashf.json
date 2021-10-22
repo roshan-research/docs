@@ -7,11 +7,12 @@
         },
         {
             "key": "HOST",
-            "value": "http://kashf.sobhe.ir"
+            "value": "http://kashf.sobhe.ir/"
         }
     ],
     "copies": [
-        "<div dir=rtl>\nکشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.\n</div>\n\n<blockquote dir=rtl>\nبرای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@sobhe.ir بنویسید.\n</blockquote>"
+        "کشف با دیدن نمونه هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می گیرد و می تواند در داده های جدید آن مفهوم را پیدا کند.",
+        "برای دسترسی به واسط برنامه نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@sobhe.ir بنویسید."
     ],
     "resources": [
         {
@@ -71,7 +72,7 @@
                 {
                     "title": "نمونه",
                     "copies": [
-                        "<div dir=rtl>\nمی‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:\n</div>\n\n> curl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"image_file=@example.jpg\" -F \"dataset=iran\" http://kashf.sobhe.ir/api/tag_images"
+                        "می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"image_file=@example.jpg\" -F \"dataset=iran\" http://kashf.sobhe.ir/api/tag_images"
                     ],
                     "httpRequest": {
                         "method": "POST",
