@@ -357,3 +357,31 @@ HOST: https://alefba.roshan-ai.ir
         {
           "message":"Document deleted successfully."
         }
+
+## خواندن سند نامتقارن [/api/read_document/]
+
+<div dir=rtl>
+این قابلیت برای جلوگیری از انتظار برای تحلیل فایل قرار داده شده است. پس  از ارسال رکوئست وضعیت فایل در حال تحلیل قرار گرفته و پس اتمام تحلیل رکوئست کالبک حاوی اطلاعات فایل به آدرس وارد شده فرستاده میشود. 
+ </div>
+
+### نمونه [POST]
+
+> curl --request POST --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" --data-binary '{"document_url": "DocumentUrl", "callback_url": "CallbackUrl"}' http://alefba.roshan-ai.ir/api/read_document/
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+            Content-Type: application/json
+
+    + Body
+
+            {
+            "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
+            "callback_url": "http://192.168.254.3:5013/alefba_post"  
+            }
+
++ Response 200 (application/json)
+
+        {"state":"processing","document_url":"http://192.168.254.3:5013/static/2021-10-12%20%281%29.png"}
