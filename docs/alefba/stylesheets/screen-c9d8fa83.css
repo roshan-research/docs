@@ -421,7 +421,7 @@ body {
 }
 
 .toc-wrapper .toc-link.active {
-    background-color: #0F75D4;
+    background-color: #f8521f;
     color: #fff
 }
 
@@ -471,13 +471,13 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
     -webkit-transition-property: background;
     transition-property: background;
-    -webkit-transition-timing-function: linear;
-    transition-timing-function: linear;
-    -webkit-transition-duration: 130ms;
-    transition-duration: 130ms
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms
 }
 
 #nav-button {
