@@ -524,7 +524,7 @@ body {
     margin-left: 230px;
     position: relative;
     z-index: 10;
-    background-color: #F3F7F9;
+    background-color: #ffc285;
     min-height: 100%;
     padding-bottom: 1px
 }
@@ -569,7 +569,7 @@ body {
 
 .lang-selector a.active {
     background-color: #2E3336;
-    color: #fff
+    color: #f8521f
 }
 
 .lang-selector:after {
