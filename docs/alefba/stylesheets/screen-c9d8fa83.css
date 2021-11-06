@@ -463,6 +463,10 @@ body {
     text-decoration: none
 }
 
+.persian-text{
+    font-family: "B Yekan", serif;
+}
+
 .toc-link,
 .toc-footer li {
     padding: 0 15px 0 15px;
@@ -482,6 +486,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
 /* Track */
