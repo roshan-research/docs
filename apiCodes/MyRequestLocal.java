@@ -17,8 +17,13 @@ class MyRequest {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = "{\"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\"fix_orientation\": true,\"word_positions\": false,\"type\": \"general\",\"wait\": true}"
-                .getBytes(StandardCharsets.UTF_8);
+            File file = new File("YOUR FILE PATH");
+            byte[] out = new byte[(int)file.length()];
+
+            FileInputStream fileInputStream = new FileInputStream("YOUR FILE PATH");
+            fileInputStream.read(out);
+            fileInputStream.close();
+
             int length = out.length;
 
             http.setFixedLengthStreamingMode(length);
