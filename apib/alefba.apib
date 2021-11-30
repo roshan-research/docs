@@ -113,6 +113,122 @@ HOST: https://alefba.roshan-ai.ir
 این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 </div>
 
+
+
+
+<div dir=rtl>
+می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+
+> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "document=@example.pdf" http://alefba.roshan-ai.ir/api/read_document
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+            Content-Type:multipart/form-data; boundary={boundary value}
+
+    + Attributes
+
+        - document: (string, required) - فایل سند ورودی
+        - type: general (enum[string]) - این ویژگی نوع سند را مشخص می‌کند
+            + Members
+                + `general` - سندهای عمومی
+                + `ID-card` - کارت‌های شناسایی
+                + `excel` - جدولهای مالی
+        - fix_orientation: true (boolean) - در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
+        - word_positions: true (boolean) - در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
+        - wait: true (boolean) - اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+
+    + Body
+
+
+            --{boundary value}
+            Content-Disposition: form-data; name='fix_orientation'
+
+            true
+
+            --{boundary value}
+            Content-Disposition: form-data; name='word_positions'
+
+            false
+
+            --{boundary value}
+            Content-Disposition: form-data; name='type'
+
+            "general"
+
+            --{boundary value}
+            Content-Disposition: form-data; name='wait'
+
+            true
+
+            --{boundary value}
+            Content-Disposition: form-data; name='document'; filename='FILE NAME'
+            Content-Type: text/plain (according to the type of the uploaded file)
+
+            {file content}
+            --{boundary value}
+
+
++ Response 200 (application/json)
+
+        {
+          "pages": [{
+            "page": "1",
+            "width": 2125,
+            "height": 2750,
+            "text": "بوته\n\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
+            "parts": [
+              {
+                "type": "text",
+                "direction": "rtl",
+                "box": "209 305 1711 449",
+                "text": "درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
+                "lines": [
+                  {
+                    "probability": 1.0,
+                    "box": "211 305 1707 57",
+                    "text": "درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"
+                  },
+                  ...
+                ]
+              },
+              ...
+            ]
+          },{
+            "page": "2",
+            "width": 2125,
+            "height": 2750,
+            "text": "انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\n...",
+            "parts": [
+              {
+                "type": "text",
+                "direction": "rtl",
+                "box": "210 110 1714 294",
+                "text": "انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\n...",
+                "lines": [
+                  {
+                    "probability": 1.0,
+                    "box": "210 110 1706 58",
+                    "text": "انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین"
+                  },
+                  ...
+                ],
+              },
+              ...
+            ]
+          }]
+        }
+
+
+## خواندن صفحه [/api/read_pages/]
+
+<div dir=rtl>
+این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+</div>
+
 ### نمونه [POST]
 
 <div dir=rtl>
