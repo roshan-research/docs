@@ -23,7 +23,7 @@ meta:
 
 # Parde
 
-> Host: http://api.sobhe.ir/
+> Host: http://api.sobhe.ir
 
 Parde recognizes unsafe images.
 

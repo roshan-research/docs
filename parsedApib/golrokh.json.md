@@ -25,8 +25,7 @@ meta:
 
 > Host: http://api.sobhe.ir/golrokh/api/
 
-For using Golrokh API you need a TOKEN_KEY, if you don't have one,
-
+> For using Golrokh API you need a TOKEN_KEY, if you don't have one,
 please contact golrokh@sobhe.ir.
 
 # Find Faces
@@ -250,7 +249,7 @@ namespace MyRequest
 }
 ```
 
-For uploading image file you can send `multipart/form-data` request
+> For uploading image file you can send `multipart/form-data` request
 > to this function:
 
 curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image=@FILENAME" -F "datasets=siasi,honari,varzeshi" http://HOSTNAME/api/find_faces

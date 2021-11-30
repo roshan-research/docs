@@ -11,8 +11,7 @@
         }
     ],
     "copies": [
-        "For using Golrokh API you need a TOKEN_KEY, if you don't have one,",
-        "please contact golrokh@sobhe.ir."
+        "> For using Golrokh API you need a TOKEN_KEY, if you don't have one,\nplease contact golrokh@sobhe.ir."
     ],
     "resources": [
         {
@@ -24,7 +23,7 @@
                 {
                     "title": "Request",
                     "copies": [
-                        "For uploading image file you can send `multipart/form-data` request\n> to this function:\n\ncurl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"image=@FILENAME\" -F \"datasets=siasi,honari,varzeshi\" http://HOSTNAME/api/find_faces"
+                        "> For uploading image file you can send `multipart/form-data` request\n> to this function:\n\ncurl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"image=@FILENAME\" -F \"datasets=siasi,honari,varzeshi\" http://HOSTNAME/api/find_faces"
                     ],
                     "httpRequest": {
                         "method": "POST",

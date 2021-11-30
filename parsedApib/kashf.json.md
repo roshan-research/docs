@@ -23,11 +23,15 @@ meta:
 
 # کشف
 
-> Host: http://kashf.sobhe.ir/
+> Host: https://kashf.roshan-ai.ir
 
-کشف با دیدن نمونه هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می گیرد و می تواند در داده های جدید آن مفهوم را پیدا کند.
+<div dir=rtl>
+کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
+</div>
 
-برای دسترسی به واسط برنامه نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@sobhe.ir بنویسید.
+<blockquote dir=rtl>
+برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
+</blockquote>
 
 # نمونه
 
@@ -53,7 +57,7 @@ curl  --request POST \
         "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
     ]
 } \
-      http://kashf.sobhe.ir/api/tag_texts/
+      https://kashf.roshan-ai.ir/api/tag_texts/
 ```
 
 ```python
@@ -72,7 +76,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/tag_texts/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/tag_texts/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -92,7 +96,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/tag_texts/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_texts/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -131,7 +135,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/tag_texts/";
+  $url = "https://kashf.roshan-ai.ir/api/tag_texts/";
   $content = json_encode(
       '{
     "dataset": "digikala",
@@ -178,7 +182,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/tag_texts/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_texts/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -271,7 +275,7 @@ curl  --request POST \
         "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
     ]
 } \
-      http://kashf.sobhe.ir/api/tag_images/
+      https://kashf.roshan-ai.ir/api/tag_images/
 ```
 
 ```python
@@ -290,7 +294,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/tag_images/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/tag_images/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -310,7 +314,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/tag_images/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_images/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -349,7 +353,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/tag_images/";
+  $url = "https://kashf.roshan-ai.ir/api/tag_images/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -396,7 +400,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/tag_images/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_images/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -457,7 +461,11 @@ namespace MyRequest
 ]
 ```
 
-می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.sobhe.ir/api/tag_images
+<div dir=rtl>
+می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+
+> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.roshan-ai.ir/api/tag_images
 
 `POST /api/tag_images/`
 
@@ -495,7 +503,7 @@ curl  --request POST \
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
 } \
-      http://kashf.sobhe.ir/api/tag_video_frames/
+      https://kashf.roshan-ai.ir/api/tag_video_frames/
 ```
 
 ```python
@@ -516,7 +524,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/tag_video_frames/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/tag_video_frames/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -536,7 +544,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/tag_video_frames/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_video_frames/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -577,7 +585,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/tag_video_frames/";
+  $url = "https://kashf.roshan-ai.ir/api/tag_video_frames/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -626,7 +634,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/tag_video_frames/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_video_frames/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -731,7 +739,7 @@ curl  --request POST \
       --data-binary {
     "dataset": "iran"
 } \
-      http://kashf.sobhe.ir/api/train_dataset/
+      https://kashf.roshan-ai.ir/api/train_dataset/
 ```
 
 ```python
@@ -746,7 +754,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/train_dataset/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/train_dataset/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -766,7 +774,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/train_dataset/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/train_dataset/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -801,7 +809,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/train_dataset/";
+  $url = "https://kashf.roshan-ai.ir/api/train_dataset/";
   $content = json_encode(
       '{
     "dataset": "iran"
@@ -844,7 +852,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/train_dataset/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/train_dataset/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -909,7 +917,7 @@ curl  --request POST \
     "dataset": "iran",
     "tags": true
 } \
-      http://kashf.sobhe.ir/api/dataset_info/
+      https://kashf.roshan-ai.ir/api/dataset_info/
 ```
 
 ```python
@@ -925,7 +933,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/dataset_info/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/dataset_info/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -945,7 +953,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/dataset_info/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/dataset_info/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -981,7 +989,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/dataset_info/";
+  $url = "https://kashf.roshan-ai.ir/api/dataset_info/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -1025,7 +1033,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/dataset_info/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/dataset_info/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -1094,7 +1102,7 @@ curl  --request POST \
         "positive": true
     }
 ] \
-      http://kashf.sobhe.ir/api/report_text_tags/
+      https://kashf.roshan-ai.ir/api/report_text_tags/
 ```
 
 ```python
@@ -1113,7 +1121,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/report_text_tags/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/report_text_tags/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -1133,7 +1141,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/report_text_tags/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/report_text_tags/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -1172,7 +1180,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/report_text_tags/";
+  $url = "https://kashf.roshan-ai.ir/api/report_text_tags/";
   $content = json_encode(
       '[
     {
@@ -1219,7 +1227,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/report_text_tags/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_text_tags/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -1296,7 +1304,7 @@ curl  --request POST \
         "positive": true
     }
 ] \
-      http://kashf.sobhe.ir/api/report_image_tags/
+      https://kashf.roshan-ai.ir/api/report_image_tags/
 ```
 
 ```python
@@ -1315,7 +1323,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/report_image_tags/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/report_image_tags/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -1335,7 +1343,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/report_image_tags/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/report_image_tags/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -1374,7 +1382,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/report_image_tags/";
+  $url = "https://kashf.roshan-ai.ir/api/report_image_tags/";
   $content = json_encode(
       '[
     {
@@ -1421,7 +1429,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/report_image_tags/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_image_tags/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -1492,7 +1500,7 @@ curl  --request POST \
     "dataset": "iran",
     "title": "New Place"
 } \
-      http://kashf.sobhe.ir/api/create_tag/
+      https://kashf.roshan-ai.ir/api/create_tag/
 ```
 
 ```python
@@ -1508,7 +1516,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/create_tag/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/create_tag/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -1528,7 +1536,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/create_tag/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/create_tag/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -1564,7 +1572,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/create_tag/";
+  $url = "https://kashf.roshan-ai.ir/api/create_tag/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -1608,7 +1616,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/create_tag/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/create_tag/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -1679,7 +1687,7 @@ curl  --request POST \
     "title": "Old Place",
     "active": true
 } \
-      http://kashf.sobhe.ir/api/update_tag/
+      https://kashf.roshan-ai.ir/api/update_tag/
 ```
 
 ```python
@@ -1697,7 +1705,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/update_tag/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/update_tag/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -1717,7 +1725,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/update_tag/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/update_tag/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -1755,7 +1763,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/update_tag/";
+  $url = "https://kashf.roshan-ai.ir/api/update_tag/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -1801,7 +1809,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/update_tag/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/update_tag/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -1868,7 +1876,7 @@ curl  --request POST \
       --data-binary {
     "tag_id": 111111111
 } \
-      http://kashf.sobhe.ir/api/delete_tag/
+      https://kashf.roshan-ai.ir/api/delete_tag/
 ```
 
 ```python
@@ -1883,7 +1891,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://kashf.sobhe.ir/api/delete_tag/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/delete_tag/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -1903,7 +1911,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("http://kashf.sobhe.ir/api/delete_tag/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/delete_tag/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -1938,7 +1946,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "http://kashf.sobhe.ir/api/delete_tag/";
+  $url = "https://kashf.roshan-ai.ir/api/delete_tag/";
   $content = json_encode(
       '{
     "tag_id": 111111111
@@ -1981,7 +1989,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://kashf.sobhe.ir/api/delete_tag/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/delete_tag/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 

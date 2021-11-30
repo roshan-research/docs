@@ -6,7 +6,6 @@ const turnParsedApibToSlateMarkdown = require('./turnParsedApibToSlateMarkdown')
 function CreateApibToHtmls(){
     let templateHtml = fs.readFileSync("../templates/custom_template.html" ,{encoding:'utf-8'});
    // let oneApib = fs.readFileSync("./alefba.apib" ,{encoding:'utf-8'});
-
     fs.readdir("../apib", function (err,files){
         if (err){
             return;
@@ -41,6 +40,7 @@ function TurnParsedApibToSlateMarkdown(){
     });
 
 }
+
 http.createServer(function (req, res) {
    console.log(req.url);
     if (req.url === "/CreateApibToHtmls"){
