@@ -255,13 +255,13 @@ wait | true |  | اگر این ویژگی فعال باشد، کاربر منت�
 > Request
 
 ```plaintext
-"{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n"
+"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" --header "Content-Type: multipart/form-data; boundary={boundary value}" \
-      --data-binary "{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n" \
+      --data-binary "--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n" \
       https://alefba.roshan-ai.ir/api/read_pages/
 ```
 
@@ -269,7 +269,7 @@ curl  --request POST \
 from urllib2 import Request, urlopen
 
 values = """
-"{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n"
+"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
 """
 
 headers = {
@@ -301,7 +301,7 @@ class MyRequest {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = ""{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n"".getBytes(StandardCharsets.UTF_8);
+            byte[] out = ""--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
 
             http.setFixedLengthStreamingMode(length);
@@ -331,7 +331,7 @@ class MyRequest {
 
   $url = "https://alefba.roshan-ai.ir/api/read_pages/";
   $content = json_encode(
-      '"{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n"');
+      '"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"');
   $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_HEADER, false);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -380,7 +380,7 @@ namespace MyRequest
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                string json = ""{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n"";
+                string json = ""--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"";
 
                 streamWriter.Write(json);
                 streamWriter.Flush();

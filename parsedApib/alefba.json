@@ -205,7 +205,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n    --{boundary value}\n    Content-Disposition: form-data; name='fix_orientation'\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='word_positions'\n\nfalse\n\n--{boundary value}\nContent-Disposition: form-data; name='type'\n\n\"general\"\n\n--{boundary value}\nContent-Disposition: form-data; name='wait'\n\ntrue\n\n--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n}\n"
+                                "content": "--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
                             },
                             {
                                 "type": "messageBodySchema",
