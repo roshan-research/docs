@@ -15,7 +15,7 @@ public class MultiPartRequest {
     connection.setDoOutput(true);
     connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
     connection.setRequestProperty("Authorization", "Token TOKEN_KEY");
-    connection.setRequestProperty("Connection", "close");
+    connection.setRequestProperty("accept", "*/*");
     try (
         OutputStream output = connection.getOutputStream();
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, charset), true);
