@@ -48,7 +48,7 @@ meta:
 ```
 
 ```shell
-curl  --request POST \ 
+curl  --request POST  
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
       --data-binary {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
@@ -56,7 +56,7 @@ curl  --request POST \
     "word_positions": false,
     "type": "general",
     "wait": true
-} \
+} 
       https://alefba.roshan-ai.ir/api/read_document/
 ```
 
@@ -223,14 +223,9 @@ namespace MyRequest
 ```
 
 <div dir=rtl>
-این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+این تابع،فایل یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 </div>
 
-<div dir=rtl>
-می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
-
-> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "document=@example.pdf" http://alefba.roshan-ai.ir/api/read_document
 
 `POST /api/read_document/`
 
@@ -238,92 +233,81 @@ namespace MyRequest
 
 Content-Type | Authorization
 ------------ | -------------
-application/json | Token TOKEN_KEY
+multipart/form-data | Token TOKEN_KEY
 
 **Request DataStructure**
 
 Key | Value | TypeAttributes | Description
 --- | ----- | -------------- | -----------
-document_url | URL | required | آدرس سند ورودی
-type | ["general"] |  | این ویژگی نوع سند را مشخص می‌کند
-fix_orientation | true |  | در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
-word_positions | true |  | در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
-wait | true |  | اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+document | binary | required | فایل سند ورودی
 
 # نمونه
 
 > Request
 
 ```plaintext
-"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+{
+    document: {DOCUMENT DATA}
+}
 ```
 
 ```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" --header "Content-Type: multipart/form-data; boundary={boundary value}" \
-      --data-binary "--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n" \
-      https://alefba.roshan-ai.ir/api/read_pages/
+curl -X POST --header "Authorization: Token TOKEN_KEY" -F "document=@example.pdf" http://alefba.roshan-ai.ir/api/read_document
 ```
 
 ```python
-from urllib2 import Request, urlopen
+import requests
 
-values = """
-"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY','Content-Type': 'multipart/form-data; boundary={boundary value}',
-}
-request = Request('https://alefba.roshan-ai.ir/api/read_pages/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
+headers = {'Authorization': 'Token TOKEN_KEY',}
+files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
+print(response)
 ```
 
 ```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+import java.io.*;
+import java.net.*;
+import java.nio.file.Files;
 
-class MyRequest {
+public class MultiPartRequest {
+  public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/read_pages/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
+    String url = "https://alefba.roshan-ai.ir/api/read_document/";
+    File textFile = new File("YOUR FILE PATH");
+    String boundary = Long.toHexString(System.currentTimeMillis());
+    String CRLF = "\r\n";
 
-            byte[] out = ""--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
+    URLConnection connection = new URL(url).openConnection();
+    connection.setDoOutput(true);
+    connection.setRequestProperty("accept", "*/*");
+    connection.setRequestProperty("Connection", "close");
+    connection.setRequestProperty("Authorization", "Token TOKEN_KEY");
+    connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.setRequestProperty("Content-Type", "multipart/form-data; boundary={boundary value}");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
+    try (
+        OutputStream output = connection.getOutputStream();
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output), true);
+    ) {
+      writer.append("--").append(boundary).append(CRLF);
+      writer.append("Content-Disposition: form-data; name=\"document\"; filename=\"").append(textFile.getName()).append("\"").append(CRLF);
+      writer.append("Content-Type: application/pdf").append(CRLF);
+      writer.append(CRLF).flush();
+      Files.copy(textFile.toPath(), output);
+      output.flush();
+      writer.append(CRLF).flush();
+      writer.append("--").append(boundary).append("--").append(CRLF).flush();
     }
+
+
+    BufferedReader inputStream = new BufferedReader(new InputStreamReader((InputStream) connection.getContent()));
+    String inputLine;
+    while ((inputLine = inputStream.readLine()) != null){
+      System.out.println(inputLine);
+    }
+    inputStream.close();
+  }
 }
+
 ```
 
 ```php
@@ -363,37 +347,47 @@ class MyRequest {
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace MyRequest
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_pages/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-            httpWebRequest.Headers["Content-Type"]= "multipart/form-data; boundary={boundary value}";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = ""--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
+		static async void UploadFile(String serverAddress,String filePath,String[] paramsName,String[] paramsValue){
+			using (var formData = new MultipartFormDataContent()){
+				formData.Headers.ContentType.MediaType = "multipart/form-data";
+				var filestream = new FileStream(filePath, FileMode.Open);
+				Stream fileStream = System.IO.File.OpenRead(filePath);
+				var fileName = System.IO.Path.GetFileName(filePath);
+				
+				formData.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+				{
+					FileName = fileName
+				};
+				
+				for(int i = 0;i<paramsName.Length;i++){
+					var stringContent = new StringContent(paramsValue[i]);
+					stringContent.Headers.Add("Content-Disposition", "form-data; name=\"" + paramsName[i] + "\"");
+					formData.Add(stringContent, paramsName[i]);
+				}
+				
+				formData.Add(new StreamContent(fileStream), "file", filename);
+				
+				using (var client = new HttpClient()){
+					client.DefaultRequestHeaders.Add("Authorization", "Token" + _bearerToken);
+					
+					var response = await client.PostAsync(serverAddress, formData).Result;
+					return response.ToString();
+					
+					var message = await client.PostAsync(serverAddress, formData);
+					result = await message.Content.ReadAsStringAsync();
+					return result;
+				}
+			}
+		}
     }
 }
 ```
