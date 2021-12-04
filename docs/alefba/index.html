@@ -324,9 +324,6 @@
             <a href="#8e687366d5" class="toc-h1 toc-link" data-title="نمونه">نمونه</a>
           </li>
           <li>
-            <a href="#cd4eb6eca7" class="toc-h1 toc-link" data-title="نمونه ارسال سند به طور مستقیم">نمونه ارسال سند به طور مستقیم</a>
-          </li>
-          <li>
             <a href="#8e687366d5-2" class="toc-h1 toc-link" data-title="نمونه">نمونه</a>
           </li>
           <li>
@@ -346,6 +343,9 @@
           </li>
           <li>
             <a href="#8e687366d5-8" class="toc-h1 toc-link" data-title="نمونه">نمونه</a>
+          </li>
+          <li>
+            <a href="#8e687366d5-9" class="toc-h1 toc-link" data-title="نمونه">نمونه</a>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
@@ -641,94 +641,60 @@
 <td>اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</td>
 </tr>
 </tbody></table>
-<h1 id='cd4eb6eca7'>نمونه ارسال سند به طور مستقیم</h1>
+<h1 id='8e687366d5-2'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true
+    document: "DOCUMENT DATA"
 }
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
-      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"document_url"</span>: <span class="s2">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span>,
-    <span class="s2">"fix_orientation"</span>: <span class="nb">true</span>,
-    <span class="s2">"word_positions"</span>: <span class="nb">false</span>,
-    <span class="s2">"type"</span>: <span class="s2">"general"</span>,
-    <span class="s2">"wait"</span>: <span class="nb">true</span>
-<span class="o">}</span> <span class="se">\</span>
-      https://alefba.roshan-ai.ir/api/read_document/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="nt">-F</span> <span class="s2">"document=@example.pdf"</span> http://alefba.roshan-ai.ir/api/read_document
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true
-}
-"""</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,}</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'document'</span><span class="p">:</span> <span class="p">(</span><span class="s">'FILE NAME'</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">'YOUR FILE PATH'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)),}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://alefba.roshan-ai.ir/api/read_document/'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="o">;</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://alefba.roshan-ai.ir/api/read_document/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MultiPartRequest</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="o">;</span>
+    <span class="nc">File</span> <span class="n">textFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"YOUR FILE PATH"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">boundary</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+    <span class="nc">String</span> <span class="no">CRLF</span> <span class="o">=</span> <span class="s">"\r\n"</span><span class="o">;</span>
 
-<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+    <span class="nc">URLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="n">url</span><span class="o">).</span><span class="na">openConnection</span><span class="o">();</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"accept"</span><span class="o">,</span> <span class="s">"*/*"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Connection"</span><span class="o">,</span> <span class="s">"close"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"multipart/form-data; boundary="</span> <span class="o">+</span> <span class="n">boundary</span><span class="o">);</span>
 
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-    <span class="k">try</span><span class="o">{</span>
-      <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="o">);</span>
-      <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-      <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
-      <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
-      <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-
-      <span class="nc">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"YOUR FILE PATH"</span><span class="o">);</span>
-      <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[(</span><span class="kt">int</span><span class="o">)</span><span class="n">file</span><span class="o">.</span><span class="na">length</span><span class="o">()];</span>
-
-      <span class="nc">FileInputStream</span> <span class="n">fileInputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"YOUR FILE PATH"</span><span class="o">);</span>
-      <span class="n">fileInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-      <span class="n">fileInputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-      <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-
-      <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
-      <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
-      <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
-      <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
-      <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
-        <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-      <span class="o">}</span>
-
-      <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-      <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
-      <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-      <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">(</span>
+        <span class="nc">OutputStream</span> <span class="n">output</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="nc">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="n">output</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+    <span class="o">)</span> <span class="o">{</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">boundary</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\"document\"; filename=\""</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">textFile</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">append</span><span class="o">(</span><span class="s">"\""</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Content-Type: application/pdf"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+      <span class="nc">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">textFile</span><span class="o">.</span><span class="na">toPath</span><span class="o">(),</span> <span class="n">output</span><span class="o">);</span>
+      <span class="n">output</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">boundary</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
     <span class="o">}</span>
 
-    <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
-      <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+
+    <span class="nc">BufferedReader</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">((</span><span class="nc">InputStream</span><span class="o">)</span> <span class="n">connection</span><span class="o">.</span><span class="na">getContent</span><span class="o">()));</span>
+    <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">inputStream</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
     <span class="o">}</span>
+    <span class="n">inputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
@@ -769,40 +735,45 @@
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http.Headers</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="nn">MyRequest</span>
 <span class="p">{</span>
     <span class="k">class</span> <span class="nc">Program</span>
     <span class="p">{</span>
-        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="p">);</span>
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+        <span class="k">static</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">UploadFile</span><span class="p">(</span><span class="n">String</span> <span class="n">serverAddress</span><span class="p">,</span><span class="n">String</span> <span class="n">filePath</span><span class="p">,</span><span class="n">String</span><span class="p">[]</span> <span class="n">paramsName</span><span class="p">,</span><span class="n">String</span><span class="p">[]</span> <span class="n">paramsValue</span><span class="p">){</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">formData</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MultipartFormDataContent</span><span class="p">()){</span>
+                <span class="n">formData</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">ContentType</span><span class="p">.</span><span class="n">MediaType</span> <span class="p">=</span> <span class="s">"multipart/form-data"</span><span class="p">;</span>
+                <span class="kt">var</span> <span class="n">filestream</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">FileStream</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">);</span>
+                <span class="n">Stream</span> <span class="n">fileStream</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+                <span class="kt">var</span> <span class="n">fileName</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="nf">GetFileName</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
 
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+                <span class="n">formData</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">ContentDisposition</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ContentDispositionHeaderValue</span><span class="p">(</span><span class="s">"attachment"</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">FileName</span> <span class="p">=</span> <span class="n">fileName</span>
+                <span class="p">};</span>
 
-            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
-            <span class="p">{</span>
-                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
-</span>    <span class="s">"document_url"</span><span class="p">:</span> <span class="s">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span><span class="p">,</span>
-    <span class="s">"fix_orientation"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
-    <span class="s">"word_positions"</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
-    <span class="s">"type"</span><span class="p">:</span> <span class="s">"general"</span><span class="p">,</span>
-    <span class="s">"wait"</span><span class="p">:</span> <span class="k">true</span>
-<span class="p">}</span><span class="s">";
-</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
-            <span class="p">}</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span><span class="n">i</span><span class="p">&lt;</span><span class="n">paramsName</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="n">i</span><span class="p">++){</span>
+                    <span class="kt">var</span> <span class="n">stringContent</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringContent</span><span class="p">(</span><span class="n">paramsValue</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                    <span class="n">stringContent</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Content-Disposition"</span><span class="p">,</span> <span class="s">"form-data; name=\""</span> <span class="p">+</span> <span class="n">paramsName</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">+</span> <span class="s">"\""</span><span class="p">);</span>
+                    <span class="n">formData</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">stringContent</span><span class="p">,</span> <span class="n">paramsName</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                <span class="p">}</span>
 
-            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
-            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
-            <span class="p">{</span>
-                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
-                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+                <span class="n">formData</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">StreamContent</span><span class="p">(</span><span class="n">fileStream</span><span class="p">),</span> <span class="s">"file"</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+
+                <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">()){</span>
+                    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Token"</span> <span class="p">+</span> <span class="n">_bearerToken</span><span class="p">);</span>
+
+                    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="n">serverAddress</span><span class="p">,</span> <span class="n">formData</span><span class="p">).</span><span class="n">Result</span><span class="p">;</span>
+                    <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+
+                    <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="n">serverAddress</span><span class="p">,</span> <span class="n">formData</span><span class="p">);</span>
+                    <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">message</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="nf">ReadAsStringAsync</span><span class="p">();</span>
+                    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -814,56 +785,56 @@
 <p>Content-Type: application/json</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"document_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://bayanbox.ir/view/5067853395275628881/boute.pdf"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"page_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"page_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">2125</span><span class="p">,</span><span class="w">
             </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">2750</span><span class="p">,</span><span class="w">
             </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"بوته</span><span class="se">\n\n</span><span class="s2">درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
             </span><span class="nl">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtl"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"209 305 1711 449"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="p">{</span><span class="w">
-                            </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"211 305 1707 57"</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"</span><span class="w">
-                        </span><span class="p">}</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtl"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"209 305 1711 449"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"211 305 1707 57"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="err">...</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="err">...</span><span class="w">
             </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"page_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=2"</span><span class="p">,</span><span class="w">
+        </span><span class="p">},{</span><span class="w">
+            </span><span class="nl">"page_url"</span><span class="p">:</span><span class="s2">"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=2"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">2125</span><span class="p">,</span><span class="w">
             </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">2750</span><span class="p">,</span><span class="w">
             </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
             </span><span class="nl">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtl"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210 110 1714 294"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="p">{</span><span class="w">
-                            </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210 110 1706 58"</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین"</span><span class="w">
-                        </span><span class="p">}</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtl"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210 110 1714 294"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210 110 1706 58"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="err">...</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="err">...</span><span class="w">
             </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+        </span><span class="p">}],</span><span class="w">
+    </span><span class="nl">"document_url"</span><span class="p">:</span><span class="s2">"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
-
-<p>می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;document=@example.pdf&quot; http://alefba.roshan-ai.ir/api/read_document</p>
 
 <p><code>POST /api/read_document/</code></p>
 
@@ -876,7 +847,7 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>application/json</td>
+<td>multipart/form-data</td>
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
@@ -892,37 +863,13 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>document_url</td>
-<td>URL</td>
+<td>document</td>
+<td>binary</td>
 <td>required</td>
-<td>آدرس سند ورودی</td>
-</tr>
-<tr>
-<td>type</td>
-<td>[&quot;general&quot;]</td>
-<td></td>
-<td>این ویژگی نوع سند را مشخص می‌کند</td>
-</tr>
-<tr>
-<td>fix_orientation</td>
-<td>true</td>
-<td></td>
-<td>در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</td>
-</tr>
-<tr>
-<td>word_positions</td>
-<td>true</td>
-<td></td>
-<td>در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</td>
-</tr>
-<tr>
-<td>wait</td>
-<td>true</td>
-<td></td>
-<td>اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</td>
+<td>فایل سند ورودی</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-2'>نمونه</h1>
+<h1 id='8e687366d5-3'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1182,7 +1129,7 @@
 <td>اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-3'>نمونه</h1>
+<h1 id='8e687366d5-4'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1364,7 +1311,7 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-4'>نمونه</h1>
+<h1 id='8e687366d5-5'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1536,7 +1483,7 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-5'>نمونه</h1>
+<h1 id='8e687366d5-6'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1712,7 +1659,7 @@
 <td>attachment; filename=Alefba.docx</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-6'>نمونه</h1>
+<h1 id='8e687366d5-7'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1888,7 +1835,7 @@
 <td>attachment; filename=Alefba.xlsx</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-7'>نمونه</h1>
+<h1 id='8e687366d5-8'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2076,7 +2023,7 @@
 <td>attachment; filename=Alefba.pdf</td>
 </tr>
 </tbody></table>
-<h1 id='8e687366d5-8'>نمونه</h1>
+<h1 id='8e687366d5-9'>نمونه</h1>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2242,6 +2189,8 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
+
+<p>-</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
