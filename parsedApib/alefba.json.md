@@ -355,41 +355,71 @@ public class MultiPartRequest {
 ```
 
 ```php
-<?php
+$fields = array("f1"=>"value1", "another_field2"=>"anothervalue");
 
-  $url = "https://alefba.roshan-ai.ir/api/read_document/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+$filenames = array("FILE_PATH_1", "FILE_PATH_2");
 
-  $json_response = curl_exec($curl);
+$files = array();
+foreach ($filenames as $f){
+   $files[$f] = file_get_contents($f);
+}
 
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+$url = "https://alefba.roshan-ai.ir/api/read_document/";
 
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
+$curl = curl_init();
 
+$url_data = http_build_query($data);
 
-  curl_close($curl);
+$boundary = uniqid();
+$delimiter = '-------------' . $boundary;
 
-  $response = json_decode($json_response, true);
-?>
+$post_data = build_data_files($boundary, $fields, $files);
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => $url,
+  CURLOPT_RETURNTRANSFER => 1,
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POST => 1,
+  CURLOPT_POSTFIELDS => $post_data,
+  CURLOPT_HTTPHEADER => array(
+    "Authorization: Bearer $TOKEN",
+    "Content-Type: multipart/form-data; boundary=" . $delimiter,
+  ),
+));
+
+$response = curl_exec($curl);
+
+$info = curl_getinfo($curl);
+var_dump($response);
+$err = curl_error($curl);
+echo "error";
+var_dump($err);
+curl_close($curl);
+
+function build_data_files($boundary, $fields, $files){
+    $data = '';
+    $eol = "\r\n";
+    $delimiter = '-------------' . $boundary;
+    foreach ($fields as $name => $content) {
+        $data .= "--" . $delimiter . $eol
+            . 'Content-Disposition: form-data; name="' . $name . "\"".$eol.$eol
+            . $content . $eol;
+    }
+    foreach ($files as $name => $content) {
+        $data .= "--" . $delimiter . $eol
+            . 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . $eol
+            . 'Content-Type: image/png'.$eol
+            . 'Content-Transfer-Encoding: binary'.$eol
+            ;
+        $data .= $eol;
+        $data .= $content . $eol;
+    }
+    $data .= "--" . $delimiter . "--".$eol;
+    return $data;
+}
 ```
 
 ```csharp

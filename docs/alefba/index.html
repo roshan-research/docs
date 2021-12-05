@@ -697,41 +697,71 @@
     <span class="n">inputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$fields</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"f1"</span><span class="o">=&gt;</span><span class="s2">"value1"</span><span class="p">,</span> <span class="s2">"another_field2"</span><span class="o">=&gt;</span><span class="s2">"anothervalue"</span><span class="p">);</span>
 
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="p">;</span>
-  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
-      <span class="s1">'{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true
-}'</span><span class="p">);</span>
-  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
-          <span class="k">array</span><span class="p">(</span>
-              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
-              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
-              <span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+<span class="nv">$filenames</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"FILE_PATH_1"</span><span class="p">,</span> <span class="s2">"FILE_PATH_2"</span><span class="p">);</span>
 
-  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$files</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$filenames</span> <span class="k">as</span> <span class="nv">$f</span><span class="p">){</span>
+   <span class="nv">$files</span><span class="p">[</span><span class="nv">$f</span><span class="p">]</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$f</span><span class="p">);</span>
+<span class="p">}</span>
 
-  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="p">;</span>
 
-  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
-      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
-  <span class="p">}</span>
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
+<span class="nv">$url_data</span> <span class="o">=</span> <span class="nb">http_build_query</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 
-  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$boundary</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">();</span>
+<span class="nv">$delimiter</span> <span class="o">=</span> <span class="s1">'-------------'</span> <span class="mf">.</span> <span class="nv">$boundary</span><span class="p">;</span>
 
-  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+<span class="nv">$post_data</span> <span class="o">=</span> <span class="nf">build_data_files</span><span class="p">(</span><span class="nv">$boundary</span><span class="p">,</span> <span class="nv">$fields</span><span class="p">,</span> <span class="nv">$files</span><span class="p">);</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="nv">$url</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POST</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="nv">$post_data</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="p">,</span>
+    <span class="s2">"Content-Type: multipart/form-data; boundary="</span> <span class="mf">.</span> <span class="nv">$delimiter</span><span class="p">,</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nv">$info</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"error"</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$err</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">function</span> <span class="n">build_data_files</span><span class="p">(</span><span class="nv">$boundary</span><span class="p">,</span> <span class="nv">$fields</span><span class="p">,</span> <span class="nv">$files</span><span class="p">){</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nv">$eol</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$delimiter</span> <span class="o">=</span> <span class="s1">'-------------'</span> <span class="mf">.</span> <span class="nv">$boundary</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$fields</span> <span class="k">as</span> <span class="nv">$name</span> <span class="o">=&gt;</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">"--"</span> <span class="mf">.</span> <span class="nv">$delimiter</span> <span class="mf">.</span> <span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Disposition: form-data; name="'</span> <span class="mf">.</span> <span class="nv">$name</span> <span class="mf">.</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">"</span><span class="mf">.</span><span class="nv">$eol</span><span class="mf">.</span><span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="nv">$content</span> <span class="mf">.</span> <span class="nv">$eol</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$name</span> <span class="o">=&gt;</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">"--"</span> <span class="mf">.</span> <span class="nv">$delimiter</span> <span class="mf">.</span> <span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Disposition: form-data; name="'</span> <span class="mf">.</span> <span class="nv">$name</span> <span class="mf">.</span> <span class="s1">'"; filename="'</span> <span class="mf">.</span> <span class="nv">$name</span> <span class="mf">.</span> <span class="s1">'"'</span> <span class="mf">.</span> <span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Type: image/png'</span><span class="mf">.</span><span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Transfer-Encoding: binary'</span><span class="mf">.</span><span class="nv">$eol</span>
+            <span class="p">;</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="nv">$eol</span><span class="p">;</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="nv">$content</span> <span class="mf">.</span> <span class="nv">$eol</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">"--"</span> <span class="mf">.</span> <span class="nv">$delimiter</span> <span class="mf">.</span> <span class="s2">"--"</span><span class="mf">.</span><span class="nv">$eol</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
