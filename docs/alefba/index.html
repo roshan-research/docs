@@ -313,7 +313,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-a03076a7.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-9ebc50ef.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-ff8e8fdb.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b12a2749.js"></script>
 
@@ -592,11 +592,7 @@
 </span></code></pre></div>
 <p>این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
 
-<p>می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;document=@example.pdf&quot; http://alefba.roshan-ai.ir/api/read_document</p>
-
 <p><code>POST /api/read_document/</code></p>
-
-<p><strong>Request Header</strong></p>
 
 <table><thead>
 <tr>
@@ -609,8 +605,6 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-
-<p><strong>Request DataStructure</strong></p>
 
 <table><thead>
 <tr>
@@ -868,8 +862,6 @@
 
 <p><code>POST /api/read_document/</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -881,8 +873,6 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-
-<p><strong>Request DataStructure</strong></p>
 
 <table><thead>
 <tr>
@@ -1090,11 +1080,7 @@
 </span></code></pre></div>
 <p>این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
 
-<p>می‌توانید برای همین تابع، فایل صفحه را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;page=@example.jpg&quot; http://alefba.roshan-ai.ir/api/read_pages</p>
-
 <p><code>POST /api/read_pages/</code></p>
-
-<p><strong>Request Header</strong></p>
 
 <table><thead>
 <tr>
@@ -1107,8 +1093,6 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-
-<p><strong>Request DataStructure</strong></p>
 
 <table><thead>
 <tr>
@@ -1308,8 +1292,6 @@
 
 <p><code>POST /api/document_status/</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -1466,11 +1448,7 @@
 </span></code></pre></div>
 <p>نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.</p>
 
-<p>می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;document=@example.pdf&quot; http://alefba.roshan-ai.ir/api/document_pages</p>
-
 <p><code>POST /api/document_pages/</code></p>
-
-<p><strong>Request Header</strong></p>
 
 <table><thead>
 <tr>
@@ -1623,8 +1601,6 @@
 
 <p><code>POST /api/download_word/</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -1636,8 +1612,6 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-
-<p><strong>Response Header</strong></p>
 
 <table><thead>
 <tr>
@@ -1790,8 +1764,6 @@
 
 <p><code>POST /api/download_excel/</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -1803,8 +1775,6 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-
-<p><strong>Response Header</strong></p>
 
 <table><thead>
 <tr>
@@ -1969,8 +1939,6 @@
 
 <p><code>POST /api/download_pdf/</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -1982,8 +1950,6 @@
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-
-<p><strong>Response Header</strong></p>
 
 <table><thead>
 <tr>
@@ -2138,8 +2104,6 @@
 <p>با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.</p>
 
 <p><code>POST /api/delete_document/</code></p>
-
-<p><strong>Request Header</strong></p>
 
 <table><thead>
 <tr>

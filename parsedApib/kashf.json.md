@@ -23,19 +23,12 @@ meta:
 
 # کشف
 
-> Host: https://kashf.roshan-ai.ir
-
-<div dir=rtl>
 کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
-</div>
 
-<blockquote dir=rtl>
 برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
-</blockquote>
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -214,9 +207,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 [
@@ -245,7 +235,6 @@ namespace MyRequest
 
 `POST /api/tag_texts/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -253,7 +242,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -432,9 +420,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 [
@@ -461,9 +446,7 @@ namespace MyRequest
 ]
 ```
 
-<div dir=rtl>
 می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
 
 > curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.roshan-ai.ir/api/tag_images
 
@@ -477,7 +460,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -668,9 +650,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 [
@@ -717,7 +696,6 @@ namespace MyRequest
 
 `POST /api/tag_video_frames/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -725,7 +703,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -880,9 +857,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 {
@@ -893,15 +867,13 @@ namespace MyRequest
 
 `POST /api/train_dataset/`
 
-**Request Header**
+
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
 # نمونه
-
-> Request
 
 ```plaintext
 {
@@ -1062,17 +1034,12 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
-
 ```json
 "{\n  \"title\": \"لحظه\",\n  \"state\": \"trained\",\n  \"report_count\": 935,\n  \"data_count\": 2404,\n  \"evaluation\": {\n    \"recall\": 87,\n    \"precision\": 91\n  },\n  \"tags\": [\n    {\n      \"title\": \"برج میلاد\"\n      \"id\": 3,\n      \"reports\": 116,\n      \"predictions\": 156,\n      \"evaluation\": {\n        \"recall\": 80.3,\n        \"precision\": 91.4,\n        \"f1\": 86.0\n      },\n    },\n    ...\n  ]\n}\n"
 ```
 
 `POST /api/dataset_info/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1080,7 +1047,7 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
+
 
 ```plaintext
 [
@@ -1259,9 +1226,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 [
@@ -1274,7 +1238,6 @@ namespace MyRequest
 
 `POST /api/report_text_tags/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1282,7 +1245,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 [
@@ -1461,9 +1423,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 [
@@ -1476,7 +1435,7 @@ namespace MyRequest
 
 `POST /api/report_image_tags/`
 
-**Request Header**
+
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1484,7 +1443,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -1645,9 +1603,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 {
@@ -1659,7 +1614,6 @@ namespace MyRequest
 
 `POST /api/create_tag/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1667,7 +1621,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -1840,10 +1793,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
-
 ```json
 {
     "title": "Old Place",
@@ -1854,7 +1803,6 @@ namespace MyRequest
 
 `POST /api/update_tag/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1862,7 +1810,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -2017,9 +1964,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 {
@@ -2029,8 +1973,6 @@ namespace MyRequest
 ```
 
 `POST /api/delete_tag/`
-
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------

@@ -23,14 +23,12 @@ meta:
 
 # Naghsh
 
-> Host: http://api.sobhe.ir/naghsh/api/
 
 For using Naghsh API you need a TOKEN_KEY, if you don't have one,
 please contact naghsh@sobhe.ir.
 
 # Request
 
-> Request
 
 ```plaintext
 {
@@ -197,10 +195,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
-
 ```json
 {
     "http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg": {
@@ -213,7 +207,6 @@ namespace MyRequest
 
 `POST /tag_images`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------

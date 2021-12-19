@@ -23,15 +23,11 @@ meta:
 
 # الفبا
 
-> Host: https://alefba.roshan-ai.ir/
-
 نویسه خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را میخواند و در قالب متن مرتب ارائه می دهد.
 
 برای دسترسی به واسط برنامه نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
 
 # نمونه
-
-> Request
 
 ```plaintext
 {
@@ -210,10 +206,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
-
 ```json
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
@@ -266,17 +258,15 @@ namespace MyRequest
 
 این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
-می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header "Authorization: Token TOKEN_KEY" -F "document=@example.pdf" http://alefba.roshan-ai.ir/api/read_document
 
 `POST /api/read_document/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-**Request DataStructure**
+
 
 Key | Value | TypeAttributes | Description
 --- | ----- | -------------- | -----------
@@ -287,8 +277,6 @@ word_positions | true |  | در صورت فعال بودن این ویژگی ا�
 wait | true |  | اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
 
 # نمونه
-
-> Request
 
 ```plaintext
 {
@@ -471,10 +459,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
-
 ```json
 {
     "pages": [
@@ -532,13 +516,12 @@ namespace MyRequest
 
 `POST /api/read_document/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 multipart/form-data | Token TOKEN_KEY
 
-**Request DataStructure**
+
 
 Key | Value | TypeAttributes | Description
 --- | ----- | -------------- | -----------
@@ -547,7 +530,6 @@ document | binary | required | فایل سند ورودی
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -732,9 +714,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 [
@@ -764,17 +743,14 @@ namespace MyRequest
 
 این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
-می‌توانید برای همین تابع، فایل صفحه را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header "Authorization: Token TOKEN_KEY" -F "page=@example.jpg" http://alefba.roshan-ai.ir/api/read_pages
 
 `POST /api/read_pages/`
-
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-**Request DataStructure**
+
 
 Key | Value | TypeAttributes | Description
 --- | ----- | -------------- | -----------
@@ -786,7 +762,6 @@ wait | true |  | اگر این ویژگی فعال باشد، کاربر منت�
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -953,9 +928,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 {
@@ -971,7 +943,6 @@ namespace MyRequest
 
 `POST /api/document_status/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -979,7 +950,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -1134,9 +1104,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 {
@@ -1150,11 +1117,10 @@ namespace MyRequest
 
 نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.
 
-می‌توانید برای همین تابع، فایل سند را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید: curl -X POST --header "Authorization: Token TOKEN_KEY" -F "document=@example.pdf" http://alefba.roshan-ai.ir/api/document_pages
 
 `POST /api/document_pages/`
 
-**Request Header**
+
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1162,7 +1128,6 @@ application/json | Token TOKEN_KEY
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -1317,23 +1282,17 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-```json
-""
-```
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.
 
 `POST /api/download_word/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-**Response Header**
+
 
 Content-Type | Content-Disposition
 ------------ | -------------------
@@ -1341,7 +1300,6 @@ application/msword | attachment; filename=Alefba.docx
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -1496,23 +1454,15 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-```json
-""
-```
-
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.
 
 `POST /api/download_excel/`
-
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-**Response Header**
+
 
 Content-Type | Content-Disposition
 ------------ | -------------------
@@ -1520,7 +1470,6 @@ application/msword | attachment; filename=Alefba.xlsx
 
 # نمونه
 
-> Request
 
 ```plaintext
 {
@@ -1687,31 +1636,21 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-```json
-""
-```
-
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.
 
 `POST /api/download_pdf/`
-
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-**Response Header**
+
 
 Content-Type | Content-Disposition
 ------------ | -------------------
 application/pdf | attachment; filename=Alefba.pdf
 
 # نمونه
-
-> Request
 
 ```plaintext
 {
@@ -1866,9 +1805,6 @@ namespace MyRequest
 }
 ```
 
-> Response 200
-
-> Content-Type: application/json
 
 ```json
 {
@@ -1880,7 +1816,6 @@ namespace MyRequest
 
 `POST /api/delete_document/`
 
-**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------

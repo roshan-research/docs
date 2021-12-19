@@ -14,11 +14,51 @@
     <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+  font-style: italic;
+}
+.highlight .cm {
+  color: #75715e;
+  font-style: italic;
+}
+.highlight .c1 {
+  color: #75715e;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #75715e;
+  font-weight: bold;
+}
+.highlight .cs {
+  color: #75715e;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .err {
+  color: #960050;
+  background-color: #1e0010;
+}
+.highlight .gi {
+  color: #ffffff;
+  background-color: #324932;
+}
+.highlight .gd {
+  color: #ffffff;
+  background-color: #493131;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gt {
+  color: #aa0000;
+}
 .highlight .gh {
   color: #999999;
-}
-.highlight .sr {
-  color: #f6aa11;
 }
 .highlight .go {
   color: #888888;
@@ -27,60 +67,46 @@
   color: #555555;
 }
 .highlight .gs {
+  font-weight: bold;
 }
 .highlight .gu {
   color: #aaaaaa;
 }
-.highlight .nb {
-  color: #f6aa11;
-}
-.highlight .cm {
-  color: #75715e;
-}
-.highlight .cp {
-  color: #75715e;
-}
-.highlight .c1 {
-  color: #75715e;
-}
-.highlight .cs {
-  color: #75715e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
-  color: #75715e;
-}
-.highlight .err {
-  color: #960050;
-}
-.highlight .gr {
-  color: #960050;
-}
-.highlight .gt {
-  color: #960050;
-}
-.highlight .gd {
-  color: #49483e;
-}
-.highlight .gi {
-  color: #49483e;
-}
-.highlight .ge {
-  color: #49483e;
+.highlight .k, .highlight .kv {
+  color: #66d9ef;
+  font-weight: bold;
 }
 .highlight .kc {
   color: #66d9ef;
+  font-weight: bold;
 }
 .highlight .kd {
   color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #66d9ef;
+  font-weight: bold;
 }
 .highlight .kr {
   color: #66d9ef;
-}
-.highlight .no {
-  color: #66d9ef;
+  font-weight: bold;
 }
 .highlight .kt {
   color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #f92672;
+  font-weight: bold;
+}
+.highlight .ow {
+  color: #f92672;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #f92672;
+  font-weight: bold;
 }
 .highlight .mf {
   color: #ae81ff;
@@ -100,22 +126,23 @@
 .highlight .m, .highlight .mb, .highlight .mx {
   color: #ae81ff;
 }
-.highlight .sc {
-  color: #ae81ff;
-}
 .highlight .se {
   color: #ae81ff;
 }
-.highlight .ss {
-  color: #ae81ff;
+.highlight .sa {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sc {
+  color: #e6db74;
 }
 .highlight .sd {
   color: #e6db74;
 }
 .highlight .s2 {
-  color: #e6db74;
-}
-.highlight .sb {
   color: #e6db74;
 }
 .highlight .sh {
@@ -127,10 +154,16 @@
 .highlight .sx {
   color: #e6db74;
 }
+.highlight .sr {
+  color: #e6db74;
+}
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s, .highlight .sa, .highlight .dl {
+.highlight .ss {
+  color: #e6db74;
+}
+.highlight .s, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -138,66 +171,60 @@
 }
 .highlight .nc {
   color: #a6e22e;
+  font-weight: bold;
 }
 .highlight .nd {
   color: #a6e22e;
+  font-weight: bold;
 }
 .highlight .ne {
   color: #a6e22e;
+  font-weight: bold;
 }
 .highlight .nf, .highlight .fm {
   color: #a6e22e;
+  font-weight: bold;
 }
-.highlight .vc {
-  color: #ffffff;
-}
-.highlight .nn {
-  color: #ffffff;
-}
-.highlight .ni {
-  color: #ffffff;
+.highlight .no {
+  color: #66d9ef;
 }
 .highlight .bp {
-  color: #ffffff;
+  color: #f8f8f2;
+}
+.highlight .nb {
+  color: #f8f8f2;
+}
+.highlight .ni {
+  color: #f8f8f2;
+}
+.highlight .nn {
+  color: #f8f8f2;
+}
+.highlight .vc {
+  color: #f8f8f2;
 }
 .highlight .vg {
-  color: #ffffff;
+  color: #f8f8f2;
 }
 .highlight .vi {
-  color: #ffffff;
+  color: #f8f8f2;
 }
 .highlight .nv, .highlight .vm {
-  color: #ffffff;
+  color: #f8f8f2;
 }
 .highlight .w {
-  color: #ffffff;
-}
-.highlight {
-  color: #ffffff;
-}
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #ffffff;
+  color: #f8f8f2;
 }
 .highlight .nl {
-  color: #f92672;
-}
-.highlight .ow {
-  color: #f92672;
+  color: #f8f8f2;
+  font-weight: bold;
 }
 .highlight .nt {
   color: #f92672;
 }
-.highlight .k, .highlight .kv {
-  color: #f92672;
-}
-.highlight .kn {
-  color: #f92672;
-}
-.highlight .kp {
-  color: #f92672;
-}
-.highlight .o {
-  color: #f92672;
+.highlight {
+  color: #f8f8f2;
+  background-color: #49483e;
 }
     </style>
     <style media="print">
@@ -286,8 +313,8 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+    <link href="stylesheets/screen-2bfbb3db.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-ff8e8fdb.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b12a2749.js"></script>
 
     <script>
@@ -298,12 +325,12 @@
   <body class="index" data-languages="[&quot;plaintext&quot;,&quot;shell&quot;,&quot;python&quot;,&quot;java&quot;,&quot;php&quot;,&quot;csharp&quot;]">
     <a href="#" id="nav-button">
       <span>
-        NAV
+      منو 
         <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="" />
+      <img src="images/logo-6b0ae828.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="plaintext">RAW</a>
               <a href="#" data-language-name="shell">CURL</a>
@@ -332,30 +359,19 @@
           <li>
             <a href="#request-4" class="toc-h1 toc-link" data-title="Request">Request</a>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
       </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='parde'>Parde</h1>
-<blockquote>
-<p>Host: http://api.sobhe.ir/</p>
-</blockquote>
-
 <p>Parde recognizes unsafe images.</p>
 
 <blockquote>
 <p>For using Parde API you need a TOKEN_KEY, if you don&#39;t have one,
 please contact parde@sobhe.ir.</p>
 </blockquote>
-<h1 id='request'>Request</h1>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+<h1 id='request'>Request</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "image_urls": [
         "http://www.sobhe.ir/baaz/img/goshawk.jpg"
     ]
@@ -502,13 +518,7 @@ please contact parde@sobhe.ir.</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Response 200</p>
-
-<p>Content-Type: application/json</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -523,8 +533,6 @@ performance.</p>
 
 <p><code>POST /parde/api/images_safety</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -536,11 +544,7 @@ performance.</p>
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-<h1 id='request-2'>Request</h1>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+<h1 id='request-2'>Request</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
     "is_safe": true
 }
@@ -681,13 +685,7 @@ performance.</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Response 200</p>
-
-<p>Content-Type: application/json</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_safe"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -697,8 +695,6 @@ performance.</p>
 images for predicting image safety more precisely.</p>
 
 <p><code>POST /parde/api/report</code></p>
-
-<p><strong>Request Header</strong></p>
 
 <table><thead>
 <tr>
@@ -711,11 +707,7 @@ images for predicting image safety more precisely.</p>
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-<h1 id='request-3'>Request</h1>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+<h1 id='request-3'>Request</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg"
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
@@ -850,13 +842,7 @@ images for predicting image safety more precisely.</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Response 200</p>
-
-<p>Content-Type: application/json</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"removed_reports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">1</span><span class="w">
@@ -867,8 +853,6 @@ images for predicting image safety more precisely.</p>
 reports with input url and responds with their object id.</p>
 
 <p><code>POST /parde/api/remove_report</code></p>
-
-<p><strong>Request Header</strong></p>
 
 <table><thead>
 <tr>
@@ -881,11 +865,7 @@ reports with input url and responds with their object id.</p>
 <td>Token TOKEN_KEY</td>
 </tr>
 </tbody></table>
-<h1 id='request-4'>Request</h1>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+<h1 id='request-4'>Request</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "video_url": "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4"
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
@@ -1020,13 +1000,7 @@ reports with input url and responds with their object id.</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Response 200</p>
-
-<p>Content-Type: application/json</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"video_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"frames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:00.jpg"</span><span class="p">,</span><span class="w">
@@ -1037,8 +1011,6 @@ reports with input url and responds with their object id.</p>
 </span></code></pre></div>
 <p><code>POST /api/video_frames</code></p>
 
-<p><strong>Request Header</strong></p>
-
 <table><thead>
 <tr>
 <th>Content-Type</th>
@@ -1048,64 +1020,6 @@ reports with input url and responds with their object id.</p>
 <tr>
 <td>application/json</td>
 <td>Token TOKEN_KEY</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 
