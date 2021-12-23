@@ -56,7 +56,7 @@ html, body {
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
-  z-index: 30;
+  z-index: 80;
   top: 0;
   left: 0;
   bottom: 0;
@@ -161,29 +161,34 @@ html, body {
   // This is the currently selected ToC entry
 
   .toc-link.active {
-    background-color: $nav-active-bg;
-    border-radius: 10px 0 0 10px;
-    width: 65%;
+    background: linear-gradient(10deg,
+    #fb590d,
+    #f86825,
+    #ff7f4c,
+    #ff9268,
+    );
+    border-radius: 5px 0 0 5px;
+    width: 80%;
     color: $nav-active-text;
   }
 
   .toc-link{
-    border-radius: 10px 0 0 10px;
-    width: 65%;
-    font-size: 15px;
+    border-radius: 5px 0 0 5px;
+    width: 80%;
+    font-size: 16px;
   }
 
   @media (max-width: $phone-width) {
     .toc-link.active {
       background-color: $nav-active-bg;
-      border-radius: 0 10px 10px 0;
-      width: 65%;
+      border-radius: 0 5px 5px 0;
+      width: 80%;
       color: $nav-active-text;
     }
   
     .toc-link{
-      border-radius: 0 10px 10px 0;
-      width: 65%;
+      border-radius: 0 5px 5px 0;
+      width: 80%;
       font-size: 15px;
     }
   }
@@ -307,7 +312,11 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border: 1px solid rgb(26, 26, 26);
+    background-color: white;
+    a{
+      background-color: $side-theme-color;
+      margin-bottom: 1px;
+    }
   }
 }
 
@@ -381,11 +390,12 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
-    padding-top: 0.5em;
+    font-size: 30px;
+    padding-top: 1.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
+    border-top: 1px rgba(168, 168, 168, 0.493) solid;
     background-color: #ffffff;
   }
 
@@ -433,7 +443,6 @@ html, body {
     margin-bottom: 1em;
     overflow: auto;
     th,td {
-      text-align: left;
       vertical-align: top;
       line-height: 1.6;
       code {
@@ -628,9 +637,6 @@ html, body {
 
   .toc-wrapper .lang-selector {
     display: block;
-    border-bottom: 5px solid $lang-select-active-bg;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
     margin-top: 40px;
     margin-bottom: 40px;
   }
@@ -705,7 +711,6 @@ html, body {
 h1{
   color: #fc742ad5;
   background-color: white;
-  border: none;
 }
 
 p{

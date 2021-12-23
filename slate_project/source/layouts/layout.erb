@@ -65,6 +65,8 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#fc742aca;">
+  </div>
     <a href="#" id="nav-button">
       <span>
       منو 
