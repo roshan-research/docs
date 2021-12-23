@@ -717,14 +717,6 @@ p{
   border: none;
 }
 
-p{
-  code{
-    float: none;
-    margin-right: 73%;
-    padding: 0;
-  }
-}
-
 @media (min-width: $phone-width) {
   .content {
     pre{
