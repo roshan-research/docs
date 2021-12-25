@@ -703,10 +703,6 @@ html, body {
 //   background: #888;
 // }
 
-.copy-clipboard{
-  position: absolute;
-  margin-left: 39%;
-}
 
 h1{
   color: #fc742ad5;
@@ -720,10 +716,19 @@ p{
 @media (min-width: $phone-width) {
   .content {
     pre{
-      max-width: $examples-width - 1%;
-      margin-left: 0.5%;
+      max-width: $examples-width - 2%;
+      margin-left: 1%;
       border-radius: 15px;
     }
-  
   }
+}
+
+p + p{
+  direction: ltr;
+  display: none;
+}
+
+p code {
+  direction: ltr;
+  display: inline-block;
 }

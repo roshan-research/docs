@@ -109,11 +109,10 @@ aside {
     direction: rtl;
 }
 
-p:not(code) { 
+div + p{
     text-align: right;
     direction: rtl;
 }
-
 
 .toc-wrapper {
     text-align: right;
