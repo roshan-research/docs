@@ -109,7 +109,8 @@ aside {
     direction: rtl;
 }
 
-div + p{
+
+div + p, h1 + p{
     text-align: right;
     direction: rtl;
 }

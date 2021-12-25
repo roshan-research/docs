@@ -28,7 +28,7 @@ $nav-bg: $side-theme-color !default;
 $examples-bg: $side-theme-color !default;
 $code-bg: #1E2224 !default;
 $code-annotation-bg: #191D1F !default;
-$nav-subitem-bg: #1E2224 !default;
+$nav-subitem-bg: $side-theme-color !default;
 $nav-active-bg: #fc742ad5 !default;
 $nav-active-parent-bg: #1E2224 !default; // parent links of the current section
 $lang-select-border: #000 !default;

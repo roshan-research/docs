@@ -85,25 +85,25 @@ html, body {
   }
 
   &>.search {
-    display: none;
     position: relative;
-
+    margin: 30px 0px;
     input {
-      background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      border: none;
+      background: #eee8db;
+      padding: 5px 0 3px 20px;
       box-sizing: border-box;
+      height: 35px;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2);
+      width: $nav-width - ($nav-padding*2) + 10px;
       outline: none;
+      direction: rtl;
       color: $nav-text;
-      border-radius: 0; /* ios has a default border radius */
+      border-radius: 7px; /* ios has a default border radius */
     }
 
     &:before {
       position: absolute;
-      top: 17px;
+      top: 22px;
       left: $nav-padding;
       color: $nav-text;
       @extend %icon-search;
@@ -325,6 +325,8 @@ html, body {
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
+  box-sizing: border-box;
+  padding-top: 15px;
   overflow-x: auto;
   a {
     display: inline;
@@ -718,17 +720,8 @@ p{
     pre{
       max-width: $examples-width - 2%;
       margin-left: 1%;
-      border-radius: 15px;
+      border-radius: 10px;
     }
   }
 }
 
-p + p{
-  direction: ltr;
-  display: none;
-}
-
-p code {
-  direction: ltr;
-  display: inline-block;
-}
