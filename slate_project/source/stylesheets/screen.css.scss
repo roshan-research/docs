@@ -716,6 +716,12 @@ p{
 }
 
 @media (min-width: $phone-width) {
+
+  .copy-clipboard {
+    position: fixed;
+    margin-left: 32vw;
+  }
+
   .content {
     pre{
       max-width: $examples-width - 2%;
@@ -725,3 +731,8 @@ p{
   }
 }
 
+@media (max-width: $phone-width + 300px) {
+  .copy-clipboard {
+    margin-left: 28vw;
+  }
+}
