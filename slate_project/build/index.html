@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-27249a56.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-4e509fea.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-1addf7b7.js"></script>
 
@@ -462,45 +462,50 @@
 
 <p><code>POST /api/read_document/</code></p>
 
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>TypeAttributes</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>document_url</td>
-<td>URL</td>
-<td>required</td>
-<td>آدرس سند ورودی</td>
-</tr>
-<tr>
-<td>type</td>
-<td>[&quot;general&quot;]</td>
-<td></td>
-<td>این ویژگی نوع سند را مشخص می‌کند</td>
-</tr>
-<tr>
-<td>fix_orientation</td>
-<td>true</td>
-<td></td>
-<td>در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</td>
-</tr>
-<tr>
-<td>word_positions</td>
-<td>true</td>
-<td></td>
-<td>در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</td>
-</tr>
-<tr>
-<td>wait</td>
-<td>true</td>
-<td></td>
-<td>اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</td>
-</tr>
-</tbody></table>
+<hr>
+
+<p><strong>Key</strong>: document_url</p>
+
+<p><strong>Value</strong>: URL </p>
+
+<p><strong>TypeAttributes</strong>: required </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">آدرس سند ورودی</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: type</p>
+
+<p><strong>Value</strong>: [&quot;general&quot;]</p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">این ویژگی نوع سند را مشخص می‌کند</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: fix_orientation</p>
+
+<p><strong>Value</strong>: true </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: word_positions</p>
+
+<p><strong>Value</strong>: true  </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
+</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: wait</p>
+
+<p><strong>Value</strong>: true </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p></p>
+
+<hr>
 <h1 id='8e687366d5-2'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     document: "DOCUMENT DATA"
 }
@@ -718,21 +723,17 @@
 
 <p><code>POST /api/read_document/</code></p>
 
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>TypeAttributes</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>document</td>
-<td>binary</td>
-<td>required</td>
-<td>فایل سند ورودی</td>
-</tr>
-</tbody></table>
+<hr>
+
+<p><strong>Key</strong>: document</p>
+
+<p><strong>Value</strong>: binary </p>
+
+<p><strong>TypeAttributes</strong>: required </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">فایل سند ورودی</p></p>
+
+<hr>
 <h1 id='8e687366d5-3'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "page_urls": [
         "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
@@ -926,45 +927,50 @@
 
 <p><code>POST /api/read_pages/</code></p>
 
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>TypeAttributes</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page_urls</td>
-<td>[&quot;URL1&quot;,&quot;URL2&quot;,&quot;...&quot;]</td>
-<td>required</td>
-<td>آدرس صفحات ورودی</td>
-</tr>
-<tr>
-<td>type</td>
-<td>[&quot;general&quot;]</td>
-<td></td>
-<td>این ویژگی نوع سند را مشخص می‌کند</td>
-</tr>
-<tr>
-<td>fix_orientation</td>
-<td>true</td>
-<td></td>
-<td>در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</td>
-</tr>
-<tr>
-<td>word_positions</td>
-<td>true</td>
-<td></td>
-<td>در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</td>
-</tr>
-<tr>
-<td>wait</td>
-<td>true</td>
-<td></td>
-<td>اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</td>
-</tr>
-</tbody></table>
+<hr>
+
+<p><strong>Key</strong>: page_urls</p>
+
+<p><strong>Value</strong>: [&quot;URL1&quot;,&quot;URL2&quot;,&quot;...&quot;]</p>
+
+<p><strong>TypeAttributes</strong>: required </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">آدرس سند ورودی</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: type</p>
+
+<p><strong>Value</strong>: [&quot;general&quot;]</p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">این ویژگی نوع سند را مشخص می‌کند</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: fix_orientation</p>
+
+<p><strong>Value</strong>: true </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: word_positions</p>
+
+<p><strong>Value</strong>: true  </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
+</p></p>
+
+<hr>
+
+<p><strong>Key</strong>: wait</p>
+
+<p><strong>Value</strong>: true </p>
+
+<p><strong>Description</strong>: <p style="direction:rtl;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p></p>
+
+<hr>
 <h1 id='8e687366d5-4'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "document_urls": [
         "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
@@ -1409,17 +1415,13 @@
 
 <p><code>POST /api/download_word/</code></p>
 
-<table><thead>
-<tr>
-<th>Content-Type</th>
-<th>Content-Disposition</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>application/msword</td>
-<td>attachment; filename=Alefba.docx</td>
-</tr>
-</tbody></table>
+<hr>
+
+<p><strong>Content-Type</strong>: application/msword </p>
+
+<p><strong>Content-Disposition</strong>: attachment; filename=Alefba.docx</p>
+
+<hr>
 <h1 id='8e687366d5-7'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
 }
@@ -1560,17 +1562,13 @@
 
 <p><code>POST /api/download_excel/</code></p>
 
-<table><thead>
-<tr>
-<th>Content-Type</th>
-<th>Content-Disposition</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>application/msword</td>
-<td>attachment; filename=Alefba.xlsx</td>
-</tr>
-</tbody></table>
+<hr>
+
+<p><strong>Content-Type</strong>: application/msword </p>
+
+<p><strong>Content-Disposition</strong>: attachment; filename=Alefba.xlsx</p>
+
+<hr>
 <h1 id='8e687366d5-8'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "quality": 100,
@@ -1723,17 +1721,13 @@
 
 <p><code>POST /api/download_pdf/</code></p>
 
-<table><thead>
-<tr>
-<th>Content-Type</th>
-<th>Content-Disposition</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>application/pdf</td>
-<td>attachment; filename=Alefba.pdf</td>
-</tr>
-</tbody></table>
+<hr>
+
+<p><strong>Content-Type</strong>: application/pdf</p>
+
+<p><strong>Content-Disposition</strong>: attachment; filename=Alefba.pdf</p>
+
+<hr>
 <h1 id='8e687366d5-9'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
 }
