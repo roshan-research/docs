@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-4e509fea.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-710f9b7c.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-1addf7b7.js"></script>
 
@@ -188,8 +188,8 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;plaintext&quot;,&quot;shell&quot;,&quot;python&quot;,&quot;java&quot;,&quot;php&quot;,&quot;csharp&quot;]">
-  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#fc742aca;">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;java&quot;,&quot;plaintext&quot;,&quot;python&quot;,&quot;php&quot;,&quot;csharp&quot;]">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
   </div>
     <a href="#" id="nav-button">
       <span>
@@ -198,12 +198,12 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-6b0ae828.png" class="logo" alt="" />
+      <img src="images/logo-5a60d6fb.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="plaintext">RAW</a>
               <a href="#" data-language-name="shell">CURL</a>
-              <a href="#" data-language-name="python">PYTHON</a>
               <a href="#" data-language-name="java">JAVA</a>
+              <a href="#" data-language-name="plaintext">RAW</a>
+              <a href="#" data-language-name="python">PYTHON</a>
               <a href="#" data-language-name="php">PHP</a>
               <a href="#" data-language-name="csharp">C#</a>
         </div>
@@ -458,54 +458,42 @@
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
-
 <p><code>POST /api/read_document/</code></p>
 
-<hr>
+<p>این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
 
-<p><strong>Key</strong>: document_url</p>
+<p><br></p>
 
-<p><strong>Value</strong>: URL </p>
+<p><strong><strong>document_url(required)</strong></strong></p>
 
-<p><strong>TypeAttributes</strong>: required </p>
+<p>Value: URL </p>
 
-<p><strong>Description</strong>: <p style="direction:rtl;">آدرس سند ورودی</p></p>
+<p><p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p></p>
 
-<hr>
+<p><strong><strong>type</strong></strong></p>
 
-<p><strong>Key</strong>: type</p>
+<p>Value: [&quot;general&quot;]</p>
 
-<p><strong>Value</strong>: [&quot;general&quot;]</p>
+<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
 
-<p><strong>Description</strong>: <p style="direction:rtl;">این ویژگی نوع سند را مشخص می‌کند</p></p>
+<p><strong><strong>fix_orientation</strong></strong></p>
 
-<hr>
+<p>Value: true </p>
 
-<p><strong>Key</strong>: fix_orientation</p>
+<p><p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p></p>
 
-<p><strong>Value</strong>: true </p>
+<p><strong><strong>word_positions</strong></strong></p>
 
-<p><strong>Description</strong>: <p style="direction:rtl;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p></p>
+<p>Value: true  </p>
 
-<hr>
-
-<p><strong>Key</strong>: word_positions</p>
-
-<p><strong>Value</strong>: true  </p>
-
-<p><strong>Description</strong>: <p style="direction:rtl;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
+<p><p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
 </p></p>
 
-<hr>
+<p><strong><strong>wait</strong></strong></p>
 
-<p><strong>Key</strong>: wait</p>
+<p>Value: true </p>
 
-<p><strong>Value</strong>: true </p>
-
-<p><strong>Description</strong>: <p style="direction:rtl;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p></p>
-
-<hr>
+<p><p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p></p>
 <h1 id='8e687366d5-2'>نمونه</h1><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     document: "DOCUMENT DATA"
 }
@@ -1874,10 +1862,10 @@
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="plaintext">RAW</a>
                 <a href="#" data-language-name="shell">CURL</a>
-                <a href="#" data-language-name="python">PYTHON</a>
                 <a href="#" data-language-name="java">JAVA</a>
+                <a href="#" data-language-name="plaintext">RAW</a>
+                <a href="#" data-language-name="python">PYTHON</a>
                 <a href="#" data-language-name="php">PHP</a>
                 <a href="#" data-language-name="csharp">C#</a>
           </div>

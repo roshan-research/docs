@@ -77,11 +77,10 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 50%;
-    margin-top: $logo-margin;
-    margin-left: $logo-margin;
-    margin-right: $logo-margin;
-    margin-bottom: $logo-margin;
+    max-width: 55%;
+    margin-top: $logo-margin - 10%;
+    margin-right: $logo-margin - 10%;
+    margin-bottom: $logo-margin - 5%;
   }
 
   &>.search {
@@ -162,12 +161,7 @@ html, body {
   // This is the currently selected ToC entry
 
   .toc-link.active {
-    background: linear-gradient(10deg,
-    #fb590d,
-    #f86825,
-    #ff7f4c,
-    #ff9268,
-    );
+    background-color: #FF6200;
     border-radius: 5px 0 0 5px;
     width: 80%;
     color: $nav-active-text;
@@ -176,6 +170,7 @@ html, body {
   .toc-link{
     border-radius: 5px 0 0 5px;
     width: 80%;
+    height: 37px;
     font-size: 16px;
   }
 
@@ -494,8 +489,9 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    background-color: #1E2224;
     padding: 3px;
+    color: white;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
@@ -738,3 +734,31 @@ p{
   }
 }
 
+.dark-box {
+  background-color: white;
+  .lang-selector {
+    a {
+      background-color: white;
+  
+      &:active, &:focus {
+        background-color: $lang-select-pressed-bg;
+        color: $lang-select-pressed-text;
+      }
+  
+      &.active {
+        background-color: $lang-select-active-bg;
+        color: $lang-select-active-text;
+      }
+    }
+  }
+}
+
+@font-face {
+  font-family: IRANYekan;
+  src: url(../fonts/IRANYekan.ttf);
+}
+
+
+p,a,h1{
+  font-family: IRANYekan;
+}
