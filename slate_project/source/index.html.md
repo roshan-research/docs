@@ -267,49 +267,50 @@ namespace MyRequest
 
 
 <dl>
-
 <strong>document_url(required)</strong>
-
 <br>
 <br>
-
 Value: URL
-
 </dl>
-
 <p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
 
-__**type**__
-
+<dl>
+<strong>type</strong>
+<br>
+<br>
 Value: ["general"]
-
-
+</dl>
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
 
 
-__**fix_orientation**__
-
-Value: true 
-
-
- <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
-
-
-__**word_positions**__
-
-Value: true  
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: true
+</dl>
+ <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
+ </p>
 
 
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: true
+</dl>
  <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
 </p>
 
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: true
+</dl>
 
-__**wait**__
-
-Value: true 
-
-
- <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+</p>
 
 
 
@@ -558,13 +559,13 @@ namespace MyRequest
 این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
 
-__**document(required)**__
-
+<dl>
+<strong>document(required)</strong>
+<br>
+<br>
 Value: binary 
-
-
- <p style="direction:rtl;font-weight:600;">فایل سند ورودی</p>
-
+</dl>
+<p style="direction:rtl;font-weight:600;">فایل سند ورودی</p>
 
 
 # نمونه
@@ -786,47 +787,53 @@ namespace MyRequest
 
 این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
+<br>
 
-__**page_urls(required)**__
-
+<dl>
+<strong>page_urls(required)</strong>
+<br>
+<br>
 Value: ["URL1","URL2","..."]
+</dl>
+<p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
 
-
- <p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
-
-
-__**type**__
-
+<dl>
+<strong>type</strong>
+<br>
+<br>
 Value: ["general"]
-
-
+</dl>
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
 
 
-__**fix_orientation**__
-
-Value: true 
-
-
- <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
-
-
-__**word_positions**__
-
-Value: true  
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: true
+</dl>
+ <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
+ </p>
 
 
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: true
+</dl>
  <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
 </p>
 
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: true
+</dl>
 
-__**wait**__
-
-Value: true 
-
-
- <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
-
+<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+</p>
 
 
 # نمونه
@@ -1353,9 +1360,19 @@ namespace MyRequest
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.
 
 
-__Content-Type__: application/msword 
+<dl>
+<strong>Content-Type</strong>
+<br>
+<br>
+Value: application/msword 
+</dl>
 
-__Content-Disposition__: attachment; filename=Alefba.docx
+<dl>
+<strong>Content-Disposition</strong>
+<br>
+<br>
+Value: attachment; filename=Alefba.docx 
+</dl>
 
 
 # نمونه
@@ -1521,11 +1538,19 @@ namespace MyRequest
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.
 
 
+<dl>
+<strong>Content-Type</strong>
+<br>
+<br>
+Value: application/msword 
+</dl>
 
-__Content-Type__: application/msword 
-
-__Content-Disposition__: attachment; filename=Alefba.xlsx
-
+<dl>
+<strong>Content-Disposition</strong>
+<br>
+<br>
+Value: attachment; filename=Alefba.xlsx
+</dl>
 
 
 # نمونه
@@ -1703,9 +1728,19 @@ namespace MyRequest
 
 
 
-__Content-Type__: application/pdf
+<dl>
+<strong>Content-Type</strong>
+<br>
+<br>
+Value: application/pdf 
+</dl>
 
-__Content-Disposition__: attachment; filename=Alefba.pdf
+<dl>
+<strong>Content-Disposition</strong>
+<br>
+<br>
+Value: attachment; filename=Alefba.pdf
+</dl>
 
 
 # نمونه
