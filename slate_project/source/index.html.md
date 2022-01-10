@@ -266,13 +266,18 @@ namespace MyRequest
 <br>
 
 
-__**document_url(required)**__
+<dl>
 
-Value: URL 
+<strong>document_url(required)</strong>
 
+<br>
+<br>
 
- <p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
+Value: URL
 
+</dl>
+
+<p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
 
 __**type**__
 
