@@ -23,6 +23,7 @@ meta:
 
 # Parde
 
+> Host: http://api.sobhe.ir
 
 Parde recognizes unsafe images.
 
@@ -31,6 +32,7 @@ please contact parde@sobhe.ir.
 
 # Request
 
+> Request
 
 ```plaintext
 {
@@ -197,6 +199,9 @@ namespace MyRequest
 }
 ```
 
+> Response 200
+
+> Content-Type: application/json
 
 ```json
 {
@@ -213,6 +218,7 @@ performance.
 
 `POST /parde/api/images_safety`
 
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -220,6 +226,7 @@ application/json | Token TOKEN_KEY
 
 # Request
 
+> Request
 
 ```plaintext
 {
@@ -380,6 +387,9 @@ namespace MyRequest
 }
 ```
 
+> Response 200
+
+> Content-Type: application/json
 
 ```json
 {
@@ -394,6 +404,7 @@ images for predicting image safety more precisely.
 
 `POST /parde/api/report`
 
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -401,6 +412,7 @@ application/json | Token TOKEN_KEY
 
 # Request
 
+> Request
 
 ```plaintext
 {
@@ -555,6 +567,9 @@ namespace MyRequest
 }
 ```
 
+> Response 200
+
+> Content-Type: application/json
 
 ```json
 {
@@ -570,6 +585,7 @@ reports with input url and responds with their object id.
 
 `POST /parde/api/remove_report`
 
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -577,6 +593,7 @@ application/json | Token TOKEN_KEY
 
 # Request
 
+> Request
 
 ```plaintext
 {
@@ -731,6 +748,10 @@ namespace MyRequest
 }
 ```
 
+> Response 200
+
+> Content-Type: application/json
+
 ```json
 {
     "video_url": "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4",
@@ -743,6 +764,8 @@ namespace MyRequest
 ```
 
 `POST /api/video_frames`
+
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------

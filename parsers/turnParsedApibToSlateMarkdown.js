@@ -6,10 +6,10 @@ function turnParsedApibToSlateMarkdown(jsonText,fileName){
         "title: API Reference\n" +
         "\n" +
         "language_tabs: # must be one of https://git.io/vQNgJ\n" +
-        "  - plaintext: RAW\n" +
         "  - shell: CURL\n" +
-        "  - python: PYTHON\n" +
         "  - java: JAVA\n" +
+        "  - plaintext: RAW\n" +
+        "  - python: PYTHON\n" +
         "  - php: PHP\n" +
         "  - csharp: C#\n" +
         "\n" +

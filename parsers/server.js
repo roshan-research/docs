@@ -51,7 +51,7 @@ http.createServer(function (req, res) {
     else if (req.url === "/TurnParsedApibToSlateMarkdown"){
         TurnParsedApibToSlateMarkdown();
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end('Hello World!');
+        res.end('Made new slate markdown files.');
     }
 
 }).listen(8080);

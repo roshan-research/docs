@@ -23,17 +23,25 @@ meta:
 
 # باز
 
+> Host: http://api.sobhe.ir:7000/
 
+<div dir=rtl>
 باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.
+</div>
 
+<blockquote dir=rtl>
 برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
+</blockquote>
 
 # نمایه‌سازی
 
+<div dir=rtl>
 برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
+</div>
 
 `/{index_name}/index`
 
+**URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
@@ -41,6 +49,7 @@ string | شناسه نمایه | index_name | baaz | required
 
 ## ثبت داده‌ها
 
+> Request
 
 ```plaintext
 {
@@ -441,6 +450,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -454,15 +464,19 @@ namespace MyRequest
 }
 ```
 
+<div dir=rtl>
 این تابع امکان افزودن اسناد به  نمایه را فراهم می‌کند. ورودی items برای این تابع، شامل فهرستی از اسناد است که هر کدام از آنها باید در نمایه ثبت شوند.
+</div>
 
 `POST /{index_name}/index`
 
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
+**Request DataStructure**
 
 Key | Value | TypeAttributes | Description
 --- | ----- | -------------- | -----------
@@ -476,6 +490,7 @@ labels | ["هیجانی","ماجراجویی"] |  | مجموعه برچسب‌ه
 
 ## ویرایش داده‌ها
 
+> Request
 
 ```plaintext
 {
@@ -666,6 +681,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -677,10 +693,13 @@ namespace MyRequest
 }
 ```
 
+<div dir=rtl>
 این تابع امکان ویرایش اسناد ثبت‌شده را فراهم می‌کند. برای این منظور، کافیست داده‌های جدید به همراه type و id سند فرستاده شوند. توجه کنید که در هنگام به‌روزرسانی، فقط اطلاعات ارسال‌شده ذخیره می‌شوند و دیگر ویژگی‌های سند، تغییر نمی‌کنند.
+</div>
 
 `PUT /{index_name}/index`
 
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -688,6 +707,7 @@ application/json | Token TOKEN_KEY
 
 ## حذف داده‌ها
 
+> Request
 
 ```plaintext
 {
@@ -860,6 +880,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -871,10 +892,13 @@ namespace MyRequest
 }
 ```
 
+<div dir=rtl>
 این تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.
+</div>
 
 `DELETE /{index_name}/index`
 
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -882,6 +906,7 @@ application/json | Token TOKEN_KEY
 
 # جستجو
 
+> Request
 
 ```plaintext
 ""
@@ -1018,6 +1043,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -1057,10 +1083,13 @@ namespace MyRequest
 
 # جستجوی اسناد
 
+<div dir=rtl>
 داده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.
+</div>
 
 `GET /{index_name}/{types}/query{?fields,text,size,from}`
 
+**URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
@@ -1073,6 +1102,7 @@ number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | 
 
 # جستجوی در لحظه
 
+> Request
 
 ```plaintext
 ""
@@ -1209,6 +1239,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -1236,10 +1267,13 @@ namespace MyRequest
 }
 ```
 
+<div dir=rtl>
 تابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.
+</div>
 
 `GET /{index_name}/{types}/complete{?text,size,from}`
 
+**URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
@@ -1251,6 +1285,7 @@ number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | 
 
 # پیشنهاد جستجو
 
+> Request
 
 ```plaintext
 ""
@@ -1387,6 +1422,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -1401,10 +1437,13 @@ namespace MyRequest
 }
 ```
 
+<div dir=rtl>
 وقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.
+</div>
 
 `GET /{index_name}/{types}/suggest{?text}`
 
+**URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
@@ -1414,6 +1453,7 @@ string | عبارت مورد جستجو | text | ن | required
 
 # اسناد مشابه
 
+> Request
 
 ```plaintext
 {
@@ -1568,6 +1608,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -1575,18 +1616,20 @@ namespace MyRequest
 "{\n  \"items\": [\n    {\n      \"title\": \"پرویز\",\n      \"similarity\": 100,\n      ...\n    },\n    ...\n  ]\n}\n"
 ```
 
+<div dir=rtl>
 تابع اسناد مشابه، با دریافت اطلاعات مربوط به یک سند، شبیه‌ترین گزینه‌ها را به سند مورد نظر پیدا کرده و میزان تشابه هر کدام را مشخص می‌کند.
+</div>
 
 `POST /{index_name}/{types}/similars`
 
-
+**URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
 string | شناسه نمایه | index_name | baaz | required
 string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
 
-
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
@@ -1594,6 +1637,7 @@ application/json | Token TOKEN_KEY
 
 # اسناد منبع
 
+> Request
 
 ```plaintext
 {
@@ -1748,6 +1792,7 @@ namespace MyRequest
 }
 ```
 
+> Response 200
 
 > Content-Type: application/json
 
@@ -1768,18 +1813,20 @@ namespace MyRequest
 }
 ```
 
+<div dir=rtl>
 تابع اسناد منبع، با دریافت اطلاعات مربوط به یک سند، منابعی را که این سند با استفاده از آنها درست شده است، پیدا کرده و میزان تشابه را برای هر بخش مشخص می‌کند.
+</div>
 
 `POST /{index_name}/{types}/sources`
 
-
+**URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
 string | شناسه نمایه | index_name | baaz | required
 string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
 
-
+**Request Header**
 
 Content-Type | Authorization
 ------------ | -------------
