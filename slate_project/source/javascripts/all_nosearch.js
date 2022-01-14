@@ -25,3 +25,4 @@ $(function() {
 window.onpopstate = function() {
   activateLanguage(getLanguageFromQueryString());
 };
+

@@ -295,22 +295,26 @@ html, body {
     z-index: 50;
     background-color: white;
     a{
+      padding-left: 11px;
+      padding-right: 11px;
       background-color: $side-theme-color;
-      margin-bottom: 1px;
     }
   }
 }
 
 .lang-selector {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
   box-sizing: border-box;
   padding-top: 15px;
-  overflow-x: auto;
+  overflow-x: hidden;
   a {
-    display: inline;
+    display: block;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
