@@ -677,8 +677,8 @@ html, body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 7px;
+  width: 15px;
+  height: 15px;
 }
 
 /* Track */
@@ -691,11 +691,15 @@ html, body {
 ::-webkit-scrollbar-thumb {
   background: #C4C4C4;
   border-radius: 25px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #fc742ad5;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
 }
 
 
@@ -770,4 +774,8 @@ p,a,h1{
     width: 50%;
     margin-top: 0;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
