@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - plaintext: RAW
   - shell: CURL
-  - python: PYTHON
   - java: JAVA
+  - plaintext: RAW
+  - python: PYTHON
   - php: PHP
   - csharp: C#
 
@@ -22,8 +22,6 @@ meta:
 ---
 
 # Parde
-
-> Host: http://api.sobhe.ir
 
 Parde recognizes unsafe images.
 

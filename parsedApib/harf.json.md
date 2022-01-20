@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - plaintext: RAW
   - shell: CURL
-  - python: PYTHON
   - java: JAVA
+  - plaintext: RAW
+  - python: PYTHON
   - php: PHP
   - csharp: C#
 
@@ -22,8 +22,6 @@ meta:
 ---
 
 # حرف
-
-> Host: http://harf.roshan-ai.ir
 
 <div dir=rtl>
 سامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.

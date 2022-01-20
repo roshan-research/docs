@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - plaintext: RAW
   - shell: CURL
-  - python: PYTHON
   - java: JAVA
+  - plaintext: RAW
+  - python: PYTHON
   - php: PHP
   - csharp: C#
 
@@ -22,8 +22,6 @@ meta:
 ---
 
 # باز
-
-> Host: http://api.sobhe.ir:7000/
 
 <div dir=rtl>
 باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.

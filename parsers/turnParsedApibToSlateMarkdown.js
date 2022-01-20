@@ -49,7 +49,7 @@ function writeApiTitleSection(parsedApibJson){
             hostValue = value.value;
         }
     })
-    keepMarkDownText += "> Host: " + hostValue + "\n\n";
+
    // let titleSectionText = [];
     parsedApibJson.copies.forEach((value) => {
         // let eachLineText = value.split(/\n+/);

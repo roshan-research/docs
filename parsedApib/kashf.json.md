@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - plaintext: RAW
   - shell: CURL
-  - python: PYTHON
   - java: JAVA
+  - plaintext: RAW
+  - python: PYTHON
   - php: PHP
   - csharp: C#
 
@@ -22,8 +22,6 @@ meta:
 ---
 
 # کشف
-
-> Host: https://kashf.roshan-ai.ir
 
 <div dir=rtl>
 کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.

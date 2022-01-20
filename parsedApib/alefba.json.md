@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - plaintext: RAW
   - shell: CURL
-  - python: PYTHON
   - java: JAVA
+  - plaintext: RAW
+  - python: PYTHON
   - php: PHP
   - csharp: C#
 
@@ -22,8 +22,6 @@ meta:
 ---
 
 # الفبا
-
-> Host: https://alefba.roshan-ai.ir
 
 <div dir=rtl>
 نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
