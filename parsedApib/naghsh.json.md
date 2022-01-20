@@ -26,7 +26,11 @@ meta:
 For using Naghsh API you need a TOKEN_KEY, if you don't have one,
 please contact naghsh@sobhe.ir.
 
-# Request
+# Process Images
+
+`/tag_images`
+
+## Request
 
 > Request
 

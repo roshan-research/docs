@@ -902,7 +902,24 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# جستجو
+# ‌
+
+# جستجوی اسناد
+
+`/{index_name}/{types}/query{?fields,text,size,from}`
+
+**URI Parameters**
+
+Title | Description | Key | value | typeAttributes
+----- | ----------- | --- | ----- | --------------
+string | شناسه نمایه | index_name | baaz | required
+string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie|person | required
+string | عبارت مورد جستجو | text | نیم‌روز | required
+string | فهرست ویژگی‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | fields | title|director | optional
+number | تعداد نتایج در پاسخ | size | 10 | optional
+number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | optional
+
+## جستجو
 
 > Request
 
@@ -1079,26 +1096,27 @@ namespace MyRequest
 }
 ```
 
-# جستجوی اسناد
-
 <div dir=rtl>
 داده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.
 </div>
 
 `GET /{index_name}/{types}/query{?fields,text,size,from}`
 
+# ‌
+
+`/{index_name}/{types}/complete{?text,size,from}`
+
 **URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
 string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie|person | required
-string | عبارت مورد جستجو | text | نیم‌روز | required
-string | فهرست ویژگی‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | fields | title|director | optional
+string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | person | required
+string | عبارت مورد جستجو | text | ابراهیم حا | required
 number | تعداد نتایج در پاسخ | size | 10 | optional
 number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | optional
 
-# جستجوی در لحظه
+## جستجوی در لحظه
 
 > Request
 
@@ -1271,17 +1289,19 @@ namespace MyRequest
 
 `GET /{index_name}/{types}/complete{?text,size,from}`
 
+# ‌
+
+`/{index_name}/{types}/suggest{?text}`
+
 **URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
 string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | person | required
-string | عبارت مورد جستجو | text | ابراهیم حا | required
-number | تعداد نتایج در پاسخ | size | 10 | optional
-number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | optional
+string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
+string | عبارت مورد جستجو | text | ن | required
 
-# پیشنهاد جستجو
+## پیشنهاد جستجو
 
 > Request
 
@@ -1441,15 +1461,18 @@ namespace MyRequest
 
 `GET /{index_name}/{types}/suggest{?text}`
 
+# ‌
+
+`/{index_name}/{types}/similars`
+
 **URI Parameters**
 
 Title | Description | Key | value | typeAttributes
 ----- | ----------- | --- | ----- | --------------
 string | شناسه نمایه | index_name | baaz | required
 string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
-string | عبارت مورد جستجو | text | ن | required
 
-# اسناد مشابه
+## اسناد مشابه
 
 > Request
 
@@ -1620,6 +1643,16 @@ namespace MyRequest
 
 `POST /{index_name}/{types}/similars`
 
+**Request Header**
+
+Content-Type | Authorization
+------------ | -------------
+application/json | Token TOKEN_KEY
+
+# ‌
+
+`/{index_name}/{types}/sources`
+
 **URI Parameters**
 
 Title | Description | Key | value | typeAttributes
@@ -1627,13 +1660,7 @@ Title | Description | Key | value | typeAttributes
 string | شناسه نمایه | index_name | baaz | required
 string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
-# اسناد منبع
+## اسناد منبع
 
 > Request
 
@@ -1816,13 +1843,6 @@ namespace MyRequest
 </div>
 
 `POST /{index_name}/{types}/sources`
-
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
 
 **Request Header**
 

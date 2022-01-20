@@ -430,7 +430,11 @@ Content-Type | Authorization
 ------------ | -------------
 multipart/form-data; boundary=---GOLROKH | Token TOKEN_KEY
 
-# Request
+# New Person
+
+`/new_person`
+
+## Request
 
 > Request
 
@@ -618,7 +622,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# Request
+# Report Face
+
+`/report_face`
+
+## Request
 
 > Request
 
@@ -807,7 +815,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# Request
+# Similar Faces
+
+`/similar_faces`
+
+## Request
 
 > Request
 
@@ -1002,7 +1014,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# Request
+# Dataset Detail
+
+`/dataset_detail`
+
+## Request
 
 > Request
 

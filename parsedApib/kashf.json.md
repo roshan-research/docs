@@ -31,7 +31,11 @@ meta:
 برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
 </blockquote>
 
-# نمونه
+# تحلیل متن
+
+`/api/tag_texts/`
+
+## نمونه
 
 > Request
 
@@ -249,7 +253,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# تحلیل تصویر
+
+`/api/tag_images/`
+
+## نمونه
 
 > Request
 
@@ -473,7 +481,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# تحلیل فریم‌های ویدئو
+
+`/api/tag_video_frames/`
+
+## نمونه
 
 > Request
 
@@ -721,7 +733,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# آموزش مدل
+
+`/api/train_dataset/`
+
+## نمونه
 
 > Request
 
@@ -897,7 +913,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# وضعیت داده‌ها
+
+`/api/dataset_info/`
+
+## نمونه
 
 > Request
 
@@ -1076,7 +1096,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# گزارش برچسب متن
+
+`/api/report_text_tags/`
+
+## نمونه
 
 > Request
 
@@ -1278,7 +1302,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# گزارش برچسب تصویر
+
+`/api/report_image_tags/`
+
+## نمونه
 
 > Request
 
@@ -1480,7 +1508,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# ایجاد برچسب
+
+`/api/create_tag/`
+
+## نمونه
 
 > Request
 
@@ -1663,7 +1695,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# ویرایش برچسب
+
+`/api/update_tag/`
+
+## نمونه
 
 > Request
 
@@ -1858,7 +1894,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# نمونه
+# حذف برچسب
+
+`/api/delete_tag/`
+
+## نمونه
 
 > Request
 

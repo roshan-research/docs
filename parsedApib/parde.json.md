@@ -28,7 +28,11 @@ Parde recognizes unsafe images.
 > For using Parde API you need a TOKEN_KEY, if you don't have one,
 please contact parde@sobhe.ir.
 
-# Request
+# Process Images
+
+`/parde/api/images_safety`
+
+## Request
 
 > Request
 
@@ -222,7 +226,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# Request
+# Report Image Safety
+
+`/parde/api/report`
+
+## Request
 
 > Request
 
@@ -408,7 +416,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# Request
+# Remove Image Report
+
+`/parde/api/remove_report`
+
+## Request
 
 > Request
 
@@ -589,7 +601,11 @@ Content-Type | Authorization
 ------------ | -------------
 application/json | Token TOKEN_KEY
 
-# Request
+# Video Keyframes
+
+`/api/video_frames`
+
+## Request
 
 > Request
 

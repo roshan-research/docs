@@ -11,7 +11,7 @@
         }
     ],
     "copies": [
-        "<div dir=rtl>\nنویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.\n</div>\n\n<blockquote dir=rtl>\nبرای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.\n</blockquote>"
+        "نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.,\n\n,برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید."
     ],
     "resources": [
         {
@@ -49,45 +49,54 @@
                                             "required"
                                         ],
                                         "key": "document_url",
-                                        "value": "URL"
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "این ویژگی نوع سند را مشخص می‌کند",
                                         "typeAttributes": [],
                                         "key": "type",
-                                        "value": {
-                                            "element": "string",
-                                            "attributes": {
-                                                "typeAttributes": {
-                                                    "element": "array",
-                                                    "content": [
-                                                        {
-                                                            "element": "string",
-                                                            "content": "fixed"
-                                                        }
-                                                    ]
-                                                }
+                                        "value": "general",
+                                        "valueType": "enum",
+                                        "enumaration": [
+                                            {
+                                                "name": "general",
+                                                "meta": "سندهای عمومی"
                                             },
-                                            "content": "general"
-                                        }
+                                            {
+                                                "name": "ID-card",
+                                                "meta": "کارت‌های شناسایی"
+                                            },
+                                            {
+                                                "name": "excel",
+                                                "meta": "جدولهای مالی"
+                                            }
+                                        ]
                                     },
                                     {
                                         "description": "در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند",
                                         "typeAttributes": [],
                                         "key": "fix_orientation",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد",
                                         "typeAttributes": [],
                                         "key": "word_positions",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
                                         "typeAttributes": [],
                                         "key": "wait",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     }
                                 ]
                             },
@@ -160,45 +169,54 @@
                                         "typeAttributes": [
                                             "required"
                                         ],
-                                        "key": "document"
+                                        "key": "document",
+                                        "valueType": "string",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "این ویژگی نوع سند را مشخص می‌کند",
                                         "typeAttributes": [],
                                         "key": "type",
-                                        "value": {
-                                            "element": "string",
-                                            "attributes": {
-                                                "typeAttributes": {
-                                                    "element": "array",
-                                                    "content": [
-                                                        {
-                                                            "element": "string",
-                                                            "content": "fixed"
-                                                        }
-                                                    ]
-                                                }
+                                        "value": "general",
+                                        "valueType": "enum",
+                                        "enumaration": [
+                                            {
+                                                "name": "general",
+                                                "meta": "سندهای عمومی"
                                             },
-                                            "content": "general"
-                                        }
+                                            {
+                                                "name": "ID-card",
+                                                "meta": "کارت‌های شناسایی"
+                                            },
+                                            {
+                                                "name": "excel",
+                                                "meta": "جدولهای مالی"
+                                            }
+                                        ]
                                     },
                                     {
                                         "description": "در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند",
                                         "typeAttributes": [],
                                         "key": "fix_orientation",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد",
                                         "typeAttributes": [],
                                         "key": "word_positions",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
                                         "typeAttributes": [],
                                         "key": "wait",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     }
                                 ]
                             },
@@ -281,45 +299,54 @@
                                                 "element": "string",
                                                 "content": "..."
                                             }
-                                        ]
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "این ویژگی نوع سند را مشخص می‌کند",
                                         "typeAttributes": [],
                                         "key": "type",
-                                        "value": {
-                                            "element": "string",
-                                            "attributes": {
-                                                "typeAttributes": {
-                                                    "element": "array",
-                                                    "content": [
-                                                        {
-                                                            "element": "string",
-                                                            "content": "fixed"
-                                                        }
-                                                    ]
-                                                }
+                                        "value": "general",
+                                        "valueType": "enum",
+                                        "enumaration": [
+                                            {
+                                                "name": "general",
+                                                "meta": "سندهای عمومی"
                                             },
-                                            "content": "general"
-                                        }
+                                            {
+                                                "name": "ID-card",
+                                                "meta": "کارت‌های شناسایی"
+                                            },
+                                            {
+                                                "name": "excel",
+                                                "meta": "جدولهای مالی"
+                                            }
+                                        ]
                                     },
                                     {
                                         "description": "در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند",
                                         "typeAttributes": [],
                                         "key": "fix_orientation",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد",
                                         "typeAttributes": [],
                                         "key": "word_positions",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     },
                                     {
                                         "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
                                         "typeAttributes": [],
                                         "key": "wait",
-                                        "value": true
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     }
                                 ]
                             },

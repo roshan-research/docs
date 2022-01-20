@@ -1,6 +1,7 @@
 var http = require('http');
 const fs = require('fs');
 const apib_to_json= require('./apib_to_json');
+const JSONfixer = require('./JSONfixer');
 const turnParsedApibToSlateMarkdown = require('./turnParsedApibToSlateMarkdown');
 function CreateApibToJSON(){
     fs.readdir("../apib", function (err,files){
@@ -17,23 +18,7 @@ function CreateApibToJSON(){
         })
     });
 }
-// function CreateApibToJSON2(){
-//     fs.readdir("../apib", function (err,files){
-//         if (err){
-//             return;
-//         }
-//         files.forEach((file) => {
-//             if (file === "alefba.apib"){
-//                 fs.readFile("../apib/" + file, 'utf8', function (err,data) {
-//                 if (err) {
-//                     return console.log(err);
-//                 }
-//                 apib_to_json(data,file);
-//                 });
-//             }
-//         })
-//     });
-// }
+
 function TurnParsedApibToSlateMarkdown(){
     fs.readdir("../parsedApib", function (err,files){
         if (err){
@@ -53,21 +38,37 @@ function TurnParsedApibToSlateMarkdown(){
     });
 
 }
-// function TurnParsedApibToSlateMarkdown2(){
-//     fs.readFile("./newParsed.json", 'utf8', function (err,data) {
-//         if (err) {
-//             return console.log(err);
-//         }
-//         turnParsedApibToSlateMarkdown(data,"newParsed.json");
-//     });
-// }
+
+const fixJSONproblems = () => {
+    fs.readdir("../parsedApib", function (err,files){
+        if (err){
+            return;
+        }
+        files.forEach((file) => {
+            let extensionFile = file.split(".").pop();
+            if (extensionFile === "json"){
+                fs.readFile("../parsedApib/" + file, 'utf8', function (err,data) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    JSONfixer(data,file);
+                });
+            }
+        })
+    });
+
+}
+
 
 http.createServer(function (req, res) {
-   console.log(req.url);
     if (req.url === "/CreateApibToJson"){
         CreateApibToJSON();
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end('Create Json Files ');
+        setTimeout(() => {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end('Created Json Files');
+            fixJSONproblems();
+        },1000)
+
     }
     else if (req.url === "/TurnParsedApibToSlateMarkdown"){
         TurnParsedApibToSlateMarkdown();

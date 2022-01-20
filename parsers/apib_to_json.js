@@ -27,9 +27,6 @@ function apib_to_json(apibFile,fileName) {
         fs.writeFile("../parsedApib/" + fileName + ".json" , JSON.stringify(newParsed,null,4), 'utf8', function (err) {
             if (err) return console.log(err);
         });
-        //  fs.writeFile("./newParsed.json" , JSON.stringify(newParsed,null,4), 'utf8', function (err) {
-        //     if (err) return console.log(err);
-        // });
     });
 
 
