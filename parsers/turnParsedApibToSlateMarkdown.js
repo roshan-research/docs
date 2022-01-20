@@ -39,6 +39,9 @@ function turnParsedApibToSlateMarkdown(jsonText,fileName){
     fs.writeFile("../parsedApib/" + fileName + ".md" , markDownText, 'utf8', function (err) {
         if (err) return console.log(err);
     });
+    // fs.writeFile("./" + fileName + ".md" , markDownText, 'utf8', function (err) {
+    //     if (err) return console.log(err);
+    // });
 }
 function writeApiTitleSection(parsedApibJson){
     let apiTitle = parsedApibJson.title;
@@ -94,25 +97,38 @@ function writeResourceSection(resourceJson,hostValue){
         // }
         resourceSectionText += value + "\n\n";
     })
-    if (isOneTransition){
-        resourceTitle = resourceJson.transitions[0].title;
-        let httpMethod = resourceJson.transitions[0].httpRequest.method;
-        resourceJson.transitions[0].copies.forEach((value) => {
-            resourceSectionText += value + "\n\n";
-        })
-        OneResourceText += "# " + resourceTitle + "\n\n";
-        let transitionTextJson = writeTransitionSection(resourceJson.transitions[0],isOneTransition,resourceHref,resourceUrl);
-        OneResourceText += transitionTextJson.firstPart;
-
-        OneResourceText += resourceSectionText;
-        OneResourceText += "`" + httpMethod + " " + resourceHref + "`\n\n";
-        if (attributeText !== null){
-            OneResourceText += "**URI Parameters**\n\n";
-            OneResourceText += attributeText;
-        }
-        OneResourceText += transitionTextJson.secondPart;
-    }
-    else{
+    // if (isOneTransition){
+    //     resourceTitle = resourceJson.transitions[0].title;
+    //     let httpMethod = resourceJson.transitions[0].httpRequest.method;
+    //     resourceJson.transitions[0].copies.forEach((value) => {
+    //         resourceSectionText += value + "\n\n";
+    //     })
+    //     OneResourceText += "# " + resourceTitle + "\n\n";
+    //     let transitionTextJson = writeTransitionSection(resourceJson.transitions[0],isOneTransition,resourceHref,resourceUrl);
+    //     OneResourceText += transitionTextJson.firstPart;
+    //
+    //     OneResourceText += resourceSectionText;
+    //     OneResourceText += "`" + httpMethod + " " + resourceHref + "`\n\n";
+    //     if (attributeText !== null){
+    //         OneResourceText += "**URI Parameters**\n\n";
+    //         OneResourceText += attributeText;
+    //     }
+    //     OneResourceText += transitionTextJson.secondPart;
+    // }
+    // else{
+    //     resourceTitle = resourceJson.title;
+    //     OneResourceText += "# " + resourceTitle + "\n\n";
+    //     OneResourceText += resourceSectionText;
+    //     OneResourceText += "`" + resourceHref + "`\n\n";
+    //     if (attributeText !== null){
+    //         OneResourceText += "**URI Parameters**\n\n";
+    //         OneResourceText += attributeText;
+    //     }
+    //     resourceJson.transitions.forEach((oneTransition) => {
+    //         let transitionText = writeTransitionSection(oneTransition,isOneTransition,resourceHref,resourceUrl);
+    //         OneResourceText += transitionText;
+    //     })
+    // }
         resourceTitle = resourceJson.title;
         OneResourceText += "# " + resourceTitle + "\n\n";
         OneResourceText += resourceSectionText;
@@ -125,7 +141,6 @@ function writeResourceSection(resourceJson,hostValue){
             let transitionText = writeTransitionSection(oneTransition,isOneTransition,resourceHref,resourceUrl);
             OneResourceText += transitionText;
         })
-    }
     return OneResourceText;
 }
 function writeAttributesSection(attributes){
@@ -277,37 +292,70 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
     jsonText += "```\n\n";
 
 
-    if (isOneTransition){
-        transitionTextSection += "> Request\n\n";
-        transitionTextSection += RawText;
-        transitionTextSection += curlText;
-        transitionTextSection += pythonText;
-        transitionTextSection += javaText;
-        transitionTextSection += phpText;
-        transitionTextSection += csharpText;
-        transitionTextSection += "> Response " + statusCode + "\n\n";
-        if (oneTransition.httpResponse.headerAttributes.length === 1){
-            transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
-        }
-        transitionTextSection += jsonText;
-        let returnJson = {firstPart:transitionTextSection};
-        let transitionTextSection2 = "";
-        if (oneTransition.httpRequest.headerAttributes.length >=1){
-            transitionTextSection2 += "**Request Header**\n\n";
-            transitionTextSection2 += requestHeaderAttributes;
-        }
-        if (dataStructure !== ""){
-            transitionTextSection2 += "**Request DataStructure**\n\n";
-            transitionTextSection2 += dataStructure;
-        }
-        if (oneTransition.httpResponse.headerAttributes.length > 1){
-            transitionTextSection2 += "**Response Header**\n\n";
-            transitionTextSection2 += responseHeaderAttributes;
-        }
-        returnJson["secondPart"] = transitionTextSection2;
-        return returnJson;
-    }
-    else{
+    // if (isOneTransition){
+    //     transitionTextSection += "> Request\n\n";
+    //     transitionTextSection += RawText;
+    //     transitionTextSection += curlText;
+    //     transitionTextSection += pythonText;
+    //     transitionTextSection += javaText;
+    //     transitionTextSection += phpText;
+    //     transitionTextSection += csharpText;
+    //     transitionTextSection += "> Response " + statusCode + "\n\n";
+    //     if (oneTransition.httpResponse.headerAttributes.length === 1){
+    //         transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
+    //     }
+    //     transitionTextSection += jsonText;
+    //     let returnJson = {firstPart:transitionTextSection};
+    //     let transitionTextSection2 = "";
+    //     if (oneTransition.httpRequest.headerAttributes.length >=1){
+    //         transitionTextSection2 += "**Request Header**\n\n";
+    //         transitionTextSection2 += requestHeaderAttributes;
+    //     }
+    //     if (dataStructure !== ""){
+    //         transitionTextSection2 += "**Request DataStructure**\n\n";
+    //         transitionTextSection2 += dataStructure;
+    //     }
+    //     if (oneTransition.httpResponse.headerAttributes.length > 1){
+    //         transitionTextSection2 += "**Response Header**\n\n";
+    //         transitionTextSection2 += responseHeaderAttributes;
+    //     }
+    //     returnJson["secondPart"] = transitionTextSection2;
+    //     return returnJson;
+    // }
+    // else{
+    //     transitionTextSection += "## " + transitionTitle + "\n\n";
+    //     transitionTextSection += "> Request\n\n";
+    //     transitionTextSection += RawText;
+    //     transitionTextSection += curlText;
+    //     transitionTextSection += pythonText;
+    //     transitionTextSection += javaText;
+    //     transitionTextSection += phpText;
+    //     transitionTextSection += csharpText;
+    //     transitionTextSection += "> Response " + statusCode + "\n\n";
+    //     if (oneTransition.httpResponse.headerAttributes.length === 1){
+    //         transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
+    //     }
+    //     transitionTextSection += jsonText;
+    //     oneTransition.copies.forEach((value) => {
+    //         transitionTextSection += value + "\n\n";
+    //     })
+    //     transitionTextSection += "`" + httpMethod + " " + href + "`\n\n";
+    //     if (oneTransition.httpRequest.headerAttributes.length >=1){
+    //         transitionTextSection += "**Request Header**\n\n";
+    //         transitionTextSection += requestHeaderAttributes;
+    //     }
+    //     if (dataStructure !== ""){
+    //         transitionTextSection += "**Request DataStructure**\n\n";
+    //         transitionTextSection += dataStructure;
+    //     }
+    //     if (oneTransition.httpResponse.headerAttributes.length > 1){
+    //         transitionTextSection += "**Response Header**\n\n";
+    //         transitionTextSection += responseHeaderAttributes;
+    //     }
+    //     return transitionTextSection;
+    // }
+
+
         transitionTextSection += "## " + transitionTitle + "\n\n";
         transitionTextSection += "> Request\n\n";
         transitionTextSection += RawText;
@@ -338,7 +386,6 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
             transitionTextSection += responseHeaderAttributes;
         }
         return transitionTextSection;
-    }
 }
 function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyContent,resourceUrl){
     let curlText = "```shell\n";

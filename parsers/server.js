@@ -1,11 +1,8 @@
 var http = require('http');
 const fs = require('fs');
-//const apib_to_html = require('./apib_to_html');
-const apib_to_html2 = require('./apib_to_html2');
+const apib_to_json= require('./apib_to_json');
 const turnParsedApibToSlateMarkdown = require('./turnParsedApibToSlateMarkdown');
-function CreateApibToHtmls(){
-    let templateHtml = fs.readFileSync("../templates/custom_template.html" ,{encoding:'utf-8'});
-   // let oneApib = fs.readFileSync("./alefba.apib" ,{encoding:'utf-8'});
+function CreateApibToJSON(){
     fs.readdir("../apib", function (err,files){
         if (err){
             return;
@@ -15,12 +12,28 @@ function CreateApibToHtmls(){
                 if (err) {
                     return console.log(err);
                 }
-                //apib_to_html(templateHtml,data,file);
-                apib_to_html2(templateHtml,data,file);
+                apib_to_json(data,file);
             });
         })
     });
 }
+// function CreateApibToJSON2(){
+//     fs.readdir("../apib", function (err,files){
+//         if (err){
+//             return;
+//         }
+//         files.forEach((file) => {
+//             if (file === "alefba.apib"){
+//                 fs.readFile("../apib/" + file, 'utf8', function (err,data) {
+//                 if (err) {
+//                     return console.log(err);
+//                 }
+//                 apib_to_json(data,file);
+//                 });
+//             }
+//         })
+//     });
+// }
 function TurnParsedApibToSlateMarkdown(){
     fs.readdir("../parsedApib", function (err,files){
         if (err){
@@ -40,13 +53,21 @@ function TurnParsedApibToSlateMarkdown(){
     });
 
 }
+// function TurnParsedApibToSlateMarkdown2(){
+//     fs.readFile("./newParsed.json", 'utf8', function (err,data) {
+//         if (err) {
+//             return console.log(err);
+//         }
+//         turnParsedApibToSlateMarkdown(data,"newParsed.json");
+//     });
+// }
 
 http.createServer(function (req, res) {
    console.log(req.url);
-    if (req.url === "/CreateApibToHtmls"){
-        CreateApibToHtmls();
+    if (req.url === "/CreateApibToJson"){
+        CreateApibToJSON();
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end('Hello World!');
+        res.end('Create Json Files ');
     }
     else if (req.url === "/TurnParsedApibToSlateMarkdown"){
         TurnParsedApibToSlateMarkdown();

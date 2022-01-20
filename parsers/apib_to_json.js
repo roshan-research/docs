@@ -1,7 +1,6 @@
 const fs = require('fs');
 var drafter = require('drafter');
-var mustache = require('mustache');
-function apib_to_html(templateHtml,apibFile,fileName) {
+function apib_to_json(apibFile,fileName) {
 
     var drafteroptions = {
         generateSourceMap: false,
@@ -21,42 +20,20 @@ function apib_to_html(templateHtml,apibFile,fileName) {
         if (err) {
             console.log(err);
         }
-        // fs.writeFile("./drafterResult.json", JSON.stringify(result,null,4), 'utf8', function (err) {
-        //     if (err) return console.log(err);
-        // });
+        fs.writeFile("./drafterResult.json", JSON.stringify(result,null,4), 'utf8', function (err) {
+            if (err) return console.log(err);
+        });
         let newParsed = CreateNewParsedApibFromDrafterParser(result);
         fs.writeFile("../parsedApib/" + fileName + ".json" , JSON.stringify(newParsed,null,4), 'utf8', function (err) {
             if (err) return console.log(err);
         });
-
-        // turnNewParsedApibToMustacheView is not complete
-        let view = turnNewParsedApibToMustacheView(newParsed);
-
-        var output = mustache.render(templateHtml, view);
-
-        fs.writeFile("./output.html", output, 'utf8', function (err) {
-            if (err) return console.log(err);
-        });
+        //  fs.writeFile("./newParsed.json" , JSON.stringify(newParsed,null,4), 'utf8', function (err) {
+        //     if (err) return console.log(err);
+        // });
     });
 
 
 }
-function turnNewParsedApibToMustacheView(newParsedApib){
-    var view = {};
-    view[".Title"] = newParsedApib.title;
-    view['template \\"Introduction\\" .'] = "something";
-    view['template \\"ResourceGroups\\" .'] = "something";
-    view['template \\"Navigation\\" .'] = "something";
-    view['define \\"Navigation\\"'] = "something";
-    view['define \\"Navigation\\"'] = "something";
-    //...
-
-    // view["$group"] = {
-    //     Title:"salam2"
-    // };
-    // view["$transition"] = {Title:"salam3"};
-    return view;
-};
 function CreateNewParsedApibFromDrafterParser(apiElement){
     let newParsedApib = {};
     newParsedApib["title"] = "";
@@ -181,14 +158,38 @@ function getTransitionInfo(transitionJson) {
                                         typeAttributes.push(ref6[z].content);
                                     }
                                 }
-                                dataStructure["members"].push(
-                                    {
-                                        description:element4.meta.description.content,
-                                        typeAttributes:typeAttributes,
-                                        key:element4.content.key.content,
-                                        value:element4.content.value.content
+                                let enumaration = []
+                                if (element4.content.value.element == "enum"){
+                                    let ref6 = element4.content.value.attributes.enumerations.content;
+                                    for(let z = 0;z<ref6.length;z++){
+                                        enumaration.push({
+                                            name:ref6[z].content,
+                                            meta:ref6[z].meta.description.content
+                                        });
                                     }
-                                )
+                                     dataStructure["members"].push(
+                                        {
+                                            description:element4.meta.description.content,
+                                            typeAttributes:typeAttributes,
+                                            key:element4.content.key.content,
+                                            value:element4.content.value.content.content,
+                                            valueType:element4.content.value.element,
+                                            enumaration:enumaration
+                                        }
+                                    )
+                                }
+                                else{
+                                    dataStructure["members"].push(
+                                        {
+                                            description:element4.meta.description.content,
+                                            typeAttributes:typeAttributes,
+                                            key:element4.content.key.content,
+                                            value:element4.content.value.content,
+                                            valueType:element4.content.value.element,
+                                            enumaration:enumaration
+                                        }
+                                    )
+                                }
                             }
                             transitionInfo["httpRequest"]["sections"].push(dataStructure);
                         }
@@ -231,4 +232,4 @@ function getTransitionInfo(transitionJson) {
     }
     return transitionInfo;
 }
-module.exports = apib_to_html;
+module.exports = apib_to_json;
