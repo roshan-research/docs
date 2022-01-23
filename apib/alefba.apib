@@ -45,7 +45,7 @@ HOST: https://alefba.roshan-ai.ir
               "priority": 3
             }
 
-+ Response 200 (application/json)
++ Response 200
 
         {
           "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
@@ -128,8 +128,7 @@ HOST: https://alefba.roshan-ai.ir
             --{boundary value}
 
 
-+ Response 200 (application/json)
-
++ Response 200
         {
           "pages": [{
             "page_url": "http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=1",
@@ -215,7 +214,7 @@ HOST: https://alefba.roshan-ai.ir
               "priority": 3
             }
 
-+ Response 200 (application/json)
++ Response 200
 
         [{
           "page_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1",
@@ -260,7 +259,7 @@ HOST: https://alefba.roshan-ai.ir
               "document_urls": ["http://bayanbox.ir/view/5067853395275628881/boute.pdf"]
             }
 
-+ Response 200 (application/json)
++ Response 200 
 
         {
           "http://bayanbox.ir/view/5067853395275628881/boute.pdf": {
@@ -289,7 +288,7 @@ HOST: https://alefba.roshan-ai.ir
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
-+ Response 200 (application/json)
++ Response 200
 
         {
           "document_url":"http://bayanbox.ir/view/5067853395275628881/boute.pdf",
@@ -318,13 +317,7 @@ HOST: https://alefba.roshan-ai.ir
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
-+ Response 200 (application/msword)
 
-    + Header
-
-            Content-Disposition: attachment; filename=Alefba.docx
-
-    + Body
 
 
 ## دریافت فایل اکسل [/api/download_excel/]
@@ -345,13 +338,6 @@ HOST: https://alefba.roshan-ai.ir
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
-+ Response 200 (application/msword)
-
-    + Header
-
-            Content-Disposition: attachment; filename=Alefba.xlsx
-
-    + Body
 
 
 ## دریافت فایل قابل جستجو [/api/download_pdf/]
@@ -375,14 +361,6 @@ HOST: https://alefba.roshan-ai.ir
               "color": false
             }
 
-+ Response 200 (application/pdf)
-
-    + Header
-
-            Content-Disposition: attachment; filename=Alefba.pdf
-
-    + Body
-
 
 ## حذف سند [/api/delete_document/]
 
@@ -402,7 +380,7 @@ HOST: https://alefba.roshan-ai.ir
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
-+ Response 200 (application/json)
++ Response 200 
 
         {
           "message":"Document deleted successfully."
@@ -424,10 +402,13 @@ HOST: https://alefba.roshan-ai.ir
     + Body
 
             {
-            "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
-            "callback_url": "http://192.168.254.3:5013/alefba_post"
+              "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
+              "callback_url": "http://192.168.254.3:5013/alefba_post"
             }
 
-+ Response 200 (application/json)
++ Response 200
 
-        {"state":"processing","document_url":"http://192.168.254.3:5013/static/2021-10-12%20%281%29.png"}
+        {
+          "state":"processing",
+          "document_url":"http://192.168.254.3:5013/static/2021-10-12%20%281%29.png"
+        }
