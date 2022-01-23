@@ -30,6 +30,7 @@ please contact golrokh@sobhe.ir.
 
 `/find_faces`
 
+
 ## Request
 
 > Request
@@ -217,7 +218,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -253,12 +254,6 @@ namespace MyRequest
 curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image=@FILENAME" -F "datasets=siasi,honari,varzeshi" http://HOSTNAME/api/find_faces
 
 `POST /find_faces`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 
 ## Upload Image
 
@@ -405,7 +400,7 @@ namespace MyRequest
 }
 ```
 
-> Response 201
+> Response 
 
 > Content-Type: text/plain
 
@@ -424,15 +419,10 @@ namespace MyRequest
 
 `POST /find_faces`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-multipart/form-data; boundary=---GOLROKH | Token TOKEN_KEY
-
 # New Person
 
 `/new_person`
+
 
 ## Request
 
@@ -603,7 +593,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -616,15 +606,10 @@ namespace MyRequest
 
 `POST /new_person`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # Report Face
 
 `/report_face`
+
 
 ## Request
 
@@ -795,7 +780,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -809,15 +794,10 @@ namespace MyRequest
 
 `POST /report_face`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # Similar Faces
 
 `/similar_faces`
+
 
 ## Request
 
@@ -982,7 +962,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1008,15 +988,10 @@ namespace MyRequest
 
 `POST /similar_faces`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # Dataset Detail
 
 `/dataset_detail`
+
 
 ## Request
 
@@ -1175,7 +1150,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1184,10 +1159,4 @@ namespace MyRequest
 ```
 
 `POST /dataset_detail`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 

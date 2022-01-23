@@ -32,6 +32,7 @@ please contact parde@sobhe.ir.
 
 `/parde/api/images_safety`
 
+
 ## Request
 
 > Request
@@ -201,7 +202,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -220,15 +221,10 @@ performance.
 
 `POST /parde/api/images_safety`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # Report Image Safety
 
 `/parde/api/report`
+
 
 ## Request
 
@@ -393,7 +389,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -410,15 +406,10 @@ images for predicting image safety more precisely.
 
 `POST /parde/api/report`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # Remove Image Report
 
 `/parde/api/remove_report`
+
 
 ## Request
 
@@ -577,7 +568,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -595,15 +586,10 @@ reports with input url and responds with their object id.
 
 `POST /parde/api/remove_report`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # Video Keyframes
 
 `/api/video_frames`
+
 
 ## Request
 
@@ -762,7 +748,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -778,10 +764,4 @@ namespace MyRequest
 ```
 
 `POST /api/video_frames`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 

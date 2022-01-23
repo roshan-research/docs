@@ -75,7 +75,6 @@ function writeResourceSection(resourceJson,hostValue){
         OneResourceText += resourceSectionText;
         OneResourceText += "`" + resourceHref + "`\n\n";
         if (attributeText !== null){
-            OneResourceText += "**URI Parameters**\n\n";
             OneResourceText += attributeText;
         }
         resourceJson.transitions.forEach((oneTransition) => {
@@ -85,48 +84,13 @@ function writeResourceSection(resourceJson,hostValue){
     return OneResourceText;
 }
 function writeAttributesSection(attributes){
-    if (attributes.length === 0){
-        return null;
-    }
-    let attributeText = "";
-    attributeText += "Title | Description | Key | value | typeAttributes" + "\n";
-    attributeText += "----- | ----------- | --- | ----- | --------------" + "\n";
-    attributes.forEach((oneAttribute) => {
-        let typeAttributes = "";
-        oneAttribute.typeAttributes.forEach((value) => {
-            typeAttributes += value + ","
-        })
-        typeAttributes = typeAttributes.substring(0,typeAttributes.length-1);
-        // console.log(value2.description);
-        let oneAttributeDescription = oneAttribute.description.replace("|","_-_");
-        // console.log(dataStructureDescription);
-        attributeText += oneAttribute.title + " | " + oneAttributeDescription + " | " + oneAttribute.key + " | " + oneAttribute.value + " | " + typeAttributes + "\n";
-    })
-    attributeText += "\n";
-    return attributeText;
+    return "\n";
 }
 function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
     let transitionTitle = oneTransition.title;
     let transitionTextSection = "";
 
     let httpMethod = oneTransition.httpRequest.method;
-
-    let requestHeaderAttributes = "";
-    let requestFirstLineTable = "";
-    let requestDashLine = "";
-    let requestInsideTable = "";
-    oneTransition.httpRequest.headerAttributes.forEach((value) => {
-        requestFirstLineTable += value.key + " | ";
-        for (let i = 0 ; i<value.key.length;i++){
-            requestDashLine += "-"
-        }
-        requestDashLine += " | ";
-        requestInsideTable += value.value + " | ";
-    })
-    requestFirstLineTable = requestFirstLineTable.substring(0,requestFirstLineTable.length-3);
-    requestDashLine = requestDashLine.substring(0,requestDashLine.length-3);
-    requestInsideTable = requestInsideTable.substring(0,requestInsideTable.length-3);
-    requestHeaderAttributes = requestFirstLineTable + "\n" + requestDashLine + "\n" + requestInsideTable + "\n\n";
 
     let dataStructure = "";
     let requestMessageBody = "";
@@ -135,33 +99,20 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
     let requestMessageBodySchemaContent = "";
     oneTransition.httpRequest.sections.forEach((value) => {
         if (value.type === "dataStructure"){
-            dataStructure += "Key | Value | TypeAttributes | Description" + "\n";
-            dataStructure += "--- | ----- | -------------- | -----------" + "\n";
-            value.members.forEach((value2) => {
-                let typeAttributes = "";
-                value2.typeAttributes.forEach((value3) => {
-                    typeAttributes += value3 + ",";
-                })
-                typeAttributes = typeAttributes.substring(0,typeAttributes.length-1);
-                let dataStructureValue = value2.value;
-                if (typeof value2.value === "number" || typeof value2.value === "boolean"){
-                    dataStructureValue = dataStructureValue.toString();
+            value.members.forEach((data) => {
+                let keyString = data.key ;
+                if (data.typeAttributes[0] === 'required') {
+                    keyString += "(required)";
                 }
-                else if (typeof value2.value === "object"){
-                    dataStructureValue = [];
-                    if (value2.value instanceof Array){
-                        value2.value.forEach((value3) => {
-                            dataStructureValue.push(value3.content);
-                        })
-                    }
-                    else{
-                        dataStructureValue.push(value2.value.content);
-                    }
-                    dataStructureValue = JSON.stringify(dataStructureValue);
-                }
-                dataStructure += value2.key + " | " + dataStructureValue + " | " + typeAttributes + " | " + value2.description + "\n";
+                dataStructure += `<dl>
+<strong>${keyString}</strong>
+<br>
+<br>
+Value: ${data.value}
+</dl>
+
+<p style="direction:rtl;font-weight:600;">${data.description}</p>\n\n`;
             })
-            dataStructure += "\n";
         }
         else if (value.type === "messageBody"){
             requestMessageBody += "contentType: " + value.contentType;
@@ -178,9 +129,6 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
             requestMessageBodySchemaContent = JSON.parse(value.content);
         }
     })
-
-    let statusCode = oneTransition.httpResponse.statusCode;
-    let responseHeaderAttributes = "";
     let responseFirstLineTable = "";
     let responseDashLine = "";
     let responseInsideTable = "";
@@ -195,7 +143,6 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
     responseFirstLineTable = responseFirstLineTable.substring(0,responseFirstLineTable.length-3);
     responseDashLine = responseDashLine.substring(0,responseDashLine.length-3);
     responseInsideTable = responseInsideTable.substring(0,responseInsideTable.length-3);
-    responseHeaderAttributes = responseFirstLineTable + "\n" + responseDashLine + "\n" + responseInsideTable + "\n\n";
 
     let responseMessageBody = "";
     let responseMessageBodyContent = "";
@@ -235,7 +182,7 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
         transitionTextSection += javaText;
         transitionTextSection += phpText;
         transitionTextSection += csharpText;
-        transitionTextSection += "> Response " + statusCode + "\n\n";
+        transitionTextSection += "> Response " + "\n\n";
         if (oneTransition.httpResponse.headerAttributes.length === 1){
             transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
         }
@@ -244,17 +191,8 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
             transitionTextSection += value + "\n\n";
         })
         transitionTextSection += "`" + httpMethod + " " + href + "`\n\n";
-        if (oneTransition.httpRequest.headerAttributes.length >=1){
-            transitionTextSection += "**Request Header**\n\n";
-            transitionTextSection += requestHeaderAttributes;
-        }
         if (dataStructure !== ""){
-            transitionTextSection += "**Request DataStructure**\n\n";
             transitionTextSection += dataStructure;
-        }
-        if (oneTransition.httpResponse.headerAttributes.length > 1){
-            transitionTextSection += "**Response Header**\n\n";
-            transitionTextSection += responseHeaderAttributes;
         }
         return transitionTextSection;
 }

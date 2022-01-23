@@ -39,11 +39,6 @@ meta:
 
 `/{index_name}/index`
 
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
 
 ## ثبت داده‌ها
 
@@ -448,7 +443,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -468,23 +463,68 @@ namespace MyRequest
 
 `POST /{index_name}/index`
 
-**Request Header**
+<dl>
+<strong>type(required)</strong>
+<br>
+<br>
+Value: movie
+</dl>
 
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
+<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
 
-**Request DataStructure**
+<dl>
+<strong>id(required)</strong>
+<br>
+<br>
+Value: 1
+</dl>
 
-Key | Value | TypeAttributes | Description
---- | ----- | -------------- | -----------
-type | movie | required | این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود
-id | 1 | required | شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود
-title | ماجرای نیمروز | required | عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است
-importance | 100 |  | هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است
-time | 2017-07-08 10:30:00 |  | هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است
-labels | ["هیجانی","ماجراجویی"] |  | مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند
-... | ... |  | هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد
+<p style="direction:rtl;font-weight:600;">شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+
+<dl>
+<strong>title(required)</strong>
+<br>
+<br>
+Value: ماجرای نیمروز
+</dl>
+
+<p style="direction:rtl;font-weight:600;">عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
+
+<dl>
+<strong>importance</strong>
+<br>
+<br>
+Value: 100
+</dl>
+
+<p style="direction:rtl;font-weight:600;">هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+
+<dl>
+<strong>time</strong>
+<br>
+<br>
+Value: 2017-07-08 10:30:00
+</dl>
+
+<p style="direction:rtl;font-weight:600;">هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+
+<dl>
+<strong>labels</strong>
+<br>
+<br>
+Value: [object Object],[object Object]
+</dl>
+
+<p style="direction:rtl;font-weight:600;">مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
+
+<dl>
+<strong>...</strong>
+<br>
+<br>
+Value: ...
+</dl>
+
+<p style="direction:rtl;font-weight:600;">هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
 
 ## ویرایش داده‌ها
 
@@ -679,7 +719,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -696,12 +736,6 @@ namespace MyRequest
 </div>
 
 `PUT /{index_name}/index`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 
 ## حذف داده‌ها
 
@@ -878,7 +912,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -896,28 +930,12 @@ namespace MyRequest
 
 `DELETE /{index_name}/index`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # ‌
 
 # جستجوی اسناد
 
 `/{index_name}/{types}/query{?fields,text,size,from}`
 
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie|person | required
-string | عبارت مورد جستجو | text | نیم‌روز | required
-string | فهرست ویژگی‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | fields | title|director | optional
-number | تعداد نتایج در پاسخ | size | 10 | optional
-number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | optional
 
 ## جستجو
 
@@ -1058,7 +1076,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1106,15 +1124,6 @@ namespace MyRequest
 
 `/{index_name}/{types}/complete{?text,size,from}`
 
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | person | required
-string | عبارت مورد جستجو | text | ابراهیم حا | required
-number | تعداد نتایج در پاسخ | size | 10 | optional
-number | نقطه شروع برای صفحه‌بندی نتایج | from | 0 | optional
 
 ## جستجوی در لحظه
 
@@ -1255,7 +1264,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1293,13 +1302,6 @@ namespace MyRequest
 
 `/{index_name}/{types}/suggest{?text}`
 
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
-string | عبارت مورد جستجو | text | ن | required
 
 ## پیشنهاد جستجو
 
@@ -1440,7 +1442,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1465,12 +1467,6 @@ namespace MyRequest
 
 `/{index_name}/{types}/similars`
 
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
 
 ## اسناد مشابه
 
@@ -1629,7 +1625,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1643,22 +1639,10 @@ namespace MyRequest
 
 `POST /{index_name}/{types}/similars`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # ‌
 
 `/{index_name}/{types}/sources`
 
-**URI Parameters**
-
-Title | Description | Key | value | typeAttributes
------ | ----------- | --- | ----- | --------------
-string | شناسه نمایه | index_name | baaz | required
-string | فهرست دسته‌ها که با نویسه خط (_-_) به هم متصل شده‌اند | types | movie | required
 
 ## اسناد منبع
 
@@ -1817,7 +1801,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1843,10 +1827,4 @@ namespace MyRequest
 </div>
 
 `POST /{index_name}/{types}/sources`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 

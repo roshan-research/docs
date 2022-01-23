@@ -65,7 +65,8 @@ function CreateNewParsedApibFromDrafterParser(apiElement){
         }
     }
     return newParsedApib;
-};
+}
+
 function getResourceInfo(resourceJson){
     var resourceInfo={};
     resourceInfo["title"] = resourceJson.meta.title.content;
@@ -105,7 +106,8 @@ function getResourceInfo(resourceJson){
         }
     }
     return resourceInfo;
-};
+}
+
 function getTransitionInfo(transitionJson) {
     var transitionInfo = {};
     transitionInfo["title"] = transitionJson.meta.title.content;

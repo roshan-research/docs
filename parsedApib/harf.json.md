@@ -39,6 +39,7 @@ meta:
 
 `/api/transcribe_files/`
 
+
 ## نمونه
 
 > Request
@@ -208,7 +209,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -223,10 +224,4 @@ namespace MyRequest
 > curl -X POST --header "Authorization: Token TOKEN_KEY" -F "media=@test.mp3" http://harf.roshan-ai.ir/api/transcribe_files/
 
 `POST /api/transcribe_files/`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 

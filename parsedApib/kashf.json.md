@@ -35,6 +35,7 @@ meta:
 
 `/api/tag_texts/`
 
+
 ## نمونه
 
 > Request
@@ -216,7 +217,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -247,15 +248,10 @@ namespace MyRequest
 
 `POST /api/tag_texts/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # تحلیل تصویر
 
 `/api/tag_images/`
+
 
 ## نمونه
 
@@ -438,7 +434,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -475,15 +471,10 @@ namespace MyRequest
 
 `POST /api/tag_images/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # تحلیل فریم‌های ویدئو
 
 `/api/tag_video_frames/`
+
 
 ## نمونه
 
@@ -678,7 +669,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -727,15 +718,10 @@ namespace MyRequest
 
 `POST /api/tag_video_frames/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # آموزش مدل
 
 `/api/train_dataset/`
+
 
 ## نمونه
 
@@ -894,7 +880,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -907,15 +893,10 @@ namespace MyRequest
 
 `POST /api/train_dataset/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # وضعیت داده‌ها
 
 `/api/dataset_info/`
+
 
 ## نمونه
 
@@ -1080,7 +1061,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1090,15 +1071,10 @@ namespace MyRequest
 
 `POST /api/dataset_info/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # گزارش برچسب متن
 
 `/api/report_text_tags/`
+
 
 ## نمونه
 
@@ -1281,7 +1257,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1296,15 +1272,10 @@ namespace MyRequest
 
 `POST /api/report_text_tags/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # گزارش برچسب تصویر
 
 `/api/report_image_tags/`
+
 
 ## نمونه
 
@@ -1487,7 +1458,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1502,15 +1473,10 @@ namespace MyRequest
 
 `POST /api/report_image_tags/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # ایجاد برچسب
 
 `/api/create_tag/`
+
 
 ## نمونه
 
@@ -1675,7 +1641,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1689,15 +1655,10 @@ namespace MyRequest
 
 `POST /api/create_tag/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # ویرایش برچسب
 
 `/api/update_tag/`
+
 
 ## نمونه
 
@@ -1874,7 +1835,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1888,15 +1849,10 @@ namespace MyRequest
 
 `POST /api/update_tag/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # حذف برچسب
 
 `/api/delete_tag/`
+
 
 ## نمونه
 
@@ -2055,7 +2011,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -2067,10 +2023,4 @@ namespace MyRequest
 ```
 
 `POST /api/delete_tag/`
-
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
 

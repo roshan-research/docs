@@ -33,6 +33,7 @@ meta:
 
 `/api/read_document/`
 
+
 ## نمونه ارسال با لینک سند
 
 > Request
@@ -214,7 +215,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -224,21 +225,50 @@ namespace MyRequest
 
 `POST /api/read_document/`
 
-**Request Header**
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: URL
+</dl>
 
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
+<p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
 
-**Request DataStructure**
+<dl>
+<strong>type</strong>
+<br>
+<br>
+Value: general
+</dl>
 
-Key | Value | TypeAttributes | Description
---- | ----- | -------------- | -----------
-document_url | URL | required | آدرس سند ورودی
-type | general |  | این ویژگی نوع سند را مشخص می‌کند
-fix_orientation | true |  | در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
-word_positions | true |  | در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
-wait | true |  | اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
+
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
 
 ## نمونه ارسال مستقیم سند
 
@@ -385,7 +415,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -395,27 +425,57 @@ namespace MyRequest
 
 `POST /api/read_document/`
 
-**Request Header**
+<dl>
+<strong>document(required)</strong>
+<br>
+<br>
+Value: undefined
+</dl>
 
-Content-Type | Authorization
------------- | -------------
-multipart/form-data; boundary={boundary value} | Token TOKEN_KEY
+<p style="direction:rtl;font-weight:600;">فایل سند ورودی</p>
 
-**Request DataStructure**
+<dl>
+<strong>type</strong>
+<br>
+<br>
+Value: general
+</dl>
 
-Key | Value | TypeAttributes | Description
---- | ----- | -------------- | -----------
-document | undefined | required | فایل سند ورودی
-type | general |  | این ویژگی نوع سند را مشخص می‌کند
-fix_orientation | true |  | در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
-word_positions | true |  | در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
-wait | true |  | اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
+
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
 
 # خواندن صفحه
 
 این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
 `/api/read_pages/`
+
 
 ## نمونه
 
@@ -604,7 +664,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -614,27 +674,57 @@ namespace MyRequest
 
 `POST /api/read_pages/`
 
-**Request Header**
+<dl>
+<strong>page_urls(required)</strong>
+<br>
+<br>
+Value: [object Object],[object Object],[object Object]
+</dl>
 
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
+<p style="direction:rtl;font-weight:600;">آدرس صفحات ورودی</p>
 
-**Request DataStructure**
+<dl>
+<strong>type</strong>
+<br>
+<br>
+Value: general
+</dl>
 
-Key | Value | TypeAttributes | Description
---- | ----- | -------------- | -----------
-page_urls | ["URL1","URL2","..."] | required | آدرس صفحات ورودی
-type | general |  | این ویژگی نوع سند را مشخص می‌کند
-fix_orientation | true |  | در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
-word_positions | true |  | در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
-wait | true |  | اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
+
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: true
+</dl>
+
+<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
 
 # وضعیت سند
 
 این تابع برای هر کدام از سندهای ورودی مشخص می‌کند که چه تعداد از صفحات آنها تحلیل شده است.
 
 `/api/document_status/`
+
 
 ## نمونه
 
@@ -805,7 +895,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -821,17 +911,12 @@ namespace MyRequest
 
 `POST /api/document_status/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # صفحات سند
 
 نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.
 
 `/api/document_pages/`
+
 
 ## نمونه
 
@@ -990,7 +1075,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1006,17 +1091,12 @@ namespace MyRequest
 
 `POST /api/document_pages/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # دریافت فایل ورد
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.
 
 `/api/download_word/`
+
 
 ## نمونه
 
@@ -1175,7 +1255,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 ```json
 ""
@@ -1183,23 +1263,12 @@ namespace MyRequest
 
 `POST /api/download_word/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
-**Response Header**
-
-Content-Type | Content-Disposition
------------- | -------------------
-application/msword | attachment; filename=Alefba.docx
-
 # دریافت فایل اکسل
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.
 
 `/api/download_excel/`
+
 
 ## نمونه
 
@@ -1358,7 +1427,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 ```json
 ""
@@ -1366,23 +1435,12 @@ namespace MyRequest
 
 `POST /api/download_excel/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
-**Response Header**
-
-Content-Type | Content-Disposition
------------- | -------------------
-application/msword | attachment; filename=Alefba.xlsx
-
 # دریافت فایل قابل جستجو
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.
 
 `/api/download_pdf/`
+
 
 ## نمونه
 
@@ -1553,7 +1611,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 ```json
 ""
@@ -1561,23 +1619,12 @@ namespace MyRequest
 
 `POST /api/download_pdf/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
-**Response Header**
-
-Content-Type | Content-Disposition
------------- | -------------------
-application/pdf | attachment; filename=Alefba.pdf
-
 # حذف سند
 
 با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.
 
 `/api/delete_document/`
+
 
 ## نمونه
 
@@ -1736,7 +1783,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1748,17 +1795,12 @@ namespace MyRequest
 
 `POST /api/delete_document/`
 
-**Request Header**
-
-Content-Type | Authorization
------------- | -------------
-application/json | Token TOKEN_KEY
-
 # خواندن سند نامتقارن
 
 این قابلیت برای جلوگیری از انتظار برای تحلیل فایل قرار داده شده است. پس  از ارسال رکوئست وضعیت فایل در حال تحلیل قرار گرفته و پس اتمام تحلیل رکوئست کالبک حاوی اطلاعات فایل به آدرس وارد شده فرستاده میشود.
 
 `/api/read_document/`
+
 
 ## نمونه
 
@@ -1926,7 +1968,7 @@ namespace MyRequest
 }
 ```
 
-> Response 200
+> Response 
 
 > Content-Type: application/json
 
@@ -1938,10 +1980,4 @@ namespace MyRequest
 ```
 
 `POST /api/read_document/`
-
-**Request Header**
-
-Content-Type | Authorization | Content-Type
------------- | ------------- | ------------
-application/json | Token TOKEN_KEY | application/json
 
