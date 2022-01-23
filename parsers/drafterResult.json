@@ -677,19 +677,7 @@
             ]
         }
     ]
-}                          },
-                                                                "value": {
-                                                                    "element": "string",
-                                                                    "content": "application/json"
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            },
-                                            "content": [
-                                                {
-                                                    "element": "asset",
+}                                             "element": "asset",
                                                     "meta": {
                                                         "classes": {
                                                             "element": "array",
@@ -707,27 +695,40 @@
                                                             "content": "application/json"
                                                         }
                                                     },
-                                                    "content": "{\n    \"ids\": [1]\n}\n"
+                                                    "content": "{\n    \"dataset\": \"iran\",\n    \"state\": \"waiting\"\n}\n"
                                                 }
                                             ]
                                         }
                                     ]
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "element": "resource",
+                    "meta": {
+                        "title": {
+                            "element": "string",
+                            "content": "وضعیت داده‌ها"
+                        }
+                    },
+                    "attributes": {
+                        "href": {
+                            "element": "string",
+                            "content": "/api/dataset_info/"
+                        }
+                    },
+                    "content": [
                         {
                             "element": "transition",
                             "meta": {
                                 "title": {
                                     "element": "string",
-                                    "content": "حذف داده‌ها"
+                                    "content": "نمونه"
                                 }
                             },
                             "content": [
-                                {
-                                    "element": "copy",
-                                    "content": "<div dir=rtl>\nاین تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.\n</div>"
-                                },
                                 {
                                     "element": "httpTransaction",
                                     "content": [
@@ -736,7 +737,7 @@
                                             "attributes": {
                                                 "method": {
                                                     "element": "string",
-                                                    "content": "DELETE"
+                                                    "content": "POST"
                                                 },
                                                 "headers": {
                                                     "element": "httpHeaders",
@@ -790,7 +791,7 @@
                                                             "content": "application/json"
                                                         }
                                                     },
-                                                    "content": "{\n    \"type\": \"movie\",\n    \"ids\": [2]\n}\n"
+                                                    "content": "{\n    \"dataset\": \"iran\",\n    \"tags\": true\n}\n"
                                                 }
                                             ]
                                         },
@@ -840,7 +841,7 @@
                                                             "content": "application/json"
                                                         }
                                                     },
-                                                    "content": "{\n    \"ids\": [2]\n}\n"
+                                                    "content": "{\n  \"title\": \"لحظه\",\n  \"state\": \"trained\",\n  \"report_count\": 935,\n  \"data_count\": 2404,\n  \"evaluation\": {\n    \"recall\": 87,\n    \"precision\": 91\n  },\n  \"tags\": [\n    {\n      \"title\": \"برج میلاد\"\n      \"id\": 3,\n      \"reports\": 116,\n      \"predictions\": 156,\n      \"evaluation\": {\n        \"recall\": 80.3,\n        \"precision\": 91.4,\n        \"f1\": 86.0\n      },\n    },\n    ...\n  ]\n}\n"
                                                 }
                                             ]
                                         }
@@ -855,498 +856,13 @@
                     "meta": {
                         "title": {
                             "element": "string",
-                            "content": "‌"
+                            "content": "گزارش برچسب متن"
                         }
                     },
                     "attributes": {
                         "href": {
                             "element": "string",
-                            "content": "/{index_name}/{types}/query{?fields,text,size,from}"
-                        },
-                        "hrefVariables": {
-                            "element": "hrefVariables",
-                            "content": [
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "شناسه نمایه"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "index_name"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "baaz"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "types"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "movie|person"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "عبارت مورد جستجو"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "text"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "نیم‌روز"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "optional"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "fields"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "title|director"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "تعداد نتایج در پاسخ"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "number"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "optional"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "size"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "10"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "نقطه شروع برای صفحه‌بندی نتایج"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "number"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "optional"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "from"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "0"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "content": [
-                        {
-                            "element": "copy",
-                            "content": "# جستجوی اسناد"
-                        },
-                        {
-                            "element": "transition",
-                            "meta": {
-                                "title": {
-                                    "element": "string",
-                                    "content": "جستجو"
-                                }
-                            },
-                            "content": [
-                                {
-                                    "element": "copy",
-                                    "content": "<div dir=rtl>\nداده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.\n</div>"
-                                },
-                                {
-                                    "element": "httpTransaction",
-                                    "content": [
-                                        {
-                                            "element": "httpRequest",
-                                            "attributes": {
-                                                "method": {
-                                                    "element": "string",
-                                                    "content": "GET"
-                                                }
-                                            },
-                                            "content": []
-                                        },
-                                        {
-                                            "element": "httpResponse",
-                                            "attributes": {
-                                                "statusCode": {
-                                                    "element": "string",
-                                                    "content": "200"
-                                                },
-                                                "headers": {
-                                                    "element": "httpHeaders",
-                                                    "content": [
-                                                        {
-                                                            "element": "member",
-                                                            "content": {
-                                                                "key": {
-                                                                    "element": "string",
-                                                                    "content": "Content-Type"
-                                                                },
-                                                                "value": {
-                                                                    "element": "string",
-                                                                    "content": "application/json"
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            },
-                                            "content": [
-                                                {
-                                                    "element": "asset",
-                                                    "meta": {
-                                                        "classes": {
-                                                            "element": "array",
-                                                            "content": [
-                                                                {
-                                                                    "element": "string",
-                                                                    "content": "messageBody"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    "attributes": {
-                                                        "contentType": {
-                                                            "element": "string",
-                                                            "content": "application/json"
-                                                        }
-                                                    },
-                                                    "content": "{\n  \"didYouMean\": \"<em>نیمروز</em>\",\n  \"items\": [\n    {\n      \"type\": \"movie\",\n      \"id\": \"1\",\n      \"item\": {\n        \"title\": \"ماجرای نیمروز\",\n        \"director\": \"محمدحسین مهدویان\",\n        \"labels\": [\"هیجانی\", \"ماجراجویی\"],\n        \"actors\": [\"جواد عزتی\", \"هادی حجازی‌فر\"],\n        \"importance\": 100,\n        \"data\": {\"url\": \"https://www.filimo.com/m/czWum\"}\n      },\n      \"highlight\": {\n        \"title\": [\"ماجرای <em>نیمروز</em>\"]\n      },\n      \"_score\": 7.0999684\n    }\n  ]\n}\n"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "element": "resource",
-                    "meta": {
-                        "title": {
-                            "element": "string",
-                            "content": "‌"
-                        }
-                    },
-                    "attributes": {
-                        "href": {
-                            "element": "string",
-                            "content": "/{index_name}/{types}/complete{?text,size,from}"
-                        },
-                        "hrefVariables": {
-                            "element": "hrefVariables",
-                            "content": [
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "شناسه نمایه"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "index_name"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "baaz"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "types"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "person"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "عبارت مورد جستجو"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "text"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "ابراهیم حا"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "تعداد نتایج در پاسخ"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "number"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "optional"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "size"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "10"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "نقطه شروع برای صفحه‌بندی نتایج"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "number"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "optional"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "from"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "0"
-                                        }
-                                    }
-                                }
-                            ]
+                            "content": "/api/report_text_tags/"
                         }
                     },
                     "content": [
@@ -1355,14 +871,10 @@
                             "meta": {
                                 "title": {
                                     "element": "string",
-                                    "content": "جستجوی در لحظه"
+                                    "content": "نمونه"
                                 }
                             },
                             "content": [
-                                {
-                                    "element": "copy",
-                                    "content": "<div dir=rtl>\nتابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.\n</div>"
-                                },
                                 {
                                     "element": "httpTransaction",
                                     "content": [
@@ -1371,10 +883,63 @@
                                             "attributes": {
                                                 "method": {
                                                     "element": "string",
-                                                    "content": "GET"
+                                                    "content": "POST"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Authorization"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "Token TOKEN_KEY"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             },
-                                            "content": []
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "[\n  {\n    \"content\": \"پیشنهاد میکنم از این بخرید خیلی عالیه.\",\n    \"tag_id\": 39,\n    \"positive\": true\n  }\n]\n"
+                                                }
+                                            ]
                                         },
                                         {
                                             "element": "httpResponse",
@@ -1422,7 +987,7 @@
                                                             "content": "application/json"
                                                         }
                                                     },
-                                                    "content": "{\n  \"items\": [\n    {\n      \"type\": \"person\",\n      \"id\": \"1\",\n      \"item\": {\n        \"title\": \"ابراهیم حاتمی‌کیا\",\n        \"importance\": 1,\n        \"data\": {\"url\": \"https://www.filimo.com/crew/ابراهیم_حاتمی_کیا\"}\n      },\n      \"highlight\": {\n        \"title\": [\"<em>ابراهیم حاتمی‌کیا</em>\"]\n      },\n      \"_score\": 2.5382035\n    }\n  ]\n}\n"
+                                                    "content": "[\n  {\n    \"report\": \"[[39,true]]\",\n    \"id\": 1211592\n  }\n]\n"
                                                 }
                                             ]
                                         }
@@ -1437,120 +1002,13 @@
                     "meta": {
                         "title": {
                             "element": "string",
-                            "content": "‌"
+                            "content": "گزارش برچسب تصویر"
                         }
                     },
                     "attributes": {
                         "href": {
                             "element": "string",
-                            "content": "/{index_name}/{types}/suggest{?text}"
-                        },
-                        "hrefVariables": {
-                            "element": "hrefVariables",
-                            "content": [
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "شناسه نمایه"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "index_name"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "baaz"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "types"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "movie"
-                                        }
-                                    }
-                                },
-                                {
-                                    "element": "member",
-                                    "meta": {
-                                        "description": {
-                                            "element": "string",
-                                            "content": "عبارت مورد جستجو"
-                                        },
-                                        "title": {
-                                            "element": "string",
-                                            "content": "string"
-                                        }
-                                    },
-                                    "attributes": {
-                                        "typeAttributes": {
-                                            "element": "array",
-                                            "content": [
-                                                {
-                                                    "element": "string",
-                                                    "content": "required"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "content": {
-                                        "key": {
-                                            "element": "string",
-                                            "content": "text"
-                                        },
-                                        "value": {
-                                            "element": "string",
-                                            "content": "ن"
-                                        }
-                                    }
-                                }
-                            ]
+                            "content": "/api/report_image_tags/"
                         }
                     },
                     "content": [
@@ -1559,14 +1017,10 @@
                             "meta": {
                                 "title": {
                                     "element": "string",
-                                    "content": "پیشنهاد جستجو"
+                                    "content": "نمونه"
                                 }
                             },
                             "content": [
-                                {
-                                    "element": "copy",
-                                    "content": "<div dir=rtl>\nوقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.\n</div>"
-                                },
                                 {
                                     "element": "httpTransaction",
                                     "content": [
@@ -1575,10 +1029,63 @@
                                             "attributes": {
                                                 "method": {
                                                     "element": "string",
-                                                    "content": "GET"
+                                                    "content": "POST"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Authorization"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "Token TOKEN_KEY"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             },
-                                            "content": []
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "[\n  {\n    \"image_url\": \"https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg\",\n    \"tag_id\": 3,\n    \"positive\": true\n  }\n]\n"
+                                                }
+                                            ]
                                         },
                                         {
                                             "element": "httpResponse",
@@ -1626,7 +1133,7 @@
                                                             "content": "application/json"
                                                         }
                                                     },
-                                                    "content": "{\n  \"items\": [\n    {\n      \"text\": \"نیم‌روز\",\n      \"count\": 2\n    }\n  ]\n}\n"
+                                                    "content": "[\n  {\n    \"report\": \"[[3,true]]\",\n    \"id\": 1211593\n  }\n]\n"
                                                 }
                                             ]
                                         }
@@ -1641,15 +1148,443 @@
                     "meta": {
                         "title": {
                             "element": "string",
-                            "content": "‌"
+                            "content": "ایجاد برچسب"
                         }
                     },
                     "attributes": {
                         "href": {
                             "element": "string",
-                            "content": "/{index_name}/{types}/similars"
-                        },
-                        "hrefVariables": {
+                            "content": "/api/create_tag/"
+                        }
+                    },
+                    "content": [
+                        {
+                            "element": "transition",
+                            "meta": {
+                                "title": {
+                                    "element": "string",
+                                    "content": "نمونه"
+                                }
+                            },
+                            "content": [
+                                {
+                                    "element": "httpTransaction",
+                                    "content": [
+                                        {
+                                            "element": "httpRequest",
+                                            "attributes": {
+                                                "method": {
+                                                    "element": "string",
+                                                    "content": "POST"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Authorization"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "Token TOKEN_KEY"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "{\n  \"dataset\": \"iran\",\n  \"title\": \"New Place\"\n}\n"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "element": "httpResponse",
+                                            "attributes": {
+                                                "statusCode": {
+                                                    "element": "string",
+                                                    "content": "200"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "{\n  \"title\": \"New Place\",\n  \"tag_id\": 111111111,\n  \"active\": true\n}\n"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "element": "resource",
+                    "meta": {
+                        "title": {
+                            "element": "string",
+                            "content": "ویرایش برچسب"
+                        }
+                    },
+                    "attributes": {
+                        "href": {
+                            "element": "string",
+                            "content": "/api/update_tag/"
+                        }
+                    },
+                    "content": [
+                        {
+                            "element": "transition",
+                            "meta": {
+                                "title": {
+                                    "element": "string",
+                                    "content": "نمونه"
+                                }
+                            },
+                            "content": [
+                                {
+                                    "element": "httpTransaction",
+                                    "content": [
+                                        {
+                                            "element": "httpRequest",
+                                            "attributes": {
+                                                "method": {
+                                                    "element": "string",
+                                                    "content": "POST"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Authorization"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "Token TOKEN_KEY"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "{\n  \"dataset\": \"iran\",\n  \"tag_id\": 111111111,\n  \"title\": \"Old Place\",\n  \"active\": true\n}\n"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "element": "httpResponse",
+                                            "attributes": {
+                                                "statusCode": {
+                                                    "element": "string",
+                                                    "content": "200"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "{\n  \"title\": \"Old Place\",\n  \"tag_id\": 111111111,\n  \"active\": true\n}\n"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "element": "resource",
+                    "meta": {
+                        "title": {
+                            "element": "string",
+                            "content": "حذف برچسب"
+                        }
+                    },
+                    "attributes": {
+                        "href": {
+                            "element": "string",
+                            "content": "/api/delete_tag/"
+                        }
+                    },
+                    "content": [
+                        {
+                            "element": "transition",
+                            "meta": {
+                                "title": {
+                                    "element": "string",
+                                    "content": "نمونه"
+                                }
+                            },
+                            "content": [
+                                {
+                                    "element": "httpTransaction",
+                                    "content": [
+                                        {
+                                            "element": "httpRequest",
+                                            "attributes": {
+                                                "method": {
+                                                    "element": "string",
+                                                    "content": "POST"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Authorization"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "Token TOKEN_KEY"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "{\n  \"tag_id\": 111111111\n}\n"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "element": "httpResponse",
+                                            "attributes": {
+                                                "statusCode": {
+                                                    "element": "string",
+                                                    "content": "200"
+                                                },
+                                                "headers": {
+                                                    "element": "httpHeaders",
+                                                    "content": [
+                                                        {
+                                                            "element": "member",
+                                                            "content": {
+                                                                "key": {
+                                                                    "element": "string",
+                                                                    "content": "Content-Type"
+                                                                },
+                                                                "value": {
+                                                                    "element": "string",
+                                                                    "content": "application/json"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "element": "asset",
+                                                    "meta": {
+                                                        "classes": {
+                                                            "element": "array",
+                                                            "content": [
+                                                                {
+                                                                    "element": "string",
+                                                                    "content": "messageBody"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "attributes": {
+                                                        "contentType": {
+                                                            "element": "string",
+                                                            "content": "application/json"
+                                                        }
+                                                    },
+                                                    "content": "{\n  \"dataset\": \"iran\",\n  \"deleted_reports\": 0\n}\n"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}            "hrefVariables": {
                             "element": "hrefVariables",
                             "content": [
                                 {
@@ -2085,68 +2020,7 @@
             ]
         }
     ]
-}                                             "content": "Authorization"
-                                                                },
-                                                                "value": {
-                                                                    "element": "string",
-                                                                    "content": "Token TOKEN_KEY"
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            },
-                                            "content": [
-                                                {
-                                                    "element": "asset",
-                                                    "meta": {
-                                                        "classes": {
-                                                            "element": "array",
-                                                            "content": [
-                                                                {
-                                                                    "element": "string",
-                                                                    "content": "messageBody"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    "attributes": {
-                                                        "contentType": {
-                                                            "element": "string",
-                                                            "content": "application/json"
-                                                        }
-                                                    },
-                                                    "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\"\n}\n"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "element": "httpResponse",
-                                            "attributes": {
-                                                "statusCode": {
-                                                    "element": "string",
-                                                    "content": "200"
-                                                },
-                                                "headers": {
-                                                    "element": "httpHeaders",
-                                                    "content": [
-                                                        {
-                                                            "element": "member",
-                                                            "content": {
-                                                                "key": {
-                                                                    "element": "string",
-                                                                    "content": "Content-Type"
-                                                                },
-                                                                "value": {
-                                                                    "element": "string",
-                                                                    "content": "application/msword"
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "element": "member",
-                                                            "content": {
-                                                                "key": {
+}                                                            "key": {
                                                                     "element": "string",
                                                                     "content": "Content-Disposition"
                                                                 },
@@ -2780,70 +2654,6 @@
             "attributes": {
                 "code": {
                     "element": "number",
-                    "content": 13
-                },
-                "sourceMap": {
-                    "element": "array",
-                    "content": [
-                        {
-                            "element": "sourceMap",
-                            "content": [
-                                {
-                                    "element": "array",
-                                    "content": [
-                                        {
-                                            "element": "number",
-                                            "attributes": {
-                                                "line": {
-                                                    "element": "number",
-                                                    "content": 109
-                                                },
-                                                "column": {
-                                                    "element": "number",
-                                                    "content": 13
-                                                }
-                                            },
-                                            "content": 4649
-                                        },
-                                        {
-                                            "element": "number",
-                                            "attributes": {
-                                                "line": {
-                                                    "element": "number",
-                                                    "content": 109
-                                                },
-                                                "column": {
-                                                    "element": "number",
-                                                    "content": 71
-                                                }
-                                            },
-                                            "content": 59
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            "content": "duplicate definition of 'Content-Type' header"
-        },
-        {
-            "element": "annotation",
-            "meta": {
-                "classes": {
-                    "element": "array",
-                    "content": [
-                        {
-                            "element": "string",
-                            "content": "warning"
-                        }
-                    ]
-                }
-            },
-            "attributes": {
-                "code": {
-                    "element": "number",
                     "content": 6
                 },
                 "sourceMap": {
@@ -2860,21 +2670,21 @@
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 113
+                                                    "content": 108
                                                 },
                                                 "column": {
                                                     "element": "number",
                                                     "content": 11
                                                 }
                                             },
-                                            "content": 4738
+                                            "content": 4343
                                         },
                                         {
                                             "element": "number",
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 113
+                                                    "content": 108
                                                 },
                                                 "column": {
                                                     "element": "number",
@@ -2924,21 +2734,21 @@
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 185
+                                                    "content": 98
                                                 },
                                                 "column": {
                                                     "element": "number",
                                                     "content": 1
                                                 }
                                             },
-                                            "content": 7994
+                                            "content": 4161
                                         },
                                         {
                                             "element": "number",
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 186
+                                                    "content": 99
                                                 },
                                                 "column": {
                                                     "element": "number",
@@ -2954,7 +2764,7 @@
                     ]
                 }
             },
-            "content": "the resource '/api/read_pages/' is already defined"
+            "content": "action with method 'POST' already defined for resource '/api/read_document/'"
         },
         {
             "element": "annotation",
@@ -2988,21 +2798,21 @@
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 421
+                                                    "content": 416
                                                 },
                                                 "column": {
                                                     "element": "number",
                                                     "content": 13
                                                 }
                                             },
-                                            "content": 14895
+                                            "content": 14500
                                         },
                                         {
                                             "element": "number",
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 421
+                                                    "content": 416
                                                 },
                                                 "column": {
                                                     "element": "number",
@@ -3052,21 +2862,21 @@
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 410
+                                                    "content": 405
                                                 },
                                                 "column": {
                                                     "element": "number",
                                                     "content": 1
                                                 }
                                             },
-                                            "content": 14526
+                                            "content": 14131
                                         },
                                         {
                                             "element": "number",
                                             "attributes": {
                                                 "line": {
                                                     "element": "number",
-                                                    "content": 411
+                                                    "content": 406
                                                 },
                                                 "column": {
                                                     "element": "number",
