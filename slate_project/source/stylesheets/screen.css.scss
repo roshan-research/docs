@@ -783,3 +783,36 @@ p,a,h1{
 html {
   scroll-behavior: smooth;
 }
+
+summary {
+  background-color: #fd8b4e;
+  width: 5vw;
+  border-radius: 5px;
+  text-align: center;
+}
+
+details{
+  p{
+    border-radius: 5px;
+    text-align: center;
+    width: 10vw;
+    background-color: rgb(90, 235, 227);
+  }
+  
+  p + p {
+    border-radius: 5px;
+    text-align: center;
+    width: 10vw;
+    background-color: wheat;
+  }
+}
+
+summary:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #faa578;
+}
+
+summary:active{
+  transform: scale(0.9);
+}

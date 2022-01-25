@@ -112,6 +112,7 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
 <summary>
 ${data.value}
 </summary>
+<br>
 `;
                     data.enumaration.forEach((element) => {
                         let temp = `\n<p>
