@@ -248,7 +248,7 @@ function createPythonText(requestMessageBodyContent,requestHeaderAttributes,reso
 headers = {'Authorization': 'Token TOKEN_KEY',}
 files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
-print(response)\`\`\`\n\n`;
+print(response)\n\`\`\`\n\n`;
     }
     let pythonText = "```python\n";
     pythonText +=

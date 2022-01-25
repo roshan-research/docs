@@ -2,23 +2,23 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell: CURL
-  - java: JAVA
-  - plaintext: RAW
-  - python: PYTHON
-  - php: PHP
-  - csharp: C#
+- shell: CURL
+- java: JAVA
+- plaintext: RAW
+- python: PYTHON
+- php: PHP
+- csharp: C#
 
 includes:
-  - errors
+- errors
 
 search: true
 
 code_clipboard: true
 
 meta:
-  - name: description
-    content: Documentation for the الفبا API
+- name: description
+  content: Documentation for the الفبا API
 ---
 
 # الفبا
@@ -219,7 +219,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
 {
@@ -288,10 +288,12 @@ Value: URL
 <strong>type</strong>
 <br>
 <br>
-Value: <details>
+Value: 
+<details>
 <summary>
 general
 </summary>
+<br>
 
 <p>
 general
@@ -381,7 +383,8 @@ import requests
 headers = {'Authorization': 'Token TOKEN_KEY',}
 files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
-print(response)```
+print(response)
+```
 
 ```java
 import java.io.*;
@@ -545,7 +548,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
     {
@@ -620,6 +623,7 @@ Value:
 <summary>
 general
 </summary>
+<br>
 
 <p>
 general
@@ -886,7 +890,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
 [{
@@ -935,6 +939,7 @@ Value:
 <summary>
 general
 </summary>
+<br>
 
 <p>
 general
@@ -1177,7 +1182,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
 {
@@ -1354,7 +1359,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
 {
@@ -1531,7 +1536,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 `POST /api/download_word/`
 
@@ -1697,7 +1702,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 `POST /api/download_excel/`
 
@@ -1881,7 +1886,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 `POST /api/download_pdf/`
 
@@ -2047,7 +2052,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
 {
@@ -2229,7 +2234,7 @@ namespace MyRequest
 }
 ```
 
-> Response 
+> Response
 
 ```json
 {
@@ -2240,3 +2245,4 @@ namespace MyRequest
 ```
 
 `POST /api/read_document/`
+
