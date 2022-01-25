@@ -39,6 +39,7 @@ html, body {
   transition: left 0.3s ease-in-out;
 
   overflow-y: auto;
+  transition: 0.5s;
   overflow-x: hidden;
   position: fixed;
   z-index: 80;
@@ -132,8 +133,9 @@ html, body {
   ul, li {
     list-style: none;
     margin: 0;
+    text-align: justify;
     padding: 0;
-    line-height: 28px;
+    line-height: 30px;
   }
 
   li {
@@ -148,28 +150,24 @@ html, body {
   .toc-link.active {
     background-color: #FF6200;
     border-radius: 5px 0 0 5px;
-    width: 80%;
     color: $nav-active-text;
   }
 
   .toc-link{
     border-radius: 5px 0 0 5px;
-    width: 80%;
     height: 37px;
-    font-size: 16px;
+    font-size: 13px;
   }
 
   @media (max-width: $phone-width) {
     .toc-link.active {
       background-color: $nav-active-bg;
       border-radius: 0 5px 5px 0;
-      width: 80%;
       color: $nav-active-text;
     }
   
     .toc-link{
       border-radius: 0 5px 5px 0;
-      width: 80%;
       font-size: 15px;
     }
   }
@@ -178,7 +176,6 @@ html, body {
   .toc-link.active-parent {
     background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
-    width: 65%;
   }
 
   .toc-list-h2 {
@@ -815,4 +812,9 @@ summary:hover{
 
 summary:active{
   transform: scale(0.9);
+}
+
+
+li {
+  width: 93%;
 }
