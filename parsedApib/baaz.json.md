@@ -37,8 +37,6 @@ meta:
 برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
 </div>
 
-`/{index_name}/index`
-
 
 ## ثبت داده‌ها
 
@@ -445,16 +443,11 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "ids": [
-        1,
-        2,
-        1
-    ]
+    "ids": [1, 2, 1]
 }
+
 ```
 
 <div dir=rtl>
@@ -512,7 +505,7 @@ Value: 2017-07-08 10:30:00
 <strong>labels</strong>
 <br>
 <br>
-Value: [object Object],[object Object]
+Value: [هیجانی, ماجراجویی, ]
 </dl>
 
 <p style="direction:rtl;font-weight:600;">مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
@@ -721,14 +714,11 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "ids": [
-        1
-    ]
+    "ids": [1]
 }
+
 ```
 
 <div dir=rtl>
@@ -914,14 +904,11 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "ids": [
-        2
-    ]
+    "ids": [2]
 }
+
 ```
 
 <div dir=rtl>
@@ -933,8 +920,6 @@ namespace MyRequest
 # ‌
 
 # جستجوی اسناد
-
-`/{index_name}/{types}/query{?fields,text,size,from}`
 
 
 ## جستجو
@@ -1078,40 +1063,29 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "didYouMean": "<em>نیمروز</em>",
-    "items": [
-        {
-            "type": "movie",
-            "id": "1",
-            "item": {
-                "title": "ماجرای نیمروز",
-                "director": "محمدحسین مهدویان",
-                "labels": [
-                    "هیجانی",
-                    "ماجراجویی"
-                ],
-                "actors": [
-                    "جواد عزتی",
-                    "هادی حجازی‌فر"
-                ],
-                "importance": 100,
-                "data": {
-                    "url": "https://www.filimo.com/m/czWum"
-                }
-            },
-            "highlight": {
-                "title": [
-                    "ماجرای <em>نیمروز</em>"
-                ]
-            },
-            "_score": 7.0999684
-        }
-    ]
+  "didYouMean": "<em>نیمروز</em>",
+  "items": [
+    {
+      "type": "movie",
+      "id": "1",
+      "item": {
+        "title": "ماجرای نیمروز",
+        "director": "محمدحسین مهدویان",
+        "labels": ["هیجانی", "ماجراجویی"],
+        "actors": ["جواد عزتی", "هادی حجازی‌فر"],
+        "importance": 100,
+        "data": {"url": "https://www.filimo.com/m/czWum"}
+      },
+      "highlight": {
+        "title": ["ماجرای <em>نیمروز</em>"]
+      },
+      "_score": 7.0999684
+    }
+  ]
 }
+
 ```
 
 <div dir=rtl>
@@ -1121,8 +1095,6 @@ namespace MyRequest
 `GET /{index_name}/{types}/query{?fields,text,size,from}`
 
 # ‌
-
-`/{index_name}/{types}/complete{?text,size,from}`
 
 
 ## جستجوی در لحظه
@@ -1266,30 +1238,25 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "items": [
-        {
-            "type": "person",
-            "id": "1",
-            "item": {
-                "title": "ابراهیم حاتمی‌کیا",
-                "importance": 1,
-                "data": {
-                    "url": "https://www.filimo.com/crew/ابراهیم_حاتمی_کیا"
-                }
-            },
-            "highlight": {
-                "title": [
-                    "<em>ابراهیم حاتمی‌کیا</em>"
-                ]
-            },
-            "_score": 2.5382035
-        }
-    ]
+  "items": [
+    {
+      "type": "person",
+      "id": "1",
+      "item": {
+        "title": "ابراهیم حاتمی‌کیا",
+        "importance": 1,
+        "data": {"url": "https://www.filimo.com/crew/ابراهیم_حاتمی_کیا"}
+      },
+      "highlight": {
+        "title": ["<em>ابراهیم حاتمی‌کیا</em>"]
+      },
+      "_score": 2.5382035
+    }
+  ]
 }
+
 ```
 
 <div dir=rtl>
@@ -1299,8 +1266,6 @@ namespace MyRequest
 `GET /{index_name}/{types}/complete{?text,size,from}`
 
 # ‌
-
-`/{index_name}/{types}/suggest{?text}`
 
 
 ## پیشنهاد جستجو
@@ -1444,17 +1409,16 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "items": [
-        {
-            "text": "نیم‌روز",
-            "count": 2
-        }
-    ]
+  "items": [
+    {
+      "text": "نیم‌روز",
+      "count": 2
+    }
+  ]
 }
+
 ```
 
 <div dir=rtl>
@@ -1464,8 +1428,6 @@ namespace MyRequest
 `GET /{index_name}/{types}/suggest{?text}`
 
 # ‌
-
-`/{index_name}/{types}/similars`
 
 
 ## اسناد مشابه
@@ -1627,10 +1589,18 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
-"{\n  \"items\": [\n    {\n      \"title\": \"پرویز\",\n      \"similarity\": 100,\n      ...\n    },\n    ...\n  ]\n}\n"
+{
+  "items": [
+    {
+      "title": "پرویز",
+      "similarity": 100,
+      ...
+    },
+    ...
+  ]
+}
+
 ```
 
 <div dir=rtl>
@@ -1640,8 +1610,6 @@ namespace MyRequest
 `POST /{index_name}/{types}/similars`
 
 # ‌
-
-`/{index_name}/{types}/sources`
 
 
 ## اسناد منبع
@@ -1803,23 +1771,22 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "items": [
-        {
-            "similarity": 100,
-            "src_link": "/baaz/movie/view?id=3",
-            "src_title": "شهر موشها",
-            "susp_from": 0,
-            "susp_to": 247,
-            "src_from": 0,
-            "src_to": 247,
-            "src_text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-        }
-    ]
+  "items": [
+    {
+      "similarity": 100,
+      "src_link": "/baaz/movie/view?id=3",
+      "src_title": "شهر موشها",
+      "susp_from": 0,
+      "susp_to": 247,
+      "src_from": 0,
+      "src_to": 247,
+      "src_text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
+    }
+  ]
 }
+
 ```
 
 <div dir=rtl>

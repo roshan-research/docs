@@ -73,7 +73,6 @@ function writeResourceSection(resourceJson,hostValue){
         resourceTitle = resourceJson.title;
         OneResourceText += "# " + resourceTitle + "\n\n";
         OneResourceText += resourceSectionText;
-        OneResourceText += "`" + resourceHref + "`\n\n";
         if (attributeText !== null){
             OneResourceText += attributeText;
         }
@@ -101,6 +100,34 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
         if (value.type === "dataStructure"){
             value.members.forEach((data) => {
                 let keyString = data.key ;
+                let value;
+                if (data.valueType === "array") {
+                    value = "[";
+                    data.value.forEach((element) => {
+                        value += element.content + ", ";
+                    })
+                    value += "]";
+                } else if(data.valueType === "enum") {
+                    value = `\n<details>
+<summary>
+${data.value}
+</summary>
+`;
+                    data.enumaration.forEach((element) => {
+                        let temp = `\n<p>
+${element.name}
+</p>
+<p>
+${element.meta}
+</p>
+<br>
+`;
+                        value += temp;
+                    })
+                    value += '\n</details>\n\n';
+                } else {
+                    value = data.value;
+                }
                 if (data.typeAttributes[0] === 'required') {
                     keyString += "(required)";
                 }
@@ -108,7 +135,7 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
 <strong>${keyString}</strong>
 <br>
 <br>
-Value: ${data.value}
+Value: ${value}
 </dl>
 
 <p style="direction:rtl;font-weight:600;">${data.description}</p>\n\n`;
@@ -149,17 +176,11 @@ Value: ${data.value}
     oneTransition.httpResponse.sections.forEach((value) => {
         if (value.type === "messageBody"){
             responseMessageBody += "contentType: " + value.contentType;
-            try{
-                responseMessageBodyContent = JSON.parse(value.content);
-            }
-            catch (e){
-                responseMessageBodyContent = value.content;
-            }
+            responseMessageBodyContent = value.content;
         }
-    })
 
+    })
     requestMessageBodyContent = JSON.stringify(requestMessageBodyContent,null,4);
-    responseMessageBodyContent = JSON.stringify(responseMessageBodyContent,null,4);
 
     let RawText = "```plaintext\n";
     RawText += requestMessageBodyContent + "\n";
@@ -170,9 +191,13 @@ Value: ${data.value}
     let phpText = createPhpText(resourceUrl,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
     let csharpText = createCsharpText(resourceUrl,oneTransition.httpRequest.headerAttributes,httpMethod,requestMessageBodyContent);
 
-    let jsonText = "```json\n";
-    jsonText += responseMessageBodyContent + "\n";
-    jsonText += "```\n\n";
+    let jsonText = "";
+
+    if(responseMessageBodyContent !== "") {
+        jsonText += "```json\n";
+        jsonText += responseMessageBodyContent + "\n";
+        jsonText += "```\n\n";
+    }
 
         transitionTextSection += "## " + transitionTitle + "\n\n";
         transitionTextSection += "> Request\n\n";
@@ -197,6 +222,12 @@ Value: ${data.value}
         return transitionTextSection;
 }
 function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyContent,resourceUrl){
+    if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
+        return `\`\`\`shell\ncurl -X
+      POST --header "Authorization: Token TOKEN_KEY"
+      -F "document=@example.pdf"
+      http://alefba.roshan-ai.ir/api/read_document\n\`\`\`\n\n`;
+    }
     let curlText = "```shell\n";
     curlText += "curl  --request " + httpMethod +  " \\ \n";
     curlText += "     ";
@@ -210,6 +241,14 @@ function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyCon
     return curlText;
 }
 function createPythonText(requestMessageBodyContent,requestHeaderAttributes,resourceUrl){
+    if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
+        return `\`\`\`python\nimport requests
+
+headers = {'Authorization': 'Token TOKEN_KEY',}
+files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
+print(response)\`\`\`\n\n`;
+    }
     let pythonText = "```python\n";
     pythonText +=
     "from urllib2 import Request, urlopen\n" +
@@ -233,6 +272,50 @@ function createPythonText(requestMessageBodyContent,requestHeaderAttributes,reso
     return pythonText;
 }
 function createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,requestHeaderAttributes){
+    if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
+        return `\`\`\`java\nimport java.io.*;
+import java.net.*;
+import java.nio.file.Files;
+
+public class MultiPartRequest {
+  public static void main(String[] args) throws IOException {
+
+    String url = "https://alefba.roshan-ai.ir/api/read_document/";
+    File textFile = new File("YOUR FILE PATH");
+    String boundary = Long.toHexString(System.currentTimeMillis());
+    String CRLF = "\\r\\n";
+
+    URLConnection connection = new URL(url).openConnection();
+    connection.setDoOutput(true);
+    connection.setRequestProperty("accept", "*/*");
+    connection.setRequestProperty("Connection", "close");
+    connection.setRequestProperty("Authorization", "Token TOKEN_KEY");
+    connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+
+    try (
+        OutputStream output = connection.getOutputStream();
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output), true);
+    ) {
+      writer.append("--").append(boundary).append(CRLF);
+      writer.append("Content-Disposition: form-data; name=\\"document\\"; filename=\\"").append(textFile.getName()).append("\\"").append(CRLF);
+      writer.append("Content-Type: application/pdf").append(CRLF);
+      writer.append(CRLF).flush();
+      Files.copy(textFile.toPath(), output);
+      output.flush();
+      writer.append(CRLF).flush();
+      writer.append("--").append(boundary).append("--").append(CRLF).flush();
+    }
+
+
+    BufferedReader inputStream = new BufferedReader(new InputStreamReader((InputStream) connection.getContent()));
+    String inputLine;
+    while ((inputLine = inputStream.readLine()) != null){
+      System.out.println(inputLine);
+    }
+    inputStream.close();
+  }
+}\n\`\`\`\n\n`;
+    }
     let javaText = "```java\n";
     javaText += "import java.lang.System;\n" +
         "import java.net.HttpURLConnection;\n" +
@@ -281,6 +364,73 @@ function createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,request
     return javaText;
 }
 function createPhpText(resourceUrl,requestMessageBodyContent,requestHeaderAttributes){
+    if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
+        return `\`\`\`php\n$fields = array("f1"=>"value1", "another_field2"=>"anothervalue");
+
+$filenames = array("FILE_PATH_1", "FILE_PATH_2");
+
+$files = array();
+foreach ($filenames as $f){
+   $files[$f] = file_get_contents($f);
+}
+
+$url = "https://alefba.roshan-ai.ir/api/read_document/";
+
+$curl = curl_init();
+
+$url_data = http_build_query($data);
+
+$boundary = uniqid();
+$delimiter = '-------------' . $boundary;
+
+$post_data = build_data_files($boundary, $fields, $files);
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => $url,
+  CURLOPT_RETURNTRANSFER => 1,
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POST => 1,
+  CURLOPT_POSTFIELDS => $post_data,
+  CURLOPT_HTTPHEADER => array(
+    "Authorization: Bearer $TOKEN",
+    "Content-Type: multipart/form-data; boundary=" . $delimiter,
+  ),
+));
+
+$response = curl_exec($curl);
+
+$info = curl_getinfo($curl);
+var_dump($response);
+$err = curl_error($curl);
+echo "error";
+var_dump($err);
+curl_close($curl);
+
+function build_data_files($boundary, $fields, $files){
+    $data = '';
+    $eol = "\\r\\n";
+    $delimiter = '-------------' . $boundary;
+    foreach ($fields as $name => $content) {
+        $data .= "--" . $delimiter . $eol
+            . 'Content-Disposition: form-data; name="' . $name . "\\"".$eol.$eol
+            . $content . $eol;
+    }
+    foreach ($files as $name => $content) {
+        $data .= "--" . $delimiter . $eol
+            . 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . $eol
+            . 'Content-Type: image/png'.$eol
+            . 'Content-Transfer-Encoding: binary'.$eol
+            ;
+        $data .= $eol;
+        $data .= $content . $eol;
+    }
+    $data .= "--" . $delimiter . "--".$eol;
+    return $data;
+}\n\`\`\`\n\n`;
+    }
     let phpText = "```php\n";
     phpText += "<?php\n" +
     "\n" +
@@ -317,6 +467,54 @@ function createPhpText(resourceUrl,requestMessageBodyContent,requestHeaderAttrib
     return phpText;
 }
 function createCsharpText(resourceUrl,requestHeaderAttributes,httpMethod,requestMessageBodyContent){
+    if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
+        return `\`\`\`csharp\nusing System;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Collections.Generic;
+using System.Threading;
+
+namespace MyRequest
+{
+    class Program
+    {
+\t\tstatic async void UploadFile(String serverAddress,String filePath,String[] paramsName,String[] paramsValue){
+\t\t\tusing (var formData = new MultipartFormDataContent()){
+\t\t\t\tformData.Headers.ContentType.MediaType = "multipart/form-data";
+\t\t\t\tvar filestream = new FileStream(filePath, FileMode.Open);
+\t\t\t\tStream fileStream = System.IO.File.OpenRead(filePath);
+\t\t\t\tvar fileName = System.IO.Path.GetFileName(filePath);
+\t\t\t\t
+\t\t\t\tformData.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+\t\t\t\t{
+\t\t\t\t\tFileName = fileName
+\t\t\t\t};
+\t\t\t\t
+\t\t\t\tfor(int i = 0;i<paramsName.Length;i++){
+\t\t\t\t\tvar stringContent = new StringContent(paramsValue[i]);
+\t\t\t\t\tstringContent.Headers.Add("Content-Disposition", "form-data; name=\\"" + paramsName[i] + "\\"");
+\t\t\t\t\tformData.Add(stringContent, paramsName[i]);
+\t\t\t\t}
+\t\t\t\t
+\t\t\t\tformData.Add(new StreamContent(fileStream), "file", filename);
+\t\t\t\t
+\t\t\t\tusing (var client = new HttpClient()){
+\t\t\t\t\tclient.DefaultRequestHeaders.Add("Authorization", "Token" + _bearerToken);
+\t\t\t\t\t
+\t\t\t\t\tvar response = await client.PostAsync(serverAddress, formData).Result;
+\t\t\t\t\treturn response.ToString();
+\t\t\t\t\t
+\t\t\t\t\tvar message = await client.PostAsync(serverAddress, formData);
+\t\t\t\t\tresult = await message.Content.ReadAsStringAsync();
+\t\t\t\t\treturn result;
+\t\t\t\t}
+\t\t\t}
+\t\t}
+    }
+}\n\`\`\`\n\n`;
+    }
     let csharpText = "```csharp\n";
     csharpText += "using System;\n" +
         "using System.IO;\n" +

@@ -48,17 +48,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
                             }
                         ]

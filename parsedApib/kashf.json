@@ -44,17 +44,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"content\": \"ارزش خریدنش رو بی شک داره\",\n    \"tags\": [\n      {\n        \"id\": 39,\n        \"probability\": 1.0,\n        \"title\": \"توصیه خرید\"\n      }\n    ]\n  },\n  {\n    \"content\": \"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره\",\n    \"tags\": [\n      {\n        \"id\": 56,\n        \"probability\": 1.0,\n        \"title\": \"عدم رضایت بعد خرید\"\n      }\n    ]\n  }\n]\n"
                             }
                         ]
@@ -94,17 +87,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"image_url\": \"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\",\n    \"tags\": [\n      {\n        \"id\": 1,\n        \"probability\": 1.0,\n        \"title\": \"حرم رضوی\"\n      }\n    ]\n  },\n  {\n    \"image_url\": \"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg\",\n    \"tags\": [\n      {\n        \"id\": 36,\n        \"probability\": 1.0,\n        \"title\": \"تئاتر شهر\"\n      }\n    ]\n  }\n]\n"
                             }
                         ]
@@ -142,17 +128,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"video_url\": \"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4\",\n    \"frames\": [\n      {\n        \"frame\": 3,\n        \"time\": \"0:00:00\",\n        \"tags\": [\n          {\n            \"id\": 0,\n            \"probability\": 1.0,\n            \"title\": \"ناآشنا\"\n          }\n        ]\n      },\n      {\n        \"frame\": 585,\n        \"time\": \"0:00:23\",\n        \"tags\": [\n          {\n            \"id\": 39127,\n            \"probability\": 0.99,\n            \"title\": \"پل طبیعت\"\n          }\n        ]\n      },\n      {\n        \"frame\": 603,\n        \"time\": \"0:00:24\",\n        \"tags\": [\n          {\n            \"id\": 2,\n            \"probability\": 1.0,\n            \"title\": \"میدان آزادی\"\n          }\n        ]\n      }\n    ]\n  }\n]\n"
                             }
                         ]
@@ -190,17 +169,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"dataset\": \"iran\",\n    \"state\": \"waiting\"\n}\n"
                             }
                         ]
@@ -238,17 +210,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"title\": \"لحظه\",\n  \"state\": \"trained\",\n  \"report_count\": 935,\n  \"data_count\": 2404,\n  \"evaluation\": {\n    \"recall\": 87,\n    \"precision\": 91\n  },\n  \"tags\": [\n    {\n      \"title\": \"برج میلاد\"\n      \"id\": 3,\n      \"reports\": 116,\n      \"predictions\": 156,\n      \"evaluation\": {\n        \"recall\": 80.3,\n        \"precision\": 91.4,\n        \"f1\": 86.0\n      },\n    },\n    ...\n  ]\n}\n"
                             }
                         ]
@@ -286,17 +251,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"report\": \"[[39,true]]\",\n    \"id\": 1211592\n  }\n]\n"
                             }
                         ]
@@ -334,17 +292,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"report\": \"[[3,true]]\",\n    \"id\": 1211593\n  }\n]\n"
                             }
                         ]
@@ -382,17 +333,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"title\": \"New Place\",\n  \"tag_id\": 111111111,\n  \"active\": true\n}\n"
                             }
                         ]
@@ -430,17 +374,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"title\": \"Old Place\",\n  \"tag_id\": 111111111,\n  \"active\": true\n}\n"
                             }
                         ]
@@ -478,17 +415,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"dataset\": \"iran\",\n  \"deleted_reports\": 0\n}\n"
                             }
                         ]

@@ -139,17 +139,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"ids\": [1, 2, 1]\n}\n"
                             }
                         ]
@@ -181,17 +174,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"ids\": [1]\n}\n"
                             }
                         ]
@@ -223,17 +209,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"ids\": [2]\n}\n"
                             }
                         ]
@@ -315,17 +294,10 @@
                         "sections": []
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"didYouMean\": \"<em>نیمروز</em>\",\n  \"items\": [\n    {\n      \"type\": \"movie\",\n      \"id\": \"1\",\n      \"item\": {\n        \"title\": \"ماجرای نیمروز\",\n        \"director\": \"محمدحسین مهدویان\",\n        \"labels\": [\"هیجانی\", \"ماجراجویی\"],\n        \"actors\": [\"جواد عزتی\", \"هادی حجازی‌فر\"],\n        \"importance\": 100,\n        \"data\": {\"url\": \"https://www.filimo.com/m/czWum\"}\n      },\n      \"highlight\": {\n        \"title\": [\"ماجرای <em>نیمروز</em>\"]\n      },\n      \"_score\": 7.0999684\n    }\n  ]\n}\n"
                             }
                         ]
@@ -396,17 +368,10 @@
                         "sections": []
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"items\": [\n    {\n      \"type\": \"person\",\n      \"id\": \"1\",\n      \"item\": {\n        \"title\": \"ابراهیم حاتمی‌کیا\",\n        \"importance\": 1,\n        \"data\": {\"url\": \"https://www.filimo.com/crew/ابراهیم_حاتمی_کیا\"}\n      },\n      \"highlight\": {\n        \"title\": [\"<em>ابراهیم حاتمی‌کیا</em>\"]\n      },\n      \"_score\": 2.5382035\n    }\n  ]\n}\n"
                             }
                         ]
@@ -459,17 +424,10 @@
                         "sections": []
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"items\": [\n    {\n      \"text\": \"نیم‌روز\",\n      \"count\": 2\n    }\n  ]\n}\n"
                             }
                         ]
@@ -528,17 +486,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"items\": [\n    {\n      \"title\": \"پرویز\",\n      \"similarity\": 100,\n      ...\n    },\n    ...\n  ]\n}\n"
                             }
                         ]
@@ -597,17 +548,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"items\": [\n    {\n      \"similarity\": 100,\n      \"src_link\": \"/baaz/movie/view?id=3\",\n      \"src_title\": \"شهر موشها\",\n      \"susp_from\": 0,\n      \"susp_to\": 247,\n      \"src_from\": 0,\n      \"src_to\": 247,\n      \"src_text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"\n    }\n  ]\n}\n"
                             }
                         ]

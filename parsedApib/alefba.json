@@ -95,33 +95,34 @@
                                         "value": true,
                                         "valueType": "boolean",
                                         "enumaration": []
+                                    },
+                                    {
+                                        "description": "این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.",
+                                        "typeAttributes": [],
+                                        "key": "priority",
+                                        "value": 3,
+                                        "valueType": "number",
+                                        "enumaration": []
                                     }
                                 ]
                             },
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"fix_orientation\": true,\n  \"word_positions\": false,\n  \"type\": \"general\",\n  \"wait\": true\n}\n"
+                                "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"fix_orientation\": true,\n  \"word_positions\": false,\n  \"type\": \"general\",\n  \"wait\": true,\n  \"priority\": 3\n}\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    },\n    \"type\": {\n      \"enum\": [\n        \"general\",\n        \"ID-card\",\n        \"excel\"\n      ]\n    },\n    \"fix_orientation\": {\n      \"type\": \"boolean\"\n    },\n    \"word_positions\": {\n      \"type\": \"boolean\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    },\n    \"type\": {\n      \"enum\": [\n        \"general\",\n        \"ID-card\",\n        \"excel\"\n      ]\n    },\n    \"fix_orientation\": {\n      \"type\": \"boolean\"\n    },\n    \"word_positions\": {\n      \"type\": \"boolean\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    },\n    \"priority\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"pages\": [{\n    \"page_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1\",\n    \"width\": 2125,\n    \"height\": 2750,\n    \"text\": \"بوته\\n\\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n    \"parts\": [\n      {\n        \"type\": \"text\",\n        \"direction\": \"rtl\",\n        \"box\": \"209 305 1711 449\",\n        \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n        \"lines\": [\n          {\n            \"probability\": 1.0,\n            \"box\": \"211 305 1707 57\",\n            \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\"\n          },\n          ...\n        ]\n      },\n      ...\n    ]\n  },{\n    \"page_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=2\",\n    \"width\": 2125,\n    \"height\": 2750,\n    \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\\n...\",\n    \"parts\": [\n      {\n        \"type\": \"text\",\n        \"direction\": \"rtl\",\n        \"box\": \"210 110 1714 294\",\n        \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\\n...\",\n        \"lines\": [\n          {\n            \"probability\": 1.0,\n            \"box\": \"210 110 1706 58\",\n            \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\"\n          },\n          ...\n        ],\n      },\n      ...\n    ]\n  }]\n}\n"
                             }
                         ]
@@ -152,6 +153,7 @@
                                             "required"
                                         ],
                                         "key": "document",
+                                        "value": "file in binary",
                                         "valueType": "string",
                                         "enumaration": []
                                     },
@@ -199,6 +201,14 @@
                                         "value": true,
                                         "valueType": "boolean",
                                         "enumaration": []
+                                    },
+                                    {
+                                        "description": "این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.",
+                                        "typeAttributes": [],
+                                        "key": "priority",
+                                        "value": 3,
+                                        "valueType": "number",
+                                        "enumaration": []
                                     }
                                 ]
                             },
@@ -210,18 +220,11 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n  \"pages\": [{\n    \"page_url\": \"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=1\",\n    \"width\": 2125,\n    \"height\": 2750,\n    \"text\": \"بوته\\n\\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n    \"parts\": [\n      {\n        \"type\": \"text\",\n        \"direction\": \"rtl\",\n        \"box\": \"209 305 1711 449\",\n        \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n        \"lines\": [\n          {\n            \"probability\": 1.0,\n            \"box\": \"211 305 1707 57\",\n            \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\"\n          },\n          ...\n        ]\n      },\n      ...\n    ]\n  },{\n    \"page_url\":\"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=2\",\n    \"width\": 2125,\n    \"height\": 2750,\n    \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\\n...\",\n    \"parts\": [\n      {\n        \"type\": \"text\",\n        \"direction\": \"rtl\",\n        \"box\": \"210 110 1714 294\",\n        \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\\n...\",\n        \"lines\": [\n          {\n            \"probability\": 1.0,\n            \"box\": \"210 110 1706 58\",\n            \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\"\n          },\n          ...\n        ],\n      },\n      ...\n    ]\n  }],\n  \"document_url\":\"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf\"\n}\n"
+                                "content": "    {\n      \"pages\": [{\n        \"page_url\": \"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=1\",\n        \"width\": 2125,\n        \"height\": 2750,\n        \"text\": \"بوته\\n\\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n        \"parts\": [\n          {\n            \"type\": \"text\",\n            \"direction\": \"rtl\",\n            \"box\": \"209 305 1711 449\",\n            \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n            \"lines\": [\n              {\n                \"probability\": 1.0,\n                \"box\": \"211 305 1707 57\",\n                \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\"\n              },\n              ...\n            ]\n          },\n          ...\n        ]\n      },{\n        \"page_url\":\"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf@page=2\",\n        \"width\": 2125,\n        \"height\": 2750,\n        \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\\n...\",\n        \"parts\": [\n          {\n            \"type\": \"text\",\n            \"direction\": \"rtl\",\n            \"box\": \"210 110 1714 294\",\n            \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\\n...\",\n            \"lines\": [\n              {\n                \"probability\": 1.0,\n                \"box\": \"210 110 1706 58\",\n                \"text\": \"انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\"\n              },\n              ...\n            ],\n          },\n          ...\n        ]\n      }],\n      \"document_url\":\"http://alefba.roshan-ai.ir/media/files/96/84/859267728361-boute.pdf\"\n    }\n\n"
                             }
                         ]
                     }
@@ -322,33 +325,34 @@
                                         "value": true,
                                         "valueType": "boolean",
                                         "enumaration": []
+                                    },
+                                    {
+                                        "description": "این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.",
+                                        "typeAttributes": [],
+                                        "key": "priority",
+                                        "value": 3,
+                                        "valueType": "number",
+                                        "enumaration": []
                                     }
                                 ]
                             },
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"page_urls\": [\"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1\"],\n  \"fix_orientation\": true,\n  \"word_positions\": false,\n  \"wait\": true\n}\n"
+                                "content": "{\n  \"page_urls\": [\"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1\"],\n  \"fix_orientation\": true,\n  \"word_positions\": false,\n  \"wait\": true,\n  \"priority\": 3\n}\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"page_urls\": {\n      \"type\": \"array\"\n    },\n    \"type\": {\n      \"enum\": [\n        \"general\",\n        \"ID-card\",\n        \"excel\"\n      ]\n    },\n    \"fix_orientation\": {\n      \"type\": \"boolean\"\n    },\n    \"word_positions\": {\n      \"type\": \"boolean\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"page_urls\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"page_urls\": {\n      \"type\": \"array\"\n    },\n    \"type\": {\n      \"enum\": [\n        \"general\",\n        \"ID-card\",\n        \"excel\"\n      ]\n    },\n    \"fix_orientation\": {\n      \"type\": \"boolean\"\n    },\n    \"word_positions\": {\n      \"type\": \"boolean\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    },\n    \"priority\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"page_urls\"\n  ]\n}"
                             }
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[{\n  \"page_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1\",\n  \"width\": 2125,\n  \"height\": 2750,\n  \"text\": \"بوته\\n\\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n  \"parts\": [\n    {\n      \"type\": \"text\",\n      \"direction\": \"rtl\",\n      \"box\": \"209 305 1711 449\",\n      \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\\n...\",\n      \"lines\": [\n        {\n          \"probability\": 1.0,\n          \"box\": \"211 305 1707 57\",\n          \"text\": \"درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\"\n        },\n        ...\n      ]\n    },\n    ...\n  ]\n}]\n"
                             }
                         ]
@@ -388,17 +392,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\": {\n    \"analyzed\": true,\n    \"processed_pages\": 2,\n    \"all_pages\": 2\n  }\n}\n"
                             }
                         ]
@@ -438,17 +435,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"document_url\":\"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"pages\": [\n    \"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1\",\n    \"http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=2\"\n  ]\n}\n"
                             }
                         ]
@@ -488,17 +478,7 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/msword"
-                            },
-                            {
-                                "key": "Content-Disposition",
-                                "value": "attachment; filename=Alefba.docx"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": []
                     }
                 }
@@ -536,17 +516,7 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/msword"
-                            },
-                            {
-                                "key": "Content-Disposition",
-                                "value": "attachment; filename=Alefba.xlsx"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": []
                     }
                 }
@@ -579,22 +549,12 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"quality\": 100,\n  \"img_format\": \"png\"\n}\n"
+                                "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"quality\": 100,\n  \"img_format\": \"png\",\n  \"color\": false\n}\n"
                             }
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/pdf"
-                            },
-                            {
-                                "key": "Content-Disposition",
-                                "value": "attachment; filename=Alefba.pdf"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": []
                     }
                 }
@@ -632,17 +592,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"message\":\"Document deleted successfully.\"\n}\n"
                             }
                         ]
@@ -681,23 +634,16 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n\"document_url\": \"http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf\",\n\"callback_url\": \"http://192.168.254.3:5013/alefba_post\"\n}\n"
+                                "content": "{\n  \"document_url\": \"http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf\",\n  \"callback_url\": \"http://192.168.254.3:5013/alefba_post\"\n}\n"
                             }
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\"state\":\"processing\",\"document_url\":\"http://192.168.254.3:5013/static/2021-10-12%20%281%29.png\"}\n"
+                                "content": "{\n  \"state\":\"processing\",\n  \"document_url\":\"http://192.168.254.3:5013/static/2021-10-12%20%281%29.png\"\n}\n"
                             }
                         ]
                     }

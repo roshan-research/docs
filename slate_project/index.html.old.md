@@ -327,7 +327,10 @@ Value: true
 ```
 
 ```shell
-curl -X POST --header "Authorization: Token TOKEN_KEY" -F "document=@example.pdf" http://alefba.roshan-ai.ir/api/read_document
+curl -X 
+      POST --header "Authorization: Token TOKEN_KEY" 
+      -F "document=@example.pdf" 
+      http://alefba.roshan-ai.ir/api/read_document
 ```
 
 ```python

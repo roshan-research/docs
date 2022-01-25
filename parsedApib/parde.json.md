@@ -30,8 +30,6 @@ please contact parde@sobhe.ir.
 
 # Process Images
 
-`/parde/api/images_safety`
-
 
 ## Request
 
@@ -204,12 +202,11 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
     "http://www.sobhe.ir/baaz/img/goshawk.jpg": 1
 }
+
 ```
 
 You may ask safety of some images using this action. Safety is a float
@@ -222,8 +219,6 @@ performance.
 `POST /parde/api/images_safety`
 
 # Report Image Safety
-
-`/parde/api/report`
 
 
 ## Request
@@ -391,14 +386,13 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
     "id": 1,
     "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
     "is_safe": true
 }
+
 ```
 
 You may report safety of one image using this action. Parde learns reported
@@ -407,8 +401,6 @@ images for predicting image safety more precisely.
 `POST /parde/api/report`
 
 # Remove Image Report
-
-`/parde/api/remove_report`
 
 
 ## Request
@@ -570,15 +562,12 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
     "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
-    "removed_reports": [
-        1
-    ]
+    "removed_reports": [1]
 }
+
 ```
 
 You may remove reported images using this action. Parde removes all of your
@@ -587,8 +576,6 @@ reports with input url and responds with their object id.
 `POST /parde/api/remove_report`
 
 # Video Keyframes
-
-`/api/video_frames`
 
 
 ## Request
@@ -750,17 +737,16 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "video_url": "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4",
-    "frames": [
+    "video_url":"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4",
+    "frames":[
         "http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:00.jpg",
         "http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:08.jpg",
         "http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:13.jpg"
     ]
 }
+
 ```
 
 `POST /api/video_frames`

@@ -203,25 +203,13 @@ function getTransitionInfo(transitionJson) {
 
                 }
                 else if (element2.element === "httpResponse"){
-                    transitionInfo["httpResponse"]["statusCode"] = element2.attributes.statusCode.content;
                     transitionInfo["httpResponse"]["headerAttributes"] = [];
                     transitionInfo["httpResponse"]["sections"] = [];
-                    let ref3 = element2.attributes.headers.content;
-                    for (let k = 0;k<ref3.length;k++){
-                        let element3 = ref3[k];
-                        transitionInfo["httpResponse"]["headerAttributes"].push(
-                            {
-                                key:element3.content.key.content,
-                                value:element3.content.value.content,
-                            }
-                        )
-                    }
                     let ref4 = element2.content;
                     for (let k = 0;k<ref4.length;k++){
                         let element3 = ref4[k];
                         let asset = {};
                         asset["type"] = element3.meta.classes.content[0].content;
-                        asset["contentType"] = element3.attributes.contentType.content;
                         asset["content"] = element3.content;
                         transitionInfo["httpResponse"]["sections"].push(asset);
                     }

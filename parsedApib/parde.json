@@ -46,17 +46,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"http://www.sobhe.ir/baaz/img/goshawk.jpg\": 1\n}\n"
                             }
                         ]
@@ -96,17 +89,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"id\": 1,\n    \"image_url\": \"http://www.sobhe.ir/baaz/img/goshawk.jpg\",\n    \"is_safe\": true\n}\n"
                             }
                         ]
@@ -146,17 +132,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"image_url\": \"http://www.sobhe.ir/baaz/img/goshawk.jpg\",\n    \"removed_reports\": [1]\n}\n"
                             }
                         ]
@@ -194,17 +173,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n    \"video_url\":\"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4\",\n    \"frames\":[\n        \"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:00.jpg\",\n        \"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:08.jpg\",\n        \"http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:13.jpg\"\n    ]\n}\n"
                             }
                         ]

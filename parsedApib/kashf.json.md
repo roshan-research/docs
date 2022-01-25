@@ -33,8 +33,6 @@ meta:
 
 # تحلیل متن
 
-`/api/tag_texts/`
-
 
 ## نمونه
 
@@ -219,38 +217,35 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 [
-    {
-        "content": "ارزش خریدنش رو بی شک داره",
-        "tags": [
-            {
-                "id": 39,
-                "probability": 1,
-                "title": "توصیه خرید"
-            }
-        ]
-    },
-    {
-        "content": "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره",
-        "tags": [
-            {
-                "id": 56,
-                "probability": 1,
-                "title": "عدم رضایت بعد خرید"
-            }
-        ]
-    }
+  {
+    "content": "ارزش خریدنش رو بی شک داره",
+    "tags": [
+      {
+        "id": 39,
+        "probability": 1.0,
+        "title": "توصیه خرید"
+      }
+    ]
+  },
+  {
+    "content": "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره",
+    "tags": [
+      {
+        "id": 56,
+        "probability": 1.0,
+        "title": "عدم رضایت بعد خرید"
+      }
+    ]
+  }
 ]
+
 ```
 
 `POST /api/tag_texts/`
 
 # تحلیل تصویر
-
-`/api/tag_images/`
 
 
 ## نمونه
@@ -436,31 +431,30 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 [
-    {
-        "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "tags": [
-            {
-                "id": 1,
-                "probability": 1,
-                "title": "حرم رضوی"
-            }
-        ]
-    },
-    {
-        "image_url": "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg",
-        "tags": [
-            {
-                "id": 36,
-                "probability": 1,
-                "title": "تئاتر شهر"
-            }
-        ]
-    }
+  {
+    "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+    "tags": [
+      {
+        "id": 1,
+        "probability": 1.0,
+        "title": "حرم رضوی"
+      }
+    ]
+  },
+  {
+    "image_url": "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg",
+    "tags": [
+      {
+        "id": 36,
+        "probability": 1.0,
+        "title": "تئاتر شهر"
+      }
+    ]
+  }
 ]
+
 ```
 
 <div dir=rtl>
@@ -472,8 +466,6 @@ namespace MyRequest
 `POST /api/tag_images/`
 
 # تحلیل فریم‌های ویدئو
-
-`/api/tag_video_frames/`
 
 
 ## نمونه
@@ -671,56 +663,53 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 [
-    {
-        "video_url": "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4",
-        "frames": [
-            {
-                "frame": 3,
-                "time": "0:00:00",
-                "tags": [
-                    {
-                        "id": 0,
-                        "probability": 1,
-                        "title": "ناآشنا"
-                    }
-                ]
-            },
-            {
-                "frame": 585,
-                "time": "0:00:23",
-                "tags": [
-                    {
-                        "id": 39127,
-                        "probability": 0.99,
-                        "title": "پل طبیعت"
-                    }
-                ]
-            },
-            {
-                "frame": 603,
-                "time": "0:00:24",
-                "tags": [
-                    {
-                        "id": 2,
-                        "probability": 1,
-                        "title": "میدان آزادی"
-                    }
-                ]
-            }
+  {
+    "video_url": "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4",
+    "frames": [
+      {
+        "frame": 3,
+        "time": "0:00:00",
+        "tags": [
+          {
+            "id": 0,
+            "probability": 1.0,
+            "title": "ناآشنا"
+          }
         ]
-    }
+      },
+      {
+        "frame": 585,
+        "time": "0:00:23",
+        "tags": [
+          {
+            "id": 39127,
+            "probability": 0.99,
+            "title": "پل طبیعت"
+          }
+        ]
+      },
+      {
+        "frame": 603,
+        "time": "0:00:24",
+        "tags": [
+          {
+            "id": 2,
+            "probability": 1.0,
+            "title": "میدان آزادی"
+          }
+        ]
+      }
+    ]
+  }
 ]
+
 ```
 
 `POST /api/tag_video_frames/`
 
 # آموزش مدل
-
-`/api/train_dataset/`
 
 
 ## نمونه
@@ -882,20 +871,17 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
     "dataset": "iran",
     "state": "waiting"
 }
+
 ```
 
 `POST /api/train_dataset/`
 
 # وضعیت داده‌ها
-
-`/api/dataset_info/`
 
 
 ## نمونه
@@ -1063,17 +1049,37 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
-"{\n  \"title\": \"لحظه\",\n  \"state\": \"trained\",\n  \"report_count\": 935,\n  \"data_count\": 2404,\n  \"evaluation\": {\n    \"recall\": 87,\n    \"precision\": 91\n  },\n  \"tags\": [\n    {\n      \"title\": \"برج میلاد\"\n      \"id\": 3,\n      \"reports\": 116,\n      \"predictions\": 156,\n      \"evaluation\": {\n        \"recall\": 80.3,\n        \"precision\": 91.4,\n        \"f1\": 86.0\n      },\n    },\n    ...\n  ]\n}\n"
+{
+  "title": "لحظه",
+  "state": "trained",
+  "report_count": 935,
+  "data_count": 2404,
+  "evaluation": {
+    "recall": 87,
+    "precision": 91
+  },
+  "tags": [
+    {
+      "title": "برج میلاد"
+      "id": 3,
+      "reports": 116,
+      "predictions": 156,
+      "evaluation": {
+        "recall": 80.3,
+        "precision": 91.4,
+        "f1": 86.0
+      },
+    },
+    ...
+  ]
+}
+
 ```
 
 `POST /api/dataset_info/`
 
 # گزارش برچسب متن
-
-`/api/report_text_tags/`
 
 
 ## نمونه
@@ -1259,22 +1265,19 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 [
-    {
-        "report": "[[39,true]]",
-        "id": 1211592
-    }
+  {
+    "report": "[[39,true]]",
+    "id": 1211592
+  }
 ]
+
 ```
 
 `POST /api/report_text_tags/`
 
 # گزارش برچسب تصویر
-
-`/api/report_image_tags/`
 
 
 ## نمونه
@@ -1460,22 +1463,19 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 [
-    {
-        "report": "[[3,true]]",
-        "id": 1211593
-    }
+  {
+    "report": "[[3,true]]",
+    "id": 1211593
+  }
 ]
+
 ```
 
 `POST /api/report_image_tags/`
 
 # ایجاد برچسب
-
-`/api/create_tag/`
 
 
 ## نمونه
@@ -1643,21 +1643,18 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "title": "New Place",
-    "tag_id": 111111111,
-    "active": true
+  "title": "New Place",
+  "tag_id": 111111111,
+  "active": true
 }
+
 ```
 
 `POST /api/create_tag/`
 
 # ویرایش برچسب
-
-`/api/update_tag/`
 
 
 ## نمونه
@@ -1837,21 +1834,18 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "title": "Old Place",
-    "tag_id": 111111111,
-    "active": true
+  "title": "Old Place",
+  "tag_id": 111111111,
+  "active": true
 }
+
 ```
 
 `POST /api/update_tag/`
 
 # حذف برچسب
-
-`/api/delete_tag/`
 
 
 ## نمونه
@@ -2013,13 +2007,12 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "dataset": "iran",
-    "deleted_reports": 0
+  "dataset": "iran",
+  "deleted_reports": 0
 }
+
 ```
 
 `POST /api/delete_tag/`

@@ -24,6 +24,7 @@ GEM
     fast_blank (1.0.0)
     fastimage (2.2.4)
     ffi (1.15.0)
+    ffi (1.15.0-x64-mingw32)
     haml (5.2.1)
       temple (>= 0.8.0)
       tilt
@@ -85,6 +86,8 @@ GEM
     nokogiri (1.12.3)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    nokogiri (1.12.3-x64-mingw32)
+      racc (~> 1.4)
     padrino-helpers (0.15.1)
       i18n (>= 0.6.7, < 2)
       padrino-support (= 0.15.1)
@@ -108,6 +111,8 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sassc (2.4.0-x64-mingw32)
+      ffi (~> 1.9)
     servolux (0.13.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -126,6 +131,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   middleman (~> 4.4)
@@ -142,4 +148,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.2.20
+   2.3.5

@@ -46,17 +46,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"image_url\": \"http://cdn.fararu.com/files/fa/news/1392/5/26/79742_241.jpg\",\n  \"faces\": [\n    {\n      \"box\": \"247 103 53 53\",\n      \"person\": \"حسن روحانی\",\n      \"person_image\": null,\n      \"probability\": 0.91\n    },\n    {\n      \"box\": \"94 110 48 48\",\n      \"person\": \"علی‌اکبر صالحی\",\n      \"person_image\": null,\n      \"probability\": 0.72\n    },\n    {\n      \"box\": \"395 103 53 53\",\n      \"person\": \"محمدجواد ظریف\",\n      \"person_image\": null,\n      \"probability\": 0.7\n    }\n  ]\n}\n"
                             }
                         ]
@@ -86,17 +79,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "201",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "text/plain"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "text/plain",
                                 "content": "{\n  \"image_url\": \"http://api.sobhe.ir:3805/media/14545248911-soleimani-small.jpg\",\n  \"faces\": [\n    {\n      \"box\":\"39 51 67 67\",\n      \"person\":\"قاسم سلیمانی\",\n      \"person_image\":\"/media/persons/soleimani.jpg\"\n    }\n  ]\n}\n"
                             }
                         ]
@@ -134,17 +120,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"image\": \"\",\n  \"name\": \"فرد جدید\"\n}\n"
                             }
                         ]
@@ -182,17 +161,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"url\": \"http://www.seratnews.ir/files/fa/news/1394/3/20/187659_391.jpg\",\n  \"positive\": true,\n  \"name\": \"حسین سلامی\"\n}\n"
                             }
                         ]
@@ -230,17 +202,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "[\n  {\n    \"person\": \"حسین دهقان\",\n    \"person_image\": null,\n    \"similarity\": 60\n  },\n  {\n    \"person\": \"سید محمد حسینی\",\n    \"person_image\": null,\n    \"similarity\": 20\n  },\n  {\n    \"person\": \"مهدی کوچک‌زاده\",\n    \"person_image\": null,\n    \"similarity\": 20\n  }\n]\n"
                             }
                         ]
@@ -278,17 +243,10 @@
                         ]
                     },
                     "httpResponse": {
-                        "statusCode": "200",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
+                        "headerAttributes": [],
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "contentType": "application/json",
                                 "content": "{\n  \"persons\": [\n    {\n      \"image\": null,\n      \"name\": \"قاسم سلیمانی\"\n    },\n    ...\n  ]\n}\n"
                             }
                         ]

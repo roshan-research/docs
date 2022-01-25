@@ -28,8 +28,6 @@ please contact golrokh@sobhe.ir.
 
 # Find Faces
 
-`/find_faces`
-
 
 ## Request
 
@@ -220,32 +218,31 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "image_url": "http://cdn.fararu.com/files/fa/news/1392/5/26/79742_241.jpg",
-    "faces": [
-        {
-            "box": "247 103 53 53",
-            "person": "حسن روحانی",
-            "person_image": null,
-            "probability": 0.91
-        },
-        {
-            "box": "94 110 48 48",
-            "person": "علی‌اکبر صالحی",
-            "person_image": null,
-            "probability": 0.72
-        },
-        {
-            "box": "395 103 53 53",
-            "person": "محمدجواد ظریف",
-            "person_image": null,
-            "probability": 0.7
-        }
-    ]
+  "image_url": "http://cdn.fararu.com/files/fa/news/1392/5/26/79742_241.jpg",
+  "faces": [
+    {
+      "box": "247 103 53 53",
+      "person": "حسن روحانی",
+      "person_image": null,
+      "probability": 0.91
+    },
+    {
+      "box": "94 110 48 48",
+      "person": "علی‌اکبر صالحی",
+      "person_image": null,
+      "probability": 0.72
+    },
+    {
+      "box": "395 103 53 53",
+      "person": "محمدجواد ظریف",
+      "person_image": null,
+      "probability": 0.7
+    }
+  ]
 }
+
 ```
 
 > For uploading image file you can send `multipart/form-data` request
@@ -402,26 +399,23 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: text/plain
-
 ```json
 {
-    "image_url": "http://api.sobhe.ir:3805/media/14545248911-soleimani-small.jpg",
-    "faces": [
-        {
-            "box": "39 51 67 67",
-            "person": "قاسم سلیمانی",
-            "person_image": "/media/persons/soleimani.jpg"
-        }
-    ]
+  "image_url": "http://api.sobhe.ir:3805/media/14545248911-soleimani-small.jpg",
+  "faces": [
+    {
+      "box":"39 51 67 67",
+      "person":"قاسم سلیمانی",
+      "person_image":"/media/persons/soleimani.jpg"
+    }
+  ]
 }
+
 ```
 
 `POST /find_faces`
 
 # New Person
-
-`/new_person`
 
 
 ## Request
@@ -595,20 +589,17 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "image": "",
-    "name": "فرد جدید"
+  "image": "",
+  "name": "فرد جدید"
 }
+
 ```
 
 `POST /new_person`
 
 # Report Face
-
-`/report_face`
 
 
 ## Request
@@ -782,21 +773,18 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 {
-    "url": "http://www.seratnews.ir/files/fa/news/1394/3/20/187659_391.jpg",
-    "positive": true,
-    "name": "حسین سلامی"
+  "url": "http://www.seratnews.ir/files/fa/news/1394/3/20/187659_391.jpg",
+  "positive": true,
+  "name": "حسین سلامی"
 }
+
 ```
 
 `POST /report_face`
 
 # Similar Faces
-
-`/similar_faces`
 
 
 ## Request
@@ -964,33 +952,30 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
 [
-    {
-        "person": "حسین دهقان",
-        "person_image": null,
-        "similarity": 60
-    },
-    {
-        "person": "سید محمد حسینی",
-        "person_image": null,
-        "similarity": 20
-    },
-    {
-        "person": "مهدی کوچک‌زاده",
-        "person_image": null,
-        "similarity": 20
-    }
+  {
+    "person": "حسین دهقان",
+    "person_image": null,
+    "similarity": 60
+  },
+  {
+    "person": "سید محمد حسینی",
+    "person_image": null,
+    "similarity": 20
+  },
+  {
+    "person": "مهدی کوچک‌زاده",
+    "person_image": null,
+    "similarity": 20
+  }
 ]
+
 ```
 
 `POST /similar_faces`
 
 # Dataset Detail
-
-`/dataset_detail`
 
 
 ## Request
@@ -1152,10 +1137,17 @@ namespace MyRequest
 
 > Response 
 
-> Content-Type: application/json
-
 ```json
-"{\n  \"persons\": [\n    {\n      \"image\": null,\n      \"name\": \"قاسم سلیمانی\"\n    },\n    ...\n  ]\n}\n"
+{
+  "persons": [
+    {
+      "image": null,
+      "name": "قاسم سلیمانی"
+    },
+    ...
+  ]
+}
+
 ```
 
 `POST /dataset_detail`

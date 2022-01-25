@@ -96,7 +96,6 @@ HOST: https://alefba.roshan-ai.ir
           }]
         }
 
-
 ### نمونه ارسال مستقیم سند [POST]
 
 + Request (multipart/form-data; boundary={boundary value})
@@ -107,7 +106,7 @@ HOST: https://alefba.roshan-ai.ir
 
     + Attributes
 
-        - document: (string, required) - فایل سند ورودی
+        - document: file in binary (string, required) - فایل سند ورودی
         - type: general (enum[string]) - این ویژگی نوع سند را مشخص می‌کند
             + Members
                 + `general` - سندهای عمومی
@@ -259,7 +258,7 @@ HOST: https://alefba.roshan-ai.ir
               "document_urls": ["http://bayanbox.ir/view/5067853395275628881/boute.pdf"]
             }
 
-+ Response 200 
++ Response 200
 
         {
           "http://bayanbox.ir/view/5067853395275628881/boute.pdf": {
@@ -380,7 +379,7 @@ HOST: https://alefba.roshan-ai.ir
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
-+ Response 200 
++ Response 200
 
         {
           "message":"Document deleted successfully."
