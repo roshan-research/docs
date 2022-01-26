@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-25407248.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-bcc5f4cf.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-6314a239.js"></script>
 
@@ -539,10 +539,12 @@ Value: URL
 <strong>type</strong>
 <br>
 <br>
-Value: <details>
+Value: 
+<details>
 <summary>
 general
 </summary>
+<br>
 
 <p>
 general
@@ -624,51 +626,49 @@ Value: 3
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,}</span>
 <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'document'</span><span class="p">:</span> <span class="p">(</span><span class="s">'FILE NAME'</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">'YOUR FILE PATH'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)),}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://alefba.roshan-ai.ir/api/read_document/'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="sb">``</span><span class="err">`</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="o">;</span>
 
-<span class="sb">``</span><span class="err">`</span><span class="n">java</span>
-<span class="kn">import</span> <span class="nn">java.io.</span><span class="o">*</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.</span><span class="o">*</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="p">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MultiPartRequest</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="nc">MultiPartRequest</span> <span class="p">{</span>
-  <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="n">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+    <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="o">;</span>
+    <span class="nc">File</span> <span class="n">textFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"YOUR FILE PATH"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">boundary</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+    <span class="nc">String</span> <span class="no">CRLF</span> <span class="o">=</span> <span class="s">"\r\n"</span><span class="o">;</span>
 
-    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="p">;</span>
-    <span class="n">File</span> <span class="n">textFile</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s">"YOUR FILE PATH"</span><span class="p">);</span>
-    <span class="n">String</span> <span class="n">boundary</span> <span class="o">=</span> <span class="n">Long</span><span class="p">.</span><span class="n">toHexString</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">currentTimeMillis</span><span class="p">());</span>
-    <span class="n">String</span> <span class="n">CRLF</span> <span class="o">=</span> <span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="nc">URLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="n">url</span><span class="o">).</span><span class="na">openConnection</span><span class="o">();</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"accept"</span><span class="o">,</span> <span class="s">"*/*"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Connection"</span><span class="o">,</span> <span class="s">"close"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"multipart/form-data; boundary="</span> <span class="o">+</span> <span class="n">boundary</span><span class="o">);</span>
 
-    <span class="n">URLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">new</span> <span class="n">URL</span><span class="p">(</span><span class="n">url</span><span class="p">).</span><span class="n">openConnection</span><span class="p">();</span>
-    <span class="n">connection</span><span class="p">.</span><span class="n">setDoOutput</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
-    <span class="n">connection</span><span class="p">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"*/*"</span><span class="p">);</span>
-    <span class="n">connection</span><span class="p">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s">"Connection"</span><span class="p">,</span> <span class="s">"close"</span><span class="p">);</span>
-    <span class="n">connection</span><span class="p">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">);</span>
-    <span class="n">connection</span><span class="p">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"multipart/form-data; boundary="</span> <span class="o">+</span> <span class="n">boundary</span><span class="p">);</span>
-
-    <span class="k">try</span> <span class="p">(</span>
-        <span class="n">OutputStream</span> <span class="n">output</span> <span class="o">=</span> <span class="n">connection</span><span class="p">.</span><span class="n">getOutputStream</span><span class="p">();</span>
-        <span class="n">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PrintWriter</span><span class="p">(</span><span class="n">new</span> <span class="n">OutputStreamWriter</span><span class="p">(</span><span class="n">output</span><span class="p">),</span> <span class="n">true</span><span class="p">);</span>
-    <span class="p">)</span> <span class="p">{</span>
-      <span class="n">writer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"--"</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">boundary</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">CRLF</span><span class="p">);</span>
-      <span class="n">writer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">; filename=</span><span class="se">\"</span><span class="s">"</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">textFile</span><span class="p">.</span><span class="n">getName</span><span class="p">()).</span><span class="n">append</span><span class="p">(</span><span class="s">"</span><span class="se">\"</span><span class="s">"</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">CRLF</span><span class="p">);</span>
-      <span class="n">writer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"Content-Type: application/pdf"</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">CRLF</span><span class="p">);</span>
-      <span class="n">writer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">CRLF</span><span class="p">).</span><span class="n">flush</span><span class="p">();</span>
-      <span class="n">Files</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">textFile</span><span class="p">.</span><span class="n">toPath</span><span class="p">(),</span> <span class="n">output</span><span class="p">);</span>
-      <span class="n">output</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span>
-      <span class="n">writer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">CRLF</span><span class="p">).</span><span class="n">flush</span><span class="p">();</span>
-      <span class="n">writer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"--"</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">boundary</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="s">"--"</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="n">CRLF</span><span class="p">).</span><span class="n">flush</span><span class="p">();</span>
-    <span class="p">}</span>
+    <span class="k">try</span> <span class="o">(</span>
+        <span class="nc">OutputStream</span> <span class="n">output</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="nc">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="n">output</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+    <span class="o">)</span> <span class="o">{</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">boundary</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\"document\"; filename=\""</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">textFile</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">append</span><span class="o">(</span><span class="s">"\""</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Content-Type: application/pdf"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+      <span class="nc">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">textFile</span><span class="o">.</span><span class="na">toPath</span><span class="o">(),</span> <span class="n">output</span><span class="o">);</span>
+      <span class="n">output</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">boundary</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+    <span class="o">}</span>
 
 
-    <span class="n">BufferedReader</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BufferedReader</span><span class="p">(</span><span class="n">new</span> <span class="n">InputStreamReader</span><span class="p">((</span><span class="n">InputStream</span><span class="p">)</span> <span class="n">connection</span><span class="p">.</span><span class="n">getContent</span><span class="p">()));</span>
-    <span class="n">String</span> <span class="n">inputLine</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">inputStream</span><span class="p">.</span><span class="n">readLine</span><span class="p">())</span> <span class="o">!=</span> <span class="n">null</span><span class="p">){</span>
-      <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">inputLine</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">inputStream</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+    <span class="nc">BufferedReader</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">((</span><span class="nc">InputStream</span><span class="o">)</span> <span class="n">connection</span><span class="o">.</span><span class="na">getContent</span><span class="o">()));</span>
+    <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">inputStream</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">inputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$fields</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"f1"</span><span class="o">=&gt;</span><span class="s2">"value1"</span><span class="p">,</span> <span class="s2">"another_field2"</span><span class="o">=&gt;</span><span class="s2">"anothervalue"</span><span class="p">);</span>
 
 <span class="nv">$filenames</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"FILE_PATH_1"</span><span class="p">,</span> <span class="s2">"FILE_PATH_2"</span><span class="p">);</span>
@@ -855,6 +855,7 @@ Value:
 <summary>
 general
 </summary>
+<br>
 
 <p>
 general
@@ -1148,6 +1149,7 @@ Value:
 <summary>
 general
 </summary>
+<br>
 
 <p>
 general
@@ -1991,10 +1993,6 @@ Value: 3
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<blockquote>
-<p>Response </p>
-</blockquote>
-
 <p><code>POST /api/download_pdf/</code></p>
 <h1 id='d51252080e'>حذف سند</h1>
 <p>با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.</p>

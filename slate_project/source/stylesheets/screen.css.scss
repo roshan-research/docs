@@ -731,9 +731,22 @@ p{
   }
 }
 
+
+@media (max-width: $phone-width) {
+
+  .content {
+    pre{
+      margin-left: 1%;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
 @media (max-width: $phone-width + 300px) {
   .copy-clipboard {
-    margin-left: 28vw;
+    margin-left: 60%;
   }
 }
 
@@ -818,3 +831,61 @@ summary:active{
 li {
   width: 93%;
 }
+
+.page-wrapper {
+  h2{
+    text-align: right;
+  }
+}
+
+@media (max-width: $phone-width) {
+    .content {
+      dl {
+      padding: 20px;
+      background-color: #F6F6F6;
+      border-radius: 5px;
+      margin-left: 2.5%;
+      width: 95%;
+    }
+
+    blockquote {
+      width: 93%;
+      margin-left: 3%;
+    }
+  }
+
+  div.highlight + p{
+    float: left;
+  }
+
+  div.highlight + p + dl {
+    margin-top: 70px;
+  }
+
+  div.highlight {
+    width: 93%;
+    margin-left: 3%;
+  }
+
+  blockquote {
+    width: 93%;
+    margin-left: 2%;
+  }
+
+  ul{
+    text-align: center;
+  }
+
+  .lang-selector{
+    a{
+      text-align: center;
+    }
+  }
+
+  .logo{
+    width: 75%;
+    margin-left: 20%;
+    margin-right: 0;
+  }
+}
+
