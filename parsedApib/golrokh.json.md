@@ -23,8 +23,7 @@ meta:
 
 # Golrokh
 
-> For using Golrokh API you need a TOKEN_KEY, if you don't have one,
-please contact golrokh@sobhe.ir.
+> For using Golrokh API you need a TOKEN_KEY, if you don't have one,,please contact golrokh@sobhe.ir.
 
 # Find Faces
 

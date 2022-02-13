@@ -23,9 +23,7 @@ meta:
 
 # الفبا
 
-نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
-
-برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
+نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.,,برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
 
 # خواندن سند
 
@@ -279,9 +277,12 @@ namespace MyRequest
 <strong>document_url(required)</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">URL</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
@@ -290,30 +291,28 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">URL</span>
 <strong>type</strong>
 <br>
 <br>
-<dl id="value-row">
 Value: 
-<dl>
-<dl>
+<span>
+<span>
 general
-</dl>
-<dl>
+</span>
+<span>
 سندهای عمومی
-</dl>
-<dl>
+</span>
+<span>
 ID-card
-</dl>
-<dl>
+</span>
+<span>
 کارت‌های شناسایی
-</dl>
-<dl>
+</span>
+<span>
 excel
-</dl>
-<dl>
+</span>
+<span>
 جدولهای مالی
-</dl>
+</span>
 
-</dl>
-</dl>
+</span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
@@ -322,9 +321,12 @@ excel
 <strong>fix_orientation</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
@@ -333,9 +335,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>word_positions</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
@@ -344,9 +349,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>wait</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
@@ -355,9 +363,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>priority</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">3</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
@@ -609,9 +620,12 @@ namespace MyRequest
 <strong>document(required)</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">file in binary</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    file in binary
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">فایل سند ورودی</p>
@@ -620,30 +634,28 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">file in binar
 <strong>type</strong>
 <br>
 <br>
-<dl id="value-row">
 Value: 
-<dl>
-<dl>
+<span>
+<span>
 general
-</dl>
-<dl>
+</span>
+<span>
 سندهای عمومی
-</dl>
-<dl>
+</span>
+<span>
 ID-card
-</dl>
-<dl>
+</span>
+<span>
 کارت‌های شناسایی
-</dl>
-<dl>
+</span>
+<span>
 excel
-</dl>
-<dl>
+</span>
+<span>
 جدولهای مالی
-</dl>
+</span>
 
-</dl>
-</dl>
+</span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
@@ -652,9 +664,12 @@ excel
 <strong>fix_orientation</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
@@ -663,9 +678,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>word_positions</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
@@ -674,9 +692,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>wait</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
@@ -685,9 +706,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>priority</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">3</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
@@ -925,9 +949,7 @@ namespace MyRequest
 <strong>page_urls(required)</strong>
 <br>
 <br>
-<dl id="value-row">
 Value: [URL1, URL2, ..., ]
-</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">آدرس صفحات ورودی</p>
@@ -936,30 +958,28 @@ Value: [URL1, URL2, ..., ]
 <strong>type</strong>
 <br>
 <br>
-<dl id="value-row">
 Value: 
-<dl>
-<dl>
+<span>
+<span>
 general
-</dl>
-<dl>
+</span>
+<span>
 سندهای عمومی
-</dl>
-<dl>
+</span>
+<span>
 ID-card
-</dl>
-<dl>
+</span>
+<span>
 کارت‌های شناسایی
-</dl>
-<dl>
+</span>
+<span>
 excel
-</dl>
-<dl>
+</span>
+<span>
 جدولهای مالی
-</dl>
+</span>
 
-</dl>
-</dl>
+</span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
@@ -968,9 +988,12 @@ excel
 <strong>fix_orientation</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
@@ -979,9 +1002,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>word_positions</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
@@ -990,9 +1016,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>wait</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
@@ -1001,9 +1030,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">true</span>
 <strong>priority</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">3</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>

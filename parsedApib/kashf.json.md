@@ -23,13 +23,7 @@ meta:
 
 # کشف
 
-<div dir=rtl>
-کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
-</div>
-
-<blockquote dir=rtl>
-برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
-</blockquote>
+کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.,,,,برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
 
 # تحلیل متن
 
@@ -475,9 +469,9 @@ namespace MyRequest
 ```plaintext
 {
     "dataset": "iran",
-    "every_ms": 100,
+    "every_ms": 50,
     "duration": 25,
-    "min_frame_diff": 50,
+    "min_frame_diff": 0.4,
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
@@ -489,9 +483,9 @@ curl  --request POST \
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
       --data-binary {
     "dataset": "iran",
-    "every_ms": 100,
+    "every_ms": 50,
     "duration": 25,
-    "min_frame_diff": 50,
+    "min_frame_diff": 0.4,
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
@@ -505,9 +499,9 @@ from urllib2 import Request, urlopen
 values = """
 {
     "dataset": "iran",
-    "every_ms": 100,
+    "every_ms": 50,
     "duration": 25,
-    "min_frame_diff": 50,
+    "min_frame_diff": 0.4,
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
@@ -545,9 +539,9 @@ class MyRequest {
 
             byte[] out = "{
     "dataset": "iran",
-    "every_ms": 100,
+    "every_ms": 50,
     "duration": 25,
-    "min_frame_diff": 50,
+    "min_frame_diff": 0.4,
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
@@ -582,9 +576,9 @@ class MyRequest {
   $content = json_encode(
       '{
     "dataset": "iran",
-    "every_ms": 100,
+    "every_ms": 50,
     "duration": 25,
-    "min_frame_diff": 50,
+    "min_frame_diff": 0.4,
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
@@ -637,9 +631,9 @@ namespace MyRequest
             {
                 string json = "{
     "dataset": "iran",
-    "every_ms": 100,
+    "every_ms": 50,
     "duration": 25,
-    "min_frame_diff": 50,
+    "min_frame_diff": 0.4,
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]

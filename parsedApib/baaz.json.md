@@ -23,19 +23,11 @@ meta:
 
 # باز
 
-<div dir=rtl>
-باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.
-</div>
-
-<blockquote dir=rtl>
-برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
-</blockquote>
+باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.,,,,برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
 
 # نمایه‌سازی
 
-<div dir=rtl>
 برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
-</div>
 
 
 ## ثبت داده‌ها
@@ -460,9 +452,12 @@ namespace MyRequest
 <strong>type(required)</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">movie</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    movie
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
@@ -471,9 +466,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">movie</span>
 <strong>id(required)</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">1</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    1
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
@@ -482,9 +480,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">1</span>
 <strong>title(required)</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">ماجرای نیمروز</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ماجرای نیمروز
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
@@ -493,9 +494,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">ماجرای 
 <strong>importance</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">100</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    100
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
@@ -504,9 +508,12 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">100</span>
 <strong>time</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">2017-07-08 10:30:00</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    2017-07-08 10:30:00
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
@@ -515,9 +522,7 @@ Value: <span style="background-color: #00A693;border-radius: 2px;">2017-07-08 10
 <strong>labels</strong>
 <br>
 <br>
-<dl id="value-row">
 Value: [هیجانی, ماجراجویی, ]
-</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
@@ -526,9 +531,12 @@ Value: [هیجانی, ماجراجویی, ]
 <strong>...</strong>
 <br>
 <br>
-<dl id="value-row">
-Value: <span style="background-color: #00A693;border-radius: 2px;">...</span>
-</dl>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ...
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>

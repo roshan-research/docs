@@ -67,7 +67,7 @@ function writeResourceSection(resourceJson,hostValue){
         resourceUrl = hostValue.substring(0,hostValue.length-1) + resourceHref;
     }
 
-    resourceJson?.copies.forEach((value) => {
+    resourceJson.copies.forEach((value) => {
         resourceSectionText += value + "\n\n";
     })
         resourceTitle = resourceJson.title;
@@ -108,20 +108,25 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
                     })
                     value += "]";
                 } else if(data.valueType === "enum") {
-                    value = '\n<dl>\n';
+                    value = '\n<span>\n';
                     data.enumaration.forEach((element) => {
-                        let elementMarkdown = `<dl>
+                        let elementMarkdown = `<span>
 ${element.name}
-</dl>
-<dl>
+</span>
+<span>
 ${element.meta}
-</dl>
+</span>
 `;
                         value += elementMarkdown;
                     })
-                    value += '\n</dl>';
+                    value += '\n</span>';
                 } else {
-                    value = `<span style="background-color: #00A693;border-radius: 2px;">${data.value}</span>`;
+                    value = `<span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ${data.value}
+                    </span>`;
                 }
                 if (data.typeAttributes[0] === 'required') {
                     keyString += "(required)";
@@ -130,9 +135,7 @@ ${element.meta}
 <strong>${keyString}</strong>
 <br>
 <br>
-<dl id="value-row">
 Value: ${value}
-</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">${data.description}</p>\n<br><br>\n`;

@@ -23,9 +23,7 @@ meta:
 
 # الفبا
 
-نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
-
-برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
+نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.,,برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
 
 # خواندن سند
 
@@ -279,89 +277,102 @@ namespace MyRequest
 <strong>document_url(required)</strong>
 <br>
 <br>
-Value: URL
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
-
+<br><br>
 <dl>
 <strong>type</strong>
 <br>
 <br>
 Value: 
-<details>
-<summary>
+<span>
+<span>
 general
-</summary>
-<br>
-
-<p>
-general
-</p>
-<p>
+</span>
+<span>
 سندهای عمومی
-</p>
-<br>
-
-<p>
+</span>
+<span>
 ID-card
-</p>
-<p>
+</span>
+<span>
 کارت‌های شناسایی
-</p>
-<br>
-
-<p>
+</span>
+<span>
 excel
-</p>
-<p>
+</span>
+<span>
 جدولهای مالی
-</p>
-<br>
+</span>
 
-</details>
-
-
+</span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
-
+<br><br>
 <dl>
 <strong>fix_orientation</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
-
+<br><br>
 <dl>
 <strong>word_positions</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
-
+<br><br>
 <dl>
 <strong>wait</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
-
+<br><br>
 <dl>
 <strong>priority</strong>
 <br>
 <br>
-Value: 3
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
-
+<br><br>
 ## نمونه ارسال مستقیم سند
 
 > Request
@@ -609,89 +620,102 @@ namespace MyRequest
 <strong>document(required)</strong>
 <br>
 <br>
-Value: file in binary
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    file in binary
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">فایل سند ورودی</p>
-
+<br><br>
 <dl>
 <strong>type</strong>
 <br>
 <br>
 Value: 
-<details>
-<summary>
+<span>
+<span>
 general
-</summary>
-<br>
-
-<p>
-general
-</p>
-<p>
+</span>
+<span>
 سندهای عمومی
-</p>
-<br>
-
-<p>
+</span>
+<span>
 ID-card
-</p>
-<p>
+</span>
+<span>
 کارت‌های شناسایی
-</p>
-<br>
-
-<p>
+</span>
+<span>
 excel
-</p>
-<p>
+</span>
+<span>
 جدولهای مالی
-</p>
-<br>
+</span>
 
-</details>
-
-
+</span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
-
+<br><br>
 <dl>
 <strong>fix_orientation</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
-
+<br><br>
 <dl>
 <strong>word_positions</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
-
+<br><br>
 <dl>
 <strong>wait</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
-
+<br><br>
 <dl>
 <strong>priority</strong>
 <br>
 <br>
-Value: 3
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
-
+<br><br>
 # خواندن صفحه
 
 این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
@@ -929,85 +953,93 @@ Value: [URL1, URL2, ..., ]
 </dl>
 
 <p style="direction:rtl;font-weight:600;">آدرس صفحات ورودی</p>
-
+<br><br>
 <dl>
 <strong>type</strong>
 <br>
 <br>
 Value: 
-<details>
-<summary>
+<span>
+<span>
 general
-</summary>
-<br>
-
-<p>
-general
-</p>
-<p>
+</span>
+<span>
 سندهای عمومی
-</p>
-<br>
-
-<p>
+</span>
+<span>
 ID-card
-</p>
-<p>
+</span>
+<span>
 کارت‌های شناسایی
-</p>
-<br>
-
-<p>
+</span>
+<span>
 excel
-</p>
-<p>
+</span>
+<span>
 جدولهای مالی
-</p>
-<br>
+</span>
 
-</details>
-
-
+</span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
-
+<br><br>
 <dl>
 <strong>fix_orientation</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
-
+<br><br>
 <dl>
 <strong>word_positions</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
-
+<br><br>
 <dl>
 <strong>wait</strong>
 <br>
 <br>
-Value: true
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
-
+<br><br>
 <dl>
 <strong>priority</strong>
 <br>
 <br>
-Value: 3
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
-
+<br><br>
 # وضعیت سند
 
 این تابع برای هر کدام از سندهای ورودی مشخص می‌کند که چه تعداد از صفحات آنها تحلیل شده است.
@@ -1886,6 +1918,8 @@ namespace MyRequest
 }
 ```
 
+> Response 
+
 `POST /api/download_pdf/`
 
 # حذف سند
@@ -2243,3 +2277,4 @@ namespace MyRequest
 ```
 
 `POST /api/read_document/`
+

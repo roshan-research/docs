@@ -23,10 +23,7 @@ meta:
 
 # Parde
 
-Parde recognizes unsafe images.
-
-> For using Parde API you need a TOKEN_KEY, if you don't have one,
-please contact parde@sobhe.ir.
+Parde recognizes unsafe images.,,> For using Parde API you need a TOKEN_KEY, if you don't have one,,please contact parde@sobhe.ir.
 
 # Process Images
 
