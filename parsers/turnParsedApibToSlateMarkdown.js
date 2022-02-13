@@ -108,26 +108,20 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
                     })
                     value += "]";
                 } else if(data.valueType === "enum") {
-                    value = `\n<details>
-<summary>
-${data.value}
-</summary>
-<br>
-`;
+                    value = '\n<dl>\n';
                     data.enumaration.forEach((element) => {
-                        let temp = `\n<p>
+                        let elementMarkdown = `<dl>
 ${element.name}
-</p>
-<p>
+</dl>
+<dl>
 ${element.meta}
-</p>
-<br>
+</dl>
 `;
-                        value += temp;
+                        value += elementMarkdown;
                     })
-                    value += '\n</details>\n\n';
+                    value += '\n</dl>';
                 } else {
-                    value = data.value;
+                    value = `<span style="background-color: #00A693;border-radius: 2px;">${data.value}</span>`;
                 }
                 if (data.typeAttributes[0] === 'required') {
                     keyString += "(required)";
@@ -136,10 +130,12 @@ ${element.meta}
 <strong>${keyString}</strong>
 <br>
 <br>
+<dl id="value-row">
 Value: ${value}
 </dl>
+</dl>
 
-<p style="direction:rtl;font-weight:600;">${data.description}</p>\n\n`;
+<p style="direction:rtl;font-weight:600;">${data.description}</p>\n<br><br>\n`;
             })
         }
         else if (value.type === "messageBody"){

@@ -460,65 +460,79 @@ namespace MyRequest
 <strong>type(required)</strong>
 <br>
 <br>
-Value: movie
+<dl id="value-row">
+Value: <span style="background-color: #00A693;border-radius: 2px;">movie</span>
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
-
+<br><br>
 <dl>
 <strong>id(required)</strong>
 <br>
 <br>
-Value: 1
+<dl id="value-row">
+Value: <span style="background-color: #00A693;border-radius: 2px;">1</span>
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
-
+<br><br>
 <dl>
 <strong>title(required)</strong>
 <br>
 <br>
-Value: ماجرای نیمروز
+<dl id="value-row">
+Value: <span style="background-color: #00A693;border-radius: 2px;">ماجرای نیمروز</span>
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
-
+<br><br>
 <dl>
 <strong>importance</strong>
 <br>
 <br>
-Value: 100
+<dl id="value-row">
+Value: <span style="background-color: #00A693;border-radius: 2px;">100</span>
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
-
+<br><br>
 <dl>
 <strong>time</strong>
 <br>
 <br>
-Value: 2017-07-08 10:30:00
+<dl id="value-row">
+Value: <span style="background-color: #00A693;border-radius: 2px;">2017-07-08 10:30:00</span>
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
-
+<br><br>
 <dl>
 <strong>labels</strong>
 <br>
 <br>
+<dl id="value-row">
 Value: [هیجانی, ماجراجویی, ]
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
-
+<br><br>
 <dl>
 <strong>...</strong>
 <br>
 <br>
-Value: ...
+<dl id="value-row">
+Value: <span style="background-color: #00A693;border-radius: 2px;">...</span>
+</dl>
 </dl>
 
 <p style="direction:rtl;font-weight:600;">هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
-
+<br><br>
 ## ویرایش داده‌ها
 
 > Request

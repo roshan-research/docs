@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3b7315f-c8b7-4c04-b6a3-9b34c4e19bd8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiCodes/alefba/MultiPartRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/apiCodes/alefba/MultiPartRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parsedApib/alefba.json.md" beforeDir="false" afterPath="$PROJECT_DIR$/parsedApib/alefba.json.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parsedApib/baaz.json.md" beforeDir="false" afterPath="$PROJECT_DIR$/parsedApib/baaz.json.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parsers/drafterResult.json" beforeDir="false" afterPath="$PROJECT_DIR$/parsers/drafterResult.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parsers/turnParsedApibToSlateMarkdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/parsers/turnParsedApibToSlateMarkdown.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +92,7 @@
       <workItem from="1638617349514" duration="26000" />
       <workItem from="1640080392760" duration="2000" />
       <workItem from="1640080425866" duration="18000" />
+      <workItem from="1644739149993" duration="1387000" />
     </task>
     <servers />
   </component>
