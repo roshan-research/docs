@@ -160,15 +160,10 @@ html, body {
   }
 
   @media (max-width: $phone-width) {
-    .toc-link.active {
-      background-color: $nav-active-bg;
-      border-radius: 0 5px 5px 0;
-      color: $nav-active-text;
-    }
-  
+    
     .toc-link{
-      border-radius: 0 5px 5px 0;
-      font-size: 15px;
+      text-align: right;
+      padding-right: 0;
     }
   }
 
@@ -669,6 +664,7 @@ html, body {
   float: right;
   fill: #9DAAB6;
   cursor: pointer;
+  position: fixed;
   opacity: 0.4;
   height: 18px;
   width: 18px;
@@ -719,7 +715,6 @@ p{
 @media (min-width: $phone-width) {
 
   .copy-clipboard {
-    position: fixed;
     margin-left: 32vw;
   }
 
@@ -749,6 +744,12 @@ p{
 @media (max-width: $phone-width + 300px) {
   .copy-clipboard {
     margin-left: 35%;
+  }
+}
+
+@media (max-width: $phone-width) {
+  .copy-clipboard {
+    margin-left: 70%;
   }
 }
 
