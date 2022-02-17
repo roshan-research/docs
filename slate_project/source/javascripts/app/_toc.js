@@ -95,7 +95,7 @@
 
       $("#nav-button").click(function() {
         $(".toc-wrapper").toggleClass('open');
-        $("#nav-button").toggleClass('open');
+        $("#nav-button").toggleClass('open'); 
         return false;
       });
       $(".page-wrapper").click(closeToc);

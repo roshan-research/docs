@@ -599,9 +599,10 @@ html, body {
 // There are also a couple styles disperesed
 
 @media (max-width: $tablet-width) {
+  
   .toc-wrapper {
     left: -$nav-width;
-
+    
     &.open {
       left: 0;
     }
@@ -932,4 +933,8 @@ li {
 .lang-selector {
   font-size: 13px;
   font-weight: bold;
+}
+
+blockquote {
+  text-align: left;
 }
