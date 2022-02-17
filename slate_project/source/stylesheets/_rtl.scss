@@ -26,7 +26,7 @@ $default: auto;
     #{right}: 0;
     transition: right 0.3s ease-in-out;
     &.open {
-        right: $nav-width
+        right: $nav-width;
     }
 }
 

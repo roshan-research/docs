@@ -80,7 +80,7 @@ html, body {
       box-sizing: border-box;
       height: 35px;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2) + 10px;
+      width: $nav-width - ($nav-padding*2) + 1vw;
       outline: none;
       direction: rtl;
       color: $nav-text;
@@ -235,13 +235,13 @@ html, body {
     background-color: rgba(#fc722a, 0.7);
     transform-origin: 0 0;
     transform: rotate(-90deg) translate(-100%, 0);
-    border-radius: 0 0 0 5px;
-  }
-  padding: 0 1.5em 5em 0; // increase touch size area
+    border-radius: 5px 0 0 0;
+  } // increase touch size area
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  left: 92vw;
+  height: fit-content;
+  width: fit-content;
   z-index: 100;
   color: #000;
   text-decoration: none;
@@ -249,14 +249,15 @@ html, body {
   opacity: 0.7;
   line-height: 16px;
   img {
-    height: 16px;
+    height: 5vw;
+    width: auto;
     vertical-align: bottom;
   }
 
   transition: left 0.3s ease-in-out;
 
   &:hover { opacity: 1; }
-  &.open {left: $nav-width}
+  &.open {left: 27vw}
 }
 
 
@@ -601,10 +602,11 @@ html, body {
 @media (max-width: $tablet-width) {
   
   .toc-wrapper {
-    left: -$nav-width;
-    
+    left: 100vw;
+    width: $nav-width + 51vw;
+
     &.open {
-      left: 0;
+      left: 35vw;
     }
   }
 
@@ -734,7 +736,6 @@ p{
 
 
 @media (max-width: $phone-width) {
-
   .content {
     pre{
       margin-left: 1%;
@@ -747,7 +748,7 @@ p{
 
 @media (max-width: $phone-width + 300px) {
   .copy-clipboard {
-    margin-left: 60%;
+    margin-left: 35%;
   }
 }
 
