@@ -285,7 +285,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">آدرس سند ورودی</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -315,7 +316,8 @@ excel
 </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -329,7 +331,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -343,7 +346,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -357,7 +361,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -371,7 +376,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 <br><br>
 ## نمونه ارسال مستقیم سند
 
@@ -628,7 +634,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">فایل سند ورودی</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  فایل سند ورودی</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -658,7 +665,8 @@ excel
 </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -672,7 +680,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -686,7 +695,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -700,7 +710,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -714,7 +725,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 <br><br>
 # خواندن صفحه
 
@@ -952,7 +964,8 @@ namespace MyRequest
 Value: [URL1, URL2, ..., ]
 </dl>
 
-<p style="direction:rtl;font-weight:600;">آدرس صفحات ورودی</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  آدرس صفحات ورودی</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -982,7 +995,8 @@ excel
 </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -996,7 +1010,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -1010,7 +1025,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -1024,7 +1040,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -1038,7 +1055,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 <br><br>
 # وضعیت سند
 

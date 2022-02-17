@@ -138,7 +138,7 @@ ${element.meta}
 Value: ${value}
 </dl>
 
-<p style="direction:rtl;font-weight:600;">${data.description}</p>\n<br><br>\n`;
+<p style="direction:rtl;font-weight:600;">\n<img src="./images/vector.svg" alt="vector">  ${data.description}</p>\n<br><br>\n`;
             })
         }
         else if (value.type === "messageBody"){

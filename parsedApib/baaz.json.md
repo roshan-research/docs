@@ -460,7 +460,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
 <br><br>
 <dl>
 <strong>id(required)</strong>
@@ -474,7 +475,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
 <br><br>
 <dl>
 <strong>title(required)</strong>
@@ -488,7 +490,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
 <br><br>
 <dl>
 <strong>importance</strong>
@@ -502,7 +505,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 <br><br>
 <dl>
 <strong>time</strong>
@@ -516,7 +520,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 <br><br>
 <dl>
 <strong>labels</strong>
@@ -525,7 +530,8 @@ Value: <span style="background-color: #00A693;
 Value: [هیجانی, ماجراجویی, ]
 </dl>
 
-<p style="direction:rtl;font-weight:600;">مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
 <br><br>
 <dl>
 <strong>...</strong>
@@ -539,7 +545,8 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
+<p style="direction:rtl;font-weight:600;">
+<img src="./images/vector.svg" alt="vector">  هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
 <br><br>
 ## ویرایش داده‌ها
 
