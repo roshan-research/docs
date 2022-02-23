@@ -777,6 +777,10 @@ p{
   src: url(../fonts/IRANYekan.ttf);
 }
 
+@font-face {
+  font-family: VazirCode;
+  src: url(../fonts/VazirCode.ttf);
+}
 
 p,a,h1{
   font-family: IRANYekan;
@@ -939,4 +943,14 @@ li {
 
 blockquote {
   text-align: left;
+}
+
+
+.content {
+  h1 {
+    font-family: IRANYekan;
+  }
+  h2 {
+    font-family: IRANYekan;
+  }
 }
