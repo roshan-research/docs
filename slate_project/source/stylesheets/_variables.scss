@@ -30,7 +30,7 @@ $code-bg: #1E2224 !default;
 $code-annotation-bg: #191D1F !default;
 $nav-subitem-bg: $side-theme-color !default;
 $nav-active-bg: #FF6200 !default;
-$nav-active-parent-bg: #1E2224 !default; // parent links of the current section
+$nav-active-parent-bg: transparent !default; // parent links of the current section
 $lang-select-border: #000 !default;
 $lang-select-bg: white;
 $lang-select-active-bg: $side-theme-color; // feel free to change this to blue or something
@@ -47,7 +47,7 @@ $search-notice-bg: #c97a7e !default;
 $main-text: #333 !default; // main content text color
 $nav-text: black!default;
 $nav-active-text: #fff !default;
-$nav-active-parent-text: #fff !default; // parent links of the current section
+$nav-active-parent-text: black !default; // parent links of the current section
 $lang-select-text: black !default; // color of unselected language tab text
 $lang-select-active-text: black !default; // color of selected language tab text
 $lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed

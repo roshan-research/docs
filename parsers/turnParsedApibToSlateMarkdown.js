@@ -113,7 +113,7 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
                         let elementMarkdown = `<span>
 ${element.name}
 </span>
-<span>
+<span style="font-family:VazirCode;">
 ${element.meta}
 </span>
 `;
@@ -138,7 +138,7 @@ ${element.meta}
 Value: ${value}
 </dl>
 
-<p style="direction:rtl;font-weight:600;">\n<img src="./images/vector.svg" alt="vector">  ${data.description}</p>\n<br><br>\n`;
+<p style="direction:rtl;font-weight:300;">\n<img src="./images/vector.svg" alt="vector">  ${data.description}</p>\n<br><br>\n`;
             })
         }
         else if (value.type === "messageBody"){
@@ -149,7 +149,6 @@ Value: ${value}
             catch (e){
                 requestMessageBodyContent = value.content;
             }
-
         }
         else if (value.type === "messageBodySchema"){
             requestMessageBodySchema += "contentType: " + value.contentType;

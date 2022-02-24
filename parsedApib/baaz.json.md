@@ -460,7 +460,7 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
 <br><br>
 <dl>
@@ -475,7 +475,7 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
 <br><br>
 <dl>
@@ -490,7 +490,7 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
 <br><br>
 <dl>
@@ -505,7 +505,7 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 <br><br>
 <dl>
@@ -520,7 +520,7 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 <br><br>
 <dl>
@@ -530,7 +530,7 @@ Value: <span style="background-color: #00A693;
 Value: [هیجانی, ماجراجویی, ]
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
 <br><br>
 <dl>
@@ -545,7 +545,7 @@ Value: <span style="background-color: #00A693;
                     </span>
 </dl>
 
-<p style="direction:rtl;font-weight:600;">
+<p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
 <br><br>
 ## ویرایش داده‌ها
