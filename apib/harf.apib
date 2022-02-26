@@ -75,3 +75,110 @@ HOST: http://harf.roshan-ai.ir
             ]
           }
         ]
+
+
+## پیاده‌سازی متن فایل غیرهمزمان [/api/transcribe_files/]
+
+<div dir=rtl>
+برای دریافت نتیجه تحلیل از طریق تحلیل غیرهمزمان، فراخوانی به صورت زیر است.
+</div>
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "media_urls": ["https://i.ganjoor.net/a2/41417.mp3"],
+              "wait": false
+            }
+
++ Response 200 (application/json)
+      {
+        "state":"PENDING",
+        "task_ids":["..."]
+      }
+
+<div dir=rtl>
+پس از ارسال درخواست تحلیل غیرهمزمان نتیجه تحلیل از طریق task_ids قابل پیگیری است.
+</div>
+
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "tasks_ids": ["..."],
+              "wait": false
+            }
+
++ Response 200 (application/json)
+
+        [
+          {
+            "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+            "duration": "0:00:44",
+            "segments": [
+              {
+                "start": "0:00:00",
+                "end": "0:00:02",
+                "text": "حکایت"
+              },
+              {
+                "start": "0:00:02",
+                "end": "0:00:06",
+                "text": "یکی را از حکما شنیدم که می گفت"
+              },
+              {
+                "start": "0:00:06",
+                "end": "0:00:11",
+                "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+              },
+              {
+                "start": "0:00:11",
+                "end": "0:00:16",
+                "text": "مگر آن کس که چون دیگری در سخن باشد"
+              },
+              {
+                "start": "0:00:16",
+                "end": "0:00:21",
+                "text": "همچنان ناتمام گفته سخن آغاز کند"
+              },
+              ...
+            ]
+          }
+        ]
+
+<div dir=rtl>
+نتیجه درخواست بالا با توجه به وضعیت تحلیل میتواند در وضعیت های TIMEOUT، FAILUREو یا PENDING باشد.
+</div>
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "tasks_ids": ["..."],
+              "wait": false
+            }
+
++ Response 200 (application/json)
+      {"state":"PENDING"}
