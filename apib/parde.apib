@@ -10,15 +10,13 @@ Parde recognizes unsafe images.
 please contact parde@sobhe.ir.
 
 
-## Process Images [/parde/api/images_safety]
+## Process Images [/parde/api/tag_images]
 
 ### Request [POST]
 
-You may ask safety of some images using this action. Safety is a float
-number between 0 (unsafe) and 1 (safe) that shows probability of input
-image being safe.
+You may ask tags of some images using this action. Image tags is a list of objects with image urls, list of tag which contains tag name and a float number between 0 and 1 that shows probability of belonging image to class.
 
-> Asking safety of multiple images in one request results in better
+> Asking tags of multiple images in one request results in better
 performance.
 
 + Request (application/json)
@@ -37,68 +35,11 @@ performance.
 
 + Response 200 (application/json)
 
-        {
-            "http://www.sobhe.ir/baaz/img/goshawk.jpg": 1
-        }
+        [{"image_url":"http://www.sobhe.ir/baaz/img/goshawk.jpg","tags":[]}]
 
 
-## Report Image Safety [/parde/api/report]
-
-### Request [POST]
-
-You may report safety of one image using this action. Parde learns reported
-images for predicting image safety more precisely.
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Token TOKEN_KEY
-
-    + Body
-
-            {
-                "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
-                "is_safe": true
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "id": 1,
-            "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
-            "is_safe": true
-        }
-
-
-## Remove Image Report [/parde/api/remove_report]
-
-### Request [POST]
-
-You may remove reported images using this action. Parde removes all of your
-reports with input url and responds with their object id.
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Token TOKEN_KEY
-
-    + Body
-
-            {
-                "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg"
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
-            "removed_reports": [1]
-        }
-
-
-## Video Keyframes [/api/video_frames]
+## Video Keyframes [/parde/api/tag_video_frames]
+You can ask tags of video frames using this action. It response with a list of video frames and corresponding tags.
 
 ### Request [POST]
 
@@ -108,19 +49,21 @@ reports with input url and responds with their object id.
 
             Authorization: Token TOKEN_KEY
 
-    + Body
+    + Attributes
+        - video_urls: list (URL, required) - List of video URLs
+        - every_ms: 100 (number) - distance of two extracted frames in miliseconds
+        - min_frame_diff: 0.4 (number) - The minimum value of the difference between two frames which are considered different.
+        - duration: 25 (number) - مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.
+        - wait: true (boolean) - If true, the video process would be asynchronous and during the video processing, the API responds with the state of the process [Pending or started] and on the first request, after the process is finished, it will respond with the results.
 
             {
-                "video_url": "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4"
+                video_urls: ["https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4"],
+                every_ms: 200, 
+                duration: 36000, 
+                min_frame_diff: 0.5
             }
+
 
 + Response 200 (application/json)
 
-        {
-            "video_url":"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4",
-            "frames":[
-                "http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:00.jpg",
-                "http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:08.jpg",
-                "http://api.sobhe.ir/media/videos/big_buck_bunny_720p_2mb/frame-00:00:13.jpg"
-            ]
-        }
+        [{"video_url":"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4","frames":[{"frame":6,"time":"0:00:00","tags":[]},{"frame":31,"time":"0:00:01","tags":[]},{"frame":36,"time":"0:00:01","tags":[]},...,{"frame":475,"time":"0:00:18","tags":[{"id":86141,"probability":0.32,"title":"خشونت"}]},{"frame":560,"time":"0:00:22","tags":[]},...]}]

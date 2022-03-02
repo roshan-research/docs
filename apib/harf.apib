@@ -75,3 +75,133 @@ HOST: http://harf.roshan-ai.ir
             ]
           }
         ]
+
+
+## پیاده‌سازی متن فایل ناهمگام [/api/transcribe_files/]
+
+<div dir=rtl>
+برای دریافت نتیجه تحلیل از طریق تحلیل ناهمگام، فراخوانی به صورت زیر است.
+</div>
+
+###  نمونه ارسال درخواست ناهمگام [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "media_urls": ["https://i.ganjoor.net/a2/41417.mp3"],
+              "wait": false
+            }
+
++ Response 200 (application/json)
+      {
+        "state":"PENDING",
+        "task_ids":["..."]
+      }
+
+<div dir=rtl>
+پس از ارسال درخواست تحلیل ناهمگام نتیجه تحلیل از طریق task_ids قابل پیگیری است. تا فبل از پایان فرآیند تحلیل، تابع با ارسال وضعیت فرآیند پاسخ می‌دهد و در اولین درخواست بعد از پایان فرآیند تحلیل، جواب را ارسال خواهد کرد.
+</div>
+
+
+### نمونه دریافت پاسخ در درخواست ناهمگام [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "tasks_ids": ["..."],
+              "wait": false
+            }
+
++ Response 200 (application/json)
+
+        [
+          {
+            "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+            "duration": "0:00:44",
+            "segments": [
+              {
+                "start": "0:00:00",
+                "end": "0:00:02",
+                "text": "حکایت"
+              },
+              {
+                "start": "0:00:02",
+                "end": "0:00:06",
+                "text": "یکی را از حکما شنیدم که می گفت"
+              },
+              {
+                "start": "0:00:06",
+                "end": "0:00:11",
+                "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+              },
+              {
+                "start": "0:00:11",
+                "end": "0:00:16",
+                "text": "مگر آن کس که چون دیگری در سخن باشد"
+              },
+              {
+                "start": "0:00:16",
+                "end": "0:00:21",
+                "text": "همچنان ناتمام گفته سخن آغاز کند"
+              },
+              ...
+            ]
+          }
+        ]
+
+<div dir=rtl>
+نتیجه درخواست بالا با توجه به وضعیت تحلیل میتواند در وضعیت های TIMEOUT، FAILUREو یا PENDING باشد.
+</div>
+
+### نمونه [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "tasks_ids": ["..."],
+              "wait": false
+            }
+
++ Response 200 (application/json)
+      {"state":"PENDING"}
+
+## پیاده‌سازی متن فایل در لحظه  [/ws_api/transcribe_files/wav/sync/]
+
+<div dir=rtl>
+برای پیاده سازی متن فایل در لحظه نیاز به برقراری ارتباط از طریق websocket است.فرآیند بدین صورت است که پس از برقراری ارتباط بایت های فایل wav به صورت باینری برای سرور ارسال میشود.در صورت آماده بودن نتیجه تحلیل پاسخ در قالب زیر آماده است.
+</div>
+
+<div>
+{"segment_id": 1, "text": "سازمان بهداشت جهانی", "start": "0:00:00", "end": "0:00:05"}
+</div>
+
+
+<div dir=rtl>
+در صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.
+</div>
+
+<div>
+{"state": "PENDING"}
+</div>
+
+<div dir=rtl>
+در انتها برای سرور متن "finalize" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.
+</div>
