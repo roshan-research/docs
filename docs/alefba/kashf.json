@@ -1,0 +1,1770 @@
+<h1 id='c393465ced'>کشف</h1>
+<p>کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.,,,,برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.</p>
+<h1 id='2ed846aa0c'>تحلیل متن</h1><h2 id='8e687366d5'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "digikala",
+    "contents": [
+        "ارزش خریدنش رو بی شک داره",
+        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
+    ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"digikala"</span>,
+    <span class="s2">"contents"</span>: <span class="o">[</span>
+        <span class="s2">"ارزش خریدنش رو بی شک داره"</span>,
+        <span class="s2">"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"</span>
+    <span class="o">]</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/tag_texts/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "digikala",
+    "contents": [
+        "ارزش خریدنش رو بی شک داره",
+        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
+    ]
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_texts/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/tag_texts/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">digikala</span><span class="s">",
+    "</span><span class="n">contents</span><span class="s">": [
+        "</span><span class="n">ارزش</span> <span class="n">خریدنش</span> <span class="n">رو</span> <span class="n">بی</span> <span class="n">شک</span> <span class="n">داره</span><span class="s">",
+        "</span><span class="n">اصلا</span> <span class="n">اصلا</span> <span class="n">کیفیت</span> <span class="n">نداره</span> <span class="n">رنگش</span> <span class="n">بااین</span> <span class="n">عکس</span> <span class="n">زمین</span> <span class="n">تاآسمون</span> <span class="n">فرق</span> <span class="n">داره</span><span class="s">"
+    ]
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/tag_texts/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "digikala",
+    "contents": [
+        "ارزش خریدنش رو بی شک داره",
+        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
+    ]
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/tag_texts/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"digikala"</span><span class="p">,</span>
+    <span class="s">"contents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"ارزش خریدنش رو بی شک داره"</span><span class="p">,</span>
+        <span class="s">"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"</span>
+    <span class="p">]</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ارزش خریدنش رو بی شک داره"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"توصیه خرید"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"عدم رضایت بعد خرید"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/tag_texts/</code></p>
+<h1 id='d03b0a053a'>تحلیل تصویر</h1><h2 id='8e687366d5-2'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+    ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
+    <span class="s2">"image_urls"</span>: <span class="o">[</span>
+        <span class="s2">"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg"</span>,
+        <span class="s2">"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"</span>
+    <span class="o">]</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/tag_images/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "iran",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+    ]
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_images/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/tag_images/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">iran</span><span class="s">",
+    "</span><span class="n">image_urls</span><span class="s">": [
+        "</span><span class="nl">https:</span><span class="c1">//media.mehrnews.com/d/2016/08/13/4/2171627.jpg",</span>
+        <span class="s">"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"</span>
+    <span class="o">]</span>
+<span class="o">}</span><span class="s">".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
+            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/tag_images/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "iran",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+    ]
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/tag_images/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"iran"</span><span class="p">,</span>
+    <span class="s">"image_urls"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg"</span><span class="p">,</span>
+        <span class="s">"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"</span>
+    <span class="p">]</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حرم رضوی"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"تئاتر شهر"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<div dir=rtl>
+می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
+</div>
+
+<blockquote>
+<p>curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;image_file=@example.jpg&quot; -F &quot;dataset=iran&quot; http://kashf.roshan-ai.ir/api/tag_images</p>
+</blockquote>
+
+<p><code>POST /api/tag_images/</code></p>
+<h1 id='9ec794253b'>تحلیل فریم‌های ویدئو</h1><h2 id='8e687366d5-3'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
+    ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
+    <span class="s2">"every_ms"</span>: 50,
+    <span class="s2">"duration"</span>: 25,
+    <span class="s2">"min_frame_diff"</span>: 0.4,
+    <span class="s2">"video_urls"</span>: <span class="o">[</span>
+        <span class="s2">"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"</span>
+    <span class="o">]</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/tag_video_frames/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "iran",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
+    ]
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_video_frames/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/tag_video_frames/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">iran</span><span class="s">",
+    "</span><span class="n">every_ms</span><span class="s">": 50,
+    "</span><span class="n">duration</span><span class="s">": 25,
+    "</span><span class="n">min_frame_diff</span><span class="s">": 0.4,
+    "</span><span class="n">video_urls</span><span class="s">": [
+        "</span><span class="nl">https:</span><span class="c1">//hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"</span>
+    <span class="o">]</span>
+<span class="o">}</span><span class="s">".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
+            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/tag_video_frames/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "iran",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
+    ]
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/tag_video_frames/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"iran"</span><span class="p">,</span>
+    <span class="s">"every_ms"</span><span class="p">:</span> <span class="m">50</span><span class="p">,</span>
+    <span class="s">"duration"</span><span class="p">:</span> <span class="m">25</span><span class="p">,</span>
+    <span class="s">"min_frame_diff"</span><span class="p">:</span> <span class="m">0.4</span><span class="p">,</span>
+    <span class="s">"video_urls"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"</span>
+    <span class="p">]</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"video_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"frames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ناآشنا"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">585</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:23"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39127</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.99</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"پل طبیعت"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">603</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:24"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"میدان آزادی"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/tag_video_frames/</code></p>
+<h1 id='7b9bf9ef17'>آموزش مدل</h1><h2 id='8e687366d5-4'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/train_dataset/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "iran"
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/train_dataset/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/train_dataset/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">iran</span><span class="s">"
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/train_dataset/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "iran"
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/train_dataset/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"iran"</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iran"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/train_dataset/</code></p>
+<h1 id='d447349868'>وضعیت داده‌ها</h1><h2 id='8e687366d5-5'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "tags": true
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
+    <span class="s2">"tags"</span>: <span class="nb">true</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/dataset_info/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "iran",
+    "tags": true
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/dataset_info/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/dataset_info/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">iran</span><span class="s">",
+    "</span><span class="n">tags</span><span class="s">": true
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/dataset_info/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "iran",
+    "tags": true
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/dataset_info/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"iran"</span><span class="p">,</span>
+    <span class="s">"tags"</span><span class="p">:</span> <span class="k">true</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"لحظه"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trained"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"report_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">935</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"evaluation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"recall"</span><span class="p">:</span><span class="w"> </span><span class="mi">87</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"برج میلاد"</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reports"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="mi">156</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"evaluation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"recall"</span><span class="p">:</span><span class="w"> </span><span class="mf">80.3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="mf">91.4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"f1"</span><span class="p">:</span><span class="w"> </span><span class="mf">86.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/dataset_info/</code></p>
+<h1 id='ee264f8d93'>گزارش برچسب متن</h1><h2 id='8e687366d5-6'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"content"</span>: <span class="s2">"پیشنهاد میکنم از این بخرید خیلی عالیه."</span>,
+        <span class="s2">"tag_id"</span>: 39,
+        <span class="s2">"positive"</span>: <span class="nb">true</span>
+    <span class="o">}</span>
+<span class="o">]</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/report_text_tags/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/report_text_tags/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/report_text_tags/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"[
+    {
+        "</span><span class="n">content</span><span class="s">": "</span><span class="n">پیشنهاد</span> <span class="n">میکنم</span> <span class="n">از</span> <span class="n">این</span> <span class="n">بخرید</span> <span class="n">خیلی</span> <span class="n">عالیه</span><span class="o">.</span><span class="s">",
+        "</span><span class="n">tag_id</span><span class="s">": 39,
+        "</span><span class="n">positive</span><span class="s">": true
+    }
+]"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/report_text_tags/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/report_text_tags/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"[
+</span>    <span class="p">{</span>
+        <span class="s">"content"</span><span class="p">:</span> <span class="s">"پیشنهاد میکنم از این بخرید خیلی عالیه."</span><span class="p">,</span>
+        <span class="s">"tag_id"</span><span class="p">:</span> <span class="m">39</span><span class="p">,</span>
+        <span class="s">"positive"</span><span class="p">:</span> <span class="k">true</span>
+    <span class="p">}</span>
+<span class="p">]</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"report"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[[39,true]]"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1211592</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/report_text_tags/</code></p>
+<h1 id='41a5855c9b'>گزارش برچسب تصویر</h1><h2 id='8e687366d5-7'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"image_url"</span>: <span class="s2">"https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg"</span>,
+        <span class="s2">"tag_id"</span>: 3,
+        <span class="s2">"positive"</span>: <span class="nb">true</span>
+    <span class="o">}</span>
+<span class="o">]</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/report_image_tags/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/report_image_tags/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/report_image_tags/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"[
+    {
+        "</span><span class="n">image_url</span><span class="s">": "</span><span class="nl">https:</span><span class="c1">//upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",</span>
+        <span class="s">"tag_id"</span><span class="o">:</span> <span class="mi">3</span><span class="o">,</span>
+        <span class="s">"positive"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="o">}</span>
+<span class="o">]</span><span class="s">".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
+            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/report_image_tags/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/report_image_tags/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"[
+</span>    <span class="p">{</span>
+        <span class="s">"image_url"</span><span class="p">:</span> <span class="s">"https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg"</span><span class="p">,</span>
+        <span class="s">"tag_id"</span><span class="p">:</span> <span class="m">3</span><span class="p">,</span>
+        <span class="s">"positive"</span><span class="p">:</span> <span class="k">true</span>
+    <span class="p">}</span>
+<span class="p">]</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"report"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[[3,true]]"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1211593</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/report_image_tags/</code></p>
+<h1 id='7193cd2b06'>ایجاد برچسب</h1><h2 id='8e687366d5-8'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "title": "New Place"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
+    <span class="s2">"title"</span>: <span class="s2">"New Place"</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/create_tag/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "iran",
+    "title": "New Place"
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/create_tag/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/create_tag/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">iran</span><span class="s">",
+    "</span><span class="n">title</span><span class="s">": "</span><span class="nc">New</span> <span class="nc">Place</span><span class="s">"
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/create_tag/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "iran",
+    "title": "New Place"
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/create_tag/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"iran"</span><span class="p">,</span>
+    <span class="s">"title"</span><span class="p">:</span> <span class="s">"New Place"</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Place"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111111111</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/create_tag/</code></p>
+<h1 id='570973e356'>ویرایش برچسب</h1><h2 id='8e687366d5-9'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
+    <span class="s2">"tag_id"</span>: 111111111,
+    <span class="s2">"title"</span>: <span class="s2">"Old Place"</span>,
+    <span class="s2">"active"</span>: <span class="nb">true</span>
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/update_tag/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/update_tag/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/update_tag/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">dataset</span><span class="s">": "</span><span class="n">iran</span><span class="s">",
+    "</span><span class="n">tag_id</span><span class="s">": 111111111,
+    "</span><span class="n">title</span><span class="s">": "</span><span class="nc">Old</span> <span class="nc">Place</span><span class="s">",
+    "</span><span class="n">active</span><span class="s">": true
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/update_tag/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/update_tag/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"iran"</span><span class="p">,</span>
+    <span class="s">"tag_id"</span><span class="p">:</span> <span class="m">111111111</span><span class="p">,</span>
+    <span class="s">"title"</span><span class="p">:</span> <span class="s">"Old Place"</span><span class="p">,</span>
+    <span class="s">"active"</span><span class="p">:</span> <span class="k">true</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Old Place"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111111111</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/update_tag/</code></p>
+<h1 id='0f26d56e26'>حذف برچسب</h1><h2 id='8e687366d5-10'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "tag_id": 111111111
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"tag_id"</span>: 111111111
+<span class="o">}</span> <span class="se">\</span>
+      https://kashf.roshan-ai.ir/api/delete_tag/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "tag_id": 111111111
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/delete_tag/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/api/delete_tag/"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">tag_id</span><span class="s">": 111111111
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/api/delete_tag/"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "tag_id": 111111111
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/api/delete_tag/"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"tag_id"</span><span class="p">:</span> <span class="m">111111111</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iran"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deleted_reports"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/delete_tag/</code></p>

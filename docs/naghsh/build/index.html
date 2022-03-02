@@ -1,0 +1,430 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Naghsh API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #303030;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sa {
+  color: #aa759f;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c53f955e.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-3f445fa7.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;java&quot;,&quot;plaintext&quot;,&quot;python&quot;,&quot;php&quot;,&quot;csharp&quot;]">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
+  </div>
+    <a href="#" id="nav-button">
+      <span>
+      منو 
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-5a60d6fb.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">CURL</a>
+              <a href="#" data-language-name="java">JAVA</a>
+              <a href="#" data-language-name="plaintext">RAW</a>
+              <a href="#" data-language-name="python">PYTHON</a>
+              <a href="#" data-language-name="php">PHP</a>
+              <a href="#" data-language-name="csharp">C#</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="جست و جو">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#naghsh" class="toc-h1 toc-link" data-title="Naghsh">Naghsh</a>
+          </li>
+          <li>
+            <a href="#process-images" class="toc-h1 toc-link" data-title="Process Images">Process Images</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request" class="toc-h2 toc-link" data-title="Request">Request</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='naghsh'>Naghsh</h1>
+<p>For using Naghsh API you need a TOKEN_KEY, if you don&#39;t have one,
+please contact naghsh@sobhe.ir.</p>
+<h1 id='process-images'>Process Images</h1>
+<p><code>/tag_images</code></p>
+<h2 id='request'>Request</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "image_urls": [
+        "http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"
+    ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"image_urls"</span>: <span class="o">[</span>
+        <span class="s2">"http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"</span>
+    <span class="o">]</span>
+<span class="o">}</span> <span class="se">\</span>
+      http://api.sobhe.ir/naghsh/api/tag_images
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+{
+    "image_urls": [
+        "http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"
+    ]
+}
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir/naghsh/api/tag_images'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://api.sobhe.ir/naghsh/api/tag_images"</span><span class="o">);</span>
+            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">image_urls</span><span class="s">": [
+        "</span><span class="nl">http:</span><span class="c1">//tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"</span>
+    <span class="o">]</span>
+<span class="o">}</span><span class="s">".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
+            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/naghsh/api/tag_images"</span><span class="p">;</span>
+  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
+      <span class="s1">'{
+    "image_urls": [
+        "http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"
+    ]
+}'</span><span class="p">);</span>
+  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+          <span class="k">array</span><span class="p">(</span>
+              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
+              <span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
+  <span class="p">}</span>
+
+
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://api.sobhe.ir/naghsh/api/tag_images"</span><span class="p">);</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
+
+            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"image_urls"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"</span>
+    <span class="p">]</span>
+<span class="p">}</span><span class="s">";
+</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response 200</p>
+
+<p>Content-Type: application/json</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"http://tetonraptorcenter.org/assets/media/images/raptor-profiles/Northern%20Goshawk.jpg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"شاهین"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.71</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"جنگل"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.22</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"باغ"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.14</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>POST /tag_images</code></p>
+
+<p><strong>Request Header</strong></p>
+
+<table><thead>
+<tr>
+<th>Content-Type</th>
+<th>Authorization</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>application/json</td>
+<td>Token TOKEN_KEY</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">CURL</a>
+                <a href="#" data-language-name="java">JAVA</a>
+                <a href="#" data-language-name="plaintext">RAW</a>
+                <a href="#" data-language-name="python">PYTHON</a>
+                <a href="#" data-language-name="php">PHP</a>
+                <a href="#" data-language-name="csharp">C#</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

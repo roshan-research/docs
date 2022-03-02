@@ -24,7 +24,6 @@ function JSONfixer(jsonText,fileName){
             for (let j = 0; j < transitions.length; j++) {
                 if (transitions[j].copies.length !== 0) {
                     let splited2 = transitions[j].copies[0].split('\n');
-                    console.log(splited2);
                 }
             }
         }
