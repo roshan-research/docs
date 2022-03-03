@@ -9,7 +9,6 @@ echo 'made markdown files from JSON files'
 cp ./parsedApib/*.md ./slate_project/source
 echo 'copied all markdown files to the slate_project folder'
 
-
 cd slate_project
 
 rm ./source/index.html.md
@@ -71,5 +70,4 @@ cp -r ./build/* ../docs/parde
 clear
 echo 'parde documentations are updated'
 
-clear
 echo 'parsing and building docs finished successfully!'

@@ -1,283 +1,4 @@
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta
-            name="description"
-            content="Documentation for the باز API"
-        >
-    <title>API Reference</title>
-
-    <style media="screen">
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #303030;
-}
-.highlight .err {
-  color: #151515;
-  background-color: #ac4142;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #505050;
-}
-.highlight .cp {
-  color: #f4bf75;
-}
-.highlight .nt {
-  color: #f4bf75;
-}
-.highlight .o, .highlight .ow {
-  color: #d0d0d0;
-}
-.highlight .p, .highlight .pi {
-  color: #d0d0d0;
-}
-.highlight .gi {
-  color: #90a959;
-}
-.highlight .gd {
-  color: #ac4142;
-}
-.highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
-}
-.highlight .kc {
-  color: #d28445;
-}
-.highlight .kt {
-  color: #d28445;
-}
-.highlight .kd {
-  color: #d28445;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
-}
-.highlight .sa {
-  color: #aa759f;
-}
-.highlight .sr {
-  color: #75b5aa;
-}
-.highlight .si {
-  color: #8f5536;
-}
-.highlight .se {
-  color: #8f5536;
-}
-.highlight .nn {
-  color: #f4bf75;
-}
-.highlight .nc {
-  color: #f4bf75;
-}
-.highlight .no {
-  color: #f4bf75;
-}
-.highlight .na {
-  color: #6a9fb5;
-}
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #90a959;
-}
-.highlight .ss {
-  color: #90a959;
-}
-    </style>
-    <style media="print">
-      * {
-        -webkit-transition:none!important;
-        transition:none!important;
-      }
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #586e75;
-}
-.highlight .err {
-  color: #002b36;
-  background-color: #dc322f;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #657b83;
-}
-.highlight .cp {
-  color: #b58900;
-}
-.highlight .nt {
-  color: #b58900;
-}
-.highlight .o, .highlight .ow {
-  color: #93a1a1;
-}
-.highlight .p, .highlight .pi {
-  color: #93a1a1;
-}
-.highlight .gi {
-  color: #859900;
-}
-.highlight .gd {
-  color: #dc322f;
-}
-.highlight .gh {
-  color: #268bd2;
-  background-color: #002b36;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #6c71c4;
-}
-.highlight .kc {
-  color: #cb4b16;
-}
-.highlight .kt {
-  color: #cb4b16;
-}
-.highlight .kd {
-  color: #cb4b16;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #859900;
-}
-.highlight .sa {
-  color: #6c71c4;
-}
-.highlight .sr {
-  color: #2aa198;
-}
-.highlight .si {
-  color: #d33682;
-}
-.highlight .se {
-  color: #d33682;
-}
-.highlight .nn {
-  color: #b58900;
-}
-.highlight .nc {
-  color: #b58900;
-}
-.highlight .no {
-  color: #b58900;
-}
-.highlight .na {
-  color: #268bd2;
-}
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #859900;
-}
-.highlight .ss {
-  color: #859900;
-}
-    </style>
-    <link href="stylesheets/screen-c53f955e.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-3f445fa7.js"></script>
-
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
-  </head>
-
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;java&quot;,&quot;plaintext&quot;,&quot;python&quot;,&quot;php&quot;,&quot;csharp&quot;]">
-  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
-  </div>
-    <a href="#" id="nav-button">
-      <span>
-      منو 
-        <img src="images/navbar-cad8cdcb.png" alt="" />
-      </span>
-    </a>
-    <div class="toc-wrapper">
-      <img src="images/logo-5a60d6fb.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">CURL</a>
-              <a href="#" data-language-name="java">JAVA</a>
-              <a href="#" data-language-name="plaintext">RAW</a>
-              <a href="#" data-language-name="python">PYTHON</a>
-              <a href="#" data-language-name="php">PHP</a>
-              <a href="#" data-language-name="csharp">C#</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="جست و جو">
-        </div>
-        <ul class="search-results"></ul>
-      <ul id="toc" class="toc-list-h1">
-          <li>
-            <a href="#fc30c6605b" class="toc-h1 toc-link" data-title="باز">باز</a>
-          </li>
-          <li>
-            <a href="#cdcb80ffa3" class="toc-h1 toc-link" data-title="نمایه‌سازی">نمایه‌سازی</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#5c1e6b7ac5" class="toc-h2 toc-link" data-title="ثبت داده‌ها">ثبت داده‌ها</a>
-                  </li>
-                  <li>
-                    <a href="#dc3f259306" class="toc-h2 toc-link" data-title="ویرایش داده‌ها">ویرایش داده‌ها</a>
-                  </li>
-                  <li>
-                    <a href="#045640e1b1" class="toc-h2 toc-link" data-title="حذف داده‌ها">حذف داده‌ها</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#c0dfe138ee" class="toc-h1 toc-link" data-title="‌">‌</a>
-          </li>
-          <li>
-            <a href="#0dc3218a9c" class="toc-h1 toc-link" data-title="جستجوی اسناد">جستجوی اسناد</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#1fc039e005" class="toc-h2 toc-link" data-title="جستجو">جستجو</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#c0dfe138ee-2" class="toc-h1 toc-link" data-title="‌">‌</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#105c9d0954" class="toc-h2 toc-link" data-title="جستجوی در لحظه">جستجوی در لحظه</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#c0dfe138ee-3" class="toc-h1 toc-link" data-title="‌">‌</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#4139e5862d" class="toc-h2 toc-link" data-title="پیشنهاد جستجو">پیشنهاد جستجو</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#c0dfe138ee-4" class="toc-h1 toc-link" data-title="‌">‌</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#474ed369da" class="toc-h2 toc-link" data-title="اسناد مشابه">اسناد مشابه</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#c0dfe138ee-5" class="toc-h1 toc-link" data-title="‌">‌</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#f2084a0e81" class="toc-h2 toc-link" data-title="اسناد منبع">اسناد منبع</a>
-                  </li>
-              </ul>
-          </li>
-      </ul>
-    </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <h1 id='fc30c6605b'>باز</h1>
+<h1 id='fc30c6605b'>باز</h1>
 <p>باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.,,,,برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.</p>
 <h1 id='cdcb80ffa3'>نمایه‌سازی</h1>
 <p>برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.</p>
@@ -694,7 +415,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
 
 <p><br><br>
 <dl>
@@ -710,7 +431,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
 
 <p><br><br>
 <dl>
@@ -726,7 +447,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
+<img src="./images/vector.svg" alt="vector">  عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
 
 <p><br><br>
 <dl>
@@ -742,7 +463,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<img src="./images/vector.svg" alt="vector">  هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 
 <p><br><br>
 <dl>
@@ -758,7 +479,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<img src="./images/vector.svg" alt="vector">  هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 
 <p><br><br>
 <dl>
@@ -769,7 +490,7 @@ Value: [هیجانی, ماجراجویی, ]
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
+<img src="./images/vector.svg" alt="vector">  مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
 
 <p><br><br>
 <dl>
@@ -785,7 +506,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
+<img src="./images/vector.svg" alt="vector">  هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
 
 <p><br><br></p>
 <h2 id='dc3f259306'>ویرایش داده‌ها</h2>
@@ -1914,18 +1635,3 @@ Value: <span style="background-color: #00A693;
 </div>
 
 <p><code>POST /{index_name}/{types}/sources</code></p>
-
-      </div>
-      <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">CURL</a>
-                <a href="#" data-language-name="java">JAVA</a>
-                <a href="#" data-language-name="plaintext">RAW</a>
-                <a href="#" data-language-name="python">PYTHON</a>
-                <a href="#" data-language-name="php">PHP</a>
-                <a href="#" data-language-name="csharp">C#</a>
-          </div>
-      </div>
-    </div>
-  </body>
-</html>
