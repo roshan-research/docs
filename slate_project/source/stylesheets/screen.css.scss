@@ -39,7 +39,6 @@ html, body {
   transition: left 0.3s ease-in-out;
 
   overflow-y: auto;
-  transition: 0.5s;
   overflow-x: hidden;
   position: fixed;
   z-index: 80;
@@ -140,9 +139,6 @@ html, body {
 
   li {
     color: $nav-text;
-    transition-property: background;
-    transition-timing-function: linear;
-    transition-duration: 200ms;
   }
 
   // This is the currently selected ToC entry
@@ -216,9 +212,6 @@ html, body {
   text-overflow: ellipsis;
   text-decoration: none;
   color: $nav-text;
-  transition-property: background;
-  transition-timing-function: linear;
-  transition-duration: 130ms;
 }
 
 // button to show navigation on mobile devices
@@ -865,6 +858,16 @@ li {
     }
   }
 
+    li {
+      float: right;
+      li {
+        text-align: right;
+        float: right;
+        direction: rtl;
+        width: 100%;
+      }
+    }
+
   div.highlight + p{
     float: left;
   }
@@ -953,4 +956,16 @@ blockquote {
   h2 {
     font-family: IRANYekan;
   }
+}
+
+li {
+  transition: 0s;
+}
+
+a.toc-h2.toc-link {
+  width: 100%;
+}
+
+a.toc-h2.toc-link.active {
+  width: 75%;
 }
