@@ -96,6 +96,52 @@ HOST: https://alefba.roshan-ai.ir
           }]
         }
 
+### نمونه درخواست به صورت ناهمکام[POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+              "fix_orientation": true,
+              "word_positions": false,
+              "type": "general",
+              "wait": false,
+              "priority": 3
+            }
+
++ Response 200
+      {
+        "state":"PENDING",
+        "task_ids": "..."
+      }
+
+
+### نمونه دریافت نتیجه در حالت ناهمکام [POST]
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Body
+
+            {
+              "task_id": "...",
+              "wait": false
+            }
+
++ Response 200
+      {
+        "state":"started",
+        "task_id": "..."
+      }
+
 ### نمونه ارسال مستقیم سند [POST]
 
 + Request (multipart/form-data; boundary={boundary value})
