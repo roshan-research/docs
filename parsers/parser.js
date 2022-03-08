@@ -57,12 +57,13 @@ const fixJSONproblems = () => {
     });
 }
 
-let command = process.argv[2];
+// let command = process.argv[2];
 
-if (command === "make-jsons"){
-    CreateApibToJSON();
-} else if (command === "make-markdowns"){
-    TurnParsedApibToSlateMarkdown();
-} else if (command === "fix-jsons") {
-    fixJSONproblems();
-}
+// if (command === "make-jsons"){
+//     CreateApibToJSON();
+// } else if (command === "make-markdowns"){
+//     TurnParsedApibToSlateMarkdown();
+// } else if (command === "fix-jsons") {
+//     fixJSONproblems();
+// }
+

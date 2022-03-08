@@ -108,7 +108,7 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
                     })
                     value += "]";
                 } else if(data.valueType === "enum") {
-                    value = '\n<span>\n';
+                    value = '\n<span className="enum-container">\n';
                     data.enumaration.forEach((element) => {
                         let elementMarkdown = `<span>
 ${element.name}
