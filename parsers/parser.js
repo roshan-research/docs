@@ -1,4 +1,5 @@
 const fs = require('fs');
+var http = require('http');
 const apib_to_json= require('./apib_to_json');
 const JSONfixer = require('./JSONfixer');
 const turnParsedApibToSlateMarkdown = require('./turnParsedApibToSlateMarkdown');
@@ -67,3 +68,21 @@ const fixJSONproblems = () => {
 //     fixJSONproblems();
 // }
 
+
+http.createServer(function (req, res) {
+    if (req.url === "/CreateApibToJson"){
+        CreateApibToJSON();
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('Created Json Files');
+    }
+    else if (req.url === "/TurnParsedApibToSlateMarkdown"){
+        TurnParsedApibToSlateMarkdown();
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('Made new slate markdown files.');
+    } else if (req.url === "/FixJson") {
+        fixJSONproblems();
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('Fixed Json Files');
+    }
+
+}).listen(8080);
