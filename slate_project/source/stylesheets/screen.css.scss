@@ -961,8 +961,15 @@ blockquote {
 
 a.toc-h2.toc-link {
   width: 100%;
+  padding-top: 5px;
+}
+
+a.toc-h1.toc-link {
+  width: 100%;
+  padding-top: 5px;
 }
 
 a.toc-h2.toc-link.active {
   width: 75%;
 }
+
