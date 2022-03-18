@@ -1,0 +1,181 @@
+{
+    "title": "حرف",
+    "attributes": [
+        {
+            "key": "FORMAT",
+            "value": "1A"
+        },
+        {
+            "key": "HOST",
+            "value": "http://harf.roshan-ai.ir"
+        }
+    ],
+    "copies": [
+        "<div dir=rtl>\nسامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.\n</div>\n\n<blockquote dir=rtl>\nبرای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید.\n</blockquote>"
+    ],
+    "resources": [
+        {
+            "title": "پیاده‌سازی متن فایل",
+            "href": "/api/transcribe_files/",
+            "hrefVariables": [],
+            "copies": [
+                "<div dir=rtl>\nاین تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است.\n</div>"
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [
+                        "<div dir=rtl>\nمی‌توانید برای همین تابع، فایل ورودی را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:\n</div>\n\n> curl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"media=@test.mp3\" http://harf.roshan-ai.ir/api/transcribe_files/"
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"]\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "[\n  {\n    \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "پیاده‌سازی متن فایل ناهمگام",
+            "href": "/api/transcribe_files/",
+            "hrefVariables": [],
+            "copies": [
+                "<div dir=rtl>\nبرای دریافت نتیجه تحلیل از طریق تحلیل ناهمگام، فراخوانی به صورت زیر است.\n</div>"
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه ارسال درخواست ناهمگام",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"],\n  \"wait\": false\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "  {\n    \"state\":\"PENDING\",\n    \"task_ids\":[\"...\"]\n  }\n\n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "نمونه دریافت پاسخ در درخواست ناهمگام",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"tasks_ids\": [\"...\"],\n  \"wait\": false\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "[\n  {\n    \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"tasks_ids\": [\"...\"],\n  \"wait\": false\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "  {\"state\":\"PENDING\"}\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "پیاده‌سازی متن فایل در لحظه",
+            "href": "/ws_api/transcribe_files/wav/sync/",
+            "hrefVariables": [],
+            "copies": [
+                "<div dir=rtl>\nبرای پیاده سازی متن فایل در لحظه نیاز به برقراری ارتباط از طریق websocket است.فرآیند بدین صورت است که پس از برقراری ارتباط بایت های فایل wav به صورت باینری برای سرور ارسال میشود.در صورت آماده بودن نتیجه تحلیل پاسخ در قالب زیر آماده است.\n</div>\n\n<div>\n{\"segment_id\": 1, \"text\": \"سازمان بهداشت جهانی\", \"start\": \"0:00:00\", \"end\": \"0:00:05\"}\n</div>\n\n<div dir=rtl>\nدر صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.\n</div>\n\n<div>\n{\"state\": \"PENDING\"}\n</div>\n\n<div dir=rtl>\nدر انتها برای سرور متن \"finalize\" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.\n</div>"
+            ],
+            "transitions": []
+        }
+    ]
+}
