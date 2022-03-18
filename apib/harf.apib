@@ -99,10 +99,11 @@ HOST: http://harf.roshan-ai.ir
             }
 
 + Response 200 (application/json)
-      {
-        "state":"PENDING",
-        "task_ids":["..."]
-      }
+
+        {
+          "state":"PENDING",
+          "task_ids":["..."]
+        }
 
 <div dir=rtl>
 پس از ارسال درخواست تحلیل ناهمگام نتیجه تحلیل از طریق task_ids قابل پیگیری است. تا فبل از پایان فرآیند تحلیل، تابع با ارسال وضعیت فرآیند پاسخ می‌دهد و در اولین درخواست بعد از پایان فرآیند تحلیل، جواب را ارسال خواهد کرد.
@@ -181,7 +182,9 @@ HOST: http://harf.roshan-ai.ir
             }
 
 + Response 200 (application/json)
-      {"state":"PENDING"}
+
+        {"state":"PENDING"}
+
 
 ## پیاده‌سازی متن فایل در لحظه  [/ws_api/transcribe_files/wav/sync/]
 
