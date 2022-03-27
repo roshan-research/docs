@@ -147,47 +147,50 @@ function getTransitionInfo(transitionJson) {
                             var dataStructure = {};
                             dataStructure["type"] = "dataStructure";
                             dataStructure["members"] = [];
+                        
                             let ref5 = element3.content.content;
-                            for (let s = 0;s<ref5.length;s++){
-                                let element4 = ref5[s];
-                                let typeAttributes = [];
-                                if (element4.attributes !== undefined){
-                                    let ref6 = element4.attributes.typeAttributes.content;
-                                    for(let z = 0;z<ref6.length;z++){
-                                        typeAttributes.push(ref6[z].content);
-                                    }
-                                }
-                                let enumaration = []
-                                if (element4.content.value.element == "enum"){
-                                    let ref6 = element4.content.value.attributes.enumerations.content;
-                                    for(let z = 0;z<ref6.length;z++){
-                                        enumaration.push({
-                                            name:ref6[z].content,
-                                            meta:ref6[z].meta.description.content
-                                        });
-                                    }
-                                     dataStructure["members"].push(
-                                        {
-                                            description:element4.meta.description.content,
-                                            typeAttributes:typeAttributes,
-                                            key:element4.content.key.content,
-                                            value:element4.content.value.content.content,
-                                            valueType:element4.content.value.element,
-                                            enumaration:enumaration
+                            if (typeof ref5 !== 'undefined') {
+                                for (let s = 0;s<ref5.length;s++) {
+                                    let element4 = ref5[s];
+                                    let typeAttributes = [];
+                                    if (element4.attributes !== undefined){
+                                        let ref6 = element4.attributes.typeAttributes.content;
+                                        for(let z = 0;z<ref6.length;z++){
+                                            typeAttributes.push(ref6[z].content);
                                         }
-                                    )
-                                }
-                                else{
-                                    dataStructure["members"].push(
-                                        {
-                                            description:element4.meta.description.content,
-                                            typeAttributes:typeAttributes,
-                                            key:element4.content.key.content,
-                                            value:element4.content.value.content,
-                                            valueType:element4.content.value.element,
-                                            enumaration:enumaration
+                                    }
+                                    let enumaration = []
+                                    if (element4.content.value.element == "enum"){
+                                        let ref6 = element4.content.value.attributes.enumerations.content;
+                                        for(let z = 0;z<ref6.length;z++){
+                                            enumaration.push({
+                                                name:ref6[z].content,
+                                                meta:ref6[z].meta.description.content
+                                            });
                                         }
-                                    )
+                                         dataStructure["members"].push(
+                                            {
+                                                description:element4.meta.description.content,
+                                                typeAttributes:typeAttributes,
+                                                key:element4.content.key.content,
+                                                value:element4.content.value.content.content,
+                                                valueType:element4.content.value.element,
+                                                enumaration:enumaration
+                                            }
+                                        )
+                                    }
+                                    else{
+                                        dataStructure["members"].push(
+                                            {
+                                                description:element4.meta.description.content,
+                                                typeAttributes:typeAttributes,
+                                                key:element4.content.key.content,
+                                                value:element4.content.value.content,
+                                                valueType:element4.content.value.element,
+                                                enumaration:enumaration
+                                            }
+                                        )
+                                    }
                                 }
                             }
                             transitionInfo["httpRequest"]["sections"].push(dataStructure);

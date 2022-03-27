@@ -23,11 +23,19 @@ meta:
 
 # باز
 
-باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.,,,,برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
+<div dir=rtl>
+باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.
+</div>
+
+<blockquote dir=rtl>
+برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
+</blockquote>
 
 # نمایه‌سازی
 
+<div dir=rtl>
 برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
+</div>
 
 
 ## ثبت داده‌ها
@@ -942,6 +950,7 @@ namespace MyRequest
 
 <div dir=rtl>
 این تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.
+ **در صورتی که پارامتری همراه با این درخواست ارسال نشود. کل ایندکس پاک خواهد شد.**
 </div>
 
 `DELETE /{index_name}/index`
@@ -1646,17 +1655,13 @@ namespace MyRequest
 > Request
 
 ```plaintext
-{
-    "description": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-}
+"{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "description": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-} \
+      --data-binary "{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n" \
       http://api.sobhe.ir:7000/{index_name}/{types}/sources
 ```
 
@@ -1664,9 +1669,7 @@ curl  --request POST \
 from urllib2 import Request, urlopen
 
 values = """
-{
-    "description": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-}
+"{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"
 """
 
 headers = {
@@ -1698,9 +1701,7 @@ class MyRequest {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = "{
-    "description": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-}".getBytes(StandardCharsets.UTF_8);
+            byte[] out = ""{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
 
             http.setFixedLengthStreamingMode(length);
@@ -1729,9 +1730,7 @@ class MyRequest {
 
   $url = "http://api.sobhe.ir:7000/{index_name}/{types}/sources";
   $content = json_encode(
-      '{
-    "description": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-}');
+      '"{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"');
   $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_HEADER, false);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -1778,9 +1777,7 @@ namespace MyRequest
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                string json = "{
-    "description": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند."
-}";
+                string json = ""{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"";
 
                 streamWriter.Write(json);
                 streamWriter.Flush();
@@ -1823,4 +1820,409 @@ namespace MyRequest
 </div>
 
 `POST /{index_name}/{types}/sources`
+
+# ‌
+
+
+## عبارات کلیدی
+
+> Request
+
+```plaintext
+{
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+} \
+      http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms";
+  $content = json_encode(
+      '{
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    {
+      "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+      "items": [
+        [
+          "شهر موشها",
+          0.02682
+        ],
+        [
+          "سال ۱۳۶۴",
+          0.03944
+        ],
+        [
+          "محمدعلی طالبی",
+          0.03944
+        ],
+        [
+          "مرضیه برومند",
+          0.03944
+        ],
+        [
+          "فیلم سینمایی",
+          0.07857
+        ]
+      ]
+    }
+
+
+```
+
+<div dir=rtl>
+این تابع عبارت‌های کلیدی را در متن مورد نظر استخراج می‌کند. فرآیند تشخیص و استخراج عبارات کلیدی بر مبنای ایندکسی انجام می‌شود که مشخص شده است. در واقع عبارت کلیدی در یک متن واحد ممکن است با تغییر ایندکس متفاوت باشد.
+</div>
+
+`POST /{index_name}/{types}/{field}/keyterms`
+
+## عبارات کلیدی
+
+> Request
+
+```plaintext
+{
+    "id": 3,
+    "topn": 5
+}
+```
+
+```shell
+curl  --request GET \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "id": 3,
+    "topn": 5
+} \
+      http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "id": 3,
+    "topn": 5
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("GET");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "id": 3,
+    "topn": 5
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms";
+  $content = json_encode(
+      '{
+    "id": 3,
+    "topn": 5
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "GET";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "id": 3,
+    "topn": 5
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    {
+      "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+      "items": [
+        [
+          "شهر موشها",
+          0.02682
+        ],
+        [
+          "سال ۱۳۶۴",
+          0.03944
+        ],
+        [
+          "محمدعلی طالبی",
+          0.03944
+        ],
+        [
+          "مرضیه برومند",
+          0.03944
+        ],
+        [
+          "فیلم سینمایی",
+          0.07857
+        ]
+      ]
+    }
+
+
+```
+
+<div dir=rtl>
+این تابع عبارت‌های کلیدی را در یکی از اسناد ایندکس شده استخراج می‌کند. شناسه سند استخراج شده به عنوان پارامتر ارسال می‌شود.
+</div>
+
+`GET /{index_name}/{types}/{field}/keyterms`
 

@@ -23,7 +23,9 @@ meta:
 
 # الفبا
 
-نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.,,برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
+نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
+
+برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
 
 # خواندن سند
 
@@ -293,7 +295,7 @@ Value: <span style="background-color: #00A693;
 <br>
 <br>
 Value: 
-<span>
+<span className="enum-container">
 <span>
 general
 </span>
@@ -379,6 +381,382 @@ Value: <span style="background-color: #00A693;
 <p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 <br><br>
+## نمونه درخواست به صورت ناهمکام
+
+> Request
+
+```plaintext
+{
+    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+    "fix_orientation": true,
+    "word_positions": false,
+    "type": "general",
+    "wait": false,
+    "priority": 3
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+    "fix_orientation": true,
+    "word_positions": false,
+    "type": "general",
+    "wait": false,
+    "priority": 3
+} \
+      https://alefba.roshan-ai.ir/api/read_document/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+    "fix_orientation": true,
+    "word_positions": false,
+    "type": "general",
+    "wait": false,
+    "priority": 3
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://alefba.roshan-ai.ir/api/read_document/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://alefba.roshan-ai.ir/api/read_document/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+    "fix_orientation": true,
+    "word_positions": false,
+    "type": "general",
+    "wait": false,
+    "priority": 3
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://alefba.roshan-ai.ir/api/read_document/";
+  $content = json_encode(
+      '{
+    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+    "fix_orientation": true,
+    "word_positions": false,
+    "type": "general",
+    "wait": false,
+    "priority": 3
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_document/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
+    "fix_orientation": true,
+    "word_positions": false,
+    "type": "general",
+    "wait": false,
+    "priority": 3
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+  {
+    "state":"PENDING",
+    "task_ids": "..."
+  }
+
+
+```
+
+`POST /api/read_document/`
+
+## نمونه دریافت نتیجه در حالت ناهمکام
+
+> Request
+
+```plaintext
+{
+    "task_id": "...",
+    "wait": false
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "task_id": "...",
+    "wait": false
+} \
+      https://alefba.roshan-ai.ir/api/read_document/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "task_id": "...",
+    "wait": false
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://alefba.roshan-ai.ir/api/read_document/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://alefba.roshan-ai.ir/api/read_document/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "task_id": "...",
+    "wait": false
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://alefba.roshan-ai.ir/api/read_document/";
+  $content = json_encode(
+      '{
+    "task_id": "...",
+    "wait": false
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_document/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "task_id": "...",
+    "wait": false
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+  {
+    "state":"started",
+    "task_id": "..."
+  }
+
+
+```
+
+`POST /api/read_document/`
+
 ## نمونه ارسال مستقیم سند
 
 > Request
@@ -642,7 +1020,7 @@ Value: <span style="background-color: #00A693;
 <br>
 <br>
 Value: 
-<span>
+<span className="enum-container">
 <span>
 general
 </span>
@@ -972,7 +1350,7 @@ Value: [URL1, URL2, ..., ]
 <br>
 <br>
 Value: 
-<span>
+<span className="enum-container">
 <span>
 general
 </span>

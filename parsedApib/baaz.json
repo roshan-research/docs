@@ -1,0 +1,696 @@
+{
+    "title": "باز",
+    "attributes": [
+        {
+            "key": "FORMAT",
+            "value": "1A"
+        },
+        {
+            "key": "HOST",
+            "value": "http://api.sobhe.ir:7000/"
+        }
+    ],
+    "copies": [
+        "<div dir=rtl>\nباز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.\n</div>\n\n<blockquote dir=rtl>\nبرای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.\n</blockquote>"
+    ],
+    "resources": [
+        {
+            "title": "نمایه‌سازی",
+            "href": "/{index_name}/index",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                }
+            ],
+            "copies": [
+                "<div dir=rtl>\nبرای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.\n</div>"
+            ],
+            "transitions": [
+                {
+                    "title": "ثبت داده‌ها",
+                    "copies": [
+                        "<div dir=rtl>\nاین تابع امکان افزودن اسناد به  نمایه را فراهم می‌کند. ورودی items برای این تابع، شامل فهرستی از اسناد است که هر کدام از آنها باید در نمایه ثبت شوند.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "type",
+                                        "value": "movie",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "id",
+                                        "value": 1,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "title",
+                                        "value": "ماجرای نیمروز",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است",
+                                        "typeAttributes": [],
+                                        "key": "importance",
+                                        "value": 100,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است",
+                                        "typeAttributes": [],
+                                        "key": "time",
+                                        "value": "2017-07-08 10:30:00",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند",
+                                        "typeAttributes": [],
+                                        "key": "labels",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "هیجانی"
+                                            },
+                                            {
+                                                "element": "string",
+                                                "content": "ماجراجویی"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد",
+                                        "typeAttributes": [],
+                                        "key": "...",
+                                        "value": "...",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"items\": [\n        {\n            \"type\": \"movie\",\n            \"id\": 1,\n            \"title\": \"ماجرای نیمروز\",\n            \"director\": \"محمدحسین مهدویان\",\n            \"actors\": [\"جواد عزتی\", \"هادی حجازی‌فر\"],\n            \"labels\": [\"هیجانی\", \"ماجراجویی\"],\n            \"importance\": 100,\n            \"data\": {\"url\": \"https://www.filimo.com/m/czWum\"}\n        },\n        {\n            \"type\": \"movie\",\n            \"id\": 2,\n            \"title\": \"ایستاده در غبار\",\n            \"director\": \"محمدحسین مهدویان\",\n            \"labels\": [\"هیجانی\", \"جنگی\"],\n            \"importance\": 50,\n            \"data\": {\"url\": \"https://www.filimo.com/m/fsa4n\"}\n        },\n        {\n            \"type\": \"person\",\n            \"id\": 1,\n            \"title\": \"ابراهیم حاتمی‌کیا\",\n            \"data\": {\"url\": \"https://www.filimo.com/crew/ابراهیم_حاتمی_کیا\"}\n        }\n    ]\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"type\": {\n      \"type\": \"string\"\n    },\n    \"id\": {\n      \"type\": \"number\"\n    },\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"importance\": {\n      \"type\": \"number\"\n    },\n    \"time\": {\n      \"type\": \"string\"\n    },\n    \"labels\": {\n      \"type\": \"array\"\n    },\n    \"...\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"type\",\n    \"id\",\n    \"title\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n    \"ids\": [1, 2, 1]\n}\n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "ویرایش داده‌ها",
+                    "copies": [
+                        "<div dir=rtl>\nاین تابع امکان ویرایش اسناد ثبت‌شده را فراهم می‌کند. برای این منظور، کافیست داده‌های جدید به همراه type و id سند فرستاده شوند. توجه کنید که در هنگام به‌روزرسانی، فقط اطلاعات ارسال‌شده ذخیره می‌شوند و دیگر ویژگی‌های سند، تغییر نمی‌کنند.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "PUT",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"items\": [\n        {\n            \"type\": \"movie\",\n            \"id\": 1,\n            \"importance\": 200\n        }\n    ]\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n    \"ids\": [1]\n}\n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "حذف داده‌ها",
+                    "copies": [
+                        "<div dir=rtl>\nاین تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.\n **در صورتی که پارامتری همراه با این درخواست ارسال نشود. کل ایندکس پاک خواهد شد.**\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "DELETE",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"type\": \"movie\",\n    \"ids\": [2]\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n    \"ids\": [2]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "‌",
+            "href": "/{index_name}/{types}/query{?fields,text,size,from}",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "types",
+                    "value": "movie|person",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "عبارت مورد جستجو",
+                    "key": "text",
+                    "value": "نیم‌روز",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "fields",
+                    "value": "title|director",
+                    "typeAttributes": [
+                        "optional"
+                    ]
+                },
+                {
+                    "title": "number",
+                    "description": "تعداد نتایج در پاسخ",
+                    "key": "size",
+                    "value": "10",
+                    "typeAttributes": [
+                        "optional"
+                    ]
+                },
+                {
+                    "title": "number",
+                    "description": "نقطه شروع برای صفحه‌بندی نتایج",
+                    "key": "from",
+                    "value": "0",
+                    "typeAttributes": [
+                        "optional"
+                    ]
+                }
+            ],
+            "copies": [
+                "# جستجوی اسناد"
+            ],
+            "transitions": [
+                {
+                    "title": "جستجو",
+                    "copies": [
+                        "<div dir=rtl>\nداده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "GET",
+                        "headerAttributes": [],
+                        "sections": []
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n  \"didYouMean\": \"<em>نیمروز</em>\",\n  \"items\": [\n    {\n      \"type\": \"movie\",\n      \"id\": \"1\",\n      \"item\": {\n        \"title\": \"ماجرای نیمروز\",\n        \"director\": \"محمدحسین مهدویان\",\n        \"labels\": [\"هیجانی\", \"ماجراجویی\"],\n        \"actors\": [\"جواد عزتی\", \"هادی حجازی‌فر\"],\n        \"importance\": 100,\n        \"data\": {\"url\": \"https://www.filimo.com/m/czWum\"}\n      },\n      \"highlight\": {\n        \"title\": [\"ماجرای <em>نیمروز</em>\"]\n      },\n      \"_score\": 7.0999684\n    }\n  ]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "‌",
+            "href": "/{index_name}/{types}/complete{?text,size,from}",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "types",
+                    "value": "person",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "عبارت مورد جستجو",
+                    "key": "text",
+                    "value": "ابراهیم حا",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "number",
+                    "description": "تعداد نتایج در پاسخ",
+                    "key": "size",
+                    "value": "10",
+                    "typeAttributes": [
+                        "optional"
+                    ]
+                },
+                {
+                    "title": "number",
+                    "description": "نقطه شروع برای صفحه‌بندی نتایج",
+                    "key": "from",
+                    "value": "0",
+                    "typeAttributes": [
+                        "optional"
+                    ]
+                }
+            ],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "جستجوی در لحظه",
+                    "copies": [
+                        "<div dir=rtl>\nتابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "GET",
+                        "headerAttributes": [],
+                        "sections": []
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n  \"items\": [\n    {\n      \"type\": \"person\",\n      \"id\": \"1\",\n      \"item\": {\n        \"title\": \"ابراهیم حاتمی‌کیا\",\n        \"importance\": 1,\n        \"data\": {\"url\": \"https://www.filimo.com/crew/ابراهیم_حاتمی_کیا\"}\n      },\n      \"highlight\": {\n        \"title\": [\"<em>ابراهیم حاتمی‌کیا</em>\"]\n      },\n      \"_score\": 2.5382035\n    }\n  ]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "‌",
+            "href": "/{index_name}/{types}/suggest{?text}",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "types",
+                    "value": "movie",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "عبارت مورد جستجو",
+                    "key": "text",
+                    "value": "ن",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                }
+            ],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "پیشنهاد جستجو",
+                    "copies": [
+                        "<div dir=rtl>\nوقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "GET",
+                        "headerAttributes": [],
+                        "sections": []
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n  \"items\": [\n    {\n      \"text\": \"نیم‌روز\",\n      \"count\": 2\n    }\n  ]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "‌",
+            "href": "/{index_name}/{types}/similars",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "types",
+                    "value": "movie",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                }
+            ],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "اسناد مشابه",
+                    "copies": [
+                        "<div dir=rtl>\nتابع اسناد مشابه، با دریافت اطلاعات مربوط به یک سند، شبیه‌ترین گزینه‌ها را به سند مورد نظر پیدا کرده و میزان تشابه هر کدام را مشخص می‌کند.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"title\": \"پرویز\"\n}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n  \"items\": [\n    {\n      \"title\": \"پرویز\",\n      \"similarity\": 100,\n      ...\n    },\n    ...\n  ]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "‌",
+            "href": "/{index_name}/{types}/sources",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "types",
+                    "value": "movie",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                }
+            ],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "اسناد منبع",
+                    "copies": [
+                        "<div dir=rtl>\nتابع اسناد منبع، با دریافت اطلاعات مربوط به یک سند، منابعی را که این سند با استفاده از آنها درست شده است، پیدا کرده و میزان تشابه را برای هر بخش مشخص می‌کند.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": []
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\"\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n  \"items\": [\n    {\n      \"similarity\": 100,\n      \"src_link\": \"/baaz/movie/view?id=3\",\n      \"src_title\": \"شهر موشها\",\n      \"susp_from\": 0,\n      \"susp_to\": 247,\n      \"src_from\": 0,\n      \"src_to\": 247,\n      \"src_text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"\n    }\n  ]\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "‌",
+            "href": "/{index_name}/{types}/{field}/keyterms",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسه نمایه",
+                    "key": "index_name",
+                    "value": "baaz",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند",
+                    "key": "types",
+                    "value": "movie",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "فیلدی که محتوای متنی در آن ذخیره شده است",
+                    "key": "field",
+                    "value": "description",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                }
+            ],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "عبارات کلیدی",
+                    "copies": [
+                        "<div dir=rtl>\nاین تابع عبارت‌های کلیدی را در متن مورد نظر استخراج می‌کند. فرآیند تشخیص و استخراج عبارات کلیدی بر مبنای ایندکسی انجام می‌شود که مشخص شده است. در واقع عبارت کلیدی در یک متن واحد ممکن است با تغییر ایندکس متفاوت باشد.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": []
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n  \"topn\": 5           \n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\"\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n      \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n      \"items\": [\n        [\n          \"شهر موشها\",\n          0.02682\n        ],\n        [\n          \"سال ۱۳۶۴\",\n          0.03944\n        ],\n        [\n          \"محمدعلی طالبی\",\n          0.03944\n        ],\n        [\n          \"مرضیه برومند\",\n          0.03944\n        ],\n        [\n          \"فیلم سینمایی\",\n          0.07857\n        ]\n      ]\n    }\n\n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "عبارات کلیدی",
+                    "copies": [
+                        "<div dir=rtl>\nاین تابع عبارت‌های کلیدی را در یکی از اسناد ایندکس شده استخراج می‌کند. شناسه سند استخراج شده به عنوان پارامتر ارسال می‌شود.\n</div>"
+                    ],
+                    "httpRequest": {
+                        "method": "GET",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": []
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"id\": 3,\n  \"topn\": 5           \n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\"\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n      \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n      \"items\": [\n        [\n          \"شهر موشها\",\n          0.02682\n        ],\n        [\n          \"سال ۱۳۶۴\",\n          0.03944\n        ],\n        [\n          \"محمدعلی طالبی\",\n          0.03944\n        ],\n        [\n          \"مرضیه برومند\",\n          0.03944\n        ],\n        [\n          \"فیلم سینمایی\",\n          0.07857\n        ]\n      ]\n    }\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

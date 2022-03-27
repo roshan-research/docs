@@ -1,9 +1,11 @@
+set -e
+
 echo 'RUN THE SCRIPT AS SUPER USER'
 
 node ./parsers/parser.js make-jsons
 echo 'made JSON files from apib files';
-node ./parsers/parser.js fix-jsons
-echo 'fixed the flaws in created JSON files';
+# node ./parsers/parser.js fix-jsons
+# echo 'fixed the flaws in created JSON files';
 node ./parsers/parser.js make-markdowns
 echo 'made markdown files from JSON files'
 cp ./parsedApib/*.md ./slate_project/source
@@ -49,12 +51,12 @@ rm -r ../docs/harf/*
 cp -r ./build/* ../docs/harf
 echo 'harf documentations are updated'
 
-rm ./source/index.html.md
-mv ./source/naghsh.json.md ./source/index.html.md
-bundle exec middleman build
-rm -r ../docs/naghsh/*
-cp -r ./build/* ../docs/naghsh
-echo 'naghsh documentations are updated'
+# rm ./source/index.html.md
+# mv ./source/naghsh.json.md ./source/index.html.md
+# bundle exec middleman build
+# rm -r ../docs/naghsh/*
+# cp -r ./build/* ../docs/naghsh
+# echo 'naghsh documentations are updated'
 
 rm ./source/index.html.md
 mv ./source/parde.json.md ./source/index.html.md
