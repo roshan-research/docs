@@ -4,28 +4,17 @@ HOST: http://harf.roshan-ai.ir
 
 # حرف
 
-<div dir=rtl>
 سامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.
-</div>
 
-<blockquote dir=rtl>
 برای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید.
-</blockquote>
 
 
 ## پیاده‌سازی متن فایل [/api/transcribe_files/]
 
-<div dir=rtl>
 این تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است.
-</div>
 
-### نمونه [POST]
 
-<div dir=rtl>
-می‌توانید برای همین تابع، فایل ورودی را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
-
-> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "media=@test.mp3" http://harf.roshan-ai.ir/api/transcribe_files/
+### نمونه ارسال با لینک [POST]
 
 + Request (application/json)
 
@@ -33,6 +22,10 @@ HOST: http://harf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - media_urls: List of URLs (string, required) - لیست آدرس فایل‌های ورودی
+        
     + Body
 
             {
@@ -76,18 +69,74 @@ HOST: http://harf.roshan-ai.ir
           }
         ]
 
+### نمونه ارسال مستقیم فایل [POST]
 
-## پیاده‌سازی متن فایل ناهمگام [/api/transcribe_files/#1]
++ Request (multipart/form-data; boundary={boundary value})
 
-<div dir=rtl>
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+
+    + Attributes
+
+        - media: file in binary (string, required) - فایل سند ورودی
+        
+    + Body
+
+            --{boundary value}
+            Content-Disposition: form-data; name='document'; filename='FILE NAME'
+            Content-Type: text/plain (according to the type of the uploaded file)
+
+            {file content}
+            --{boundary value}
+
++ Response 200 (application/json)
+
+    [
+      {
+        "media_url": "http://harf.roshan-ai.ir/media/files/96/84/859267728361.mp3",
+        "duration": "0:00:44",
+        "segments": [
+          {
+            "start": "0:00:00",
+            "end": "0:00:02",
+            "text": "حکایت"
+          },
+          {
+            "start": "0:00:02",
+            "end": "0:00:06",
+            "text": "یکی را از حکما شنیدم که می گفت"
+          },
+          {
+            "start": "0:00:06",
+            "end": "0:00:11",
+            "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+          },
+          {
+            "start": "0:00:11",
+            "end": "0:00:16",
+            "text": "مگر آن کس که چون دیگری در سخن باشد"
+          },
+          {
+            "start": "0:00:16",
+            "end": "0:00:21",
+            "text": "همچنان ناتمام گفته سخن آغاز کند"
+          },
+          ...
+        ]
+      }
+    ]
+
+
+## پیاده‌سازی متن فایل ناهمگام [/api/transcribe_files/]
+
+
 در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است.
-</div>
+
 
 ###  نمونه ارسال درخواست ناهمگام [POST]
 
-<div dir=rtl>
 پس از ارسال درخواست تحلیل ناهمگام، نتیجه تحلیل با استفاده از `task_ids` قابل پیگیری است. در صورتی که تحلیل فایل انجام شده باشد، تقاضای پیگیری با نتیجه تحلیل، پاسخ داده می‌شود و در غیر این صورت، وضعیت تحلیل در پاسخ قرار داده می‌شود.
-</div>
 
 + Request (application/json)
 
@@ -95,6 +144,11 @@ HOST: http://harf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - media_urls: List of URLs (string, required) - لیست آدرس فایل‌های ورودی
+        - wait: true (boolean) - اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+ 
     + Body
 
             {
@@ -113,9 +167,7 @@ HOST: http://harf.roshan-ai.ir
 
 ### نمونه دریافت پاسخ درخواست ناهمگام [POST]
 
-<div dir=rtl>
 در صورتی که فایل هنوز در حال پردازش باشد، وضعیت `PENDING` به عنوان پاسخ باز می‌گردد. اگر در تحلیل فایل مشکلی پیش آماده باشد وضعیت `FAILURE` گزارش می‌شود و اگر تحلیل فایل بیش از مقدار تعیین شده برای حداکثر زمان تحلیل (در تنظیمات داخلی سیستم) طول بکشد، وضعیت `TIMEOUT` اعلام می‌شود.
-</div>
 
 + Request (application/json)
 
@@ -123,6 +175,10 @@ HOST: http://harf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+        - media_urls: List of URLs (string, required) - لیست آدرس فایل‌های ورودی
+        - wait: true (boolean) - اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+ 
     + Body
 
             {
@@ -173,6 +229,10 @@ HOST: http://harf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+        - task_ids: List of task ids (string, required) - لیست شناسه درخواست‌ها
+        - wait: true (boolean) - اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+ 
     + Body
 
             {
@@ -187,23 +247,13 @@ HOST: http://harf.roshan-ai.ir
 
 ## پیاده‌سازی متن فایل در جریان [/ws_api/transcribe_files/wav/sync/]
 
-<div dir=rtl>
 برای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.
-</div>
 
-<div>
 {"segment_id": 1, "text": "سازمان بهداشت جهانی", "start": "0:00:00", "end": "0:00:05"}
-</div>
 
 
-<div dir=rtl>
 در صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.
-</div>
 
-<div>
 {"state": "PENDING"}
-</div>
 
-<div dir=rtl>
 در انتها برای سرور متن "finalize" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.
-</div>
