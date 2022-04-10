@@ -96,13 +96,26 @@ HOST: https://alefba.roshan-ai.ir
           }]
         }
 
-### نمونه درخواست به صورت ناهمکام[POST]
+### نمونه درخواست به صورت ناهمگام[POST]
 
 + Request (application/json)
 
     + Headers
 
             Authorization: Token TOKEN_KEY
+
+   + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
+        - type: general (enum[string]) - این ویژگی نوع سند را مشخص می‌کند
+            + Members
+                + `general` - سندهای عمومی
+                + `ID-card` - کارت‌های شناسایی
+                + `excel` - جدولهای مالی
+        - fix_orientation: true (boolean) - در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند
+        - word_positions: true (boolean) - در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد
+        - wait: true (boolean) - اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
+        - priority: 3 (number) - این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.
 
     + Body
 
@@ -122,12 +135,17 @@ HOST: https://alefba.roshan-ai.ir
       }
 
 
-### نمونه دریافت نتیجه در حالت ناهمکام [POST]
+### نمونه دریافت نتیجه در حالت ناهمگام [POST]
 + Request (application/json)
 
     + Headers
 
             Authorization: Token TOKEN_KEY
+
+   + Attributes
+
+        - task_id: ID (number, required) - شناسه درخواست ارسال شده
+        - wait: true (boolean) - اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.
 
     + Body
 
@@ -238,7 +256,7 @@ HOST: https://alefba.roshan-ai.ir
 
     + Attributes
 
-        - page_urls: URL1, URL2, ... (array[string], required) - آدرس صفحات ورودی
+        - page_urls: URL (array[string], required) - آدرس صفحات ورودی
         - type: general (enum[string]) - این ویژگی نوع سند را مشخص می‌کند
             + Members
                 + `general` - سندهای عمومی
@@ -298,6 +316,10 @@ HOST: https://alefba.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - document_urls: URL (array[string], required) - آدرس اسناد ورودی
+ 
     + Body
 
             {
@@ -327,6 +349,10 @@ HOST: https://alefba.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
+ 
     + Body
 
             {
@@ -356,13 +382,19 @@ HOST: https://alefba.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
+
     + Body
 
             {
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
++ Response 200
 
+    boute.docx file
 
 
 ## دریافت فایل اکسل [/api/download_excel/]
@@ -377,13 +409,19 @@ HOST: https://alefba.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
+
     + Body
 
             {
               "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
             }
 
++ Response 200
 
+    boute.xlsx file
 
 ## دریافت فایل قابل جستجو [/api/download_pdf/]
 
@@ -397,6 +435,12 @@ HOST: https://alefba.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
+        - quality: 100 (number) - مقدار dpi کیفیت صفحات
+        - color: false (boolean) - در صورت فعال بودن این خصوصیت، فایل خروجی رنگی خواهد بود.
+
     + Body
 
             {
@@ -406,6 +450,9 @@ HOST: https://alefba.roshan-ai.ir
               "color": false
             }
 
++ Response 200
+
+    boute.pdf file
 
 ## حذف سند [/api/delete_document/]
 
@@ -418,6 +465,10 @@ HOST: https://alefba.roshan-ai.ir
     + Headers
 
             Authorization: Token TOKEN_KEY
+
+    + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
 
     + Body
 
@@ -443,6 +494,11 @@ HOST: https://alefba.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
             Content-Type: application/json
+
+    + Attributes
+
+        - document_url: URL (string, required) - آدرس سند ورودی
+        - color: URL (string, required) - آدرس بازگشت بعد از تمام شدن فرآیند خواندن سند
 
     + Body
 
