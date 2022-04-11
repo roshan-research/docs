@@ -6,7 +6,7 @@ HOST: http://api.sobhe.ir
 
 Parde recognizes unsafe images.
 
-> For using Parde API you need a TOKEN_KEY, if you don't have one,
+For using Parde API you need a TOKEN_KEY, if you don't have one,
 please contact parde@sobhe.ir.
 
 
@@ -16,15 +16,19 @@ please contact parde@sobhe.ir.
 
 You may ask tags of some images using this action. Image tags is a list of objects with image urls, list of tag which contains tag name and a float number between 0 and 1 that shows probability of belonging image to class.
 
-> Asking tags of multiple images in one request results in better
+Asking tags of multiple images in one request results in better
 performance.
 
 + Request (application/json)
 
     + Headers
-
+       
             Authorization: Token TOKEN_KEY
+    
+    + Attributes
 
+        - image_urls: URL (array[string], required) - List of image URLs
+ 
     + Body
 
             {
@@ -39,6 +43,7 @@ performance.
 
 
 ## Video Keyframes [/parde/api/tag_video_frames]
+
 You can ask tags of video frames using this action. It response with a list of video frames and corresponding tags.
 
 ### Request [POST]
@@ -50,10 +55,11 @@ You can ask tags of video frames using this action. It response with a list of v
             Authorization: Token TOKEN_KEY
 
     + Attributes
-        - video_urls: list (URL, required) - List of video URLs
+
+        - video_urls: URL (array[string], required) - List of video URLs
         - every_ms: 100 (number) - distance of two extracted frames in miliseconds
         - min_frame_diff: 0.4 (number) - The minimum value of the difference between two frames which are considered different.
-        - duration: 25 (number) - مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.
+        - duration: 25 (number) - The portion in seconds from start of video which will be processed. if is Null, Whole video will be processed.
         - wait: true (boolean) - If true, the video process would be asynchronous and during the video processing, the API responds with the state of the process [Pending or started] and on the first request, after the process is finished, it will respond with the results.
 
             {
@@ -62,7 +68,6 @@ You can ask tags of video frames using this action. It response with a list of v
                 duration: 36000, 
                 min_frame_diff: 0.5
             }
-
 
 + Response 200 (application/json)
 
