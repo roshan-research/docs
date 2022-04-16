@@ -1,16 +1,15 @@
 
+
+
 FORMAT: 1A
 HOST: https://kashf.roshan-ai.ir
 
 # کشف
 
-<div dir=rtl>
-کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
-</div>
 
-<blockquote dir=rtl>
+کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
+
 برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
-</blockquote>
 
 
 ## تحلیل متن [/api/tag_texts/]
@@ -24,12 +23,15 @@ HOST: https://kashf.roshan-ai.ir
     + Headers
 
             Authorization: Token TOKEN_KEY
+
     + Attributes
-        - dataset: dataset slug (string, required) - نام مجموعه داده‌
-        - contents: list (string, required) - لیست نمونه‌های متنی ارسالی 
+
+        - dataset: slug (string, required) - نام مجموعه داده‌
+        - contents: contents (array[string], required) - لیست نمونه‌های متنی ارسالی 
         - wait: true (boolean) - در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند  تحلیل، با اعلام وضعیت(‌processing)
         پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود
-        - tree_based: false (boolean) - 
+        - tree_based: false (boolean) - تحلیل متن به روش درختی
+
     + Body
 
             {
@@ -62,18 +64,13 @@ HOST: https://kashf.roshan-ai.ir
           }
         ]
 
-
 ## تحلیل تصویر [/api/tag_images/]
 
 تابع تحلیل تصویر برچسب‌های مربوط به نمونه‌ تصاویر ارسال شده را در یک مجموعه‌داده تصویری تشخیص می‌دهد. این تابع یک مجموعه داده تصویری و لیستی از تصاویر مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک تصویر و لیست برچسب‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر برچسب ارسال می‌نماید. 
 
 ### نمونه [POST]
 
-<div dir=rtl>
-می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
-
-> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.roshan-ai.ir/api/tag_images
+می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید.
 
 + Request (application/json)
 
@@ -82,8 +79,9 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
-        - dataset: dataset slug (string, required) - نام مجموعه داده‌
-        - image_urls: list (URL, required) - لیست آدرس تصاویر ارسالی برای تحلیل 
+
+        - dataset: slug (string, required) - نام مجموعه داده‌
+        - image_urls: URL (array[string], required) - لیست آدرس تصاویر ارسالی برای تحلیل 
         - wait: true (boolean) - در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآيند تحلیل  با اعلام وضعیت(‌processing)
         پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود.
 
@@ -121,15 +119,14 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## تحلیل چهره [/api/tag_faces/]
+
 تابع تحلیل چهره، چهره‌های تصاویر ارسال شده را در یک مجموعه‌داده چهره تشخیص می‌دهد. این تابع یک مجموعه داده چهره و لیستی از تصاویر مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک تصویر و لیست چهره‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر چهره ارسال می‌نماید. 
 
 ### نمونه [POST]
 
-<div dir=rtl>
-می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
 
-> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.roshan-ai.ir/api/tag_faces
+می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید.
+
 
 + Request (application/json)
 
@@ -138,8 +135,9 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
-        - dataset: dataset slug (string, required) - نام مجموعه داده‌
-        - image_urls: list (URL, required) - لیست آدرس تصاویر ارسالی برای تحلیل 
+
+        - dataset: slug (string, required) - نام مجموعه داده‌
+        - image_urls: URL (array[string], required) - لیست آدرس تصاویر ارسالی برای تحلیل 
         - wait: true (boolean) - در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان تحلیل بلافاصله با اعلام وضعیت(‌processing)
         پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان تحلیل ارسال می‌شود
 
@@ -179,13 +177,15 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
-        - dataset: dataset slug (string, required) - نام مجموعه داده‌
-        - video_urls: list (URL, required) - لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها 
+
+        - dataset: slug (string, required) - نام مجموعه داده‌
+        - video_urls: URL (array[string], required) - لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها 
         - every_ms: 100 (number) - فاصله بین فریم‌های استخراج شده برای تحلیل بر مبنای میلی ثانیه
         - min_frame_diff: 0.4 (number) - حداقل مقدار تفاوت دو فریم که بیش از آن، دو فریم متفاوت در نظر گرفته می‌شوند.
         - duration: null (number) - مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.
         - wait: true (boolean) - در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند تحلیل، با اعلام وضعیت(‌processing)
         پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود
+
     + Body
 
             {
@@ -253,8 +253,9 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده‌
-        - video_urls: list (URL, required) - لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها 
+        - video_urls: URL (array[string], required) - لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها 
         - every_ms: 100 (number) - فاصله بین فریم‌های استخراج شده برای تحلیل بر مبنای میلی ثانیه
         - min_frame_diff: 0.4 (number) - حداقل مقدار تفاوت دو فریم که بیش از آن، دو فریم متفاوت در نظر گرفته می‌شوند.
         - duration: 25 (number) - مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.
@@ -281,9 +282,6 @@ HOST: https://kashf.roshan-ai.ir
 
 ### نمونه [POST]
 
-
-> curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image_file=@example.jpg" -F "dataset=iran" http://kashf.roshan-ai.ir/api/tag_videos
-
 + Request (application/json)
 
     + Headers
@@ -292,7 +290,7 @@ HOST: https://kashf.roshan-ai.ir
     
     + Attributes
         - dataset: dataset slug (string, required) - نام مجموعه داده‌
-        - video_urls: list (URL, required) - لیست آدرس ویدئوهای ارسالی برای تحلیل 
+        - video_urls: URL (array[string], required) - لیست آدرس ویدئوهای ارسالی برای تحلیل 
         - wait: true (boolean) - در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند،  با اعلام وضعیت(‌processing)
         پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود
 
@@ -320,6 +318,7 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## آموزش مدل [/api/train_dataset/]
+
 با فراخوانی این تابع فرآیند آموزش مدل یادگیری ماشین روی مجموعه داده مشخص شده آِغاز می‌شود. خروجی تابع وضعیت آموزش را نمایش می‌دهد که در حالت عادی waiting می‌باشد. وضعیت waiting نشان می‌دهد فرآیند آموزش هنوز شروع نشده و منتظر تخصیص منابع و شروع فرآیند است.
 برای مشاهده روند و وضعیت فرآیند آموزش و از تابع وضعیت داده استفاده کنید.
 
@@ -331,8 +330,10 @@ HOST: https://kashf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
-    +Attributes
-        - dataset: dataset slug (string, required) - نام مجموعه داده مورد نظر برای آموزش مدل
+    + Attributes
+
+        - dataset: slug (string, required) - نام مجموعه داده مورد نظر برای آموزش مدل
+
     + Body
 
             {
@@ -348,6 +349,7 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## بازبینی مدل [/api/retag_dataset/]
+
 با فراخوانی این تابع فرآیند بازبینی داده‌های موجود در مجموعه داده آغاز می‌شود. در فرآیند بازبینی سامانه با استفاده از مدل یادگیری ماشین مجددا تعدادی از داده‌ها را برچسب می‌زند. این تابع معمولا بعد از آموزش مدل جدید کاربرد دارد که با بازبینی داده‌ها، برچسب‌های برخی از نمونه‌ها تغییر می‌کنند. در این تابع حداکثر تعداد نمونه‌هایی که در این فرآیند بازبینی می‌شوند به عنوان پارامتر ارسال می‌شود. اگر تعداد نمونه‌های مجموعه داده کمتر از این مقدار باشد، تمامی نمونه‌ها بازبینی می‌شوند.
 خروجی تابع وضعیت فرآیند را نشان می‌دهد که در حالت عادی waiting می‌باشد. براب مشاهده روند فرآیند و بررسی وضعیت آن، از فراخوانی تابع وضعیت داده استفاده نمایید.
 
@@ -359,9 +361,11 @@ HOST: https://kashf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
-    +Attributes
+    + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده مورد نظر برای آموزش مدل
         - max_predictions: maximum retags (number, required) - حداکثر تعداد نمونه‌هایی بازبینی شوند
+
     + Body
 
             {
@@ -377,6 +381,7 @@ HOST: https://kashf.roshan-ai.ir
         }
 
 ## دریافت مجموعه داده [/api/export_dataset/]
+
 این تابع برای دریافت مجموعه داده در قالب یک فایل csv می‌باشد.
 
 ### نمونه [POST]
@@ -387,10 +392,11 @@ HOST: https://kashf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
-    +Attributes
+    + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده مورد نظر برای آموزش مدل
-        - original_urls: (boolean) - اگر این ویژگی فعال باشد، آدرس‌های اصلی تصاویر و یا ویدئوها در فایل قرار می‌گیرند و در غیر این صورت، آدرس نمونه داخل سرور کشف در فایل گذاشته می‌شود.
-        - tag_names: (boolean) - اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.
+        - original_urls: true (boolean) - اگر این ویژگی فعال باشد، آدرس‌های اصلی تصاویر و یا ویدئوها در فایل قرار می‌گیرند و در غیر این صورت، آدرس نمونه داخل سرور کشف در فایل گذاشته می‌شود.
+        - tag_names: false (boolean) - اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.
 
     + Body
 
@@ -408,13 +414,13 @@ HOST: https://kashf.roshan-ai.ir
         }
 
 ## وارد کردن داده [/api/export_dataset/]
+
 این تابع برای وارد کردن داده‌ها در قالب فایل csv و اضافه کردن آن‌ها به مجموعه داده می‌باشد.
 
 ### نمونه [POST]
 
-<div dir=rtl>
-می‌توانید برای همین تابع، فایل داده را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
+
+می‌توانید برای همین تابع، فایل داده را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید:
 
 + Request (application/json)
 
@@ -422,11 +428,12 @@ HOST: https://kashf.roshan-ai.ir
 
             Authorization: Token TOKEN_KEY
 
-    +Attributes
+    + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده مورد نظر برای آموزش مدل
         - csv_url: imported file URL (string, required) -  آدرس فایل حاوی داده مربوطه
-        - report_items: (boolean) - اگر این ویژگی فعال باشد، تمامی نمونه‌های موجود در فایل به عنوان گزارش در برچسب مربوطه اضافه می‌شوند.
-        - tag_names: (boolean) - اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.
+        - report_items: true (boolean) - اگر این ویژگی فعال باشد، تمامی نمونه‌های موجود در فایل به عنوان گزارش در برچسب مربوطه اضافه می‌شوند.
+        - tag_names: true (boolean) - اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.
 
     + Body
 
@@ -445,6 +452,7 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## وضعیت داده‌ها [/api/dataset_info/]
+
 این تابع اطلاعاتی از وضعیت داده‌ها و فرآیندهای آموزش و ارزیابی را در  مجموعه داده مشخص شده ارسال می‌نماید. این اطلاعات شامل موارد زیر هستند:
 + وضعیت فرآیند آموزش و ارزیابی مجموعه داده
 + تعداد کل نمونه‌ها
@@ -468,6 +476,7 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
+
         - dataset:  dataset slug (string, required) - نام مجموعه داده مورد نظر برای دریافت اطلاعات وضعیت
         - tags: true (boolean) - اگر این ویژگی فعال باشد، اطلاعات مربوط به وضعیت داده و ارزیابی تک تک برچسب‌های موجود در مجموعه داده ارسال می‌شود.
 
@@ -507,7 +516,9 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## گزارش برچسب متن [/api/report_text_tags/]
+
 وظیفه این تابع افزودن گزارش به برچسب‌ها می‌باشد. یک گزارش نمونه‌ای است که تعلق و یا عدم تعلق به یک برچسب از قبل در آن مشخص شده و سامانه با استفاده از این گزارش‌ها مدل یادگیری ماشین را آموزش می‌دهد. این تابع یک نمونه متنی را در مجموعه داده متنی مشخص شده و در برچسب مشخص شده گزارش می‌کند. این گزارش می‌تواند مثبت (‌نمونه متعلق به برچسب است) و یا منفی (نمونه متلعق به برچسب نیست) باشد.  خروجی این تابع شامل لیستی از آیتم‌هاست که هر آیتم شناسه گزارش مربوط به همراه یک دوتایی شامل شناسه برچسب و مثبت یا منفی بودن گزارش را مشخص می‌کند.
+
 ### نمونه [POST]
 
 + Request (application/json)
@@ -517,8 +528,9 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
+
         - content: (string, required) - متن نمونه گزارش شده
-        - tag_id: (number, required) - شناسه برچسب مورد نظر برای گزارش 
+        - tag_"id":  (number, required) - شناسه برچسب مورد نظر برای گزارش 
         - positive: true (boolean) -  این ویژگی بیانگر مثبت (تعلق نمونه به برچسب) و یا منفی (عدم تعلق نمونه به برچسب) است
 
     + Body
@@ -543,7 +555,9 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## گزارش برچسب تصویر [/api/report_image_tags/]
+
 وظیفه این تابع افزودن گزارش به برچسب‌ها می‌باشد. یک گزارش  تعلق و یا عدم تعلق یک نمونه را به یک برچسب مشخص می‌کند و سامانه با استفاده از گزارش‌ها مدل یادگیری ماشین را آموزش می‌دهد. این تابع یک تصویر را در مجموعه داده تصویری مشخص شده و در دسته مشخص شده گزارش می‌کند. این گزارش می‌تواند مثبت (‌نمونه متعلق به دسته است) و یا منفی (نمونه متلعق به دسته نیست) باشد.  خروجی این تابع شمال لیستی از آیتم‌هاست که هر آیتم شناسه گزارش مربوط به همراه یک دوتایی شامل شناسه دسته و مثبت یا منفی بودن گزارش را مشخص می‌کند.
+
 ### نمونه [POST]
 
 + Request (application/json)
@@ -553,8 +567,9 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - image_url: URL (string, required) - آدرس تصویر گزارش شده
-        - tag_id: (number, required) - شناسه برچسب مورد نظر برای گزارش 
+        - tag_"id": ID (number, required) - شناسه برچسب مورد نظر برای گزارش 
         - positive: true (boolean) -  این ویژگی بیانگر مثبت (تعلق نمونه به برچسب) و یا منفی (عدم تعلق نمونه به برچسب) است
 
     + Body
@@ -577,8 +592,10 @@ HOST: https://kashf.roshan-ai.ir
         ]
 
 
-## حذف گزارش[/api/remove_tag_report/]
+## حذف گزارش [/api/remove_tag_report/]
+
 این تابع یک گزارش موجود را حذف می‌کند. برای حذف گزارش تابع شناسه گزارش و شناسه برچسب را به عنوان ورودی می‌گیرد. برای حذف گزارش متنی شناسه متن با عنوان text_id و برای حذف گزارش تصویری شناسه تصویر با عنوان image_id ارسال می‌شود.
+
 ### نمونه [POST]
 
 + Request (application/json)
@@ -587,9 +604,10 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
 
     + Attributes
-        - text_id: (number) - آدرس متن گزارش شده
-        - image_id: (number) - آدرس تصویر گزارش شده
-        - tag_id: (number, required) - شناسه برچسب مورد نظر برای گزارش 
+    
+        - text_"id": (number) - آدرس متن گزارش شده
+        - image_"id": (number) - آدرس تصویر گزارش شده
+        - tag_"id": (number, required) - شناسه برچسب مورد نظر برای گزارش 
 
     + Body
         {
@@ -606,7 +624,9 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## ایجاد برچسب [/api/create_tag/]
+
 این تابع وظیفه ایجاد برچسب جدید در یک مجموعه داده را دارد. برای این کار عنوان برچسب و همچنین مجموعه داده‌ای که برچسب در آن باید ساخته شود به عنوان ورودی به تابع داده می‌شود. همچنین در تنظیمات ارسالی به تابع می‌توان مشخص کرد که برچسب ساخته شده فعال یا غیرفعال باشد. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.
+
 ### نمونه [POST]
 
 + Request (application/json)
@@ -616,6 +636,7 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده‌ای که برچسب جدید در آن ساخته می‌شود
         - title: (string, required) - عنوان برچسب
         - positive: true (boolean) -  این ویژگی بیانگر فعال یا غیر فعال بودن برچسب در مجموعه داده است. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.
@@ -637,6 +658,7 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## ویرایش برچسب [/api/update_tag/]
+
 این تابع برای ویرایش اطلاعات و مشخصات مربوط به یک برچسب موجود کاربرد دارد. با استفاده از این تابع می‌توان نام برچسب، مجموعه داده‌ای که برچسب متعلق به آن است و وضعیت برچسب (فعال یا غیر فعال) را ویرایش نمود.
 
 ### نمونه [POST]
@@ -648,7 +670,8 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
 
     + Attributes
-        - tag_id: tad id (number, required) - شناسه برچسب
+
+        - tag_"id": tad id (number, required) - شناسه برچسب
         - dataset: dataset slug (string, required) - نام مجموعه داده‌ای صاحب برچسب
         - title: (string, required) - عنوان برچسب
         - positive: true (boolean) -  این ویژگی بیانگر فعال یا غیر فعال بودن برچسب در مجموعه داده است. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.
@@ -672,7 +695,9 @@ HOST: https://kashf.roshan-ai.ir
 
 
 ## حذف برچسب [/api/delete_tag/]
+
 این تابع یک برچسب را حذف می‌کند. با حذف یک برچسب تمامی گزارش‌های مربوط به آن نیز حذف می‌گردد. این تابع شناسه برچسب مورد نظر برای حذف را به عنوان ورودی دریافت کرده و در پاسخ مجموعه داده صاحب برچسب و تعداد گزارش‌های پاک شده از این مجموعه داده را ارسال می‌کند. 
+
 ### نمونه [POST]
 
 + Request (application/json)
@@ -682,7 +707,8 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
-        - tag_id: tad id (number, required) - شناسه برچسب
+
+        - tag_"id": tad id (number, required) - شناسه برچسب
 
     + Body
 
@@ -698,10 +724,12 @@ HOST: https://kashf.roshan-ai.ir
         }
 
 ## تشخیص‌های یک برچسب [/api/list_tag_predictions/]
+
  این تابع، لیستی حداکثر ۵۰ تایی از تشخیص‌های مدل در برچسب مربوطه ارسال می‌کند. نمونه‌های به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.
  برای فراخوانی این تابع نیاز به مشخص کردن مجموعه داده و شناسه برچسب مورد نظر می‌باشد.
 
 ### نمونه [POST]
+
 + Request (application/json)
 
     + Headers
@@ -709,8 +737,9 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
-        - dataset: dataset slug (string, required) - نام مجموعه داده
-        - tag_id: tad id (number, required) - شناسه برچسب
+
+        - dataset: slug (string, required) - نام مجموعه داده
+        - tag_"id": tad id (number, required) - شناسه برچسب
 
     + Body
 
@@ -720,19 +749,23 @@ HOST: https://kashf.roshan-ai.ir
             }
 
 + Response 200 (application/json)
+
         {
-          count: 111
-          next: "[base_url]/api/list_tag_predictions/?page=2"
-          previous: null
-          results: [{id: 1385,…}, {id: 1873984,…},…]
+          "count": 111,
+          "next": "[base_url]/api/list_tag_predictions/?page=2",
+          "previous": null,
+          "results": [{"id": 1385,…}, {"id": 1873984,…},…]
         }
 
         
 ## گزارش‌های یک برچسب [/api/list_tag_reports/]
+
  این تابع، لیستی حداکثر ۵۰ تایی از گزارش‌های برچسب مربوطه را ارسال می‌کند.  نمونه‌های به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.
  برای فراخوانی این تابع نیاز به مشخص کردن مجموعه داده و شناسه برچسب مورد نظر می‌باشد.
 با استفاده از پارامتر reported_positive امکان فیلتر کردن گزارش‌های مثبت یا منفی وجود دارد.
+
 ### نمونه [POST]
+
 + Request (application/json)
 
     + Headers
@@ -740,30 +773,36 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده
-        - tag_id: tad id (number, required) - شناسه برچسب
+        - tag_"id": tad id (number, required) - شناسه برچسب
         - reported_positive: None (boolean) - اگر این ویژگی فعال باشد تنها گزارش‌های مثبت ارسال می‌شود و اگر غیر فعال باشد تنها گزارش‌های منفی ارسال می‌شود. اگر این ویژگی None باشد همه گزارش‌های ارسال می‌شود. مقدار پیش‌فرض این ویژگی None است.
+
     + Body
 
             {
-              "dataset": "iran"
+              "dataset": "iran",
               "tag_id": 2
             }
 
 + Response 200 (application/json)
+
         {
-          count: 201
-          next: "[base_url]/api/list_tag_reports/?page=2"
-          previous: null
-          results: [{image: {id: 1832, url: "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
+          "count": 201,
+          "next": "[base_url]/api/list_tag_reports/?page=2",
+          "previous": null,
+          "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
         }
 
 
 ## گزارش‌های مشکوک یک برچسب [/api/list_notsure_reports_list/]
+
  این تابع، لیستی حداکثر ۵۰ تایی از گزارش‌های برچسب مربوطه که مدل به برچسب آن مشکوک است را ارسال می‌کند. گزارش مشکوک در واقع گزارشی است که برچسب تشخیصی مدل با برچسب گزارش شده برای نمونه متفاوت باشد. نمونه‌ها به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.
  برای فراخوانی این تابع نیاز به شناسه برچسب مورد نظر می‌باشد.
 با استفاده از پارامتر reported_positive امکان فیلتر کردن گزارش‌های مثبت یا منفی وجود دارد.
+
 ### نمونه [POST]
+
 + Request (application/json)
 
     + Headers
@@ -771,52 +810,65 @@ HOST: https://kashf.roshan-ai.ir
             Authorization: Token TOKEN_KEY
     
     + Attributes
-        - tag_id: tad id (number, required) - شناسه برچسب
+
+        - tag_"id": tad id (number, required) - شناسه برچسب
         - reported_positive: None (boolean) - اگر این ویژگی فعال باشد تنها گزارش‌های مثبت ارسال می‌شود و اگر غیر فعال باشد تنها گزارش‌های منفی ارسال می‌شود. اگر این ویژگی None باشد همه گزارش‌های ارسال می‌شود. مقدار پیش‌فرض این ویژگی None است.
 
     + Body
+
             {
               "tag_id": 2
             }
 
 + Response 200 (application/json)
+
         {
-          count: 201
-          next: "[base_url]/api/list_tag_reports/?page=2"
-          previous: null
-          results: [{image: {id: 1832, url: "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
+          "count": 201,
+          "next": "[base_url]/api/list_tag_reports/?page=2",
+          "previous": null,
+          "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
         }
 
 ## مجموعه داده‌ها [/api/list_datasets/]
+
 با فراخوانی این تابع لیستی از مجموعه داده‌هایی که کاربر امکان مشاهده و دسترسی به آن‌ها را دارد دریافت می‌شود. 
 
 ### نمونه [GET]
-+ Request
+
++ Request (application/json)
+
     + Headers
+
             Authorization: Token TOKEN_KEY
   
 + Response 200 (application/json)
+
         [{
-            'title': "ایران",
-            'type': "image-tag",
-            'slug': "iran",
-            'tag_count': 21,
-            'report_count': 2526,
-            'state': "trained",
-            'evaluation': {"precision": 0.94 , "recall": 0.87},
-            'trained_at': ""
+            "title": "ایران",
+            "type": "image-tag",
+            "slug": "iran",
+            "tag_count": 21,
+            "report_count": 2526,
+            "state": "trained",
+            "evaluation": {"precision": 0.94 , "recall": 0.87},
+            "trained_at": ""
           }, ...]
 
 
 ## نمونه‌های متنی یک مجموعه  [/api/list_texts/]
+
 این تابع با دریافت نام مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید.
 
 ### نمونه [POST]
-+ Request
+
++ Request (application/json)
+
     + Headers
+
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده
         - text_ids: list (number, required) - لیستی از شناسه نمونه‌ها
 
@@ -828,120 +880,146 @@ HOST: https://kashf.roshan-ai.ir
         }
 
 + Response 200 (application/json)
+
         [{
-            count: 234
-            results: [{text: {id: 11462988,…},…}] 
+            "count": 234,
+            "results": [{"text": {"id": 11462988,…},…}] 
           }, ...]
 
 ## نمونه‌های تصویری یک مجموعه  [/api/list_images/]
-این تابع با دریافت نامه مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید.
+
+این تابع با دریافت نام مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید.
 
 ### نمونه [POST]
-+ Request
+
++ Request (application/json)
+
     + Headers
+
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده
         - images_ids: list (number, required) - لیستی از شناسه نمونه‌ها
  
     + Body
+
         {
           "dataset": "iran",
           "text_ids": [1832]
         } 
 
 + Response 200 (application/json)
+
         {
-          count: 201
-          results: [{image: {id: 1832, url: "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…}]
+          "count": 201,
+          "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…}]
         }
 
+## جستجو در نمونه‌های متنی  [/api/search_candidate_texts/]
 
-## جستجو در نمونه‌های متنی  [api/search_candidate_texts/]
 برای جستجو در متن‌های موجود در یک مجموعه داده متنی از این تابع استفاده می‌شود. این تابع مجموعه داده متنی مورد نظر و عبارت جستجو را دریافت کرده و در پاسخ متن‌های شامل عبارت در مجموعه داده را ارسال می‌نماید.
 این تابع امکان جستجو در نمونه‌های گزارش نشده و یا نمونه‌های گزارش شده را فراهم می‌کند.
 نتایج جستجو به صورت صفحه‌بندی شده و در لیست‌های حداکثر ۵۰ تایی ارسال می‌شود.
 
 ### نمونه [POST]
-+ Request
+
++ Request (application/json)
+
     + Headers
+
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده
         - query: None (string, required) - عبارت جستجو
         - reported: false (boolean) - اگر این ویژگی فعال باشد تنها در نمونه‌های گزارش شده جستجو انجام می‌شود و در غیر این صورت در نمونه‌های گزارش نشده جستجو صورت می‌گیرد.
-        - tag_id: (number) - گزارش‌ها در ویژگی reported بر مبنای این ویژگی در نظر گرفته می‌شود. در واقع در صورتی که reported فعال باشد جستجو در گزارش‌های مربوط به این شناسه برچسب انجام می‌شود.
+        - tag_"id": (number) - گزارش‌ها در ویژگی reported بر مبنای این ویژگی در نظر گرفته می‌شود. در واقع در صورتی که reported فعال باشد جستجو در گزارش‌های مربوط به این شناسه برچسب انجام می‌شود.
 
     + Body
+
         {
-          dataset: "persica",
-          query: "اقتصاد مثاومتی",
-          tag_id: 1482,
-          reported: false         
+          "dataset": "persica",
+          "query": "اقتصاد مثاومتی",
+          "tag_id": 1482,
+          "reported": false         
         }
         
-
 + Response 200 (application/json)
+
         {
-          count: 10
-          next: null
-          previous: null
-          results: [{id: 11462939,…}, {id: 4446967,…}, {id: 4444533,…}, {id: 4444455,…}, {id: 4444260,…}, {id: 4444137,…},…]
+          "count": 10,
+          "next": null,
+          "previous": null,
+          "results": [{"id": 11462939,…}, {"id": 4446967,…}, {"id": 4444533,…}, {"id": 4444455,…}, {"id": 4444260,…}, {"id": 4444137,…},…]
         }
 
+## جستجو در نمونه‌های تصویری  [/api/search_candidate_images/]
 
-## جستجو در نمونه‌های تصویری  [api/search_candidate_images/]
 با استفاده از این تابع می‌توان در نمونه‌های تصویری یک مجموعه داده تصویری جستجو انجام داد.
 نتایج به صورت صفحه بندی شده و در لیست‌های حداکثر ۵۰ تایی ارسال می‌شود.
 
 ### نمونه [POST]
-+ Request
+
++ Request (application/json)
+
     + Headers
+
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده
         - query: None (string, required) - عبارت جستجو
-        - tag_id: (number) - شناسه برچسب مورد نظر
+        - tag_"id": (number) - شناسه برچسب مورد نظر
 
     + Body
+
         {
-          dataset: "iran",
-          query: "برج آزادی",
-          tag_id: 2
+          "dataset": "iran",
+          "query": "برج آزادی",
+          "tag_id": 2
         }
         
 
 + Response 200 (application/json)
+
         {
-          count: 10
-          next: null
-          previous: null
-          results: [{id: 11462939,…}, {id: 4446967,…}, {id: 4444533,…}, {id: 4444455,…}, {id: 4444260,…}, {id: 4444137,…},…]
+          "count": 10,
+          "next": null,
+          "previous": null,
+          "results": [{"id": 11462939,…}, {"id": 4446967,…}, {"id": 4444533,…}, {"id": 4444455,…}, {"id": 4444260,…}, {"id": 4444137,…},…]
         }
 
 
-## جستجو در نمونه‌های متنی  [api/search_candidate_faces/]
+## جستجو در نمونه‌های چهره‌ها  [/api/search_candidate_faces/]
+
 با استفاده از این تابع می‌توان در تصاویر چهره‌ها جستجو انجام داد.
 
 ### نمونه [POST]
-+ Request
+
++ Request (application/json)
+
     + Headers
+
             Authorization: Token TOKEN_KEY
 
     + Attributes
+
         - dataset: dataset slug (string, required) - نام مجموعه داده
         - query: None (string, required) - عبارت جستجو
-        - tag_id: (number) - شناسه برچسب مورد نظر
+        - tag_"id": (number) - شناسه برچسب مورد نظر
 
     + Body
+
         {
-          dataset: "faces",
-          query: " احسان کرمی",
-          tag_id: 213243
+          "dataset": "faces",
+          "query": " احسان کرمی",
+          "tag_id": 213243
         }
 
 + Response 200 (application/json)
+
         {"items":[{"url":"https://static1.neshanonline.com/thumbnail/yVTNvWR9IHxN/gK8fHXfDXrqfbFZCqByYQnf9bgWP7DnqxIBUmuF8jDF1YIE8vRbA5t0DEhHhnmOX/Untitled.jpg","width":null,"height":null,"data":{},"processed":null}, ...],"count":76}
