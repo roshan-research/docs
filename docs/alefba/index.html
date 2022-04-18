@@ -222,10 +222,10 @@
                     <a href="#a964573c8c" class="toc-h2 toc-link" data-title="نمونه ارسال با لینک سند">نمونه ارسال با لینک سند</a>
                   </li>
                   <li>
-                    <a href="#1dbfc0723a" class="toc-h2 toc-link" data-title="نمونه درخواست به صورت ناهمکام">نمونه درخواست به صورت ناهمکام</a>
+                    <a href="#2671c0e683" class="toc-h2 toc-link" data-title="نمونه درخواست به صورت ناهمگام">نمونه درخواست به صورت ناهمگام</a>
                   </li>
                   <li>
-                    <a href="#e03c8090d9" class="toc-h2 toc-link" data-title="نمونه دریافت نتیجه در حالت ناهمکام">نمونه دریافت نتیجه در حالت ناهمکام</a>
+                    <a href="#fbbd60a103" class="toc-h2 toc-link" data-title="نمونه دریافت نتیجه در حالت ناهمگام">نمونه دریافت نتیجه در حالت ناهمگام</a>
                   </li>
                   <li>
                     <a href="#70fe9ec314" class="toc-h2 toc-link" data-title="نمونه ارسال مستقیم سند">نمونه ارسال مستقیم سند</a>
@@ -644,7 +644,7 @@ Value: <span style="background-color: #00A693;
 <img src="images/vector-c3fae21d.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 
 <p><br><br></p>
-<h2 id='1dbfc0723a'>نمونه درخواست به صورت ناهمکام</h2>
+<h2 id='2671c0e683'>نمونه درخواست به صورت ناهمگام</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -825,7 +825,120 @@ Value: <span style="background-color: #00A693;
 
 </span></code></pre></div>
 <p><code>POST /api/read_document/</code></p>
-<h2 id='e03c8090d9'>نمونه دریافت نتیجه در حالت ناهمکام</h2>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br>
+<dl>
+<strong>type</strong>
+<br>
+<br>
+Value: 
+<span className="enum-container">
+<span>
+general
+</span>
+<span style="font-family:VazirCode;">
+سندهای عمومی
+</span>
+<span>
+ID-card
+</span>
+<span style="font-family:VazirCode;">
+کارت‌های شناسایی
+</span>
+<span>
+excel
+</span>
+<span style="font-family:VazirCode;">
+جدولهای مالی
+</span></p>
+
+<p></span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
+
+<p><br><br>
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+
+<p><br><br>
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+
+<p><br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+
+<p><br><br>
+<dl>
+<strong>priority</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+
+<p><br><br></p>
+<h2 id='fbbd60a103'>نمونه دریافت نتیجه در حالت ناهمگام</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -982,6 +1095,39 @@ Value: <span style="background-color: #00A693;
 
 </span></code></pre></div>
 <p><code>POST /api/read_document/</code></p>
+
+<dl>
+<strong>task_id(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    0
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  شناسه درخواست ارسال شده</p>
+
+<p><br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+
+<p><br><br></p>
 <h2 id='70fe9ec314'>نمونه ارسال مستقیم سند</h2>
 <blockquote>
 <p>Request</p>
@@ -1531,7 +1677,7 @@ Value: <span style="background-color: #00A693;
 <strong>page_urls(required)</strong>
 <br>
 <br>
-Value: [URL1, URL2, ..., ]
+Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
@@ -1801,6 +1947,18 @@ Value: <span style="background-color: #00A693;
 
 </span></code></pre></div>
 <p><code>POST /api/document_status/</code></p>
+
+<dl>
+<strong>document_urls(required)</strong>
+<br>
+<br>
+Value: [URL, ]
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس اسناد ورودی</p>
+
+<p><br><br></p>
 <h1 id='de3bda67f1'>صفحات سند</h1>
 <p>نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.</p>
 <h2 id='8e687366d5-3'>نمونه</h2>
@@ -1956,6 +2114,23 @@ Value: <span style="background-color: #00A693;
 
 </span></code></pre></div>
 <p><code>POST /api/document_pages/</code></p>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br></p>
 <h1 id='cc0becc7e6'>دریافت فایل ورد</h1>
 <p>با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.</p>
 <h2 id='8e687366d5-4'>نمونه</h2>
@@ -2101,8 +2276,27 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Response </p>
 </blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">boute.docx</span><span class="w"> </span><span class="err">file</span><span class="w">
 
+</span></code></pre></div>
 <p><code>POST /api/download_word/</code></p>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br></p>
 <h1 id='e63c2f1217'>دریافت فایل اکسل</h1>
 <p>با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.</p>
 <h2 id='8e687366d5-5'>نمونه</h2>
@@ -2248,8 +2442,27 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Response </p>
 </blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">boute.xlsx</span><span class="w"> </span><span class="err">file</span><span class="w">
 
+</span></code></pre></div>
 <p><code>POST /api/download_excel/</code></p>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br></p>
 <h1 id='9960926996'>دریافت فایل قابل جستجو</h1>
 <p>با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.</p>
 <h2 id='8e687366d5-6'>نمونه</h2>
@@ -2413,8 +2626,59 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Response </p>
 </blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">boute.pdf</span><span class="w"> </span><span class="err">file</span><span class="w">
 
+</span></code></pre></div>
 <p><code>POST /api/download_pdf/</code></p>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br>
+<dl>
+<strong>quality</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    100
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  مقدار dpi کیفیت صفحات</p>
+
+<p><br><br>
+<dl>
+<strong>color</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    false
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  در صورت فعال بودن این خصوصیت، فایل خروجی رنگی خواهد بود.</p>
+
+<p><br><br></p>
 <h1 id='d51252080e'>حذف سند</h1>
 <p>با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.</p>
 <h2 id='8e687366d5-7'>نمونه</h2>
@@ -2566,6 +2830,23 @@ Value: <span style="background-color: #00A693;
 
 </span></code></pre></div>
 <p><code>POST /api/delete_document/</code></p>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br></p>
 <h1 id='16511bbc1f'>خواندن سند نامتقارن</h1>
 <p>این قابلیت برای جلوگیری از انتظار برای تحلیل فایل قرار داده شده است. پس  از ارسال رکوئست وضعیت فایل در حال تحلیل قرار گرفته و پس اتمام تحلیل رکوئست کالبک حاوی اطلاعات فایل به آدرس وارد شده فرستاده میشود.</p>
 <h2 id='8e687366d5-8'>نمونه</h2>
@@ -2727,6 +3008,39 @@ Value: <span style="background-color: #00A693;
 
 </span></code></pre></div>
 <p><code>POST /api/read_document/</code></p>
+
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سند ورودی</p>
+
+<p><br><br>
+<dl>
+<strong>color(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس بازگشت بعد از تمام شدن فرآیند خواندن سند</p>
+
+<p><br><br></p>
 
       </div>
       <div class="dark-box">

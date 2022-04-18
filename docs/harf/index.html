@@ -219,7 +219,10 @@
             <a href="#12ec36d0e6" class="toc-h1 toc-link" data-title="پیاده‌سازی متن فایل">پیاده‌سازی متن فایل</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#8e687366d5" class="toc-h2 toc-link" data-title="نمونه">نمونه</a>
+                    <a href="#706cb61ff0" class="toc-h2 toc-link" data-title="نمونه ارسال با لینک">نمونه ارسال با لینک</a>
+                  </li>
+                  <li>
+                    <a href="#d29539880b" class="toc-h2 toc-link" data-title="نمونه ارسال مستقیم فایل">نمونه ارسال مستقیم فایل</a>
                   </li>
               </ul>
           </li>
@@ -243,18 +246,12 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='92f5faa2a5'>حرف</h1>
-<div dir=rtl>
-سامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.
-</div>
+<p>سامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.</p>
 
-<blockquote dir=rtl>
-برای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید.
-</blockquote>
+<p>برای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید.</p>
 <h1 id='12ec36d0e6'>پیاده‌سازی متن فایل</h1>
-<div dir=rtl>
-این تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است.
-</div>
-<h2 id='8e687366d5'>نمونه</h2>
+<p>این تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است.</p>
+<h2 id='706cb61ff0'>نمونه ارسال با لینک</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -445,19 +442,252 @@
 </span><span class="p">]</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-می‌توانید برای همین تابع، فایل ورودی را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:
-</div>
-
-<blockquote>
-<p>curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;media=@test.mp3&quot; http://harf.roshan-ai.ir/api/transcribe_files/</p>
-</blockquote>
-
 <p><code>POST /api/transcribe_files/</code></p>
+
+<dl>
+<strong>media_urls(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    List of URLs
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  لیست آدرس فایل‌های ورودی</p>
+
+<p><br><br></p>
+<h2 id='d29539880b'>نمونه ارسال مستقیم فایل</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span>
+      POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span>
+      <span class="nt">-F</span> <span class="s2">"document=@example.pdf"</span>
+      http://alefba.roshan-ai.ir/api/read_document
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,}</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'document'</span><span class="p">:</span> <span class="p">(</span><span class="s">'FILE NAME'</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">'YOUR FILE PATH'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)),}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://alefba.roshan-ai.ir/api/read_document/'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MultiPartRequest</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+    <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="o">;</span>
+    <span class="nc">File</span> <span class="n">textFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"YOUR FILE PATH"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">boundary</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+    <span class="nc">String</span> <span class="no">CRLF</span> <span class="o">=</span> <span class="s">"\r\n"</span><span class="o">;</span>
+
+    <span class="nc">URLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="n">url</span><span class="o">).</span><span class="na">openConnection</span><span class="o">();</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"accept"</span><span class="o">,</span> <span class="s">"*/*"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Connection"</span><span class="o">,</span> <span class="s">"close"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"multipart/form-data; boundary="</span> <span class="o">+</span> <span class="n">boundary</span><span class="o">);</span>
+
+    <span class="k">try</span> <span class="o">(</span>
+        <span class="nc">OutputStream</span> <span class="n">output</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="nc">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="n">output</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+    <span class="o">)</span> <span class="o">{</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">boundary</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\"document\"; filename=\""</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">textFile</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">append</span><span class="o">(</span><span class="s">"\""</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Content-Type: application/pdf"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">);</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+      <span class="nc">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">textFile</span><span class="o">.</span><span class="na">toPath</span><span class="o">(),</span> <span class="n">output</span><span class="o">);</span>
+      <span class="n">output</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">writer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">boundary</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"--"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="no">CRLF</span><span class="o">).</span><span class="na">flush</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+    <span class="nc">BufferedReader</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">((</span><span class="nc">InputStream</span><span class="o">)</span> <span class="n">connection</span><span class="o">.</span><span class="na">getContent</span><span class="o">()));</span>
+    <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">inputStream</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">inputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$fields</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"f1"</span><span class="o">=&gt;</span><span class="s2">"value1"</span><span class="p">,</span> <span class="s2">"another_field2"</span><span class="o">=&gt;</span><span class="s2">"anothervalue"</span><span class="p">);</span>
+
+<span class="nv">$filenames</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"FILE_PATH_1"</span><span class="p">,</span> <span class="s2">"FILE_PATH_2"</span><span class="p">);</span>
+
+<span class="nv">$files</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$filenames</span> <span class="k">as</span> <span class="nv">$f</span><span class="p">){</span>
+   <span class="nv">$files</span><span class="p">[</span><span class="nv">$f</span><span class="p">]</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$f</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://alefba.roshan-ai.ir/api/read_document/"</span><span class="p">;</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nv">$url_data</span> <span class="o">=</span> <span class="nb">http_build_query</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="nv">$boundary</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">();</span>
+<span class="nv">$delimiter</span> <span class="o">=</span> <span class="s1">'-------------'</span> <span class="mf">.</span> <span class="nv">$boundary</span><span class="p">;</span>
+
+<span class="nv">$post_data</span> <span class="o">=</span> <span class="nf">build_data_files</span><span class="p">(</span><span class="nv">$boundary</span><span class="p">,</span> <span class="nv">$fields</span><span class="p">,</span> <span class="nv">$files</span><span class="p">);</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="nv">$url</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POST</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="nv">$post_data</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="p">,</span>
+    <span class="s2">"Content-Type: multipart/form-data; boundary="</span> <span class="mf">.</span> <span class="nv">$delimiter</span><span class="p">,</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nv">$info</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"error"</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$err</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">function</span> <span class="n">build_data_files</span><span class="p">(</span><span class="nv">$boundary</span><span class="p">,</span> <span class="nv">$fields</span><span class="p">,</span> <span class="nv">$files</span><span class="p">){</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nv">$eol</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$delimiter</span> <span class="o">=</span> <span class="s1">'-------------'</span> <span class="mf">.</span> <span class="nv">$boundary</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$fields</span> <span class="k">as</span> <span class="nv">$name</span> <span class="o">=&gt;</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">"--"</span> <span class="mf">.</span> <span class="nv">$delimiter</span> <span class="mf">.</span> <span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Disposition: form-data; name="'</span> <span class="mf">.</span> <span class="nv">$name</span> <span class="mf">.</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">"</span><span class="mf">.</span><span class="nv">$eol</span><span class="mf">.</span><span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="nv">$content</span> <span class="mf">.</span> <span class="nv">$eol</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$name</span> <span class="o">=&gt;</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">"--"</span> <span class="mf">.</span> <span class="nv">$delimiter</span> <span class="mf">.</span> <span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Disposition: form-data; name="'</span> <span class="mf">.</span> <span class="nv">$name</span> <span class="mf">.</span> <span class="s1">'"; filename="'</span> <span class="mf">.</span> <span class="nv">$name</span> <span class="mf">.</span> <span class="s1">'"'</span> <span class="mf">.</span> <span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Type: image/png'</span><span class="mf">.</span><span class="nv">$eol</span>
+            <span class="mf">.</span> <span class="s1">'Content-Transfer-Encoding: binary'</span><span class="mf">.</span><span class="nv">$eol</span>
+            <span class="p">;</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="nv">$eol</span><span class="p">;</span>
+        <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="nv">$content</span> <span class="mf">.</span> <span class="nv">$eol</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$data</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">"--"</span> <span class="mf">.</span> <span class="nv">$delimiter</span> <span class="mf">.</span> <span class="s2">"--"</span><span class="mf">.</span><span class="nv">$eol</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http.Headers</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyRequest</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">UploadFile</span><span class="p">(</span><span class="n">String</span> <span class="n">serverAddress</span><span class="p">,</span><span class="n">String</span> <span class="n">filePath</span><span class="p">,</span><span class="n">String</span><span class="p">[]</span> <span class="n">paramsName</span><span class="p">,</span><span class="n">String</span><span class="p">[]</span> <span class="n">paramsValue</span><span class="p">){</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">formData</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MultipartFormDataContent</span><span class="p">()){</span>
+                <span class="n">formData</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">ContentType</span><span class="p">.</span><span class="n">MediaType</span> <span class="p">=</span> <span class="s">"multipart/form-data"</span><span class="p">;</span>
+                <span class="kt">var</span> <span class="n">filestream</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">FileStream</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">);</span>
+                <span class="n">Stream</span> <span class="n">fileStream</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+                <span class="kt">var</span> <span class="n">fileName</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="nf">GetFileName</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+
+                <span class="n">formData</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">ContentDisposition</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ContentDispositionHeaderValue</span><span class="p">(</span><span class="s">"attachment"</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">FileName</span> <span class="p">=</span> <span class="n">fileName</span>
+                <span class="p">};</span>
+
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span><span class="n">i</span><span class="p">&lt;</span><span class="n">paramsName</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="n">i</span><span class="p">++){</span>
+                    <span class="kt">var</span> <span class="n">stringContent</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringContent</span><span class="p">(</span><span class="n">paramsValue</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                    <span class="n">stringContent</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Content-Disposition"</span><span class="p">,</span> <span class="s">"form-data; name=\""</span> <span class="p">+</span> <span class="n">paramsName</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">+</span> <span class="s">"\""</span><span class="p">);</span>
+                    <span class="n">formData</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">stringContent</span><span class="p">,</span> <span class="n">paramsName</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                <span class="p">}</span>
+
+                <span class="n">formData</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">StreamContent</span><span class="p">(</span><span class="n">fileStream</span><span class="p">),</span> <span class="s">"file"</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+
+                <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">()){</span>
+                    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Token"</span> <span class="p">+</span> <span class="n">_bearerToken</span><span class="p">);</span>
+
+                    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="n">serverAddress</span><span class="p">,</span> <span class="n">formData</span><span class="p">).</span><span class="n">Result</span><span class="p">;</span>
+                    <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+
+                    <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="n">serverAddress</span><span class="p">,</span> <span class="n">formData</span><span class="p">);</span>
+                    <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">message</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="nf">ReadAsStringAsync</span><span class="p">();</span>
+                    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"media_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://harf.roshan-ai.ir/media/files/96/84/859267728361.mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:44"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"segments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکایت"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"یکی را از حکما شنیدم که می گفت"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"هرگز کسی به جهل خویش اقرار نکرده است"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:16"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مگر آن کس که چون دیگری در سخن باشد"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:16"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:21"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"همچنان ناتمام گفته سخن آغاز کند"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /api/transcribe_files/</code></p>
+
+<dl>
+<strong>media(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    file in binary
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  فایل سند ورودی</p>
+
+<p><br><br></p>
 <h1 id='ad82489934'>پیاده‌سازی متن فایل ناهمگام</h1>
-<div dir=rtl>
-در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است.
-</div>
+<p>در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است.</p>
 <h2 id='0bbf1f7038'>نمونه ارسال درخواست ناهمگام</h2>
 <blockquote>
 <p>Request</p>
@@ -625,11 +855,42 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-پس از ارسال درخواست تحلیل ناهمگام، نتیجه تحلیل با استفاده از `task_ids` قابل پیگیری است. در صورتی که تحلیل فایل انجام شده باشد، تقاضای پیگیری با نتیجه تحلیل، پاسخ داده می‌شود و در غیر این صورت، وضعیت تحلیل در پاسخ قرار داده می‌شود.
-</div>
+<p>پس از ارسال درخواست تحلیل ناهمگام، نتیجه تحلیل با استفاده از <code>task_ids</code> قابل پیگیری است. در صورتی که تحلیل فایل انجام شده باشد، تقاضای پیگیری با نتیجه تحلیل، پاسخ داده می‌شود و در غیر این صورت، وضعیت تحلیل در پاسخ قرار داده می‌شود.</p>
 
 <p><code>POST /api/transcribe_files/#1</code></p>
+
+<dl>
+<strong>media_urls(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    List of URLs
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  لیست آدرس فایل‌های ورودی</p>
+
+<p><br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+
+<p><br><br></p>
 <h2 id='427ca47f6d'>نمونه دریافت پاسخ درخواست ناهمگام</h2>
 <blockquote>
 <p>Request</p>
@@ -794,31 +1055,52 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"PENDING"</span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-در صورتی که فایل هنوز در حال پردازش باشد، وضعیت `PENDING` به عنوان پاسخ باز می‌گردد. اگر در تحلیل فایل مشکلی پیش آماده باشد وضعیت `FAILURE` گزارش می‌شود و اگر تحلیل فایل بیش از مقدار تعیین شده برای حداکثر زمان تحلیل (در تنظیمات داخلی سیستم) طول بکشد، وضعیت `TIMEOUT` اعلام می‌شود.
-</div>
+<p>در صورتی که فایل هنوز در حال پردازش باشد، وضعیت <code>PENDING</code> به عنوان پاسخ باز می‌گردد. اگر در تحلیل فایل مشکلی پیش آماده باشد وضعیت <code>FAILURE</code> گزارش می‌شود و اگر تحلیل فایل بیش از مقدار تعیین شده برای حداکثر زمان تحلیل (در تنظیمات داخلی سیستم) طول بکشد، وضعیت <code>TIMEOUT</code> اعلام می‌شود.</p>
 
 <p><code>POST /api/transcribe_files/#1</code></p>
+
+<dl>
+<strong>task_ids(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    List of task ids
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  لیست شناسه درخواست‌ها</p>
+
+<p><br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+
+<p><br><br></p>
 <h1 id='2e6a25572c'>پیاده‌سازی متن فایل در جریان</h1>
-<div dir=rtl>
-برای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.
-</div>
+<p>برای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.</p>
 
-<div>
-{"segment_id": 1, "text": "سازمان بهداشت جهانی", "start": "0:00:00", "end": "0:00:05"}
-</div>
+<p>{&quot;segment_id&quot;: 1, &quot;text&quot;: &quot;سازمان بهداشت جهانی&quot;, &quot;start&quot;: &quot;0:00:00&quot;, &quot;end&quot;: &quot;0:00:05&quot;}</p>
 
-<div dir=rtl>
-در صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.
-</div>
+<p>در صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.</p>
 
-<div>
-{"state": "PENDING"}
-</div>
+<p>{&quot;state&quot;: &quot;PENDING&quot;}</p>
 
-<div dir=rtl>
-در انتها برای سرور متن "finalize" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.
-</div>
+<p>در انتها برای سرور متن &quot;finalize&quot; .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.</p>
 
       </div>
       <div class="dark-box">
