@@ -706,7 +706,7 @@ Value: <span style="background-color: #00A693;
     <span class="o">]</span>,
     <span class="s2">"wait"</span>: <span class="nb">false</span>
 <span class="o">}</span> <span class="se">\</span>
-      http://harf.roshan-ai.ir/api/transcribe_files/#1
+      http://harf.roshan-ai.ir/api/transcribe_files/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -721,7 +721,7 @@ Value: <span style="background-color: #00A693;
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://harf.roshan-ai.ir/api/transcribe_files/#1'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://harf.roshan-ai.ir/api/transcribe_files/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -738,7 +738,7 @@ Value: <span style="background-color: #00A693;
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/#1"</span><span class="o">);</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/"</span><span class="o">);</span>
             <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
             <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
@@ -773,7 +773,7 @@ Value: <span style="background-color: #00A693;
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://harf.roshan-ai.ir/api/transcribe_files/#1"</span><span class="p">;</span>
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://harf.roshan-ai.ir/api/transcribe_files/"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
       <span class="s1">'{
     "media_urls": [
@@ -816,7 +816,7 @@ Value: <span style="background-color: #00A693;
     <span class="p">{</span>
         <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/#1"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/"</span><span class="p">);</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
 
@@ -857,7 +857,7 @@ Value: <span style="background-color: #00A693;
 </span></code></pre></div>
 <p>پس از ارسال درخواست تحلیل ناهمگام، نتیجه تحلیل با استفاده از <code>task_ids</code> قابل پیگیری است. در صورتی که تحلیل فایل انجام شده باشد، تقاضای پیگیری با نتیجه تحلیل، پاسخ داده می‌شود و در غیر این صورت، وضعیت تحلیل در پاسخ قرار داده می‌شود.</p>
 
-<p><code>POST /api/transcribe_files/#1</code></p>
+<p><code>POST /api/transcribe_files/</code></p>
 
 <dl>
 <strong>media_urls(required)</strong>
@@ -909,7 +909,7 @@ Value: <span style="background-color: #00A693;
     <span class="o">]</span>,
     <span class="s2">"wait"</span>: <span class="nb">false</span>
 <span class="o">}</span> <span class="se">\</span>
-      http://harf.roshan-ai.ir/api/transcribe_files/#1
+      http://harf.roshan-ai.ir/api/transcribe_files/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -924,7 +924,7 @@ Value: <span style="background-color: #00A693;
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://harf.roshan-ai.ir/api/transcribe_files/#1'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://harf.roshan-ai.ir/api/transcribe_files/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -941,7 +941,7 @@ Value: <span style="background-color: #00A693;
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/#1"</span><span class="o">);</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/"</span><span class="o">);</span>
             <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
             <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
@@ -976,7 +976,7 @@ Value: <span style="background-color: #00A693;
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://harf.roshan-ai.ir/api/transcribe_files/#1"</span><span class="p">;</span>
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://harf.roshan-ai.ir/api/transcribe_files/"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
       <span class="s1">'{
     "tasks_ids": [
@@ -1019,7 +1019,7 @@ Value: <span style="background-color: #00A693;
     <span class="p">{</span>
         <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/#1"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://harf.roshan-ai.ir/api/transcribe_files/"</span><span class="p">);</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
 
@@ -1057,7 +1057,7 @@ Value: <span style="background-color: #00A693;
 </span></code></pre></div>
 <p>در صورتی که فایل هنوز در حال پردازش باشد، وضعیت <code>PENDING</code> به عنوان پاسخ باز می‌گردد. اگر در تحلیل فایل مشکلی پیش آماده باشد وضعیت <code>FAILURE</code> گزارش می‌شود و اگر تحلیل فایل بیش از مقدار تعیین شده برای حداکثر زمان تحلیل (در تنظیمات داخلی سیستم) طول بکشد، وضعیت <code>TIMEOUT</code> اعلام می‌شود.</p>
 
-<p><code>POST /api/transcribe_files/#1</code></p>
+<p><code>POST /api/transcribe_files/</code></p>
 
 <dl>
 <strong>task_ids(required)</strong>
