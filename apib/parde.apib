@@ -4,20 +4,17 @@ HOST: http://api.sobhe.ir
 
 # Parde
 
-Parde recognizes unsafe images.
+پرده تصاویر نامناسب را تشخیص می‌دهد.
 
-For using Parde API you need a TOKEN_KEY, if you don't have one,
-please contact parde@sobhe.ir.
+برای دسترسی به واسط برنامه‌نویس پرده نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس parde@roshan-ai.ir بنویسید.
 
 
-## Process Images [/parde/api/tag_images]
+## تحلیل تصاویر [/parde/api/tag_images]
 
 ### Request [POST]
 
-You may ask tags of some images using this action. Image tags is a list of objects with image urls, list of tag which contains tag name and a float number between 0 and 1 that shows probability of belonging image to class.
-
-Asking tags of multiple images in one request results in better
-performance.
+با استفاده از این تابع می‌توانید برای برچسب‌های مربوط به تصاویر مورد نظر خود را از پرده بپرسید. برچسب‌های تصاویر شامل لیستی آیتم‌هاست که هر آیتم شامل آدرس تصویر، و لیستی از برچسب‌هاست که هر برچسب شامل نام برچسب و عددی بین ۰ و ۱ به عنوان میزان اطمینان از برچسب، می‌باشد.
+برای بازدهی بهتر می‌توانید برچسب چند تصویر را در یک درخواست از پرده بپرسید.
 
 + Request (application/json)
 
@@ -27,7 +24,7 @@ performance.
     
     + Attributes
 
-        - image_urls: URL (array[string], required) - List of image URLs
+        - image_urls: URL (array[string], required) - لیست آدرس تصاویر
  
     + Body
 
@@ -42,9 +39,9 @@ performance.
         [{"image_url":"http://www.sobhe.ir/baaz/img/goshawk.jpg","tags":[]}]
 
 
-## Video Keyframes [/parde/api/tag_video_frames]
+## فریم‌های کلیدی ویدئو [/parde/api/tag_video_frames]
 
-You can ask tags of video frames using this action. It response with a list of video frames and corresponding tags.
+ با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.
 
 ### Request [POST]
 
@@ -56,11 +53,11 @@ You can ask tags of video frames using this action. It response with a list of v
 
     + Attributes
 
-        - video_urls: URL (array[string], required) - List of video URLs
-        - every_ms: 100 (number) - distance of two extracted frames in miliseconds
-        - min_frame_diff: 0.4 (number) - The minimum value of the difference between two frames which are considered different.
-        - duration: 25 (number) - The portion in seconds from start of video which will be processed. if is Null, Whole video will be processed.
-        - wait: true (boolean) - If true, the video process would be asynchronous and during the video processing, the API responds with the state of the process [Pending or started] and on the first request, after the process is finished, it will respond with the results.
+        - video_urls: URL (array[string], required) - لیست آدرس ویدئو‌ها
+        - every_ms: 100 (number) - فاصله بین دو فریم استخراج شده به میلی ثانیه
+        - min_frame_diff: 0.4 (number) - حداقل تفاوت میان دو فریم که به عنوان فریم مستقل در نظر گرفته شوند.
+        - duration: 25 (number) - مقدار زمان به ثانیه از ابتدا ویدئو که پردازش روی آن انجام می‌شود. اگر Null باشد کل ویدئو پردازش خواهد شد.
+        - wait: true (boolean) - اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.
 
             {
                 video_urls: ["https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4"],
