@@ -227,6 +227,12 @@ function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyCon
       -F "document=@example.pdf"
       http://alefba.roshan-ai.ir/api/read_document\n\`\`\`\n\n`;
     }
+
+    if (requestHeaderAttributes.length !== 0 && 
+        requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
+        return `\`\`\`shell\nweb socket here\n\`\`\`\n\n`;
+    }
+
     let curlText = "```shell\n";
     curlText += "curl  --request " + httpMethod +  " \\ \n";
     curlText += "     ";
@@ -248,6 +254,12 @@ files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)\n\`\`\`\n\n`;
     }
+
+    if (requestHeaderAttributes.length !== 0 && 
+        requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
+        return `\`\`\`python\nweb socket here\n\`\`\`\n\n`;
+    }
+
     let pythonText = "```python\n";
     pythonText +=
     "from urllib2 import Request, urlopen\n" +
@@ -315,6 +327,12 @@ public class MultiPartRequest {
   }
 }\n\`\`\`\n\n`;
     }
+
+    if (requestHeaderAttributes.length !== 0 && 
+        requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
+        return `\`\`\`java\nweb socket here\n\`\`\`\n\n`;
+    }
+
     let javaText = "```java\n";
     javaText += "import java.lang.System;\n" +
         "import java.net.HttpURLConnection;\n" +
@@ -430,6 +448,12 @@ function build_data_files($boundary, $fields, $files){
     return $data;
 }\n\`\`\`\n\n`;
     }
+
+    if (requestHeaderAttributes.length !== 0 && 
+        requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
+        return `\`\`\`php\nweb socket here\n\`\`\`\n\n`;
+    }
+
     let phpText = "```php\n";
     phpText += "<?php\n" +
     "\n" +
@@ -514,6 +538,12 @@ namespace MyRequest
     }
 }\n\`\`\`\n\n`;
     }
+
+    if (requestHeaderAttributes.length !== 0 && 
+        requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
+        return `\`\`\`csharp\nweb socket here\n\`\`\`\n\n`;
+    }
+
     let csharpText = "```csharp\n";
     csharpText += "using System;\n" +
         "using System.IO;\n" +

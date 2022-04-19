@@ -23,19 +23,13 @@ meta:
 
 # باز
 
-<div dir=rtl>
 باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.
-</div>
 
-<blockquote dir=rtl>
 برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
-</blockquote>
 
 # نمایه‌سازی
 
-<div dir=rtl>
 برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
-</div>
 
 
 ## ثبت داده‌ها
@@ -450,9 +444,7 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 این تابع امکان افزودن اسناد به  نمایه را فراهم می‌کند. ورودی items برای این تابع، شامل فهرستی از اسناد است که هر کدام از آنها باید در نمایه ثبت شوند.
-</div>
 
 `POST /{index_name}/index`
 
@@ -524,12 +516,12 @@ Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
                     border-radius: 2px">
-                    2017-07-08 10:30:00
+                    2017
                     </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 <br><br>
 <dl>
 <strong>labels</strong>
@@ -758,12 +750,110 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 این تابع امکان ویرایش اسناد ثبت‌شده را فراهم می‌کند. برای این منظور، کافیست داده‌های جدید به همراه type و id سند فرستاده شوند. توجه کنید که در هنگام به‌روزرسانی، فقط اطلاعات ارسال‌شده ذخیره می‌شوند و دیگر ویژگی‌های سند، تغییر نمی‌کنند.
-</div>
 
 `PUT /{index_name}/index`
 
+<dl>
+<strong>type(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    movie
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
+<br><br>
+<dl>
+<strong>id(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    1
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+<br><br>
+<dl>
+<strong>title(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ماجرای نیمروز
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
+<br><br>
+<dl>
+<strong>importance</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    100
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<br><br>
+<dl>
+<strong>time</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    2017
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<br><br>
+<dl>
+<strong>labels</strong>
+<br>
+<br>
+Value: [هیجانی, ماجراجویی, ]
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
+<br><br>
+<dl>
+<strong>...</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ...
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
+<br><br>
 ## حذف داده‌ها
 
 > Request
@@ -948,19 +1038,45 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 این تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.
  **در صورتی که پارامتری همراه با این درخواست ارسال نشود. کل ایندکس پاک خواهد شد.**
-</div>
 
 `DELETE /{index_name}/index`
 
-# ‌
+<dl>
+<strong>type(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    movie
+                    </span>
+</dl>
 
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
+<br><br>
+<dl>
+<strong>id(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    1
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+<br><br>
 # جستجوی اسناد
 
 
-## جستجو
+## نمونه
 
 > Request
 
@@ -1126,16 +1242,14 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 داده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.
-</div>
 
 `GET /{index_name}/{types}/query{?fields,text,size,from}`
 
-# ‌
+# جستجوی در لحظه‌
 
 
-## جستجوی در لحظه
+## نمونه
 
 > Request
 
@@ -1297,16 +1411,14 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 تابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.
-</div>
 
 `GET /{index_name}/{types}/complete{?text,size,from}`
 
-# ‌
+# ‌پیشنهاد جستجو
 
 
-## پیشنهاد جستجو
+## نمونه
 
 > Request
 
@@ -1459,16 +1571,14 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 وقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.
-</div>
 
 `GET /{index_name}/{types}/suggest{?text}`
 
-# ‌
+# ‌اسناد مشابه
 
 
-## اسناد مشابه
+## نمونه
 
 > Request
 
@@ -1641,16 +1751,14 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 تابع اسناد مشابه، با دریافت اطلاعات مربوط به یک سند، شبیه‌ترین گزینه‌ها را به سند مورد نظر پیدا کرده و میزان تشابه هر کدام را مشخص می‌کند.
-</div>
 
 `POST /{index_name}/{types}/similars`
 
-# ‌
+# ‌اسناد منبع
 
 
-## اسناد منبع
+## نمونه
 
 > Request
 
@@ -1815,16 +1923,14 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 تابع اسناد منبع، با دریافت اطلاعات مربوط به یک سند، منابعی را که این سند با استفاده از آنها درست شده است، پیدا کرده و میزان تشابه را برای هر بخش مشخص می‌کند.
-</div>
 
 `POST /{index_name}/{types}/sources`
 
-# ‌
+# ‌عبارات کلیدی
 
 
-## عبارات کلیدی
+## نمونه درخواست با متن سند
 
 > Request
 
@@ -2019,13 +2125,11 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 این تابع عبارت‌های کلیدی را در متن مورد نظر استخراج می‌کند. فرآیند تشخیص و استخراج عبارات کلیدی بر مبنای ایندکسی انجام می‌شود که مشخص شده است. در واقع عبارت کلیدی در یک متن واحد ممکن است با تغییر ایندکس متفاوت باشد.
-</div>
 
 `POST /{index_name}/{types}/{field}/keyterms`
 
-## عبارات کلیدی
+## نمونه درخواست با شناسه
 
 > Request
 
@@ -2220,9 +2324,7 @@ namespace MyRequest
 
 ```
 
-<div dir=rtl>
 این تابع عبارت‌های کلیدی را در یکی از اسناد ایندکس شده استخراج می‌کند. شناسه سند استخراج شده به عنوان پارامتر ارسال می‌شود.
-</div>
 
 `GET /{index_name}/{types}/{field}/keyterms`
 

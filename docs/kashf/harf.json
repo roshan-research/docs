@@ -854,3 +854,21 @@ Value: <span style="background-color: #00A693;
 <p>{&quot;state&quot;: &quot;PENDING&quot;}</p>
 
 <p>در انتها برای سرور متن &quot;finalize&quot; .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.</p>
+<h2 id='8e687366d5'>نمونه</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>web socket here
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">web</span> <span class="n">socket</span> <span class="n">here</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="n">web</span> <span class="n">socket</span> <span class="n">here</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="n">web</span> <span class="n">socket</span> <span class="n">here</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="n">web</span> <span class="n">socket</span> <span class="n">here</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"PENDING"</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><code>POST /ws_api/transcribe_files/wav/sync/</code></p>
