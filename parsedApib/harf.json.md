@@ -963,23 +963,23 @@ Value: <span style="background-color: #00A693;
 ```
 
 ```shell
-web socket here
+websocket code here
 ```
 
 ```python
-web socket here
+websocket code here
 ```
 
 ```java
-web socket here
+websocket code here
 ```
 
 ```php
-web socket here
+websocket code here
 ```
 
 ```csharp
-web socket here
+websocket code here
 ```
 
 > Response 

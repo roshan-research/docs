@@ -1,4 +1,7 @@
 const fs = require('fs');
+
+let websocketCode = "websocket code here";
+
 function turnParsedApibToSlateMarkdown(jsonText,fileName){
     let parsedApibJson = JSON.parse(jsonText);
     let apiTitle = parsedApibJson.title;
@@ -184,6 +187,7 @@ Value: ${value}
     let RawText = "```plaintext\n";
     RawText += requestMessageBodyContent + "\n";
     RawText += "```\n\n";
+
     let curlText = createCurlText(httpMethod,oneTransition.httpRequest.headerAttributes,requestMessageBodyContent,resourceUrl);
     let pythonText = createPythonText(requestMessageBodyContent,oneTransition.httpRequest.headerAttributes,resourceUrl);
     let javaText = createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
@@ -230,7 +234,7 @@ function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyCon
 
     if (requestHeaderAttributes.length !== 0 && 
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-        return `\`\`\`shell\nweb socket here\n\`\`\`\n\n`;
+        return `\`\`\`shell\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let curlText = "```shell\n";
@@ -257,7 +261,7 @@ print(response)\n\`\`\`\n\n`;
 
     if (requestHeaderAttributes.length !== 0 && 
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-        return `\`\`\`python\nweb socket here\n\`\`\`\n\n`;
+        return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let pythonText = "```python\n";
@@ -330,7 +334,7 @@ public class MultiPartRequest {
 
     if (requestHeaderAttributes.length !== 0 && 
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-        return `\`\`\`java\nweb socket here\n\`\`\`\n\n`;
+        return `\`\`\`java\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let javaText = "```java\n";
@@ -451,7 +455,7 @@ function build_data_files($boundary, $fields, $files){
 
     if (requestHeaderAttributes.length !== 0 && 
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-        return `\`\`\`php\nweb socket here\n\`\`\`\n\n`;
+        return `\`\`\`php\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let phpText = "```php\n";
@@ -541,7 +545,7 @@ namespace MyRequest
 
     if (requestHeaderAttributes.length !== 0 && 
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-        return `\`\`\`csharp\nweb socket here\n\`\`\`\n\n`;
+        return `\`\`\`csharp\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let csharpText = "```csharp\n";
