@@ -295,7 +295,50 @@
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "items": [
+        {
+            "type": "movie",
+            "id": 1,
+            "title": "ماجرای نیمروز",
+            "director": "محمدحسین مهدویان",
+            "actors": [
+                "جواد عزتی",
+                "هادی حجازی‌فر"
+            ],
+            "labels": [
+                "هیجانی",
+                "ماجراجویی"
+            ],
+            "importance": 100,
+            "data": {
+                "url": "https://www.filimo.com/m/czWum"
+            }
+        },
+        {
+            "type": "movie",
+            "id": 2,
+            "title": "ایستاده در غبار",
+            "director": "محمدحسین مهدویان",
+            "labels": [
+                "هیجانی",
+                "جنگی"
+            ],
+            "importance": 50,
+            "data": {
+                "url": "https://www.filimo.com/m/fsa4n"
+            }
+        },
+        {
+            "type": "person",
+            "id": 1,
+            "title": "ابراهیم حاتمی‌کیا",
+            "data": {
+                "url": "https://www.filimo.com/crew/ابراهیم_حاتمی_کیا"
+            }
+        }
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -757,7 +800,15 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "items": [
+        {
+            "type": "movie",
+            "id": 1,
+            "importance": 200
+        }
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> PUT <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1044,7 +1095,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "type": "movie",
+    "ids": [
+        2
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> DELETE <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1242,7 +1298,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">""</span> <span class="se">\</span>
@@ -1393,7 +1449,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">""</span> <span class="se">\</span>
@@ -1540,7 +1596,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">""</span> <span class="se">\</span>
@@ -1678,7 +1734,9 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "title": "پرویز"
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1834,7 +1892,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">doc</span><span class="se">\"</span><span class="s2">: {</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.</span><span class="se">\"</span><span class="s2">},            </span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
@@ -1984,7 +2042,10 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
+    "topn": 5
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -2161,7 +2222,10 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "id": 3,
+    "topn": 5
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>

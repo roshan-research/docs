@@ -438,7 +438,13 @@
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "digikala",
+    "contents": [
+        "ارزش خریدنش رو بی شک داره",
+        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -688,7 +694,13 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -924,7 +936,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "faces",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1145,7 +1162,15 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1455,7 +1480,15 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "faces",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1724,7 +1757,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "aparat",
+    "video_urls": [
+        "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -1944,7 +1982,9 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran"
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -2112,7 +2152,10 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "max_predictions": 100
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -2300,7 +2343,11 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "original_urls": true,
+    "tag_names": true
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -2509,7 +2556,11 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "report_items": true,
+    "tag_names": true
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -2754,7 +2805,10 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "tags": true
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -2962,7 +3016,13 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">[</span>
@@ -3183,7 +3243,13 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">[</span>
@@ -3404,7 +3470,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">image_id</span><span class="se">\"</span><span class="s2">: 1211593,</span><span class="se">\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">tag_id</span><span class="se">\"</span><span class="s2">: 3,</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
@@ -3594,7 +3660,10 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "title": "New Place"
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -3799,7 +3868,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -4030,7 +4104,9 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "tag_id": 111111111
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -4198,7 +4274,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">dataset</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">iran</span><span class="se">\"\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">tag_id</span><span class="se">\"</span><span class="s2">: 2</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
@@ -4375,7 +4451,10 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "tag_id": 2
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -4583,7 +4662,9 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "tag_id": 2
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -4768,7 +4849,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">""</span> <span class="se">\</span>
@@ -4914,7 +4995,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "persica",
+    "text_ids": [
+        11462988
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -5112,7 +5198,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "text_ids": [
+        1832
+    ]
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -5312,7 +5403,12 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "persica",
+    "query": "اقتصاد مثاومتی",
+    "tag_id": 1482,
+    "reported": false
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -5545,7 +5641,11 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "iran",
+    "query": "برج آزادی",
+    "tag_id": 2
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -5756,7 +5856,11 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "dataset": "faces",
+    "query": " احسان کرمی",
+    "tag_id": 213243
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
