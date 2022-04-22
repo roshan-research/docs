@@ -1,3 +1,103 @@
+function Scroll(delay) {
+    // scroll event occurs if the page is refreshed when scrollY > 0
+    // this suggests that the browser scrolls to previous (before refresh) position
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
+    sl.addEventListener("end", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
+        }
+    });
+});
+
 function copyToClipboard(e){const t=document.createElement("textarea");t.value=e.textContent.replace(/\n$/,""),document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}function setupCodeCopy(){$("pre.highlight").prepend('<div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div>'),$(".copy-clipboard").on("click",function(){copyToClipboard(this.parentNode.children[1])})}function adjustLanguageSelectorWidth(){const e=$(".dark-box > .lang-selector");e.width(e.parent().width())}!function(){if("ontouchstart"in window){var e,t,n,r,i,o,s={};e=function(e,t){return Math.abs(e[0]-t[0])>5||Math.abs(e[1]-t[1])>5},t=function(e){this.startXY=[e.touches[0].clientX,e.touches[0].clientY],this.threshold=!1},n=function(t){if(this.threshold)return!1;this.threshold=e(this.startXY,[t.touches[0].clientX,t.touches[0].clientY])},r=function(t){if(!this.threshold&&!e(this.startXY,[t.changedTouches[0].clientX,t.changedTouches[0].clientY])){var n=t.changedTouches[0],r=document.createEvent("MouseEvents");r.initMouseEvent("click",!0,!0,window,0,n.screenX,n.screenY,n.clientX,n.clientY,!1,!1,!1,!1,0,null),r.simulated=!0,t.target.dispatchEvent(r)}},i=function(e){var t=Date.now(),n=t-s.time,r=e.clientX,i=e.clientY,a=[Math.abs(s.x-r),Math.abs(s.y-i)],u=o(e.target,"A")||e.target,l=u.nodeName,c="A"===l,f=window.navigator.standalone&&c&&e.target.getAttribute("href");if(s.time=t,s.x=r,s.y=i,(!e.simulated&&(n<500||n<1500&&a[0]<50&&a[1]<50)||f)&&(e.preventDefault(),e.stopPropagation(),!f))return!1;f&&(window.location=u.getAttribute("href")),u&&u.classList&&(u.classList.add("energize-focus"),window.setTimeout(function(){u.classList.remove("energize-focus")},150))},o=function(e,t){for(var n=e;n!==document.body;){if(!n||n.nodeName===t)return n;n=n.parentNode}return null},document.addEventListener("touchstart",t,!1),document.addEventListener("touchmove",n,!1),document.addEventListener("touchend",r,!1),document.addEventListener("click",i,!0)}}(),/*!
  * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
