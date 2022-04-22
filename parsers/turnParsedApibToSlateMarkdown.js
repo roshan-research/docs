@@ -74,6 +74,8 @@ function writeApiTitleSection(parsedApibJson){
 }
 
 const writeParameters = (json) => {
+
+    console.log(json.hrefVariables.length);
     let parametersText = `<table>
     <tr>
         <th>
