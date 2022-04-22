@@ -29,6 +29,25 @@ meta:
 
 # تحلیل تصاویر
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 
 ## Request
 
@@ -222,6 +241,25 @@ Value: [URL, ]
 <img src="./images/vector.svg" alt="vector">  لیست آدرس تصاویر</p>
 <br><br>
 # فریم‌های کلیدی ویدئو
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.
 

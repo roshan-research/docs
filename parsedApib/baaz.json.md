@@ -29,6 +29,42 @@ meta:
 
 # نمایه‌سازی
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr></table>
+
 برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
 
 
@@ -1075,6 +1111,127 @@ Value: <span style="background-color: #00A693;
 <br><br>
 # جستجوی اسناد
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie|person
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+نیم‌روز
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+fields
+</td>
+<td>
+title|director
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+تعداد نتایج در پاسخ
+</td>
+<td>
+size
+</td>
+<td>
+10
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td>
+from
+</td>
+<td>
+0
+</td>
+<td>
+false
+</td>
+</tr></table>
+
 
 ## نمونه
 
@@ -1248,6 +1405,110 @@ namespace MyRequest
 
 # جستجوی در لحظه‌
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+person
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+ابراهیم حا
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+تعداد نتایج در پاسخ
+</td>
+<td>
+size
+</td>
+<td>
+10
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td>
+from
+</td>
+<td>
+0
+</td>
+<td>
+false
+</td>
+</tr></table>
+
 
 ## نمونه
 
@@ -1417,6 +1678,76 @@ namespace MyRequest
 
 # ‌پیشنهاد جستجو
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+ن
+</td>
+<td>
+true
+</td>
+</tr></table>
+
 
 ## نمونه
 
@@ -1576,6 +1907,59 @@ namespace MyRequest
 `GET /{index_name}/{types}/suggest{?text}`
 
 # ‌اسناد مشابه
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr></table>
 
 
 ## نمونه
@@ -1757,6 +2141,59 @@ namespace MyRequest
 
 # ‌اسناد منبع
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr></table>
+
 
 ## نمونه
 
@@ -1928,6 +2365,76 @@ namespace MyRequest
 `POST /{index_name}/{types}/sources`
 
 # ‌عبارات کلیدی
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فیلدی که محتوای متنی در آن ذخیره شده است
+</td>
+<td>
+field
+</td>
+<td>
+description
+</td>
+<td>
+true
+</td>
+</tr></table>
 
 
 ## نمونه درخواست با متن سند

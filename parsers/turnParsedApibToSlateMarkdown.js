@@ -43,6 +43,8 @@ function turnParsedApibToSlateMarkdown(jsonText,fileName){
     markDownText += writeApiTitleSection(parsedApibJson);
 
     let hostValue = "";
+
+
     parsedApibJson.attributes.forEach((value) => {
         if (value.key === "HOST"){
             hostValue = value.value;
@@ -70,10 +72,56 @@ function writeApiTitleSection(parsedApibJson){
     })
     return keepMarkDownText;
 }
+
+const writeParameters = (json) => {
+    let parametersText = `<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>`;
+    
+
+    if(json.hrefVariables.length !== 0) {
+        json.hrefVariables.forEach((item) => {
+            let parameterRow = "\n<tr>\n";
+            parameterRow += `<td>\n${item.title}\n</td>\n`;
+            parameterRow += `<td>\n${item.description}\n</td>\n`;
+            parameterRow += `<td>\n${item.key}\n</td>\n`;
+            parameterRow += `<td>\n${item.value}\n</td>\n`;
+            if(item.typeAttributes[0] === 'required') {
+                parameterRow += `<td>\ntrue\n</td>\n`;
+            } else {
+                parameterRow += `<td>\nfalse\n</td>\n`;
+            }
+
+            parameterRow += `</tr>`;
+
+            parametersText += parameterRow;
+        });
+    }
+
+    parametersText += "</table>\n\n"
+    return parametersText;
+}
+
 function writeResourceSection(resourceJson,hostValue){
     let resourceHref = resourceJson.href;
     // let attributes = resourceJson.hrefVariables;
     let resourceSectionText = "";
+    resourceSectionText += writeParameters(resourceJson);
     let attributeText = writeAttributesSection(resourceJson.hrefVariables);
     let isOneTransition = resourceJson.transitions.length <= 1;
     let resourceTitle = "";
