@@ -204,16 +204,14 @@ Value: ${value}
     let csharpText = createCsharpText(resourceUrl,oneTransition.httpRequest.headerAttributes,httpMethod,requestMessageBodyContent);
 
     let RawText = "```plaintext\n";
-
-    if (oneTransition.httpRequest.headerAttributes.length !== 0 && 
+    if(oneTransition.httpRequest.headerAttributes.length !== 0 && 
         oneTransition.httpRequest.headerAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-            RawText += curlText + "\n";
+            RawText += websocketCode + "\n";  
     } else {
-        RawText += requestMessageBody + "\n";
+        RawText += requestMessageBodyContent + "\n";
     }
-
     RawText += "```\n\n";
-
+    
     let jsonText = "";
 
     if(responseMessageBodyContent !== "") {
