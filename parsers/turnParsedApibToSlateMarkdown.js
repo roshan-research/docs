@@ -1,6 +1,19 @@
 const fs = require('fs');
 
-let websocketCode = "websocket code here";
+let websocketCode = `from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
+`;
 
 function turnParsedApibToSlateMarkdown(jsonText,fileName){
     let parsedApibJson = JSON.parse(jsonText);
