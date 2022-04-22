@@ -37,11 +37,7 @@ meta:
 > Request
 
 ```plaintext
-{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -263,7 +259,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+contentType: multipart/form-data
 ```
 
 ```shell
@@ -511,12 +507,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
-}
+contentType: application/json
 ```
 
 ```shell
@@ -730,12 +721,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-}
+contentType: application/json
 ```
 
 ```shell
@@ -959,7 +945,24 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-""
+```shell
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
+
+```
+
+
 ```
 
 ```shell

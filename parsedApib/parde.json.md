@@ -35,11 +35,7 @@ meta:
 > Request
 
 ```plaintext
-{
-    "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -231,15 +227,7 @@ Value: [URL, ]
 > Request
 
 ```plaintext
-{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}
+contentType: application/json
 ```
 
 ```shell

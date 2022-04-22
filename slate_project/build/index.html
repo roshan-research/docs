@@ -244,11 +244,7 @@
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
-    ]
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -420,15 +416,7 @@ Value: [URL, ]
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>

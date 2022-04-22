@@ -37,13 +37,7 @@ meta:
 > Request
 
 ```plaintext
-{
-    "dataset": "digikala",
-    "contents": [
-        "ارزش خریدنش رو بی شک داره",
-        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -310,13 +304,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -570,12 +558,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "faces",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -814,15 +797,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1147,15 +1122,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "faces",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1436,12 +1403,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "aparat",
-    "video_urls": [
-        "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1679,9 +1641,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1869,10 +1829,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "max_predictions": 100
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2079,11 +2036,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2310,11 +2263,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "report_items": true,
-    "tag_names": true
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2580,10 +2529,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "tags": true
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2810,13 +2756,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]
+contentType: application/json
 ```
 
 ```shell
@@ -3055,13 +2995,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]
+contentType: application/json
 ```
 
 ```shell
@@ -3300,7 +3234,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
+contentType: application/json
 ```
 
 ```shell
@@ -3508,10 +3442,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "title": "New Place"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -3734,12 +3665,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}
+contentType: application/json
 ```
 
 ```shell
@@ -3987,9 +3913,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "tag_id": 111111111
-}
+contentType: application/json
 ```
 
 ```shell
@@ -4177,7 +4101,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-"{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"
+contentType: application/json
 ```
 
 ```shell
@@ -4373,10 +4297,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "tag_id": 2
-}
+contentType: application/json
 ```
 
 ```shell
@@ -4602,9 +4523,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "tag_id": 2
-}
+contentType: application/json
 ```
 
 ```shell
@@ -4808,7 +4727,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-""
+
 ```
 
 ```shell
@@ -4976,12 +4895,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-{
-    "dataset": "persica",
-    "text_ids": [
-        11462988
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -5198,12 +5112,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "text_ids": [
-        1832
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -5422,12 +5331,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "persica",
-    "query": "اقتصاد مثاومتی",
-    "tag_id": 1482,
-    "reported": false
-}
+contentType: application/json
 ```
 
 ```shell
@@ -5677,11 +5581,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "iran",
-    "query": "برج آزادی",
-    "tag_id": 2
-}
+contentType: application/json
 ```
 
 ```shell
@@ -5910,11 +5810,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "dataset": "faces",
-    "query": " احسان کرمی",
-    "tag_id": 213243
-}
+contentType: application/json
 ```
 
 ```shell

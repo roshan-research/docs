@@ -37,14 +37,7 @@ meta:
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true,
-    "priority": 3
-}
+contentType: application/json
 ```
 
 ```shell
@@ -386,14 +379,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": false,
-    "priority": 3
-}
+contentType: application/json
 ```
 
 ```shell
@@ -692,10 +678,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "task_id": "...",
-    "wait": false
-}
+contentType: application/json
 ```
 
 ```shell
@@ -898,7 +881,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+contentType: multipart/form-data
 ```
 
 ```shell
@@ -1252,15 +1235,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "page_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
-    ],
-    "fix_orientation": true,
-    "word_positions": false,
-    "wait": true,
-    "priority": 3
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1582,11 +1557,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1781,9 +1752,7 @@ Value: [URL, ]
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1973,9 +1942,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2159,9 +2126,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2345,12 +2310,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "quality": 100,
-    "img_format": "png",
-    "color": false
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2579,9 +2539,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2767,10 +2725,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
-    "callback_url": "http://192.168.254.3:5013/alefba_post"
-}
+contentType: application/json
 ```
 
 ```shell

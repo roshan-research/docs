@@ -37,50 +37,7 @@ meta:
 > Request
 
 ```plaintext
-{
-    "items": [
-        {
-            "type": "movie",
-            "id": 1,
-            "title": "ماجرای نیمروز",
-            "director": "محمدحسین مهدویان",
-            "actors": [
-                "جواد عزتی",
-                "هادی حجازی‌فر"
-            ],
-            "labels": [
-                "هیجانی",
-                "ماجراجویی"
-            ],
-            "importance": 100,
-            "data": {
-                "url": "https://www.filimo.com/m/czWum"
-            }
-        },
-        {
-            "type": "movie",
-            "id": 2,
-            "title": "ایستاده در غبار",
-            "director": "محمدحسین مهدویان",
-            "labels": [
-                "هیجانی",
-                "جنگی"
-            ],
-            "importance": 50,
-            "data": {
-                "url": "https://www.filimo.com/m/fsa4n"
-            }
-        },
-        {
-            "type": "person",
-            "id": 1,
-            "title": "ابراهیم حاتمی‌کیا",
-            "data": {
-                "url": "https://www.filimo.com/crew/ابراهیم_حاتمی_کیا"
-            }
-        }
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -553,15 +510,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "items": [
-        {
-            "type": "movie",
-            "id": 1,
-            "importance": 200
-        }
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -859,12 +808,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-{
-    "type": "movie",
-    "ids": [
-        2
-    ]
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1081,7 +1025,7 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-""
+
 ```
 
 ```shell
@@ -1254,7 +1198,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-""
+
 ```
 
 ```shell
@@ -1423,7 +1367,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-""
+
 ```
 
 ```shell
@@ -1583,9 +1527,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-{
-    "title": "پرویز"
-}
+contentType: application/json
 ```
 
 ```shell
@@ -1763,7 +1705,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-"{\n  \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},            \n}\n"
+contentType: application/json
 ```
 
 ```shell
@@ -1935,10 +1877,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-{
-    "text": "شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.",
-    "topn": 5
-}
+contentType: application/json
 ```
 
 ```shell
@@ -2134,10 +2073,7 @@ namespace MyRequest
 > Request
 
 ```plaintext
-{
-    "id": 3,
-    "topn": 5
-}
+contentType: application/json
 ```
 
 ```shell

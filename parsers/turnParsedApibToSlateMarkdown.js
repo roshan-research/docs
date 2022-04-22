@@ -197,15 +197,22 @@ Value: ${value}
     })
     requestMessageBodyContent = JSON.stringify(requestMessageBodyContent,null,4);
 
-    let RawText = "```plaintext\n";
-    RawText += requestMessageBodyContent + "\n";
-    RawText += "```\n\n";
-
     let curlText = createCurlText(httpMethod,oneTransition.httpRequest.headerAttributes,requestMessageBodyContent,resourceUrl);
     let pythonText = createPythonText(requestMessageBodyContent,oneTransition.httpRequest.headerAttributes,resourceUrl);
     let javaText = createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
     let phpText = createPhpText(resourceUrl,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
     let csharpText = createCsharpText(resourceUrl,oneTransition.httpRequest.headerAttributes,httpMethod,requestMessageBodyContent);
+
+    let RawText = "```plaintext\n";
+
+    if (oneTransition.httpRequest.headerAttributes.length !== 0 && 
+        oneTransition.httpRequest.headerAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
+            RawText += curlText + "\n";
+    } else {
+        RawText += requestMessageBody + "\n";
+    }
+
+    RawText += "```\n\n";
 
     let jsonText = "";
 
