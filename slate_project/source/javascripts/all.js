@@ -73,13 +73,14 @@ window.addEventListener('DOMContentLoaded',() => {
     });
     
     sl.addEventListener("scroll", function () {
+
         for(let i = 0; i < tocs.length; i++) {
             tocs[i].style.backgroundColor = 'transparent'
             tocs[i].style.color = 'black'
         }
 
         for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.opacity = 'transparent'
+            littleTOCs[i].style.backgroundColor = 'transparent'
             littleTOCs[i].style.color = 'black'
         }
     });
@@ -89,10 +90,12 @@ window.addEventListener('DOMContentLoaded',() => {
 
         for(let i = 0; i < tocs.length; i++) {
             tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
         }
 
         for(let i = 0; i < littleTOCs.length; i++) {
             littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
         }
     });
 });

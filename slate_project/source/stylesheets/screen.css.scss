@@ -150,9 +150,9 @@ html, body {
   }
 
   .toc-link{
+    width: 10px;
     border-radius: 5px 0 0 5px;
     height: 37px;
-    font-size: 13px;
   }
 
   @media (max-width: $phone-width) {
@@ -960,13 +960,15 @@ blockquote {
 
 
 a.toc-h2.toc-link {
-  width: 100%;
+  width: 75%;
   padding-top: 5px;
+  transition: 0.5s;
 }
 
 a.toc-h1.toc-link {
-  width: 100%;
+  width: 75%;
   padding-top: 5px;
+  transition: 0.5s;
 }
 
 a.toc-h2.toc-link.active {
