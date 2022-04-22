@@ -8,11 +8,7 @@
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ]
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -217,7 +213,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: multipart/form-data
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span>
       POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span>
       <span class="nt">-F</span> <span class="s2">"document=@example.pdf"</span>
@@ -445,12 +441,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -648,12 +639,7 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>contentType: application/json
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
@@ -858,7 +844,8 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>from websocket import create_connection                                              
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>```shell
+from websocket import create_connection                                              
 headers = {'Authorization' : 'Token ...'}
 ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
 with open('sample.wav' ,'rb') as f:
@@ -872,19 +859,21 @@ ws.send("finalize")
 data= ws.recv()
 ws.close()
 
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>from websocket import create_connection                                              
-headers <span class="o">=</span> <span class="o">{</span><span class="s1">'Authorization'</span> : <span class="s1">'Token ...'</span><span class="o">}</span>
-ws <span class="o">=</span> create_connection<span class="o">(</span><span class="s2">"wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/"</span>, <span class="nv">headers</span><span class="o">=</span>headers<span class="o">)</span>
-with open<span class="o">(</span><span class="s1">'sample.wav'</span> ,<span class="s1">'rb'</span><span class="o">)</span> as f:
-    <span class="nv">bs</span><span class="o">=</span>f.read<span class="o">()</span>
-window_size <span class="o">=</span> 32000
-number_of_window <span class="o">=</span> <span class="o">(</span>len<span class="o">(</span>bs<span class="o">)</span> + 1<span class="o">)</span> // window_size
-<span class="k">for </span>i <span class="k">in </span>range<span class="o">(</span>number_of_window<span class="o">)</span>:
-    ws.send_binary<span class="o">(</span>bs[window_size<span class="k">*</span>i:window_size<span class="k">*</span><span class="o">(</span>i+1<span class="o">)])</span>
-    data <span class="o">=</span> ws.recv<span class="o">()</span>
-ws.send<span class="o">(</span><span class="s2">"finalize"</span><span class="o">)</span>
-<span class="nv">data</span><span class="o">=</span> ws.recv<span class="o">()</span>
-ws.close<span class="o">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>
+```shell
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
 
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">websocket</span> <span class="kn">import</span> <span class="n">create_connection</span>                                              
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span> <span class="p">:</span> <span class="s">'Token ...'</span><span class="p">}</span>
