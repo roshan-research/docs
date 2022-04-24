@@ -129,7 +129,7 @@
                     }
                 },
                 {
-                    "title": "نمونه درخواست به صورت ناهمکام",
+                    "title": "نمونه درخواست به صورت ناهمگام",
                     "copies": [],
                     "httpRequest": {
                         "method": "POST",
@@ -145,9 +145,82 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "این ویژگی نوع سند را مشخص می‌کند",
+                                        "typeAttributes": [],
+                                        "key": "type",
+                                        "value": "general",
+                                        "valueType": "enum",
+                                        "enumaration": [
+                                            {
+                                                "name": "general",
+                                                "meta": "سندهای عمومی"
+                                            },
+                                            {
+                                                "name": "ID-card",
+                                                "meta": "کارت‌های شناسایی"
+                                            },
+                                            {
+                                                "name": "excel",
+                                                "meta": "جدولهای مالی"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "description": "در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند",
+                                        "typeAttributes": [],
+                                        "key": "fix_orientation",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد",
+                                        "typeAttributes": [],
+                                        "key": "word_positions",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.",
+                                        "typeAttributes": [],
+                                        "key": "priority",
+                                        "value": 3,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"fix_orientation\": true,\n  \"word_positions\": false,\n  \"type\": \"general\",\n  \"wait\": false,\n  \"priority\": 3\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    },\n    \"type\": {\n      \"enum\": [\n        \"general\",\n        \"ID-card\",\n        \"excel\"\n      ]\n    },\n    \"fix_orientation\": {\n      \"type\": \"boolean\"\n    },\n    \"word_positions\": {\n      \"type\": \"boolean\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    },\n    \"priority\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
@@ -162,7 +235,7 @@
                     }
                 },
                 {
-                    "title": "نمونه دریافت نتیجه در حالت ناهمکام",
+                    "title": "نمونه دریافت نتیجه در حالت ناهمگام",
                     "copies": [],
                     "httpRequest": {
                         "method": "POST",
@@ -178,9 +251,37 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "شناسه درخواست ارسال شده",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "task_id",
+                                        "value": 0,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"task_id\": \"...\",\n  \"wait\": false\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"task_id\": {\n      \"type\": \"number\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"task_id\"\n  ]\n}"
                             }
                         ]
                     },
@@ -333,15 +434,7 @@
                                         "value": [
                                             {
                                                 "element": "string",
-                                                "content": "URL1"
-                                            },
-                                            {
-                                                "element": "string",
-                                                "content": "URL2"
-                                            },
-                                            {
-                                                "element": "string",
-                                                "content": "..."
+                                                "content": "URL"
                                             }
                                         ],
                                         "valueType": "array",
@@ -451,9 +544,34 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس اسناد ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_urls\": [\"http://bayanbox.ir/view/5067853395275628881/boute.pdf\"]\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_urls\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"document_urls\"\n  ]\n}"
                             }
                         ]
                     },
@@ -494,9 +612,29 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\"\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
@@ -537,15 +675,40 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\"\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
                     "httpResponse": {
                         "headerAttributes": [],
-                        "sections": []
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "boute.docx file\n"
+                            }
+                        ]
                     }
                 }
             ]
@@ -575,15 +738,40 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\"\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
                     "httpResponse": {
                         "headerAttributes": [],
-                        "sections": []
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "boute.xlsx file\n"
+                            }
+                        ]
                     }
                 }
             ]
@@ -613,15 +801,56 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "مقدار dpi کیفیت صفحات",
+                                        "typeAttributes": [],
+                                        "key": "quality",
+                                        "value": 100,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "در صورت فعال بودن این خصوصیت، فایل خروجی رنگی خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "color",
+                                        "value": false,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\",\n  \"quality\": 100,\n  \"img_format\": \"png\",\n  \"color\": false\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    },\n    \"quality\": {\n      \"type\": \"number\"\n    },\n    \"color\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
                     "httpResponse": {
                         "headerAttributes": [],
-                        "sections": []
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "boute.pdf file\n"
+                            }
+                        ]
                     }
                 }
             ]
@@ -651,9 +880,29 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://bayanbox.ir/view/5067853395275628881/boute.pdf\"\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"document_url\"\n  ]\n}"
                             }
                         ]
                     },
@@ -698,9 +947,39 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "آدرس سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "document_url",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "آدرس بازگشت بعد از تمام شدن فرآیند خواندن سند",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "color",
+                                        "value": "URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"document_url\": \"http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf\",\n  \"callback_url\": \"http://192.168.254.3:5013/alefba_post\"\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"document_url\": {\n      \"type\": \"string\"\n    },\n    \"color\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"document_url\",\n    \"color\"\n  ]\n}"
                             }
                         ]
                     },

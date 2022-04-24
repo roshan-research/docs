@@ -245,7 +245,10 @@ HOST: http://harf.roshan-ai.ir
         {"state":"PENDING"}
 
 
+
+
 ## پیاده‌سازی متن فایل در جریان [/ws_api/transcribe_files/wav/sync/]
+
 
 برای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.
 
@@ -257,3 +260,12 @@ HOST: http://harf.roshan-ai.ir
 {"state": "PENDING"}
 
 در انتها برای سرور متن "finalize" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.
+
+
+### نمونه [POST]
+
++ Request (ws_api/transcribe_files/wav/sync/)
+
++ Response 200 (application/json)
+
+        {"state":"PENDING"}

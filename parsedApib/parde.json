@@ -1,6 +1,186 @@
 {
-    "title": "",
-    "attributes": [],
-    "copies": [],
-    "resources": []
+    "title": "Parde",
+    "attributes": [
+        {
+            "key": "FORMAT",
+            "value": "1A"
+        },
+        {
+            "key": "HOST",
+            "value": "http://api.sobhe.ir"
+        }
+    ],
+    "copies": [
+        "پرده تصاویر نامناسب را تشخیص می‌دهد.\n\nبرای دسترسی به واسط برنامه‌نویس پرده نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس parde@roshan-ai.ir بنویسید."
+    ],
+    "resources": [
+        {
+            "title": "تحلیل تصاویر",
+            "href": "/parde/api/tag_images",
+            "hrefVariables": [],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "Request",
+                    "copies": [
+                        "با استفاده از این تابع می‌توانید برای برچسب‌های مربوط به تصاویر مورد نظر خود را از پرده بپرسید. برچسب‌های تصاویر شامل لیستی آیتم‌هاست که هر آیتم شامل آدرس تصویر، و لیستی از برچسب‌هاست که هر برچسب شامل نام برچسب و عددی بین ۰ و ۱ به عنوان میزان اطمینان از برچسب، می‌باشد.\nبرای بازدهی بهتر می‌توانید برچسب چند تصویر را در یک درخواست از پرده بپرسید."
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "لیست آدرس تصاویر",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "image_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"image_urls\": [\n        \"http://www.sobhe.ir/baaz/img/goshawk.jpg\"\n    ]\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"image_urls\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"image_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "[{\"image_url\":\"http://www.sobhe.ir/baaz/img/goshawk.jpg\",\"tags\":[]}]\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "فریم‌های کلیدی ویدئو",
+            "href": "/parde/api/tag_video_frames",
+            "hrefVariables": [],
+            "copies": [
+                "با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد."
+            ],
+            "transitions": [
+                {
+                    "title": "Request",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "لیست آدرس ویدئو‌ها",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "video_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "فاصله بین دو فریم استخراج شده به میلی ثانیه",
+                                        "typeAttributes": [],
+                                        "key": "every_ms",
+                                        "value": 100,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "حداقل تفاوت میان دو فریم که به عنوان فریم مستقل در نظر گرفته شوند.",
+                                        "typeAttributes": [],
+                                        "key": "min_frame_diff",
+                                        "value": 0.4,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "مقدار زمان به ثانیه از ابتدا ویدئو که پردازش روی آن انجام می‌شود. اگر Null باشد کل ویدئو پردازش خواهد شد.",
+                                        "typeAttributes": [],
+                                        "key": "duration",
+                                        "value": 25,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.\n\n{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n  \"video_urls\": [\n    \"URL\"\n  ],\n  \"every_ms\": 100,\n  \"min_frame_diff\": 0.4,\n  \"duration\": 25,\n  \"wait\": true\n}"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"every_ms\": {\n      \"type\": \"number\"\n    },\n    \"min_frame_diff\": {\n      \"type\": \"number\"\n    },\n    \"duration\": {\n      \"type\": \"number\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"video_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "[{\"video_url\":\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\",\"frames\":[{\"frame\":6,\"time\":\"0:00:00\",\"tags\":[]},{\"frame\":31,\"time\":\"0:00:01\",\"tags\":[]},{\"frame\":36,\"time\":\"0:00:01\",\"tags\":[]},...,{\"frame\":475,\"time\":\"0:00:18\",\"tags\":[{\"id\":86141,\"probability\":0.32,\"title\":\"خشونت\"}]},{\"frame\":560,\"time\":\"0:00:22\",\"tags\":[]},...]}]\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
 }

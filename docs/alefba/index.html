@@ -179,9 +179,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-7985c20a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-c2c57693.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-3f445fa7.js"></script>
+      <script src="javascripts/all-78ea9ead.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -306,6 +306,25 @@
 
 <p>برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.</p>
 <h1 id='1e12aa8cf8'>خواندن سند</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
 <h2 id='a964573c8c'>نمونه ارسال با لینک سند</h2>
 <blockquote>
@@ -1466,6 +1485,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='8608695b59'>خواندن صفحه</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.</p>
 <h2 id='8e687366d5'>نمونه</h2>
 <blockquote>
@@ -1781,6 +1819,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='63436a1df8'>وضعیت سند</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>این تابع برای هر کدام از سندهای ورودی مشخص می‌کند که چه تعداد از صفحات آنها تحلیل شده است.</p>
 <h2 id='8e687366d5-2'>نمونه</h2>
 <blockquote>
@@ -1960,6 +2017,25 @@ Value: [URL, ]
 
 <p><br><br></p>
 <h1 id='de3bda67f1'>صفحات سند</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.</p>
 <h2 id='8e687366d5-3'>نمونه</h2>
 <blockquote>
@@ -2132,6 +2208,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='cc0becc7e6'>دریافت فایل ورد</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.</p>
 <h2 id='8e687366d5-4'>نمونه</h2>
 <blockquote>
@@ -2298,6 +2393,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='e63c2f1217'>دریافت فایل اکسل</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.</p>
 <h2 id='8e687366d5-5'>نمونه</h2>
 <blockquote>
@@ -2464,6 +2578,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='9960926996'>دریافت فایل قابل جستجو</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.</p>
 <h2 id='8e687366d5-6'>نمونه</h2>
 <blockquote>
@@ -2680,6 +2813,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='d51252080e'>حذف سند</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.</p>
 <h2 id='8e687366d5-7'>نمونه</h2>
 <blockquote>
@@ -2848,6 +3000,25 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='16511bbc1f'>خواندن سند نامتقارن</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 <p>این قابلیت برای جلوگیری از انتظار برای تحلیل فایل قرار داده شده است. پس  از ارسال رکوئست وضعیت فایل در حال تحلیل قرار گرفته و پس اتمام تحلیل رکوئست کالبک حاوی اطلاعات فایل به آدرس وارد شده فرستاده میشود.</p>
 <h2 id='8e687366d5-8'>نمونه</h2>
 <blockquote>

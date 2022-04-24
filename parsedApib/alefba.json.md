@@ -29,6 +29,25 @@ meta:
 
 # خواندن سند
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
 
@@ -381,7 +400,7 @@ Value: <span style="background-color: #00A693;
 <p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 <br><br>
-## نمونه درخواست به صورت ناهمکام
+## نمونه درخواست به صورت ناهمگام
 
 > Request
 
@@ -581,7 +600,113 @@ namespace MyRequest
 
 `POST /api/read_document/`
 
-## نمونه دریافت نتیجه در حالت ناهمکام
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
+<dl>
+<strong>type</strong>
+<br>
+<br>
+Value: 
+<span className="enum-container">
+<span>
+general
+</span>
+<span style="font-family:VazirCode;">
+سندهای عمومی
+</span>
+<span>
+ID-card
+</span>
+<span style="font-family:VazirCode;">
+کارت‌های شناسایی
+</span>
+<span>
+excel
+</span>
+<span style="font-family:VazirCode;">
+جدولهای مالی
+</span>
+
+</span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
+<br><br>
+<dl>
+<strong>fix_orientation</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<br><br>
+<dl>
+<strong>word_positions</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<br><br>
+<dl>
+<strong>priority</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    3
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<br><br>
+## نمونه دریافت نتیجه در حالت ناهمگام
 
 > Request
 
@@ -757,6 +882,36 @@ namespace MyRequest
 
 `POST /api/read_document/`
 
+<dl>
+<strong>task_id(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    0
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسه درخواست ارسال شده</p>
+<br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<br><br>
 ## نمونه ارسال مستقیم سند
 
 > Request
@@ -1108,6 +1263,25 @@ Value: <span style="background-color: #00A693;
 <br><br>
 # خواندن صفحه
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
 
 
@@ -1339,7 +1513,7 @@ namespace MyRequest
 <strong>page_urls(required)</strong>
 <br>
 <br>
-Value: [URL1, URL2, ..., ]
+Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
@@ -1437,6 +1611,25 @@ Value: <span style="background-color: #00A693;
 <img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
 <br><br>
 # وضعیت سند
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 این تابع برای هر کدام از سندهای ورودی مشخص می‌کند که چه تعداد از صفحات آنها تحلیل شده است.
 
@@ -1625,7 +1818,36 @@ namespace MyRequest
 
 `POST /api/document_status/`
 
+<dl>
+<strong>document_urls(required)</strong>
+<br>
+<br>
+Value: [URL, ]
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس اسناد ورودی</p>
+<br><br>
 # صفحات سند
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.
 
@@ -1802,7 +2024,41 @@ namespace MyRequest
 
 `POST /api/document_pages/`
 
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
 # دریافت فایل ورد
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.
 
@@ -1966,9 +2222,48 @@ namespace MyRequest
 
 > Response 
 
+```json
+boute.docx file
+
+```
+
 `POST /api/download_word/`
 
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
 # دریافت فایل اکسل
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.
 
@@ -2132,9 +2427,48 @@ namespace MyRequest
 
 > Response 
 
+```json
+boute.xlsx file
+
+```
+
 `POST /api/download_excel/`
 
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
 # دریافت فایل قابل جستجو
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.
 
@@ -2316,9 +2650,78 @@ namespace MyRequest
 
 > Response 
 
+```json
+boute.pdf file
+
+```
+
 `POST /api/download_pdf/`
 
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
+<dl>
+<strong>quality</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    100
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  مقدار dpi کیفیت صفحات</p>
+<br><br>
+<dl>
+<strong>color</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    false
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این خصوصیت، فایل خروجی رنگی خواهد بود.</p>
+<br><br>
 # حذف سند
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.
 
@@ -2491,7 +2894,41 @@ namespace MyRequest
 
 `POST /api/delete_document/`
 
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
 # خواندن سند نامتقارن
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 این قابلیت برای جلوگیری از انتظار برای تحلیل فایل قرار داده شده است. پس  از ارسال رکوئست وضعیت فایل در حال تحلیل قرار گرفته و پس اتمام تحلیل رکوئست کالبک حاوی اطلاعات فایل به آدرس وارد شده فرستاده میشود.
 
@@ -2674,3 +3111,33 @@ namespace MyRequest
 
 `POST /api/read_document/`
 
+<dl>
+<strong>document_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<br><br>
+<dl>
+<strong>color(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس بازگشت بعد از تمام شدن فرآیند خواندن سند</p>
+<br><br>

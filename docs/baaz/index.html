@@ -179,9 +179,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-7985c20a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-c2c57693.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-3f445fa7.js"></script>
+      <script src="javascripts/all-78ea9ead.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -290,6 +290,42 @@
 
 <p>برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.</p>
 <h1 id='cdcb80ffa3'>نمایه‌سازی</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr></table>
+
 <p>برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.</p>
 <h2 id='5c1e6b7ac5'>ثبت داده‌ها</h2>
 <blockquote>
@@ -1294,7 +1330,128 @@ Value: <span style="background-color: #00A693;
 <img src="images/vector-c3fae21d.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
 
 <p><br><br></p>
-<h1 id='0dc3218a9c'>جستجوی اسناد</h1><h2 id='8e687366d5'>نمونه</h2>
+<h1 id='0dc3218a9c'>جستجوی اسناد</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie|person
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+نیم‌روز
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+fields
+</td>
+<td>
+title|director
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+تعداد نتایج در پاسخ
+</td>
+<td>
+size
+</td>
+<td>
+10
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td>
+from
+</td>
+<td>
+0
+</td>
+<td>
+false
+</td>
+</tr></table>
+<h2 id='8e687366d5'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1445,7 +1602,111 @@ Value: <span style="background-color: #00A693;
 <p>داده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.</p>
 
 <p><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></p>
-<h1 id='f7f384acfe'>جستجوی در لحظه‌</h1><h2 id='8e687366d5-2'>نمونه</h2>
+<h1 id='f7f384acfe'>جستجوی در لحظه‌</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+person
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+ابراهیم حا
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+تعداد نتایج در پاسخ
+</td>
+<td>
+size
+</td>
+<td>
+10
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td>
+from
+</td>
+<td>
+0
+</td>
+<td>
+false
+</td>
+</tr></table>
+<h2 id='8e687366d5-2'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1592,7 +1853,77 @@ Value: <span style="background-color: #00A693;
 <p>تابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.</p>
 
 <p><code>GET /{index_name}/{types}/complete{?text,size,from}</code></p>
-<h1 id='1343ad4c0b'>‌پیشنهاد جستجو</h1><h2 id='8e687366d5-3'>نمونه</h2>
+<h1 id='1343ad4c0b'>‌پیشنهاد جستجو</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+ن
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='8e687366d5-3'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1730,7 +2061,60 @@ Value: <span style="background-color: #00A693;
 <p>وقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.</p>
 
 <p><code>GET /{index_name}/{types}/suggest{?text}</code></p>
-<h1 id='20fb52175b'>‌اسناد مشابه</h1><h2 id='8e687366d5-4'>نمونه</h2>
+<h1 id='20fb52175b'>‌اسناد مشابه</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='8e687366d5-4'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1888,7 +2272,60 @@ Value: <span style="background-color: #00A693;
 <p>تابع اسناد مشابه، با دریافت اطلاعات مربوط به یک سند، شبیه‌ترین گزینه‌ها را به سند مورد نظر پیدا کرده و میزان تشابه هر کدام را مشخص می‌کند.</p>
 
 <p><code>POST /{index_name}/{types}/similars</code></p>
-<h1 id='660f1d81e4'>‌اسناد منبع</h1><h2 id='8e687366d5-5'>نمونه</h2>
+<h1 id='660f1d81e4'>‌اسناد منبع</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='8e687366d5-5'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2038,7 +2475,77 @@ Value: <span style="background-color: #00A693;
 <p>تابع اسناد منبع، با دریافت اطلاعات مربوط به یک سند، منابعی را که این سند با استفاده از آنها درست شده است، پیدا کرده و میزان تشابه را برای هر بخش مشخص می‌کند.</p>
 
 <p><code>POST /{index_name}/{types}/sources</code></p>
-<h1 id='ba7b994b13'>‌عبارات کلیدی</h1><h2 id='25709bc001'>نمونه درخواست با متن سند</h2>
+<h1 id='ba7b994b13'>‌عبارات کلیدی</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فیلدی که محتوای متنی در آن ذخیره شده است
+</td>
+<td>
+field
+</td>
+<td>
+description
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='25709bc001'>نمونه درخواست با متن سند</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>

@@ -1,0 +1,32 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install and Build
+        run: |
+          echo "Install Requirements."
+          sudo apt install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
+          sudo gem update --system
+          sudo gem install bundler
+          cd ./slate_project && bundle install && cd ..
+          npm install drafter
+          echo "Running install script"
+          sh update.sh
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          branch: main
+          folder: docs
+          clean: false
+          target-folder: 'docs'
+          

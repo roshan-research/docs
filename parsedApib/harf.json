@@ -11,7 +11,7 @@
         }
     ],
     "copies": [
-        "<div dir=rtl>\nسامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.\n</div>\n\n<blockquote dir=rtl>\nبرای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید.\n</blockquote>"
+        "سامانه حرف با شنیدن هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را یاد گرفته است و می‌تواند متن صحبت‌ها را بنویسد.\n\nبرای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید."
     ],
     "resources": [
         {
@@ -19,14 +19,12 @@
             "href": "/api/transcribe_files/",
             "hrefVariables": [],
             "copies": [
-                "<div dir=rtl>\nاین تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است.\n</div>"
+                "این تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است."
             ],
             "transitions": [
                 {
-                    "title": "نمونه",
-                    "copies": [
-                        "<div dir=rtl>\nمی‌توانید برای همین تابع، فایل ورودی را به طور مستقیم و در قالب تقاضای <code>multipart/form-data</code> ارسال نمایید:\n</div>\n\n> curl -X POST --header \"Authorization: Token TOKEN_KEY\" -F \"media=@test.mp3\" http://harf.roshan-ai.ir/api/transcribe_files/"
-                    ],
+                    "title": "نمونه ارسال با لینک",
+                    "copies": [],
                     "httpRequest": {
                         "method": "POST",
                         "headerAttributes": [
@@ -41,9 +39,29 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "لیست آدرس فایل‌های ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "media_urls",
+                                        "value": "List of URLs",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"]\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"media_urls\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"media_urls\"\n  ]\n}"
                             }
                         ]
                     },
@@ -56,21 +74,69 @@
                             }
                         ]
                     }
+                },
+                {
+                    "title": "نمونه ارسال مستقیم فایل",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data; boundary={boundary value}"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "فایل سند ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "media",
+                                        "value": "file in binary",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "multipart/form-data",
+                                "content": "--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "[\n  {\n    \"media_url\": \"http://harf.roshan-ai.ir/media/files/96/84/859267728361.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
+                            }
+                        ]
+                    }
                 }
             ]
         },
         {
             "title": "پیاده‌سازی متن فایل ناهمگام",
-            "href": "/api/transcribe_files/#1",
+            "href": "/api/transcribe_files/",
             "hrefVariables": [],
             "copies": [
-                "<div dir=rtl>\nدر این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است.\n</div>"
+                "در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است."
             ],
             "transitions": [
                 {
                     "title": "نمونه ارسال درخواست ناهمگام",
                     "copies": [
-                        "<div dir=rtl>\nپس از ارسال درخواست تحلیل ناهمگام، نتیجه تحلیل با استفاده از `task_ids` قابل پیگیری است. در صورتی که تحلیل فایل انجام شده باشد، تقاضای پیگیری با نتیجه تحلیل، پاسخ داده می‌شود و در غیر این صورت، وضعیت تحلیل در پاسخ قرار داده می‌شود.\n</div>"
+                        "پس از ارسال درخواست تحلیل ناهمگام، نتیجه تحلیل با استفاده از `task_ids` قابل پیگیری است. در صورتی که تحلیل فایل انجام شده باشد، تقاضای پیگیری با نتیجه تحلیل، پاسخ داده می‌شود و در غیر این صورت، وضعیت تحلیل در پاسخ قرار داده می‌شود."
                     ],
                     "httpRequest": {
                         "method": "POST",
@@ -86,9 +152,37 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "لیست آدرس فایل‌های ورودی",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "media_urls",
+                                        "value": "List of URLs",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"],\n  \"wait\": false\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"media_urls\": {\n      \"type\": \"string\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"media_urls\"\n  ]\n}"
                             }
                         ]
                     },
@@ -105,7 +199,7 @@
                 {
                     "title": "نمونه دریافت پاسخ درخواست ناهمگام",
                     "copies": [
-                        "<div dir=rtl>\nدر صورتی که فایل هنوز در حال پردازش باشد، وضعیت `PENDING` به عنوان پاسخ باز می‌گردد. اگر در تحلیل فایل مشکلی پیش آماده باشد وضعیت `FAILURE` گزارش می‌شود و اگر تحلیل فایل بیش از مقدار تعیین شده برای حداکثر زمان تحلیل (در تنظیمات داخلی سیستم) طول بکشد، وضعیت `TIMEOUT` اعلام می‌شود.\n</div>"
+                        "در صورتی که فایل هنوز در حال پردازش باشد، وضعیت `PENDING` به عنوان پاسخ باز می‌گردد. اگر در تحلیل فایل مشکلی پیش آماده باشد وضعیت `FAILURE` گزارش می‌شود و اگر تحلیل فایل بیش از مقدار تعیین شده برای حداکثر زمان تحلیل (در تنظیمات داخلی سیستم) طول بکشد، وضعیت `TIMEOUT` اعلام می‌شود."
                     ],
                     "httpRequest": {
                         "method": "POST",
@@ -121,9 +215,37 @@
                         ],
                         "sections": [
                             {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "لیست شناسه درخواست‌ها",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "task_ids",
+                                        "value": "List of task ids",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
                                 "type": "messageBody",
                                 "contentType": "application/json",
                                 "content": "{\n  \"tasks_ids\": [\"...\"],\n  \"wait\": false\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"task_ids\": {\n      \"type\": \"string\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"task_ids\"\n  ]\n}"
                             }
                         ]
                     },
@@ -144,9 +266,33 @@
             "href": "/ws_api/transcribe_files/wav/sync/",
             "hrefVariables": [],
             "copies": [
-                "<div dir=rtl>\nبرای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.\n</div>\n\n<div>\n{\"segment_id\": 1, \"text\": \"سازمان بهداشت جهانی\", \"start\": \"0:00:00\", \"end\": \"0:00:05\"}\n</div>\n\n<div dir=rtl>\nدر صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.\n</div>\n\n<div>\n{\"state\": \"PENDING\"}\n</div>\n\n<div dir=rtl>\nدر انتها برای سرور متن \"finalize\" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود.\n</div>"
+                "برای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.\n\n{\"segment_id\": 1, \"text\": \"سازمان بهداشت جهانی\", \"start\": \"0:00:00\", \"end\": \"0:00:05\"}\n\nدر صورت آماده نبودن جواب پاسخ در قالب زیر ارسال میشود.\n\n{\"state\": \"PENDING\"}\n\nدر انتها برای سرور متن \"finalize\" .به منظور انتهای فرآیند برای سرور ارسال میشود و آخرین نتیجه تحلیل ارسال میشود."
             ],
-            "transitions": []
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "ws_api/transcribe_files/wav/sync/"
+                            }
+                        ],
+                        "sections": []
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\"state\":\"PENDING\"}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     ]
 }

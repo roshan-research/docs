@@ -1,15 +1,45 @@
 <h1 id='fc30c6605b'>باز</h1>
-<div dir=rtl>
-باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.
-</div>
+<p>باز قرار است تجربه جستجوی هوشمند را برای خدمات وب فارسی فراهم کند تا مخاطب آسان‌تر به نتیجه مطلوب برسد.</p>
 
-<blockquote dir=rtl>
-برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.
-</blockquote>
+<p>برای دسترسی به واسط برنامه‌نویس باز، نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس baaz@sobhe.ir بنویسید.</p>
 <h1 id='cdcb80ffa3'>نمایه‌سازی</h1>
-<div dir=rtl>
-برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.
-</div>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr></table>
+
+<p>برای جستجوی اسناد ابتدا باید آنها را نمایه کنید. نمایه جستجو در واقع بخشی از پایگاه داده‌ها است که انتظار دارید، کاربر با نوشتن عبارت مورد نظر، نتیجه را از میان آنها پیدا کند.</p>
 <h2 id='5c1e6b7ac5'>ثبت داده‌ها</h2>
 <blockquote>
 <p>Request</p>
@@ -404,9 +434,7 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-این تابع امکان افزودن اسناد به  نمایه را فراهم می‌کند. ورودی items برای این تابع، شامل فهرستی از اسناد است که هر کدام از آنها باید در نمایه ثبت شوند.
-</div>
+<p>این تابع امکان افزودن اسناد به  نمایه را فراهم می‌کند. ورودی items برای این تابع، شامل فهرستی از اسناد است که هر کدام از آنها باید در نمایه ثبت شوند.</p>
 
 <p><code>POST /{index_name}/index</code></p>
 
@@ -482,12 +510,12 @@ Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
                     border-radius: 2px">
-                    2017-07-08 10:30:00
+                    2017
                     </span>
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
 
 <p><br><br>
 <dl>
@@ -701,11 +729,117 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-این تابع امکان ویرایش اسناد ثبت‌شده را فراهم می‌کند. برای این منظور، کافیست داده‌های جدید به همراه type و id سند فرستاده شوند. توجه کنید که در هنگام به‌روزرسانی، فقط اطلاعات ارسال‌شده ذخیره می‌شوند و دیگر ویژگی‌های سند، تغییر نمی‌کنند.
-</div>
+<p>این تابع امکان ویرایش اسناد ثبت‌شده را فراهم می‌کند. برای این منظور، کافیست داده‌های جدید به همراه type و id سند فرستاده شوند. توجه کنید که در هنگام به‌روزرسانی، فقط اطلاعات ارسال‌شده ذخیره می‌شوند و دیگر ویژگی‌های سند، تغییر نمی‌کنند.</p>
 
 <p><code>PUT /{index_name}/index</code></p>
+
+<dl>
+<strong>type(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    movie
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
+
+<p><br><br>
+<dl>
+<strong>id(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    1
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+
+<p><br><br>
+<dl>
+<strong>title(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ماجرای نیمروز
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  عنوان سند که مهم‌ترین ویژگی متنی در رتبه‌بندی نتایج است</p>
+
+<p><br><br>
+<dl>
+<strong>importance</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    100
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  هر چه میزان اهمیت یک سند بالاتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+
+<p><br><br>
+<dl>
+<strong>time</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    2017
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - هر چه زمان ایجاد سند به زمان حال نزدیکتر باشد، رتبه آن در میان نتایج بالاتر است</p>
+
+<p><br><br>
+<dl>
+<strong>labels</strong>
+<br>
+<br>
+Value: [هیجانی, ماجراجویی, ]
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  مجموعه برچسب‌های سند که جستجو نمی‌شوند و فقط برای محدود کردن نتایج مورد استفاده قرار می‌گیرند</p>
+
+<p><br><br>
+<dl>
+<strong>...</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    ...
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  هر ویژگی دیگری در قالب «نوشته» یا «نوشته‌ها» می‌تواند برای سند ثبت شود و مورد جستجو قرار گیرد</p>
+
+<p><br><br></p>
 <h2 id='045640e1b1'>حذف داده‌ها</h2>
 <blockquote>
 <p>Request</p>
@@ -872,13 +1006,165 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-این تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.
- **در صورتی که پارامتری همراه با این درخواست ارسال نشود. کل ایندکس پاک خواهد شد.**
-</div>
+<p>این تابع امکان حذف مجموعه‌ای از اسناد را فراهم می‌کند. ویژگی type نمایش‌دهنده نوع اسناد است و ids شناسه آنها را مشخص می‌کند.
+ <strong>در صورتی که پارامتری همراه با این درخواست ارسال نشود. کل ایندکس پاک خواهد شد.</strong></p>
 
 <p><code>DELETE /{index_name}/index</code></p>
-<h1 id='c0dfe138ee'>‌</h1><h1 id='0dc3218a9c'>جستجوی اسناد</h1><h2 id='1fc039e005'>جستجو</h2>
+
+<dl>
+<strong>type(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    movie
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند و برای محدود کردن دامنه جستجو استفاده می‌شود</p>
+
+<p><br><br>
+<dl>
+<strong>id(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    1
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسه سند که در هر «نوع»، ویژگی یکتا محسوب می‌شود</p>
+
+<p><br><br></p>
+<h1 id='0dc3218a9c'>جستجوی اسناد</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie|person
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+نیم‌روز
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+fields
+</td>
+<td>
+title|director
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+تعداد نتایج در پاسخ
+</td>
+<td>
+size
+</td>
+<td>
+10
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td>
+from
+</td>
+<td>
+0
+</td>
+<td>
+false
+</td>
+</tr></table>
+<h2 id='8e687366d5'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1026,12 +1312,114 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-داده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.
-</div>
+<p>داده‌های نمایه‌شده با استفاده از این تابع قابل جستجو هستند. گاهی پیش می‌آید که کاربر عبارت مورد نظرش را اشتباه می‌نویسد؛ در این مواقع، پاسخ جستجو با ویژگی didYouMean همراه است که واژه‌های اصلاح‌شده، در آن با تگ‌های تاکید مشخص شده‌اند.</p>
 
 <p><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></p>
-<h1 id='c0dfe138ee-2'>‌</h1><h2 id='105c9d0954'>جستجوی در لحظه</h2>
+<h1 id='f7f384acfe'>جستجوی در لحظه‌</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+person
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+ابراهیم حا
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+تعداد نتایج در پاسخ
+</td>
+<td>
+size
+</td>
+<td>
+10
+</td>
+<td>
+false
+</td>
+</tr>
+<tr>
+<td>
+number
+</td>
+<td>
+نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td>
+from
+</td>
+<td>
+0
+</td>
+<td>
+false
+</td>
+</tr></table>
+<h2 id='8e687366d5-2'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1175,12 +1563,80 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-تابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.
-</div>
+<p>تابع جستجوی در لحظه برای استفاده در مواقعی است که با هر بار فشار دادن کلید توسط مخاطب، جستجو انجام می‌شود. در واقع این تابع فرض می‌کند که آخرین کلمه عبارت، هنوز تکمیل نشده است. در این روش، کاربر سریع‌تر به نتیجه مطلوب دست می‌یابد.</p>
 
 <p><code>GET /{index_name}/{types}/complete{?text,size,from}</code></p>
-<h1 id='c0dfe138ee-3'>‌</h1><h2 id='4139e5862d'>پیشنهاد جستجو</h2>
+<h1 id='1343ad4c0b'>‌پیشنهاد جستجو</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+عبارت مورد جستجو
+</td>
+<td>
+text
+</td>
+<td>
+ن
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='8e687366d5-3'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1315,12 +1771,63 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-وقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.
-</div>
+<p>وقتی کاربر در حال نوشتن عبارت مورد نظر است، باز با استفاده از جستجوهای قبلی، تلاش می‌کند به کاربر عبارت مناسبی را برای جستجو پیشنهاد دهد.</p>
 
 <p><code>GET /{index_name}/{types}/suggest{?text}</code></p>
-<h1 id='c0dfe138ee-4'>‌</h1><h2 id='474ed369da'>اسناد مشابه</h2>
+<h1 id='20fb52175b'>‌اسناد مشابه</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='8e687366d5-4'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1475,12 +1982,63 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-تابع اسناد مشابه، با دریافت اطلاعات مربوط به یک سند، شبیه‌ترین گزینه‌ها را به سند مورد نظر پیدا کرده و میزان تشابه هر کدام را مشخص می‌کند.
-</div>
+<p>تابع اسناد مشابه، با دریافت اطلاعات مربوط به یک سند، شبیه‌ترین گزینه‌ها را به سند مورد نظر پیدا کرده و میزان تشابه هر کدام را مشخص می‌کند.</p>
 
 <p><code>POST /{index_name}/{types}/similars</code></p>
-<h1 id='c0dfe138ee-5'>‌</h1><h2 id='f2084a0e81'>اسناد منبع</h2>
+<h1 id='660f1d81e4'>‌اسناد منبع</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='8e687366d5-5'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1627,12 +2185,80 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<div dir=rtl>
-تابع اسناد منبع، با دریافت اطلاعات مربوط به یک سند، منابعی را که این سند با استفاده از آنها درست شده است، پیدا کرده و میزان تشابه را برای هر بخش مشخص می‌کند.
-</div>
+<p>تابع اسناد منبع، با دریافت اطلاعات مربوط به یک سند، منابعی را که این سند با استفاده از آنها درست شده است، پیدا کرده و میزان تشابه را برای هر بخش مشخص می‌کند.</p>
 
 <p><code>POST /{index_name}/{types}/sources</code></p>
-<h1 id='c0dfe138ee-6'>‌</h1><h2 id='44fcc0b73e'>عبارات کلیدی</h2>
+<h1 id='ba7b994b13'>‌عبارات کلیدی</h1>
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr>
+<tr>
+<td>
+string
+</td>
+<td>
+شناسه نمایه
+</td>
+<td>
+index_name
+</td>
+<td>
+baaz
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td>
+types
+</td>
+<td>
+movie
+</td>
+<td>
+true
+</td>
+</tr>
+<tr>
+<td>
+string
+</td>
+<td>
+فیلدی که محتوای متنی در آن ذخیره شده است
+</td>
+<td>
+field
+</td>
+<td>
+description
+</td>
+<td>
+true
+</td>
+</tr></table>
+<h2 id='25709bc001'>نمونه درخواست با متن سند</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1809,12 +2435,10 @@ Value: <span style="background-color: #00A693;
 
 
 </span></code></pre></div>
-<div dir=rtl>
-این تابع عبارت‌های کلیدی را در متن مورد نظر استخراج می‌کند. فرآیند تشخیص و استخراج عبارات کلیدی بر مبنای ایندکسی انجام می‌شود که مشخص شده است. در واقع عبارت کلیدی در یک متن واحد ممکن است با تغییر ایندکس متفاوت باشد.
-</div>
+<p>این تابع عبارت‌های کلیدی را در متن مورد نظر استخراج می‌کند. فرآیند تشخیص و استخراج عبارات کلیدی بر مبنای ایندکسی انجام می‌شود که مشخص شده است. در واقع عبارت کلیدی در یک متن واحد ممکن است با تغییر ایندکس متفاوت باشد.</p>
 
 <p><code>POST /{index_name}/{types}/{field}/keyterms</code></p>
-<h2 id='44fcc0b73e-2'>عبارات کلیدی</h2>
+<h2 id='2bc15fa24e'>نمونه درخواست با شناسه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1991,8 +2615,6 @@ Value: <span style="background-color: #00A693;
 
 
 </span></code></pre></div>
-<div dir=rtl>
-این تابع عبارت‌های کلیدی را در یکی از اسناد ایندکس شده استخراج می‌کند. شناسه سند استخراج شده به عنوان پارامتر ارسال می‌شود.
-</div>
+<p>این تابع عبارت‌های کلیدی را در یکی از اسناد ایندکس شده استخراج می‌کند. شناسه سند استخراج شده به عنوان پارامتر ارسال می‌شود.</p>
 
 <p><code>GET /{index_name}/{types}/{field}/keyterms</code></p>

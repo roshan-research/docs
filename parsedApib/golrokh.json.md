@@ -28,6 +28,25 @@ please contact golrokh@sobhe.ir.
 
 # Find Faces
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 
 ## Request
 
@@ -417,6 +436,25 @@ namespace MyRequest
 
 # New Person
 
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
+
 
 ## Request
 
@@ -600,6 +638,25 @@ namespace MyRequest
 `POST /new_person`
 
 # Report Face
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 
 ## Request
@@ -785,6 +842,25 @@ namespace MyRequest
 `POST /report_face`
 
 # Similar Faces
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 
 ## Request
@@ -976,6 +1052,25 @@ namespace MyRequest
 `POST /similar_faces`
 
 # Dataset Detail
+
+<table>
+    <tr>
+        <th>
+            title
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            key
+        </th>
+        <th>
+            value
+        </th>
+        <th>
+            required
+        </th>
+    </tr></table>
 
 
 ## Request
