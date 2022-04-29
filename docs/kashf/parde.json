@@ -2,26 +2,7 @@
 <p>پرده تصاویر نامناسب را تشخیص می‌دهد.</p>
 
 <p>برای دسترسی به واسط برنامه‌نویس پرده نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس parde@roshan-ai.ir بنویسید.</p>
-<h1 id='5bdf9a0511'>تحلیل تصاویر</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-<h2 id='request'>Request</h2>
+<h1 id='5bdf9a0511'>تحلیل تصاویر</h1><h2 id='request'>Request</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -196,25 +177,6 @@ Value: [URL, ]
 
 <p><br><br></p>
 <h1 id='b10016fc85'>فریم‌های کلیدی ویدئو</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 <p>با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.</p>
 <h2 id='8e687366d5'>نمونه</h2>
 <blockquote>
