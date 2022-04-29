@@ -68,4 +68,7 @@ rm -r ../docs/parde/*
 cp -r ./build/* ../docs/parde
 echo 'parde documentations are updated'
 
+cd ..
+node JsAppender.js
+
 echo 'parsing and building docs finished successfully!'
