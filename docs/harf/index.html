@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c2c57693.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-2e7943e3.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-78ea9ead.js"></script>
 
@@ -255,25 +255,6 @@
 
 <p>برای دسترسی به واسط برنامه‌نویس حرف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس harf@roshan-ai.ir بنویسید.</p>
 <h1 id='12ec36d0e6'>پیاده‌سازی متن فایل</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 <p>این تابع، فایل‌های صدا یا ویدئو را دریافت می‌کند و متن آن‌ها را به صورت JSON باز می‌گرداند. خروجی ابزار تبدیل گفتار به متن، در قالب بازه‌های زمانی کوتاه ارائه می‌شود که متن هر کدام از این بازه‌ها مشخص شده است.</p>
 <h2 id='706cb61ff0'>نمونه ارسال با لینک</h2>
 <blockquote>
@@ -711,25 +692,6 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='ad82489934'>پیاده‌سازی متن فایل ناهمگام</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 <p>در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است.</p>
 <h2 id='0bbf1f7038'>نمونه ارسال درخواست ناهمگام</h2>
 <blockquote>
@@ -1135,25 +1097,6 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='2e6a25572c'>پیاده‌سازی متن فایل در جریان</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 <p>برای پیاده‌سازی متن فایل در جریان، نیاز به برقراری ارتباط از طریق WebSocket است. به این ترتیب پس از برقراری ارتباط، فایل در قالب wav به صورت باینری برای سرور ارسال می‌شود.</p>
 
 <p>{&quot;segment_id&quot;: 1, &quot;text&quot;: &quot;سازمان بهداشت جهانی&quot;, &quot;start&quot;: &quot;0:00:00&quot;, &quot;end&quot;: &quot;0:00:05&quot;}</p>
@@ -1274,3 +1217,103 @@ ws.close<span class="o">()</span>
     </div>
   </body>
 </html>
+
+<script>
+function Scroll(delay) {
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
+    sl.addEventListener("end", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
+        }
+    });
+});
+</script>

@@ -74,46 +74,34 @@ function writeApiTitleSection(parsedApibJson){
 }
 
 const writeParameters = (json) => {
-    let parametersText = `<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr>`;
-    
+    let parametersText = '';
 
     if(json.hrefVariables.length !== 0) {
+        parametersText += '<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>\n';
+    parametersText += `<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            کلید
+        </th>
+        <th>
+            توضیحات
+        </th>
+    </tr>`;
         json.hrefVariables.forEach((item) => {
             let parameterRow = "\n<tr>\n";
-            parameterRow += `<td>\n${item.title}\n</td>\n`;
-            parameterRow += `<td>\n${item.description}\n</td>\n`;
-            parameterRow += `<td>\n${item.key}\n</td>\n`;
-            parameterRow += `<td>\n${item.value}\n</td>\n`;
+            let required = '';
             if(item.typeAttributes[0] === 'required') {
-                parameterRow += `<td>\ntrue\n</td>\n`;
-            } else {
-                parameterRow += `<td>\nfalse\n</td>\n`;
+                required = '*';
             }
-
+            parameterRow += `<td>\n${item.key + ' ' + required}\n</td>\n`;
+            parameterRow += `<td>\n${item.description}\n</td>\n`;
             parameterRow += `</tr>`;
 
             parametersText += parameterRow;
         });
+        parametersText += "</table>\n\n";
     }
 
-    parametersText += "</table>\n\n"
     return parametersText;
 }
 

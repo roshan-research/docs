@@ -91,7 +91,7 @@
             ],
             "transitions": [
                 {
-                    "title": "Request",
+                    "title": "نمونه",
                     "copies": [],
                     "httpRequest": {
                         "method": "POST",
@@ -149,7 +149,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.\n\n{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}",
+                                        "description": "اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.",
                                         "typeAttributes": [],
                                         "key": "wait",
                                         "value": true,
@@ -161,7 +161,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"video_urls\": [\n    \"URL\"\n  ],\n  \"every_ms\": 100,\n  \"min_frame_diff\": 0.4,\n  \"duration\": 25,\n  \"wait\": true\n}"
+                                "content": "{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
                             },
                             {
                                 "type": "messageBodySchema",

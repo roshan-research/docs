@@ -29,25 +29,6 @@ meta:
 
 # تحلیل تصاویر
 
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 
 ## Request
 
@@ -242,56 +223,21 @@ Value: [URL, ]
 <br><br>
 # فریم‌های کلیدی ویدئو
 
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.
 
 
-## Request
+## نمونه
 
 > Request
 
 ```plaintext
-{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}
+"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-} \
+      --data-binary "{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n" \
       http://api.sobhe.ir/parde/api/tag_video_frames
 ```
 
@@ -299,15 +245,7 @@ curl  --request POST \
 from urllib2 import Request, urlopen
 
 values = """
-{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}
+"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
 """
 
 headers = {
@@ -339,15 +277,7 @@ class MyRequest {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = "{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}".getBytes(StandardCharsets.UTF_8);
+            byte[] out = ""{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
 
             http.setFixedLengthStreamingMode(length);
@@ -376,15 +306,7 @@ class MyRequest {
 
   $url = "http://api.sobhe.ir/parde/api/tag_video_frames";
   $content = json_encode(
-      '{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}');
+      '"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"');
   $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_HEADER, false);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -431,15 +353,7 @@ namespace MyRequest
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                string json = "{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}";
+                string json = ""{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"";
 
                 streamWriter.Write(json);
                 streamWriter.Flush();
@@ -534,12 +448,5 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.
-
-{
-    video_urls: ["https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4"],
-    every_ms: 200, 
-    duration: 36000, 
-    min_frame_diff: 0.5
-}</p>
+<img src="./images/vector.svg" alt="vector">  اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.</p>
 <br><br>

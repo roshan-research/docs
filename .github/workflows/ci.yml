@@ -27,6 +27,8 @@ jobs:
         with:
           branch: main
           folder: docs
-          clean: false
+          clean: true
+          clean-exclude: |
+            */*.json
           target-folder: 'docs'
           

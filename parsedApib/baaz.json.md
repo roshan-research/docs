@@ -29,39 +29,22 @@ meta:
 
 # نمایه‌سازی
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
-</td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
 </td>
 </tr></table>
 
@@ -1111,124 +1094,62 @@ Value: <span style="background-color: #00A693;
 <br><br>
 # جستجوی اسناد
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
 </td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+types *
 </td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
-<td>
-types
-</td>
-<td>
-movie|person
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+text *
 </td>
 <td>
 عبارت مورد جستجو
 </td>
-<td>
-text
-</td>
-<td>
-نیم‌روز
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+fields 
 </td>
 <td>
 فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
-<td>
-fields
-</td>
-<td>
-title|director
-</td>
-<td>
-false
-</td>
 </tr>
 <tr>
 <td>
-number
+size 
 </td>
 <td>
 تعداد نتایج در پاسخ
 </td>
-<td>
-size
-</td>
-<td>
-10
-</td>
-<td>
-false
-</td>
 </tr>
 <tr>
 <td>
-number
+from 
 </td>
 <td>
 نقطه شروع برای صفحه‌بندی نتایج
-</td>
-<td>
-from
-</td>
-<td>
-0
-</td>
-<td>
-false
 </td>
 </tr></table>
 
@@ -1405,107 +1326,54 @@ namespace MyRequest
 
 # جستجوی در لحظه‌
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
 </td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+types *
 </td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
-<td>
-types
-</td>
-<td>
-person
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+text *
 </td>
 <td>
 عبارت مورد جستجو
 </td>
-<td>
-text
-</td>
-<td>
-ابراهیم حا
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-number
+size 
 </td>
 <td>
 تعداد نتایج در پاسخ
 </td>
-<td>
-size
-</td>
-<td>
-10
-</td>
-<td>
-false
-</td>
 </tr>
 <tr>
 <td>
-number
+from 
 </td>
 <td>
 نقطه شروع برای صفحه‌بندی نتایج
-</td>
-<td>
-from
-</td>
-<td>
-0
-</td>
-<td>
-false
 </td>
 </tr></table>
 
@@ -1678,73 +1546,38 @@ namespace MyRequest
 
 # ‌پیشنهاد جستجو
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
 </td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+types *
 </td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
-<td>
-types
-</td>
-<td>
-movie
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+text *
 </td>
 <td>
 عبارت مورد جستجو
-</td>
-<td>
-text
-</td>
-<td>
-ن
-</td>
-<td>
-true
 </td>
 </tr></table>
 
@@ -1908,56 +1741,30 @@ namespace MyRequest
 
 # ‌اسناد مشابه
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
 </td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+types *
 </td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
-</td>
-<td>
-types
-</td>
-<td>
-movie
-</td>
-<td>
-true
 </td>
 </tr></table>
 
@@ -2141,56 +1948,30 @@ namespace MyRequest
 
 # ‌اسناد منبع
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
 </td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+types *
 </td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
-</td>
-<td>
-types
-</td>
-<td>
-movie
-</td>
-<td>
-true
 </td>
 </tr></table>
 
@@ -2366,73 +2147,38 @@ namespace MyRequest
 
 # ‌عبارات کلیدی
 
-<table>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            title
+            کلید
         </th>
         <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
+            توضیحات
         </th>
     </tr>
 <tr>
 <td>
-string
+index_name *
 </td>
 <td>
 شناسه نمایه
 </td>
-<td>
-index_name
-</td>
-<td>
-baaz
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+types *
 </td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
-<td>
-types
-</td>
-<td>
-movie
-</td>
-<td>
-true
-</td>
 </tr>
 <tr>
 <td>
-string
+field *
 </td>
 <td>
 فیلدی که محتوای متنی در آن ذخیره شده است
-</td>
-<td>
-field
-</td>
-<td>
-description
-</td>
-<td>
-true
 </td>
 </tr></table>
 

@@ -1,6 +1,6 @@
+
+<script>
 function Scroll(delay) {
-    // scroll event occurs if the page is refreshed when scrollY > 0
-    // this suggests that the browser scrolls to previous (before refresh) position
     this.initialY = scrollY;
     this.callbacks = {
         start  : null,
@@ -97,3 +97,4 @@ window.addEventListener('DOMContentLoaded',() => {
         }
     });
 });
+</script>

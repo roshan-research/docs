@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c2c57693.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-2e7943e3.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-78ea9ead.js"></script>
 
@@ -227,7 +227,7 @@
             <a href="#b10016fc85" class="toc-h1 toc-link" data-title="فریم‌های کلیدی ویدئو">فریم‌های کلیدی ویدئو</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#request-2" class="toc-h2 toc-link" data-title="Request">Request</a>
+                    <a href="#8e687366d5" class="toc-h2 toc-link" data-title="نمونه">نمونه</a>
                   </li>
               </ul>
           </li>
@@ -240,26 +240,7 @@
 <p>پرده تصاویر نامناسب را تشخیص می‌دهد.</p>
 
 <p>برای دسترسی به واسط برنامه‌نویس پرده نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس parde@roshan-ai.ir بنویسید.</p>
-<h1 id='5bdf9a0511'>تحلیل تصاویر</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-<h2 id='request'>Request</h2>
+<h1 id='5bdf9a0511'>تحلیل تصاویر</h1><h2 id='request'>Request</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -434,63 +415,20 @@ Value: [URL, ]
 
 <p><br><br></p>
 <h1 id='b10016fc85'>فریم‌های کلیدی ویدئو</h1>
-<table>
-    <tr>
-        <th>
-            title
-        </th>
-        <th>
-            description
-        </th>
-        <th>
-            key
-        </th>
-        <th>
-            value
-        </th>
-        <th>
-            required
-        </th>
-    </tr></table>
-
 <p>با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.</p>
-<h2 id='request-2'>Request</h2>
+<h2 id='8e687366d5'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"video_urls"</span>: <span class="o">[</span>
-        <span class="s2">"URL"</span>
-    <span class="o">]</span>,
-    <span class="s2">"every_ms"</span>: 100,
-    <span class="s2">"min_frame_diff"</span>: 0.4,
-    <span class="s2">"duration"</span>: 25,
-    <span class="s2">"wait"</span>: <span class="nb">true</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">    video_urls: [</span><span class="se">\"</span><span class="s2">https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4</span><span class="se">\"</span><span class="s2">],</span><span class="se">\n</span><span class="s2">    every_ms: 200, </span><span class="se">\n</span><span class="s2">    duration: 36000, </span><span class="se">\n</span><span class="s2">    min_frame_diff: 0.5</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
       http://api.sobhe.ir/parde/api/tag_video_frames
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
-{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}
+"{</span><span class="se">\n</span><span class="s">    video_urls: [</span><span class="se">\"</span><span class="s">https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4</span><span class="se">\"</span><span class="s">],</span><span class="se">\n</span><span class="s">    every_ms: 200, </span><span class="se">\n</span><span class="s">    duration: 36000, </span><span class="se">\n</span><span class="s">    min_frame_diff: 0.5</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"
 """</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -519,20 +457,12 @@ Value: [URL, ]
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 
-            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
-    "</span><span class="n">video_urls</span><span class="s">": [
-        "</span><span class="no">URL</span><span class="s">"
-    ],
-    "</span><span class="n">every_ms</span><span class="s">": 100,
-    "</span><span class="n">min_frame_diff</span><span class="s">": 0.4,
-    "</span><span class="n">duration</span><span class="s">": 25,
-    "</span><span class="n">wait</span><span class="s">": true
-}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
-            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">""</span><span class="o">{</span><span class="err">\</span><span class="n">n</span>    <span class="nl">video_urls:</span> <span class="o">[</span><span class="err">\</span><span class="s">"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
 
-            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
+            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
             <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
             <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
                 <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
@@ -553,15 +483,7 @@ Value: [URL, ]
 
   <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/tag_video_frames"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
-      <span class="s1">'{
-    "video_urls": [
-        "URL"
-    ],
-    "every_ms": 100,
-    "min_frame_diff": 0.4,
-    "duration": 25,
-    "wait": true
-}'</span><span class="p">);</span>
+      <span class="s1">'"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"'</span><span class="p">);</span>
   <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
@@ -605,15 +527,7 @@ Value: [URL, ]
 
             <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
             <span class="p">{</span>
-                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
-</span>    <span class="s">"video_urls"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">"URL"</span>
-    <span class="p">],</span>
-    <span class="s">"every_ms"</span><span class="p">:</span> <span class="m">100</span><span class="p">,</span>
-    <span class="s">"min_frame_diff"</span><span class="p">:</span> <span class="m">0.4</span><span class="p">,</span>
-    <span class="s">"duration"</span><span class="p">:</span> <span class="m">25</span><span class="p">,</span>
-    <span class="s">"wait"</span><span class="p">:</span> <span class="k">true</span>
-<span class="p">}</span><span class="s">";
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">""</span><span class="p">{</span><span class="err">\</span><span class="n">n</span>    <span class="n">video_urls</span><span class="p">:</span> <span class="p">[</span><span class="err">\</span><span class="s">"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"";
 </span>
                 <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
                 <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
@@ -710,14 +624,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.
-
-{
-    video_urls: ["https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4"],
-    every_ms: 200, 
-    duration: 36000, 
-    min_frame_diff: 0.5
-}</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.</p>
 
 <p><br><br></p>
 
@@ -735,3 +642,103 @@ Value: <span style="background-color: #00A693;
     </div>
   </body>
 </html>
+
+<script>
+function Scroll(delay) {
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
+    sl.addEventListener("end", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
+        }
+    });
+});
+</script>
