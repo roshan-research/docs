@@ -262,7 +262,7 @@ Value: <span style="background-color: #00A693;
 <strong>contents(required)</strong>
 <br>
 <br>
-Value: [contents, ]
+Value: [content, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">

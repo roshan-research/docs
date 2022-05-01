@@ -33,18 +33,18 @@ meta:
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr></table>
 
@@ -1098,58 +1098,58 @@ Value: <span style="background-color: #00A693;
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr>
 <tr>
-<td>
-types *
-</td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
+<td style="font-weight: bold">
+types
+</td>
 </tr>
 <tr>
-<td>
-text *
-</td>
 <td>
 عبارت مورد جستجو
 </td>
+<td style="font-weight: bold">
+text
+</td>
 </tr>
 <tr>
-<td>
-fields 
-</td>
 <td>
 فهرست ویژگی‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
+<td style="font-weight: normal">
+fields
+</td>
 </tr>
 <tr>
-<td>
-size 
-</td>
 <td>
 تعداد نتایج در پاسخ
 </td>
+<td style="font-weight: normal">
+size
+</td>
 </tr>
 <tr>
 <td>
-from 
-</td>
-<td>
 نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td style="font-weight: normal">
+from
 </td>
 </tr></table>
 
@@ -1330,50 +1330,50 @@ namespace MyRequest
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr>
 <tr>
-<td>
-types *
-</td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
+<td style="font-weight: bold">
+types
+</td>
 </tr>
 <tr>
-<td>
-text *
-</td>
 <td>
 عبارت مورد جستجو
 </td>
+<td style="font-weight: bold">
+text
+</td>
 </tr>
 <tr>
-<td>
-size 
-</td>
 <td>
 تعداد نتایج در پاسخ
 </td>
+<td style="font-weight: normal">
+size
+</td>
 </tr>
 <tr>
 <td>
-from 
-</td>
-<td>
 نقطه شروع برای صفحه‌بندی نتایج
+</td>
+<td style="font-weight: normal">
+from
 </td>
 </tr></table>
 
@@ -1550,34 +1550,34 @@ namespace MyRequest
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr>
 <tr>
-<td>
-types *
-</td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
+<td style="font-weight: bold">
+types
+</td>
 </tr>
 <tr>
 <td>
-text *
-</td>
-<td>
 عبارت مورد جستجو
+</td>
+<td style="font-weight: bold">
+text
 </td>
 </tr></table>
 
@@ -1745,26 +1745,26 @@ namespace MyRequest
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr>
 <tr>
 <td>
-types *
-</td>
-<td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td style="font-weight: bold">
+types
 </td>
 </tr></table>
 
@@ -1952,26 +1952,26 @@ namespace MyRequest
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr>
 <tr>
 <td>
-types *
-</td>
-<td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
+</td>
+<td style="font-weight: bold">
+types
 </td>
 </tr></table>
 
@@ -2151,34 +2151,34 @@ namespace MyRequest
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>
 <tr>
 <td>
-index_name *
-</td>
-<td>
 شناسه نمایه
+</td>
+<td style="font-weight: bold">
+index_name
 </td>
 </tr>
 <tr>
-<td>
-types *
-</td>
 <td>
 فهرست دسته‌ها که با نویسه خط (|) به هم متصل شده‌اند
 </td>
+<td style="font-weight: bold">
+types
+</td>
 </tr>
 <tr>
 <td>
-field *
-</td>
-<td>
 فیلدی که محتوای متنی در آن ذخیره شده است
+</td>
+<td style="font-weight: bold">
+field
 </td>
 </tr></table>
 

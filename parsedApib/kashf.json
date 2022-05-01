@@ -60,7 +60,7 @@
                                         "value": [
                                             {
                                                 "element": "string",
-                                                "content": "contents"
+                                                "content": "content"
                                             }
                                         ],
                                         "valueType": "array",

@@ -81,20 +81,20 @@ const writeParameters = (json) => {
     parametersText += `<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
-            کلید
+            توضیحات
         </th>
         <th>
-            توضیحات
+            کلید
         </th>
     </tr>`;
         json.hrefVariables.forEach((item) => {
             let parameterRow = "\n<tr>\n";
-            let required = '';
+            let required = 'normal';
             if(item.typeAttributes[0] === 'required') {
-                required = '*';
+                required = 'bold';
             }
-            parameterRow += `<td>\n${item.key + ' ' + required}\n</td>\n`;
             parameterRow += `<td>\n${item.description}\n</td>\n`;
+            parameterRow += `<td style="font-weight: ${required}">\n${item.key}\n</td>\n`;
             parameterRow += `</tr>`;
 
             parametersText += parameterRow;
