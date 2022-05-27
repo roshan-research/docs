@@ -23,16 +23,18 @@ meta:
 
 # الفبا
 
-نویسه‌خوان الفبا تصویر اسناد فارسی، انگلیسی و عربی را می‌خواند و در قالب متن مرتب ارائه می‌دهد.
+الفبا، یک OCR API بسیار کم‌خطا برای استخراج متن‌های فارسی، عربی و انگلیسی از تصاویر است.
 
-برای دسترسی به واسط برنامه‌نویس الفبا نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس alefba@roshan-ai.ir بنویسید.
+برای دسترسی به ای‌پی‌آی، به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ alefba@roshan-ai.ir درخواست دهید.
 
-# خواندن سند
+# استخراج متن یک فایل
 
-این تابع، یک سند را دریافت می‌کند و متن صفحات آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+این تابع، یک فایل تصویری (jpg, png, pdf و...) را به عنوان ورودی می‌گیرد و در پاسخ، متنِ آن را به تفکیک صفحات، پاراگراف‌ها و سطرها به‌همراه اندازه و موقعیت مکانی هریک، به شکل JSON تحویل می‌دهد. الفبا فرق بین جداول و تصاویر و متن‌ها را می‌فهمد و هر یک از این انواع را به شکل مناسب در خروجی ارائه می‌دهد.
+
+در پاسخ دریافتی، <code>height</code> و <code>width</code> یعنی ارتفاع و عرض صفحه به پیکسل، <code>direction</code> یعنی جهت متن، <code>probability</code> یعنی دقت تشخیص ( مقدارش بین <code>۰</code> و <code>۱</code> است؛ ۱ یعنی دقت تشخیص ۱۰۰٪). <code>box</code> یعنی موقعیت مکانی و اندازهٔ محدودهٔ تشخیص؛ مثلاً "449   1711   305   209" یعنی ۲۰۹ پیکسل فاصله از چپ، ۳۰۵ پیکسل فاصله از بالا، ۱۷۱۱ عرض باکس و 449 ارتفاع باکس.
 
 
-## نمونه ارسال با لینک سند
+## مثال: ارسال لینک فایل به‌شکل همگام
 
 > Request
 
@@ -273,6 +275,8 @@ namespace MyRequest
 
 ```
 
+منظور از ارسال همگام این است که تا آماده‌شدن نتیجه منتظر بمانید. برای این منظور باید مقدار پارامتر <code>wait</code> در درخواست ارسالی برابر <code>true‌</code> قرار گیرد که البته مقدار پیش‌فرض نیز همین است. در پاسخ ارسالی، نتیجهٔ پردازش ارائه می‌شود.
+
 `POST /api/read_document/`
 
 <dl>
@@ -288,7 +292,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -300,7 +304,7 @@ Value:
 general
 </span>
 <span style="font-family:VazirCode;">
-سندهای عمومی
+عمومی
 </span>
 <span>
 ID-card
@@ -312,14 +316,14 @@ ID-card
 excel
 </span>
 <span style="font-family:VazirCode;">
-جدولهای مالی
+جداول
 </span>
 
 </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
+<img src="./images/vector.svg" alt="vector">  نوع فایل ورودی. مقدار پیش‌فرض: <code>general</code>.</p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -334,7 +338,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، اعوجاج و کجی تصاویر اصلاح می‌شود. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -349,7 +353,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، استخراج به شکل کلمه‌به‌کلمه و به همراه موقعیت مکانی هر کلمه صورت می‌گیرد. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -364,7 +368,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، تا زمانی که پردازشِ فایل کامل نشده باید منتظرِ پاسخ بمانید. اگر نمی‌خواهید معطل بمانید این پارامتر را <code>false</code> کنید و هر از گاهی با فرخوانی تابع «بررسی وضعیت پردازش»، میزان پیشرفتِ کار را چک کنید. خوب که پردازش تمام شد، مجدداً درخواست بدهید تا نتیجهٔ پردازش را ببینید. مقدار پیش‌فرض: <code>true</code>.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -379,9 +383,9 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>۱</code> یعنی خیلی زیاد، <code>۲</code> یعنی زیاد، <code>۳</code> یعنی معمولی، <code>۴</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
 <br><br>
-## نمونه درخواست به صورت ناهمگام
+## مثال: ارسال لینک فایل به‌شکل ناهمگام
 
 > Request
 
@@ -579,6 +583,8 @@ namespace MyRequest
 
 ```
 
+منظور از ارسال ناهمگام این است که منتظر نتیجه نمانید. درعوض خودتان با تابع «بررسی وضعیت پردازش» میزان پیشرفت را چک کنید و بعد از کامل‌شدن نتیجه، درخواست مجدد بدهید و نتیجه را ببینید. برای این منظور باید مقدار پارامتر <code>wait</code> در درخواست ارسالی برابر <code>false</code> قرار گیرد. با این کار، بلافاصله بعد از ارسال درخواست، پاسخی با دو پارامتر <code>state</code> (وضعیت پردازش) و <code>task_ids</code> (شناسهٔ پردازش) دریافت می‌کنید که بعداً می‌توانید با تابع «دریافت نتیجهٔ به‌شکل ناهمگام»، خروجی نهایی را با ارائهٔ این شناسه دریافت کنید.
+
 `POST /api/read_document/`
 
 <dl>
@@ -594,7 +600,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -606,7 +612,7 @@ Value:
 general
 </span>
 <span style="font-family:VazirCode;">
-سندهای عمومی
+عمومی
 </span>
 <span>
 ID-card
@@ -618,14 +624,14 @@ ID-card
 excel
 </span>
 <span style="font-family:VazirCode;">
-جدولهای مالی
+جداول
 </span>
 
 </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
+<img src="./images/vector.svg" alt="vector">  نوع فایل ورودی. مقدار پیش‌فرض: <code>general</code></p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -640,7 +646,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، اعوجاج و کجی تصاویر، اصلاح می‌شود. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -655,7 +661,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، استخراج به شکل کلمه‌به‌کلمه و به همراه موقعیت مکانی هر کلمه صورت می‌گیرد. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -670,7 +676,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، تا زمانی که پردازشِ فایل کامل نشده باید منتظرِ پاسخ بمانید. اگر نمی‌خواهید معطل بمانید این پارامتر را <code>false</code> کنید و هر از گاهی با فرخوانی تابع «بررسی وضعیت پردازش»، میزان پیشرفتِ کار را چک کنید. خوب که پردازش تمام شد، مجدداً درخواست پردازش فایل بدهید تا نتیجهٔ پردازش را ببینید. مقدار پیش‌فرض: <code>true</code>.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -685,9 +691,9 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>۱</code> یعنی خیلی زیاد، <code>۲</code> یعنی زیاد، <code>۳</code> یعنی معمولی، <code>۴</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
 <br><br>
-## نمونه دریافت نتیجه در حالت ناهمگام
+## مثال: دریافت نتیجه با دادن شناسهٔ پردازش
 
 > Request
 
@@ -861,6 +867,8 @@ namespace MyRequest
 
 ```
 
+در درخواست به‌شکل ناهمگام (یعنی <code>wait</code>=<code>false</code>)، به شما یک <code>task_id</code> داده می‌شود که شناسهٔ پردازش است. برای دریافت نتیجهٔ پردازش، این شناسه را در پارامتر <code>task_id</code> قرار دهید و درخواست خود را ارسال کنید. اینجا نیز می‌توانید در درخواست خود، پارامتر <code>wait</code> را مقداردهی کنید. اگر <code>wait</code> برابر <code>true</code> باشد (مقدار پیش‌فرض) دوحالت پیش می‌آید. یا پردازش کامل شده که نتیجه برمی‌گردد، یا تمام نشده که باید منتظر بمانید. اگر <code>wait</code> را برابر <code>false</code> قرار دهید دوحالت پیش می‌آید. یا پردازش کامل شده که نتیجه برمی‌گردد یا کامل نیست که پاسخی با پارامتر <code>state</code> برمی‌گردد. <code>state</code> بیانگر وضعیت پردازش است.
+
 `POST /api/read_document/`
 
 <dl>
@@ -876,7 +884,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه درخواست ارسال شده</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ پردازش</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -891,9 +899,9 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  توضیح این پارامتر در شرح این متد آمده است</p>
 <br><br>
-## نمونه ارسال مستقیم سند
+## مثال: ارسال مستقیم فایل
 
 > Request
 
@@ -1149,7 +1157,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  فایل سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  فایل ورودی</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -1161,7 +1169,7 @@ Value:
 general
 </span>
 <span style="font-family:VazirCode;">
-سندهای عمومی
+عمومی
 </span>
 <span>
 ID-card
@@ -1173,14 +1181,14 @@ ID-card
 excel
 </span>
 <span style="font-family:VazirCode;">
-جدولهای مالی
+جداول
 </span>
 
 </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
+<img src="./images/vector.svg" alt="vector">  نوع فایل ورودی. مقدار پیش‌فرض: <code>general</code></p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -1195,7 +1203,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، اعوجاج و کجی تصاویر، اصلاح می‌شود. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -1210,7 +1218,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، استخراج به شکل کلمه‌به‌کلمه و به همراه موقعیت مکانی هر کلمه صورت می‌گیرد. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -1225,7 +1233,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، تا زمانی که پردازشِ فایل کامل نشده باید منتظرِ پاسخ بمانید. اگر نمی‌خواهید معطل بمانید این پارامتر را <code>false</code> کنید و هر از گاهی با فرخوانی تابع «بررسی وضعیت پردازش»، میزان پیشرفتِ کار را چک کنید. خوب که پردازش تمام شد، مجدداً درخواست پردازش فایل بدهید تا نتیجهٔ پردازش را ببینید. مقدار پیش‌فرض: <code>true</code>.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -1240,14 +1248,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. ۱ یعنی خیلی زیاد، ۲ یعنی زیاد، ۳ یعنی معمولی، ۴ یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
 <br><br>
-# خواندن صفحه
+# استخراج متن صفحات مشخصی از یک فایل
 
-این تابع، تصویر نوشته را دریافت می‌کند و متن آن را در قالب JSON باز می‌گرداند. خروجی نویسه‌خوان شامل بخش‌های نوشته (پاراگراف)، جدول و تصویر است. مکان و ابعاد هر بخش در خروجی مشخص شده است و اطلاعات کامل خطوط متن در بخش نوشته ظاهر می‌شود. برای هر خط متن، ویژگی احتمال صحت هم قرار داده شده که نشان می‌دهد ابزار نویسه‌خوان چقدر از نتیجه تحلیل، مطمئن است.
+درست همانند تابع «ارسال لینک مستقیم فایل» است با این تفاوت که اینجا به جای لینک کاملِ فایل، لینک صفحات مشخصی از فایل را می‌دهید. برای این منظور به انتهای لینک فایل، شمارهٔ صفحه را اضافه کنید. برای مثال وقتی آرایهٔ <code>page_urls</code> برابر "dl.com/book.pdf@page=1‌ و dl.com/book.pdf@page=5" است، صفحات ۱ و ۵ از book.pdf پردازش شده و متنِ آن تحویل داده می‌شود.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -1479,7 +1487,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس صفحات ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک صفحات.</p>
 <br><br>
 <dl>
 <strong>type</strong>
@@ -1491,7 +1499,7 @@ Value:
 general
 </span>
 <span style="font-family:VazirCode;">
-سندهای عمومی
+عمومی
 </span>
 <span>
 ID-card
@@ -1503,14 +1511,14 @@ ID-card
 excel
 </span>
 <span style="font-family:VazirCode;">
-جدولهای مالی
+جداول
 </span>
 
 </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی نوع سند را مشخص می‌کند</p>
+<img src="./images/vector.svg" alt="vector">  نوع فایل ورودی. مقدار پیش‌فرض: <code>general</code></p>
 <br><br>
 <dl>
 <strong>fix_orientation</strong>
@@ -1525,7 +1533,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی، الفبا سعی می‌کند چرخش ۹۰، ۱۸۰ و یا ۲۷۰ درجه تصویر را اصلاح کند</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، اعوجاج و کجی تصاویر، اصلاح می‌شود. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>word_positions</strong>
@@ -1540,7 +1548,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این ویژگی اطلاعات مکانی واژه‌ها در خروجی قرار می‌گیرد</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، استخراج به شکل کلمه‌به‌کلمه و به همراه موقعیت مکانی هر کلمه صورت می‌گیرد. مقدار پیش‌فرض: <code>false</code>.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -1555,7 +1563,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، کاربر منتظر می‌ماند تا نتیجه تحلیل آماده شود؛ در غیر این صورت، تقاضای تحلیل دریافت می‌شود و کاربر با استفاده از واسط «وضعیت سند» از میزان پیشرفت تحلیل مطلع می‌شود. به این ترتیب پس از پایان پردازش، تقاضای جدیدی برای پردازش سند ارسال می‌شود و این بار تقاضا با نتیجه مناسب پاسخ داده می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، تا زمانی که پردازشِ فایل کامل نشده باید منتظرِ پاسخ بمانید. اگر نمی‌خواهید معطل بمانید این پارامتر را <code>false</code> کنید و هر از گاهی با فرخوانی تابع «بررسی وضعیت پردازش»، میزان پیشرفتِ کار را چک کنید. خوب که پردازش تمام شد، مجدداً درخواست پردازش فایل بدهید تا نتیجهٔ پردازش را ببینید. مقدار پیش‌فرض: <code>true</code>.</p>
 <br><br>
 <dl>
 <strong>priority</strong>
@@ -1570,14 +1578,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی اولویت درخواست را تعیین می‌کند. مقدار آن می‌تواند بین ۱ تا ۴ باشد. عدد کمتر نشان‌دهندهٔ اولویت بالاتر است.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>۱</code> یعنی خیلی زیاد، <code>۲</code> یعنی زیاد، <code>۳</code> یعنی معمولی، <code>۴</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
 <br><br>
-# وضعیت سند
+# بررسی وضعیت پردازش
 
-این تابع برای هر کدام از سندهای ورودی مشخص می‌کند که چه تعداد از صفحات آنها تحلیل شده است.
+این تابع برای هریک از لینک‌های ورودی مشخص می‌کند که چه تعداد از صفحات آن‌ها پردازش شده است. در پاسخ ارسالی، برای هر لینک، سه پارامتر <code>processed_pages</code> به معنی تعداد صفحات پردازش‌شده، <code>all_pages</code> تعداد کل صفحات و <code>analyzed</code> ارائه می‌شود که پارامتر آخر تنها زمانی <code>true</code> می‌شود که پردازش همهٔ صفحات تمام شده باشد.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -1769,14 +1777,14 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس اسناد ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل‌ها</p>
 <br><br>
-# صفحات سند
+# دریافت لینک صفحات سند
 
-نویسه‌خوان برای تحلیل سند، ابتدا باید آن را صفحه‌صفحه کند. این تابع، فایل سند را در قالب PDF دریافت می‌کند و صفحات آن را به عنوان نتیجه باز می‌گرداند. بعد از این مرحله، تابع «خواندن صفحه» می‌تواند هر کدام از صفحه‌های سند را تحلیل کند.
+پیش از پردازش فایل ابتدا تمام صفحات آن استخراج می‌شود. این تابع با دریافت لینک فایل، لینک صفحات آن را به شما تحویل می‌دهد.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -1961,14 +1969,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
 # دریافت فایل ورد
 
-با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Word دریافت نمایید. در فایل خروجی، قالب سند حفظ شده است و اجزای متن شامل خطوط، پاراگراف‌ها و خانه‌های جدول در جای خود قرار گرفته‌اند.
+این تابع، نتیجهٔ پردازش را در قالب یک فایل ورد به شما تحویل می‌دهد. در این فایل، قالب سند حفظ شده است و اجزایی چون خطوط، پاراگراف‌ها و جداول به‌شکل صحیح درج می‌شود. دقت داشته باشید فایلی که می‌خواهید نسخهٔ وردِ آن را دریافت کنید ابتدا باید با تابع «ارسال لینک مستقیم فایل» پردازش شده باشد. شما نمی‌توانید فایلی که قبلاً پردازش نشده را به ورد تبدیل کنید.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -2147,14 +2155,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
 # دریافت فایل اکسل
 
-با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل Microsoft Excel دریافت نمایید. دقت کنید که برای استفاده از این خروجی لازم است در هنگام خواندن سند، ویژگی <code>type</code> را برابر مقدار <code>excel</code> قرار دهید.
+این تابع، نتیجهٔ پردازش را در قالب یک فایل اکسل به شما تحویل می‌دهد. دقت داشته باشید فایلی که می‌خواهید نسخهٔ اکسلِ آن را دریافت کنید ابتدا باید با تابع «ارسال لینک مستقیم فایل» پردازش شده باشد و حتماً پارامتر <code>type</code> آن برابر مقدار <code>excel</code> باشد.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -2333,14 +2341,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
-# دریافت فایل قابل جستجو
+# دریافت PDF قابل جستجو
 
-با استفاده از این تابع می‌توانید نتیجه صفحات پردازش شده را در قالب فایل PDF دریافت نمایید. فایل خروجی، تصاویر صفحات سند ورودی را به همراه نتیجه پردازش آنها نشان می‌دهد. به این ترتیب با جستجوی یک عبارت در این فایل، واژه‌های مورد جستجو در تصویر مشخص و رنگی می‌شوند.
+در حالت عادی بسیاری از فایل‌های پی‌دی‌افِ فارسی قابل جستجو نیستند. این تابع نتیجهٔ فایل پردازش‌شده را در قالب یک پی‌دی‌افِ قابل جستجو تحویل می دهد. به این ترتیب با هر یک از نرم‌افزارهای پی‌دی‌اف‌خوانِ رایج می‌توانید کلمات موردنظر را در متن پی‌دی‌اف جستجو کنید. دقت داشته باشید قبل از استفاده از این تابع ابتدا باید با تابع «ارسال لینک مستقیم فایل»، فایل موردنظر را پردازش کرده باشید.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -2537,7 +2545,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
 <dl>
 <strong>quality</strong>
@@ -2552,7 +2560,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  مقدار dpi کیفیت صفحات</p>
+<img src="./images/vector.svg" alt="vector">  مقدار dpi فایل خروجی. بین <code>۰</code> تا <code>۱۰۰</code>. مقدار پیش‌فرض: <code>۱۰۰</code>.</p>
 <br><br>
 <dl>
 <strong>color</strong>
@@ -2567,14 +2575,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورت فعال بودن این خصوصیت، فایل خروجی رنگی خواهد بود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر <code>true</code> باشد، فایل خروجی رنگی خواهد بود. مقدار پیش‌فرض: <code>true</code>.</p>
 <br><br>
-# حذف سند
+# حذف فایل
 
-با استفاده از این تابع می‌توانید سند ثبت شده در سامانه را به طور کامل حذف کنید.
+با این تابع می‌توانید فایلی را که قبلاً از طریق تابع «ارسال لینک مستقیم فایل» ارسال کرده‌اید حذف کنید. کافی است دوباره همان لینک را از طریق این تابع ارسال کنید.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -2755,14 +2763,14 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
-# خواندن سند نامتقارن
+# دریافت نتیجهٔ پردازش از طریق کال‌بک
 
-این قابلیت برای جلوگیری از انتظار برای تحلیل فایل قرار داده شده است. پس  از ارسال رکوئست وضعیت فایل در حال تحلیل قرار گرفته و پس اتمام تحلیل رکوئست کالبک حاوی اطلاعات فایل به آدرس وارد شده فرستاده میشود.
+به کمک این تابع می‌توانید فایل موردنظر را به‌همراه یک کال‌بک ارسال کنید تا هروقت پردازش کامل شد نتیجه به آن کال‌بک ارسال شود. با این روش دیگر نیازی نیست منتظر پردازش فایل بمانید یا دیگر لازم نیست از طریق تابع «بررسی وضعیت پردازش»، میزان پیشرفت پردازش را چک کنید.
 
 
-## نمونه
+## مثال
 
 > Request
 
@@ -2953,10 +2961,10 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس سند ورودی</p>
+<img src="./images/vector.svg" alt="vector">  لینک فایل ورودی</p>
 <br><br>
 <dl>
-<strong>color(required)</strong>
+<strong>callback_url(required)</strong>
 <br>
 <br>
 Value: <span style="background-color: #00A693;
@@ -2968,5 +2976,5 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس بازگشت بعد از تمام شدن فرآیند خواندن سند</p>
+<img src="./images/vector.svg" alt="vector">  لینک کال‌بک برای ارسال نتیجه</p>
 <br><br>

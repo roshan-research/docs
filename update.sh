@@ -18,6 +18,7 @@ cd ./slate_project
 
 rm ./source/index.html.md
 mv ./source/alefba.json.md ./source/index.html.md
+cp ../logos/alefba/logo.svg ./source/images/
 bundle exec middleman build
 rm -r ../docs/alefba/*
 cp -r ./build/* ../docs/alefba
@@ -26,6 +27,7 @@ echo 'alebfa documentations are updated'
 
 rm ./source/index.html.md
 mv ./source/kashf.json.md ./source/index.html.md
+cp ../logos/kashf/logo.svg ./source/images/
 bundle exec middleman build
 rm -r ../docs/kashf/*
 cp -r ./build/* ../docs/kashf
@@ -33,6 +35,7 @@ echo 'kashf documentations are updated'
 
 rm ./source/index.html.md
 mv ./source/baaz.json.md ./source/index.html.md
+cp ../logos/baaz/logo.svg ./source/images/
 bundle exec middleman build
 rm -r ../docs/baaz/*
 cp -r ./build/* ../docs/baaz
@@ -41,6 +44,7 @@ echo 'baaz documentations are updated'
 
 rm ./source/index.html.md
 mv ./source/golrokh.json.md ./source/index.html.md
+cp ../logos/golrokh/logo.svg ./source/images/
 bundle exec middleman build
 rm -r ../docs/golrokh/*
 cp -r ./build/* ../docs/golrokh
@@ -49,6 +53,7 @@ echo 'golrokh documentations are updated'
 
 rm ./source/index.html.md
 mv ./source/harf.json.md ./source/index.html.md
+cp ../logos/harf/logo.svg ./source/images/
 bundle exec middleman build
 rm -r ../docs/harf/*
 cp -r ./build/* ../docs/harf
@@ -63,6 +68,7 @@ echo 'harf documentations are updated'
 
 rm ./source/index.html.md
 mv ./source/parde.json.md ./source/index.html.md
+cp ../logos/parde/logo.svg ./source/images/
 bundle exec middleman build
 rm -r ../docs/parde/*
 cp -r ./build/* ../docs/parde
