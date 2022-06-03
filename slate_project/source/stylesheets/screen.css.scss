@@ -708,7 +708,7 @@ p{
 @media (min-width: $phone-width) {
 
   .copy-clipboard {
-    margin-left: 32vw;
+    margin-left: 29vw;
   }
 
   .content {
@@ -960,21 +960,32 @@ blockquote {
 
 
 a.toc-h2.toc-link {
-  width: 75%;
+  width: 85%;
   padding-top: 5px;
   transition: 0.5s;
+  overflow: visible;
 }
 
 a.toc-h1.toc-link {
-  width: 75%;
+  width: 85%;
   padding-top: 5px;
   transition: 0.5s;
+  overflow: visible;
 }
 
 a.toc-h2.toc-link.active {
-  width: 75%;
+  width: 85%;
+  overflow: visible;
 }
 
 p {
   text-align: right;
+  direction: rtl;
+}
+
+//useful selector
+div + p + p {
+  code {
+    
+  }
 }
