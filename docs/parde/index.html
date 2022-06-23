@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Parde API"
+            content="Documentation for the پرده API"
         >
     <title>API Reference</title>
 
@@ -213,21 +213,21 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#parde" class="toc-h1 toc-link" data-title="Parde">Parde</a>
+            <a href="#8da5da6136" class="toc-h1 toc-link" data-title="پرده">پرده</a>
           </li>
           <li>
-            <a href="#5bdf9a0511" class="toc-h1 toc-link" data-title="تحلیل تصاویر">تحلیل تصاویر</a>
+            <a href="#9df1b2ddaf" class="toc-h1 toc-link" data-title="برچسب‌گذاری تصاویر">برچسب‌گذاری تصاویر</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#request" class="toc-h2 toc-link" data-title="Request">Request</a>
+                    <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#b10016fc85" class="toc-h1 toc-link" data-title="فریم‌های کلیدی ویدئو">فریم‌های کلیدی ویدئو</a>
+            <a href="#15b3d80a33" class="toc-h1 toc-link" data-title="برچسب‌گذاری فریم‌های ویدیو">برچسب‌گذاری فریم‌های ویدیو</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#8e687366d5" class="toc-h2 toc-link" data-title="نمونه">نمونه</a>
+                    <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                   </li>
               </ul>
           </li>
@@ -236,24 +236,33 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='parde'>Parde</h1>
-<p>پرده تصاویر نامناسب را تشخیص می‌دهد.</p>
+        <h1 id='8da5da6136'>پرده</h1>
+<p>پرده یک ای‌پی‌آی بومی برای تشخیص تصاویر نامناسب است. از دید پرده، تصویر نامناسب در یکی از این چهار دسته قرار می‌گیرد:</p>
 
-<p>برای دسترسی به واسط برنامه‌نویس پرده نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس parde@roshan-ai.ir بنویسید.</p>
-<h1 id='5bdf9a0511'>تحلیل تصاویر</h1><h2 id='request'>Request</h2>
+<ul>
+<li><p>غیراخلاقی: حاوی تصاویر اعضای جنسی.</p></li>
+<li><p>دل‌خراش: حاوی تصاویر دلخراش و مشمئزکننده.</p></li>
+<li><p>حزن‌آلود: حاوی تصاویر غم‌بار و ناراحت‌کننده.</p></li>
+<li><p>خلاف شئون اسلامی: حاوی تصاویری خلاف معیارهای صداوسیمای ایران</p></li>
+</ul>
+
+<p>دو دستهٔ اول حتی برای افراد بزرگسال نیز نامناسب است و دو دستهٔ آخر بیشتر برای کودکان نامناسب است.</p>
+
+<p>برای دسترسی به این ای‌پی‌آی به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:parde@roshan-ai.ir">parde@roshan-ai.ir</a> درخواست دهید</p>
+<h1 id='9df1b2ddaf'>برچسب‌گذاری تصاویر</h1><h2 id='b40d4b44b2'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
     <span class="s2">"image_urls"</span>: <span class="o">[</span>
-        <span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span>
+        <span class="s2">"sample.com/1.jpg"</span>
     <span class="o">]</span>
 <span class="o">}</span> <span class="se">\</span>
       http://api.sobhe.ir/parde/api/tag_images
@@ -262,7 +271,7 @@
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
 {
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }
 """</span>
@@ -295,14 +304,14 @@
 
             <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
     "</span><span class="n">image_urls</span><span class="s">": [
-        "</span><span class="nl">http:</span><span class="c1">//www.sobhe.ir/baaz/img/goshawk.jpg"</span>
-    <span class="o">]</span>
-<span class="o">}</span><span class="s">".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
+        "</span><span class="n">sample</span><span class="o">.</span><span class="na">com</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="na">jpg</span><span class="s">"
+    ]
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
 
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
-            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
             <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
             <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
                 <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
@@ -325,7 +334,7 @@
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
       <span class="s1">'{
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }'</span><span class="p">);</span>
   <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
@@ -373,7 +382,7 @@
             <span class="p">{</span>
                 <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
 </span>    <span class="s">"image_urls"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span>
+        <span class="s">"sample.com/1.jpg"</span>
     <span class="p">]</span>
 <span class="p">}</span><span class="s">";
 </span>
@@ -395,11 +404,28 @@
 <blockquote>
 <p>Response </p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="nl">"image_url"</span><span class="p">:</span><span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span><span class="p">,</span><span class="nl">"tags"</span><span class="p">:[]}]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"image_url"</span><span class="p">:</span><span class="s2">"sample.com/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82311</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خلاف شئون اسلامی"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82312</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.67</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حزن‌آلود"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
 
 </span></code></pre></div>
-<p>با استفاده از این تابع می‌توانید برای برچسب‌های مربوط به تصاویر مورد نظر خود را از پرده بپرسید. برچسب‌های تصاویر شامل لیستی آیتم‌هاست که هر آیتم شامل آدرس تصویر، و لیستی از برچسب‌هاست که هر برچسب شامل نام برچسب و عددی بین ۰ و ۱ به عنوان میزان اطمینان از برچسب، می‌باشد.
-برای بازدهی بهتر می‌توانید برچسب چند تصویر را در یک درخواست از پرده بپرسید.</p>
+<p>ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد <code>image_url</code> حاوی لینک تصویر و آرایهٔ <code>tags</code> حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد <code>id</code>، عنوان برچسب در فیلد <code>title</code>و میزان اطمینان به آن برچسب در فیلد <code>probability</code>قرار می‌گیرد.</p>
 
 <p><code>POST /parde/api/tag_images</code></p>
 
@@ -411,24 +437,45 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  لیست آدرس تصاویر</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  لیست آدرس تصاویر.</p>
 
 <p><br><br></p>
-<h1 id='b10016fc85'>فریم‌های کلیدی ویدئو</h1>
-<p>با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.</p>
-<h2 id='8e687366d5'>نمونه</h2>
+<h1 id='15b3d80a33'>برچسب‌گذاری فریم‌های ویدیو</h1>
+<p>ورودی این تابع لیستی از آدرس ویدیوها است و خروجی آن برچسب‌های هر ویدیو. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از یک فیلد <code>video_url</code> حاوی لینک تصویر و آرایهٔ <code>frames</code> حاوی فریم‌های پردازش‌شده است. در هر فریم، شمارهٔ آن در فیلد <code>frame</code>، موقعیت زمانی آن در فیلد <code>time</code> و برچسب‌های شناسایی‌شده برای آن در فیلد <code>tags</code> قرار می‌گیرد.</p>
+<h2 id='b40d4b44b2-2'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">    video_urls: [</span><span class="se">\"</span><span class="s2">https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4</span><span class="se">\"</span><span class="s2">],</span><span class="se">\n</span><span class="s2">    every_ms: 200, </span><span class="se">\n</span><span class="s2">    duration: 36000, </span><span class="se">\n</span><span class="s2">    min_frame_diff: 0.5</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"video_urls"</span>: <span class="o">[</span>
+        <span class="s2">"sample.com/1.mp4"</span>
+    <span class="o">]</span>,
+    <span class="s2">"every_ms"</span>: 200,
+    <span class="s2">"duration"</span>: 36000,
+    <span class="s2">"min_frame_diff"</span>: 0.5
+<span class="o">}</span> <span class="se">\</span>
       http://api.sobhe.ir/parde/api/tag_video_frames
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
-"{</span><span class="se">\n</span><span class="s">    video_urls: [</span><span class="se">\"</span><span class="s">https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4</span><span class="se">\"</span><span class="s">],</span><span class="se">\n</span><span class="s">    every_ms: 200, </span><span class="se">\n</span><span class="s">    duration: 36000, </span><span class="se">\n</span><span class="s">    min_frame_diff: 0.5</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"
+{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}
 """</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -457,12 +504,19 @@ Value: [URL, ]
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 
-            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">""</span><span class="o">{</span><span class="err">\</span><span class="n">n</span>    <span class="nl">video_urls:</span> <span class="o">[</span><span class="err">\</span><span class="s">"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
+    "</span><span class="n">video_urls</span><span class="s">": [
+        "</span><span class="n">sample</span><span class="o">.</span><span class="na">com</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="na">mp4</span><span class="s">"
+    ],
+    "</span><span class="n">every_ms</span><span class="s">": 200,
+    "</span><span class="n">duration</span><span class="s">": 36000,
+    "</span><span class="n">min_frame_diff</span><span class="s">": 0.5
+}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
 
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("</span><span class="nc">Content</span><span class="o">-</span><span class="nc">Type</span><span class="s">", "</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s">");
-            http.setRequestProperty("</span><span class="nc">Authorization</span><span class="s">", "</span><span class="nc">Token</span> <span class="no">TOKEN_KEY</span><span class="err">"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
             <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
             <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
                 <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
@@ -483,7 +537,14 @@ Value: [URL, ]
 
   <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/tag_video_frames"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
-      <span class="s1">'"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"'</span><span class="p">);</span>
+      <span class="s1">'{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}'</span><span class="p">);</span>
   <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
@@ -527,7 +588,14 @@ Value: [URL, ]
 
             <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
             <span class="p">{</span>
-                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">""</span><span class="p">{</span><span class="err">\</span><span class="n">n</span>    <span class="n">video_urls</span><span class="p">:</span> <span class="p">[</span><span class="err">\</span><span class="s">"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"";
+                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
+</span>    <span class="s">"video_urls"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"sample.com/1.mp4"</span>
+    <span class="p">],</span>
+    <span class="s">"every_ms"</span><span class="p">:</span> <span class="m">200</span><span class="p">,</span>
+    <span class="s">"duration"</span><span class="p">:</span> <span class="m">36000</span><span class="p">,</span>
+    <span class="s">"min_frame_diff"</span><span class="p">:</span> <span class="m">0.5</span>
+<span class="p">}</span><span class="s">";
 </span>
                 <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
                 <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
@@ -547,7 +615,52 @@ Value: [URL, ]
 <blockquote>
 <p>Response </p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="nl">"video_url"</span><span class="p">:</span><span class="s2">"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4"</span><span class="p">,</span><span class="nl">"frames"</span><span class="p">:[{</span><span class="nl">"frame"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"0:00:00"</span><span class="p">,</span><span class="nl">"tags"</span><span class="p">:[]},{</span><span class="nl">"frame"</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"0:00:01"</span><span class="p">,</span><span class="nl">"tags"</span><span class="p">:[]},{</span><span class="nl">"frame"</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"0:00:01"</span><span class="p">,</span><span class="nl">"tags"</span><span class="p">:[]},</span><span class="err">...</span><span class="p">,{</span><span class="nl">"frame"</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"0:00:18"</span><span class="p">,</span><span class="nl">"tags"</span><span class="p">:[{</span><span class="nl">"id"</span><span class="p">:</span><span class="mi">86141</span><span class="p">,</span><span class="nl">"probability"</span><span class="p">:</span><span class="mf">0.32</span><span class="p">,</span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"خشونت"</span><span class="p">}]},{</span><span class="nl">"frame"</span><span class="p">:</span><span class="mi">560</span><span class="p">,</span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"0:00:22"</span><span class="p">,</span><span class="nl">"tags"</span><span class="p">:[]},</span><span class="err">...</span><span class="p">]}]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"video_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample.com/1.mp4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frames"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">475</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:18"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> 
+                </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">86141</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"دل‌خراش"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">86142</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.49</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"غیراخلاقی"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">560</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:22"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
 
 </span></code></pre></div>
 <p><code>POST /parde/api/tag_video_frames</code></p>
@@ -560,7 +673,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  لیست آدرس ویدئو‌ها</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.</p>
 
 <p><br><br>
 <dl>
@@ -576,7 +689,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  فاصله بین دو فریم استخراج شده به میلی ثانیه</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  هر چند میلی‌ثانیه یک فریم استخراج شود؟</p>
 
 <p><br><br>
 <dl>
@@ -592,7 +705,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  حداقل تفاوت میان دو فریم که به عنوان فریم مستقل در نظر گرفته شوند.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.</p>
 
 <p><br><br>
 <dl>
@@ -608,7 +721,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  مقدار زمان به ثانیه از ابتدا ویدئو که پردازش روی آن انجام می‌شود. اگر Null باشد کل ویدئو پردازش خواهد شد.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.</p>
 
 <p><br><br>
 <dl>
@@ -624,7 +737,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `pending` یا `started` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `pending` خواهد بود.</p>
 
 <p><br><br></p>
 
