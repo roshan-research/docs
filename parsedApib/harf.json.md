@@ -277,7 +277,7 @@ namespace MyRequest
 
 روش اول برای تبدیل فایل‌های صوتی یا ویدیویی به متن، ارسال آدرس فایل‌ها در پارامتر `media_urls` است.
 
-`POST /api/transcribe_files/`
+<dl style="background-color:transparent;"><code>POST /api/transcribe_files/</code></dl>
 
 <dl>
 <strong>media_urls(required)</strong>
@@ -559,7 +559,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/transcribe_files/`
+<dl style="background-color:transparent;"><code>POST /api/transcribe_files/</code></dl>
 
 <dl>
 <strong>media(required)</strong>
@@ -751,7 +751,7 @@ namespace MyRequest
 
 در پاسخ، وضعیت پردازش در پارامتر `state` برگردانده می‌شود: `PENDING` یعنی در حال پردازش، `FAILURE` یعنی بروز خطا، `TIMEOUT` یعنی زمان پردازش فایل بیش از زمان تنظیم شده برای انتظار سامانه بوده و از دور پردازش خارج شده است.
 
-`POST /api/transcribe_files/`
+<dl style="background-color:transparent;"><code>POST /api/transcribe_files/</code></dl>
 
 <dl>
 <strong>media_urls(required)</strong>
@@ -910,5 +910,5 @@ ws.close()
 
 ```
 
-`POST /ws_api/transcribe_files/wav/sync/`
+<dl style="background-color:transparent;"><code>POST /ws_api/transcribe_files/wav/sync/</code></dl>
 

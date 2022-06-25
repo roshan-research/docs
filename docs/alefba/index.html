@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-b80b9460.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-d5805f50.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-78ea9ead.js"></script>
 
@@ -534,7 +534,7 @@
 </span></code></pre></div>
 <p>منظور از ارسال همگام این است که تا آماده‌شدن نتیجه منتظر بمانید. برای این منظور باید مقدار پارامتر <code>wait</code> در درخواست ارسالی برابر <code>true‌</code> قرار گیرد که البته مقدار پیش‌فرض نیز همین است. در پاسخ ارسالی، نتیجهٔ پردازش ارائه می‌شود.</p>
 
-<p><code>POST /api/read_document/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -830,7 +830,7 @@ Value: <span style="background-color: #00A693;
 </span></code></pre></div>
 <p>منظور از ارسال ناهمگام این است که منتظر نتیجه نمانید. درعوض خودتان با تابع «بررسی وضعیت پردازش» میزان پیشرفت را چک کنید و بعد از کامل‌شدن نتیجه، درخواست مجدد بدهید و نتیجه را ببینید. برای این منظور باید مقدار پارامتر <code>wait</code> در درخواست ارسالی برابر <code>false</code> قرار گیرد. با این کار، بلافاصله بعد از ارسال درخواست، پاسخی با دو پارامتر <code>state</code> (وضعیت پردازش) و <code>task_ids</code> (شناسهٔ پردازش) دریافت می‌کنید که بعداً می‌توانید با تابع «دریافت نتیجهٔ به‌شکل ناهمگام»، خروجی نهایی را با ارائهٔ این شناسه دریافت کنید.</p>
 
-<p><code>POST /api/read_document/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -1102,7 +1102,7 @@ Value: <span style="background-color: #00A693;
 </span></code></pre></div>
 <p>در درخواست به‌شکل ناهمگام (یعنی <code>wait</code>=<code>false</code>)، به شما یک <code>task_id</code> داده می‌شود که شناسهٔ پردازش است. برای دریافت نتیجهٔ پردازش، این شناسه را در پارامتر <code>task_id</code> قرار دهید و درخواست خود را ارسال کنید. اینجا نیز می‌توانید در درخواست خود، پارامتر <code>wait</code> را مقداردهی کنید. اگر <code>wait</code> برابر <code>true</code> باشد (مقدار پیش‌فرض) دوحالت پیش می‌آید. یا پردازش کامل شده که نتیجه برمی‌گردد، یا تمام نشده که باید منتظر بمانید. اگر <code>wait</code> را برابر <code>false</code> قرار دهید دوحالت پیش می‌آید. یا پردازش کامل شده که نتیجه برمی‌گردد یا کامل نیست که پاسخی با پارامتر <code>state</code> برمی‌گردد. <code>state</code> بیانگر وضعیت پردازش است.</p>
 
-<p><code>POST /api/read_document/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>task_id(required)</strong>
@@ -1359,7 +1359,7 @@ Value: <span style="background-color: #00A693;
 
 
 </span></code></pre></div>
-<p><code>POST /api/read_document/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document(required)</strong>
@@ -1679,7 +1679,7 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}]</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/read_pages/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/read_pages/</code></dl>
 
 <dl>
 <strong>page_urls(required)</strong>
@@ -1954,7 +1954,7 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/document_status/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/document_status/</code></dl>
 
 <dl>
 <strong>document_urls(required)</strong>
@@ -2121,7 +2121,7 @@ Value: [URL, ]
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/document_pages/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/document_pages/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2289,7 +2289,7 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">boute.docx</span><span class="w"> </span><span class="err">file</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/download_word/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/download_word/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2455,7 +2455,7 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">boute.xlsx</span><span class="w"> </span><span class="err">file</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/download_excel/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/download_excel/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2639,7 +2639,7 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">boute.pdf</span><span class="w"> </span><span class="err">file</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/download_pdf/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/download_pdf/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2839,7 +2839,7 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/delete_document/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/delete_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -3017,7 +3017,7 @@ Value: <span style="background-color: #00A693;
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /api/read_document/</code></p>
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>

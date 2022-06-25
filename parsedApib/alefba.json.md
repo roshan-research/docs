@@ -277,7 +277,7 @@ namespace MyRequest
 
 منظور از ارسال همگام این است که تا آماده‌شدن نتیجه منتظر بمانید. برای این منظور باید مقدار پارامتر <code>wait</code> در درخواست ارسالی برابر <code>true‌</code> قرار گیرد که البته مقدار پیش‌فرض نیز همین است. در پاسخ ارسالی، نتیجهٔ پردازش ارائه می‌شود.
 
-`POST /api/read_document/`
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -585,7 +585,7 @@ namespace MyRequest
 
 منظور از ارسال ناهمگام این است که منتظر نتیجه نمانید. درعوض خودتان با تابع «بررسی وضعیت پردازش» میزان پیشرفت را چک کنید و بعد از کامل‌شدن نتیجه، درخواست مجدد بدهید و نتیجه را ببینید. برای این منظور باید مقدار پارامتر <code>wait</code> در درخواست ارسالی برابر <code>false</code> قرار گیرد. با این کار، بلافاصله بعد از ارسال درخواست، پاسخی با دو پارامتر <code>state</code> (وضعیت پردازش) و <code>task_ids</code> (شناسهٔ پردازش) دریافت می‌کنید که بعداً می‌توانید با تابع «دریافت نتیجهٔ به‌شکل ناهمگام»، خروجی نهایی را با ارائهٔ این شناسه دریافت کنید.
 
-`POST /api/read_document/`
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -869,7 +869,7 @@ namespace MyRequest
 
 در درخواست به‌شکل ناهمگام (یعنی <code>wait</code>=<code>false</code>)، به شما یک <code>task_id</code> داده می‌شود که شناسهٔ پردازش است. برای دریافت نتیجهٔ پردازش، این شناسه را در پارامتر <code>task_id</code> قرار دهید و درخواست خود را ارسال کنید. اینجا نیز می‌توانید در درخواست خود، پارامتر <code>wait</code> را مقداردهی کنید. اگر <code>wait</code> برابر <code>true</code> باشد (مقدار پیش‌فرض) دوحالت پیش می‌آید. یا پردازش کامل شده که نتیجه برمی‌گردد، یا تمام نشده که باید منتظر بمانید. اگر <code>wait</code> را برابر <code>false</code> قرار دهید دوحالت پیش می‌آید. یا پردازش کامل شده که نتیجه برمی‌گردد یا کامل نیست که پاسخی با پارامتر <code>state</code> برمی‌گردد. <code>state</code> بیانگر وضعیت پردازش است.
 
-`POST /api/read_document/`
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>task_id(required)</strong>
@@ -1142,7 +1142,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/read_document/`
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document(required)</strong>
@@ -1477,7 +1477,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/read_pages/`
+<dl style="background-color:transparent;"><code>POST /api/read_pages/</code></dl>
 
 <dl>
 <strong>page_urls(required)</strong>
@@ -1767,7 +1767,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/document_status/`
+<dl style="background-color:transparent;"><code>POST /api/document_status/</code></dl>
 
 <dl>
 <strong>document_urls(required)</strong>
@@ -1954,7 +1954,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/document_pages/`
+<dl style="background-color:transparent;"><code>POST /api/document_pages/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2142,7 +2142,7 @@ boute.docx file
 
 ```
 
-`POST /api/download_word/`
+<dl style="background-color:transparent;"><code>POST /api/download_word/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2328,7 +2328,7 @@ boute.xlsx file
 
 ```
 
-`POST /api/download_excel/`
+<dl style="background-color:transparent;"><code>POST /api/download_excel/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2532,7 +2532,7 @@ boute.pdf file
 
 ```
 
-`POST /api/download_pdf/`
+<dl style="background-color:transparent;"><code>POST /api/download_pdf/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2750,7 +2750,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/delete_document/`
+<dl style="background-color:transparent;"><code>POST /api/delete_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>
@@ -2948,7 +2948,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/read_document/`
+<dl style="background-color:transparent;"><code>POST /api/read_document/</code></dl>
 
 <dl>
 <strong>document_url(required)</strong>

@@ -463,7 +463,7 @@ namespace MyRequest
 
 برای ایندکس‌کردن محتوا درخواست خود را با متد `POST` به‌همراه پارامتر `items` ارسال کنید. هر یک از عناصر آرایهٔ `items` بیانگر یک محتواست. هر محتوا دارای یک‌سری فیلدهای اجباری و یک‌سری فیلدهای اختیاری است. جدایی از این فیلدها می‌توانید فیلدهای خودتان را هم اضافه کنید. اگر محتوایی با `type` و `id` یکسان قبلاً ایندکس شده باشد جایگزین آن می‌شود.
 
-`POST /{index_name}/index`
+<dl style="background-color:transparent;"><code>POST /{index_name}/index</code></dl>
 
 <dl>
 <strong>type(required)</strong>
@@ -769,7 +769,7 @@ namespace MyRequest
 
 برای ویرایش محتوای یک ایندکس درخواست خود را با متد `PUT` ارسال کنید و در بدنهٔ درخواست، آرایهٔ `items` را به‌همراه فیلدهایی که می‌خواهید مقدارشان تغییر کند ضمیمه کنید. در هر محتوا واردکردن دو فیلد `type` و `id` برای یافتن محتوا ضروری است. به‌جز این‌ها هر فیلد دیگری وارد کنید مقدار آن‌ها ویرایش می‌شود. بقیهٔ فیلدهایی که وارد نکرده‌اید دست‌نخورده باقی می‌مانند. مثلاً در نمونهٔ مقابل، محتوایی با تایپ movie و شناسهٔ ۱ در ایندکس جستجو می‌شود و مقدار فیلد importance آن به ۲۰۰ تغییر می‌کند.
 
-`PUT /{index_name}/index`
+<dl style="background-color:transparent;"><code>PUT /{index_name}/index</code></dl>
 
 ## حذف محتوای ایندکس
 
@@ -957,7 +957,7 @@ namespace MyRequest
 
 برای حذف یک یا چند محتوا درخواست خود را با متد `DELETE` ارسال کنید و در بدنهٔ درخواست دو پارامتر `type` و `ids` را مقداردهی کنید. با ارسال این درخواست آن دسته از محتواهایی که نوعشان برابر `type` است و شناسه‌شان در آرایهٔ `ids` وجود دارد از ایندکس حذف می‌شوند. <mark>اگر هیچ پارامتری وارد نکنید کل ایندکس حذف می‌شود.</mark> 
 
-`DELETE /{index_name}/index`
+<dl style="background-color:transparent;"><code>DELETE /{index_name}/index</code></dl>
 
 # جستجوی معمولی
 
@@ -1196,7 +1196,7 @@ namespace MyRequest
 
 عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
 
-`GET /{index_name}/{types}/query{?fields,text,size,from}`
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
 
 # جستجوی درلحظه‌
 
@@ -1420,7 +1420,7 @@ namespace MyRequest
 
 ```
 
-`GET /{index_name}/{types}/complete{?text,size,from}`
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/complete{?text,size,from}</code></dl>
 
 # ‌پیشنهاد جستجو
 
@@ -1616,7 +1616,7 @@ namespace MyRequest
 
 ```
 
-`GET /{index_name}/{types}/suggest{?text}`
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/suggest{?text}</code></dl>
 
 # محتواهای مشابه
 
@@ -1824,7 +1824,7 @@ namespace MyRequest
 
 ```
 
-`POST /{index_name}/{types}/similars`
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/similars</code></dl>
 
 # محتواهای منبع
 
@@ -2024,7 +2024,7 @@ namespace MyRequest
 
 ```
 
-`POST /{index_name}/{types}/sources`
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/sources</code></dl>
 
 # ‌عبارات کلیدی
 
@@ -2251,7 +2251,7 @@ namespace MyRequest
 
 ```
 
-`POST /{index_name}/{types}/{field}/keyterms`
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/{field}/keyterms</code></dl>
 
 ## مثال: درخواست با شناسهٔ محتوا
 
@@ -2430,5 +2430,5 @@ namespace MyRequest
 
 ```
 
-`GET /{index_name}/{types}/{field}/keyterms`
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/{field}/keyterms</code></dl>
 

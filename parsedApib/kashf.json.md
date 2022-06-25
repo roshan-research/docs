@@ -23,11 +23,11 @@ meta:
 
 # کشف
 
-<b>کشف**</b>، مثال‌هایی از یک مفهوم را می‌گیرید و بعد همان مفهوم را در داده‌های جدید پیدا می‌کند. مثلاً به کشف یاد می‌دهید که جملات خیلی عالی بود، سه ماهه خریدم مشکلی نداشتم و این محصول را پیشنهاد می‌کنم، چند نمونه از مفهوم رضایت از خرید کالا است. یا عکس‌هایی از حرم رضوی یا آقای رئیسی را نشان می‌دهید و می‌گویید این‌ها تصویر حرم یا آقای رئیسی است.
+<b>کشف</b>، مثال‌هایی از یک مفهوم را می‌گیرید و بعد همان مفهوم را در داده‌های جدید پیدا می‌کند. مثلاً به کشف یاد می‌دهید که جملات خیلی عالی بود، سه ماهه خریدم مشکلی نداشتم و این محصول را پیشنهاد می‌کنم، چند نمونه از مفهوم رضایت از خرید کالا است. یا عکس‌هایی از حرم رضوی یا آقای رئیسی را نشان می‌دهید و می‌گویید این‌ها تصویر حرم یا آقای رئیسی است.
 
 با این آموزش‌ها، کشف به‌مرور بالغ‌تر می‌شود و می‌تواند مفاهیم پنهان در دل داده‌های متنی، تصویری یا حتی ویدیویی را کشف کند. کشف مثل یک کودک در‌حال‌رشد است. هرچقدر این کودک، بیشتر و متنوع‌تر بیاموزد، بهتر و دقیق‌تر به شما کمک می‌کند.
 
-برای دسترسی به ای‌پی‌آی، به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ [](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg) <a href="mailto:kashf@roshan-ai.ir">kashf@roshan-ai.ir<a> درخواست دهید.
+برای دسترسی به ای‌پی‌آی، به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:kashf@roshan-ai.ir">kashf@roshan-ai.ir</a> درخواست دهید.
 
 ## اصطلاحات
 
@@ -227,7 +227,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/create_tag/`
+<dl style="background-color:transparent;"><code>POST /api/create_tag/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -466,7 +466,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/update_tag/`
+<dl style="background-color:transparent;"><code>POST /api/update_tag/</code></dl>
 
 <dl>
 <strong>tag_"id"(required)</strong>
@@ -701,7 +701,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/delete_tag/`
+<dl style="background-color:transparent;"><code>POST /api/delete_tag/</code></dl>
 
 <dl>
 <strong>tag_"id"(required)</strong>
@@ -917,7 +917,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/report_text_tags/`
+<dl style="background-color:transparent;"><code>POST /api/report_text_tags/</code></dl>
 
 <dl>
 <strong>content(required)</strong>
@@ -1163,7 +1163,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/report_image_tags/`
+<dl style="background-color:transparent;"><code>POST /api/report_image_tags/</code></dl>
 
 <dl>
 <strong>image_url(required)</strong>
@@ -1371,7 +1371,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/remove_tag_report/`
+<dl style="background-color:transparent;"><code>POST /api/remove_tag_report/</code></dl>
 
 <dl>
 <strong>text_"id"</strong>
@@ -1633,7 +1633,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/tag_texts/`
+<dl style="background-color:transparent;"><code>POST /api/tag_texts/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -1905,7 +1905,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/tag_images/`
+<dl style="background-color:transparent;"><code>POST /api/tag_images/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -2146,7 +2146,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/tag_faces/`
+<dl style="background-color:transparent;"><code>POST /api/tag_faces/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -2433,7 +2433,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/tag_video_frames/`
+<dl style="background-color:transparent;"><code>POST /api/tag_video_frames/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -2720,7 +2720,7 @@ namespace MyRequest
 
 > Response 
 
-`POST /api/tag_video_faces/`
+<dl style="background-color:transparent;"><code>POST /api/tag_video_faces/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -3006,7 +3006,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/tag_videos/`
+<dl style="background-color:transparent;"><code>POST /api/tag_videos/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -3225,7 +3225,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/train_dataset/`
+<dl style="background-color:transparent;"><code>POST /api/train_dataset/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -3421,7 +3421,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/retag_dataset/`
+<dl style="background-color:transparent;"><code>POST /api/retag_dataset/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -3638,7 +3638,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/export_dataset/`
+<dl style="background-color:transparent;"><code>POST /api/export_dataset/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -3870,7 +3870,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/import_dataset/`
+<dl style="background-color:transparent;"><code>POST /api/import_dataset/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -4117,7 +4117,7 @@ namespace MyRequest
 
 ```
 
-`POST /dataset_info/`
+<dl style="background-color:transparent;"><code>POST /dataset_info/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -4312,7 +4312,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/list_tag_predictions/`
+<dl style="background-color:transparent;"><code>POST /api/list_tag_predictions/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -4525,7 +4525,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/list_tag_reports/`
+<dl style="background-color:transparent;"><code>POST /api/list_tag_reports/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -4747,7 +4747,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/list_tag_notsure_reports/`
+<dl style="background-color:transparent;"><code>POST /api/list_tag_notsure_reports/</code></dl>
 
 <dl>
 <strong>tag_"id"(required)</strong>
@@ -4946,7 +4946,7 @@ namespace MyRequest
 
 ```
 
-`GET /api/list_datasets/`
+<dl style="background-color:transparent;"><code>GET /api/list_datasets/</code></dl>
 
 # فهرست داده‌های متنی
 
@@ -5139,7 +5139,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/list_texts/`
+<dl style="background-color:transparent;"><code>POST /api/list_texts/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -5362,7 +5362,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/list_images/`
+<dl style="background-color:transparent;"><code>POST /api/list_images/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -5587,7 +5587,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/search_candidate_texts/`
+<dl style="background-color:transparent;"><code>POST /api/search_candidate_texts/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -5836,7 +5836,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/search_candidate_images/`
+<dl style="background-color:transparent;"><code>POST /api/search_candidate_images/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>
@@ -6065,7 +6065,7 @@ namespace MyRequest
 
 ```
 
-`POST /api/search_candidate_faces/`
+<dl style="background-color:transparent;"><code>POST /api/search_candidate_faces/</code></dl>
 
 <dl>
 <strong>dataset(required)</strong>

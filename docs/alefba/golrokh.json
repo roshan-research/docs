@@ -208,7 +208,7 @@ to this function:</p>
 
 <p>curl -X POST --header &quot;Authorization: Token TOKEN_KEY&quot; -F &quot;image=@FILENAME&quot; -F &quot;datasets=siasi,honari,varzeshi&quot; http://HOSTNAME/api/find_faces</p>
 
-<p><code>POST /find_faces</code></p>
+<dl style="background-color:transparent;"><code>POST /find_faces</code></dl>
 <h2 id='upload-image'>Upload Image</h2>
 <blockquote>
 <p>Request</p>
@@ -352,7 +352,7 @@ to this function:</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /find_faces</code></p>
+<dl style="background-color:transparent;"><code>POST /find_faces</code></dl>
 <h1 id='new-person'>New Person</h1><h2 id='request-2'>Request</h2>
 <blockquote>
 <p>Request</p>
@@ -514,7 +514,7 @@ to this function:</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /new_person</code></p>
+<dl style="background-color:transparent;"><code>POST /new_person</code></dl>
 <h1 id='report-face'>Report Face</h1><h2 id='request-3'>Request</h2>
 <blockquote>
 <p>Request</p>
@@ -677,7 +677,7 @@ to this function:</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /report_face</code></p>
+<dl style="background-color:transparent;"><code>POST /report_face</code></dl>
 <h1 id='similar-faces'>Similar Faces</h1><h2 id='request-4'>Request</h2>
 <blockquote>
 <p>Request</p>
@@ -846,7 +846,7 @@ to this function:</p>
 </span><span class="p">]</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /similar_faces</code></p>
+<dl style="background-color:transparent;"><code>POST /similar_faces</code></dl>
 <h1 id='dataset-detail'>Dataset Detail</h1><h2 id='request-5'>Request</h2>
 <blockquote>
 <p>Request</p>
@@ -1001,4 +1001,4 @@ to this function:</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p><code>POST /dataset_detail</code></p>
+<dl style="background-color:transparent;"><code>POST /dataset_detail</code></dl>

@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-b80b9460.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-d5805f50.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-78ea9ead.js"></script>
 
@@ -705,7 +705,7 @@ index_name
 </span></code></pre></div>
 <p>برای ایندکس‌کردن محتوا درخواست خود را با متد <code>POST</code> به‌همراه پارامتر <code>items</code> ارسال کنید. هر یک از عناصر آرایهٔ <code>items</code> بیانگر یک محتواست. هر محتوا دارای یک‌سری فیلدهای اجباری و یک‌سری فیلدهای اختیاری است. جدایی از این فیلدها می‌توانید فیلدهای خودتان را هم اضافه کنید. اگر محتوایی با <code>type</code> و <code>id</code> یکسان قبلاً ایندکس شده باشد جایگزین آن می‌شود.</p>
 
-<p><code>POST /{index_name}/index</code></p>
+<dl style="background-color:transparent;"><code>POST /{index_name}/index</code></dl>
 
 <dl>
 <strong>type(required)</strong>
@@ -1000,7 +1000,7 @@ Value: <span style="background-color: #00A693;
 </span></code></pre></div>
 <p>برای ویرایش محتوای یک ایندکس درخواست خود را با متد <code>PUT</code> ارسال کنید و در بدنهٔ درخواست، آرایهٔ <code>items</code> را به‌همراه فیلدهایی که می‌خواهید مقدارشان تغییر کند ضمیمه کنید. در هر محتوا واردکردن دو فیلد <code>type</code> و <code>id</code> برای یافتن محتوا ضروری است. به‌جز این‌ها هر فیلد دیگری وارد کنید مقدار آن‌ها ویرایش می‌شود. بقیهٔ فیلدهایی که وارد نکرده‌اید دست‌نخورده باقی می‌مانند. مثلاً در نمونهٔ مقابل، محتوایی با تایپ movie و شناسهٔ ۱ در ایندکس جستجو می‌شود و مقدار فیلد importance آن به ۲۰۰ تغییر می‌کند.</p>
 
-<p><code>PUT /{index_name}/index</code></p>
+<dl style="background-color:transparent;"><code>PUT /{index_name}/index</code></dl>
 <h2 id='d6813cc994'>حذف محتوای ایندکس</h2>
 <blockquote>
 <p>Request</p>
@@ -1169,7 +1169,7 @@ Value: <span style="background-color: #00A693;
 </span></code></pre></div>
 <p>برای حذف یک یا چند محتوا درخواست خود را با متد <code>DELETE</code> ارسال کنید و در بدنهٔ درخواست دو پارامتر <code>type</code> و <code>ids</code> را مقداردهی کنید. با ارسال این درخواست آن دسته از محتواهایی که نوعشان برابر <code>type</code> است و شناسه‌شان در آرایهٔ <code>ids</code> وجود دارد از ایندکس حذف می‌شوند. <mark>اگر هیچ پارامتری وارد نکنید کل ایندکس حذف می‌شود.</mark> </p>
 
-<p><code>DELETE /{index_name}/index</code></p>
+<dl style="background-color:transparent;"><code>DELETE /{index_name}/index</code></dl>
 <h1 id='5a91792863'>جستجوی معمولی</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -1387,7 +1387,7 @@ from
 
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
-<p><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></p>
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
 <h1 id='175d0d146c'>جستجوی درلحظه‌</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -1590,7 +1590,7 @@ from
 
 
 </span></code></pre></div>
-<p><code>GET /{index_name}/{types}/complete{?text,size,from}</code></p>
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/complete{?text,size,from}</code></dl>
 <h1 id='1343ad4c0b'>‌پیشنهاد جستجو</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -1765,7 +1765,7 @@ text
 
 
 </span></code></pre></div>
-<p><code>GET /{index_name}/{types}/suggest{?text}</code></p>
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/suggest{?text}</code></dl>
 <h1 id='2a07a58f62'>محتواهای مشابه</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -1952,7 +1952,7 @@ types
 
 
 </span></code></pre></div>
-<p><code>POST /{index_name}/{types}/similars</code></p>
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/similars</code></dl>
 <h1 id='ee384ab3c4'>محتواهای منبع</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -2131,7 +2131,7 @@ types
 
 
 </span></code></pre></div>
-<p><code>POST /{index_name}/{types}/sources</code></p>
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/sources</code></dl>
 <h1 id='ba7b994b13'>‌عبارات کلیدی</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -2337,7 +2337,7 @@ field
 
 
 </span></code></pre></div>
-<p><code>POST /{index_name}/{types}/{field}/keyterms</code></p>
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/{field}/keyterms</code></dl>
 <h2 id='2e84bfc77d'>مثال: درخواست با شناسهٔ محتوا</h2>
 <blockquote>
 <p>Request</p>
@@ -2497,7 +2497,7 @@ field
 
 
 </span></code></pre></div>
-<p><code>GET /{index_name}/{types}/{field}/keyterms</code></p>
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/{field}/keyterms</code></dl>
 
       </div>
       <div class="dark-box">

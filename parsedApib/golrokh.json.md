@@ -250,7 +250,7 @@ namespace MyRequest
 
 curl -X POST --header "Authorization: Token TOKEN_KEY" -F "image=@FILENAME" -F "datasets=siasi,honari,varzeshi" http://HOSTNAME/api/find_faces
 
-`POST /find_faces`
+<dl style="background-color:transparent;"><code>POST /find_faces</code></dl>
 
 ## Upload Image
 
@@ -413,7 +413,7 @@ namespace MyRequest
 
 ```
 
-`POST /find_faces`
+<dl style="background-color:transparent;"><code>POST /find_faces</code></dl>
 
 # New Person
 
@@ -597,7 +597,7 @@ namespace MyRequest
 
 ```
 
-`POST /new_person`
+<dl style="background-color:transparent;"><code>POST /new_person</code></dl>
 
 # Report Face
 
@@ -782,7 +782,7 @@ namespace MyRequest
 
 ```
 
-`POST /report_face`
+<dl style="background-color:transparent;"><code>POST /report_face</code></dl>
 
 # Similar Faces
 
@@ -973,7 +973,7 @@ namespace MyRequest
 
 ```
 
-`POST /similar_faces`
+<dl style="background-color:transparent;"><code>POST /similar_faces</code></dl>
 
 # Dataset Detail
 
@@ -1150,5 +1150,5 @@ namespace MyRequest
 
 ```
 
-`POST /dataset_detail`
+<dl style="background-color:transparent;"><code>POST /dataset_detail</code></dl>
 

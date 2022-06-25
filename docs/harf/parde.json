@@ -189,7 +189,7 @@
 </span></code></pre></div>
 <p>ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد <code>image_url</code> حاوی لینک تصویر و آرایهٔ <code>tags</code> حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد <code>id</code>، عنوان برچسب در فیلد <code>title</code>و میزان اطمینان به آن برچسب در فیلد <code>probability</code>قرار می‌گیرد.</p>
 
-<p><code>POST /parde/api/tag_images</code></p>
+<dl style="background-color:transparent;"><code>POST /parde/api/tag_images</code></dl>
 
 <dl>
 <strong>image_urls(required)</strong>
@@ -425,7 +425,7 @@ Value: [URL, ]
 
 
 </span></code></pre></div>
-<p><code>POST /parde/api/tag_video_frames</code></p>
+<dl style="background-color:transparent;"><code>POST /parde/api/tag_video_frames</code></dl>
 
 <dl>
 <strong>video_urls(required)</strong>

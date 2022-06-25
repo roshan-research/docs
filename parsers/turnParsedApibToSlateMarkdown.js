@@ -272,7 +272,7 @@ Value: ${value}
         oneTransition.copies.forEach((value) => {
             transitionTextSection += value + "\n\n";
         })
-        transitionTextSection += "`" + httpMethod + " " + href + "`\n\n";
+        transitionTextSection += '<dl style="background-color:transparent;"><code>' + httpMethod + " " + href + "</code></dl>\n\n";
         if (dataStructure !== ""){
             transitionTextSection += dataStructure;
         }

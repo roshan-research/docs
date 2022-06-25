@@ -236,7 +236,7 @@ namespace MyRequest
 
 ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد `image_url` حاوی لینک تصویر و آرایهٔ `tags` حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد `id`، عنوان برچسب در فیلد `title`و میزان اطمینان به آن برچسب در فیلد `probability`قرار می‌گیرد.
 
-`POST /parde/api/tag_images`
+<dl style="background-color:transparent;"><code>POST /parde/api/tag_images</code></dl>
 
 <dl>
 <strong>image_urls(required)</strong>
@@ -492,7 +492,7 @@ namespace MyRequest
 
 ```
 
-`POST /parde/api/tag_video_frames`
+<dl style="background-color:transparent;"><code>POST /parde/api/tag_video_frames</code></dl>
 
 <dl>
 <strong>video_urls(required)</strong>
