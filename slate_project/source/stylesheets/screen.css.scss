@@ -486,6 +486,13 @@ html, body {
     }
   }
 
+  p + dl {
+    code {
+      color: white;
+      background-color: black;
+    }
+  }
+
   pre>code {
     background-color: transparent;
     padding: 0;
@@ -947,7 +954,10 @@ li {
         color: rgba(0, 0, 0, 0.753);
         position: absolute;
         margin-left: 200px;
-        margin-top: -25px;
+        margin-top: -28px;
+      }
+      :first-child {
+        margin-top: -15px;
       }
     }
   }

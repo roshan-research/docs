@@ -472,6 +472,7 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     movie
                     </span>
@@ -487,6 +488,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     1
                     </span>
@@ -502,6 +504,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     ماجرای نیمروز
                     </span>
@@ -517,6 +520,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     100
                     </span>
@@ -532,6 +536,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     2017
                     </span>
@@ -557,6 +562,7 @@ Value: [هیجانی, ماجراجویی, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     ...
                     </span>

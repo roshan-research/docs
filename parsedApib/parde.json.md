@@ -511,6 +511,7 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     100
                     </span>
@@ -526,6 +527,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     0.4
                     </span>
@@ -541,6 +543,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     25
                     </span>
@@ -556,6 +559,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>

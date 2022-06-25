@@ -286,6 +286,7 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     List of URLs
                     </span>
@@ -301,6 +302,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -568,6 +570,7 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     file in binary
                     </span>
@@ -760,6 +763,7 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     List of URLs
                     </span>
@@ -775,6 +779,7 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
+                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
