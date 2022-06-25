@@ -18,26 +18,36 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Parde API
+    content: Documentation for the پرده API
 ---
 
-# Parde
+# پرده
 
-پرده تصاویر نامناسب را تشخیص می‌دهد.
+پرده یک ای‌پی‌آی بومی برای تشخیص تصاویر نامناسب است. از دید پرده، تصویر نامناسب در یکی از این چهار دسته قرار می‌گیرد:
 
-برای دسترسی به واسط برنامه‌نویس پرده نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس parde@roshan-ai.ir بنویسید.
+* غیراخلاقی: حاوی تصاویر اعضای جنسی.
 
-# تحلیل تصاویر
+* دل‌خراش: حاوی تصاویر دلخراش و مشمئزکننده.
+
+* حزن‌آلود: حاوی تصاویر غم‌بار و ناراحت‌کننده.
+
+* خلاف شئون اسلامی: حاوی تصاویری خلاف معیارهای صداوسیمای ایران
+
+دو دستهٔ اول حتی برای افراد بزرگسال نیز نامناسب است و دو دستهٔ آخر بیشتر برای کودکان نامناسب است.
+
+برای دسترسی به این ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ [parde@roshan-ai.ir](mailto:parde@roshan-ai.ir) درخواست دهید
+
+# برچسب‌گذاری تصاویر
 
 
-## Request
+## مثال
 
 > Request
 
 ```plaintext
 {
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }
 ```
@@ -47,7 +57,7 @@ curl  --request POST \
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
       --data-binary {
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 } \
       http://api.sobhe.ir/parde/api/tag_images
@@ -59,7 +69,7 @@ from urllib2 import Request, urlopen
 values = """
 {
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }
 """
@@ -95,7 +105,7 @@ class MyRequest {
 
             byte[] out = "{
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
@@ -128,7 +138,7 @@ class MyRequest {
   $content = json_encode(
       '{
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }');
   $curl = curl_init($url);
@@ -179,7 +189,7 @@ namespace MyRequest
             {
                 string json = "{
     "image_urls": [
-        "http://www.sobhe.ir/baaz/img/goshawk.jpg"
+        "sample.com/1.jpg"
     ]
 }";
 
@@ -202,12 +212,29 @@ namespace MyRequest
 > Response 
 
 ```json
-[{"image_url":"http://www.sobhe.ir/baaz/img/goshawk.jpg","tags":[]}]
+[
+    {
+        "image_url":"sample.com/1.jpg",
+        "tags": 
+        [
+            {
+                "id": 82311,
+                "probability": 0.9,
+                "title": "خلاف شئون اسلامی"
+            },
+            {
+                "id": 82312,
+                "probability": 0.67,
+                "title": "حزن‌آلود"
+            }
+        ]
+    }
+]
+
 
 ```
 
-با استفاده از این تابع می‌توانید برای برچسب‌های مربوط به تصاویر مورد نظر خود را از پرده بپرسید. برچسب‌های تصاویر شامل لیستی آیتم‌هاست که هر آیتم شامل آدرس تصویر، و لیستی از برچسب‌هاست که هر برچسب شامل نام برچسب و عددی بین ۰ و ۱ به عنوان میزان اطمینان از برچسب، می‌باشد.
-برای بازدهی بهتر می‌توانید برچسب چند تصویر را در یک درخواست از پرده بپرسید.
+ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد `image_url` حاوی لینک تصویر و آرایهٔ `tags` حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد `id`، عنوان برچسب در فیلد `title`و میزان اطمینان به آن برچسب در فیلد `probability`قرار می‌گیرد.
 
 `POST /parde/api/tag_images`
 
@@ -219,25 +246,39 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس تصاویر</p>
+<img src="./images/vector.svg" alt="vector">  لیست آدرس تصاویر.</p>
 <br><br>
-# فریم‌های کلیدی ویدئو
+# برچسب‌گذاری فریم‌های ویدیو
 
-با استفاده از این تابع می‌توانید برچسب مربوط به فریم‌های کلیدی یک ویدئو را از پرده بپرسید. پاسخ سرور لیستی از فریم‌ها به همراه برچسب مربوط به آن‌ها می‌باشد.
+ورودی این تابع لیستی از آدرس ویدیوها است و خروجی آن برچسب‌های هر ویدیو. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از یک فیلد `video_url` حاوی لینک تصویر و آرایهٔ `frames` حاوی فریم‌های پردازش‌شده است. در هر فریم، شمارهٔ آن در فیلد `frame`، موقعیت زمانی آن در فیلد `time` و برچسب‌های شناسایی‌شده برای آن در فیلد `tags` قرار می‌گیرد.
 
 
-## نمونه
+## مثال
 
 > Request
 
 ```plaintext
-"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
+{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n" \
+      --data-binary {
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+} \
       http://api.sobhe.ir/parde/api/tag_video_frames
 ```
 
@@ -245,7 +286,14 @@ curl  --request POST \
 from urllib2 import Request, urlopen
 
 values = """
-"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"
+{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}
 """
 
 headers = {
@@ -277,7 +325,14 @@ class MyRequest {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = ""{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"".getBytes(StandardCharsets.UTF_8);
+            byte[] out = "{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
 
             http.setFixedLengthStreamingMode(length);
@@ -306,7 +361,14 @@ class MyRequest {
 
   $url = "http://api.sobhe.ir/parde/api/tag_video_frames";
   $content = json_encode(
-      '"{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"');
+      '{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}');
   $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_HEADER, false);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -353,7 +415,14 @@ namespace MyRequest
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                string json = ""{\n    video_urls: [\"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4\"],\n    every_ms: 200, \n    duration: 36000, \n    min_frame_diff: 0.5\n}\n"";
+                string json = "{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}";
 
                 streamWriter.Write(json);
                 streamWriter.Flush();
@@ -374,7 +443,52 @@ namespace MyRequest
 > Response 
 
 ```json
-[{"video_url":"https://hajifirouz6.cdn.asset.aparat.cloud/aparat-video/2a6a6ecede3579f0f58bd99d37cfa9ef42917772-240p.mp4","frames":[{"frame":6,"time":"0:00:00","tags":[]},{"frame":31,"time":"0:00:01","tags":[]},{"frame":36,"time":"0:00:01","tags":[]},...,{"frame":475,"time":"0:00:18","tags":[{"id":86141,"probability":0.32,"title":"خشونت"}]},{"frame":560,"time":"0:00:22","tags":[]},...]}]
+[
+    {
+        "video_url": "sample.com/1.mp4",
+        "frames": 
+        [
+            {
+                "frame": 6,
+                "time": "0:00:00",
+                "tags": []
+            },
+            {
+                "frame": 31,
+                "time": "0:00:01",
+                "tags": []
+            },
+            {
+                "frame": 36,
+                "time": "0:00:01",
+                "tags": []
+            },
+            {
+                "frame": 475,
+                "time": "0:00:18",
+                "tags": 
+                [
+                    {
+                        "id": 86141,
+                        "probability": 0.32,
+                        "title": "دل‌خراش"
+                    },
+                    {
+                        "id": 86142,
+                        "probability": 0.49,
+                        "title": "غیراخلاقی"
+                    }
+                ]
+            },
+            {
+                "frame": 560,
+                "time": "0:00:22",
+                "tags": []
+            }
+        ]
+    }
+]
+
 
 ```
 
@@ -388,7 +502,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس ویدئو‌ها</p>
+<img src="./images/vector.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.</p>
 <br><br>
 <dl>
 <strong>every_ms</strong>
@@ -403,7 +517,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  فاصله بین دو فریم استخراج شده به میلی ثانیه</p>
+<img src="./images/vector.svg" alt="vector">  هر چند میلی‌ثانیه یک فریم استخراج شود؟</p>
 <br><br>
 <dl>
 <strong>min_frame_diff</strong>
@@ -418,7 +532,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  حداقل تفاوت میان دو فریم که به عنوان فریم مستقل در نظر گرفته شوند.</p>
+<img src="./images/vector.svg" alt="vector">  کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.</p>
 <br><br>
 <dl>
 <strong>duration</strong>
@@ -433,7 +547,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  مقدار زمان به ثانیه از ابتدا ویدئو که پردازش روی آن انجام می‌شود. اگر Null باشد کل ویدئو پردازش خواهد شد.</p>
+<img src="./images/vector.svg" alt="vector">  چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -448,5 +562,5 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این پارامتر فعال باشد، درخواست به صورت غیرهم‌گام ارسال شده و در حین پردازش ویدئو سرور با عبارت 'pending' یا 'started' پاسخ می‌دهد. در اولین درخواست پس از پایان فرآیند پردازش ویدئو، سرور نتیجه پردازش را ارسال می‌کند.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `pending` یا `started` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `pending` خواهد بود.</p>
 <br><br>

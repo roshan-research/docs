@@ -23,16 +23,26 @@ meta:
 
 # حرف
 
-حرف، یک ای‌پی‌آیِ تبدیل گفتار به نوشتار فارسی است که می‌تواند صدای ورودی را اعم از صوت یا ویدیو یا پخش زنده به متن تبدیل کند. حرف با شنیدن هزاران ساعت گفتارِ فارسی در انواع و اقسام لحن‌ها، رده‌های سنی و جنسیت‌های مختلف، به‌خوبی تعلیم دیده است و با دقت بالایی این کار را انجام می‌دهد.
+حرف، یک ای‌پی‌آیِ بومی برای تبدیل گفتار به نوشتارِ فارسی است.
 
-برای دسترسی به این ای‌پی‌آی، به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ harf@roshan-ai.ir درخواست دهید.
+این ای‌پی‌آی با شنیدن هزاران ساعت گفتار در لحن‌ها، سبک‌ها، سرعت‌ها و رده‌های سنی مختلف، به‌خوبی آموزش دیده و با دقت بالایی می‌تواند **صوت**، **ویدیو** یا حتی **پخش زنده** را به متن فارسی تبدیل کند.
 
-# تبدیل صدا به متن به‌شکل همگام
+برای دسترسی به ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:harf@roshan-ai.ir">harf@roshan-ai.ir</a> درخواست دهید.
 
-این تابع، فایل‌های صوتی یا ویدیویی را دریافت می‌کند و متن هر فایل را به‌شکل JSON تحویل می‌دهد. در خروجی، آدرس هر فایل (<code>media_url</code>) به‌همراه مدت‌زمان فایل (<code>duration</code>) و سگمنت‌ها (<code>segments</code>) بازگردانده می‌شود. هر سگمنت، بازهٔ زمانی کوتاهی شامل سه پارامتر <code>start</code> و <code>end</code> و <code>text</code> است که به‌ترتیب بیانگر شروع بازه، پایان بازه و متن بازه است.
+# تبدیل صدا به متن
+
+این تابع، بسته‌ به تنظیم پارامترهای ورودی، می‌تواند کارهای مختلفی انجام می‌دهد که در ادامه برای هر یک مثالی آورده‌ایم.
+
+بعد از تکمیل پردازش، پاسخی دریافت می‌کنید که حاوی آرایه‌ای از نتایج است. هر یک از عناصر این آرایه مربوط به نتایج یک فایل است.
+
+در هر عنصر آرایه، آدرس فایل در پارامتر `media_url`، مدت‌زمان فایل در پارامتر `duration` و متن‌های استخراج‌شده در آرایهٔ `segments` قرار می‌گیرد.
+
+هر سگمنت شامل سه پارامتر `start` زمان شروع بازه، `end` زمان پایان بازه و `text` متن بازه است. همچنین به ازای هر فایل، وضعیت شناسایی در پارامتر `stats` قرار می‌گیرد که خودش شامل دو زیرپارامتر است. اولی `words` است که حاوی کل تعداد کلمات فایل است و دومی `known_words` است که حاوی کلماتی است که بدون تردید تشخیص داده شده است.
+
+حرف هرجایی که به تشخیص خود تردید می‌کند آن کلمه یا عبارت را درون قلاب (کروشه) می‌گذارد.
 
 
-## مثال: ارسال لینک فایل
+## مثال: ارسال آدرس فایل‌ها
 
 > Request
 
@@ -205,41 +215,67 @@ namespace MyRequest
 
 ```json
 [
-  {
-    "media_url": "https://i.ganjoor.net/a2/41417.mp3",
-    "duration": "0:00:44",
-    "segments": [
-      {
-        "start": "0:00:00",
-        "end": "0:00:02",
-        "text": "حکایت"
-      },
-      {
-        "start": "0:00:02",
-        "end": "0:00:06",
-        "text": "یکی را از حکما شنیدم که می گفت"
-      },
-      {
-        "start": "0:00:06",
-        "end": "0:00:11",
-        "text": "هرگز کسی به جهل خویش اقرار نکرده است"
-      },
-      {
-        "start": "0:00:11",
-        "end": "0:00:16",
-        "text": "مگر آن کس که چون دیگری در سخن باشد"
-      },
-      {
-        "start": "0:00:16",
-        "end": "0:00:21",
-        "text": "همچنان ناتمام گفته سخن آغاز کند"
-      },
-      ...
-    ]
-  }
+    {
+        "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+        "duration": "0:00:44",
+        "segments": [
+            {
+                "start": "0:00:00",
+                "end": "0:00:02",
+                "text": "[حکایت]"
+            },
+            {
+                "start": "0:00:02",
+                "end": "0:00:06",
+                "text": "یکی را از حکما شنیدم که می گفت"
+            },
+            {
+                "start": "0:00:06",
+                "end": "0:00:11",
+                "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+            },
+            {
+                "start": "0:00:11",
+                "end": "0:00:16",
+                "text": "مگر آن کس که چون دیگری در سخن باشد"
+            },
+            {
+                "start": "0:00:16",
+                "end": "0:00:21",
+                "text": "همچنان ناتمام گفته سخن آغاز کند"
+            },
+            {
+                "start": "0:00:21",
+                "end": "0:00:26",
+                "text": "سخن را سر از [ای] خردمند و بن"
+            },
+            {
+                "start": "0:00:26",
+                "end": "0:00:30",
+                "text": "میا بر سخن در میان سخن"
+            },
+            {
+                "start": "0:00:30",
+                "end": "0:00:37",
+                "text": "خداوند تدبیر و فرهنگ و [روش] نگوید سخن"
+            },
+            {
+                "start": "0:00:37",
+                "end": "0:00:39",
+                "text": "تا نبیند خموش"
+            }
+    ],
+        "stats": {
+            "words": 57,
+            "known_words": 54
+        }
+    }
 ]
 
+
 ```
+
+روش اول برای تبدیل فایل‌های صوتی یا ویدیویی به متن، ارسال آدرس فایل‌ها در پارامتر `media_urls` است.
 
 `POST /api/transcribe_files/`
 
@@ -256,14 +292,29 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لینک فایل‌های ورودی (صدا یا ویدیو)</p>
+<img src="./images/vector.svg" alt="vector">  آدرس فایل‌های صوتی یا ویدیویی یا ترکیبی از این دو</p>
 <br><br>
-## مثال: ارسال مستقیم فایل
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند تبدیل فایل‌ها به متن باید منتظر بمانید اما اگر `false` باشد بلافاصله بعد از ارسال درخواست، پاسخی با ارسال وضعیت پردازش در پارامتر `state` و فهرستی از شناسه‌های پردازش در پارامتر `task_ids` (برای هر فایل یک شناسه) بازگردانده می‌شود که بعداً می‌توانید وضعیت پردازش این شناسه‌ها را جویا شوید.</p>
+<br><br>
+## مثال: آپلود فایل
 
 > Request
 
 ```plaintext
-"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+"    --{boundary value}\n    Content-Disposition: form-data; name='41417'; filename='FILE NAME'\n    Content-Type: audio/mpeg (according to the type of the uploaded file)\n    {file content}\n    --{boundary value}\n"
 ```
 
 ```shell
@@ -448,39 +499,63 @@ namespace MyRequest
 
 ```json
 [
-  {
-    "media_url": "http://harf.roshan-ai.ir/media/files/96/84/859267728361.mp3",
-    "duration": "0:00:44",
-    "segments": [
-      {
-        "start": "0:00:00",
-        "end": "0:00:02",
-        "text": "حکایت"
-      },
-      {
-        "start": "0:00:02",
-        "end": "0:00:06",
-        "text": "یکی را از حکما شنیدم که می گفت"
-      },
-      {
-        "start": "0:00:06",
-        "end": "0:00:11",
-        "text": "هرگز کسی به جهل خویش اقرار نکرده است"
-      },
-      {
-        "start": "0:00:11",
-        "end": "0:00:16",
-        "text": "مگر آن کس که چون دیگری در سخن باشد"
-      },
-      {
-        "start": "0:00:16",
-        "end": "0:00:21",
-        "text": "همچنان ناتمام گفته سخن آغاز کند"
-      },
-      ...
-    ]
-  }
+    {
+        "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+        "duration": "0:00:44",
+        "segments": [
+            {
+                "start": "0:00:00",
+                "end": "0:00:02",
+                "text": "[حکایت]"
+            },
+            {
+                "start": "0:00:02",
+                "end": "0:00:06",
+                "text": "یکی را از حکما شنیدم که می گفت"
+            },
+            {
+                "start": "0:00:06",
+                "end": "0:00:11",
+                "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+            },
+            {
+                "start": "0:00:11",
+                "end": "0:00:16",
+                "text": "مگر آن کس که چون دیگری در سخن باشد"
+            },
+            {
+                "start": "0:00:16",
+                "end": "0:00:21",
+                "text": "همچنان ناتمام گفته سخن آغاز کند"
+            },
+            {
+                "start": "0:00:21",
+                "end": "0:00:26",
+                "text": "سخن را سر از [ای] خردمند و بن"
+            },
+            {
+                "start": "0:00:26",
+                "end": "0:00:30",
+                "text": "میا بر سخن در میان سخن"
+            },
+            {
+                "start": "0:00:30",
+                "end": "0:00:37",
+                "text": "خداوند تدبیر و فرهنگ و [روش] نگوید سخن"
+            },
+            {
+                "start": "0:00:37",
+                "end": "0:00:39",
+                "text": "تا نبیند خموش"
+            }
+    ],
+        "stats": {
+            "words": 57,
+            "known_words": 54
+        }
+    }
 ]
+
 
 ```
 
@@ -501,21 +576,14 @@ Value: <span style="background-color: #00A693;
 <p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  فایل ورودی</p>
 <br><br>
-# تبدیل صدا به متن به‌شکل ناهمگام
-
-در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است.
-
-
-## مثال: ارسال لینک فایل به‌شکل ناهمگام
+## مثال: بررسی وضعیت پردازش
 
 > Request
 
 ```plaintext
 {
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
+    "media_urls": "List of URLs",
+    "wait": true
 }
 ```
 
@@ -523,10 +591,8 @@ Value: <span style="background-color: #00A693;
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
       --data-binary {
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
+    "media_urls": "List of URLs",
+    "wait": true
 } \
       http://harf.roshan-ai.ir/api/transcribe_files/
 ```
@@ -536,10 +602,8 @@ from urllib2 import Request, urlopen
 
 values = """
 {
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
+    "media_urls": "List of URLs",
+    "wait": true
 }
 """
 
@@ -573,10 +637,8 @@ class MyRequest {
             http.setDoOutput(true);
 
             byte[] out = "{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
+    "media_urls": "List of URLs",
+    "wait": true
 }".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
 
@@ -607,10 +669,8 @@ class MyRequest {
   $url = "http://harf.roshan-ai.ir/api/transcribe_files/";
   $content = json_encode(
       '{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
+    "media_urls": "List of URLs",
+    "wait": true
 }');
   $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_HEADER, false);
@@ -659,229 +719,8 @@ namespace MyRequest
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
                 string json = "{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "wait": false
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-{
-  "state":"PENDING",
-  "task_ids":["..."]
-}
-
-```
-
-اگر در درخواست خود مقدار پارامتر <code>wait</code> را برابر <code>false</code> قرار دهید، درخواست به‌شکل ناهمگام ارسال می‌شود. در این حالت دیگر لازم نیست منتظر نتیجه بمانید. درعوض، در خروجی، دو پارامتر <code>state</code> و <code>task_ids</code> دریافت می‌کنید که اولی وضعیت پردازش را مشخص می‌کند و دومی لیستی از <code>task_id</code> ها را برمی‌گرداند.  هر <code>task_id</code> شناسهٔ پردازش یک فایل است که بعداً می‌توانید با تابع «دریافت پاسخ به‌شکل ناهمگام» از وضعیت پردازش آن باخبر شوید. در درخواست به‌شکل ناهمگام اگر نتیجهٔ پردازش آماده باشد، بلافاصله در خروجی نمایش داده می‌شود، اگر نه، وضعیت پردازش در پارامتر <code>state</code> برگردانده می‌شود، مثلاً <code>PENDING</code> یعنی در حال پردازش است.
-
-`POST /api/transcribe_files/`
-
-<dl>
-<strong>media_urls(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    List of URLs
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لینک فایل‌های ورودی</p>
-<br><br>
-<dl>
-<strong>wait</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر <code>false</code> باشد یعنی منتظر نتیجه نمی‌ماند. درعوض شناسهٔ پردازش فایل‌ها (<code>task_ids</code>) را برمی‌گرداند تا خودتان هرازگاهی وضعیت پردازش را چک کنید و بعد از پایان پردازش، مجددا درخواست دهید و خروجی نهایی را ببینید.</p>
-<br><br>
-## مثال: دریافت پاسخ به‌شکل ناهمگام
-
-> Request
-
-```plaintext
-{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-}
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-} \
-      http://harf.roshan-ai.ir/api/transcribe_files/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-}
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('http://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("http://harf.roshan-ai.ir/api/transcribe_files/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "http://harf.roshan-ai.ir/api/transcribe_files/";
-  $content = json_encode(
-      '{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://harf.roshan-ai.ir/api/transcribe_files/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "tasks_ids": [
-        "..."
-    ],
-    "wait": false
+    "media_urls": "List of URLs",
+    "wait": true
 }";
 
                 streamWriter.Write(json);
@@ -905,26 +744,29 @@ namespace MyRequest
 ```json
 {"state":"PENDING"}
 
+
 ```
 
-با ارسال یک یا چند شناسهٔ پردازش در پارامتر <code>task_ids</code>، نتیجهٔ پردازش آن‌ها بازگردانده می‌شود. در پاسخ خروجی، پارامتر <code>state</code> می‌تواند سه حالت داشته باشد. <code>PENDING</code> یعنی در حال پردازش، <code>FAILURE</code> یعنی بروز خطا، <code>TIMEOUT</code> یعنی پردازش فایل بیش از تحمل سامانه بوده است.
+اگر در <a href="#c15d6ded38">تبدیل صدا به متن</a> ، درخواست خود را با پارامتر `wait=false` ارسال کرده باشید، فهرستی از شناسه‌های پردازش در پارامتر `task_ids` دریافت می‌کنید که برای بررسی وضعیت پردازش آن‌ها می‌توانید همانند مثال زیر عمل کنید.
+
+در پاسخ، وضعیت پردازش در پارامتر `state` برگردانده می‌شود: `PENDING` یعنی در حال پردازش، `FAILURE` یعنی بروز خطا، `TIMEOUT` یعنی زمان پردازش فایل بیش از زمان تنظیم شده برای انتظار سامانه بوده و از دور پردازش خارج شده است.
 
 `POST /api/transcribe_files/`
 
 <dl>
-<strong>task_ids(required)</strong>
+<strong>media_urls(required)</strong>
 <br>
 <br>
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
                     border-radius: 2px">
-                    List of task ids
+                    List of URLs
                     </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست شناسه‌های پردازش</p>
+<img src="./images/vector.svg" alt="vector">  آدرس فایل‌های ورودی</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -939,19 +781,19 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  همانند قبل.</p>
+<img src="./images/vector.svg" alt="vector">  <a href="#c15d6ded38">توضیحات این پارامتر</a>، پیشتر آمده است.</p>
 <br><br>
 # تبدیل پخش زندهٔ صدا به متن
 
-برای تبدیل صدای درحال‌پخش (زنده، لایو، استریم) باید از طریق وب‌سوکت به سامانه متصل شوید. در این حالت، پس از برقراری ارتباط، فایل باید در قالب wav به صورت باینری به سرور ارسال شود.
+برای تبدیل صدای درحال‌پخش (زنده، لایو، استریم) باید از طریق وب‌سوکت به سامانه متصل شوید. در این حالت، پس از برقراری ارتباط با سرور باید فایل خود را در قالب wav به‌شکل باینری ارسال کنید.
 
-{"segment_id": 1, "text": "سازمان بهداشت جهانی", "start": "0:00:00", "end": "0:00:05"}
+`{"segment_id": 1, "text": "سازمان بهداشت جهانی", "start": "0:00:00", "end": "0:00:05"}`
 
-اگر پردازش کامل نشده باشد، پاسخی به‌شکل زیر ارسال می‌شود:
+اگر پردازش کامل نشده باشد، پاسخی به‌شکل زیر دریافت می‌کنید:
 
-{"state": "PENDING"}
+`{"state": "PENDING"}`
 
-در انتها، برای اعلام پایان فرایند پردازش باید متن "finalize"به سرور ارسال شود.
+در انتها، برای اعلام پایان فرایند پردازش، باید متن `finalize` را به سرور ارسال کنید.
 
 
 ## مثال
@@ -1064,6 +906,7 @@ ws.close()
 
 ```json
 {"state":"PENDING"}
+
 
 ```
 

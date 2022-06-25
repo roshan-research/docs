@@ -23,13 +23,1404 @@ meta:
 
 # کشف
 
-کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.
+<bold>کشف**</bold>، مثال‌هایی از یک مفهوم را می‌گیرید و بعد همان مفهوم را در داده‌های جدید پیدا می‌کند. مثلاً به کشف یاد می‌دهید که جملات خیلی عالی بود، سه ماهه خریدم مشکلی نداشتم و این محصول را پیشنهاد می‌کنم، چند نمونه از مفهوم رضایت از خرید کالا است. یا عکس‌هایی از حرم رضوی یا آقای رئیسی را نشان می‌دهید و می‌گویید این‌ها تصویر حرم یا آقای رئیسی است.
 
-برای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید.
+با این آموزش‌ها، کشف به‌مرور بالغ‌تر می‌شود و می‌تواند مفاهیم پنهان در دل داده‌های متنی، تصویری یا حتی ویدیویی را کشف کند. کشف مثل یک کودک در‌حال‌رشد است. هرچقدر این کودک، بیشتر و متنوع‌تر بیاموزد، بهتر و دقیق‌تر به شما کمک می‌کند.
 
-# تحلیل متن
+برای دسترسی به ای‌پی‌آی، به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ [](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg) <a href="mailto:kashf@roshan-ai.ir">kashf@roshan-ai.ir<a> درخواست دهید.
 
-تابع تحلیل متن برچسب‌های مربوط به نمونه‌های ارسال شده را در یک مجموعه‌داده متنی تشخیص می‌دهد. این تابع یک مجموعه داده متنی و لیستی از متن‌ها را دریافت نموده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، متن نمونه و لیستی از برچسب‌های تشخیص داده شده را به همراه میزان اطمینان پیش‌بینی برای هر دسته ارسال می‌کند.
+# اصطلاحات
+
+در این مستندات از اصطلاحات مختلفی استفاده می‌کنیم که در این بخش به شرح هر یک می‌پردازیم. پیشنهاد می‌کنیم قبل از مطالعهٔ مستندات این قسمت را به دقت مطالعه کنید.
+
+## دیتاست (dataset)
+
+دیتاست مجموعه‌ای از داده‌هاست که قرار است فرایند یادگیری ماشین روی آن انجام شود. کشف با سه نوع دیتاست سروکار دارد: اولی دیتاست متنی است که فقط حاوی داده‌های متنی است مثل نظرات دیجی‌کالا؛ دومی دیتاست تصویری است که حاوی تصاویر است مثل تصاویر امکان تاریخی ایران؛ سومی دیتاست چهره‌ها است که حاوی تصاویر چهره‌هاست مثل تصاویر سیاسیون.
+
+## برچسب (tag)
+
+برچسب نمایندهٔ یک مفهوم است. مثلاً در یک دیتاست متنی برای نوشتهٔ «بعد از یک هفته از کار افتاد.» می‌توان از دو برچسب «نارضایتی از خرید» و «کالای معیوب» استفاده کرد، یا در یک دیتاست تصویری برای تصویر حرم رضوی می‌توان از برچسب «حرم رضوی» استفاده کرد، یا در یک دیتاست چهره می‌توان برای عکس آقای رئیسی از برچسب «سیدابراهیم رئیسی» استفاده کرد.
+
+در کشف، هر برچسب دارای یک پارامتر `positive` است که به معنی تعلق یک برچسب به یک داده است. مثلاً در جملهٔ «بعد از یک هفته از کار افتاد» برچسب «رضایت از خرید» صدق می‌کند (positive=true) ولی برچسب «نارضایتی از خرید» صدق نمی‌کند (positive=false).
+
+## گزارش (report)
+
+گزارش یک برچسب‌گذاری صریح از سوی ناظر انسانی است. شما صریحاً به ماشین گزارش می‌دهید که فلان داده با چه برچسب‌هایی در ارتباط هست یا با چه برچسب‌هایی در ارتباط نیست. با این کار ماشین بین گزارش شما و داده‌های نمونه، روابط پنهان را کشف می‌کند و در تشخیص‌های آتی استفاده می‌کند. در زندگی واقعی، پاسخ‌های ما به برخی از سوالات کودکان دقیقاً نقش همین گزارش را بازی می‌کند. به عنوان مثال، به کودک یاد می‌دهید که این دوچرخه است، آن ماشین است، این رنگ آبی است، آن رنگ آبی نیست و ... .
+
+# ساخت برچسب
+
+برچسب جدید می‌سازد.
+
+
+## نمونه
+
+> Request
+
+```plaintext
+{
+    "dataset": "iran",
+    "title": "New Place"
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "dataset": "iran",
+    "title": "New Place"
+} \
+      https://kashf.roshan-ai.ir/api/create_tag/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "dataset": "iran",
+    "title": "New Place"
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://kashf.roshan-ai.ir/api/create_tag/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://kashf.roshan-ai.ir/api/create_tag/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "dataset": "iran",
+    "title": "New Place"
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://kashf.roshan-ai.ir/api/create_tag/";
+  $content = json_encode(
+      '{
+    "dataset": "iran",
+    "title": "New Place"
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/create_tag/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "dataset": "iran",
+    "title": "New Place"
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    {
+      "title": "New Place",
+      "tag_id": 111111111,
+      "active": true
+    }
+
+
+```
+
+`POST /api/create_tag/`
+
+<dl>
+<strong>dataset(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    dataset slug
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید برچسب در آن ساخته شود.</p>
+<br><br>
+<dl>
+<strong>title(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  عنوان برچسب</p>
+<br><br>
+<dl>
+<strong>active</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر `false` باشد گزارش‌های مربوط به این برچسب در فرایند یادگیری ماشین به‌کار گرفته نمی‌شود. مقدار پیش‌فرض: `true`.</p>
+<br><br>
+# ویرایش برچسب
+
+اطلاعات یک برچسب را ویرایش می‌کند.
+
+
+## نمونه
+
+> Request
+
+```plaintext
+{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+} \
+      https://kashf.roshan-ai.ir/api/update_tag/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://kashf.roshan-ai.ir/api/update_tag/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://kashf.roshan-ai.ir/api/update_tag/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://kashf.roshan-ai.ir/api/update_tag/";
+  $content = json_encode(
+      '{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/update_tag/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    {
+      "title": "Old Place",
+      "tag_id": 111111111,
+      "active": true
+    }
+
+
+```
+
+`POST /api/update_tag/`
+
+<dl>
+<strong>tag_"id"(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    0
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید اطلاعات آن را ویرایش کنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href="#d447349868">وضعیت دیتاست</a> پیدا کنید.</p>
+<br><br>
+<dl>
+<strong>dataset(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    dataset slug
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که برچسب در آن تعریف شده است.</p>
+<br><br>
+<dl>
+<strong>title(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  عنوان برچسب.</p>
+<br><br>
+<dl>
+<strong>active</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر `false` باشد گزارش‌های مربوط به این برچسب در فرایند یادگیری ماشین به‌کار گرفته نمی‌شود. مقدار پیش‌فرض: `true`.</p>
+<br><br>
+# حذف برچسب
+
+یک برچسب را حذف می‌کند. در پاسخ برگشتی، پارامتر `deleted_reports` بیانگر تعداد گزارش‌های است که با حذف برچسب، از بین رفته‌اند.
+
+
+## نمونه
+
+> Request
+
+```plaintext
+{
+    "tag_id": 111111111
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "tag_id": 111111111
+} \
+      https://kashf.roshan-ai.ir/api/delete_tag/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "tag_id": 111111111
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://kashf.roshan-ai.ir/api/delete_tag/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://kashf.roshan-ai.ir/api/delete_tag/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "{
+    "tag_id": 111111111
+}".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://kashf.roshan-ai.ir/api/delete_tag/";
+  $content = json_encode(
+      '{
+    "tag_id": 111111111
+}');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/delete_tag/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{
+    "tag_id": 111111111
+}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+          {
+          "dataset": "iran",
+          "deleted_reports": 0
+        }
+
+
+```
+
+`POST /api/delete_tag/`
+
+<dl>
+<strong>tag_"id"(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    0
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید حذف کنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href="#d447349868">وضعیت دیتاست</a> پیدا کنید.</p>
+<br><br>
+# ثبت گزارش متنی
+
+برای یک برچسب متنی، گزارش جدیدی ثبت می‌کند. مثلاً به ماشین می‌گویید نمونهٔ متنی «بسته‌بندی عالی بود.» مرتبط با برچسب «رضایت از خرید» و نامرتبط با برچسب «نارضایتی از خرید» است. مرتبط یا نامرتبط بودن برچسب را با تنظیم پارامتر `positive` اعلام می‌کنیم. بعداً ماشین از روی این گزارش‌ها درس می‌گیرید. پارامتر `id` در پاسخ برگشتی، شناسهٔ یکتای متنی است که گزارش داده‌اید. بعداً می‌توانید با تابع <a href="#8577413627">حذف گزارش</a> و ارائهٔ این شناسه، آن را از فهرست گزارش‌ها حذف کنید.
+
+
+## نمونه
+
+> Request
+
+```plaintext
+[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary [
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+] \
+      https://kashf.roshan-ai.ir/api/report_text_tags/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://kashf.roshan-ai.ir/api/report_text_tags/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://kashf.roshan-ai.ir/api/report_text_tags/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://kashf.roshan-ai.ir/api/report_text_tags/";
+  $content = json_encode(
+      '[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_text_tags/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    [
+      {
+        "report": "[[39,true]]",
+        "id": 1211592
+      }
+    ]
+
+
+```
+
+`POST /api/report_text_tags/`
+
+<dl>
+<strong>content(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  متنی که می‌خواهید گزارش دهید.</p>
+<br><br>
+<dl>
+<strong>tag_"id"(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید به متن بزنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href="#d447349868">وضعیت دیتاست</a> پیدا کنید.</p>
+<br><br>
+<dl>
+<strong>positive</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر `true` (مقدار پیش‌فرض) باشد این برچسب را به عنوان یک برچسب مرتبط با متن گزارش می‌دهد و اگر `false` باشد این برچسب را به عنوان یک برچسب نامرتبط با متن گزارش می‌دهد. گاهی لازم است برای یادگیری بهتر ماشین اعلام کنید که فلان متن با چه برچسب‌هایی در ارتباط نیست.</p>
+<br><br>
+# ثبت گزارش تصویری
+
+همانند <a href="#ee264f8d93">ثبت گزارش متنی</a> است با این تفاوت که اینجا به جای متن، تصویر گزارش می‌دهید.
+
+
+## نمونه
+
+> Request
+
+```plaintext
+[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary [
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+] \
+      https://kashf.roshan-ai.ir/api/report_image_tags/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://kashf.roshan-ai.ir/api/report_image_tags/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://kashf.roshan-ai.ir/api/report_image_tags/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = "[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://kashf.roshan-ai.ir/api/report_image_tags/";
+  $content = json_encode(
+      '[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_image_tags/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    [
+      {
+        "report": "[[3,true]]",
+        "id": 1211593
+      }
+    ]
+
+
+```
+
+`POST /api/report_image_tags/`
+
+<dl>
+<strong>image_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس تصویری که می‌خواهید گزارش دهید.</p>
+<br><br>
+<dl>
+<strong>tag_"id"(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    0
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید به تصویر بزنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href="#d447349868">وضعیت دیتاست</a> پیدا کنید.</p>
+<br><br>
+<dl>
+<strong>positive</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  اگر `true` (مقدار پیش‌فرض) باشد این برچسب را به عنوان یک برچسب مرتبط با متن گزارش می‌دهد و اگر `false` باشد این برچسب را به عنوان یک برچسب نامرتبط با متن گزارش می‌دهد. گاهی لازم است برای یادگیری بهتر ماشین اعلام کنید که فلان متن با چه برچسب‌هایی در ارتباط نیست.</p>
+<br><br>
+# حذف گزارش
+
+یک گزارش را حذف می‌کند.
+
+
+## نمونه
+
+> Request
+
+```plaintext
+"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary "{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n" \
+      https://kashf.roshan-ai.ir/api/remove_tag_report/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://kashf.roshan-ai.ir/api/remove_tag_report/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+```java
+import java.lang.System;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.net.URLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class MyRequest {
+
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://kashf.roshan-ai.ir/api/remove_tag_report/");
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = ""{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"".getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
+```
+
+```php
+<?php
+
+  $url = "https://kashf.roshan-ai.ir/api/remove_tag_report/";
+  $content = json_encode(
+      '"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"');
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_HEADER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+          array(
+              "Content-Type: application/json",
+              "Authorization: Token TOKEN_KEY",
+              );
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+  $json_response = curl_exec($curl);
+
+  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  if ( $status != 200 ) {
+      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+  }
+
+
+  curl_close($curl);
+
+  $response = json_decode($json_response, true);
+?>
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
+
+namespace MyRequest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/remove_tag_report/");
+            httpWebRequest.Headers["Content-Type"]= "application/json";
+            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
+
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = ""{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+```
+
+> Response 
+
+```json
+    {
+      "image_id": 1211593,
+      "tag_id": 3,
+    }
+
+
+```
+
+`POST /api/remove_tag_report/`
+
+<dl>
+<strong>text_"id"</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسهٔ متن گزارش‌شده که می‌خواهید حذف کنید. این شناسه را می‌توانید از طریق تابع <a href="#d447349868">فهرست گزارش‌های برچسب</a> پیدا کنید.</p>
+<br><br>
+<dl>
+<strong>image_"id"</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  شناسهٔ تصویر گزارش‌شده که می‌خواهید حذف کنید. این شناسه را می‌توانید از طریق تابع <a href="#d447349868">فهرست گزارش‌های برچسب</a> پیدا کنید.</p>
+<br><br>
+<dl>
+<strong>tag_"id"(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  یک متن یا تصویر می‌تواند چندین برچسب بخورد. با کمک این پارامتر اعلام می‌کنید که متن یا تصویری که می‌خواهید حذف کنید مربوط به کدام برچسب است.</p>
+<br><br>
+# برچسب‌گذاری متون
+
+بعد از اینکه ماشین با کمک گزارش‌های ورودی به سطح قابل قبولی از آگاهی رسید می‌تواند به پشتوانهٔ این آگاهی، به داده‌های جدید برچسب بزند. این تابع، یک دیتاست و تعدادی متن را به‌عنوان ورودی می‌گیرد و در پاسخ، برچسب‌های پیشنهادی را به‌همراه دقت تشخیص (`probability`) برای هر متن برمی‌گرداند.
 
 
 ## نمونه
@@ -216,28 +1607,29 @@ namespace MyRequest
 > Response 
 
 ```json
-[
-  {
-    "content": "ارزش خریدنش رو بی شک داره",
-    "tags": [
+    [
       {
-        "id": 39,
-        "probability": 1.0,
-        "title": "توصیه خرید"
+        "content": "ارزش خریدنش رو بی شک داره",
+        "tags": [
+          {
+            "id": 39,
+            "probability": 1.0,
+            "title": "توصیه خرید"
+          }
+        ]
+      },
+      {
+        "content": "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره",
+        "tags": [
+          {
+            "id": 56,
+            "probability": 1.0,
+            "title": "عدم رضایت بعد خرید"
+          }
+        ]
       }
     ]
-  },
-  {
-    "content": "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره",
-    "tags": [
-      {
-        "id": 56,
-        "probability": 1.0,
-        "title": "عدم رضایت بعد خرید"
-      }
-    ]
-  }
-]
+
 
 ```
 
@@ -256,7 +1648,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>contents(required)</strong>
@@ -266,7 +1658,7 @@ Value: [content, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست نمونه‌های متنی ارسالی</p>
+<img src="./images/vector.svg" alt="vector">  متن‌هایی که می‌خواهید برچسب‌گذاری شود.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -281,9 +1673,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند  تحلیل، با اعلام وضعیت(‌processing)
-
-پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.</p>
 <br><br>
 <dl>
 <strong>tree_based</strong>
@@ -298,11 +1688,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  تحلیل متن به روش درختی</p>
+<img src="./images/vector.svg" alt="vector">  برچسب‌گذاری به روش درختی.</p>
 <br><br>
-# تحلیل تصویر
+# برچسب‌گذاری تصاویر
 
-تابع تحلیل تصویر برچسب‌های مربوط به نمونه‌ تصاویر ارسال شده را در یک مجموعه‌داده تصویری تشخیص می‌دهد. این تابع یک مجموعه داده تصویری و لیستی از تصاویر مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک تصویر و لیست برچسب‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر برچسب ارسال می‌نماید.
+همانند تابع <a href="#ee264f8d93">برچسب‌گذاری متون</a> است با این تفاوت که اینجا به جای مجموعه‌ای از متن‌ها، مجموعه‌ای از تصاویر می‌دهید. در پاسخ، برای هر تصویر، برچسب یا برچسب‌هایی تولید می‌شود. برای این تابع می‌توانید به جای آدرس تصویر، فایل تصویر را به‌طورمستقیم و در قالب تقاضای multipart/form-data ارسال نمایید.
 
 
 ## نمونه
@@ -489,32 +1879,31 @@ namespace MyRequest
 > Response 
 
 ```json
-[
-  {
-    "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-    "tags": [
+    [
       {
-        "id": 1,
-        "probability": 1.0,
-        "title": "حرم رضوی"
+        "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "tags": [
+          {
+            "id": 1,
+            "probability": 1.0,
+            "title": "حرم رضوی"
+          }
+        ]
+      },
+      {
+        "image_url": "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg",
+        "tags": [
+          {
+            "id": 36,
+            "probability": 1.0,
+            "title": "تئاتر شهر"
+          }
+        ]
       }
     ]
-  },
-  {
-    "image_url": "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg",
-    "tags": [
-      {
-        "id": 36,
-        "probability": 1.0,
-        "title": "تئاتر شهر"
-      }
-    ]
-  }
-]
+
 
 ```
-
-می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید.
 
 `POST /api/tag_images/`
 
@@ -531,7 +1920,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>image_urls(required)</strong>
@@ -541,7 +1930,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس تصاویر ارسالی برای تحلیل</p>
+<img src="./images/vector.svg" alt="vector">  تصاویری که می‌خواهید برچسب‌گذاری شود.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -556,13 +1945,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآيند تحلیل  با اعلام وضعیت(‌processing)
-
-پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.</p>
 <br><br>
-# تحلیل چهره
+# برچسب‌گذاری تصاویر چهره
 
-تابع تحلیل چهره، چهره‌های تصاویر ارسال شده را در یک مجموعه‌داده چهره تشخیص می‌دهد. این تابع یک مجموعه داده چهره و لیستی از تصاویر مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک تصویر و لیست چهره‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر چهره ارسال می‌نماید.
+این تابع نیز همانند تابع <a href="#d03b0a053a">برچسب‌گذاری تصاویر</a> است منتهی اینجا تصاویری از چهره‌ها به آن می‌دهید. اینجا نیز می‌توانید به جای آدرس تصویر، فایل تصویر را به‌طورمستقیم و در قالب تقاضای multipart/form-data ارسال نمایید.
 
 
 ## نمونه
@@ -743,22 +2130,21 @@ namespace MyRequest
 > Response 
 
 ```json
-[
-  {
-    "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-    "tags": [
+    [
       {
-        "id": 328742,
-        "probability": 1.0,
-        "title": "حسین امیرعبداللهیان (سیاسی)"
+        "image_url": "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "tags": [
+          {
+            "id": 328742,
+            "probability": 1.0,
+            "title": "حسین امیرعبداللهیان (سیاسی)"
+          }
+        ]
       }
     ]
-  }
-]
+
 
 ```
-
-می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید.
 
 `POST /api/tag_faces/`
 
@@ -775,7 +2161,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>image_urls(required)</strong>
@@ -785,7 +2171,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس تصاویر ارسالی برای تحلیل</p>
+<img src="./images/vector.svg" alt="vector">  تصاویری که می‌خواهید چهره‌های داخلِ آن‌ها شناسایی شود.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -800,13 +2186,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان تحلیل بلافاصله با اعلام وضعیت(‌processing)
-
-پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان تحلیل ارسال می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.</p>
 <br><br>
-# تحلیل فریم‌های ویدئو
+# برچسب‌گذاری فریم‌های ویدئو
 
-این تابع برای تحلیل فریم‌های یک ویدئو و تشخیص برچسب‌های مربوط به هر فریم در یک مجموعه داده مشخص کاربرد دارد. ابن تابع مجموعه داده مربوطه و لیست آدرس‌های مربوط به ویدئو‌ها را دریافت کرده و در پاسخ لیستی از فریم‌های استخراج شده، شامل شماره، برچسب زمانی و لیستی از برچسب‌های تشخیص داده شده به همراه میزان اطمینان از هر برچسب را ارسال می‌نماید.
+یک ویدیو را با تنظیمات دلخواه، به فریم‌های مختلف می‌شکند و هر فریم را همانند تابع <a href="#d03b0a053a">برچسب‌گذاری تصویر</a> برچسب‌گذاری می‌کند.
 
 
 ## نمونه
@@ -1005,46 +2389,47 @@ namespace MyRequest
 > Response 
 
 ```json
-[
-  {
-    "video_url": "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4",
-    "frames": [
+    [
       {
-        "frame": 3,
-        "time": "0:00:00",
-        "tags": [
+        "video_url": "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4",
+        "frames": [
           {
-            "id": 0,
-            "probability": 1.0,
-            "title": "ناآشنا"
-          }
-        ]
-      },
-      {
-        "frame": 585,
-        "time": "0:00:23",
-        "tags": [
+            "frame": 3,
+            "time": "0:00:00",
+            "tags": [
+              {
+                "id": 0,
+                "probability": 1.0,
+                "title": "ناآشنا"
+              }
+            ]
+          },
           {
-            "id": 39127,
-            "probability": 0.99,
-            "title": "پل طبیعت"
-          }
-        ]
-      },
-      {
-        "frame": 603,
-        "time": "0:00:24",
-        "tags": [
+            "frame": 585,
+            "time": "0:00:23",
+            "tags": [
+              {
+                "id": 39127,
+                "probability": 0.99,
+                "title": "پل طبیعت"
+              }
+            ]
+          },
           {
-            "id": 2,
-            "probability": 1.0,
-            "title": "میدان آزادی"
+            "frame": 603,
+            "time": "0:00:24",
+            "tags": [
+              {
+                "id": 2,
+                "probability": 1.0,
+                "title": "میدان آزادی"
+              }
+            ]
           }
         ]
       }
     ]
-  }
-]
+
 
 ```
 
@@ -1063,7 +2448,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>video_urls(required)</strong>
@@ -1073,7 +2458,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها</p>
+<img src="./images/vector.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.</p>
 <br><br>
 <dl>
 <strong>every_ms</strong>
@@ -1088,7 +2473,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  فاصله بین فریم‌های استخراج شده برای تحلیل بر مبنای میلی ثانیه</p>
+<img src="./images/vector.svg" alt="vector">  هر چند میلی‌ثانیه یک فریم استخراج شود؟</p>
 <br><br>
 <dl>
 <strong>min_frame_diff</strong>
@@ -1103,7 +2488,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  حداقل مقدار تفاوت دو فریم که بیش از آن، دو فریم متفاوت در نظر گرفته می‌شوند.</p>
+<img src="./images/vector.svg" alt="vector">  کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.</p>
 <br><br>
 <dl>
 <strong>duration</strong>
@@ -1118,7 +2503,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -1133,13 +2518,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند تحلیل، با اعلام وضعیت(‌processing)
-
-پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.</p>
 <br><br>
-# تحلیل چهره‌های ویدئو
+# برچسب‌گذاری چهره‌های ویدئو
 
-این تابع برای تحلیل فریم‌های یک ویدئو و تشخیص چهره‌ها در ویدئو  کاربرد دارد. ابن تابع مجموعه داده مربوطه و لیست آدرس‌های مربوط به ویدئو‌ها را دریافت کرده و در پاسخ لیستی از فریم‌های استخراج شده، شامل شماره، برچسب زمانی و لیستی از چهره‌های تشخیص داده شده به همراه میزان اطمینان از هر دسته را ارسال می‌نماید.
+همانند تابع <a href="#9ec794253b">برچسب‌گذاری فریم‌های ویدیو</a> است، با این تفاوت که اینجا مجموعه‌ای از ویدیوها می‌دهید که حاوی تصاویر چهره‌هاست.
 
 
 ## نمونه
@@ -1352,7 +2735,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>video_urls(required)</strong>
@@ -1362,7 +2745,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها</p>
+<img src="./images/vector.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.</p>
 <br><br>
 <dl>
 <strong>every_ms</strong>
@@ -1377,7 +2760,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  فاصله بین فریم‌های استخراج شده برای تحلیل بر مبنای میلی ثانیه</p>
+<img src="./images/vector.svg" alt="vector">  هرچند میلی‌ثانیه یک فریم استخراج شود؟</p>
 <br><br>
 <dl>
 <strong>min_frame_diff</strong>
@@ -1392,7 +2775,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  حداقل مقدار تفاوت دو فریم که بیش از آن، دو فریم متفاوت در نظر گرفته می‌شوند.</p>
+<img src="./images/vector.svg" alt="vector">  کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.</p>
 <br><br>
 <dl>
 <strong>duration</strong>
@@ -1407,7 +2790,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد همهٔ ویدیو پردازش می‌شود.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -1422,13 +2805,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآيند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآيند تحلیل، با اعلام وضعیت(‌processing)
-
-پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.</p>
 <br><br>
-# تحلیل ویدئو
+# برچسب‌گذاری کل ویدئو
 
-تابع تحلیل ویدئو، برچسب‌های مربوط به نمونه‌ ویدئوهای ارسال شده را در یک مجموعه‌داده ویدئویی تشخیص می‌دهد. این تابع یک مجموعه داده ویدئویی و لیستی از آدرس ویدئوهای مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک ویدئو و لیست برچسب‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر برچسب ارسال می‌نماید.
+به جای برچسب‌گذاری تک‌تک فریم‌ها، کل ویدیو را پردازش می‌کند و برای آن فهرستی از برچسب‌ها تولید می‌کند.
 
 
 ## نمونه
@@ -1609,18 +2990,19 @@ namespace MyRequest
 > Response 
 
 ```json
-[
-  {
-    "image_url": "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4",
-    "tags": [
+    [
       {
-        "id": 77,
-        "probability": 1.0,
-        "title": "بسکتبال"
+        "image_url": "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4",
+        "tags": [
+          {
+            "id": 77,
+            "probability": 1.0,
+            "title": "بسکتبال"
+          }
+        ]
       }
     ]
-  }
-]
+
 
 ```
 
@@ -1639,7 +3021,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>video_urls(required)</strong>
@@ -1649,7 +3031,7 @@ Value: [URL, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس ویدئوهای ارسالی برای تحلیل</p>
+<img src="./images/vector.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید برچسب‌گذاری کنید.</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -1664,14 +3046,15 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند،  با اعلام وضعیت(‌processing)
-
-پاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.</p>
 <br><br>
 # آموزش مدل
 
-با فراخوانی این تابع فرآیند آموزش مدل یادگیری ماشین روی مجموعه داده مشخص شده آِغاز می‌شود. خروجی تابع وضعیت آموزش را نمایش می‌دهد که در حالت عادی waiting می‌باشد. وضعیت waiting نشان می‌دهد فرآیند آموزش هنوز شروع نشده و منتظر تخصیص منابع و شروع فرآیند است.
-برای مشاهده روند و وضعیت فرآیند آموزش و از تابع وضعیت داده استفاده کنید.
+با فرخوانی این تابع، یادگیری ماشین روی دیتاست آغاز می‌شود. در خروجی، وضعیت آموزش برگردانده می‌شود. این وضعیت در ابتدا روی `waiting` است که به معنی انتظار برای تخصیص منابع برای شروع پردازش و آموزش است و اندکی بعد به `training` تغییر می‌کند که به معنی شروع فرایند آموزش است و بعد از پایان آموزش به `trained` تغییر می‌کند.
+
+در آموزش مدل، گزارش‌ها و برچسب‌های اعلامی از سوی ما تحت بررسی قرار گرفته و با مقایسه و تشخیص روابط بین داده‌ها، به دانش ماشین اضافه می‌شود. این دانش بعداً به ماشین کمک می‌کند تا برای داده‌های جدید اظهار نظر کند و بگوید مثلاً فلان جمله یا تصویر با کدام برچسب‌ها در ارتباط است.
+
+وقتی شما به یک کودک، چند تصویرِ مختلف از یک خودرو را نشان می‌دهید و به این طریق، مفهوم «خودرو» را به او آموزش می‌دهید، آن کودک بعداً می‌تواند با مشاهدهٔ هر خودرویی مفهوم خودرو را تشخیص داده و این مفهوم را از مفاهیم دیگری مثل «دوچرخه»  و «موتورسیکلت» تمیز دهد. سامانه‌های یادگیری ماشینی از جمله کشف نیز کم‌وبیش به‌همین‌شیوه عمل می‌کنند. این الگوریتم‌ها با دریافت مجموعه‌ای از داده‌ها و آموزش‌های ابتدایی، روابط بین پارامترها و مقادیر را تشخیص داده و می‌توانند برای داده‌های جدید اظهار نظر کنند.
 
 
 ## نمونه
@@ -1834,10 +3217,11 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-    "dataset": "iran",
-    "state": "waiting"
-}
+    {
+        "dataset": "iran",
+        "state": "waiting"
+    }
+
 
 ```
 
@@ -1856,12 +3240,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده مورد نظر برای آموزش مدل</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که فرایند آموزش روی آن صورت می‌گیرد.</p>
 <br><br>
 # بازبینی مدل
 
-با فراخوانی این تابع فرآیند بازبینی داده‌های موجود در مجموعه داده آغاز می‌شود. در فرآیند بازبینی سامانه با استفاده از مدل یادگیری ماشین مجددا تعدادی از داده‌ها را برچسب می‌زند. این تابع معمولا بعد از آموزش مدل جدید کاربرد دارد که با بازبینی داده‌ها، برچسب‌های برخی از نمونه‌ها تغییر می‌کنند. در این تابع حداکثر تعداد نمونه‌هایی که در این فرآیند بازبینی می‌شوند به عنوان پارامتر ارسال می‌شود. اگر تعداد نمونه‌های مجموعه داده کمتر از این مقدار باشد، تمامی نمونه‌ها بازبینی می‌شوند.
-خروجی تابع وضعیت فرآیند را نشان می‌دهد که در حالت عادی waiting می‌باشد. براب مشاهده روند فرآیند و بررسی وضعیت آن، از فراخوانی تابع وضعیت داده استفاده نمایید.
+با فراخوانی این تابع، فرآیند بازبینی داده‌های موجود در مجموعه داده آغاز می‌شود. در فرآیند بازبینی، سامانه با استفاده از مدل یادگیری ماشین، مجدداً تعدادی از داده‌ها را برچسب‌گذاری می‌کند. این تابع معمولا بعد از آموزش مدل جدید به کار می‌رود. با بازبینی داده‌ها، شاید برچسب برخی از نمونه‌ها تغییر کند.
 
 
 ## نمونه
@@ -2030,10 +3413,11 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-    "dataset": "iran",
-    "state": "waiting"
-}
+    {
+        "dataset": "iran",
+        "state": "waiting"
+    }
+
 
 ```
 
@@ -2052,7 +3436,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده مورد نظر برای آموزش مدل</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید بازبینی مدل روی آن انجام شود.</p>
 <br><br>
 <dl>
 <strong>max_predictions(required)</strong>
@@ -2067,11 +3451,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  حداکثر تعداد نمونه‌هایی بازبینی شوند</p>
+<img src="./images/vector.svg" alt="vector">  حداکثر تعداد داده‌هایی که می‌خواهید بازبینی شود.</p>
 <br><br>
-# دریافت مجموعه داده
+# دریافت دیتاست
 
-این تابع برای دریافت مجموعه داده در قالب یک فایل csv می‌باشد.
+دیتاست موردنظر را در قالب یک فایل csv برمی‌گرداند.
 
 
 ## نمونه
@@ -2246,10 +3630,11 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-    "dataset": "iran",
-    "state": "waiting"
-}
+    {
+        "dataset": "iran",
+        "state": "waiting"
+    }
+
 
 ```
 
@@ -2268,7 +3653,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده مورد نظر برای آموزش مدل</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست که می‌خواهید دریافت کنید.</p>
 <br><br>
 <dl>
 <strong>original_urls</strong>
@@ -2283,7 +3668,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، آدرس‌های اصلی تصاویر و یا ویدئوها در فایل قرار می‌گیرند و در غیر این صورت، آدرس نمونه داخل سرور کشف در فایل گذاشته می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، آدرس اصلی تصاویر و ویدیوها را در فایل خروجی قرار می‌دهد.</p>
 <br><br>
 <dl>
 <strong>tag_names</strong>
@@ -2298,11 +3683,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد، به‌جای شناسهٔ برچسب، عنوان برچسب در خروجی ظاهر می‌شود. مقدار پیش‌فرض:`false`.</p>
 <br><br>
-# وارد کردن داده
+# اضافه‌کردن داده به دیتاست
 
-این تابع برای وارد کردن داده‌ها در قالب فایل csv و اضافه کردن آن‌ها به مجموعه داده می‌باشد.
+مجموعه‌ای از داده‌های جدید را در قالب یک فایل csv به دیتاست موردنظر اضافه می‌کند. به جای آدرس فایل csv می‌توانید فایل را به طور مستقیم و در قالب یک تقاضای multipart/form-data ارسال کنید.
 
 
 ## نمونه
@@ -2325,7 +3710,7 @@ curl  --request POST \
     "report_items": true,
     "tag_names": true
 } \
-      https://kashf.roshan-ai.ir/api/export_dataset/
+      https://kashf.roshan-ai.ir/api/import_dataset/
 ```
 
 ```python
@@ -2342,7 +3727,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('https://kashf.roshan-ai.ir/api/export_dataset/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/import_dataset/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -2362,7 +3747,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/export_dataset/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/import_dataset/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -2399,7 +3784,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "https://kashf.roshan-ai.ir/api/export_dataset/";
+  $url = "https://kashf.roshan-ai.ir/api/import_dataset/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -2444,7 +3829,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/export_dataset/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/import_dataset/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -2477,16 +3862,15 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-    "dataset": "iran",
-    "state": "waiting"
-}
+    {
+        "dataset": "iran",
+        "state": "waiting"
+    }
+
 
 ```
 
-می‌توانید برای همین تابع، فایل داده را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید:
-
-`POST /api/export_dataset/`
+`POST /api/import_dataset/`
 
 <dl>
 <strong>dataset(required)</strong>
@@ -2501,7 +3885,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده مورد نظر برای آموزش مدل</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید به داده‌های آن بیفزایید.</p>
 <br><br>
 <dl>
 <strong>csv_url(required)</strong>
@@ -2516,7 +3900,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس فایل حاوی داده مربوطه</p>
+<img src="./images/vector.svg" alt="vector">  آدرس فایل csv.</p>
 <br><br>
 <dl>
 <strong>report_items</strong>
@@ -2531,48 +3915,12 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، تمامی نمونه‌های موجود در فایل به عنوان گزارش در برچسب مربوطه اضافه می‌شوند.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد تمام داده‌های ورودی را به عنوان گزارش ثبت می‌کند.</p>
 <br><br>
-<dl>
-<strong>tag_names</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
+# وضعیت دیتاست
 
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.</p>
-<br><br>
-# وضعیت داده‌ها
-
-این تابع اطلاعاتی از وضعیت داده‌ها و فرآیندهای آموزش و ارزیابی را در  مجموعه داده مشخص شده ارسال می‌نماید. این اطلاعات شامل موارد زیر هستند:
-
-+ وضعیت فرآیند آموزش و ارزیابی مجموعه داده
-
-+ تعداد کل نمونه‌ها
-
-+ تعداد کل نمونه‌های گزارش شده
-
-+ نتایج ارزیابی مدل آموزش داده شده روی مجموعه داده
-
-+ اطلاعات داده و ارزیابی مربوط به هر کدام از دسته‌ها (در صورت فعال بودن ویژگی tags)
-
-وضعیت‌هایی ممکن مجموعه داده:
-
-+ waiting: در این حالت مجموعه داده منتظر دریافت منابع و شروع فرآیند می‌باشد.
-
-+ training: فرآیند آموزش مدل یادگیری ماشین در حال انجام است.
-
-+ trained: آموزش مدل پایان یافته و مدل جدید آماده شده است.
-
-+ retagging: فرایند بازبینی داده‌ها در حال انجام است
-
-+ retagged: بازبینی داده‌ها پایان یافته و نتایج ارزیابی به روز شده است.
+خلاصه‌وضعیتی از داده‌ها و روند آموزش و ارزیابی‌های انجام‌شده را در یک دیتاست برمی‌گرداند. در پاسخ برگشتی پارامتر `title` نام دیتاست را نشان می‌دهد، data_count تعداد داده‌های دیتاست است، `report_count` تعداد گزارش‌ها را اعلام می‌کند، `evaluation` وضعیت ارزیابی را مشخص می‌کند که خود شامل دو زیرپارامتر `precision` دقت و `recall` فراخوانی است. همچنین پارامتر `state` وضعیت پردازش فعلی روی دیتاست را نشان می‌دهد که از یکی از این مقادیر خارج نیست: `waiting` در انتظار تخصیص منابع، `training` در حال آموزش، `trained` پایان آموزش، `retagging` درحال بازبینی مدل و برچسب‌گذاری مجدد، `retagged` پایان بازبینی. 
+در نهایت پارامتر tags را داریم که فهرستی از برچسب‌های تعریف شده را روی دیتاست نشان می‌دهد. هر یک از tagها شامل `id` شناسهٔ برچسب، `title` عنوان برچسب، `active` فعال یا غیرفعال بودن برچسب، `reports` تعداد گزارش‌های برچسب، `predictions` تعداد پیش‌بینی‌های برچسب و `evaluation` وضعیت ارزیابی برچسب است.
 
 
 ## نمونه
@@ -2593,7 +3941,7 @@ curl  --request POST \
     "dataset": "iran",
     "tags": true
 } \
-      https://kashf.roshan-ai.ir/api/dataset_info/
+      https://kashf.roshan-ai.ir/dataset_info/
 ```
 
 ```python
@@ -2609,7 +3957,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('https://kashf.roshan-ai.ir/api/dataset_info/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/dataset_info/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -2629,7 +3977,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/dataset_info/");
+            URL url = new URL("https://kashf.roshan-ai.ir/dataset_info/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -2665,7 +4013,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "https://kashf.roshan-ai.ir/api/dataset_info/";
+  $url = "https://kashf.roshan-ai.ir/dataset_info/";
   $content = json_encode(
       '{
     "dataset": "iran",
@@ -2709,7 +4057,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/dataset_info/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/dataset_info/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -2741,34 +4089,35 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "title": "لحظه",
-  "state": "trained",
-  "report_count": 935,
-  "data_count": 2404,
-  "evaluation": {
-    "recall": 87,
-    "precision": 91
-  },
-  "tags": [
     {
-      "title": "برج میلاد"
-      "id": 3,
-      "reports": 116,
-      "predictions": 156,
+      "title": "لحظه",
+      "state": "trained",
+      "report_count": 935,
+      "data_count": 2404,
       "evaluation": {
-        "recall": 80.3,
-        "precision": 91.4,
-        "f1": 86.0
+        "recall": 87,
+        "precision": 91
       },
-    },
-    ...
-  ]
-}
+      "tags": [
+        {
+          "title": "برج میلاد"
+          "id": 3,
+          "reports": 116,
+          "predictions": 156,
+          "evaluation": {
+            "recall": 80.3,
+            "precision": 91.4,
+            "f1": 86.0
+          },
+        },
+        ...
+      ]
+    }       
+
 
 ```
 
-`POST /api/dataset_info/`
+`POST /dataset_info/`
 
 <dl>
 <strong>dataset(required)</strong>
@@ -2783,7 +4132,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده مورد نظر برای دریافت اطلاعات وضعیت</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید خلاصه وضعیت آن را دریافت کنید.</p>
 <br><br>
 <dl>
 <strong>tags</strong>
@@ -2798,11 +4147,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد، اطلاعات مربوط به وضعیت داده و ارزیابی تک تک برچسب‌های موجود در مجموعه داده ارسال می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true‍` باشد فهرست برچسب‌ها و وضعیت هر یک از آن‌ها را نیز نشان می‌دهد.</p>
 <br><br>
-# گزارش برچسب متن
+# فهرست تشخیص‌ها
 
-وظیفه این تابع افزودن گزارش به برچسب‌ها می‌باشد. یک گزارش نمونه‌ای است که تعلق و یا عدم تعلق به یک برچسب از قبل در آن مشخص شده و سامانه با استفاده از این گزارش‌ها مدل یادگیری ماشین را آموزش می‌دهد. این تابع یک نمونه متنی را در مجموعه داده متنی مشخص شده و در برچسب مشخص شده گزارش می‌کند. این گزارش می‌تواند مثبت (‌نمونه متعلق به برچسب است) و یا منفی (نمونه متلعق به برچسب نیست) باشد.  خروجی این تابع شامل لیستی از آیتم‌هاست که هر آیتم شناسه گزارش مربوط به همراه یک دوتایی شامل شناسه برچسب و مثبت یا منفی بودن گزارش را مشخص می‌کند.
+کشف در فرایند آموزش و بازبینی، برخی از داده‌های دیتاست را به تشخیص خود برچسب‌گذاری می‌کند. این تابع، داده‌هایی را که برچسبِ ورودی به آن الصاق شده برمی‌گرداند. نتایج این تابع صفحه‌بندی‌شده است و در هر صفحه نهایتاً ۵۰ نتیجه وجود دارد. با افزودن پارامتر `page`به انتهای آدرس می‌توانید به نتایج صفحات بعدی دسترسی پیدا کنید. در پاسخ برگشتی، تعداد کل نتایج در پارامتر `count`، آدرس صفحهٔ بعد در پارامتر `next` و آدرس صفحهٔ بعد در پارامتر `previous` قرار گرفته است.
 
 
 ## نمونه
@@ -2810,1380 +4159,13 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]
+"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary [
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-] \
-      https://kashf.roshan-ai.ir/api/report_text_tags/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/report_text_tags/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/report_text_tags/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/report_text_tags/";
-  $content = json_encode(
-      '[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_text_tags/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-[
-  {
-    "report": "[[39,true]]",
-    "id": 1211592
-  }
-]
-
-```
-
-`POST /api/report_text_tags/`
-
-<dl>
-<strong>content(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  متن نمونه گزارش شده</p>
-<br><br>
-<dl>
-<strong>tag_"id"(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب مورد نظر برای گزارش</p>
-<br><br>
-<dl>
-<strong>positive</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی بیانگر مثبت (تعلق نمونه به برچسب) و یا منفی (عدم تعلق نمونه به برچسب) است</p>
-<br><br>
-# گزارش برچسب تصویر
-
-وظیفه این تابع افزودن گزارش به برچسب‌ها می‌باشد. یک گزارش  تعلق و یا عدم تعلق یک نمونه را به یک برچسب مشخص می‌کند و سامانه با استفاده از گزارش‌ها مدل یادگیری ماشین را آموزش می‌دهد. این تابع یک تصویر را در مجموعه داده تصویری مشخص شده و در دسته مشخص شده گزارش می‌کند. این گزارش می‌تواند مثبت (‌نمونه متعلق به دسته است) و یا منفی (نمونه متلعق به دسته نیست) باشد.  خروجی این تابع شمال لیستی از آیتم‌هاست که هر آیتم شناسه گزارش مربوط به همراه یک دوتایی شامل شناسه دسته و مثبت یا منفی بودن گزارش را مشخص می‌کند.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary [
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-] \
-      https://kashf.roshan-ai.ir/api/report_image_tags/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/report_image_tags/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/report_image_tags/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/report_image_tags/";
-  $content = json_encode(
-      '[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_image_tags/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-[
-  {
-    "report": "[[3,true]]",
-    "id": 1211593
-  }
-]
-
-```
-
-`POST /api/report_image_tags/`
-
-<dl>
-<strong>image_url(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    URL
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس تصویر گزارش شده</p>
-<br><br>
-<dl>
-<strong>tag_"id"(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    0
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب مورد نظر برای گزارش</p>
-<br><br>
-<dl>
-<strong>positive</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی بیانگر مثبت (تعلق نمونه به برچسب) و یا منفی (عدم تعلق نمونه به برچسب) است</p>
-<br><br>
-# حذف گزارش
-
-این تابع یک گزارش موجود را حذف می‌کند. برای حذف گزارش تابع شناسه گزارش و شناسه برچسب را به عنوان ورودی می‌گیرد. برای حذف گزارش متنی شناسه متن با عنوان text_id و برای حذف گزارش تصویری شناسه تصویر با عنوان image_id ارسال می‌شود.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n" \
-      https://kashf.roshan-ai.ir/api/remove_tag_report/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/remove_tag_report/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/remove_tag_report/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = ""{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/remove_tag_report/";
-  $content = json_encode(
-      '"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/remove_tag_report/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = ""{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-    {
-      "image_id": 1211593,
-      "tag_id": 3,
-    }
-
-
-```
-
-`POST /api/remove_tag_report/`
-
-<dl>
-<strong>text_"id"</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس متن گزارش شده</p>
-<br><br>
-<dl>
-<strong>image_"id"</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس تصویر گزارش شده</p>
-<br><br>
-<dl>
-<strong>tag_"id"(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب مورد نظر برای گزارش</p>
-<br><br>
-# ایجاد برچسب
-
-این تابع وظیفه ایجاد برچسب جدید در یک مجموعه داده را دارد. برای این کار عنوان برچسب و همچنین مجموعه داده‌ای که برچسب در آن باید ساخته شود به عنوان ورودی به تابع داده می‌شود. همچنین در تنظیمات ارسالی به تابع می‌توان مشخص کرد که برچسب ساخته شده فعال یا غیرفعال باشد. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-{
-    "dataset": "iran",
-    "title": "New Place"
-}
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "dataset": "iran",
-    "title": "New Place"
-} \
-      https://kashf.roshan-ai.ir/api/create_tag/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-{
-    "dataset": "iran",
-    "title": "New Place"
-}
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/create_tag/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/create_tag/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "title": "New Place"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/create_tag/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "title": "New Place"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/create_tag/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "title": "New Place"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-{
-  "title": "New Place",
-  "tag_id": 111111111,
-  "active": true
-}
-
-```
-
-`POST /api/create_tag/`
-
-<dl>
-<strong>dataset(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    dataset slug
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌ای که برچسب جدید در آن ساخته می‌شود</p>
-<br><br>
-<dl>
-<strong>title(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  عنوان برچسب</p>
-<br><br>
-<dl>
-<strong>positive</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی بیانگر فعال یا غیر فعال بودن برچسب در مجموعه داده است. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.</p>
-<br><br>
-# ویرایش برچسب
-
-این تابع برای ویرایش اطلاعات و مشخصات مربوط به یک برچسب موجود کاربرد دارد. با استفاده از این تابع می‌توان نام برچسب، مجموعه داده‌ای که برچسب متعلق به آن است و وضعیت برچسب (فعال یا غیر فعال) را ویرایش نمود.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-} \
-      https://kashf.roshan-ai.ir/api/update_tag/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/update_tag/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/update_tag/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/update_tag/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/update_tag/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-{
-  "title": "Old Place",
-  "tag_id": 111111111,
-  "active": true
-}
-
-```
-
-`POST /api/update_tag/`
-
-<dl>
-<strong>tag_"id"(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    0
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب</p>
-<br><br>
-<dl>
-<strong>dataset(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    dataset slug
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده‌ای صاحب برچسب</p>
-<br><br>
-<dl>
-<strong>title(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  عنوان برچسب</p>
-<br><br>
-<dl>
-<strong>positive</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  این ویژگی بیانگر فعال یا غیر فعال بودن برچسب در مجموعه داده است. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.</p>
-<br><br>
-# حذف برچسب
-
-این تابع یک برچسب را حذف می‌کند. با حذف یک برچسب تمامی گزارش‌های مربوط به آن نیز حذف می‌گردد. این تابع شناسه برچسب مورد نظر برای حذف را به عنوان ورودی دریافت کرده و در پاسخ مجموعه داده صاحب برچسب و تعداد گزارش‌های پاک شده از این مجموعه داده را ارسال می‌کند.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-{
-    "tag_id": 111111111
-}
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "tag_id": 111111111
-} \
-      https://kashf.roshan-ai.ir/api/delete_tag/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-{
-    "tag_id": 111111111
-}
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/delete_tag/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/delete_tag/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "tag_id": 111111111
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/delete_tag/";
-  $content = json_encode(
-      '{
-    "tag_id": 111111111
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/delete_tag/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "tag_id": 111111111
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
-> Response 
-
-```json
-{
-  "dataset": "iran",
-  "deleted_reports": 0
-}
-
-```
-
-`POST /api/delete_tag/`
-
-<dl>
-<strong>tag_"id"(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    0
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب</p>
-<br><br>
-# تشخیص‌های یک برچسب
-
-این تابع، لیستی حداکثر ۵۰ تایی از تشخیص‌های مدل در برچسب مربوطه ارسال می‌کند. نمونه‌های به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.
- برای فراخوانی این تابع نیاز به مشخص کردن مجموعه داده و شناسه برچسب مورد نظر می‌باشد.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-"{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n" \
+      --data-binary "    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n" \
       https://kashf.roshan-ai.ir/api/list_tag_predictions/
 ```
 
@@ -4191,7 +4173,7 @@ curl  --request POST \
 from urllib2 import Request, urlopen
 
 values = """
-"{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"
+"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"
 """
 
 headers = {
@@ -4223,7 +4205,7 @@ class MyRequest {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = ""{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"".getBytes(StandardCharsets.UTF_8);
+            byte[] out = ""    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"".getBytes(StandardCharsets.UTF_8);
             int length = out.length;
 
             http.setFixedLengthStreamingMode(length);
@@ -4252,7 +4234,7 @@ class MyRequest {
 
   $url = "https://kashf.roshan-ai.ir/api/list_tag_predictions/";
   $content = json_encode(
-      '"{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"');
+      '"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"');
   $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_HEADER, false);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -4299,7 +4281,7 @@ namespace MyRequest
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                string json = ""{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"";
+                string json = ""    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"";
 
                 streamWriter.Write(json);
                 streamWriter.Flush();
@@ -4320,12 +4302,13 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "count": 111,
-  "next": "[base_url]/api/list_tag_predictions/?page=2",
-  "previous": null,
-  "results": [{"id": 1385,…}, {"id": 1873984,…},…]
-}
+    {
+      "count": 111,
+      "next": "[base_url]/api/list_tag_predictions/?page=2",
+      "previous": null,
+      "results": [{"id": 1385,…}, {"id": 1873984,…},…]
+    }
+
 
 ```
 
@@ -4344,7 +4327,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاست.</p>
 <br><br>
 <dl>
 <strong>tag_"id"(required)</strong>
@@ -4359,13 +4342,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسب.</p>
 <br><br>
-# گزارش‌های یک برچسب
+# فهرست گزارش‌ها
 
-این تابع، لیستی حداکثر ۵۰ تایی از گزارش‌های برچسب مربوطه را ارسال می‌کند.  نمونه‌های به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.
- برای فراخوانی این تابع نیاز به مشخص کردن مجموعه داده و شناسه برچسب مورد نظر می‌باشد.
-با استفاده از پارامتر reported_positive امکان فیلتر کردن گزارش‌های مثبت یا منفی وجود دارد.
+با دریافت نام دیتاست و شناسهٔ یک برچسب، فهرستی از گزارش‌های حاوی این برچسب را برمی‌گرداند. نتایج این تابع همانند تابع <a href="#4cca5c6c3c">فهرست تشخیص‌ها</a> صفحه‌بندی شده و پاسخ برگشتی نیز همانند آن است.
 
 
 ## نمونه
@@ -4534,12 +4515,13 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "count": 201,
-  "next": "[base_url]/api/list_tag_reports/?page=2",
-  "previous": null,
-  "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
-}
+    {
+      "count": 201,
+      "next": "[base_url]/api/list_tag_reports/?page=2",
+      "previous": null,
+      "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
+    }
+
 
 ```
 
@@ -4558,7 +4540,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید فهرست گزارش‌های آن را دریافت کنید.</p>
 <br><br>
 <dl>
 <strong>tag_"id"(required)</strong>
@@ -4573,7 +4555,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید گزارش‌های مربوط به آن برگردانده شود.</p>
 <br><br>
 <dl>
 <strong>reported_positive</strong>
@@ -4588,13 +4570,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد تنها گزارش‌های مثبت ارسال می‌شود و اگر غیر فعال باشد تنها گزارش‌های منفی ارسال می‌شود. اگر این ویژگی None باشد همه گزارش‌های ارسال می‌شود. مقدار پیش‌فرض این ویژگی None است.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.</p>
 <br><br>
-# گزارش‌های مشکوک یک برچسب
+# فهرست گزارش‌های مشکوک
 
-این تابع، لیستی حداکثر ۵۰ تایی از گزارش‌های برچسب مربوطه که مدل به برچسب آن مشکوک است را ارسال می‌کند. گزارش مشکوک در واقع گزارشی است که برچسب تشخیصی مدل با برچسب گزارش شده برای نمونه متفاوت باشد. نمونه‌ها به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.
- برای فراخوانی این تابع نیاز به شناسه برچسب مورد نظر می‌باشد.
-با استفاده از پارامتر reported_positive امکان فیلتر کردن گزارش‌های مثبت یا منفی وجود دارد.
+گزارش مشکوک، گزارشی است که برچسبی که مدل برای آن تشخیص داده با برچسبی که ما گزارش داده‌ایم متفاوت است. نتایج این تابع نیز صفحه‌بندی شده و پاسخ برگشتی آن مشابه تابع <a href="#4cf309cf19">فهرست گزارش‌ها</a> است.
 
 
 ## نمونه
@@ -4613,7 +4593,7 @@ curl  --request POST \
       --data-binary {
     "tag_id": 2
 } \
-      https://kashf.roshan-ai.ir/api/list_notsure_reports_list/
+      https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/
 ```
 
 ```python
@@ -4628,7 +4608,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('https://kashf.roshan-ai.ir/api/list_notsure_reports_list/', data=values, headers=headers)
+request = Request('https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -4648,7 +4628,7 @@ class MyRequest {
 
     public static void main(String[] args){
         try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_notsure_reports_list/");
+            URL url = new URL("https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/");
             URLConnection con = url.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;
             http.setRequestMethod("POST");
@@ -4683,7 +4663,7 @@ class MyRequest {
 ```php
 <?php
 
-  $url = "https://kashf.roshan-ai.ir/api/list_notsure_reports_list/";
+  $url = "https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/";
   $content = json_encode(
       '{
     "tag_id": 2
@@ -4726,7 +4706,7 @@ namespace MyRequest
     {
         static void Main(string[] args)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_notsure_reports_list/");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/");
             httpWebRequest.Headers["Content-Type"]= "application/json";
             httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
 
@@ -4757,16 +4737,17 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "count": 201,
-  "next": "[base_url]/api/list_tag_reports/?page=2",
-  "previous": null,
-  "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
-}
+    {
+      "count": 201,
+      "next": "[base_url]/api/list_tag_reports/?page=2",
+      "previous": null,
+      "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…},…},…]
+    }
+
 
 ```
 
-`POST /api/list_notsure_reports_list/`
+`POST /api/list_tag_notsure_reports/`
 
 <dl>
 <strong>tag_"id"(required)</strong>
@@ -4781,7 +4762,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید گزارش‌های مشکوکِ حاوی این برچسب را دریافت کنید.</p>
 <br><br>
 <dl>
 <strong>reported_positive</strong>
@@ -4796,11 +4777,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد تنها گزارش‌های مثبت ارسال می‌شود و اگر غیر فعال باشد تنها گزارش‌های منفی ارسال می‌شود. اگر این ویژگی None باشد همه گزارش‌های ارسال می‌شود. مقدار پیش‌فرض این ویژگی None است.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.</p>
 <br><br>
-# مجموعه داده‌ها
+# فهرست دیتاست‌ها
 
-با فراخوانی این تابع لیستی از مجموعه داده‌هایی که کاربر امکان مشاهده و دسترسی به آن‌ها را دارد دریافت می‌شود.
+فهرست تمام دیتاست‌ها را برمی‌گرداند. در پاسخ برگشتی، برای هر دیتاست، نام آن در پارامتر `title`، نوع آن در پارامتر `type`، نام انگلیسی آن در پارامتر `slug`، تعداد برچسب‌ها در پارامتر `tag_count`، تعداد گزارش‌ها در پارامتر `reported_count`، وضعیت آموزش یا بازبینی مدل در پارامتر `state` و وضیت ارزیابی مدل در پارامتر `evaluation` قرار می‌گیرد.
 
 
 ## نمونه
@@ -4951,24 +4932,25 @@ namespace MyRequest
 > Response 
 
 ```json
-[{
-    "title": "ایران",
-    "type": "image-tag",
-    "slug": "iran",
-    "tag_count": 21,
-    "report_count": 2526,
-    "state": "trained",
-    "evaluation": {"precision": 0.94 , "recall": 0.87},
-    "trained_at": ""
-  }, ...]
+    [{
+        "title": "ایران",
+        "type": "image-tag",
+        "slug": "iran",
+        "tag_count": 21,
+        "report_count": 2526,
+        "state": "trained",
+        "evaluation": {"precision": 0.94 , "recall": 0.87},
+        "trained_at": ""
+      }, ...]
+
 
 ```
 
 `GET /api/list_datasets/`
 
-# نمونه‌های متنی یک مجموعه
+# فهرست داده‌های متنی
 
-این تابع با دریافت نام مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید.
+شناسهٔ داده‌ها را دریافت می‌کند و برای هر شناسه، محتوای آن را در پارامتر `content`، برچسب‌های آن را در پارامتر `data` و آخرین تاریخ و زمان پردازش داده را در پارامتر `processed` برمی‌گرداند.
 
 
 ## نمونه
@@ -5149,10 +5131,11 @@ namespace MyRequest
 > Response 
 
 ```json
-[{
-    "count": 234,
-    "results": [{"text": {"id": 11462988,…},…}] 
-  }, ...]
+    [{
+        "count": 234,
+        "results": [{"text": {"id": 11462988,…},…}] 
+      }, ...]
+
 
 ```
 
@@ -5171,7 +5154,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید داده‌های متنی آن را دریافت کنید.</p>
 <br><br>
 <dl>
 <strong>text_ids(required)</strong>
@@ -5186,11 +5169,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیستی از شناسه نمونه‌ها</p>
+<img src="./images/vector.svg" alt="vector">  فهرست شناسهٔ داده‌ها.</p>
 <br><br>
-# نمونه‌های تصویری یک مجموعه
+# فهرست داده‌های تصویری
 
-این تابع با دریافت نام مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید.
+همانند تابع <a href="#ca2d5ce011">فهرست داده‌های متنی</a> است با این تفاوت که اینجا به جای شناسهٔ متن‌ها، شناسهٔ تصاویر را می‌دهید و در پاسخ به‌جای متن‌ها، آدرس تصاویر را دریافت می‌کنید.
 
 
 ## نمونه
@@ -5371,10 +5354,11 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "count": 201,
-  "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…}]
-}
+    {
+      "count": 201,
+      "results": [{"image": {"id": 1832, "url": "http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg",…}]
+    }
+
 
 ```
 
@@ -5393,7 +5377,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید فهرست داده‌های تصویری آن را دریافت کنید.</p>
 <br><br>
 <dl>
 <strong>images_ids(required)</strong>
@@ -5408,13 +5392,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیستی از شناسه نمونه‌ها</p>
+<img src="./images/vector.svg" alt="vector">  فهرست شناسهٔ تصاویر.</p>
 <br><br>
-# جستجو در نمونه‌های متنی
+# جستجو در داده‌های متنی
 
-برای جستجو در متن‌های موجود در یک مجموعه داده متنی از این تابع استفاده می‌شود. این تابع مجموعه داده متنی مورد نظر و عبارت جستجو را دریافت کرده و در پاسخ متن‌های شامل عبارت در مجموعه داده را ارسال می‌نماید.
-این تابع امکان جستجو در نمونه‌های گزارش نشده و یا نمونه‌های گزارش شده را فراهم می‌کند.
-نتایج جستجو به صورت صفحه‌بندی شده و در لیست‌های حداکثر ۵۰ تایی ارسال می‌شود.
+متنی را می‌گیرد و فهرستی از داده‌های حاوی آن متن را برمی‌گرداند. نتایج این تابع همانند تابع <a href="#4cca5c6c3c">فهرست تشخیص‌ها</a> صفحه‌بندی‌شده و همراه با آدرس صفحات بعدی و قبلی در پارامترهای `next` و `previous` بازگردانده می‌شود.
 
 
 ## نمونه
@@ -5595,12 +5577,13 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "count": 10,
-  "next": null,
-  "previous": null,
-  "results": [{"id": 11462939,…}, {"id": 4446967,…}, {"id": 4444533,…}, {"id": 4444455,…}, {"id": 4444260,…}, {"id": 4444137,…},…]
-}
+    {
+      "count": 10,
+      "next": null,
+      "previous": null,
+      "results": [{"id": 11462939,…}, {"id": 4446967,…}, {"id": 4444533,…}, {"id": 4444455,…}, {"id": 4444260,…}, {"id": 4444137,…},…]
+    }
+
 
 ```
 
@@ -5619,7 +5602,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید جستجو در آن صورت گیرد.</p>
 <br><br>
 <dl>
 <strong>query(required)</strong>
@@ -5634,7 +5617,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  عبارت جستجو</p>
+<img src="./images/vector.svg" alt="vector">  عبارت جستجو.</p>
 <br><br>
 <dl>
 <strong>reported</strong>
@@ -5649,7 +5632,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر این ویژگی فعال باشد تنها در نمونه‌های گزارش شده جستجو انجام می‌شود و در غیر این صورت در نمونه‌های گزارش نشده جستجو صورت می‌گیرد.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط در نمونه‌های گزارش‌شده جستجو می‌کند. اگر`false` باشد فقط در نمونه‌های گزارش‌نشده جستجو می‌کند.</p>
 <br><br>
 <dl>
 <strong>tag_"id"</strong>
@@ -5664,12 +5647,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  گزارش‌ها در ویژگی reported بر مبنای این ویژگی در نظر گرفته می‌شود. در واقع در صورتی که reported فعال باشد جستجو در گزارش‌های مربوط به این شناسه برچسب انجام می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  تنها در صورتی مقدار این پارامتر در نتایج اثرگذار است که پارامتر `reported` را برابر `true` قرار داده باشید. اگر اینطور باشد، تنها در گزارش‌هایی جستجو می‌شود که برچسبی با این شناسه به آن الصاق شده باشد.</p>
 <br><br>
-# جستجو در نمونه‌های تصویری
+# جستجو در داده‌های تصویری
 
-با استفاده از این تابع می‌توان در نمونه‌های تصویری یک مجموعه داده تصویری جستجو انجام داد.
-نتایج به صورت صفحه بندی شده و در لیست‌های حداکثر ۵۰ تایی ارسال می‌شود.
+عبارتی را در داده‌های تصویری یک دیتاست جستجو می‌کند. نتایج این تابع همانند تابع <a href="#1161e5e4c1">جستجو در داده‌های متنی</a> صفحه‌بندی‌شده و همراه با آدرس صفحات بعدی و قبلی در پاسخ برگشتی است.
 
 
 ## نمونه
@@ -5844,12 +5826,13 @@ namespace MyRequest
 > Response 
 
 ```json
-{
-  "count": 10,
-  "next": null,
-  "previous": null,
-  "results": [{"id": 11462939,…}, {"id": 4446967,…}, {"id": 4444533,…}, {"id": 4444455,…}, {"id": 4444260,…}, {"id": 4444137,…},…]
-}
+    {
+      "count": 10,
+      "next": null,
+      "previous": null,
+      "results": [{"id": 11462939,…}, {"id": 4446967,…}, {"id": 4444533,…}, {"id": 4444455,…}, {"id": 4444260,…}, {"id": 4444137,…},…]
+    }
+
 
 ```
 
@@ -5868,7 +5851,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید در آن جستجو کنید.</p>
 <br><br>
 <dl>
 <strong>query(required)</strong>
@@ -5883,7 +5866,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  عبارت جستجو</p>
+<img src="./images/vector.svg" alt="vector">  عبارت جستجو.</p>
 <br><br>
 <dl>
 <strong>tag_"id"</strong>
@@ -5898,11 +5881,11 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب مورد نظر</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسب.</p>
 <br><br>
-# جستجو در نمونه‌های چهره‌ها
+# جستجو در چهره‌ها
 
-با استفاده از این تابع می‌توان در تصاویر چهره‌ها جستجو انجام داد.
+در تصاویر چهره‌ها جستجو می‌کند.
 
 
 ## نمونه
@@ -6077,7 +6060,8 @@ namespace MyRequest
 > Response 
 
 ```json
-{"items":[{"url":"https://static1.neshanonline.com/thumbnail/yVTNvWR9IHxN/gK8fHXfDXrqfbFZCqByYQnf9bgWP7DnqxIBUmuF8jDF1YIE8vRbA5t0DEhHhnmOX/Untitled.jpg","width":null,"height":null,"data":{},"processed":null}, ...],"count":76}
+   {"items":[{"url":"https://static1.neshanonline.com/thumbnail/yVTNvWR9IHxN/gK8fHXfDXrqfbFZCqByYQnf9bgWP7DnqxIBUmuF8jDF1YIE8vRbA5t0DEhHhnmOX/Untitled.jpg","width":null,"height":null,"data":{},"processed":null}, ...],"count":76}
+
 
 ```
 
@@ -6096,7 +6080,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام مجموعه داده</p>
+<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید جستجو در آن صورت گیرد.</p>
 <br><br>
 <dl>
 <strong>query(required)</strong>
@@ -6111,7 +6095,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  عبارت جستجو</p>
+<img src="./images/vector.svg" alt="vector">  عبارت جستجو.</p>
 <br><br>
 <dl>
 <strong>tag_"id"</strong>
@@ -6126,5 +6110,5 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسه برچسب مورد نظر</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ برچسب.</p>
 <br><br>

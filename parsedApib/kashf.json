@@ -11,15 +11,15 @@
         }
     ],
     "copies": [
-        "کشف با دیدن نمونه‌هایی از یک مفهوم در متن، تصویر و یا ویدئو، آن را یاد می‌گیرد و می تواند در داده‌های جدید آن مفهوم را پیدا کند.\n\nبرای دسترسی به واسط برنامه‌نویس کشف نیاز به یک TOKEN_KEY معتبر دارید که برای احراز هویت استفاده می‌شود. لطفا برای آزمایش سامانه، این متغیر را در تقاضاهای نمونه، جای‌گذاری کنید. سوال هم اگر دارید، لطفا برای آدرس kashf@roshan-ai.ir بنویسید."
+        "<bold>کشف**</bold>، مثال‌هایی از یک مفهوم را می‌گیرید و بعد همان مفهوم را در داده‌های جدید پیدا می‌کند. مثلاً به کشف یاد می‌دهید که جملات خیلی عالی بود، سه ماهه خریدم مشکلی نداشتم و این محصول را پیشنهاد می‌کنم، چند نمونه از مفهوم رضایت از خرید کالا است. یا عکس‌هایی از حرم رضوی یا آقای رئیسی را نشان می‌دهید و می‌گویید این‌ها تصویر حرم یا آقای رئیسی است.\n\nبا این آموزش‌ها، کشف به‌مرور بالغ‌تر می‌شود و می‌تواند مفاهیم پنهان در دل داده‌های متنی، تصویری یا حتی ویدیویی را کشف کند. کشف مثل یک کودک در‌حال‌رشد است. هرچقدر این کودک، بیشتر و متنوع‌تر بیاموزد، بهتر و دقیق‌تر به شما کمک می‌کند.\n\nبرای دسترسی به ای‌پی‌آی، به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ [](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg) <a href=\"mailto:kashf@roshan-ai.ir\">kashf@roshan-ai.ir<a> درخواست دهید.\n\n# اصطلاحات\n\nدر این مستندات از اصطلاحات مختلفی استفاده می‌کنیم که در این بخش به شرح هر یک می‌پردازیم. پیشنهاد می‌کنیم قبل از مطالعهٔ مستندات این قسمت را به دقت مطالعه کنید.\n\n## دیتاست (dataset)\n\nدیتاست مجموعه‌ای از داده‌هاست که قرار است فرایند یادگیری ماشین روی آن انجام شود. کشف با سه نوع دیتاست سروکار دارد: اولی دیتاست متنی است که فقط حاوی داده‌های متنی است مثل نظرات دیجی‌کالا؛ دومی دیتاست تصویری است که حاوی تصاویر است مثل تصاویر امکان تاریخی ایران؛ سومی دیتاست چهره‌ها است که حاوی تصاویر چهره‌هاست مثل تصاویر سیاسیون.\n\n## برچسب (tag)\n\nبرچسب نمایندهٔ یک مفهوم است. مثلاً در یک دیتاست متنی برای نوشتهٔ «بعد از یک هفته از کار افتاد.» می‌توان از دو برچسب «نارضایتی از خرید» و «کالای معیوب» استفاده کرد، یا در یک دیتاست تصویری برای تصویر حرم رضوی می‌توان از برچسب «حرم رضوی» استفاده کرد، یا در یک دیتاست چهره می‌توان برای عکس آقای رئیسی از برچسب «سیدابراهیم رئیسی» استفاده کرد.\n\nدر کشف، هر برچسب دارای یک پارامتر `positive` است که به معنی تعلق یک برچسب به یک داده است. مثلاً در جملهٔ «بعد از یک هفته از کار افتاد» برچسب «رضایت از خرید» صدق می‌کند (positive=true) ولی برچسب «نارضایتی از خرید» صدق نمی‌کند (positive=false).\n\n## گزارش (report)\n\nگزارش یک برچسب‌گذاری صریح از سوی ناظر انسانی است. شما صریحاً به ماشین گزارش می‌دهید که فلان داده با چه برچسب‌هایی در ارتباط هست یا با چه برچسب‌هایی در ارتباط نیست. با این کار ماشین بین گزارش شما و داده‌های نمونه، روابط پنهان را کشف می‌کند و در تشخیص‌های آتی استفاده می‌کند. در زندگی واقعی، پاسخ‌های ما به برخی از سوالات کودکان دقیقاً نقش همین گزارش را بازی می‌کند. به عنوان مثال، به کودک یاد می‌دهید که این دوچرخه است، آن ماشین است، این رنگ آبی است، آن رنگ آبی نیست و ... ."
     ],
     "resources": [
         {
-            "title": "تحلیل متن",
-            "href": "/api/tag_texts/",
+            "title": "ساخت برچسب",
+            "href": "/api/create_tag/",
             "hrefVariables": [],
             "copies": [
-                "تابع تحلیل متن برچسب‌های مربوط به نمونه‌های ارسال شده را در یک مجموعه‌داده متنی تشخیص می‌دهد. این تابع یک مجموعه داده متنی و لیستی از متن‌ها را دریافت نموده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، متن نمونه و لیستی از برچسب‌های تشخیص داده شده را به همراه میزان اطمینان پیش‌بینی برای هر دسته ارسال می‌کند."
+                "برچسب جدید می‌سازد."
             ],
             "transitions": [
                 {
@@ -42,130 +42,28 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده‌",
+                                        "description": "نام دیتاستی که می‌خواهید برچسب در آن ساخته شود.",
                                         "typeAttributes": [
                                             "required"
                                         ],
                                         "key": "dataset",
-                                        "value": "slug",
+                                        "value": "dataset slug",
                                         "valueType": "string",
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "لیست نمونه‌های متنی ارسالی",
+                                        "description": "عنوان برچسب",
                                         "typeAttributes": [
                                             "required"
                                         ],
-                                        "key": "contents",
-                                        "value": [
-                                            {
-                                                "element": "string",
-                                                "content": "content"
-                                            }
-                                        ],
-                                        "valueType": "array",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند  تحلیل، با اعلام وضعیت(‌processing)\n\nپاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود",
-                                        "typeAttributes": [],
-                                        "key": "wait",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "تحلیل متن به روش درختی",
-                                        "typeAttributes": [],
-                                        "key": "tree_based",
-                                        "value": false,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"digikala\",\n    \"contents\": [\"ارزش خریدنش رو بی شک داره\", \"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره\"]\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"contents\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    },\n    \"tree_based\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"contents\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "[\n  {\n    \"content\": \"ارزش خریدنش رو بی شک داره\",\n    \"tags\": [\n      {\n        \"id\": 39,\n        \"probability\": 1.0,\n        \"title\": \"توصیه خرید\"\n      }\n    ]\n  },\n  {\n    \"content\": \"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره\",\n    \"tags\": [\n      {\n        \"id\": 56,\n        \"probability\": 1.0,\n        \"title\": \"عدم رضایت بعد خرید\"\n      }\n    ]\n  }\n]\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "تحلیل تصویر",
-            "href": "/api/tag_images/",
-            "hrefVariables": [],
-            "copies": [
-                "تابع تحلیل تصویر برچسب‌های مربوط به نمونه‌ تصاویر ارسال شده را در یک مجموعه‌داده تصویری تشخیص می‌دهد. این تابع یک مجموعه داده تصویری و لیستی از تصاویر مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک تصویر و لیست برچسب‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر برچسب ارسال می‌نماید."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [
-                        "می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید."
-                    ],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده‌",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "slug",
+                                        "key": "title",
                                         "valueType": "string",
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "لیست آدرس تصاویر ارسالی برای تحلیل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "image_urls",
-                                        "value": [
-                                            {
-                                                "element": "string",
-                                                "content": "URL"
-                                            }
-                                        ],
-                                        "valueType": "array",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآيند تحلیل  با اعلام وضعیت(‌processing)\n\nپاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود.",
+                                        "description": "اگر `false` باشد گزارش‌های مربوط به این برچسب در فرایند یادگیری ماشین به‌کار گرفته نمی‌شود. مقدار پیش‌فرض: `true`.",
                                         "typeAttributes": [],
-                                        "key": "wait",
+                                        "key": "active",
                                         "value": true,
                                         "valueType": "boolean",
                                         "enumaration": []
@@ -175,12 +73,12 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"image_urls\": [\"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\", \"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg\"]\n}\n"
+                                "content": "    {\n      \"dataset\": \"iran\",\n      \"title\": \"New Place\"\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"image_urls\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"image_urls\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"active\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"title\"\n  ]\n}"
                             }
                         ]
                     },
@@ -189,7 +87,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[\n  {\n    \"image_url\": \"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\",\n    \"tags\": [\n      {\n        \"id\": 1,\n        \"probability\": 1.0,\n        \"title\": \"حرم رضوی\"\n      }\n    ]\n  },\n  {\n    \"image_url\": \"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg\",\n    \"tags\": [\n      {\n        \"id\": 36,\n        \"probability\": 1.0,\n        \"title\": \"تئاتر شهر\"\n      }\n    ]\n  }\n]\n"
+                                "content": "    {\n      \"title\": \"New Place\",\n      \"tag_id\": 111111111,\n      \"active\": true\n    }\n\n"
                             }
                         ]
                     }
@@ -197,99 +95,11 @@
             ]
         },
         {
-            "title": "تحلیل چهره",
-            "href": "/api/tag_faces/",
+            "title": "ویرایش برچسب",
+            "href": "/api/update_tag/",
             "hrefVariables": [],
             "copies": [
-                "تابع تحلیل چهره، چهره‌های تصاویر ارسال شده را در یک مجموعه‌داده چهره تشخیص می‌دهد. این تابع یک مجموعه داده چهره و لیستی از تصاویر مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک تصویر و لیست چهره‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر چهره ارسال می‌نماید."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [
-                        "می‌توانید برای همین تابع، فایل تصویر را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید."
-                    ],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده‌",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "لیست آدرس تصاویر ارسالی برای تحلیل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "image_urls",
-                                        "value": [
-                                            {
-                                                "element": "string",
-                                                "content": "URL"
-                                            }
-                                        ],
-                                        "valueType": "array",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان تحلیل بلافاصله با اعلام وضعیت(‌processing)\n\nپاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان تحلیل ارسال می‌شود",
-                                        "typeAttributes": [],
-                                        "key": "wait",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"faces\",\n    \"image_urls\": [\"https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg\"]\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"image_urls\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"image_urls\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "[\n  {\n    \"image_url\": \"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\",\n    \"tags\": [\n      {\n        \"id\": 328742,\n        \"probability\": 1.0,\n        \"title\": \"حسین امیرعبداللهیان (سیاسی)\"\n      }\n    ]\n  }\n]\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "تحلیل فریم‌های ویدئو",
-            "href": "/api/tag_video_frames/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع برای تحلیل فریم‌های یک ویدئو و تشخیص برچسب‌های مربوط به هر فریم در یک مجموعه داده مشخص کاربرد دارد. ابن تابع مجموعه داده مربوطه و لیست آدرس‌های مربوط به ویدئو‌ها را دریافت کرده و در پاسخ لیستی از فریم‌های استخراج شده، شامل شماره، برچسب زمانی و لیستی از برچسب‌های تشخیص داده شده به همراه میزان اطمینان از هر برچسب را ارسال می‌نماید."
+                "اطلاعات یک برچسب را ویرایش می‌کند."
             ],
             "transitions": [
                 {
@@ -312,117 +122,17 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده‌",
+                                        "description": "شناسهٔ برچسبی که می‌خواهید اطلاعات آن را ویرایش کنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href=\"#d447349868\">وضعیت دیتاست</a> پیدا کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
-                                        "key": "dataset",
-                                        "value": "slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "video_urls",
-                                        "value": [
-                                            {
-                                                "element": "string",
-                                                "content": "URL"
-                                            }
-                                        ],
-                                        "valueType": "array",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "فاصله بین فریم‌های استخراج شده برای تحلیل بر مبنای میلی ثانیه",
-                                        "typeAttributes": [],
-                                        "key": "every_ms",
-                                        "value": 100,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "حداقل مقدار تفاوت دو فریم که بیش از آن، دو فریم متفاوت در نظر گرفته می‌شوند.",
-                                        "typeAttributes": [],
-                                        "key": "min_frame_diff",
-                                        "value": 0.4,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.",
-                                        "typeAttributes": [],
-                                        "key": "duration",
+                                        "key": "tag_\"id\"",
                                         "value": 0,
                                         "valueType": "number",
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند تحلیل، با اعلام وضعیت(‌processing)\n\nپاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود",
-                                        "typeAttributes": [],
-                                        "key": "wait",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"every_ms\": 50,\n    \"duration\": 25,\n    \"min_frame_diff\": 0.40,\n    \"video_urls\": [\"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4\"]\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"every_ms\": {\n      \"type\": \"number\"\n    },\n    \"min_frame_diff\": {\n      \"type\": \"number\"\n    },\n    \"duration\": {\n      \"type\": \"number\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"video_urls\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "[\n  {\n    \"video_url\": \"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4\",\n    \"frames\": [\n      {\n        \"frame\": 3,\n        \"time\": \"0:00:00\",\n        \"tags\": [\n          {\n            \"id\": 0,\n            \"probability\": 1.0,\n            \"title\": \"ناآشنا\"\n          }\n        ]\n      },\n      {\n        \"frame\": 585,\n        \"time\": \"0:00:23\",\n        \"tags\": [\n          {\n            \"id\": 39127,\n            \"probability\": 0.99,\n            \"title\": \"پل طبیعت\"\n          }\n        ]\n      },\n      {\n        \"frame\": 603,\n        \"time\": \"0:00:24\",\n        \"tags\": [\n          {\n            \"id\": 2,\n            \"probability\": 1.0,\n            \"title\": \"میدان آزادی\"\n          }\n        ]\n      }\n    ]\n  }\n]\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "تحلیل چهره‌های ویدئو",
-            "href": "/api/tag_video_faces/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع برای تحلیل فریم‌های یک ویدئو و تشخیص چهره‌ها در ویدئو  کاربرد دارد. ابن تابع مجموعه داده مربوطه و لیست آدرس‌های مربوط به ویدئو‌ها را دریافت کرده و در پاسخ لیستی از فریم‌های استخراج شده، شامل شماره، برچسب زمانی و لیستی از چهره‌های تشخیص داده شده به همراه میزان اطمینان از هر دسته را ارسال می‌نماید."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده‌",
+                                        "description": "نام دیتاستی که برچسب در آن تعریف شده است.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -432,48 +142,18 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "لیست آدرس ویدئوهای ارسالی برای تحلیل فریم‌ها",
+                                        "description": "عنوان برچسب.",
                                         "typeAttributes": [
                                             "required"
                                         ],
-                                        "key": "video_urls",
-                                        "value": [
-                                            {
-                                                "element": "string",
-                                                "content": "URL"
-                                            }
-                                        ],
-                                        "valueType": "array",
+                                        "key": "title",
+                                        "valueType": "string",
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "فاصله بین فریم‌های استخراج شده برای تحلیل بر مبنای میلی ثانیه",
+                                        "description": "اگر `false` باشد گزارش‌های مربوط به این برچسب در فرایند یادگیری ماشین به‌کار گرفته نمی‌شود. مقدار پیش‌فرض: `true`.",
                                         "typeAttributes": [],
-                                        "key": "every_ms",
-                                        "value": 100,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "حداقل مقدار تفاوت دو فریم که بیش از آن، دو فریم متفاوت در نظر گرفته می‌شوند.",
-                                        "typeAttributes": [],
-                                        "key": "min_frame_diff",
-                                        "value": 0.4,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "مقدار ثانیه‌‌ای از ابتدای ویدئو که مورد پردازش قرار می‌گیرد. اگر این ویژگی null باشد کل ویدئو پردازش می‌شود.",
-                                        "typeAttributes": [],
-                                        "key": "duration",
-                                        "value": 25,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآيند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآيند تحلیل، با اعلام وضعیت(‌processing)\n\nپاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود",
-                                        "typeAttributes": [],
-                                        "key": "wait",
+                                        "key": "active",
                                         "value": true,
                                         "valueType": "boolean",
                                         "enumaration": []
@@ -483,28 +163,33 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"faces\",\n    \"every_ms\": 50,\n    \"duration\": 25,\n    \"min_frame_diff\": 0.40,\n    \"video_urls\": [\"https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4\"]\n}\n"
+                                "content": "    {\n      \"dataset\": \"iran\",\n      \"tag_id\": 111111111,\n      \"title\": \"Old Place\",\n      \"active\": true\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"every_ms\": {\n      \"type\": \"number\"\n    },\n    \"min_frame_diff\": {\n      \"type\": \"number\"\n    },\n    \"duration\": {\n      \"type\": \"number\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"video_urls\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"tag_\\\"id\\\"\": {\n      \"type\": \"number\"\n    },\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"active\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"tag_\\\"id\\\"\",\n    \"dataset\",\n    \"title\"\n  ]\n}"
                             }
                         ]
                     },
                     "httpResponse": {
                         "headerAttributes": [],
-                        "sections": []
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n      \"title\": \"Old Place\",\n      \"tag_id\": 111111111,\n      \"active\": true\n    }\n\n"
+                            }
+                        ]
                     }
                 }
             ]
         },
         {
-            "title": "تحلیل ویدئو",
-            "href": "/api/tag_videos/",
+            "title": "حذف برچسب",
+            "href": "/api/delete_tag/",
             "hrefVariables": [],
             "copies": [
-                "تابع تحلیل ویدئو، برچسب‌های مربوط به نمونه‌ ویدئوهای ارسال شده را در یک مجموعه‌داده ویدئویی تشخیص می‌دهد. این تابع یک مجموعه داده ویدئویی و لیستی از آدرس ویدئوهای مورد سوال را دریافت کرده و در پاسخ به ازای هر یک از نمونه‌ها، شناسه نمونه، لینک ویدئو و لیست برچسب‌های تشخیص داده شده را به همراه میزان اطمینان تشخیص، به صورت عددی بین صفر و یک، برای هر برچسب ارسال می‌نماید."
+                "یک برچسب را حذف می‌کند. در پاسخ برگشتی، پارامتر `deleted_reports` بیانگر تعداد گزارش‌های است که با حذف برچسب، از بین رفته‌اند."
             ],
             "transitions": [
                 {
@@ -527,170 +212,11 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده‌",
+                                        "description": "شناسهٔ برچسبی که می‌خواهید حذف کنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href=\"#d447349868\">وضعیت دیتاست</a> پیدا کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "لیست آدرس ویدئوهای ارسالی برای تحلیل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "video_urls",
-                                        "value": [
-                                            {
-                                                "element": "string",
-                                                "content": "URL"
-                                            }
-                                        ],
-                                        "valueType": "array",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "در صورتی که این ویژگی فعال باشد، تابع تا انجام کامل تحلیل منتظر مانده و پس از پایان فرآیند تحلیل، نتیجه را ارسال می‌کند. در صورتی که غیرفعال باشد تابع فرآیند تحلیل را آغاز کرده و تا پایان فرآیند،  با اعلام وضعیت(‌processing)\n\nپاسخ می‌دهد. نتیجه تحلیل در اولین فراخوانی پس از پایان فرآیند ارسال می‌شود",
-                                        "typeAttributes": [],
-                                        "key": "wait",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"aparat\",\n    \"video_urls\": [\"https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4\"]\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"video_urls\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "[\n  {\n    \"image_url\": \"https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4\",\n    \"tags\": [\n      {\n        \"id\": 77,\n        \"probability\": 1.0,\n        \"title\": \"بسکتبال\"\n      }\n    ]\n  }\n]\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "آموزش مدل",
-            "href": "/api/train_dataset/",
-            "hrefVariables": [],
-            "copies": [
-                "با فراخوانی این تابع فرآیند آموزش مدل یادگیری ماشین روی مجموعه داده مشخص شده آِغاز می‌شود. خروجی تابع وضعیت آموزش را نمایش می‌دهد که در حالت عادی waiting می‌باشد. وضعیت waiting نشان می‌دهد فرآیند آموزش هنوز شروع نشده و منتظر تخصیص منابع و شروع فرآیند است.\nبرای مشاهده روند و وضعیت فرآیند آموزش و از تابع وضعیت داده استفاده کنید."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده مورد نظر برای آموزش مدل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\"\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"dataset\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"state\": \"waiting\"\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "بازبینی مدل",
-            "href": "/api/retag_dataset/",
-            "hrefVariables": [],
-            "copies": [
-                "با فراخوانی این تابع فرآیند بازبینی داده‌های موجود در مجموعه داده آغاز می‌شود. در فرآیند بازبینی سامانه با استفاده از مدل یادگیری ماشین مجددا تعدادی از داده‌ها را برچسب می‌زند. این تابع معمولا بعد از آموزش مدل جدید کاربرد دارد که با بازبینی داده‌ها، برچسب‌های برخی از نمونه‌ها تغییر می‌کنند. در این تابع حداکثر تعداد نمونه‌هایی که در این فرآیند بازبینی می‌شوند به عنوان پارامتر ارسال می‌شود. اگر تعداد نمونه‌های مجموعه داده کمتر از این مقدار باشد، تمامی نمونه‌ها بازبینی می‌شوند.\nخروجی تابع وضعیت فرآیند را نشان می‌دهد که در حالت عادی waiting می‌باشد. براب مشاهده روند فرآیند و بررسی وضعیت آن، از فراخوانی تابع وضعیت داده استفاده نمایید."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده مورد نظر برای آموزش مدل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "حداکثر تعداد نمونه‌هایی بازبینی شوند",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "max_predictions",
+                                        "key": "tag_\"id\"",
                                         "value": 0,
                                         "valueType": "number",
                                         "enumaration": []
@@ -700,12 +226,12 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"max_predictions\": 100\n}\n"
+                                "content": "    {\n      \"tag_id\": 111111111\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"max_predictions\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"max_predictions\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"tag_\\\"id\\\"\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"tag_\\\"id\\\"\"\n  ]\n}"
                             }
                         ]
                     },
@@ -714,7 +240,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"state\": \"waiting\"\n}\n"
+                                "content": "          {\n          \"dataset\": \"iran\",\n          \"deleted_reports\": 0\n        }\n\n"
                             }
                         ]
                     }
@@ -722,252 +248,11 @@
             ]
         },
         {
-            "title": "دریافت مجموعه داده",
-            "href": "/api/export_dataset/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع برای دریافت مجموعه داده در قالب یک فایل csv می‌باشد."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده مورد نظر برای آموزش مدل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "اگر این ویژگی فعال باشد، آدرس‌های اصلی تصاویر و یا ویدئوها در فایل قرار می‌گیرند و در غیر این صورت، آدرس نمونه داخل سرور کشف در فایل گذاشته می‌شود.",
-                                        "typeAttributes": [],
-                                        "key": "original_urls",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.",
-                                        "typeAttributes": [],
-                                        "key": "tag_names",
-                                        "value": false,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"original_urls\": true,\n    \"tag_names\": true\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"original_urls\": {\n      \"type\": \"boolean\"\n    },\n    \"tag_names\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"state\": \"waiting\"\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "وارد کردن داده",
-            "href": "/api/export_dataset/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع برای وارد کردن داده‌ها در قالب فایل csv و اضافه کردن آن‌ها به مجموعه داده می‌باشد."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [
-                        "می‌توانید برای همین تابع، فایل داده را به طور مستقیم و در قالب تقاضای multipart/form-data ارسال نمایید:"
-                    ],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده مورد نظر برای آموزش مدل",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "آدرس فایل حاوی داده مربوطه",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "csv_url",
-                                        "value": "imported file URL",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "اگر این ویژگی فعال باشد، تمامی نمونه‌های موجود در فایل به عنوان گزارش در برچسب مربوطه اضافه می‌شوند.",
-                                        "typeAttributes": [],
-                                        "key": "report_items",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "اگر این ویژگی فعال باشد نام عناوین به عنوان برچسب انتخاب می‌شوند و در غیر این صورت شناسه‌ها به عنوان برچسب قرار داده می‌شوند.",
-                                        "typeAttributes": [],
-                                        "key": "tag_names",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"report_items\": true,\n    \"tag_names\": true\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"csv_url\": {\n      \"type\": \"string\"\n    },\n    \"report_items\": {\n      \"type\": \"boolean\"\n    },\n    \"tag_names\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"csv_url\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"state\": \"waiting\"\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "وضعیت داده‌ها",
-            "href": "/api/dataset_info/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع اطلاعاتی از وضعیت داده‌ها و فرآیندهای آموزش و ارزیابی را در  مجموعه داده مشخص شده ارسال می‌نماید. این اطلاعات شامل موارد زیر هستند:\n\n+ وضعیت فرآیند آموزش و ارزیابی مجموعه داده\n\n+ تعداد کل نمونه‌ها\n\n+ تعداد کل نمونه‌های گزارش شده\n\n+ نتایج ارزیابی مدل آموزش داده شده روی مجموعه داده\n\n+ اطلاعات داده و ارزیابی مربوط به هر کدام از دسته‌ها (در صورت فعال بودن ویژگی tags)\n\nوضعیت‌هایی ممکن مجموعه داده:\n\n+ waiting: در این حالت مجموعه داده منتظر دریافت منابع و شروع فرآیند می‌باشد.\n\n+ training: فرآیند آموزش مدل یادگیری ماشین در حال انجام است.\n\n+ trained: آموزش مدل پایان یافته و مدل جدید آماده شده است.\n\n+ retagging: فرایند بازبینی داده‌ها در حال انجام است\n\n+ retagged: بازبینی داده‌ها پایان یافته و نتایج ارزیابی به روز شده است."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده مورد نظر برای دریافت اطلاعات وضعیت",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "اگر این ویژگی فعال باشد، اطلاعات مربوط به وضعیت داده و ارزیابی تک تک برچسب‌های موجود در مجموعه داده ارسال می‌شود.",
-                                        "typeAttributes": [],
-                                        "key": "tags",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n    \"dataset\": \"iran\",\n    \"tags\": true\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"tags\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n  \"title\": \"لحظه\",\n  \"state\": \"trained\",\n  \"report_count\": 935,\n  \"data_count\": 2404,\n  \"evaluation\": {\n    \"recall\": 87,\n    \"precision\": 91\n  },\n  \"tags\": [\n    {\n      \"title\": \"برج میلاد\"\n      \"id\": 3,\n      \"reports\": 116,\n      \"predictions\": 156,\n      \"evaluation\": {\n        \"recall\": 80.3,\n        \"precision\": 91.4,\n        \"f1\": 86.0\n      },\n    },\n    ...\n  ]\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "گزارش برچسب متن",
+            "title": "ثبت گزارش متنی",
             "href": "/api/report_text_tags/",
             "hrefVariables": [],
             "copies": [
-                "وظیفه این تابع افزودن گزارش به برچسب‌ها می‌باشد. یک گزارش نمونه‌ای است که تعلق و یا عدم تعلق به یک برچسب از قبل در آن مشخص شده و سامانه با استفاده از این گزارش‌ها مدل یادگیری ماشین را آموزش می‌دهد. این تابع یک نمونه متنی را در مجموعه داده متنی مشخص شده و در برچسب مشخص شده گزارش می‌کند. این گزارش می‌تواند مثبت (‌نمونه متعلق به برچسب است) و یا منفی (نمونه متلعق به برچسب نیست) باشد.  خروجی این تابع شامل لیستی از آیتم‌هاست که هر آیتم شناسه گزارش مربوط به همراه یک دوتایی شامل شناسه برچسب و مثبت یا منفی بودن گزارش را مشخص می‌کند."
+                "برای یک برچسب متنی، گزارش جدیدی ثبت می‌کند. مثلاً به ماشین می‌گویید نمونهٔ متنی «بسته‌بندی عالی بود.» مرتبط با برچسب «رضایت از خرید» و نامرتبط با برچسب «نارضایتی از خرید» است. مرتبط یا نامرتبط بودن برچسب را با تنظیم پارامتر `positive` اعلام می‌کنیم. بعداً ماشین از روی این گزارش‌ها درس می‌گیرید. پارامتر `id` در پاسخ برگشتی، شناسهٔ یکتای متنی است که گزارش داده‌اید. بعداً می‌توانید با تابع <a href=\"#8577413627\">حذف گزارش</a> و ارائهٔ این شناسه، آن را از فهرست گزارش‌ها حذف کنید."
             ],
             "transitions": [
                 {
@@ -990,7 +275,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "متن نمونه گزارش شده",
+                                        "description": "متنی که می‌خواهید گزارش دهید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -999,7 +284,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب مورد نظر برای گزارش",
+                                        "description": "شناسهٔ برچسبی که می‌خواهید به متن بزنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href=\"#d447349868\">وضعیت دیتاست</a> پیدا کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1008,7 +293,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "این ویژگی بیانگر مثبت (تعلق نمونه به برچسب) و یا منفی (عدم تعلق نمونه به برچسب) است",
+                                        "description": "اگر `true` (مقدار پیش‌فرض) باشد این برچسب را به عنوان یک برچسب مرتبط با متن گزارش می‌دهد و اگر `false` باشد این برچسب را به عنوان یک برچسب نامرتبط با متن گزارش می‌دهد. گاهی لازم است برای یادگیری بهتر ماشین اعلام کنید که فلان متن با چه برچسب‌هایی در ارتباط نیست.",
                                         "typeAttributes": [],
                                         "key": "positive",
                                         "value": true,
@@ -1020,7 +305,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "[\n  {\n    \"content\": \"پیشنهاد میکنم از این بخرید خیلی عالیه.\",\n    \"tag_id\": 39,\n    \"positive\": true\n  }\n]\n"
+                                "content": "    [\n      {\n        \"content\": \"پیشنهاد میکنم از این بخرید خیلی عالیه.\",\n        \"tag_id\": 39,\n        \"positive\": true\n      }\n    ]\n"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -1034,7 +319,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[\n  {\n    \"report\": \"[[39,true]]\",\n    \"id\": 1211592\n  }\n]\n"
+                                "content": "    [\n      {\n        \"report\": \"[[39,true]]\",\n        \"id\": 1211592\n      }\n    ]\n\n"
                             }
                         ]
                     }
@@ -1042,11 +327,11 @@
             ]
         },
         {
-            "title": "گزارش برچسب تصویر",
+            "title": "ثبت گزارش تصویری",
             "href": "/api/report_image_tags/",
             "hrefVariables": [],
             "copies": [
-                "وظیفه این تابع افزودن گزارش به برچسب‌ها می‌باشد. یک گزارش  تعلق و یا عدم تعلق یک نمونه را به یک برچسب مشخص می‌کند و سامانه با استفاده از گزارش‌ها مدل یادگیری ماشین را آموزش می‌دهد. این تابع یک تصویر را در مجموعه داده تصویری مشخص شده و در دسته مشخص شده گزارش می‌کند. این گزارش می‌تواند مثبت (‌نمونه متعلق به دسته است) و یا منفی (نمونه متلعق به دسته نیست) باشد.  خروجی این تابع شمال لیستی از آیتم‌هاست که هر آیتم شناسه گزارش مربوط به همراه یک دوتایی شامل شناسه دسته و مثبت یا منفی بودن گزارش را مشخص می‌کند."
+                "همانند <a href=\"#ee264f8d93\">ثبت گزارش متنی</a> است با این تفاوت که اینجا به جای متن، تصویر گزارش می‌دهید."
             ],
             "transitions": [
                 {
@@ -1069,7 +354,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "آدرس تصویر گزارش شده",
+                                        "description": "آدرس تصویری که می‌خواهید گزارش دهید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1079,7 +364,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب مورد نظر برای گزارش",
+                                        "description": "شناسهٔ برچسبی که می‌خواهید به تصویر بزنید. شناسهٔ برچسب‌ها را می‌توانید از طریق تابع <a href=\"#d447349868\">وضعیت دیتاست</a> پیدا کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1089,7 +374,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "این ویژگی بیانگر مثبت (تعلق نمونه به برچسب) و یا منفی (عدم تعلق نمونه به برچسب) است",
+                                        "description": "اگر `true` (مقدار پیش‌فرض) باشد این برچسب را به عنوان یک برچسب مرتبط با متن گزارش می‌دهد و اگر `false` باشد این برچسب را به عنوان یک برچسب نامرتبط با متن گزارش می‌دهد. گاهی لازم است برای یادگیری بهتر ماشین اعلام کنید که فلان متن با چه برچسب‌هایی در ارتباط نیست.",
                                         "typeAttributes": [],
                                         "key": "positive",
                                         "value": true,
@@ -1101,7 +386,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "[\n  {\n    \"image_url\": \"https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg\",\n    \"tag_id\": 3,\n    \"positive\": true\n  }\n]\n"
+                                "content": "    [\n      {\n        \"image_url\": \"https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg\",\n        \"tag_id\": 3,\n        \"positive\": true\n      }\n    ]\n"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -1115,7 +400,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[\n  {\n    \"report\": \"[[3,true]]\",\n    \"id\": 1211593\n  }\n]\n"
+                                "content": "    [\n      {\n        \"report\": \"[[3,true]]\",\n        \"id\": 1211593\n      }\n    ]\n\n"
                             }
                         ]
                     }
@@ -1127,7 +412,7 @@
             "href": "/api/remove_tag_report/",
             "hrefVariables": [],
             "copies": [
-                "این تابع یک گزارش موجود را حذف می‌کند. برای حذف گزارش تابع شناسه گزارش و شناسه برچسب را به عنوان ورودی می‌گیرد. برای حذف گزارش متنی شناسه متن با عنوان text_id و برای حذف گزارش تصویری شناسه تصویر با عنوان image_id ارسال می‌شود."
+                "یک گزارش را حذف می‌کند."
             ],
             "transitions": [
                 {
@@ -1150,21 +435,21 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "آدرس متن گزارش شده",
+                                        "description": "شناسهٔ متن گزارش‌شده که می‌خواهید حذف کنید. این شناسه را می‌توانید از طریق تابع <a href=\"#d447349868\">فهرست گزارش‌های برچسب</a> پیدا کنید.",
                                         "typeAttributes": [],
                                         "key": "text_\"id\"",
                                         "valueType": "number",
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "آدرس تصویر گزارش شده",
+                                        "description": "شناسهٔ تصویر گزارش‌شده که می‌خواهید حذف کنید. این شناسه را می‌توانید از طریق تابع <a href=\"#d447349868\">فهرست گزارش‌های برچسب</a> پیدا کنید.",
                                         "typeAttributes": [],
                                         "key": "image_\"id\"",
                                         "valueType": "number",
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب مورد نظر برای گزارش",
+                                        "description": "یک متن یا تصویر می‌تواند چندین برچسب بخورد. با کمک این پارامتر اعلام می‌کنید که متن یا تصویری که می‌خواهید حذف کنید مربوط به کدام برچسب است.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1199,11 +484,11 @@
             ]
         },
         {
-            "title": "ایجاد برچسب",
-            "href": "/api/create_tag/",
+            "title": "برچسب‌گذاری متون",
+            "href": "/api/tag_texts/",
             "hrefVariables": [],
             "copies": [
-                "این تابع وظیفه ایجاد برچسب جدید در یک مجموعه داده را دارد. برای این کار عنوان برچسب و همچنین مجموعه داده‌ای که برچسب در آن باید ساخته شود به عنوان ورودی به تابع داده می‌شود. همچنین در تنظیمات ارسالی به تابع می‌توان مشخص کرد که برچسب ساخته شده فعال یا غیرفعال باشد. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند."
+                "بعد از اینکه ماشین با کمک گزارش‌های ورودی به سطح قابل قبولی از آگاهی رسید می‌تواند به پشتوانهٔ این آگاهی، به داده‌های جدید برچسب بزند. این تابع، یک دیتاست و تعدادی متن را به‌عنوان ورودی می‌گیرد و در پاسخ، برچسب‌های پیشنهادی را به‌همراه دقت تشخیص (`probability`) برای هر متن برمی‌گرداند."
             ],
             "transitions": [
                 {
@@ -1226,240 +511,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده‌ای که برچسب جدید در آن ساخته می‌شود",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "عنوان برچسب",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "title",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "این ویژگی بیانگر فعال یا غیر فعال بودن برچسب در مجموعه داده است. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.",
-                                        "typeAttributes": [],
-                                        "key": "positive",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n  \"dataset\": \"iran\",\n  \"title\": \"New Place\"\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"positive\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"title\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n  \"title\": \"New Place\",\n  \"tag_id\": 111111111,\n  \"active\": true\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "ویرایش برچسب",
-            "href": "/api/update_tag/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع برای ویرایش اطلاعات و مشخصات مربوط به یک برچسب موجود کاربرد دارد. با استفاده از این تابع می‌توان نام برچسب، مجموعه داده‌ای که برچسب متعلق به آن است و وضعیت برچسب (فعال یا غیر فعال) را ویرایش نمود."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "شناسه برچسب",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "tag_\"id\"",
-                                        "value": 0,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "نام مجموعه داده‌ای صاحب برچسب",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "عنوان برچسب",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "title",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "این ویژگی بیانگر فعال یا غیر فعال بودن برچسب در مجموعه داده است. در صورتی که یک برچسب غیرفعال باشد، گزارش‌های مربوط به آن برچسب در فرآیند آموزش و ارزیابی شرکت داده نمی‌شود و در نتیجه مدل نیز این برچسب را آموزش نمی‌بیند.",
-                                        "typeAttributes": [],
-                                        "key": "positive",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n  \"dataset\": \"iran\",\n  \"tag_id\": 111111111,\n  \"title\": \"Old Place\",\n  \"active\": true\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"tag_\\\"id\\\"\": {\n      \"type\": \"number\"\n    },\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"positive\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"tag_\\\"id\\\"\",\n    \"dataset\",\n    \"title\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n  \"title\": \"Old Place\",\n  \"tag_id\": 111111111,\n  \"active\": true\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "حذف برچسب",
-            "href": "/api/delete_tag/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع یک برچسب را حذف می‌کند. با حذف یک برچسب تمامی گزارش‌های مربوط به آن نیز حذف می‌گردد. این تابع شناسه برچسب مورد نظر برای حذف را به عنوان ورودی دریافت کرده و در پاسخ مجموعه داده صاحب برچسب و تعداد گزارش‌های پاک شده از این مجموعه داده را ارسال می‌کند."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "شناسه برچسب",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "tag_\"id\"",
-                                        "value": 0,
-                                        "valueType": "number",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n  \"tag_id\": 111111111\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"tag_\\\"id\\\"\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"tag_\\\"id\\\"\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\n  \"dataset\": \"iran\",\n  \"deleted_reports\": 0\n}\n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "title": "تشخیص‌های یک برچسب",
-            "href": "/api/list_tag_predictions/",
-            "hrefVariables": [],
-            "copies": [
-                "این تابع، لیستی حداکثر ۵۰ تایی از تشخیص‌های مدل در برچسب مربوطه ارسال می‌کند. نمونه‌های به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.\n برای فراخوانی این تابع نیاز به مشخص کردن مجموعه داده و شناسه برچسب مورد نظر می‌باشد."
-            ],
-            "transitions": [
-                {
-                    "title": "نمونه",
-                    "copies": [],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاست.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1469,7 +521,941 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب",
+                                        "description": "متن‌هایی که می‌خواهید برچسب‌گذاری شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "contents",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "content"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "برچسب‌گذاری به روش درختی.",
+                                        "typeAttributes": [],
+                                        "key": "tree_based",
+                                        "value": false,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"digikala\",\n        \"contents\": [\"ارزش خریدنش رو بی شک داره\", \"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره\"]\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"contents\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    },\n    \"tree_based\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"contents\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    [\n      {\n        \"content\": \"ارزش خریدنش رو بی شک داره\",\n        \"tags\": [\n          {\n            \"id\": 39,\n            \"probability\": 1.0,\n            \"title\": \"توصیه خرید\"\n          }\n        ]\n      },\n      {\n        \"content\": \"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره\",\n        \"tags\": [\n          {\n            \"id\": 56,\n            \"probability\": 1.0,\n            \"title\": \"عدم رضایت بعد خرید\"\n          }\n        ]\n      }\n    ]\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "برچسب‌گذاری تصاویر",
+            "href": "/api/tag_images/",
+            "hrefVariables": [],
+            "copies": [
+                "همانند تابع <a href=\"#ee264f8d93\">برچسب‌گذاری متون</a> است با این تفاوت که اینجا به جای مجموعه‌ای از متن‌ها، مجموعه‌ای از تصاویر می‌دهید. در پاسخ، برای هر تصویر، برچسب یا برچسب‌هایی تولید می‌شود. برای این تابع می‌توانید به جای آدرس تصویر، فایل تصویر را به‌طورمستقیم و در قالب تقاضای multipart/form-data ارسال نمایید."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "تصاویری که می‌خواهید برچسب‌گذاری شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "image_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"image_urls\": [\"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\", \"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg\"]\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"image_urls\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"image_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    [\n      {\n        \"image_url\": \"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\",\n        \"tags\": [\n          {\n            \"id\": 1,\n            \"probability\": 1.0,\n            \"title\": \"حرم رضوی\"\n          }\n        ]\n      },\n      {\n        \"image_url\": \"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg\",\n        \"tags\": [\n          {\n            \"id\": 36,\n            \"probability\": 1.0,\n            \"title\": \"تئاتر شهر\"\n          }\n        ]\n      }\n    ]\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "برچسب‌گذاری تصاویر چهره",
+            "href": "/api/tag_faces/",
+            "hrefVariables": [],
+            "copies": [
+                "این تابع نیز همانند تابع <a href=\"#d03b0a053a\">برچسب‌گذاری تصاویر</a> است منتهی اینجا تصاویری از چهره‌ها به آن می‌دهید. اینجا نیز می‌توانید به جای آدرس تصویر، فایل تصویر را به‌طورمستقیم و در قالب تقاضای multipart/form-data ارسال نمایید."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "تصاویری که می‌خواهید چهره‌های داخلِ آن‌ها شناسایی شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "image_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"faces\",\n        \"image_urls\": [\"https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg\"]\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"image_urls\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"image_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    [\n      {\n        \"image_url\": \"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg\",\n        \"tags\": [\n          {\n            \"id\": 328742,\n            \"probability\": 1.0,\n            \"title\": \"حسین امیرعبداللهیان (سیاسی)\"\n          }\n        ]\n      }\n    ]\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "برچسب‌گذاری فریم‌های ویدئو",
+            "href": "/api/tag_video_frames/",
+            "hrefVariables": [],
+            "copies": [
+                "یک ویدیو را با تنظیمات دلخواه، به فریم‌های مختلف می‌شکند و هر فریم را همانند تابع <a href=\"#d03b0a053a\">برچسب‌گذاری تصویر</a> برچسب‌گذاری می‌کند."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "video_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "هر چند میلی‌ثانیه یک فریم استخراج شود؟",
+                                        "typeAttributes": [],
+                                        "key": "every_ms",
+                                        "value": 100,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.",
+                                        "typeAttributes": [],
+                                        "key": "min_frame_diff",
+                                        "value": 0.4,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.",
+                                        "typeAttributes": [],
+                                        "key": "duration",
+                                        "value": 0,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"every_ms\": 50,\n        \"duration\": 25,\n        \"min_frame_diff\": 0.40,\n        \"video_urls\": [\"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4\"]\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"every_ms\": {\n      \"type\": \"number\"\n    },\n    \"min_frame_diff\": {\n      \"type\": \"number\"\n    },\n    \"duration\": {\n      \"type\": \"number\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"video_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    [\n      {\n        \"video_url\": \"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4\",\n        \"frames\": [\n          {\n            \"frame\": 3,\n            \"time\": \"0:00:00\",\n            \"tags\": [\n              {\n                \"id\": 0,\n                \"probability\": 1.0,\n                \"title\": \"ناآشنا\"\n              }\n            ]\n          },\n          {\n            \"frame\": 585,\n            \"time\": \"0:00:23\",\n            \"tags\": [\n              {\n                \"id\": 39127,\n                \"probability\": 0.99,\n                \"title\": \"پل طبیعت\"\n              }\n            ]\n          },\n          {\n            \"frame\": 603,\n            \"time\": \"0:00:24\",\n            \"tags\": [\n              {\n                \"id\": 2,\n                \"probability\": 1.0,\n                \"title\": \"میدان آزادی\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "برچسب‌گذاری چهره‌های ویدئو",
+            "href": "/api/tag_video_faces/",
+            "hrefVariables": [],
+            "copies": [
+                "همانند تابع <a href=\"#9ec794253b\">برچسب‌گذاری فریم‌های ویدیو</a> است، با این تفاوت که اینجا مجموعه‌ای از ویدیوها می‌دهید که حاوی تصاویر چهره‌هاست."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "dataset slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "video_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "هرچند میلی‌ثانیه یک فریم استخراج شود؟",
+                                        "typeAttributes": [],
+                                        "key": "every_ms",
+                                        "value": 100,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.",
+                                        "typeAttributes": [],
+                                        "key": "min_frame_diff",
+                                        "value": 0.4,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد همهٔ ویدیو پردازش می‌شود.",
+                                        "typeAttributes": [],
+                                        "key": "duration",
+                                        "value": 25,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"faces\",\n        \"every_ms\": 50,\n        \"duration\": 25,\n        \"min_frame_diff\": 0.40,\n        \"video_urls\": [\"https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4\"]\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"every_ms\": {\n      \"type\": \"number\"\n    },\n    \"min_frame_diff\": {\n      \"type\": \"number\"\n    },\n    \"duration\": {\n      \"type\": \"number\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"video_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": []
+                    }
+                }
+            ]
+        },
+        {
+            "title": "برچسب‌گذاری کل ویدئو",
+            "href": "/api/tag_videos/",
+            "hrefVariables": [],
+            "copies": [
+                "به جای برچسب‌گذاری تک‌تک فریم‌ها، کل ویدیو را پردازش می‌کند و برای آن فهرستی از برچسب‌ها تولید می‌کند."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "dataset slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "آدرس ویدیوهایی که می‌خواهید برچسب‌گذاری کنید.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "video_urls",
+                                        "value": [
+                                            {
+                                                "element": "string",
+                                                "content": "URL"
+                                            }
+                                        ],
+                                        "valueType": "array",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"aparat\",\n        \"video_urls\": [\"https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4\"]\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"video_urls\": {\n      \"type\": \"array\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"video_urls\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    [\n      {\n        \"image_url\": \"https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4\",\n        \"tags\": [\n          {\n            \"id\": 77,\n            \"probability\": 1.0,\n            \"title\": \"بسکتبال\"\n          }\n        ]\n      }\n    ]\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "آموزش مدل",
+            "href": "/api/train_dataset/",
+            "hrefVariables": [],
+            "copies": [
+                "با فرخوانی این تابع، یادگیری ماشین روی دیتاست آغاز می‌شود. در خروجی، وضعیت آموزش برگردانده می‌شود. این وضعیت در ابتدا روی `waiting` است که به معنی انتظار برای تخصیص منابع برای شروع پردازش و آموزش است و اندکی بعد به `training` تغییر می‌کند که به معنی شروع فرایند آموزش است و بعد از پایان آموزش به `trained` تغییر می‌کند.\n\nدر آموزش مدل، گزارش‌ها و برچسب‌های اعلامی از سوی ما تحت بررسی قرار گرفته و با مقایسه و تشخیص روابط بین داده‌ها، به دانش ماشین اضافه می‌شود. این دانش بعداً به ماشین کمک می‌کند تا برای داده‌های جدید اظهار نظر کند و بگوید مثلاً فلان جمله یا تصویر با کدام برچسب‌ها در ارتباط است.\n\nوقتی شما به یک کودک، چند تصویرِ مختلف از یک خودرو را نشان می‌دهید و به این طریق، مفهوم «خودرو» را به او آموزش می‌دهید، آن کودک بعداً می‌تواند با مشاهدهٔ هر خودرویی مفهوم خودرو را تشخیص داده و این مفهوم را از مفاهیم دیگری مثل «دوچرخه»  و «موتورسیکلت» تمیز دهد. سامانه‌های یادگیری ماشینی از جمله کشف نیز کم‌وبیش به‌همین‌شیوه عمل می‌کنند. این الگوریتم‌ها با دریافت مجموعه‌ای از داده‌ها و آموزش‌های ابتدایی، روابط بین پارامترها و مقادیر را تشخیص داده و می‌توانند برای داده‌های جدید اظهار نظر کنند."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاستی که فرایند آموزش روی آن صورت می‌گیرد.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\"\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"dataset\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"state\": \"waiting\"\n    }\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "بازبینی مدل",
+            "href": "/api/retag_dataset/",
+            "hrefVariables": [],
+            "copies": [
+                "با فراخوانی این تابع، فرآیند بازبینی داده‌های موجود در مجموعه داده آغاز می‌شود. در فرآیند بازبینی، سامانه با استفاده از مدل یادگیری ماشین، مجدداً تعدادی از داده‌ها را برچسب‌گذاری می‌کند. این تابع معمولا بعد از آموزش مدل جدید به کار می‌رود. با بازبینی داده‌ها، شاید برچسب برخی از نمونه‌ها تغییر کند."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاستی که می‌خواهید بازبینی مدل روی آن انجام شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "dataset slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "حداکثر تعداد داده‌هایی که می‌خواهید بازبینی شود.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "max_predictions",
+                                        "value": 0,
+                                        "valueType": "number",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"max_predictions\": 100\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"max_predictions\": {\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"max_predictions\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"state\": \"waiting\"\n    }\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "دریافت دیتاست",
+            "href": "/api/export_dataset/",
+            "hrefVariables": [],
+            "copies": [
+                "دیتاست موردنظر را در قالب یک فایل csv برمی‌گرداند."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست که می‌خواهید دریافت کنید.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "dataset slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، آدرس اصلی تصاویر و ویدیوها را در فایل خروجی قرار می‌دهد.",
+                                        "typeAttributes": [],
+                                        "key": "original_urls",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد، به‌جای شناسهٔ برچسب، عنوان برچسب در خروجی ظاهر می‌شود. مقدار پیش‌فرض:`false`.",
+                                        "typeAttributes": [],
+                                        "key": "tag_names",
+                                        "value": false,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"original_urls\": true,\n        \"tag_names\": true\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"original_urls\": {\n      \"type\": \"boolean\"\n    },\n    \"tag_names\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"state\": \"waiting\"\n    }\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "اضافه‌کردن داده به دیتاست",
+            "href": "/api/import_dataset/",
+            "hrefVariables": [],
+            "copies": [
+                "مجموعه‌ای از داده‌های جدید را در قالب یک فایل csv به دیتاست موردنظر اضافه می‌کند. به جای آدرس فایل csv می‌توانید فایل را به طور مستقیم و در قالب یک تقاضای multipart/form-data ارسال کنید."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاستی که می‌خواهید به داده‌های آن بیفزایید.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "dataset slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "آدرس فایل csv.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "csv_url",
+                                        "value": "imported file URL",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد تمام داده‌های ورودی را به عنوان گزارش ثبت می‌کند.",
+                                        "typeAttributes": [],
+                                        "key": "report_items",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"report_items\": true,\n        \"tag_names\": true\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"csv_url\": {\n      \"type\": \"string\"\n    },\n    \"report_items\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"csv_url\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"state\": \"waiting\"\n    }\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "وضعیت دیتاست",
+            "href": "/dataset_info/",
+            "hrefVariables": [],
+            "copies": [
+                "خلاصه‌وضعیتی از داده‌ها و روند آموزش و ارزیابی‌های انجام‌شده را در یک دیتاست برمی‌گرداند. در پاسخ برگشتی پارامتر `title` نام دیتاست را نشان می‌دهد، data_count تعداد داده‌های دیتاست است، `report_count` تعداد گزارش‌ها را اعلام می‌کند، `evaluation` وضعیت ارزیابی را مشخص می‌کند که خود شامل دو زیرپارامتر `precision` دقت و `recall` فراخوانی است. همچنین پارامتر `state` وضعیت پردازش فعلی روی دیتاست را نشان می‌دهد که از یکی از این مقادیر خارج نیست: `waiting` در انتظار تخصیص منابع، `training` در حال آموزش، `trained` پایان آموزش، `retagging` درحال بازبینی مدل و برچسب‌گذاری مجدد، `retagged` پایان بازبینی. \nدر نهایت پارامتر tags را داریم که فهرستی از برچسب‌های تعریف شده را روی دیتاست نشان می‌دهد. هر یک از tagها شامل `id` شناسهٔ برچسب، `title` عنوان برچسب، `active` فعال یا غیرفعال بودن برچسب، `reports` تعداد گزارش‌های برچسب، `predictions` تعداد پیش‌بینی‌های برچسب و `evaluation` وضعیت ارزیابی برچسب است."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاستی که می‌خواهید خلاصه وضعیت آن را دریافت کنید.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "dataset slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true‍` باشد فهرست برچسب‌ها و وضعیت هر یک از آن‌ها را نیز نشان می‌دهد.",
+                                        "typeAttributes": [],
+                                        "key": "tags",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "    {\n        \"dataset\": \"iran\",\n        \"tags\": true\n    }\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"tags\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "    {\n      \"title\": \"لحظه\",\n      \"state\": \"trained\",\n      \"report_count\": 935,\n      \"data_count\": 2404,\n      \"evaluation\": {\n        \"recall\": 87,\n        \"precision\": 91\n      },\n      \"tags\": [\n        {\n          \"title\": \"برج میلاد\"\n          \"id\": 3,\n          \"reports\": 116,\n          \"predictions\": 156,\n          \"evaluation\": {\n            \"recall\": 80.3,\n            \"precision\": 91.4,\n            \"f1\": 86.0\n          },\n        },\n        ...\n      ]\n    }       \n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "فهرست تشخیص‌ها",
+            "href": "/api/list_tag_predictions/",
+            "hrefVariables": [],
+            "copies": [
+                "کشف در فرایند آموزش و بازبینی، برخی از داده‌های دیتاست را به تشخیص خود برچسب‌گذاری می‌کند. این تابع، داده‌هایی را که برچسبِ ورودی به آن الصاق شده برمی‌گرداند. نتایج این تابع صفحه‌بندی‌شده است و در هر صفحه نهایتاً ۵۰ نتیجه وجود دارد. با افزودن پارامتر `page`به انتهای آدرس می‌توانید به نتایج صفحات بعدی دسترسی پیدا کنید. در پاسخ برگشتی، تعداد کل نتایج در پارامتر `count`، آدرس صفحهٔ بعد در پارامتر `next` و آدرس صفحهٔ بعد در پارامتر `previous` قرار گرفته است."
+            ],
+            "transitions": [
+                {
+                    "title": "نمونه",
+                    "copies": [],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "نام دیتاست.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "dataset",
+                                        "value": "slug",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "شناسهٔ برچسب.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1483,7 +1469,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"dataset\": \"iran\"\n  \"tag_id\": 2\n}\n"
+                                "content": "    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -1497,7 +1483,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"count\": 111,\n  \"next\": \"[base_url]/api/list_tag_predictions/?page=2\",\n  \"previous\": null,\n  \"results\": [{\"id\": 1385,…}, {\"id\": 1873984,…},…]\n}\n"
+                                "content": "    {\n      \"count\": 111,\n      \"next\": \"[base_url]/api/list_tag_predictions/?page=2\",\n      \"previous\": null,\n      \"results\": [{\"id\": 1385,…}, {\"id\": 1873984,…},…]\n    }\n\n"
                             }
                         ]
                     }
@@ -1505,11 +1491,11 @@
             ]
         },
         {
-            "title": "گزارش‌های یک برچسب",
+            "title": "فهرست گزارش‌ها",
             "href": "/api/list_tag_reports/",
             "hrefVariables": [],
             "copies": [
-                "این تابع، لیستی حداکثر ۵۰ تایی از گزارش‌های برچسب مربوطه را ارسال می‌کند.  نمونه‌های به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.\n برای فراخوانی این تابع نیاز به مشخص کردن مجموعه داده و شناسه برچسب مورد نظر می‌باشد.\nبا استفاده از پارامتر reported_positive امکان فیلتر کردن گزارش‌های مثبت یا منفی وجود دارد."
+                "با دریافت نام دیتاست و شناسهٔ یک برچسب، فهرستی از گزارش‌های حاوی این برچسب را برمی‌گرداند. نتایج این تابع همانند تابع <a href=\"#4cca5c6c3c\">فهرست تشخیص‌ها</a> صفحه‌بندی شده و پاسخ برگشتی نیز همانند آن است."
             ],
             "transitions": [
                 {
@@ -1532,7 +1518,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاستی که می‌خواهید فهرست گزارش‌های آن را دریافت کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1542,7 +1528,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب",
+                                        "description": "شناسهٔ برچسبی که می‌خواهید گزارش‌های مربوط به آن برگردانده شود.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1552,7 +1538,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر این ویژگی فعال باشد تنها گزارش‌های مثبت ارسال می‌شود و اگر غیر فعال باشد تنها گزارش‌های منفی ارسال می‌شود. اگر این ویژگی None باشد همه گزارش‌های ارسال می‌شود. مقدار پیش‌فرض این ویژگی None است.",
+                                        "description": "اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.",
                                         "typeAttributes": [],
                                         "key": "reported_positive",
                                         "value": false,
@@ -1564,7 +1550,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"dataset\": \"iran\",\n  \"tag_id\": 2\n}\n"
+                                "content": "    {\n      \"dataset\": \"iran\",\n      \"tag_id\": 2\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -1578,7 +1564,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"count\": 201,\n  \"next\": \"[base_url]/api/list_tag_reports/?page=2\",\n  \"previous\": null,\n  \"results\": [{\"image\": {\"id\": 1832, \"url\": \"http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg\",…},…},…]\n}\n"
+                                "content": "    {\n      \"count\": 201,\n      \"next\": \"[base_url]/api/list_tag_reports/?page=2\",\n      \"previous\": null,\n      \"results\": [{\"image\": {\"id\": 1832, \"url\": \"http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg\",…},…},…]\n    }\n\n"
                             }
                         ]
                     }
@@ -1586,11 +1572,11 @@
             ]
         },
         {
-            "title": "گزارش‌های مشکوک یک برچسب",
-            "href": "/api/list_notsure_reports_list/",
+            "title": "فهرست گزارش‌های مشکوک",
+            "href": "/api/list_tag_notsure_reports/",
             "hrefVariables": [],
             "copies": [
-                "این تابع، لیستی حداکثر ۵۰ تایی از گزارش‌های برچسب مربوطه که مدل به برچسب آن مشکوک است را ارسال می‌کند. گزارش مشکوک در واقع گزارشی است که برچسب تشخیصی مدل با برچسب گزارش شده برای نمونه متفاوت باشد. نمونه‌ها به صورت صفحه بندی شده ارسال می‌شود که می‌توان با پارامتر page در url صفحه مورد نظر را فراخوانی کرد.\n برای فراخوانی این تابع نیاز به شناسه برچسب مورد نظر می‌باشد.\nبا استفاده از پارامتر reported_positive امکان فیلتر کردن گزارش‌های مثبت یا منفی وجود دارد."
+                "گزارش مشکوک، گزارشی است که برچسبی که مدل برای آن تشخیص داده با برچسبی که ما گزارش داده‌ایم متفاوت است. نتایج این تابع نیز صفحه‌بندی شده و پاسخ برگشتی آن مشابه تابع <a href=\"#4cf309cf19\">فهرست گزارش‌ها</a> است."
             ],
             "transitions": [
                 {
@@ -1613,7 +1599,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "شناسه برچسب",
+                                        "description": "شناسهٔ برچسبی که می‌خواهید گزارش‌های مشکوکِ حاوی این برچسب را دریافت کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1623,7 +1609,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر این ویژگی فعال باشد تنها گزارش‌های مثبت ارسال می‌شود و اگر غیر فعال باشد تنها گزارش‌های منفی ارسال می‌شود. اگر این ویژگی None باشد همه گزارش‌های ارسال می‌شود. مقدار پیش‌فرض این ویژگی None است.",
+                                        "description": "اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.",
                                         "typeAttributes": [],
                                         "key": "reported_positive",
                                         "value": false,
@@ -1635,7 +1621,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"tag_id\": 2\n}\n"
+                                "content": "    {\n      \"tag_id\": 2\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -1649,7 +1635,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"count\": 201,\n  \"next\": \"[base_url]/api/list_tag_reports/?page=2\",\n  \"previous\": null,\n  \"results\": [{\"image\": {\"id\": 1832, \"url\": \"http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg\",…},…},…]\n}\n"
+                                "content": "    {\n      \"count\": 201,\n      \"next\": \"[base_url]/api/list_tag_reports/?page=2\",\n      \"previous\": null,\n      \"results\": [{\"image\": {\"id\": 1832, \"url\": \"http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg\",…},…},…]\n    }\n\n"
                             }
                         ]
                     }
@@ -1657,11 +1643,11 @@
             ]
         },
         {
-            "title": "مجموعه داده‌ها",
+            "title": "فهرست دیتاست‌ها",
             "href": "/api/list_datasets/",
             "hrefVariables": [],
             "copies": [
-                "با فراخوانی این تابع لیستی از مجموعه داده‌هایی که کاربر امکان مشاهده و دسترسی به آن‌ها را دارد دریافت می‌شود."
+                "فهرست تمام دیتاست‌ها را برمی‌گرداند. در پاسخ برگشتی، برای هر دیتاست، نام آن در پارامتر `title`، نوع آن در پارامتر `type`، نام انگلیسی آن در پارامتر `slug`، تعداد برچسب‌ها در پارامتر `tag_count`، تعداد گزارش‌ها در پارامتر `reported_count`، وضعیت آموزش یا بازبینی مدل در پارامتر `state` و وضیت ارزیابی مدل در پارامتر `evaluation` قرار می‌گیرد."
             ],
             "transitions": [
                 {
@@ -1686,7 +1672,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[{\n    \"title\": \"ایران\",\n    \"type\": \"image-tag\",\n    \"slug\": \"iran\",\n    \"tag_count\": 21,\n    \"report_count\": 2526,\n    \"state\": \"trained\",\n    \"evaluation\": {\"precision\": 0.94 , \"recall\": 0.87},\n    \"trained_at\": \"\"\n  }, ...]\n"
+                                "content": "    [{\n        \"title\": \"ایران\",\n        \"type\": \"image-tag\",\n        \"slug\": \"iran\",\n        \"tag_count\": 21,\n        \"report_count\": 2526,\n        \"state\": \"trained\",\n        \"evaluation\": {\"precision\": 0.94 , \"recall\": 0.87},\n        \"trained_at\": \"\"\n      }, ...]\n\n"
                             }
                         ]
                     }
@@ -1694,11 +1680,11 @@
             ]
         },
         {
-            "title": "نمونه‌های متنی یک مجموعه",
+            "title": "فهرست داده‌های متنی",
             "href": "/api/list_texts/",
             "hrefVariables": [],
             "copies": [
-                "این تابع با دریافت نام مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید."
+                "شناسهٔ داده‌ها را دریافت می‌کند و برای هر شناسه، محتوای آن را در پارامتر `content`، برچسب‌های آن را در پارامتر `data` و آخرین تاریخ و زمان پردازش داده را در پارامتر `processed` برمی‌گرداند."
             ],
             "transitions": [
                 {
@@ -1721,7 +1707,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاستی که می‌خواهید داده‌های متنی آن را دریافت کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1731,7 +1717,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "لیستی از شناسه نمونه‌ها",
+                                        "description": "فهرست شناسهٔ داده‌ها.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1759,7 +1745,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[{\n    \"count\": 234,\n    \"results\": [{\"text\": {\"id\": 11462988,…},…}] \n  }, ...]\n"
+                                "content": "    [{\n        \"count\": 234,\n        \"results\": [{\"text\": {\"id\": 11462988,…},…}] \n      }, ...]\n\n"
                             }
                         ]
                     }
@@ -1767,11 +1753,11 @@
             ]
         },
         {
-            "title": "نمونه‌های تصویری یک مجموعه",
+            "title": "فهرست داده‌های تصویری",
             "href": "/api/list_images/",
             "hrefVariables": [],
             "copies": [
-                "این تابع با دریافت نام مجموعه داده و لیستی از شناسه‌ نمونه‌های، در پاسخ اطلاعات نمونه‌های مربوطه را ارسال می‌نماید."
+                "همانند تابع <a href=\"#ca2d5ce011\">فهرست داده‌های متنی</a> است با این تفاوت که اینجا به جای شناسهٔ متن‌ها، شناسهٔ تصاویر را می‌دهید و در پاسخ به‌جای متن‌ها، آدرس تصاویر را دریافت می‌کنید."
             ],
             "transitions": [
                 {
@@ -1794,7 +1780,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاستی که می‌خواهید فهرست داده‌های تصویری آن را دریافت کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1804,7 +1790,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "لیستی از شناسه نمونه‌ها",
+                                        "description": "فهرست شناسهٔ تصاویر.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1832,7 +1818,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"count\": 201,\n  \"results\": [{\"image\": {\"id\": 1832, \"url\": \"http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg\",…}]\n}\n"
+                                "content": "    {\n      \"count\": 201,\n      \"results\": [{\"image\": {\"id\": 1832, \"url\": \"http://cdn-tehran.wisgoon.com/dlir-s3/10531458126211291615.jpg\",…}]\n    }\n\n"
                             }
                         ]
                     }
@@ -1840,11 +1826,11 @@
             ]
         },
         {
-            "title": "جستجو در نمونه‌های متنی",
+            "title": "جستجو در داده‌های متنی",
             "href": "/api/search_candidate_texts/",
             "hrefVariables": [],
             "copies": [
-                "برای جستجو در متن‌های موجود در یک مجموعه داده متنی از این تابع استفاده می‌شود. این تابع مجموعه داده متنی مورد نظر و عبارت جستجو را دریافت کرده و در پاسخ متن‌های شامل عبارت در مجموعه داده را ارسال می‌نماید.\nاین تابع امکان جستجو در نمونه‌های گزارش نشده و یا نمونه‌های گزارش شده را فراهم می‌کند.\nنتایج جستجو به صورت صفحه‌بندی شده و در لیست‌های حداکثر ۵۰ تایی ارسال می‌شود."
+                "متنی را می‌گیرد و فهرستی از داده‌های حاوی آن متن را برمی‌گرداند. نتایج این تابع همانند تابع <a href=\"#4cca5c6c3c\">فهرست تشخیص‌ها</a> صفحه‌بندی‌شده و همراه با آدرس صفحات بعدی و قبلی در پارامترهای `next` و `previous` بازگردانده می‌شود."
             ],
             "transitions": [
                 {
@@ -1867,7 +1853,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاستی که می‌خواهید جستجو در آن صورت گیرد.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1877,7 +1863,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "عبارت جستجو",
+                                        "description": "عبارت جستجو.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1887,7 +1873,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر این ویژگی فعال باشد تنها در نمونه‌های گزارش شده جستجو انجام می‌شود و در غیر این صورت در نمونه‌های گزارش نشده جستجو صورت می‌گیرد.",
+                                        "description": "اگر `true` باشد فقط در نمونه‌های گزارش‌شده جستجو می‌کند. اگر`false` باشد فقط در نمونه‌های گزارش‌نشده جستجو می‌کند.",
                                         "typeAttributes": [],
                                         "key": "reported",
                                         "value": false,
@@ -1895,7 +1881,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "گزارش‌ها در ویژگی reported بر مبنای این ویژگی در نظر گرفته می‌شود. در واقع در صورتی که reported فعال باشد جستجو در گزارش‌های مربوط به این شناسه برچسب انجام می‌شود.",
+                                        "description": "تنها در صورتی مقدار این پارامتر در نتایج اثرگذار است که پارامتر `reported` را برابر `true` قرار داده باشید. اگر اینطور باشد، تنها در گزارش‌هایی جستجو می‌شود که برچسبی با این شناسه به آن الصاق شده باشد.",
                                         "typeAttributes": [],
                                         "key": "tag_\"id\"",
                                         "valueType": "number",
@@ -1906,7 +1892,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"dataset\": \"persica\",\n  \"query\": \"اقتصاد مثاومتی\",\n  \"tag_id\": 1482,\n  \"reported\": false         \n}\n"
+                                "content": "{\n  \"dataset\": \"persica\",\n  \"query\": \"اقتصاد مثاومتی\",\n  \"tag_id\": 1482,\n  \"reported\": false         \n}        \n"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -1920,7 +1906,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"count\": 10,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [{\"id\": 11462939,…}, {\"id\": 4446967,…}, {\"id\": 4444533,…}, {\"id\": 4444455,…}, {\"id\": 4444260,…}, {\"id\": 4444137,…},…]\n}\n"
+                                "content": "    {\n      \"count\": 10,\n      \"next\": null,\n      \"previous\": null,\n      \"results\": [{\"id\": 11462939,…}, {\"id\": 4446967,…}, {\"id\": 4444533,…}, {\"id\": 4444455,…}, {\"id\": 4444260,…}, {\"id\": 4444137,…},…]\n    }\n\n"
                             }
                         ]
                     }
@@ -1928,11 +1914,11 @@
             ]
         },
         {
-            "title": "جستجو در نمونه‌های تصویری",
+            "title": "جستجو در داده‌های تصویری",
             "href": "/api/search_candidate_images/",
             "hrefVariables": [],
             "copies": [
-                "با استفاده از این تابع می‌توان در نمونه‌های تصویری یک مجموعه داده تصویری جستجو انجام داد.\nنتایج به صورت صفحه بندی شده و در لیست‌های حداکثر ۵۰ تایی ارسال می‌شود."
+                "عبارتی را در داده‌های تصویری یک دیتاست جستجو می‌کند. نتایج این تابع همانند تابع <a href=\"#1161e5e4c1\">جستجو در داده‌های متنی</a> صفحه‌بندی‌شده و همراه با آدرس صفحات بعدی و قبلی در پاسخ برگشتی است."
             ],
             "transitions": [
                 {
@@ -1955,7 +1941,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاستی که می‌خواهید در آن جستجو کنید.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1965,7 +1951,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "عبارت جستجو",
+                                        "description": "عبارت جستجو.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -1975,7 +1961,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب مورد نظر",
+                                        "description": "شناسهٔ برچسب.",
                                         "typeAttributes": [],
                                         "key": "tag_\"id\"",
                                         "valueType": "number",
@@ -2000,7 +1986,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"count\": 10,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [{\"id\": 11462939,…}, {\"id\": 4446967,…}, {\"id\": 4444533,…}, {\"id\": 4444455,…}, {\"id\": 4444260,…}, {\"id\": 4444137,…},…]\n}\n"
+                                "content": "    {\n      \"count\": 10,\n      \"next\": null,\n      \"previous\": null,\n      \"results\": [{\"id\": 11462939,…}, {\"id\": 4446967,…}, {\"id\": 4444533,…}, {\"id\": 4444455,…}, {\"id\": 4444260,…}, {\"id\": 4444137,…},…]\n    }\n\n"
                             }
                         ]
                     }
@@ -2008,11 +1994,11 @@
             ]
         },
         {
-            "title": "جستجو در نمونه‌های چهره‌ها",
+            "title": "جستجو در چهره‌ها",
             "href": "/api/search_candidate_faces/",
             "hrefVariables": [],
             "copies": [
-                "با استفاده از این تابع می‌توان در تصاویر چهره‌ها جستجو انجام داد."
+                "در تصاویر چهره‌ها جستجو می‌کند."
             ],
             "transitions": [
                 {
@@ -2035,7 +2021,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام مجموعه داده",
+                                        "description": "نام دیتاستی که می‌خواهید جستجو در آن صورت گیرد.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -2045,7 +2031,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "عبارت جستجو",
+                                        "description": "عبارت جستجو.",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -2055,7 +2041,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "شناسه برچسب مورد نظر",
+                                        "description": "شناسهٔ برچسب.",
                                         "typeAttributes": [],
                                         "key": "tag_\"id\"",
                                         "valueType": "number",
@@ -2080,7 +2066,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\"items\":[{\"url\":\"https://static1.neshanonline.com/thumbnail/yVTNvWR9IHxN/gK8fHXfDXrqfbFZCqByYQnf9bgWP7DnqxIBUmuF8jDF1YIE8vRbA5t0DEhHhnmOX/Untitled.jpg\",\"width\":null,\"height\":null,\"data\":{},\"processed\":null}, ...],\"count\":76}\n"
+                                "content": "   {\"items\":[{\"url\":\"https://static1.neshanonline.com/thumbnail/yVTNvWR9IHxN/gK8fHXfDXrqfbFZCqByYQnf9bgWP7DnqxIBUmuF8jDF1YIE8vRbA5t0DEhHhnmOX/Untitled.jpg\",\"width\":null,\"height\":null,\"data\":{},\"processed\":null}, ...],\"count\":76}\n\n"
                             }
                         ]
                     }

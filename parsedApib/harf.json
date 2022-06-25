@@ -11,20 +11,22 @@
         }
     ],
     "copies": [
-        "حرف، یک ای‌پی‌آیِ تبدیل گفتار به نوشتار فارسی است که می‌تواند صدای ورودی را اعم از صوت یا ویدیو یا پخش زنده به متن تبدیل کند. حرف با شنیدن هزاران ساعت گفتارِ فارسی در انواع و اقسام لحن‌ها، رده‌های سنی و جنسیت‌های مختلف، به‌خوبی تعلیم دیده است و با دقت بالایی این کار را انجام می‌دهد.\n\nبرای دسترسی به این ای‌پی‌آی، به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ harf@roshan-ai.ir درخواست دهید."
+        "حرف، یک ای‌پی‌آیِ بومی برای تبدیل گفتار به نوشتارِ فارسی است.\n\nاین ای‌پی‌آی با شنیدن هزاران ساعت گفتار در لحن‌ها، سبک‌ها، سرعت‌ها و رده‌های سنی مختلف، به‌خوبی آموزش دیده و با دقت بالایی می‌تواند **صوت**، **ویدیو** یا حتی **پخش زنده** را به متن فارسی تبدیل کند.\n\nبرای دسترسی به ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ <a href=\"mailto:harf@roshan-ai.ir\">harf@roshan-ai.ir</a> درخواست دهید."
     ],
     "resources": [
         {
-            "title": "تبدیل صدا به متن به‌شکل همگام",
+            "title": "تبدیل صدا به متن",
             "href": "/api/transcribe_files/",
             "hrefVariables": [],
             "copies": [
-                "این تابع، فایل‌های صوتی یا ویدیویی را دریافت می‌کند و متن هر فایل را به‌شکل JSON تحویل می‌دهد. در خروجی، آدرس هر فایل (<code>media_url</code>) به‌همراه مدت‌زمان فایل (<code>duration</code>) و سگمنت‌ها (<code>segments</code>) بازگردانده می‌شود. هر سگمنت، بازهٔ زمانی کوتاهی شامل سه پارامتر <code>start</code> و <code>end</code> و <code>text</code> است که به‌ترتیب بیانگر شروع بازه، پایان بازه و متن بازه است."
+                "این تابع، بسته‌ به تنظیم پارامترهای ورودی، می‌تواند کارهای مختلفی انجام می‌دهد که در ادامه برای هر یک مثالی آورده‌ایم.\n\nبعد از تکمیل پردازش، پاسخی دریافت می‌کنید که حاوی آرایه‌ای از نتایج است. هر یک از عناصر این آرایه مربوط به نتایج یک فایل است.\n\nدر هر عنصر آرایه، آدرس فایل در پارامتر `media_url`، مدت‌زمان فایل در پارامتر `duration` و متن‌های استخراج‌شده در آرایهٔ `segments` قرار می‌گیرد.\n\nهر سگمنت شامل سه پارامتر `start` زمان شروع بازه، `end` زمان پایان بازه و `text` متن بازه است. همچنین به ازای هر فایل، وضعیت شناسایی در پارامتر `stats` قرار می‌گیرد که خودش شامل دو زیرپارامتر است. اولی `words` است که حاوی کل تعداد کلمات فایل است و دومی `known_words` است که حاوی کلماتی است که بدون تردید تشخیص داده شده است.\n\nحرف هرجایی که به تشخیص خود تردید می‌کند آن کلمه یا عبارت را درون قلاب (کروشه) می‌گذارد."
             ],
             "transitions": [
                 {
-                    "title": "مثال: ارسال لینک فایل",
-                    "copies": [],
+                    "title": "مثال: ارسال آدرس فایل‌ها",
+                    "copies": [
+                        "روش اول برای تبدیل فایل‌های صوتی یا ویدیویی به متن، ارسال آدرس فایل‌ها در پارامتر `media_urls` است."
+                    ],
                     "httpRequest": {
                         "method": "POST",
                         "headerAttributes": [
@@ -42,7 +44,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "لینک فایل‌های ورودی (صدا یا ویدیو)",
+                                        "description": "آدرس فایل‌های صوتی یا ویدیویی یا ترکیبی از این دو",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -50,18 +52,26 @@
                                         "value": "List of URLs",
                                         "valueType": "string",
                                         "enumaration": []
+                                    },
+                                    {
+                                        "description": "اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند تبدیل فایل‌ها به متن باید منتظر بمانید اما اگر `false` باشد بلافاصله بعد از ارسال درخواست، پاسخی با ارسال وضعیت پردازش در پارامتر `state` و فهرستی از شناسه‌های پردازش در پارامتر `task_ids` (برای هر فایل یک شناسه) بازگردانده می‌شود که بعداً می‌توانید وضعیت پردازش این شناسه‌ها را جویا شوید.",
+                                        "typeAttributes": [],
+                                        "key": "wait",
+                                        "value": true,
+                                        "valueType": "boolean",
+                                        "enumaration": []
                                     }
                                 ]
                             },
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"]\n}\n"
+                                "content": "{\n    \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"]\n}\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"media_urls\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"media_urls\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"media_urls\": {\n      \"type\": \"string\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"media_urls\"\n  ]\n}"
                             }
                         ]
                     },
@@ -70,13 +80,13 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[\n  {\n    \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
+                                "content": "[\n    {\n        \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n        \"duration\": \"0:00:44\",\n        \"segments\": [\n            {\n                \"start\": \"0:00:00\",\n                \"end\": \"0:00:02\",\n                \"text\": \"[حکایت]\"\n            },\n            {\n                \"start\": \"0:00:02\",\n                \"end\": \"0:00:06\",\n                \"text\": \"یکی را از حکما شنیدم که می گفت\"\n            },\n            {\n                \"start\": \"0:00:06\",\n                \"end\": \"0:00:11\",\n                \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n            },\n            {\n                \"start\": \"0:00:11\",\n                \"end\": \"0:00:16\",\n                \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n            },\n            {\n                \"start\": \"0:00:16\",\n                \"end\": \"0:00:21\",\n                \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n            },\n            {\n                \"start\": \"0:00:21\",\n                \"end\": \"0:00:26\",\n                \"text\": \"سخن را سر از [ای] خردمند و بن\"\n            },\n            {\n                \"start\": \"0:00:26\",\n                \"end\": \"0:00:30\",\n                \"text\": \"میا بر سخن در میان سخن\"\n            },\n            {\n                \"start\": \"0:00:30\",\n                \"end\": \"0:00:37\",\n                \"text\": \"خداوند تدبیر و فرهنگ و [روش] نگوید سخن\"\n            },\n            {\n                \"start\": \"0:00:37\",\n                \"end\": \"0:00:39\",\n                \"text\": \"تا نبیند خموش\"\n            }\n    ],\n        \"stats\": {\n            \"words\": 57,\n            \"known_words\": 54\n        }\n    }\n]\n\n"
                             }
                         ]
                     }
                 },
                 {
-                    "title": "مثال: ارسال مستقیم فایل",
+                    "title": "مثال: آپلود فایل",
                     "copies": [],
                     "httpRequest": {
                         "method": "POST",
@@ -109,7 +119,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "multipart/form-data",
-                                "content": "--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
+                                "content": "    --{boundary value}\n    Content-Disposition: form-data; name='41417'; filename='FILE NAME'\n    Content-Type: audio/mpeg (according to the type of the uploaded file)\n    {file content}\n    --{boundary value}\n"
                             }
                         ]
                     },
@@ -118,25 +128,15 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "[\n  {\n    \"media_url\": \"http://harf.roshan-ai.ir/media/files/96/84/859267728361.mp3\",\n    \"duration\": \"0:00:44\",\n    \"segments\": [\n      {\n        \"start\": \"0:00:00\",\n        \"end\": \"0:00:02\",\n        \"text\": \"حکایت\"\n      },\n      {\n        \"start\": \"0:00:02\",\n        \"end\": \"0:00:06\",\n        \"text\": \"یکی را از حکما شنیدم که می گفت\"\n      },\n      {\n        \"start\": \"0:00:06\",\n        \"end\": \"0:00:11\",\n        \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n      },\n      {\n        \"start\": \"0:00:11\",\n        \"end\": \"0:00:16\",\n        \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n      },\n      {\n        \"start\": \"0:00:16\",\n        \"end\": \"0:00:21\",\n        \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n      },\n      ...\n    ]\n  }\n]\n"
+                                "content": "[\n    {\n        \"media_url\": \"https://i.ganjoor.net/a2/41417.mp3\",\n        \"duration\": \"0:00:44\",\n        \"segments\": [\n            {\n                \"start\": \"0:00:00\",\n                \"end\": \"0:00:02\",\n                \"text\": \"[حکایت]\"\n            },\n            {\n                \"start\": \"0:00:02\",\n                \"end\": \"0:00:06\",\n                \"text\": \"یکی را از حکما شنیدم که می گفت\"\n            },\n            {\n                \"start\": \"0:00:06\",\n                \"end\": \"0:00:11\",\n                \"text\": \"هرگز کسی به جهل خویش اقرار نکرده است\"\n            },\n            {\n                \"start\": \"0:00:11\",\n                \"end\": \"0:00:16\",\n                \"text\": \"مگر آن کس که چون دیگری در سخن باشد\"\n            },\n            {\n                \"start\": \"0:00:16\",\n                \"end\": \"0:00:21\",\n                \"text\": \"همچنان ناتمام گفته سخن آغاز کند\"\n            },\n            {\n                \"start\": \"0:00:21\",\n                \"end\": \"0:00:26\",\n                \"text\": \"سخن را سر از [ای] خردمند و بن\"\n            },\n            {\n                \"start\": \"0:00:26\",\n                \"end\": \"0:00:30\",\n                \"text\": \"میا بر سخن در میان سخن\"\n            },\n            {\n                \"start\": \"0:00:30\",\n                \"end\": \"0:00:37\",\n                \"text\": \"خداوند تدبیر و فرهنگ و [روش] نگوید سخن\"\n            },\n            {\n                \"start\": \"0:00:37\",\n                \"end\": \"0:00:39\",\n                \"text\": \"تا نبیند خموش\"\n            }\n    ],\n        \"stats\": {\n            \"words\": 57,\n            \"known_words\": 54\n        }\n    }\n]\n\n"
                             }
                         ]
                     }
-                }
-            ]
-        },
-        {
-            "title": "تبدیل صدا به متن به‌شکل ناهمگام",
-            "href": "/api/transcribe_files/",
-            "hrefVariables": [],
-            "copies": [
-                "در این بخش نحوه تحلیل فایل به صورت ناهمگام، توضیح داده شده است."
-            ],
-            "transitions": [
+                },
                 {
-                    "title": "مثال: ارسال لینک فایل به‌شکل ناهمگام",
+                    "title": "مثال: بررسی وضعیت پردازش",
                     "copies": [
-                        "اگر در درخواست خود مقدار پارامتر <code>wait</code> را برابر <code>false</code> قرار دهید، درخواست به‌شکل ناهمگام ارسال می‌شود. در این حالت دیگر لازم نیست منتظر نتیجه بمانید. درعوض، در خروجی، دو پارامتر <code>state</code> و <code>task_ids</code> دریافت می‌کنید که اولی وضعیت پردازش را مشخص می‌کند و دومی لیستی از <code>task_id</code> ها را برمی‌گرداند.  هر <code>task_id</code> شناسهٔ پردازش یک فایل است که بعداً می‌توانید با تابع «دریافت پاسخ به‌شکل ناهمگام» از وضعیت پردازش آن باخبر شوید. در درخواست به‌شکل ناهمگام اگر نتیجهٔ پردازش آماده باشد، بلافاصله در خروجی نمایش داده می‌شود، اگر نه، وضعیت پردازش در پارامتر <code>state</code> برگردانده می‌شود، مثلاً <code>PENDING</code> یعنی در حال پردازش است."
+                        "اگر در <a href=\"#c15d6ded38\">تبدیل صدا به متن</a> ، درخواست خود را با پارامتر `wait=false` ارسال کرده باشید، فهرستی از شناسه‌های پردازش در پارامتر `task_ids` دریافت می‌کنید که برای بررسی وضعیت پردازش آن‌ها می‌توانید همانند مثال زیر عمل کنید.\n\nدر پاسخ، وضعیت پردازش در پارامتر `state` برگردانده می‌شود: `PENDING` یعنی در حال پردازش، `FAILURE` یعنی بروز خطا، `TIMEOUT` یعنی زمان پردازش فایل بیش از زمان تنظیم شده برای انتظار سامانه بوده و از دور پردازش خارج شده است."
                     ],
                     "httpRequest": {
                         "method": "POST",
@@ -155,7 +155,7 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "لینک فایل‌های ورودی",
+                                        "description": "آدرس فایل‌های ورودی",
                                         "typeAttributes": [
                                             "required"
                                         ],
@@ -165,7 +165,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر <code>false</code> باشد یعنی منتظر نتیجه نمی‌ماند. درعوض شناسهٔ پردازش فایل‌ها (<code>task_ids</code>) را برمی‌گرداند تا خودتان هرازگاهی وضعیت پردازش را چک کنید و بعد از پایان پردازش، مجددا درخواست دهید و خروجی نهایی را ببینید.",
+                                        "description": "<a href=\"#c15d6ded38\">توضیحات این پارامتر</a>، پیشتر آمده است.",
                                         "typeAttributes": [],
                                         "key": "wait",
                                         "value": true,
@@ -177,7 +177,7 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "{\n  \"media_urls\": [\"https://i.ganjoor.net/a2/41417.mp3\"],\n  \"wait\": false\n}\n"
+                                "content": "{\n  \"media_urls\": \"List of URLs\",\n  \"wait\": true\n}"
                             },
                             {
                                 "type": "messageBodySchema",
@@ -191,70 +191,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\n  \"state\":\"PENDING\",\n  \"task_ids\":[\"...\"]\n}\n"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "title": "مثال: دریافت پاسخ به‌شکل ناهمگام",
-                    "copies": [
-                        "با ارسال یک یا چند شناسهٔ پردازش در پارامتر <code>task_ids</code>، نتیجهٔ پردازش آن‌ها بازگردانده می‌شود. در پاسخ خروجی، پارامتر <code>state</code> می‌تواند سه حالت داشته باشد. <code>PENDING</code> یعنی در حال پردازش، <code>FAILURE</code> یعنی بروز خطا، <code>TIMEOUT</code> یعنی پردازش فایل بیش از تحمل سامانه بوده است."
-                    ],
-                    "httpRequest": {
-                        "method": "POST",
-                        "headerAttributes": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "Token TOKEN_KEY"
-                            }
-                        ],
-                        "sections": [
-                            {
-                                "type": "dataStructure",
-                                "members": [
-                                    {
-                                        "description": "لیست شناسه‌های پردازش",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "task_ids",
-                                        "value": "List of task ids",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
-                                        "description": "همانند قبل.",
-                                        "typeAttributes": [],
-                                        "key": "wait",
-                                        "value": true,
-                                        "valueType": "boolean",
-                                        "enumaration": []
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "messageBody",
-                                "contentType": "application/json",
-                                "content": "{\n  \"tasks_ids\": [\"...\"],\n  \"wait\": false\n}\n"
-                            },
-                            {
-                                "type": "messageBodySchema",
-                                "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"task_ids\": {\n      \"type\": \"string\"\n    },\n    \"wait\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"task_ids\"\n  ]\n}"
-                            }
-                        ]
-                    },
-                    "httpResponse": {
-                        "headerAttributes": [],
-                        "sections": [
-                            {
-                                "type": "messageBody",
-                                "content": "{\"state\":\"PENDING\"}\n"
+                                "content": "{\"state\":\"PENDING\"}\n\n"
                             }
                         ]
                     }
@@ -266,7 +203,7 @@
             "href": "/ws_api/transcribe_files/wav/sync/",
             "hrefVariables": [],
             "copies": [
-                "برای تبدیل صدای درحال‌پخش (زنده، لایو، استریم) باید از طریق وب‌سوکت به سامانه متصل شوید. در این حالت، پس از برقراری ارتباط، فایل باید در قالب wav به صورت باینری به سرور ارسال شود.\n\n{\"segment_id\": 1, \"text\": \"سازمان بهداشت جهانی\", \"start\": \"0:00:00\", \"end\": \"0:00:05\"}\n\nاگر پردازش کامل نشده باشد، پاسخی به‌شکل زیر ارسال می‌شود:\n\n{\"state\": \"PENDING\"}\n\nدر انتها، برای اعلام پایان فرایند پردازش باید متن \"finalize\"به سرور ارسال شود."
+                "برای تبدیل صدای درحال‌پخش (زنده، لایو، استریم) باید از طریق وب‌سوکت به سامانه متصل شوید. در این حالت، پس از برقراری ارتباط با سرور باید فایل خود را در قالب wav به‌شکل باینری ارسال کنید.\n\n`{\"segment_id\": 1, \"text\": \"سازمان بهداشت جهانی\", \"start\": \"0:00:00\", \"end\": \"0:00:05\"}`\n\nاگر پردازش کامل نشده باشد، پاسخی به‌شکل زیر دریافت می‌کنید:\n\n`{\"state\": \"PENDING\"}`\n\nدر انتها، برای اعلام پایان فرایند پردازش، باید متن `finalize` را به سرور ارسال کنید."
             ],
             "transitions": [
                 {
@@ -287,7 +224,7 @@
                         "sections": [
                             {
                                 "type": "messageBody",
-                                "content": "{\"state\":\"PENDING\"}\n"
+                                "content": "{\"state\":\"PENDING\"}\n\n"
                             }
                         ]
                     }
