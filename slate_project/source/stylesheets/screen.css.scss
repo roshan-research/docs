@@ -463,10 +463,11 @@ html, body {
     max-width: 100%;
   }
 
+  //code tag style modifications here
   code {
-    background-color: #1E2224;
+    background-color: #E8E8E8;
     padding: 3px;
-    color: white;
+    color: black;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
@@ -984,8 +985,9 @@ p {
 }
 
 //useful selector
-div + p + p {
-  code {
-    
-  }
-}
+// div + p + p {
+//   code {
+//     background-color: red;
+//     display: none;
+//   }
+// }
