@@ -467,10 +467,16 @@ html, body {
   code {
     background-color: #E8E8E8;
     padding: 3px;
-    color: black;
+    color: white;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
+  }
+
+  p {
+    code {
+      color: black;
+    }
   }
 
   pre>code {
