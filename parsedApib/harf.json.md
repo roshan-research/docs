@@ -3,11 +3,8 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: CURL
-  - java: JAVA
   - plaintext: RAW
   - python: PYTHON
-  - php: PHP
-  - csharp: C#
 
 includes:
   - errors
@@ -85,132 +82,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("http://harf.roshan-ai.ir/api/transcribe_files/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "http://harf.roshan-ai.ir/api/transcribe_files/";
-  $content = json_encode(
-      '{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://harf.roshan-ai.ir/api/transcribe_files/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -286,7 +157,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     List of URLs
                     </span>
@@ -302,7 +172,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -333,168 +202,6 @@ headers = {'Authorization': 'Token TOKEN_KEY',}
 files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)
-```
-
-```java
-import java.io.*;
-import java.net.*;
-import java.nio.file.Files;
-
-public class MultiPartRequest {
-  public static void main(String[] args) throws IOException {
-
-    String url = "https://alefba.roshan-ai.ir/api/read_document/";
-    File textFile = new File("YOUR FILE PATH");
-    String boundary = Long.toHexString(System.currentTimeMillis());
-    String CRLF = "\r\n";
-
-    URLConnection connection = new URL(url).openConnection();
-    connection.setDoOutput(true);
-    connection.setRequestProperty("accept", "*/*");
-    connection.setRequestProperty("Connection", "close");
-    connection.setRequestProperty("Authorization", "Token TOKEN_KEY");
-    connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-
-    try (
-        OutputStream output = connection.getOutputStream();
-        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output), true);
-    ) {
-      writer.append("--").append(boundary).append(CRLF);
-      writer.append("Content-Disposition: form-data; name=\"document\"; filename=\"").append(textFile.getName()).append("\"").append(CRLF);
-      writer.append("Content-Type: application/pdf").append(CRLF);
-      writer.append(CRLF).flush();
-      Files.copy(textFile.toPath(), output);
-      output.flush();
-      writer.append(CRLF).flush();
-      writer.append("--").append(boundary).append("--").append(CRLF).flush();
-    }
-
-
-    BufferedReader inputStream = new BufferedReader(new InputStreamReader((InputStream) connection.getContent()));
-    String inputLine;
-    while ((inputLine = inputStream.readLine()) != null){
-      System.out.println(inputLine);
-    }
-    inputStream.close();
-  }
-}
-```
-
-```php
-$fields = array("f1"=>"value1", "another_field2"=>"anothervalue");
-
-$filenames = array("FILE_PATH_1", "FILE_PATH_2");
-
-$files = array();
-foreach ($filenames as $f){
-   $files[$f] = file_get_contents($f);
-}
-
-$url = "https://alefba.roshan-ai.ir/api/read_document/";
-
-$curl = curl_init();
-
-$url_data = http_build_query($data);
-
-$boundary = uniqid();
-$delimiter = '-------------' . $boundary;
-
-$post_data = build_data_files($boundary, $fields, $files);
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => $url,
-  CURLOPT_RETURNTRANSFER => 1,
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POST => 1,
-  CURLOPT_POSTFIELDS => $post_data,
-  CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer $TOKEN",
-    "Content-Type: multipart/form-data; boundary=" . $delimiter,
-  ),
-));
-
-$response = curl_exec($curl);
-
-$info = curl_getinfo($curl);
-var_dump($response);
-$err = curl_error($curl);
-echo "error";
-var_dump($err);
-curl_close($curl);
-
-function build_data_files($boundary, $fields, $files){
-    $data = '';
-    $eol = "\r\n";
-    $delimiter = '-------------' . $boundary;
-    foreach ($fields as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . "\"".$eol.$eol
-            . $content . $eol;
-    }
-    foreach ($files as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . $eol
-            . 'Content-Type: image/png'.$eol
-            . 'Content-Transfer-Encoding: binary'.$eol
-            ;
-        $data .= $eol;
-        $data .= $content . $eol;
-    }
-    $data .= "--" . $delimiter . "--".$eol;
-    return $data;
-}
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Collections.Generic;
-using System.Threading;
-
-namespace MyRequest
-{
-    class Program
-    {
-		static async void UploadFile(String serverAddress,String filePath,String[] paramsName,String[] paramsValue){
-			using (var formData = new MultipartFormDataContent()){
-				formData.Headers.ContentType.MediaType = "multipart/form-data";
-				var filestream = new FileStream(filePath, FileMode.Open);
-				Stream fileStream = System.IO.File.OpenRead(filePath);
-				var fileName = System.IO.Path.GetFileName(filePath);
-				
-				formData.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-				{
-					FileName = fileName
-				};
-				
-				for(int i = 0;i<paramsName.Length;i++){
-					var stringContent = new StringContent(paramsValue[i]);
-					stringContent.Headers.Add("Content-Disposition", "form-data; name=\"" + paramsName[i] + "\"");
-					formData.Add(stringContent, paramsName[i]);
-				}
-				
-				formData.Add(new StreamContent(fileStream), "file", filename);
-				
-				using (var client = new HttpClient()){
-					client.DefaultRequestHeaders.Add("Authorization", "Token" + _bearerToken);
-					
-					var response = await client.PostAsync(serverAddress, formData).Result;
-					return response.ToString();
-					
-					var message = await client.PostAsync(serverAddress, formData);
-					result = await message.Content.ReadAsStringAsync();
-					return result;
-				}
-			}
-		}
-    }
-}
 ```
 
 > Response 
@@ -570,7 +277,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     file in binary
                     </span>
@@ -619,129 +325,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("http://harf.roshan-ai.ir/api/transcribe_files/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "media_urls": "List of URLs",
-    "wait": true
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "http://harf.roshan-ai.ir/api/transcribe_files/";
-  $content = json_encode(
-      '{
-    "media_urls": "List of URLs",
-    "wait": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://harf.roshan-ai.ir/api/transcribe_files/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "media_urls": "List of URLs",
-    "wait": true
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -763,7 +346,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     List of URLs
                     </span>
@@ -779,7 +361,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -840,57 +421,6 @@ ws.close()
 ```
 
 ```python
-from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
-
-```
-
-```java
-from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
-
-```
-
-```php
-from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
-
-```
-
-```csharp
 from websocket import create_connection                                              
 headers = {'Authorization' : 'Token ...'}
 ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)

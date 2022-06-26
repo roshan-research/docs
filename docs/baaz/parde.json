@@ -45,123 +45,6 @@
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-        <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://api.sobhe.ir/parde/api/tag_images"</span><span class="o">);</span>
-            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-
-            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
-    "</span><span class="n">image_urls</span><span class="s">": [
-        "</span><span class="n">sample</span><span class="o">.</span><span class="na">com</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="na">jpg</span><span class="s">"
-    ]
-}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
-            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-
-            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
-            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
-                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-            <span class="o">}</span>
-
-            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
-            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/tag_images"</span><span class="p">;</span>
-  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
-      <span class="s1">'{
-    "image_urls": [
-        "sample.com/1.jpg"
-    ]
-}'</span><span class="p">);</span>
-  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
-          <span class="k">array</span><span class="p">(</span>
-              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
-              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
-              <span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
-
-  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
-  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
-
-  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
-      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
-  <span class="p">}</span>
-
-
-  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
-  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">MyRequest</span>
-<span class="p">{</span>
-    <span class="k">class</span> <span class="nc">Program</span>
-    <span class="p">{</span>
-        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://api.sobhe.ir/parde/api/tag_images"</span><span class="p">);</span>
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
-
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
-
-            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
-            <span class="p">{</span>
-                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
-</span>    <span class="s">"image_urls"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">"sample.com/1.jpg"</span>
-    <span class="p">]</span>
-<span class="p">}</span><span class="s">";
-</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
-            <span class="p">}</span>
-
-            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
-            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
-            <span class="p">{</span>
-                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
-                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -247,132 +130,6 @@ Value: [URL, ]
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.lang.System</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URLConnection</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">MyRequest</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-        <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://api.sobhe.ir/parde/api/tag_video_frames"</span><span class="o">);</span>
-            <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-            <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-
-            <span class="kt">byte</span><span class="o">[]</span> <span class="n">out</span> <span class="o">=</span> <span class="s">"{
-    "</span><span class="n">video_urls</span><span class="s">": [
-        "</span><span class="n">sample</span><span class="o">.</span><span class="na">com</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="na">mp4</span><span class="s">"
-    ],
-    "</span><span class="n">every_ms</span><span class="s">": 200,
-    "</span><span class="n">duration</span><span class="s">": 36000,
-    "</span><span class="n">min_frame_diff</span><span class="s">": 0.5
-}"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
-            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-
-            <span class="n">http</span><span class="o">.</span><span class="na">setFixedLengthStreamingMode</span><span class="o">(</span><span class="n">length</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Token TOKEN_KEY"</span><span class="o">);</span>
-            <span class="n">http</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
-            <span class="k">try</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">())</span> <span class="o">{</span>
-                <span class="n">os</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-            <span class="o">}</span>
-
-            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
-            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/tag_video_frames"</span><span class="p">;</span>
-  <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
-      <span class="s1">'{
-    "video_urls": [
-        "sample.com/1.mp4"
-    ],
-    "every_ms": 200,
-    "duration": 36000,
-    "min_frame_diff": 0.5
-}'</span><span class="p">);</span>
-  <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
-          <span class="k">array</span><span class="p">(</span>
-              <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
-              <span class="s2">"Authorization: Token TOKEN_KEY"</span><span class="p">,</span>
-              <span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
-
-  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
-  <span class="nv">$status</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
-
-  <span class="k">if</span> <span class="p">(</span> <span class="nv">$status</span> <span class="o">!=</span> <span class="mi">200</span> <span class="p">)</span> <span class="p">{</span>
-      <span class="k">die</span><span class="p">(</span><span class="s2">"Error: call to URL </span><span class="nv">$url</span><span class="s2"> failed with status </span><span class="nv">$status</span><span class="s2">, response </span><span class="nv">$json_response</span><span class="s2">, curl_error "</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span> <span class="mf">.</span> <span class="s2">", curl_errno "</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$curl</span><span class="p">));</span>
-  <span class="p">}</span>
-
-
-  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
-  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">MyRequest</span>
-<span class="p">{</span>
-    <span class="k">class</span> <span class="nc">Program</span>
-    <span class="p">{</span>
-        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://api.sobhe.ir/parde/api/tag_video_frames"</span><span class="p">);</span>
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
-
-            <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">"POST"</span><span class="p">;</span>
-
-            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">()))</span>
-            <span class="p">{</span>
-                <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="s">"{
-</span>    <span class="s">"video_urls"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">"sample.com/1.mp4"</span>
-    <span class="p">],</span>
-    <span class="s">"every_ms"</span><span class="p">:</span> <span class="m">200</span><span class="p">,</span>
-    <span class="s">"duration"</span><span class="p">:</span> <span class="m">36000</span><span class="p">,</span>
-    <span class="s">"min_frame_diff"</span><span class="p">:</span> <span class="m">0.5</span>
-<span class="p">}</span><span class="s">";
-</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
-                <span class="n">streamWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
-            <span class="p">}</span>
-
-            <span class="kt">var</span> <span class="n">httpResponse</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">httpWebRequest</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
-            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">streamReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">()))</span>
-            <span class="p">{</span>
-                <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">streamReader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">();</span>
-                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -445,7 +202,6 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     100
                     </span>
@@ -462,7 +218,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0.4
                     </span>
@@ -479,7 +234,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     25
                     </span>
@@ -496,7 +250,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>

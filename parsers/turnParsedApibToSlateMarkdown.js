@@ -15,6 +15,8 @@ data= ws.recv()
 ws.close()
 `;
 
+let apiTitleGlobal = "";
+
 function turnParsedApibToSlateMarkdown(jsonText,fileName){
     let parsedApibJson = JSON.parse(jsonText);
     let apiTitle = parsedApibJson.title;
@@ -23,11 +25,11 @@ function turnParsedApibToSlateMarkdown(jsonText,fileName){
         "\n" +
         "language_tabs: # must be one of https://git.io/vQNgJ\n" +
         "  - shell: CURL\n" +
-        "  - java: JAVA\n" +
+        // "  - java: JAVA\n" +
         "  - plaintext: RAW\n" +
         "  - python: PYTHON\n" +
-        "  - php: PHP\n" +
-        "  - csharp: C#\n" +
+        // "  - php: PHP\n" +
+        // "  - csharp: C#\n" +
         "\n" +
         "includes:\n" +
         "  - errors\n" +
@@ -40,6 +42,8 @@ function turnParsedApibToSlateMarkdown(jsonText,fileName){
         "  - name: description\n" +
         "    content: Documentation for the " + apiTitle + " API\n" +
         "---\n\n";
+
+        apiTitleGlobal = apiTitle;
     markDownText += writeApiTitleSection(parsedApibJson);
 
     let hostValue = "";
@@ -235,9 +239,9 @@ Value: ${value}
 
     let curlText = createCurlText(httpMethod,oneTransition.httpRequest.headerAttributes,requestMessageBodyContent,resourceUrl);
     let pythonText = createPythonText(requestMessageBodyContent,oneTransition.httpRequest.headerAttributes,resourceUrl);
-    let javaText = createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
-    let phpText = createPhpText(resourceUrl,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
-    let csharpText = createCsharpText(resourceUrl,oneTransition.httpRequest.headerAttributes,httpMethod,requestMessageBodyContent);
+    // let javaText = createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
+    // let phpText = createPhpText(resourceUrl,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
+    // let csharpText = createCsharpText(resourceUrl,oneTransition.httpRequest.headerAttributes,httpMethod,requestMessageBodyContent);
 
     let RawText = "```plaintext\n";
     if(oneTransition.httpRequest.headerAttributes.length !== 0 && 
@@ -261,9 +265,9 @@ Value: ${value}
         transitionTextSection += RawText;
         transitionTextSection += curlText;
         transitionTextSection += pythonText;
-        transitionTextSection += javaText;
-        transitionTextSection += phpText;
-        transitionTextSection += csharpText;
+        // transitionTextSection += javaText;
+        // transitionTextSection += phpText;
+        // transitionTextSection += csharpText;
         transitionTextSection += "> Response " + "\n\n";
         if (oneTransition.httpResponse.headerAttributes.length === 1){
             transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
@@ -305,12 +309,22 @@ function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyCon
 }
 function createPythonText(requestMessageBodyContent,requestHeaderAttributes,resourceUrl){
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
-        return `\`\`\`python\nimport requests
+        
+        if(apiTitleGlobal === "الفبا") {
+            return `\`\`\`python\nimport requests
 
 headers = {'Authorization': 'Token TOKEN_KEY',}
 files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)\n\`\`\`\n\n`;
+        } else if(apiTitleGlobal === "حرف") {
+            return `\`\`\`python\nimport requests
+
+headers = {'Authorization': 'Token TOKEN_KEY',}
+files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
+print(response)\n\`\`\`\n\n`;
+        }
     }
 
     if (requestHeaderAttributes.length !== 0 && 

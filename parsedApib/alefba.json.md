@@ -3,11 +3,8 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: CURL
-  - java: JAVA
   - plaintext: RAW
   - python: PYTHON
-  - php: PHP
-  - csharp: C#
 
 includes:
   - errors
@@ -86,141 +83,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/read_document/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true,
-    "priority": 3
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/read_document/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true,
-    "priority": 3
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_document/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": true,
-    "priority": 3
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -286,7 +148,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -333,7 +194,6 @@ excel
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -349,7 +209,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -365,7 +224,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -381,7 +239,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     3
                     </span>
@@ -442,141 +299,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/read_document/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": false,
-    "priority": 3
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/read_document/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": false,
-    "priority": 3
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_document/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "fix_orientation": true,
-    "word_positions": false,
-    "type": "general",
-    "wait": false,
-    "priority": 3
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -599,7 +321,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -646,7 +367,6 @@ excel
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -662,7 +382,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -678,7 +397,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -694,7 +412,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     3
                     </span>
@@ -743,129 +460,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/read_document/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "task_id": "...",
-    "wait": false
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/read_document/";
-  $content = json_encode(
-      '{
-    "task_id": "...",
-    "wait": false
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_document/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "task_id": "...",
-    "wait": false
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -888,7 +482,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -904,7 +497,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -935,168 +527,6 @@ headers = {'Authorization': 'Token TOKEN_KEY',}
 files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)
-```
-
-```java
-import java.io.*;
-import java.net.*;
-import java.nio.file.Files;
-
-public class MultiPartRequest {
-  public static void main(String[] args) throws IOException {
-
-    String url = "https://alefba.roshan-ai.ir/api/read_document/";
-    File textFile = new File("YOUR FILE PATH");
-    String boundary = Long.toHexString(System.currentTimeMillis());
-    String CRLF = "\r\n";
-
-    URLConnection connection = new URL(url).openConnection();
-    connection.setDoOutput(true);
-    connection.setRequestProperty("accept", "*/*");
-    connection.setRequestProperty("Connection", "close");
-    connection.setRequestProperty("Authorization", "Token TOKEN_KEY");
-    connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-
-    try (
-        OutputStream output = connection.getOutputStream();
-        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output), true);
-    ) {
-      writer.append("--").append(boundary).append(CRLF);
-      writer.append("Content-Disposition: form-data; name=\"document\"; filename=\"").append(textFile.getName()).append("\"").append(CRLF);
-      writer.append("Content-Type: application/pdf").append(CRLF);
-      writer.append(CRLF).flush();
-      Files.copy(textFile.toPath(), output);
-      output.flush();
-      writer.append(CRLF).flush();
-      writer.append("--").append(boundary).append("--").append(CRLF).flush();
-    }
-
-
-    BufferedReader inputStream = new BufferedReader(new InputStreamReader((InputStream) connection.getContent()));
-    String inputLine;
-    while ((inputLine = inputStream.readLine()) != null){
-      System.out.println(inputLine);
-    }
-    inputStream.close();
-  }
-}
-```
-
-```php
-$fields = array("f1"=>"value1", "another_field2"=>"anothervalue");
-
-$filenames = array("FILE_PATH_1", "FILE_PATH_2");
-
-$files = array();
-foreach ($filenames as $f){
-   $files[$f] = file_get_contents($f);
-}
-
-$url = "https://alefba.roshan-ai.ir/api/read_document/";
-
-$curl = curl_init();
-
-$url_data = http_build_query($data);
-
-$boundary = uniqid();
-$delimiter = '-------------' . $boundary;
-
-$post_data = build_data_files($boundary, $fields, $files);
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => $url,
-  CURLOPT_RETURNTRANSFER => 1,
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POST => 1,
-  CURLOPT_POSTFIELDS => $post_data,
-  CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer $TOKEN",
-    "Content-Type: multipart/form-data; boundary=" . $delimiter,
-  ),
-));
-
-$response = curl_exec($curl);
-
-$info = curl_getinfo($curl);
-var_dump($response);
-$err = curl_error($curl);
-echo "error";
-var_dump($err);
-curl_close($curl);
-
-function build_data_files($boundary, $fields, $files){
-    $data = '';
-    $eol = "\r\n";
-    $delimiter = '-------------' . $boundary;
-    foreach ($fields as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . "\"".$eol.$eol
-            . $content . $eol;
-    }
-    foreach ($files as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . $eol
-            . 'Content-Type: image/png'.$eol
-            . 'Content-Transfer-Encoding: binary'.$eol
-            ;
-        $data .= $eol;
-        $data .= $content . $eol;
-    }
-    $data .= "--" . $delimiter . "--".$eol;
-    return $data;
-}
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Collections.Generic;
-using System.Threading;
-
-namespace MyRequest
-{
-    class Program
-    {
-		static async void UploadFile(String serverAddress,String filePath,String[] paramsName,String[] paramsValue){
-			using (var formData = new MultipartFormDataContent()){
-				formData.Headers.ContentType.MediaType = "multipart/form-data";
-				var filestream = new FileStream(filePath, FileMode.Open);
-				Stream fileStream = System.IO.File.OpenRead(filePath);
-				var fileName = System.IO.Path.GetFileName(filePath);
-				
-				formData.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-				{
-					FileName = fileName
-				};
-				
-				for(int i = 0;i<paramsName.Length;i++){
-					var stringContent = new StringContent(paramsValue[i]);
-					stringContent.Headers.Add("Content-Disposition", "form-data; name=\"" + paramsName[i] + "\"");
-					formData.Add(stringContent, paramsName[i]);
-				}
-				
-				formData.Add(new StreamContent(fileStream), "file", filename);
-				
-				using (var client = new HttpClient()){
-					client.DefaultRequestHeaders.Add("Authorization", "Token" + _bearerToken);
-					
-					var response = await client.PostAsync(serverAddress, formData).Result;
-					return response.ToString();
-					
-					var message = await client.PostAsync(serverAddress, formData);
-					result = await message.Content.ReadAsStringAsync();
-					return result;
-				}
-			}
-		}
-    }
-}
 ```
 
 > Response 
@@ -1163,7 +593,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     file in binary
                     </span>
@@ -1210,7 +639,6 @@ excel
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1226,7 +654,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1242,7 +669,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1258,7 +684,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     3
                     </span>
@@ -1325,144 +750,6 @@ request = Request('https://alefba.roshan-ai.ir/api/read_pages/', data=values, he
 
 response_body = urlopen(request).read()
 print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/read_pages/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "page_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
-    ],
-    "fix_orientation": true,
-    "word_positions": false,
-    "wait": true,
-    "priority": 3
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/read_pages/";
-  $content = json_encode(
-      '{
-    "page_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
-    ],
-    "fix_orientation": true,
-    "word_positions": false,
-    "wait": true,
-    "priority": 3
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_pages/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "page_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
-    ],
-    "fix_orientation": true,
-    "word_positions": false,
-    "wait": true,
-    "priority": 3
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
 ```
 
 > Response 
@@ -1544,7 +831,6 @@ excel
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1560,7 +846,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1576,7 +861,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1592,7 +876,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     3
                     </span>
@@ -1647,132 +930,6 @@ request = Request('https://alefba.roshan-ai.ir/api/document_status/', data=value
 
 response_body = urlopen(request).read()
 print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/document_status/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/document_status/";
-  $content = json_encode(
-      '{
-    "document_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/document_status/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_urls": [
-        "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
 ```
 
 > Response 
@@ -1842,126 +999,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/document_pages/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/document_pages/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/document_pages/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -1984,7 +1021,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -2037,126 +1073,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/download_word/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/download_word/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/download_word/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2173,7 +1089,6 @@ boute.docx file
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -2224,126 +1139,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/download_excel/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/download_excel/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/download_excel/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2360,7 +1155,6 @@ boute.xlsx file
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -2420,135 +1214,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/download_pdf/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "quality": 100,
-    "img_format": "png",
-    "color": false
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/download_pdf/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "quality": 100,
-    "img_format": "png",
-    "color": false
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/download_pdf/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
-    "quality": 100,
-    "img_format": "png",
-    "color": false
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2565,7 +1230,6 @@ boute.pdf file
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -2581,7 +1245,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     100
                     </span>
@@ -2597,7 +1260,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     false
                     </span>
@@ -2648,126 +1310,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/delete_document/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/delete_document/";
-  $content = json_encode(
-      '{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/delete_document/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2786,7 +1328,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -2840,132 +1381,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://alefba.roshan-ai.ir/api/read_document/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
-    "callback_url": "http://192.168.254.3:5013/alefba_post"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.setRequestProperty("Content-Type", "application/json");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://alefba.roshan-ai.ir/api/read_document/";
-  $content = json_encode(
-      '{
-    "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
-    "callback_url": "http://192.168.254.3:5013/alefba_post"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              "Content-Type: application/json",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://alefba.roshan-ai.ir/api/read_document/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
-    "callback_url": "http://192.168.254.3:5013/alefba_post"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2985,7 +1400,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -3001,7 +1415,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>

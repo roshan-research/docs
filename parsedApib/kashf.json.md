@@ -3,11 +3,8 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: CURL
-  - java: JAVA
   - plaintext: RAW
   - python: PYTHON
-  - php: PHP
-  - csharp: C#
 
 includes:
   - errors
@@ -92,129 +89,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/create_tag/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "title": "New Place"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/create_tag/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "title": "New Place"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/create_tag/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "title": "New Place"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -236,7 +110,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -252,7 +125,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -268,7 +140,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -328,135 +199,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/update_tag/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/update_tag/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/update_tag/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "tag_id": 111111111,
-    "title": "Old Place",
-    "active": true
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -478,7 +220,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -494,7 +235,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -510,7 +250,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -526,7 +265,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -577,126 +315,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/delete_tag/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "tag_id": 111111111
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/delete_tag/";
-  $content = json_encode(
-      '{
-    "tag_id": 111111111
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/delete_tag/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "tag_id": 111111111
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -717,7 +335,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -780,138 +397,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/report_text_tags/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/report_text_tags/";
-  $content = json_encode(
-      '[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_text_tags/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "[
-    {
-        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
-        "tag_id": 39,
-        "positive": true
-    }
-]";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -934,7 +419,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -950,7 +434,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -966,7 +449,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1029,138 +511,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/report_image_tags/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/report_image_tags/";
-  $content = json_encode(
-      '[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/report_image_tags/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "[
-    {
-        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
-        "tag_id": 3,
-        "positive": true
-    }
-]";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -1183,7 +533,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     URL
                     </span>
@@ -1199,7 +548,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -1215,7 +563,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1260,120 +607,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/remove_tag_report/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = ""{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/remove_tag_report/";
-  $content = json_encode(
-      '"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/remove_tag_report/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = ""{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -1394,7 +627,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -1410,7 +642,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -1426,7 +657,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -1489,138 +719,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_texts/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "digikala",
-    "contents": [
-        "ارزش خریدنش رو بی شک داره",
-        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/tag_texts/";
-  $content = json_encode(
-      '{
-    "dataset": "digikala",
-    "contents": [
-        "ارزش خریدنش رو بی شک داره",
-        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_texts/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "digikala",
-    "contents": [
-        "ارزش خریدنش رو بی شک داره",
-        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -1659,7 +757,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     slug
                     </span>
@@ -1685,7 +782,6 @@ Value: [content, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -1701,7 +797,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     false
                     </span>
@@ -1764,138 +859,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_images/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/tag_images/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_images/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -1934,7 +897,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     slug
                     </span>
@@ -1960,7 +922,6 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -2020,135 +981,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_faces/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "faces",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/tag_faces/";
-  $content = json_encode(
-      '{
-    "dataset": "faces",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_faces/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "faces",
-    "image_urls": [
-        "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2177,7 +1009,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     slug
                     </span>
@@ -2203,7 +1034,6 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -2272,144 +1102,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_video_frames/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/tag_video_frames/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_video_frames/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -2466,7 +1158,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     slug
                     </span>
@@ -2492,7 +1183,6 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     100
                     </span>
@@ -2508,7 +1198,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0.4
                     </span>
@@ -2524,7 +1213,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -2540,7 +1228,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -2609,144 +1296,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_video_faces/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "faces",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/tag_video_faces/";
-  $content = json_encode(
-      '{
-    "dataset": "faces",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_video_faces/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "faces",
-    "every_ms": 50,
-    "duration": 25,
-    "min_frame_diff": 0.4,
-    "video_urls": [
-        "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 <dl style="background-color:transparent;"><code>POST /api/tag_video_faces/</code></dl>
@@ -2758,7 +1307,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -2784,7 +1332,6 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     100
                     </span>
@@ -2800,7 +1347,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0.4
                     </span>
@@ -2816,7 +1362,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     25
                     </span>
@@ -2832,7 +1377,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -2892,135 +1436,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/tag_videos/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "aparat",
-    "video_urls": [
-        "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/tag_videos/";
-  $content = json_encode(
-      '{
-    "dataset": "aparat",
-    "video_urls": [
-        "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/tag_videos/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "aparat",
-    "video_urls": [
-        "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -3049,7 +1464,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -3075,7 +1489,6 @@ Value: [URL, ]
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -3130,126 +1543,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/train_dataset/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran"
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/train_dataset/";
-  $content = json_encode(
-      '{
-    "dataset": "iran"
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/train_dataset/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran"
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -3270,7 +1563,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     slug
                     </span>
@@ -3324,129 +1616,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/retag_dataset/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "max_predictions": 100
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/retag_dataset/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "max_predictions": 100
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/retag_dataset/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "max_predictions": 100
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -3467,7 +1636,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -3483,7 +1651,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -3540,132 +1707,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/export_dataset/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/export_dataset/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/export_dataset/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -3686,7 +1727,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -3702,7 +1742,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -3718,7 +1757,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     false
                     </span>
@@ -3775,132 +1813,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/import_dataset/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "report_items": true,
-    "tag_names": true
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/import_dataset/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "report_items": true,
-    "tag_names": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/import_dataset/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "report_items": true,
-    "tag_names": true
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -3921,7 +1833,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -3937,7 +1848,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     imported file URL
                     </span>
@@ -3953,7 +1863,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -4008,129 +1917,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/dataset_info/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "tags": true
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/dataset_info/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "tags": true
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/dataset_info/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "tags": true
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -4171,7 +1957,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -4187,7 +1972,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     true
                     </span>
@@ -4232,120 +2016,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_tag_predictions/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = ""    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/list_tag_predictions/";
-  $content = json_encode(
-      '"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_tag_predictions/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = ""    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -4368,7 +2038,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     slug
                     </span>
@@ -4384,7 +2053,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -4438,129 +2106,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_tag_reports/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "tag_id": 2
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/list_tag_reports/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "tag_id": 2
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_tag_reports/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "tag_id": 2
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -4583,7 +2128,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -4599,7 +2143,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -4615,7 +2158,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     false
                     </span>
@@ -4666,126 +2208,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "tag_id": 2
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/";
-  $content = json_encode(
-      '{
-    "tag_id": 2
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "tag_id": 2
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -4808,7 +2230,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -4824,7 +2245,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     false
                     </span>
@@ -4867,120 +2287,6 @@ request = Request('https://kashf.roshan-ai.ir/api/list_datasets/', data=values, 
 
 response_body = urlopen(request).read()
 print(response_body)
-```
-
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_datasets/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("GET");
-            http.setDoOutput(true);
-
-            byte[] out = """".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/list_datasets/";
-  $content = json_encode(
-      '""');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_datasets/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "GET";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = """";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
 ```
 
 > Response 
@@ -5053,135 +2359,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_texts/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "persica",
-    "text_ids": [
-        11462988
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/list_texts/";
-  $content = json_encode(
-      '{
-    "dataset": "persica",
-    "text_ids": [
-        11462988
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_texts/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "persica",
-    "text_ids": [
-        11462988
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -5202,7 +2379,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -5218,7 +2394,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -5278,135 +2453,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/list_images/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "text_ids": [
-        1832
-    ]
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/list_images/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "text_ids": [
-        1832
-    ]
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/list_images/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "text_ids": [
-        1832
-    ]
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -5427,7 +2473,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -5443,7 +2488,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     0
                     </span>
@@ -5503,135 +2547,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/search_candidate_texts/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "persica",
-    "query": "اقتصاد مثاومتی",
-    "tag_id": 1482,
-    "reported": false
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/search_candidate_texts/";
-  $content = json_encode(
-      '{
-    "dataset": "persica",
-    "query": "اقتصاد مثاومتی",
-    "tag_id": 1482,
-    "reported": false
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/search_candidate_texts/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "persica",
-    "query": "اقتصاد مثاومتی",
-    "tag_id": 1482,
-    "reported": false
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -5654,7 +2569,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -5670,7 +2584,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     None
                     </span>
@@ -5686,7 +2599,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     false
                     </span>
@@ -5702,7 +2614,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -5759,132 +2670,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/search_candidate_images/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "iran",
-    "query": "برج آزادی",
-    "tag_id": 2
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/search_candidate_images/";
-  $content = json_encode(
-      '{
-    "dataset": "iran",
-    "query": "برج آزادی",
-    "tag_id": 2
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/search_candidate_images/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "iran",
-    "query": "برج آزادی",
-    "tag_id": 2
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -5907,7 +2692,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -5923,7 +2707,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     None
                     </span>
@@ -5939,7 +2722,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
@@ -5996,132 +2778,6 @@ response_body = urlopen(request).read()
 print(response_body)
 ```
 
-```java
-import java.lang.System;
-import java.net.HttpURLConnection;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.URLConnection;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-class MyRequest {
-
-    public static void main(String[] args){
-        try{
-            URL url = new URL("https://kashf.roshan-ai.ir/api/search_candidate_faces/");
-            URLConnection con = url.openConnection();
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST");
-            http.setDoOutput(true);
-
-            byte[] out = "{
-    "dataset": "faces",
-    "query": " احسان کرمی",
-    "tag_id": 213243
-}".getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json");
-            http.setRequestProperty("Authorization", "Token TOKEN_KEY");
-            http.connect();
-            try(OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch(Exception e){
-            System.err.println(e);
-        }
-    }
-}
-```
-
-```php
-<?php
-
-  $url = "https://kashf.roshan-ai.ir/api/search_candidate_faces/";
-  $content = json_encode(
-      '{
-    "dataset": "faces",
-    "query": " احسان کرمی",
-    "tag_id": 213243
-}');
-  $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_HEADER, false);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_HTTPHEADER,
-          array(
-              "Content-Type: application/json",
-              "Authorization: Token TOKEN_KEY",
-              );
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-  $json_response = curl_exec($curl);
-
-  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-  if ( $status != 200 ) {
-      die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-  }
-
-
-  curl_close($curl);
-
-  $response = json_decode($json_response, true);
-?>
-```
-
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-
-namespace MyRequest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kashf.roshan-ai.ir/api/search_candidate_faces/");
-            httpWebRequest.Headers["Content-Type"]= "application/json";
-            httpWebRequest.Headers["Authorization"]= "Token TOKEN_KEY";
-
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{
-    "dataset": "faces",
-    "query": " احسان کرمی",
-    "tag_id": 213243
-}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
-```
-
 > Response 
 
 ```json
@@ -6139,7 +2795,6 @@ namespace MyRequest
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     dataset slug
                     </span>
@@ -6155,7 +2810,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     None
                     </span>
@@ -6171,7 +2825,6 @@ Value: <span style="background-color: #00A693;
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
-                    margin-top: -100px;
                     border-radius: 2px">
                     undefined
                     </span>
