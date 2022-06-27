@@ -2,8 +2,12 @@ set -e
 
 echo 'RUN THE SCRIPT AS SUPER USER'
 
-cd ./parsers
+cd slate_project
+bundle install --quiet
+cd ..
+npm list drafter || npm install drafter
 
+cd ./parsers
 node parser.js make-jsons
 echo 'made JSON files from apib files';
 # node ./parsers/parser.js fix-jsons
@@ -14,67 +18,30 @@ cd ..
 cp ./parsedApib/*.md ./slate_project/source
 echo 'copied all markdown files to the slate_project folder'
 
+build_one(){    
+    rm ./source/index.html.md
+    mv ./source/$1.json.md ./source/index.html.md
+    cp ../logos/$1/logo.svg ./source/images/
+    bundle exec middleman build
+    rm -r ../docs/$1/*
+    cp -r ./build/* ../docs/$1
+    echo "$1 documentations are updated"
+}
+
+build_all(){
+    for Item in alefba harf kashf baaz parde golrokh ;
+  do
+    build_one $Item
+  done  
+}
+
 cd ./slate_project
 
-rm ./source/index.html.md
-mv ./source/alefba.json.md ./source/index.html.md
-cp ../logos/alefba/logo.svg ./source/images/
-bundle exec middleman build
-rm -r ../docs/alefba/*
-cp -r ./build/* ../docs/alefba
-echo 'alebfa documentations are updated'
-
-
-rm ./source/index.html.md
-mv ./source/kashf.json.md ./source/index.html.md
-cp ../logos/kashf/logo.svg ./source/images/
-bundle exec middleman build
-rm -r ../docs/kashf/*
-cp -r ./build/* ../docs/kashf
-echo 'kashf documentations are updated'
-
-rm ./source/index.html.md
-mv ./source/baaz.json.md ./source/index.html.md
-cp ../logos/baaz/logo.svg ./source/images/
-bundle exec middleman build
-rm -r ../docs/baaz/*
-cp -r ./build/* ../docs/baaz
-echo 'baaz documentations are updated'
-
-
-rm ./source/index.html.md
-mv ./source/golrokh.json.md ./source/index.html.md
-cp ../logos/golrokh/logo.svg ./source/images/
-bundle exec middleman build
-rm -r ../docs/golrokh/*
-cp -r ./build/* ../docs/golrokh
-echo 'golrokh documentations are updated'
-
-
-rm ./source/index.html.md
-mv ./source/harf.json.md ./source/index.html.md
-cp ../logos/harf/logo.svg ./source/images/
-bundle exec middleman build
-rm -r ../docs/harf/*
-cp -r ./build/* ../docs/harf
-echo 'harf documentations are updated'
-
-# rm ./source/index.html.md
-# mv ./source/naghsh.json.md ./source/index.html.md
-# bundle exec middleman build
-# rm -r ../docs/naghsh/*
-# cp -r ./build/* ../docs/naghsh
-# echo 'naghsh documentations are updated'
-
-rm ./source/index.html.md
-mv ./source/parde.json.md ./source/index.html.md
-cp ../logos/parde/logo.svg ./source/images/
-bundle exec middleman build
-rm -r ../docs/parde/*
-cp -r ./build/* ../docs/parde
-echo 'parde documentations are updated'
+if [ $# -eq 0 ] 
+then build_all
+else build_one $1
+fi
 
 cd ..
 node JsAppender.js
-
 echo 'parsing and building docs finished successfully!'
