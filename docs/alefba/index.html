@@ -773,9 +773,9 @@ Value: <span style="background-color: #00A693;
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"--{boundary value}\nContent-Disposition: form-data; name='document'; filename='FILE NAME'\nContent-Type: text/plain (according to the type of the uploaded file)\n\n{file content}\n--{boundary value}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span>
-      POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span>
-      <span class="nt">-F</span> <span class="s2">"document=@example.pdf"</span>
-      http://alefba.roshan-ai.ir/api/read_document
+        POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span>
+        <span class="nt">-F</span> <span class="s2">"document=@example.pdf"</span>
+        http://alefba.roshan-ai.ir/api/read_document
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,}</span>
