@@ -190,18 +190,26 @@ Value: <span style="background-color: #00A693;
 
 ```shell
 curl -X
-      POST --header "Authorization: Token TOKEN_KEY"
-      -F "document=@example.pdf"
-      http://alefba.roshan-ai.ir/api/read_document
+POST --header "Authorization: Token TOKEN_KEY"
+-F "media=@example.mp3"
+http://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
-import requests
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
 
-headers = {'Authorization': 'Token TOKEN_KEY',}
-files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
-response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
-print(response)
 ```
 
 > Response 

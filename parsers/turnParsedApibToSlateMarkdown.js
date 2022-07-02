@@ -15,6 +15,11 @@ data= ws.recv()
 ws.close()
 `;
 
+let websocketHarfCurl =  `\`\`\`shell\ncurl -X
+POST --header "Authorization: Token TOKEN_KEY"
+-F "media=@example.mp3"
+http://harf.roshan-ai.ir/api/transcribe_files/\n\`\`\`\n\n`;
+
 let apiTitleGlobal = "";
 
 function turnParsedApibToSlateMarkdown(jsonText,fileName){
@@ -284,10 +289,14 @@ Value: ${value}
 }
 function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyContent,resourceUrl){
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
-        return `\`\`\`shell\ncurl -X
-      POST --header "Authorization: Token TOKEN_KEY"
-      -F "document=@example.pdf"
-      http://alefba.roshan-ai.ir/api/read_document\n\`\`\`\n\n`;
+      if(apiTitleGlobal === "الفبا") {
+        return  `\`\`\`shell\ncurl -X
+        POST --header "Authorization: Token TOKEN_KEY"
+        -F "document=@example.pdf"
+        http://alefba.roshan-ai.ir/api/read_document\n\`\`\`\n\n`;
+    } else if(apiTitleGlobal === "حرف") {
+        return websocketHarfCurl;
+    }
     }
 
     if (requestHeaderAttributes.length !== 0 && 
@@ -318,12 +327,7 @@ files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)\n\`\`\`\n\n`;
         } else if(apiTitleGlobal === "حرف") {
-            return `\`\`\`python\nimport requests
-
-headers = {'Authorization': 'Token TOKEN_KEY',}
-files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
-response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
-print(response)\n\`\`\`\n\n`;
+            return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
         }
     }
 

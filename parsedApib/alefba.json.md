@@ -515,9 +515,9 @@ Value: <span style="background-color: #00A693;
 
 ```shell
 curl -X
-      POST --header "Authorization: Token TOKEN_KEY"
-      -F "document=@example.pdf"
-      http://alefba.roshan-ai.ir/api/read_document
+        POST --header "Authorization: Token TOKEN_KEY"
+        -F "document=@example.pdf"
+        http://alefba.roshan-ai.ir/api/read_document
 ```
 
 ```python

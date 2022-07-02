@@ -15,36 +15,38 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the پرده API
+    content: Documentation for the حرف API
 ---
 
-# پرده
+# حرف
 
-پرده یک ای‌پی‌آی بومی برای تشخیص تصاویر نامناسب است. از دید پرده، تصویر نامناسب در یکی از این چهار دسته قرار می‌گیرد:
+حرف، یک ای‌پی‌آیِ بومی برای تبدیل گفتار به نوشتارِ فارسی است.
 
-* غیراخلاقی: حاوی تصاویر اعضای جنسی.
+این ای‌پی‌آی با شنیدن هزاران ساعت گفتار در لحن‌ها، سبک‌ها، سرعت‌ها و رده‌های سنی مختلف، به‌خوبی آموزش دیده و با دقت بالایی می‌تواند **صوت**، **ویدیو** یا حتی **پخش زنده** را به متن فارسی تبدیل کند.
 
-* دل‌خراش: حاوی تصاویر دلخراش و مشمئزکننده.
+برای دسترسی به ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:harf@roshan-ai.ir">harf@roshan-ai.ir</a> درخواست دهید.
 
-* حزن‌آلود: حاوی تصاویر غم‌بار و ناراحت‌کننده.
+# تبدیل صدا به متن
 
-* خلاف شئون اسلامی: حاوی تصاویری خلاف معیارهای صداوسیمای ایران
+این تابع، بسته‌ به تنظیم پارامترهای ورودی، می‌تواند کارهای مختلفی انجام می‌دهد که در ادامه برای هر یک مثالی آورده‌ایم.
 
-دو دستهٔ اول حتی برای افراد بزرگسال نیز نامناسب است و دو دستهٔ آخر بیشتر برای کودکان نامناسب است.
+بعد از تکمیل پردازش، پاسخی دریافت می‌کنید که حاوی آرایه‌ای از نتایج است. هر یک از عناصر این آرایه مربوط به نتایج یک فایل است.
 
-برای دسترسی به این ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ [parde@roshan-ai.ir](mailto:parde@roshan-ai.ir) درخواست دهید
+در هر عنصر آرایه، آدرس فایل در پارامتر `media_url`، مدت‌زمان فایل در پارامتر `duration` و متن‌های استخراج‌شده در آرایهٔ `segments` قرار می‌گیرد.
 
-# برچسب‌گذاری تصاویر
+هر سگمنت شامل سه پارامتر `start` زمان شروع بازه، `end` زمان پایان بازه و `text` متن بازه است. همچنین به ازای هر فایل، وضعیت شناسایی در پارامتر `stats` قرار می‌گیرد که خودش شامل دو زیرپارامتر است. اولی `words` است که حاوی کل تعداد کلمات فایل است و دومی `known_words` است که حاوی کلماتی است که بدون تردید تشخیص داده شده است.
+
+حرف هرجایی که به تشخیص خود تردید می‌کند آن کلمه یا عبارت را درون قلاب (کروشه) می‌گذارد.
 
 
-## مثال
+## مثال: ارسال آدرس فایل‌ها
 
 > Request
 
 ```plaintext
 {
-    "image_urls": [
-        "sample.com/1.jpg"
+    "media_urls": [
+        "https://i.ganjoor.net/a2/41417.mp3"
     ]
 }
 ```
@@ -53,11 +55,11 @@ meta:
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
       --data-binary {
-    "image_urls": [
-        "sample.com/1.jpg"
+    "media_urls": [
+        "https://i.ganjoor.net/a2/41417.mp3"
     ]
 } \
-      http://api.sobhe.ir/parde/api/tag_images
+      http://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
@@ -65,8 +67,8 @@ from urllib2 import Request, urlopen
 
 values = """
 {
-    "image_urls": [
-        "sample.com/1.jpg"
+    "media_urls": [
+        "https://i.ganjoor.net/a2/41417.mp3"
     ]
 }
 """
@@ -74,7 +76,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://api.sobhe.ir/parde/api/tag_images', data=values, headers=headers)
+request = Request('http://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -85,205 +87,83 @@ print(response_body)
 ```json
 [
     {
-        "image_url":"sample.com/1.jpg",
-        "tags": 
-        [
+        "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+        "duration": "0:00:44",
+        "segments": [
             {
-                "id": 82311,
-                "probability": 0.9,
-                "title": "خلاف شئون اسلامی"
+                "start": "0:00:00",
+                "end": "0:00:02",
+                "text": "[حکایت]"
             },
             {
-                "id": 82312,
-                "probability": 0.67,
-                "title": "حزن‌آلود"
+                "start": "0:00:02",
+                "end": "0:00:06",
+                "text": "یکی را از حکما شنیدم که می گفت"
+            },
+            {
+                "start": "0:00:06",
+                "end": "0:00:11",
+                "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+            },
+            {
+                "start": "0:00:11",
+                "end": "0:00:16",
+                "text": "مگر آن کس که چون دیگری در سخن باشد"
+            },
+            {
+                "start": "0:00:16",
+                "end": "0:00:21",
+                "text": "همچنان ناتمام گفته سخن آغاز کند"
+            },
+            {
+                "start": "0:00:21",
+                "end": "0:00:26",
+                "text": "سخن را سر از [ای] خردمند و بن"
+            },
+            {
+                "start": "0:00:26",
+                "end": "0:00:30",
+                "text": "میا بر سخن در میان سخن"
+            },
+            {
+                "start": "0:00:30",
+                "end": "0:00:37",
+                "text": "خداوند تدبیر و فرهنگ و [روش] نگوید سخن"
+            },
+            {
+                "start": "0:00:37",
+                "end": "0:00:39",
+                "text": "تا نبیند خموش"
             }
-        ]
+    ],
+        "stats": {
+            "words": 57,
+            "known_words": 54
+        }
     }
 ]
 
 
 ```
 
-ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد `image_url` حاوی لینک تصویر و آرایهٔ `tags` حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد `id`، عنوان برچسب در فیلد `title`و میزان اطمینان به آن برچسب در فیلد `probability`قرار می‌گیرد.
+روش اول برای تبدیل فایل‌های صوتی یا ویدیویی به متن، ارسال آدرس فایل‌ها در پارامتر `media_urls` است.
 
-<dl style="background-color:transparent;"><code>POST /parde/api/tag_images</code></dl>
-
-<dl>
-<strong>image_urls(required)</strong>
-<br>
-<br>
-Value: [URL, ]
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  لیست آدرس تصاویر.</p>
-<br><br>
-# برچسب‌گذاری فریم‌های ویدیو
-
-ورودی این تابع لیستی از آدرس ویدیوها است و خروجی آن برچسب‌های هر ویدیو. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از یک فیلد `video_url` حاوی لینک تصویر و آرایهٔ `frames` حاوی فریم‌های پردازش‌شده است. در هر فریم، شمارهٔ آن در فیلد `frame`، موقعیت زمانی آن در فیلد `time` و برچسب‌های شناسایی‌شده برای آن در فیلد `tags` قرار می‌گیرد.
-
-
-## مثال
-
-> Request
-
-```plaintext
-{
-    "video_urls": [
-        "sample.com/1.mp4"
-    ],
-    "every_ms": 200,
-    "duration": 36000,
-    "min_frame_diff": 0.5
-}
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "video_urls": [
-        "sample.com/1.mp4"
-    ],
-    "every_ms": 200,
-    "duration": 36000,
-    "min_frame_diff": 0.5
-} \
-      http://api.sobhe.ir/parde/api/tag_video_frames
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-{
-    "video_urls": [
-        "sample.com/1.mp4"
-    ],
-    "every_ms": 200,
-    "duration": 36000,
-    "min_frame_diff": 0.5
-}
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('http://api.sobhe.ir/parde/api/tag_video_frames', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-> Response 
-
-```json
-[
-    {
-        "video_url": "sample.com/1.mp4",
-        "frames": 
-        [
-            {
-                "frame": 6,
-                "time": "0:00:00",
-                "tags": []
-            },
-            {
-                "frame": 31,
-                "time": "0:00:01",
-                "tags": []
-            },
-            {
-                "frame": 36,
-                "time": "0:00:01",
-                "tags": []
-            },
-            {
-                "frame": 475,
-                "time": "0:00:18",
-                "tags": 
-                [
-                    {
-                        "id": 86141,
-                        "probability": 0.32,
-                        "title": "دل‌خراش"
-                    },
-                    {
-                        "id": 86142,
-                        "probability": 0.49,
-                        "title": "غیراخلاقی"
-                    }
-                ]
-            },
-            {
-                "frame": 560,
-                "time": "0:00:22",
-                "tags": []
-            }
-        ]
-    }
-]
-
-
-```
-
-<dl style="background-color:transparent;"><code>POST /parde/api/tag_video_frames</code></dl>
+<dl style="background-color:transparent;"><code>POST /api/transcribe_files/</code></dl>
 
 <dl>
-<strong>video_urls(required)</strong>
-<br>
-<br>
-Value: [URL, ]
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.</p>
-<br><br>
-<dl>
-<strong>every_ms</strong>
+<strong>media_urls(required)</strong>
 <br>
 <br>
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
                     border-radius: 2px">
-                    100
+                    List of URLs
                     </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  هر چند میلی‌ثانیه یک فریم استخراج شود؟</p>
-<br><br>
-<dl>
-<strong>min_frame_diff</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    0.4
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.</p>
-<br><br>
-<dl>
-<strong>duration</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    25
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  آدرس فایل‌های صوتی یا ویدیویی یا ترکیبی از این دو</p>
 <br><br>
 <dl>
 <strong>wait</strong>
@@ -298,5 +178,280 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `pending` یا `started` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `pending` خواهد بود.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند تبدیل فایل‌ها به متن باید منتظر بمانید اما اگر `false` باشد بلافاصله بعد از ارسال درخواست، پاسخی با ارسال وضعیت پردازش در پارامتر `state` و فهرستی از شناسه‌های پردازش در پارامتر `task_ids` (برای هر فایل یک شناسه) بازگردانده می‌شود که بعداً می‌توانید وضعیت پردازش این شناسه‌ها را جویا شوید.</p>
 <br><br>
+## مثال: آپلود فایل
+
+> Request
+
+```plaintext
+"    --{boundary value}\n    Content-Disposition: form-data; name='41417'; filename='FILE NAME'\n    Content-Type: audio/mpeg (according to the type of the uploaded file)\n    {file content}\n    --{boundary value}\n"
+```
+
+```shell
+curl -X
+POST --header "Authorization: Token TOKEN_KEY"
+-F "media=@example.mp3"
+http://harf.roshan-ai.ir/api/transcribe_files/
+```
+
+```python
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
+
+```
+
+> Response 
+
+```json
+[
+    {
+        "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+        "duration": "0:00:44",
+        "segments": [
+            {
+                "start": "0:00:00",
+                "end": "0:00:02",
+                "text": "[حکایت]"
+            },
+            {
+                "start": "0:00:02",
+                "end": "0:00:06",
+                "text": "یکی را از حکما شنیدم که می گفت"
+            },
+            {
+                "start": "0:00:06",
+                "end": "0:00:11",
+                "text": "هرگز کسی به جهل خویش اقرار نکرده است"
+            },
+            {
+                "start": "0:00:11",
+                "end": "0:00:16",
+                "text": "مگر آن کس که چون دیگری در سخن باشد"
+            },
+            {
+                "start": "0:00:16",
+                "end": "0:00:21",
+                "text": "همچنان ناتمام گفته سخن آغاز کند"
+            },
+            {
+                "start": "0:00:21",
+                "end": "0:00:26",
+                "text": "سخن را سر از [ای] خردمند و بن"
+            },
+            {
+                "start": "0:00:26",
+                "end": "0:00:30",
+                "text": "میا بر سخن در میان سخن"
+            },
+            {
+                "start": "0:00:30",
+                "end": "0:00:37",
+                "text": "خداوند تدبیر و فرهنگ و [روش] نگوید سخن"
+            },
+            {
+                "start": "0:00:37",
+                "end": "0:00:39",
+                "text": "تا نبیند خموش"
+            }
+    ],
+        "stats": {
+            "words": 57,
+            "known_words": 54
+        }
+    }
+]
+
+
+```
+
+<dl style="background-color:transparent;"><code>POST /api/transcribe_files/</code></dl>
+
+<dl>
+<strong>media(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    file in binary
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  فایل ورودی</p>
+<br><br>
+## مثال: بررسی وضعیت پردازش
+
+> Request
+
+```plaintext
+{
+    "media_urls": "List of URLs",
+    "wait": true
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary {
+    "media_urls": "List of URLs",
+    "wait": true
+} \
+      http://harf.roshan-ai.ir/api/transcribe_files/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "media_urls": "List of URLs",
+    "wait": true
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('http://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+> Response 
+
+```json
+{"state":"PENDING"}
+
+
+```
+
+اگر در <a href="#c15d6ded38">تبدیل صدا به متن</a> ، درخواست خود را با پارامتر `wait=false` ارسال کرده باشید، فهرستی از شناسه‌های پردازش در پارامتر `task_ids` دریافت می‌کنید که برای بررسی وضعیت پردازش آن‌ها می‌توانید همانند مثال زیر عمل کنید.
+
+در پاسخ، وضعیت پردازش در پارامتر `state` برگردانده می‌شود: `PENDING` یعنی در حال پردازش، `FAILURE` یعنی بروز خطا، `TIMEOUT` یعنی زمان پردازش فایل بیش از زمان تنظیم شده برای انتظار سامانه بوده و از دور پردازش خارج شده است.
+
+<dl style="background-color:transparent;"><code>POST /api/transcribe_files/</code></dl>
+
+<dl>
+<strong>media_urls(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    List of URLs
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس فایل‌های ورودی</p>
+<br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  <a href="#c15d6ded38">توضیحات این پارامتر</a>، پیشتر آمده است.</p>
+<br><br>
+# تبدیل پخش زندهٔ صدا به متن
+
+برای تبدیل صدای درحال‌پخش (زنده، لایو، استریم) باید از طریق وب‌سوکت به سامانه متصل شوید. در این حالت، پس از برقراری ارتباط با سرور باید فایل خود را در قالب wav به‌شکل باینری ارسال کنید.
+
+`{"segment_id": 1, "text": "سازمان بهداشت جهانی", "start": "0:00:00", "end": "0:00:05"}`
+
+اگر پردازش کامل نشده باشد، پاسخی به‌شکل زیر دریافت می‌کنید:
+
+`{"state": "PENDING"}`
+
+در انتها، برای اعلام پایان فرایند پردازش، باید متن `finalize` را به سرور ارسال کنید.
+
+
+## مثال
+
+> Request
+
+```plaintext
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
+
+```
+
+```shell
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
+
+```
+
+```python
+from websocket import create_connection                                              
+headers = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+with open('sample.wav' ,'rb') as f:
+    bs=f.read()
+window_size = 32000
+number_of_window = (len(bs) + 1) // window_size
+for i in range(number_of_window):
+    ws.send_binary(bs[window_size*i:window_size*(i+1)])
+    data = ws.recv()
+ws.send("finalize")
+data= ws.recv()
+ws.close()
+
+```
+
+> Response 
+
+```json
+{"state":"PENDING"}
+
+
+```
+
+<dl style="background-color:transparent;"><code>POST /ws_api/transcribe_files/wav/sync/</code></dl>
+
