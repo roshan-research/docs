@@ -1,8 +1,8 @@
 const fs = require('fs');
 
 let websocketCode = `from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+header = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
 with open('sample.wav' ,'rb') as f:
     bs=f.read()
 window_size = 32000
