@@ -585,36 +585,15 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "texts": [
-        "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."
-    ]
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    \"media_url\": [\"https://i.ganjoor.net/a2/41417.mp3\",\n    \"text\": \"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.\"\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"media_urls"</span>: <span class="o">[</span>
-        <span class="s2">"https://i.ganjoor.net/a2/41417.mp3"</span>
-    <span class="o">]</span>,
-    <span class="s2">"texts"</span>: <span class="o">[</span>
-        <span class="s2">"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">media_url</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">https://i.ganjoor.net/a2/41417.mp3</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.</span><span class="se">\"\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
       https://harf.roshan-ai.ir/api/alignment/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
-{
-    "media_urls": [
-        "https://i.ganjoor.net/a2/41417.mp3"
-    ],
-    "texts": [
-        "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."
-    ]
-}
+"{</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">media_url</span><span class="se">\"</span><span class="s">: [</span><span class="se">\"</span><span class="s">https://i.ganjoor.net/a2/41417.mp3</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.</span><span class="se">\"\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"
 """</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -628,199 +607,196 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Response </p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"media_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://i.ganjoor.net/a2/41417.mp3"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"segments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00.240000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00.800000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکایت"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02.550000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02.830000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"یکی"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02.930000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.010000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"را"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.330000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.490000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"از"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.610000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:04.090000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکما"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:04.510000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:04.970000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شنیدم"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.090000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.130000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"که"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.230000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.290000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"می"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.410000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.850000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"گفت:"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:06.850000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:07.250000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"هرگز"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:07.410000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:07.770000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کسی"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.110000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.170000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"به"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.370000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.670000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"جهل"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.890000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:09.250000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خویش"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:09.430000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:09.950000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اقرار"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:10.190000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:10.690000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"نکرده"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:10.770000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:11.150000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"است،"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.040000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.360000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مگر"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.580000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.740000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آن"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.920000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.140000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کس"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.300000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.360000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"که"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.520000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.680000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"چون"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.920000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.480000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"دیگری"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.620000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.720000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"در"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.860000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:15.180000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سخن"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:15.340000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:15.840000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"باشد"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:16.460000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.500000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"همچنان تمام ناگفته،"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.500000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.840000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سخن"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.940000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:20.360000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آغاز"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:20.500000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:20.780000"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کند."</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"media_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://i.ganjoor.net/a2/41417.mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"segments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00.240000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00.800000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکایت"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02.550000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02.830000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"یکی"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:02.930000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.010000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"را"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.330000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.490000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"از"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:03.610000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:04.090000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حکما"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:04.510000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:04.970000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شنیدم"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.090000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.130000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"که"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.230000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.290000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"می"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.410000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:05.850000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"گفت:"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:06.850000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:07.250000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"هرگز"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:07.410000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:07.770000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کسی"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.110000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.170000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"به"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.370000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.670000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"جهل"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:08.890000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:09.250000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خویش"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:09.430000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:09.950000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اقرار"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:10.190000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:10.690000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"نکرده"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:10.770000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:11.150000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"است،"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.040000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.360000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مگر"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.580000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.740000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آن"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:12.920000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.140000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کس"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.300000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.360000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"که"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.520000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.680000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"چون"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:13.920000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.480000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"دیگری"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.620000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.720000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"در"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:14.860000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:15.180000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سخن"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:15.340000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:15.840000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"باشد"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:16.460000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.500000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"همچنان تمام ناگفته،"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.500000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.840000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سخن"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:19.940000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:20.360000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آغاز"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:20.500000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:20.780000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کند."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>POST /api/alignment/</code></dl>
 
 <dl>
-<strong>media_urls(required)</strong>
+<strong>media_url(required)</strong>
 <br>
 <br>
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
                     border-radius: 2px">
-                    List of URLs
+                    URL
                     </span>
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس فایل‌های ورودی</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس فایل‌ ورودی</p>
 
 <p><br><br>
 <dl>
-<strong>texts(required)</strong>
+<strong>text(required)</strong>
 <br>
 <br>
 Value: <span style="background-color: #00A693;
                     border-color: #00A693;
                     border-width: 3px;
                     border-radius: 2px">
-                    List of Texts
+                    Text
                     </span>
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  متن فایل‌های ورودی. هر متن به‌ترتیب نمایندهٔ یک فایل است. متن اول برای فایل اول، متن دوم برای فایل دوم و همینطور الی آخر.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  متن فایل‌ ورودی. هر متن به‌ترتیب نمایندهٔ یک فایل است.</p>
 
 <p><br><br></p>
 <h1 id='3b1dd46314'>تبدیل پخش زندهٔ صدا به متن</h1>
