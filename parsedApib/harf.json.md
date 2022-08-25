@@ -59,7 +59,7 @@ curl  --request POST \
         "https://i.ganjoor.net/a2/41417.mp3"
     ]
 } \
-      http://harf.roshan-ai.ir/api/transcribe_files/
+      https://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
@@ -76,7 +76,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
+request = Request('https://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -197,8 +197,8 @@ http://harf.roshan-ai.ir/api/transcribe_files/
 
 ```python
 from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+header = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
 with open('sample.wav' ,'rb') as f:
     bs=f.read()
 window_size = 32000
@@ -311,7 +311,7 @@ curl  --request POST \
     "media_urls": "List of URLs",
     "wait": true
 } \
-      http://harf.roshan-ai.ir/api/transcribe_files/
+      https://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
@@ -327,7 +327,7 @@ values = """
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('http://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
+request = Request('https://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(response_body)
@@ -377,6 +377,236 @@ Value: <span style="background-color: #00A693;
 <p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  <a href="#c15d6ded38">توضیحات این پارامتر</a>، پیشتر آمده است.</p>
 <br><br>
+# هم ترازی متن و گفتار
+
+این تابع با دریافت لیستی از فایل‌های صوتی یا ویدیویی به همراه متن‌ها آن‌ها نشان می‌دهد که هر کلمه در کدام بخش از صدا ادا شده است. مبنای تفکیک کلمات «فاصله» است مثلاً در کلمهٔ «می روم»، «می» یک کلمه و «روم» یک کلمه در نظر گرفته می‌شود. در پاسخ ارسالی آرایه‌ای دریافت می‌کنید که هر یک از آیتم‌های آن نمایندهٔ یک فایل است. در هر آیتم پارامتر `media_url` آدرس فایل ورودی است. `duration` طول فایل است و `segments` لیستی کلماتِ موجود در پارامتر `text` است که زمان تشخیص شروع و پایان هر کدام از آن‌ها مشخص شده است. متن کلمه در پارامتر `text`، زمان شروع در پارامتر `start` و زمان پایان در پارمتر `end` قرار می‌گیرد.
+
+
+## مثال: آپلود فایل
+
+> Request
+
+```plaintext
+"{\n    \"media_url\": [\"https://i.ganjoor.net/a2/41417.mp3\",\n    \"text\": \"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.\"\n}\n"
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
+      --data-binary "{\n    \"media_url\": [\"https://i.ganjoor.net/a2/41417.mp3\",\n    \"text\": \"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.\"\n}\n" \
+      https://harf.roshan-ai.ir/api/alignment/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+"{\n    \"media_url\": [\"https://i.ganjoor.net/a2/41417.mp3\",\n    \"text\": \"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.\"\n}\n"
+"""
+
+headers = {
+  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
+}
+request = Request('https://harf.roshan-ai.ir/api/alignment/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+> Response 
+
+```json
+{
+    "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+    "text": "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.",
+    "segments": [
+        {
+            "start": "0:00:00.240000",
+            "end": "0:00:00.800000",
+            "text": "حکایت"
+        },
+        {
+            "start": "0:00:02.550000",
+            "end": "0:00:02.830000",
+            "text": "یکی"
+        },
+        {
+            "start": "0:00:02.930000",
+            "end": "0:00:03.010000",
+            "text": "را"
+        },
+        {
+            "start": "0:00:03.330000",
+            "end": "0:00:03.490000",
+            "text": "از"
+        },
+        {
+            "start": "0:00:03.610000",
+            "end": "0:00:04.090000",
+            "text": "حکما"
+        },
+        {
+            "start": "0:00:04.510000",
+            "end": "0:00:04.970000",
+            "text": "شنیدم"
+        },
+        {
+            "start": "0:00:05.090000",
+            "end": "0:00:05.130000",
+            "text": "که"
+        },
+        {
+            "start": "0:00:05.230000",
+            "end": "0:00:05.290000",
+            "text": "می"
+        },
+        {
+            "start": "0:00:05.410000",
+            "end": "0:00:05.850000",
+            "text": "گفت:"
+        },
+        {
+            "start": "0:00:06.850000",
+            "end": "0:00:07.250000",
+            "text": "هرگز"
+        },
+        {
+            "start": "0:00:07.410000",
+            "end": "0:00:07.770000",
+            "text": "کسی"
+        },
+        {
+            "start": "0:00:08.110000",
+            "end": "0:00:08.170000",
+            "text": "به"
+        },
+        {
+            "start": "0:00:08.370000",
+            "end": "0:00:08.670000",
+            "text": "جهل"
+        },
+        {
+            "start": "0:00:08.890000",
+            "end": "0:00:09.250000",
+            "text": "خویش"
+        },
+        {
+            "start": "0:00:09.430000",
+            "end": "0:00:09.950000",
+            "text": "اقرار"
+        },
+        {
+            "start": "0:00:10.190000",
+            "end": "0:00:10.690000",
+            "text": "نکرده"
+        },
+        {
+            "start": "0:00:10.770000",
+            "end": "0:00:11.150000",
+            "text": "است،"
+        },
+        {
+            "start": "0:00:12.040000",
+            "end": "0:00:12.360000",
+            "text": "مگر"
+        },
+        {
+            "start": "0:00:12.580000",
+            "end": "0:00:12.740000",
+            "text": "آن"
+        },
+        {
+            "start": "0:00:12.920000",
+            "end": "0:00:13.140000",
+            "text": "کس"
+        },
+        {
+            "start": "0:00:13.300000",
+            "end": "0:00:13.360000",
+            "text": "که"
+        },
+        {
+            "start": "0:00:13.520000",
+            "end": "0:00:13.680000",
+            "text": "چون"
+        },
+        {
+            "start": "0:00:13.920000",
+            "end": "0:00:14.480000",
+            "text": "دیگری"
+        },
+        {
+            "start": "0:00:14.620000",
+            "end": "0:00:14.720000",
+            "text": "در"
+        },
+        {
+            "start": "0:00:14.860000",
+            "end": "0:00:15.180000",
+            "text": "سخن"
+        },
+        {
+            "start": "0:00:15.340000",
+            "end": "0:00:15.840000",
+            "text": "باشد"
+        },
+        {
+            "start": "0:00:16.460000",
+            "end": "0:00:19.500000",
+            "text": "همچنان تمام ناگفته،"
+        },
+        {
+            "start": "0:00:19.500000",
+            "end": "0:00:19.840000",
+            "text": "سخن"
+        },
+        {
+            "start": "0:00:19.940000",
+            "end": "0:00:20.360000",
+            "text": "آغاز"
+        },
+        {
+            "start": "0:00:20.500000",
+            "end": "0:00:20.780000",
+            "text": "کند."
+        }
+    ]
+}
+
+```
+
+<dl style="background-color:transparent;"><code>POST /api/alignment/</code></dl>
+
+<dl>
+<strong>media_url(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    URL
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  آدرس فایل‌ ورودی</p>
+<br><br>
+<dl>
+<strong>text(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    Text
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  متن فایل‌ ورودی. هر متن به‌ترتیب نمایندهٔ یک فایل است.</p>
+<br><br>
 # تبدیل پخش زندهٔ صدا به متن
 
 برای تبدیل صدای درحال‌پخش (زنده، لایو، استریم) باید از طریق وب‌سوکت به سامانه متصل شوید. در این حالت، پس از برقراری ارتباط با سرور باید فایل خود را در قالب wav به‌شکل باینری ارسال کنید.
@@ -396,8 +626,8 @@ Value: <span style="background-color: #00A693;
 
 ```plaintext
 from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+header = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
 with open('sample.wav' ,'rb') as f:
     bs=f.read()
 window_size = 32000
@@ -413,8 +643,8 @@ ws.close()
 
 ```shell
 from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+header = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
 with open('sample.wav' ,'rb') as f:
     bs=f.read()
 window_size = 32000
@@ -430,8 +660,8 @@ ws.close()
 
 ```python
 from websocket import create_connection                                              
-headers = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", headers=headers)
+header = {'Authorization' : 'Token ...'}
+ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
 with open('sample.wav' ,'rb') as f:
     bs=f.read()
 window_size = 32000

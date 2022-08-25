@@ -1,18 +1,18 @@
 @charset "utf-8";
-@import 'normalize';
-@import 'variables';
-@import 'icon-font';
+@import "normalize";
+@import "variables";
+@import "icon-font";
 
 @media (min-width: $phone-width) {
-  @import 'rtl';
-}// uncomment to switch to RTL format
-
+  @import "rtl";
+} // uncomment to switch to RTL format
 
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
-html, body {
+html,
+body {
   color: $main-text;
   padding: 0;
   margin: 0;
@@ -30,7 +30,7 @@ html, body {
 
 #toc > ul > li > a > span {
   float: right;
-  background-color: #2484FF;
+  background-color: #2484ff;
   border-radius: 40px;
   width: 20px;
 }
@@ -68,7 +68,7 @@ html, body {
     margin-bottom: $logo-margin - 5%;
   }
 
-  &>.search {
+  & > .search {
     position: relative;
     margin: 30px 0px;
     display: none;
@@ -79,7 +79,7 @@ html, body {
       box-sizing: border-box;
       height: 35px;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2) + 1vw;
+      width: $nav-width - ($nav-padding * 2) + 1vw;
       outline: none;
       direction: rtl;
       color: $nav-text;
@@ -125,11 +125,11 @@ html, body {
     }
   }
 
-
   // The Table of Contents is composed of multiple nested
   // unordered lists.  These styles remove the default
   // styling of an unordered list because it is ugly.
-  ul, li {
+  ul,
+  li {
     list-style: none;
     margin: 0;
     text-align: justify;
@@ -144,20 +144,19 @@ html, body {
   // This is the currently selected ToC entry
 
   .toc-link.active {
-    background-color: #FF6200;
+    background-color: #ff6200;
     border-radius: 5px 0 0 5px;
     color: $nav-active-text;
   }
 
-  .toc-link{
+  .toc-link {
     width: 10px;
     border-radius: 5px 0 0 5px;
     height: 37px;
   }
 
   @media (max-width: $phone-width) {
-    
-    .toc-link{
+    .toc-link {
       text-align: right;
       padding-right: 0;
     }
@@ -187,7 +186,8 @@ html, body {
     margin-top: 1em;
     border-top: 1px dashed $nav-footer-border-color;
 
-    li,a {
+    li,
+    a {
       color: $nav-text;
       text-decoration: none;
     }
@@ -204,7 +204,8 @@ html, body {
   }
 }
 
-.toc-link, .toc-footer li {
+.toc-link,
+.toc-footer li {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
@@ -244,10 +245,13 @@ html, body {
 
   transition: left 0.3s ease-in-out;
 
-  &:hover { opacity: 1; }
-  &.open {left: 27vw}
+  &:hover {
+    opacity: 1;
+  }
+  &.open {
+    left: 27vw;
+  }
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -280,7 +284,7 @@ html, body {
     position: fixed;
     z-index: 50;
     background-color: white;
-    a{
+    a {
       padding-left: 11px;
       padding-right: 11px;
       background-color: $side-theme-color;
@@ -307,7 +311,8 @@ html, body {
     line-height: 30px;
     outline: 0;
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
       background-color: $lang-select-pressed-bg;
       color: $lang-select-pressed-text;
     }
@@ -319,7 +324,7 @@ html, body {
   }
 
   &:after {
-    content: '';
+    content: "";
     clear: both;
     display: block;
   }
@@ -338,12 +343,23 @@ html, body {
   z-index: 30;
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6,
+  & > p,
+  & > table,
+  & > ul,
+  & > ol,
+  & > aside,
+  & > dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -352,13 +368,16 @@ html, body {
     @extend %left-col;
   }
 
-  &>ul, &>ol {
+  & > ul,
+  & > ol {
     padding-left: $main-padding + 15px;
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
-    clear:both;
+  & > h1,
+  & > h2,
+  & > div {
+    clear: both;
   }
 
   h1 {
@@ -372,7 +391,8 @@ html, body {
     background-color: #ffffff;
   }
 
-  h1:first-child, div:first-child + h1 {
+  h1:first-child,
+  div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
   }
@@ -385,24 +405,34 @@ html, body {
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    background-image: linear-gradient(
+      to bottom,
+      rgba(#fff, 0.2),
+      rgba(#fff, 0)
+    );
   }
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  h1 + h2, h1 + div + h2 {
+  h1 + h2,
+  h1 + div + h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
 
-  h3, h4, h5, h6 {
+  h3,
+  h4,
+  h5,
+  h6 {
     @extend %header-font;
     font-size: 15px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-size: 10px;
   }
 
@@ -415,7 +445,8 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
-    th,td {
+    th,
+    td {
       vertical-align: top;
       line-height: 1.6;
       code {
@@ -437,12 +468,12 @@ html, body {
       border-bottom: 1px solid #ccc;
     }
 
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+    tr:nth-child(odd) > td {
+      background-color: lighten($main-bg, 4.2%);
     }
 
-    tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+    tr:nth-child(even) > td {
+      background-color: lighten($main-bg, 2.4%);
     }
   }
 
@@ -454,7 +485,10 @@ html, body {
     margin-left: 15px;
   }
 
-  p, li, dt, dd {
+  p,
+  li,
+  dt,
+  dd {
     line-height: 1.6;
     margin-top: 0;
   }
@@ -465,7 +499,7 @@ html, body {
 
   //code tag style modifications here
   code {
-    background-color: #E8E8E8;
+    background-color: #e8e8e8;
     padding: 3px;
     color: white;
     border-radius: 3px;
@@ -493,7 +527,7 @@ html, body {
     }
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
     padding: 0;
   }
@@ -537,8 +571,8 @@ html, body {
     padding: 2px;
     margin: -3px;
     border-radius: 4px;
-    border: 1px solid #F7E633;
-    background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
+    border: 1px solid #f7e633;
+    background: linear-gradient(to top left, #f7e633 0%, #f1d32f 100%);
   }
 }
 
@@ -548,25 +582,27 @@ html, body {
 // This is all the stuff that appears in the right half of the page
 
 .content {
-  
-  &>div.highlight {
-    clear:none;
+  & > div.highlight {
+    clear: none;
   }
 
-  pre, blockquote {
+  pre,
+  blockquote {
     background-color: $code-bg;
     color: #fff;
     margin: 0;
     width: $examples-width;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     box-sizing: border-box;
 
     @extend %right-col;
 
-    &>p { margin: 0; }
+    & > p {
+      margin: 0;
+    }
 
     a {
       color: #fff;
@@ -575,7 +611,6 @@ html, body {
     }
   }
 
-
   blockquote {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -583,7 +618,7 @@ html, body {
     margin-left: 1%;
   }
 
-  pre{
+  pre {
     @extend %code-font;
     padding-top: 2em;
     padding-bottom: 2em;
@@ -592,8 +627,8 @@ html, body {
   }
 
   blockquote {
-    &>p {
-      background-color: #191D1F;
+    & > p {
+      background-color: #191d1f;
       padding: $code-annotation-padding 2em;
       color: #eee;
       border-top-left-radius: 10px;
@@ -609,7 +644,6 @@ html, body {
 // There are also a couple styles disperesed
 
 @media (max-width: $tablet-width) {
-  
   .toc-wrapper {
     left: 100vw;
     width: $nav-width + 51vw;
@@ -661,22 +695,28 @@ html, body {
     margin-top: $main-padding;
   }
 
-  p,h1,th{
+  p,
+  h1,
+  th {
     direction: rtl;
   }
 }
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
   color: #909090;
 }
 
-.highlight, .highlight .w {
+.highlight,
+.highlight .w {
   background-color: $code-bg;
 }
 
 .copy-clipboard {
   float: right;
-  fill: #9DAAB6;
+  fill: #9daab6;
   cursor: pointer;
   position: fixed;
   opacity: 0.4;
@@ -687,7 +727,6 @@ html, body {
 .copy-clipboard:hover {
   opacity: 0.8;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
@@ -703,7 +742,7 @@ html, body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #C4C4C4;
+  background: #c4c4c4;
   border-radius: 25px;
   border: 4px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
@@ -716,24 +755,22 @@ html, body {
   background-clip: padding-box;
 }
 
-
-h1{
+h1 {
   color: #fc742ad5;
   background-color: white;
 }
 
-p{
+p {
   border: none;
 }
 
 @media (min-width: $phone-width) {
-
   .copy-clipboard {
     margin-left: 29vw;
   }
 
   .content {
-    pre{
+    pre {
       max-width: $examples-width - 2%;
       margin-left: 1%;
       border-bottom-right-radius: 10px;
@@ -743,10 +780,9 @@ p{
   }
 }
 
-
 @media (max-width: $phone-width) {
   .content {
-    pre{
+    pre {
       margin-left: 1%;
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
@@ -772,12 +808,13 @@ p{
   .lang-selector {
     a {
       background-color: white;
-  
-      &:active, &:focus {
+
+      &:active,
+      &:focus {
         background-color: $lang-select-pressed-bg;
         color: $lang-select-pressed-text;
       }
-  
+
       &.active {
         background-color: $lang-select-active-bg;
         color: $lang-select-active-text;
@@ -796,21 +833,23 @@ p{
   src: url(../fonts/VazirCode.ttf);
 }
 
-p,a,h1{
+p,
+a,
+h1 {
   font-family: IRANYekan;
 }
 
 .content {
-    dl{
+  dl {
     padding: 20px;
-    background-color: #F6F6F6;
+    background-color: #f6f6f6;
     border-radius: 5px;
     margin-left: 47.5%;
     width: 50%;
     margin-top: 0;
   }
 
-  dl > dl{
+  dl > dl {
     margin-left: 0;
   }
 }
@@ -826,14 +865,14 @@ summary {
   text-align: center;
 }
 
-details{
-  p{
+details {
+  p {
     border-radius: 5px;
     text-align: center;
     width: 10vw;
     background-color: rgb(90, 235, 227);
   }
-  
+
   p + p {
     border-radius: 5px;
     text-align: center;
@@ -842,32 +881,31 @@ details{
   }
 }
 
-summary:hover{
+summary:hover {
   cursor: pointer;
   transform: scale(1.1);
   background-color: #faa578;
 }
 
-summary:active{
+summary:active {
   transform: scale(0.9);
 }
-
 
 li {
   width: 93%;
 }
 
 .page-wrapper {
-  h2{
+  h2 {
     text-align: right;
   }
 }
 
 @media (max-width: $phone-width) {
-    .content {
-      dl {
+  .content {
+    dl {
       padding: 20px;
-      background-color: #F6F6F6;
+      background-color: #f6f6f6;
       border-radius: 5px;
       margin-left: 2.5%;
       width: 95%;
@@ -879,17 +917,17 @@ li {
     }
   }
 
+  li {
+    float: right;
     li {
+      text-align: right;
       float: right;
-      li {
-        text-align: right;
-        float: right;
-        direction: rtl;
-        width: 100%;
-      }
+      direction: rtl;
+      width: 100%;
     }
+  }
 
-  div.highlight + p{
+  div.highlight + p {
     float: left;
   }
 
@@ -907,32 +945,30 @@ li {
     margin-left: 2%;
   }
 
-  ul{
+  ul {
     text-align: center;
   }
 
-  .lang-selector{
-    a{
+  .lang-selector {
+    a {
       text-align: center;
     }
   }
 
-  .logo{
+  .logo {
     width: 75%;
     margin-left: 20%;
     margin-right: 0;
   }
 }
 
-
 .content {
-
   h1 {
     font-size: 30px;
   }
 
   dl {
-    span > span{
+    span > span {
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
@@ -948,7 +984,7 @@ li {
         width: fit-content;
         border-radius: 2px;
         color: white;
-        background-color: #00A693;
+        background-color: #00a693;
       }
       :nth-child(2n) {
         color: rgba(0, 0, 0, 0.753);
@@ -972,7 +1008,6 @@ blockquote {
   text-align: left;
 }
 
-
 .content {
   h1 {
     font-family: IRANYekan;
@@ -981,7 +1016,6 @@ blockquote {
     font-family: IRANYekan;
   }
 }
-
 
 a.toc-h2.toc-link {
   width: 85%;
@@ -1002,7 +1036,8 @@ a.toc-h2.toc-link.active {
   overflow: visible;
 }
 
-p {
+p,
+tbody {
   text-align: right;
   direction: rtl;
 }

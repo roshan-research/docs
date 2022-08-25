@@ -1,288 +1,4 @@
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta
-            name="description"
-            content="Documentation for the باز API"
-        >
-    <title>API Reference</title>
-
-    <style media="screen">
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #303030;
-}
-.highlight .err {
-  color: #151515;
-  background-color: #ac4142;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #505050;
-}
-.highlight .cp {
-  color: #f4bf75;
-}
-.highlight .nt {
-  color: #f4bf75;
-}
-.highlight .o, .highlight .ow {
-  color: #d0d0d0;
-}
-.highlight .p, .highlight .pi {
-  color: #d0d0d0;
-}
-.highlight .gi {
-  color: #90a959;
-}
-.highlight .gd {
-  color: #ac4142;
-}
-.highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
-}
-.highlight .kc {
-  color: #d28445;
-}
-.highlight .kt {
-  color: #d28445;
-}
-.highlight .kd {
-  color: #d28445;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
-}
-.highlight .sa {
-  color: #aa759f;
-}
-.highlight .sr {
-  color: #75b5aa;
-}
-.highlight .si {
-  color: #8f5536;
-}
-.highlight .se {
-  color: #8f5536;
-}
-.highlight .nn {
-  color: #f4bf75;
-}
-.highlight .nc {
-  color: #f4bf75;
-}
-.highlight .no {
-  color: #f4bf75;
-}
-.highlight .na {
-  color: #6a9fb5;
-}
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #90a959;
-}
-.highlight .ss {
-  color: #90a959;
-}
-    </style>
-    <style media="print">
-      * {
-        -webkit-transition:none!important;
-        transition:none!important;
-      }
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #586e75;
-}
-.highlight .err {
-  color: #002b36;
-  background-color: #dc322f;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #657b83;
-}
-.highlight .cp {
-  color: #b58900;
-}
-.highlight .nt {
-  color: #b58900;
-}
-.highlight .o, .highlight .ow {
-  color: #93a1a1;
-}
-.highlight .p, .highlight .pi {
-  color: #93a1a1;
-}
-.highlight .gi {
-  color: #859900;
-}
-.highlight .gd {
-  color: #dc322f;
-}
-.highlight .gh {
-  color: #268bd2;
-  background-color: #002b36;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #6c71c4;
-}
-.highlight .kc {
-  color: #cb4b16;
-}
-.highlight .kt {
-  color: #cb4b16;
-}
-.highlight .kd {
-  color: #cb4b16;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #859900;
-}
-.highlight .sa {
-  color: #6c71c4;
-}
-.highlight .sr {
-  color: #2aa198;
-}
-.highlight .si {
-  color: #d33682;
-}
-.highlight .se {
-  color: #d33682;
-}
-.highlight .nn {
-  color: #b58900;
-}
-.highlight .nc {
-  color: #b58900;
-}
-.highlight .no {
-  color: #b58900;
-}
-.highlight .na {
-  color: #268bd2;
-}
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #859900;
-}
-.highlight .ss {
-  color: #859900;
-}
-    </style>
-    <link href="stylesheets/screen-e3c37249.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-78ea9ead.js"></script>
-
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
-  </head>
-
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;,&quot;python&quot;]">
-  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
-  </div>
-    <a href="#" id="nav-button">
-      <span>
-      منو 
-        <img src="images/navbar-cad8cdcb.png" alt="" />
-      </span>
-    </a>
-    <div class="toc-wrapper">
-      <img src="images/logo-b4f53680.svg" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">CURL</a>
-              <a href="#" data-language-name="plaintext">RAW</a>
-              <a href="#" data-language-name="python">PYTHON</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="جست و جو">
-        </div>
-        <ul class="search-results"></ul>
-      <ul id="toc" class="toc-list-h1">
-          <li>
-            <a href="#fc30c6605b" class="toc-h1 toc-link" data-title="باز">باز</a>
-          </li>
-          <li>
-            <a href="#8f2d3c81ae" class="toc-h1 toc-link" data-title="ایندکس">ایندکس</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#5499c86d17" class="toc-h2 toc-link" data-title="ایندکس‌کردن محتوا">ایندکس‌کردن محتوا</a>
-                  </li>
-                  <li>
-                    <a href="#0c032d100f" class="toc-h2 toc-link" data-title="ویرایش محتوای ایندکس">ویرایش محتوای ایندکس</a>
-                  </li>
-                  <li>
-                    <a href="#d6813cc994" class="toc-h2 toc-link" data-title="حذف محتوای ایندکس">حذف محتوای ایندکس</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#5a91792863" class="toc-h1 toc-link" data-title="جستجوی معمولی">جستجوی معمولی</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#175d0d146c" class="toc-h1 toc-link" data-title="جستجوی درلحظه‌">جستجوی درلحظه‌</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#1343ad4c0b" class="toc-h1 toc-link" data-title="‌پیشنهاد جستجو">‌پیشنهاد جستجو</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#b40d4b44b2-3" class="toc-h2 toc-link" data-title="مثال">مثال</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#2a07a58f62" class="toc-h1 toc-link" data-title="محتواهای مشابه">محتواهای مشابه</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#b40d4b44b2-4" class="toc-h2 toc-link" data-title="مثال">مثال</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#ee384ab3c4" class="toc-h1 toc-link" data-title="محتواهای منبع">محتواهای منبع</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#b40d4b44b2-5" class="toc-h2 toc-link" data-title="مثال">مثال</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#ba7b994b13" class="toc-h1 toc-link" data-title="‌عبارات کلیدی">‌عبارات کلیدی</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#c68bacf341" class="toc-h2 toc-link" data-title="مثال: درخواست با متنِ محتوا">مثال: درخواست با متنِ محتوا</a>
-                  </li>
-                  <li>
-                    <a href="#2e84bfc77d" class="toc-h2 toc-link" data-title="مثال: درخواست با شناسهٔ محتوا">مثال: درخواست با شناسهٔ محتوا</a>
-                  </li>
-              </ul>
-          </li>
-      </ul>
-    </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <h1 id='fc30c6605b'>باز</h1>
+<h1 id='fc30c6605b'>باز</h1>
 <p>باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:baaz@roshan-ai.ir">baaz@roshan-ai.ir</a> درخواست دهید.</p>
 <h1 id='8f2d3c81ae'>ایندکس</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
@@ -483,7 +199,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  نوع محتوا را مشخص می‌کند. درواقع هر `type` نمایندهٔ یک دسته از محتواست. مثلاً در نمونهٔ مقابل، مشخصات فیلم‌ها با تایپ movie و مشخصات افراد با تایپ `person` ارسال شده است. این فیلد قابل جستجو نیست.</p>
+<img src="./images/vector.svg" alt="vector">  نوع محتوا را مشخص می‌کند. درواقع هر `type` نمایندهٔ یک دسته از محتواست. مثلاً در نمونهٔ مقابل، مشخصات فیلم‌ها با تایپ movie و مشخصات افراد با تایپ `person` ارسال شده است. این فیلد قابل جستجو نیست.</p>
 
 <p><br><br>
 <dl>
@@ -499,7 +215,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  شناسهٔ محتواست که باید در سطح هر `type` منحصربه‌فرد باشد. اگر محتوایی با `type` و `id` یکسان ارسال شود خطایی صادر نمی‌شود بلکه محتوای جدید جایگزین قبلی می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ محتواست که باید در سطح هر `type` منحصربه‌فرد باشد. اگر محتوایی با `type` و `id` یکسان ارسال شود خطایی صادر نمی‌شود بلکه محتوای جدید جایگزین قبلی می‌شود.</p>
 
 <p><br><br>
 <dl>
@@ -515,7 +231,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  عنوان محتواست که مهم‌ترین عامل در رتبه‌بندی نتایج جستجو است. در هنگام جستجو اگر هیچ فیلدی برای جستجو انتخاب نشود جستجو به صورت پیش‌فرض روی این فیلد صورت می‌گیرد.</p>
+<img src="./images/vector.svg" alt="vector">  عنوان محتواست که مهم‌ترین عامل در رتبه‌بندی نتایج جستجو است. در هنگام جستجو اگر هیچ فیلدی برای جستجو انتخاب نشود جستجو به صورت پیش‌فرض روی این فیلد صورت می‌گیرد.</p>
 
 <p><br><br>
 <dl>
@@ -531,7 +247,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  میزان اهمیت محتواست. هرچه این عدد بیشتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج جستجو اثر می‌گذارد.</p>
+<img src="./images/vector.svg" alt="vector">  میزان اهمیت محتواست. هرچه این عدد بیشتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج جستجو اثر می‌گذارد.</p>
 
 <p><br><br>
 <dl>
@@ -547,7 +263,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  07-08 10:30:00 (string) - تاریخ محتواست. هرچه این تاریخ جدیدتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج جستجو اثر می‌گذارد.</p>
+<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - تاریخ محتواست. هرچه این تاریخ جدیدتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج جستجو اثر می‌گذارد.</p>
 
 <p><br><br>
 <dl>
@@ -558,7 +274,7 @@ Value: [هیجانی, ماجراجویی, ]
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  برای هر محتوایی می‌توانید برچسب‌هایی تعریف کنید. این فیلد قابل جستجو نیست و صرفاً برای محدودکردن نتایج کاربرد دارد.</p>
+<img src="./images/vector.svg" alt="vector">  برای هر محتوایی می‌توانید برچسب‌هایی تعریف کنید. این فیلد قابل جستجو نیست و صرفاً برای محدودکردن نتایج کاربرد دارد.</p>
 
 <p><br><br>
 <dl>
@@ -574,7 +290,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  به جز فیلدهای بالا هر فیلد دیگری می‌توانید تعریف کنید. این فیلدها قابل جستجو هستند و بعداً می‌توانید نتایج جستجو را بر اساس آن محدود کنید. فیلدهایی که اضافه می‌کنید فقط باید حاوی متن باشند. این فیلد می‌تواند یک **فیلد ساده حاوی متن** باشد مثل `director` در مثال مقابل یا یک **آرایهٔ حاوی مقادیر متنی** مثل `actors` یا یک **کلاس حاوی مقادیر متنی** مثل `data`.</p>
+<img src="./images/vector.svg" alt="vector">  به جز فیلدهای بالا هر فیلد دیگری می‌توانید تعریف کنید. این فیلدها قابل جستجو هستند و بعداً می‌توانید نتایج جستجو را بر اساس آن محدود کنید. فیلدهایی که اضافه می‌کنید فقط باید حاوی متن باشند. این فیلد می‌تواند یک **فیلد ساده حاوی متن** باشد مثل `director` در مثال مقابل یا یک **آرایهٔ حاوی مقادیر متنی** مثل `actors` یا یک **کلاس حاوی مقادیر متنی** مثل `data`.</p>
 
 <p><br><br></p>
 <h2 id='0c032d100f'>ویرایش محتوای ایندکس</h2>
@@ -1289,115 +1005,3 @@ field
 
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/{field}/keyterms</code></dl>
-
-      </div>
-      <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">CURL</a>
-                <a href="#" data-language-name="plaintext">RAW</a>
-                <a href="#" data-language-name="python">PYTHON</a>
-          </div>
-      </div>
-    </div>
-  </body>
-</html>
-
-<script>
-function Scroll(delay) {
-    this.initialY = scrollY;
-    this.callbacks = {
-        start  : null,
-        scroll : null,
-        end    : null,
-    };
-    this.timeout = {
-        delay  : delay || 150,
-        handle : null,
-    };
-    this.handler = Scroll.handler.bind(this);
-    window.addEventListener("scroll", this.handler);
-}
-
-Scroll.handler = function (e) {
-    if (this.initialY == 0) {
-        if (this.timeout.handle == null) {
-            if (this.callbacks.start) {
-                this.callbacks.start.call(this, e);
-            }
-        }
-        if (this.timeout.handle !== null) {
-            clearTimeout(this.timeout.handle);
-        }
-        if (this.callbacks.scroll) {
-            this.callbacks.scroll.call(this, e);
-        }
-        var self = this;
-        this.timeout.handle = setTimeout(function () {
-            self.timeout.handle = null;
-            if (self.callbacks.end) {
-                self.callbacks.end.call(self, e);
-            }
-        }, this.timeout.delay);
-    } else {
-        this.initialY = 0;
-    }
-};
-
-Scroll.prototype.addEventListener = function (event, callback) {
-    if (Object.keys(this.callbacks).includes(event)) {
-        this.callbacks[event] = callback;
-    } else {
-        console.warn("Invalid scroll event: " + event);
-    }
-};
-
-window.addEventListener('DOMContentLoaded',() => {
-
-    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
-
-    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
-
-    var sl = new Scroll(400);
-    
-    sl.addEventListener("start", function (e) {
-
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = 'transparent'
-            tocs[i].style.color = 'black'
-        }
-
-        for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.backgroundColor = 'transparent'
-            littleTOCs[i].style.color = 'black'
-        }
-
-    });
-    
-    sl.addEventListener("scroll", function () {
-
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = 'transparent'
-            tocs[i].style.color = 'black'
-        }
-
-        for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.backgroundColor = 'transparent'
-            littleTOCs[i].style.color = 'black'
-        }
-    });
-    
-
-    sl.addEventListener("end", function () {
-
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = '#FF6200'
-            tocs[i].style.color = 'white'
-        }
-
-        for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.backgroundColor = '#FF6200'
-            littleTOCs[i].style.color = 'white'
-        }
-    });
-});
-</script>
