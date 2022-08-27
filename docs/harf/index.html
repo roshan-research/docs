@@ -585,15 +585,24 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    \"media_url\": [\"https://i.ganjoor.net/a2/41417.mp3\",\n    \"text\": \"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.\"\n}\n"
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+    "text": "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">media_url</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">https://i.ganjoor.net/a2/41417.mp3</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.</span><span class="se">\"\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"media_url"</span>: <span class="s2">"https://i.ganjoor.net/a2/41417.mp3"</span>,
+    <span class="s2">"text"</span>: <span class="s2">"حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."</span>
+<span class="o">}</span> <span class="se">\</span>
       https://harf.roshan-ai.ir/api/alignment/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
-"{</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">media_url</span><span class="se">\"</span><span class="s">: [</span><span class="se">\"</span><span class="s">https://i.ganjoor.net/a2/41417.mp3</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند.</span><span class="se">\"\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"
+{
+    "media_url": "https://i.ganjoor.net/a2/41417.mp3",
+    "text": "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."
+}
 """</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
