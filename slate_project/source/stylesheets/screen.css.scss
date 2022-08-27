@@ -371,6 +371,12 @@ body {
   & > ul,
   & > ol {
     padding-left: $main-padding + 15px;
+    list-style-position: inside;
+  }
+
+  & > ul p,
+  & > ol p {
+    display: inline-block;
   }
 
   // the div is the tocify hidden div for placeholding stuff
@@ -1037,6 +1043,8 @@ a.toc-h2.toc-link.active {
 }
 
 p,
+ul,
+ol,
 tbody {
   text-align: right;
   direction: rtl;
