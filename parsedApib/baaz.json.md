@@ -573,8 +573,6 @@ print(response_body)
 
 `http://api.sobhe.ir:7000/index1/movie/query?text=نیم‌روز&fields=title&size=2&from=0`
 
-<p class="ltr-p">http://api.sobhe.ir:7000/index1/movie/query?text=نیم‌روز&fields=title&size=2&from=0</p>
-
 عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
