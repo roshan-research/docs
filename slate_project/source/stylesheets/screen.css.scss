@@ -1042,6 +1042,17 @@ tbody {
   direction: rtl;
 }
 
+p > code {
+  display: inline-block;
+  direction: ltr;
+  text-align: left;
+}
+
+.ltr-p {
+  direction: ltr;
+  text-align: left;
+}
+
 //useful selector
 // div + p + p {
 //   code {
