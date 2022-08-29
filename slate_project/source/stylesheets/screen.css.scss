@@ -215,6 +215,18 @@ body {
   color: $nav-text;
 }
 
+// mobile language selector
+.mobile-lang-selector {
+  display: none;
+  border-radius: 3px;
+  margin-right: 14px;
+  background-color: white;
+  align-self: center;
+  padding: 5px;
+  color: black;
+  font-size: 12px;
+}
+
 // button to show navigation on mobile devices
 #nav-button {
   span {
@@ -618,6 +630,8 @@ body {
   }
 
   blockquote {
+    display: flex;
+    justify-content: space-between;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     width: $examples-width - 2%;
@@ -684,8 +698,10 @@ body {
 
   .toc-wrapper .lang-selector {
     display: block;
-    margin-top: 40px;
-    margin-bottom: 40px;
+  }
+
+  .mobile-lang-selector {
+    display: block;
   }
 
   .page-wrapper .lang-selector {

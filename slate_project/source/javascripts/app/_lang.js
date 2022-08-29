@@ -134,13 +134,40 @@ under the License.
     }
   }
 
+  function handleLangChange(language) {
+    pushURL(language);
+    activateLanguage(language);
+  }
+
+  function updateMobileLangSelectorValue(value) {
+    $(".mobile-lang-selector").val(value)
+  }
+
+  function renderMobileLangSelector(languages) {
+    var mobileLangOptionElements = ''
+    for (var i = 0; i < languages.length; i++) {
+      var optionElement = '<option value="' + languages[i] + '">' + languages[i] + '</option>'
+      mobileLangOptionElements = mobileLangOptionElements + optionElement
+    }
+
+    var mobileLangSelectElement = '<select class="mobile-lang-selector">' + mobileLangOptionElements + '</select>'
+    $('h2 + blockquote').append(mobileLangSelectElement)
+    $(".mobile-lang-selector").on("change", function() {
+      var language = this.value
+      handleLangChange(language)
+      updateMobileLangSelectorValue(this.value)
+    });
+  }
+
   function setupLanguages(l) {
+    languages = l;
+
+    renderMobileLangSelector(languages);
+
     var defaultLanguage = null;
     if (localStorage) {
       defaultLanguage = localStorage.getItem("language");
     }
-
-    languages = l;
 
     var presetLanguage = getLanguageFromQueryString();
     if (presetLanguage) {
@@ -150,6 +177,8 @@ under the License.
       if (localStorage) {
         localStorage.setItem("language", presetLanguage);
       }
+
+      updateMobileLangSelectorValue(presetLanguage)
     } else if ((defaultLanguage !== null) && (jQuery.inArray(defaultLanguage, languages) != -1)) {
       // the language was the last selected one saved in localstorage, so use that language!
       activateLanguage(defaultLanguage);
@@ -163,8 +192,7 @@ under the License.
   $(function() {
     $(".lang-selector a").on("click", function() {
       var language = $(this).data("language-name");
-      pushURL(language);
-      activateLanguage(language);
+      handleLangChange(language)
       return false;
     });
   });
