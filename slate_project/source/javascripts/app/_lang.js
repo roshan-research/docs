@@ -30,6 +30,9 @@ under the License.
 
     $(".lang-selector a").removeClass('active');
     $(".lang-selector a[data-language-name='" + language + "']").addClass('active');
+
+    updateMobileLangSelectorValue(language)
+
     for (var i=0; i < languages.length; i++) {
       $(".highlight.tab-" + languages[i]).hide();
       $(".lang-specific." + languages[i]).hide();
@@ -155,7 +158,6 @@ under the License.
     $(".mobile-lang-selector").on("change", function() {
       var language = this.value
       handleLangChange(language)
-      updateMobileLangSelectorValue(this.value)
     });
   }
 
@@ -177,8 +179,6 @@ under the License.
       if (localStorage) {
         localStorage.setItem("language", presetLanguage);
       }
-
-      updateMobileLangSelectorValue(presetLanguage)
     } else if ((defaultLanguage !== null) && (jQuery.inArray(defaultLanguage, languages) != -1)) {
       // the language was the last selected one saved in localstorage, so use that language!
       activateLanguage(defaultLanguage);
