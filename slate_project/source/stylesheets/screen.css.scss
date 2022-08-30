@@ -43,6 +43,7 @@ body {
   z-index: 80;
   top: 0;
   bottom: 0;
+  overflow: visible;
   width: $nav-width;
   background-color: $nav-bg;
   font-size: 13px;
@@ -55,6 +56,11 @@ body {
 		display: none;
 	}
 
+  & > div {
+    position: relative;
+    display: flex;
+  }
+
   // This is the logo at the top of the ToC
   .logo {
     display: block;
@@ -64,7 +70,7 @@ body {
     margin-bottom: $logo-margin - 5%;
   }
 
-  & > .search {
+  & .search {
     position: relative;
     margin: 30px 0px;
     display: none;
@@ -237,7 +243,7 @@ body {
     justify-content: center;
     gap: 7px;
     padding: 7px;
-    background-color: #FF6200;
+    background-color: #FF8C44;
     border-radius: 0 0 0 5px;
 
     & > img {
@@ -253,23 +259,21 @@ body {
     }
   } // increase touch size area
   display: none;
-  position: fixed;
-  right: 0;
+  position: absolute;
+  right: 140.5%;
   height: fit-content;
   width: fit-content;
-  z-index: 100;
   color: #000;
   text-decoration: none;
   font-weight: bold;
-  opacity: 0.7;
   line-height: 16px;
-  transition: left 0.3s ease-in-out;
+  transition: right 0.3s ease-in-out;
 
   &:hover {
     opacity: 1;
   }
   &.open {
-    left: 20.5vw;
+    right: 100%;
   }
 }
 
