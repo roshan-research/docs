@@ -36,28 +36,24 @@ body {
 }
 
 .toc-wrapper {
-  transition: left 0.3s ease-in-out;
-
+  transition: right 0.3s ease-in-out;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
   z-index: 80;
   top: 0;
-  left: 0;
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
 
-  // language selector for mobile devices
-  .lang-selector {
-    display: none;
-    a {
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
-    }
-  }
+  // hide scrollbar
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+		display: none;
+	}
 
   // This is the logo at the top of the ToC
   .logo {
@@ -168,10 +164,15 @@ body {
     color: $nav-active-parent-text;
   }
 
+  .toc-list-h1 {
+    text-indent: 25px;
+  }
+
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
     font-weight: 500;
+    text-indent: 45px;
   }
 
   .toc-h2 {
@@ -229,18 +230,31 @@ body {
 
 // button to show navigation on mobile devices
 #nav-button {
-  span {
-    display: block;
-    $side-pad: $main-padding / 2 - 8px;
-    padding: $side-pad $side-pad $side-pad;
-    background-color: rgba(#fc722a, 0.7);
-    transform-origin: 0 0;
-    transform: rotate(-90deg) translate(-100%, 0);
-    border-radius: 5px 0 0 0;
+  & > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 7px;
+    background-color: #FF6200;
+    border-radius: 0 0 0 5px;
+
+    & > img {
+      height: 5vw;
+      width: auto;
+      vertical-align: bottom;
+      filter: brightness(0);
+    }
+
+    & > img, & > span {
+      transform-origin: 0 0;
+      transform: rotate(-90deg) translate(-100%, 0);
+    }
   } // increase touch size area
   display: none;
   position: fixed;
-  left: 92vw;
+  right: 0;
   height: fit-content;
   width: fit-content;
   z-index: 100;
@@ -249,19 +263,13 @@ body {
   font-weight: bold;
   opacity: 0.7;
   line-height: 16px;
-  img {
-    height: 5vw;
-    width: auto;
-    vertical-align: bottom;
-  }
-
   transition: left 0.3s ease-in-out;
 
   &:hover {
     opacity: 1;
   }
   &.open {
-    left: 27vw;
+    left: 20.5vw;
   }
 }
 
@@ -665,11 +673,11 @@ body {
 
 @media (max-width: $tablet-width) {
   .toc-wrapper {
-    left: 100vw;
+    right: -100%;
     width: $nav-width + 51vw;
 
     &.open {
-      left: 35vw;
+      right: 0;
     }
   }
 
@@ -684,6 +692,8 @@ body {
   .toc-link {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -1043,19 +1053,16 @@ a.toc-h2.toc-link {
   width: 85%;
   padding-top: 5px;
   transition: 0.5s;
-  overflow: visible;
 }
 
 a.toc-h1.toc-link {
   width: 85%;
   padding-top: 5px;
   transition: 0.5s;
-  overflow: visible;
 }
 
 a.toc-h2.toc-link.active {
   width: 85%;
-  overflow: visible;
 }
 
 p,
