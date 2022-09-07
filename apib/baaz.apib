@@ -140,24 +140,20 @@ HOST: http://api.sobhe.ir:7000/
     }
 
 ### مثال [POST]
+خروجی مقابل در پاسخ به این درخواست است:
+
+`http://api.sobhe.ir:7000/index1/movie/query`
 
 اگر جست و جو با متد POST انجام شود باید پارامترها به صورت زیر در بدنه قرار گیرند و همچنین اگر جست و جو بر اساس بیش از یک نوع فیلد باشد باید فیلدها به صورت آرایه ای از string ها تعریف شوند.
 
 + Request (application/json)
-  + Parameters
-      index_name: "baaz" (required, string) 
-      types: "movie|person" (required, string) 
   + Body
       {
-        "text": "نیم‌روز" (required, string),
-        "fields": ["title"] (optional, array of strings),
-        "size": 2 (optional, number),
-        "from": 0 (optional, number)
+        "text": "نیم‌روز",
+        "fields": ["title"],
+        "size": 2,
+        "from": 0
       }
-
-خروجی مقابل در پاسخ به این درخواست است:
-
-`http://api.sobhe.ir:7000/index1/movie/query`
 
 عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
 
