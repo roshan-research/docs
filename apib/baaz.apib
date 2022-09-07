@@ -98,7 +98,7 @@ HOST: http://api.sobhe.ir:7000/
  	 	 	 	"ids": [2]
  	 	 	}
 
-## جستجوی معمولی [/{index_name}/{types}/query{?fields,text,size,from}]
+## جستجوی معمولی [/{index_name}/{types}/query
 عبارتی را در یک ایندکس جستجو می‌کند. این تابع در صورت وجود اشتباه در عبارت جستجو منظور کاربر را حدس می‌زند و در پارامتر `didYouMean` حدس خود را برمی‌گرداند و برمبنای همین حدس، نتایج جستجو را باز می‌گرداند.
 
 + Parameters
@@ -139,7 +139,7 @@ HOST: http://api.sobhe.ir:7000/
         "didYouMean": "<em>نیمروز</em>"
     }
 
-### مثال [POST] [/{index_name}/{types}/query]
+### مثال [POST]
 خروجی مقابل در پاسخ به این درخواست است:
 
 `http://api.sobhe.ir:7000/index1/movie/query`
