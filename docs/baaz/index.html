@@ -229,18 +229,13 @@
                       <li>
                         <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
-                  </ul>
-              </li>
-              <li>
-                <a href="#175d0d146c" class="toc-h1 toc-link" data-title="جستجوی درلحظه‌">جستجوی درلحظه‌</a>
-                  <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                   </ul>
               </li>
               <li>
-                <a href="#1343ad4c0b" class="toc-h1 toc-link" data-title="‌پیشنهاد جستجو">‌پیشنهاد جستجو</a>
+                <a href="#175d0d146c" class="toc-h1 toc-link" data-title="جستجوی درلحظه‌">جستجوی درلحظه‌</a>
                   <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2-3" class="toc-h2 toc-link" data-title="مثال">مثال</a>
@@ -248,7 +243,7 @@
                   </ul>
               </li>
               <li>
-                <a href="#2a07a58f62" class="toc-h1 toc-link" data-title="محتواهای مشابه">محتواهای مشابه</a>
+                <a href="#1343ad4c0b" class="toc-h1 toc-link" data-title="‌پیشنهاد جستجو">‌پیشنهاد جستجو</a>
                   <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2-4" class="toc-h2 toc-link" data-title="مثال">مثال</a>
@@ -256,10 +251,18 @@
                   </ul>
               </li>
               <li>
-                <a href="#ee384ab3c4" class="toc-h1 toc-link" data-title="محتواهای منبع">محتواهای منبع</a>
+                <a href="#2a07a58f62" class="toc-h1 toc-link" data-title="محتواهای مشابه">محتواهای مشابه</a>
                   <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2-5" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#ee384ab3c4" class="toc-h1 toc-link" data-title="محتواهای منبع">محتواهای منبع</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#b40d4b44b2-6" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                   </ul>
               </li>
@@ -802,6 +805,59 @@ from
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
+<h2 id='b40d4b44b2-2'>مثال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n\"text\": \"نیم‌روز\" (required, string),\n\"fields\": [\"title\"] (optional, array of strings),\n\"size\": 2 (optional, number),\n\"from\": 0 (optional, number)\n}\nخروجی مقابل در پاسخ به این درخواست است:\n\n`http://api.sobhe.ir:7000/index1/movie/query`\n\nعبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.\n\n"
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">نیم‌روز</span><span class="se">\"</span><span class="s2"> (required, string),</span><span class="se">\n\"</span><span class="s2">fields</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">] (optional, array of strings),</span><span class="se">\n\"</span><span class="s2">size</span><span class="se">\"</span><span class="s2">: 2 (optional, number),</span><span class="se">\n\"</span><span class="s2">from</span><span class="se">\"</span><span class="s2">: 0 (optional, number)</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">خروجی مقابل در پاسخ به این درخواست است:</span><span class="se">\n\n</span><span class="sb">`</span>http://api.sobhe.ir:7000/index1/movie/query<span class="sb">`</span><span class="se">\n\n</span><span class="s2">عبارت </span><span class="sb">`</span>نیم‌روز<span class="sb">`</span><span class="s2"> در فیلد </span><span class="sb">`</span>title<span class="sb">`</span><span class="s2"> تمام آیتم‌های موجود در </span><span class="sb">`</span>index1<span class="sb">`</span><span class="s2"> که تایپ آن </span><span class="sb">`</span>movie<span class="sb">`</span><span class="s2"> است جستجو می‌شود و نتایج از آیتم شمارهٔ </span><span class="sb">`</span>۰<span class="sb">`</span><span class="s2"> به‌بعد و به تعداد </span><span class="sb">`</span>۲<span class="sb">`</span><span class="s2"> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</span><span class="se">\n\n</span><span class="s2">"</span> <span class="se">\</span>
+      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query<span class="o">{</span>?fields,text,size,from<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+"{</span><span class="se">\n\"</span><span class="s">text</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">نیم‌روز</span><span class="se">\"</span><span class="s"> (required, string),</span><span class="se">\n\"</span><span class="s">fields</span><span class="se">\"</span><span class="s">: [</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">] (optional, array of strings),</span><span class="se">\n\"</span><span class="s">size</span><span class="se">\"</span><span class="s">: 2 (optional, number),</span><span class="se">\n\"</span><span class="s">from</span><span class="se">\"</span><span class="s">: 0 (optional, number)</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">خروجی مقابل در پاسخ به این درخواست است:</span><span class="se">\n\n</span><span class="s">`http://api.sobhe.ir:7000/index1/movie/query`</span><span class="se">\n\n</span><span class="s">عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</span><span class="se">\n\n</span><span class="s">"
+"""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.680344</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"highlight"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"ماجرای &lt;em&gt;نیمروز&lt;/em&gt;"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ماجرای نیمروز"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"هیجانی"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ماجراجویی"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"importance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"movie"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"didYouMean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;em&gt;نیمروز&lt;/em&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre></div>
+<p>اگر جست و جو با متد POST انجام شود باید پارامترها به صورت زیر در بدنه قرار گیرند و همچنین اگر جست و جو بر اساس بیش از یک نوع فیلد باشد باید فیلدها به صورت آرایه ای از string ها تعریف شوند.</p>
+
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
 <h1 id='175d0d146c'>جستجوی درلحظه‌</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
@@ -856,7 +912,7 @@ from
 </tr></table>
 
 <p>این تابع همزمان با تایپ کاربر جستجو می‌کند و دو تفاوت مهم با <a href="#5a91792863">جستجوی معمولی</a> دارد. اولاً فقط در فیلد title جستجو می‌کند و دوماً اگر بخشی از کلمه نیز در فیلد title وجود داشته باشد به عنوان نتیجه بازمی‌گرداند. به‌عنوان مثال در نمونه‌درخواست مقابل با جستجوی «ماجر»، فیلم «ماجرای نیمروز» جزو یکی از نتایج است. دقت کنید این تابع جستجو را فقط از ابتدای کلمه انجام می‌دهد. یعنی مثلاً‌ در نمونهٔ مقابل با جستجوی «ماجر»، «نیم» و «ماجرای نیمر» به نتایج مشابهی می‌رسید ولی جستجوی «جرای»، «روز» نتایجی در پی نخواهد داشت چون این‌ها بخشی از ابتدای کلمات نیست.</p>
-<h2 id='b40d4b44b2-2'>مثال</h2>
+<h2 id='b40d4b44b2-3'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -944,7 +1000,7 @@ text
 </tr></table>
 
 <p>این تابع همزمان با جستجوی کاربر، با بررسی تاریخچهٔ جستجوهای قبلی، عبارات مناسبی برای جستجو پیشنهاد می‌دهد.</p>
-<h2 id='b40d4b44b2-3'>مثال</h2>
+<h2 id='b40d4b44b2-4'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1012,7 +1068,7 @@ types
 </tr></table>
 
 <p>با دریافت اطلاعات مربوط به یک محتوا، شبیه‌ترین محتواها را به‌همراه میزان مشابهت هر یک از آن‌ها برمی‌گرداند. تنها وارد کردن فیلد <code>Title‌</code> در بدنهٔ این درخواست اجباری است. بقیهٔ فیلدها اختیاری است. هرچه فیلدهای بیشتری وارد کنید نتایج جستجو دقیق‌تر می‌شود. همچنین شما فقط می‌توانید فیلدهای دارای مقادیر متنی را وارد کنید.</p>
-<h2 id='b40d4b44b2-4'>مثال</h2>
+<h2 id='b40d4b44b2-5'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1088,7 +1144,7 @@ types
 </tr></table>
 
 <p>با دریافت اطلاعات مربوط به یک محتوا، منابعی را که این محتوا با استفاده از آنها درست شده یافته و میزان تشابه را برای هر بخش مشخص می‌کند.</p>
-<h2 id='b40d4b44b2-5'>مثال</h2>
+<h2 id='b40d4b44b2-6'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
