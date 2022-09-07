@@ -221,11 +221,6 @@
                       <li>
                         <a href="#d6813cc994" class="toc-h2 toc-link" data-title="حذف محتوای ایندکس">حذف محتوای ایندکس</a>
                       </li>
-                  </ul>
-              </li>
-              <li>
-                <a href="#5a91792863" class="toc-h1 toc-link" data-title="جستجوی معمولی">جستجوی معمولی</a>
-                  <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
@@ -681,73 +676,13 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">       </span><span class="p">{</span><span class="w">
             </span><span class="nl">"ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
        </span><span class="p">}</span><span class="w">
+</span><span class="err">عبارتی</span><span class="w"> </span><span class="err">را</span><span class="w"> </span><span class="err">در</span><span class="w"> </span><span class="err">یک</span><span class="w"> </span><span class="err">ایندکس</span><span class="w"> </span><span class="err">جستجو</span><span class="w"> </span><span class="err">می‌کند.</span><span class="w"> </span><span class="err">این</span><span class="w"> </span><span class="err">تابع</span><span class="w"> </span><span class="err">در</span><span class="w"> </span><span class="err">صورت</span><span class="w"> </span><span class="err">وجود</span><span class="w"> </span><span class="err">اشتباه</span><span class="w"> </span><span class="err">در</span><span class="w"> </span><span class="err">عبارت</span><span class="w"> </span><span class="err">جستجو</span><span class="w"> </span><span class="err">منظور</span><span class="w"> </span><span class="err">کاربر</span><span class="w"> </span><span class="err">را</span><span class="w"> </span><span class="err">حدس</span><span class="w"> </span><span class="err">می‌زند</span><span class="w"> </span><span class="err">و</span><span class="w"> </span><span class="err">در</span><span class="w"> </span><span class="err">پارامتر</span><span class="w"> </span><span class="err">`didYouMean`</span><span class="w"> </span><span class="err">حدس</span><span class="w"> </span><span class="err">خود</span><span class="w"> </span><span class="err">را</span><span class="w"> </span><span class="err">برمی‌گرداند</span><span class="w"> </span><span class="err">و</span><span class="w"> </span><span class="err">برمبنای</span><span class="w"> </span><span class="err">همین</span><span class="w"> </span><span class="err">حدس،</span><span class="w"> </span><span class="err">نتایج</span><span class="w"> </span><span class="err">جستجو</span><span class="w"> </span><span class="err">را</span><span class="w"> </span><span class="err">باز</span><span class="w"> </span><span class="err">می‌گرداند.</span><span class="w">
+
 
 </span></code></pre></div>
 <p>برای حذف یک یا چند محتوا درخواست خود را با متد <code>DELETE</code> ارسال کنید و در بدنهٔ درخواست دو پارامتر <code>type</code> و <code>ids</code> را مقداردهی کنید. با ارسال این درخواست آن دسته از محتواهایی که نوعشان برابر <code>type</code> است و شناسه‌شان در آرایهٔ <code>ids</code> وجود دارد از ایندکس حذف می‌شوند. <mark>اگر هیچ پارامتری وارد نکنید کل ایندکس حذف می‌شود.</mark> </p>
 
 <dl style="background-color:transparent;"><code>DELETE /{index_name}/index</code></dl>
-<h1 id='5a91792863'>جستجوی معمولی</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
-
-<table style="float:right;text-align:center;font-family:IRANYekan;">
-    <tr>
-        <th>
-            توضیحات
-        </th>
-        <th>
-            کلید
-        </th>
-    </tr>
-<tr>
-<td>
-شناسهٔ ایندکسی که می‌خواهید در آن جستجو شود.
-</td>
-<td style="font-weight: bold">
-index_name
-</td>
-</tr>
-<tr>
-<td>
-انواعی که می‌خواهید در آن‌ها جستجو شود. بیشتر از یک نوع را با کاراکتر خط عمودی `|` از هم جدا کنید.
-</td>
-<td style="font-weight: bold">
-types
-</td>
-</tr>
-<tr>
-<td>
-عبارت جستجو
-</td>
-<td style="font-weight: bold">
-text
-</td>
-</tr>
-<tr>
-<td>
-فیلد یا فیلدهایی که می‌خواهید در آن‌ها جستجو شود. بیشتر از یک فیلد را با کاراکتر خط عمودی `|` از هم جدا کنید. اگر هیچ فیلدی وارد نکنید جستجو به‌طور‌ پیش‌فرض در فیلد `Title` صورت می‌گیرد.
-</td>
-<td style="font-weight: normal">
-fields
-</td>
-</tr>
-<tr>
-<td>
-تعداد نتایج جستجو را مشخص می‌کند. این پارامتر اختیاری است و اگر ارسال نکنید کل نتایج جستجو نمایش داده می‌شود.
-</td>
-<td style="font-weight: normal">
-size
-</td>
-</tr>
-<tr>
-<td>
-بعد از ارسال درخواستِ جستجو، آرایه‌ای از نتایج بازگردانده می‌شود. با تنظیم پارمتر `from` بیان می‌کنید که نتایج از کدام شماره بازگردد؛ مثلاً ۰ یعنی از ابتدا همه را نشان بده. ۲ یعنی از سومین عنصر به بعد نشان بده. این پارامتر نیز همانند `size` اختیاری است و مقدار پیش‌فرض آن ۰ است یعنی همهٔ نتایج نشان داده می‌شود.
-</td>
-<td style="font-weight: normal">
-from
-</td>
-</tr></table>
-
-<p>عبارتی را در یک ایندکس جستجو می‌کند. این تابع در صورت وجود اشتباه در عبارت جستجو منظور کاربر را حدس می‌زند و در پارامتر <code>didYouMean</code> حدس خود را برمی‌گرداند و برمبنای همین حدس، نتایج جستجو را باز می‌گرداند.</p>
 <h2 id='b40d4b44b2'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -756,7 +691,7 @@ from
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s2">""</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query<span class="o">{</span>?fields,text,size,from<span class="o">}</span>
+      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/index
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -766,7 +701,7 @@ from
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -804,7 +739,7 @@ from
 
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
-<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
+<dl style="background-color:transparent;"><code>GET /{index_name}/index</code></dl>
 <h2 id='b40d4b44b2-2'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -827,7 +762,7 @@ from
     <span class="s2">"size"</span>: 2,
     <span class="s2">"from"</span>: 0
 <span class="o">}</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query<span class="o">{</span>?fields,text,size,from<span class="o">}</span>
+      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/index
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -844,7 +779,7 @@ from
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -884,7 +819,7 @@ from
 
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
-<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
+<dl style="background-color:transparent;"><code>POST /{index_name}/index</code></dl>
 <h1 id='175d0d146c'>جستجوی درلحظه‌</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
