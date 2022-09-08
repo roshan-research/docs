@@ -224,11 +224,16 @@
                   </ul>
               </li>
               <li>
-                <a href="#5a91792863" class="toc-h1 toc-link" data-title="جستجوی معمولی">جستجوی معمولی</a>
+                <a href="#get" class="toc-h1 toc-link" data-title="جستجوی معمولی با GET">جستجوی معمولی با GET</a>
                   <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#post" class="toc-h1 toc-link" data-title="جستجوی معمولی با POST">جستجوی معمولی با POST</a>
+                  <ul class="toc-list-h2">
                       <li>
                         <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
@@ -686,7 +691,7 @@ Value: <span style="background-color: #00A693;
 <p>برای حذف یک یا چند محتوا درخواست خود را با متد <code>DELETE</code> ارسال کنید و در بدنهٔ درخواست دو پارامتر <code>type</code> و <code>ids</code> را مقداردهی کنید. با ارسال این درخواست آن دسته از محتواهایی که نوعشان برابر <code>type</code> است و شناسه‌شان در آرایهٔ <code>ids</code> وجود دارد از ایندکس حذف می‌شوند. <mark>اگر هیچ پارامتری وارد نکنید کل ایندکس حذف می‌شود.</mark> </p>
 
 <dl style="background-color:transparent;"><code>DELETE /{index_name}/index</code></dl>
-<h1 id='5a91792863'>جستجوی معمولی</h1>
+<h1 id='get'>جستجوی معمولی با GET</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
@@ -805,25 +810,48 @@ from
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
+<h1 id='post'>جستجوی معمولی با POST</h1>
+<p>این روش جستجو همانند جستجو معمولی با GET است با این تفاوت که پارامترها به صورت زیر در بدنه قرار میگیرند و همچنین <code>fields</code> باید به صورت آرایه ای از string تعریف شود.</p>
 <h2 id='b40d4b44b2-2'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n\"text\": \"نیم‌روز\",\n\"fields\": [\"title\"],\n\"size\": 2,\n\"from\": 0\n}\n[/{index_name}/{types}/query]\n\n"
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "text": "نیم‌روز",
+    "fields": [
+        "title"
+    ],
+    "size": 2,
+    "from": 0
+}
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">نیم‌روز</span><span class="se">\"</span><span class="s2">,</span><span class="se">\n\"</span><span class="s2">fields</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">],</span><span class="se">\n\"</span><span class="s2">size</span><span class="se">\"</span><span class="s2">: 2,</span><span class="se">\n\"</span><span class="s2">from</span><span class="se">\"</span><span class="s2">: 0</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">[/{index_name}/{types}/query]</span><span class="se">\n\n</span><span class="s2">"</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query<span class="o">{</span>?fields,text,size,from<span class="o">}</span>
+      <span class="nt">--data-binary</span> <span class="o">{</span>
+    <span class="s2">"text"</span>: <span class="s2">"نیم‌روز"</span>,
+    <span class="s2">"fields"</span>: <span class="o">[</span>
+        <span class="s2">"title"</span>
+    <span class="o">]</span>,
+    <span class="s2">"size"</span>: 2,
+    <span class="s2">"from"</span>: 0
+<span class="o">}</span> <span class="se">\</span>
+      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
-"{</span><span class="se">\n\"</span><span class="s">text</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">نیم‌روز</span><span class="se">\"</span><span class="s">,</span><span class="se">\n\"</span><span class="s">fields</span><span class="se">\"</span><span class="s">: [</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">],</span><span class="se">\n\"</span><span class="s">size</span><span class="se">\"</span><span class="s">: 2,</span><span class="se">\n\"</span><span class="s">from</span><span class="se">\"</span><span class="s">: 0</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">[/{index_name}/{types}/query]</span><span class="se">\n\n</span><span class="s">"
+{
+    "text": "نیم‌روز",
+    "fields": [
+        "title"
+    ],
+    "size": 2,
+    "from": 0
+}
 """</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -859,11 +887,9 @@ from
 
 <p><code>http://api.sobhe.ir:7000/index1/movie/query</code></p>
 
-<p>اگر جست و جو با متد POST انجام شود باید پارامترها به صورت رو به رو در بدنه قرار گیرند و همچنین <code>fields</code> باید به صورت آرایه ای از string ها تعریف شود.</p>
-
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
-<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/query</code></dl>
 <h1 id='175d0d146c'>جستجوی درلحظه‌</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 
