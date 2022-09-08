@@ -230,7 +230,7 @@
                         <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                       <li>
-                        <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                        <a href="#index_name-types-query" class="toc-h2 toc-link" data-title="مثال [/{index_name}/{types}/query]">مثال [/{index_name}/{types}/query]</a>
                       </li>
                   </ul>
               </li>
@@ -238,7 +238,7 @@
                 <a href="#175d0d146c" class="toc-h1 toc-link" data-title="جستجوی درلحظه‌">جستجوی درلحظه‌</a>
                   <ul class="toc-list-h2">
                       <li>
-                        <a href="#b40d4b44b2-3" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                        <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                   </ul>
               </li>
@@ -246,7 +246,7 @@
                 <a href="#1343ad4c0b" class="toc-h1 toc-link" data-title="‌پیشنهاد جستجو">‌پیشنهاد جستجو</a>
                   <ul class="toc-list-h2">
                       <li>
-                        <a href="#b40d4b44b2-4" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                        <a href="#b40d4b44b2-3" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                   </ul>
               </li>
@@ -254,7 +254,7 @@
                 <a href="#2a07a58f62" class="toc-h1 toc-link" data-title="محتواهای مشابه">محتواهای مشابه</a>
                   <ul class="toc-list-h2">
                       <li>
-                        <a href="#b40d4b44b2-5" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                        <a href="#b40d4b44b2-4" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                   </ul>
               </li>
@@ -262,7 +262,7 @@
                 <a href="#ee384ab3c4" class="toc-h1 toc-link" data-title="محتواهای منبع">محتواهای منبع</a>
                   <ul class="toc-list-h2">
                       <li>
-                        <a href="#b40d4b44b2-6" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                        <a href="#b40d4b44b2-5" class="toc-h2 toc-link" data-title="مثال">مثال</a>
                       </li>
                   </ul>
               </li>
@@ -805,7 +805,7 @@ from
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
-<h2 id='b40d4b44b2-2'>مثال</h2>
+<h2 id='index_name-types-query'>مثال [/{index_name}/{types}/query]</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -880,7 +880,7 @@ from
 
 <p><code>http://api.sobhe.ir:7000/index1/movie/query</code></p>
 
-<p>اگر جست و جو با متد POST انجام شود باید پارامترها به صورت رو به رو در بدنه قرار گیرند و همچنین فیلدها باید به صورت آرایه ای از string ها تعریف شوند.</p>
+<p>اگر جست و جو با متد POST انجام شود باید پارامترها به صورت رو به رو در بدنه قرار گیرند و همچنین <code>fields</code> باید به صورت آرایه ای از string ها تعریف شود.</p>
 
 <p>عبارت <code>نیم‌روز</code> در فیلد <code>title</code> تمام آیتم‌های موجود در <code>index1</code> که تایپ آن <code>movie</code> است جستجو می‌شود و نتایج از آیتم شمارهٔ <code>۰</code> به‌بعد و به تعداد <code>۲</code> عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.</p>
 
@@ -939,7 +939,7 @@ from
 </tr></table>
 
 <p>این تابع همزمان با تایپ کاربر جستجو می‌کند و دو تفاوت مهم با <a href="#5a91792863">جستجوی معمولی</a> دارد. اولاً فقط در فیلد title جستجو می‌کند و دوماً اگر بخشی از کلمه نیز در فیلد title وجود داشته باشد به عنوان نتیجه بازمی‌گرداند. به‌عنوان مثال در نمونه‌درخواست مقابل با جستجوی «ماجر»، فیلم «ماجرای نیمروز» جزو یکی از نتایج است. دقت کنید این تابع جستجو را فقط از ابتدای کلمه انجام می‌دهد. یعنی مثلاً‌ در نمونهٔ مقابل با جستجوی «ماجر»، «نیم» و «ماجرای نیمر» به نتایج مشابهی می‌رسید ولی جستجوی «جرای»، «روز» نتایجی در پی نخواهد داشت چون این‌ها بخشی از ابتدای کلمات نیست.</p>
-<h2 id='b40d4b44b2-3'>مثال</h2>
+<h2 id='b40d4b44b2-2'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1027,7 +1027,7 @@ text
 </tr></table>
 
 <p>این تابع همزمان با جستجوی کاربر، با بررسی تاریخچهٔ جستجوهای قبلی، عبارات مناسبی برای جستجو پیشنهاد می‌دهد.</p>
-<h2 id='b40d4b44b2-4'>مثال</h2>
+<h2 id='b40d4b44b2-3'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1095,7 +1095,7 @@ types
 </tr></table>
 
 <p>با دریافت اطلاعات مربوط به یک محتوا، شبیه‌ترین محتواها را به‌همراه میزان مشابهت هر یک از آن‌ها برمی‌گرداند. تنها وارد کردن فیلد <code>Title‌</code> در بدنهٔ این درخواست اجباری است. بقیهٔ فیلدها اختیاری است. هرچه فیلدهای بیشتری وارد کنید نتایج جستجو دقیق‌تر می‌شود. همچنین شما فقط می‌توانید فیلدهای دارای مقادیر متنی را وارد کنید.</p>
-<h2 id='b40d4b44b2-5'>مثال</h2>
+<h2 id='b40d4b44b2-4'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1171,7 +1171,7 @@ types
 </tr></table>
 
 <p>با دریافت اطلاعات مربوط به یک محتوا، منابعی را که این محتوا با استفاده از آنها درست شده یافته و میزان تشابه را برای هر بخش مشخص می‌کند.</p>
-<h2 id='b40d4b44b2-6'>مثال</h2>
+<h2 id='b40d4b44b2-5'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
