@@ -389,3 +389,25 @@ HOST: http://api.sobhe.ir:7000/
         ]
       ]
     }
+
+##  دریافت آمار ایندکس [/{index_name}/{types}/stats]
+این تابع، آمار مربوط به ایندکس را میدهد. برای دریافت این آمار، درخواست خود را با متد GET ارسال کنید.
+
++ Parameters
+    + index_name: (required, string) - شناسهٔ ایندکس.
+    + types: (required, string) - انواعی که میخواهید آمار آنها را دریافت کنید.
+
+### مثال [GET]
+خروجی مقابل در پاسخ به این درخواست است:
+
+`http://api.sobhe.ir:7000/index1/movie/stats`
+
+پاسخ این درخواست شامل آمار زیر درباره ی `index1` در نوع `movie` است.
+
++ Response 200 (application/json)
+    {
+        "docs_number": 7,
+        "index_size": 8,
+        "indexing_doc": 0,
+        "search_queries": 54
+    }
