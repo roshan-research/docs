@@ -179,7 +179,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-0ebbd6be.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-111a5097.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b49a9d77.js"></script>
 
@@ -565,51 +565,21 @@ Scroll.prototype.addEventListener = function (event, callback) {
 };
 
 window.addEventListener('DOMContentLoaded',() => {
-
-    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
-
-    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
-
+    let tocLinks = document.getElementsByClassName('toc-link');
+    
+    for(let i = 0; i < tocLinks.length; i++) {
+        tocLinks[i].addEventListener('click', () => {
+            for(let i = 0; i < tocLinks.length; i++) {
+                tocLinks[i].classList.add('toc-unstyled')
+            }
+        })
+    }
+    
     var sl = new Scroll(400);
     
-    sl.addEventListener("start", function (e) {
-
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = 'transparent'
-            tocs[i].style.color = 'black'
-        }
-
-        for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.backgroundColor = 'transparent'
-            littleTOCs[i].style.color = 'black'
-        }
-
-    });
-    
-    sl.addEventListener("scroll", function () {
-
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = 'transparent'
-            tocs[i].style.color = 'black'
-        }
-
-        for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.backgroundColor = 'transparent'
-            littleTOCs[i].style.color = 'black'
-        }
-    });
-    
-
     sl.addEventListener("end", function () {
-
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = '#FF6200'
-            tocs[i].style.color = 'white'
-        }
-
-        for(let i = 0; i < littleTOCs.length; i++) {
-            littleTOCs[i].style.backgroundColor = '#FF6200'
-            littleTOCs[i].style.color = 'white'
+        for(let i = 0; i < tocLinks.length; i++) {
+            tocLinks[i].classList.remove('toc-unstyled')
         }
     });
 });

@@ -228,6 +228,11 @@ body {
   color: $nav-text;
 }
 
+.lang-selector .active {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 // mobile language selector
 .mobile-lang-selector {
   display: none;
@@ -249,7 +254,7 @@ body {
     justify-content: center;
     gap: 7px;
     padding: 7px;
-    background-color: #FF8C44;
+    background-color: #ff8c44;
     border-radius: 0 0 0 5px;
 
     & > img {
@@ -259,7 +264,8 @@ body {
       filter: brightness(0);
     }
 
-    & > img, & > span {
+    & > img,
+    & > span {
       transform-origin: 0 0;
       transform: rotate(-90deg) translate(-100%, 0);
     }
@@ -1073,6 +1079,11 @@ a.toc-h1.toc-link {
 
 a.toc-h2.toc-link.active {
   width: 85%;
+}
+
+.toc-unstyled {
+  background-color: transparent !important;
+  color: black !important;
 }
 
 p,
