@@ -98,7 +98,7 @@ HOST: http://api.sobhe.ir:7000/
  	 	 	 	"ids": [2]
  	 	 	}
 
-## جستجوی معمولی [/{index_name}/{types}/query{?fields,text,size,from}]
+## جستجوی معمولی با GET [/{index_name}/{types}/query{?fields,text,size,from}]
 عبارتی را در یک ایندکس جستجو می‌کند. این تابع در صورت وجود اشتباه در عبارت جستجو منظور کاربر را حدس می‌زند و در پارامتر `didYouMean` حدس خود را برمی‌گرداند و برمبنای همین حدس، نتایج جستجو را باز می‌گرداند.
 
 + Parameters
@@ -115,6 +115,48 @@ HOST: http://api.sobhe.ir:7000/
 `http://api.sobhe.ir:7000/index1/movie/query?text=نیم‌روز&fields=title&size=2&from=0`
 
 عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
+
++ Response 200 (application/json)
+    {
+        "items": [
+            {
+                "_score": 9.680344,
+                "highlight": {
+                    "title": [
+                        "ماجرای <em>نیمروز</em>"
+                    ]
+                },
+                "id": "1",
+                "title": "ماجرای نیمروز",
+                "labels": [
+                    "هیجانی",
+                    "ماجراجویی"
+                ],
+                "importance": 100,
+                "type": "movie"
+            }
+        ],
+        "didYouMean": "<em>نیمروز</em>"
+    }
+
+## جستجوی معمولی با POST [/{index_name}/{types}/query]
+این روش جستجو همانند جستجو معمولی با GET است با این تفاوت که پارامترها به صورت زیر در بدنه قرار میگیرند و همچنین `fields` باید به صورت آرایه ای از string تعریف شود.
+
+### مثال [POST]
+خروجی مقابل در پاسخ به این درخواست است:
+
+`http://api.sobhe.ir:7000/index1/movie/query`
+
+عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
+
++ Request (application/json)
+  + Body
+      {
+        "text": "نیم‌روز",
+        "fields": ["title"],
+        "size": 2,
+        "from": 0
+      }
 
 + Response 200 (application/json)
     {
@@ -346,4 +388,26 @@ HOST: http://api.sobhe.ir:7000/
           0.07857
         ]
       ]
+    }
+
+##  دریافت آمار ایندکس [/{index_name}/{types}/stats]
+این تابع، آمار مربوط به ایندکس را میدهد. برای دریافت این آمار، درخواست خود را با متد GET ارسال کنید.
+
++ Parameters
+    + index_name: (required, string) - شناسهٔ ایندکس.
+    + types: (required, string) - انواعی که میخواهید آمار آنها را دریافت کنید.
+
+### مثال [GET]
+خروجی مقابل در پاسخ به این درخواست است:
+
+`http://api.sobhe.ir:7000/index1/movie/stats`
+
+پاسخ این درخواست شامل آمار زیر درباره ی `index1` در نوع `movie` است.
+
++ Response 200 (application/json)
+    {
+        "docs_number": 2,
+        "index_size": 0,
+        "indexing_doc": 0,
+        "search_queries": 0
     }

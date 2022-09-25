@@ -6433,8 +6433,7 @@ window.addEventListener('DOMContentLoaded',() => {
         }
     });
 });
-</script><script></script>;
-
+</script>
 <script>
 function Scroll(delay) {
     this.initialY = scrollY;
@@ -6491,6 +6490,20 @@ window.addEventListener('DOMContentLoaded',() => {
     let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
 
     var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
     
     sl.addEventListener("scroll", function () {
 
@@ -6577,6 +6590,20 @@ window.addEventListener('DOMContentLoaded',() => {
 
     var sl = new Scroll(400);
     
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
     sl.addEventListener("scroll", function () {
 
         for(let i = 0; i < tocs.length; i++) {
@@ -6661,6 +6688,34 @@ window.addEventListener('DOMContentLoaded',() => {
     let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
 
     var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
 
     sl.addEventListener("end", function () {
 
@@ -6675,99 +6730,6 @@ window.addEventListener('DOMContentLoaded',() => {
         }
     });
 });
-</script><script></script>;
-
-<script>
-function Scroll(delay) {
-    this.initialY = scrollY;
-    this.callbacks = {
-        start  : null,
-        scroll : null,
-        end    : null,
-    };
-    this.timeout = {
-        delay  : delay || 150,
-        handle : null,
-    };
-    this.handler = Scroll.handler.bind(this);
-    window.addEventListener("scroll", this.handler);
-}
-
-Scroll.handler = function (e) {
-    if (this.initialY == 0) {
-        if (this.timeout.handle == null) {
-            if (this.callbacks.start) {
-                this.callbacks.start.call(this, e);
-            }
-        }
-        if (this.timeout.handle !== null) {
-            clearTimeout(this.timeout.handle);
-        }
-        if (this.callbacks.scroll) {
-            this.callbacks.scroll.call(this, e);
-        }
-        var self = this;
-        this.timeout.handle = setTimeout(function () {
-            self.timeout.handle = null;
-            if (self.callbacks.end) {
-                self.callbacks.end.call(self, e);
-            }
-        }, this.timeout.delay);
-    } else {
-        this.initialY = 0;
-    }
-};
-
-Scroll.prototype.addEventListener = function (event, callback) {
-    if (Object.keys(this.callbacks).includes(event)) {
-        this.callbacks[event] = callback;
-    } else {
-        console.warn("Invalid scroll event: " + event);
-    }
-};
-
-window.addEventListener('DOMContentLoaded',() => {
-    let isAutoScroll = false;
-    let tocLinks = document.getElementsByClassName('toc-link');
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks.addEventListener('click', () => {
-            isAutoScroll = true
-        })
-    }
-
-    let tocs = document.getElementsByClassName('toc-link active');
-
-    var sl = new Scroll(400);
-    
-    sl.addEventListener("start", function (e) {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
-        }
-    });
-    
-    sl.addEventListener("scroll", function () {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
-        }
-    });
-    
-
-    sl.addEventListener("end", function () {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = '#FF6200'
-                tocs[i].style.color = 'white'
-            }
-            isAutoScroll = false
-        }
-    });
-});
 </script>
 <script>
 function Scroll(delay) {
@@ -6819,295 +6781,51 @@ Scroll.prototype.addEventListener = function (event, callback) {
 };
 
 window.addEventListener('DOMContentLoaded',() => {
-    let isAutoScroll = false;
-    let tocLinks = document.getElementsByClassName('toc-link');
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            isAutoScroll = true
-        })
-    }
 
-    let tocs = document.getElementsByClassName('toc-link active');
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
 
     var sl = new Scroll(400);
     
     sl.addEventListener("start", function (e) {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
-        }
-    });
-    
-    sl.addEventListener("scroll", function () {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
-        }
-    });
-    
 
-    sl.addEventListener("end", function () {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = '#FF6200'
-                tocs[i].style.color = 'white'
-            }
-            isAutoScroll = false
-        }
-    });
-});
-</script>
-<script>
-function Scroll(delay) {
-    this.initialY = scrollY;
-    this.callbacks = {
-        start  : null,
-        scroll : null,
-        end    : null,
-    };
-    this.timeout = {
-        delay  : delay || 150,
-        handle : null,
-    };
-    this.handler = Scroll.handler.bind(this);
-    window.addEventListener("scroll", this.handler);
-}
-
-Scroll.handler = function (e) {
-    if (this.initialY == 0) {
-        if (this.timeout.handle == null) {
-            if (this.callbacks.start) {
-                this.callbacks.start.call(this, e);
-            }
-        }
-        if (this.timeout.handle !== null) {
-            clearTimeout(this.timeout.handle);
-        }
-        if (this.callbacks.scroll) {
-            this.callbacks.scroll.call(this, e);
-        }
-        var self = this;
-        this.timeout.handle = setTimeout(function () {
-            self.timeout.handle = null;
-            if (self.callbacks.end) {
-                self.callbacks.end.call(self, e);
-            }
-        }, this.timeout.delay);
-    } else {
-        this.initialY = 0;
-    }
-};
-
-Scroll.prototype.addEventListener = function (event, callback) {
-    if (Object.keys(this.callbacks).includes(event)) {
-        this.callbacks[event] = callback;
-    } else {
-        console.warn("Invalid scroll event: " + event);
-    }
-};
-
-window.addEventListener('DOMContentLoaded',() => {
-    let isAutoScroll = false;
-    let tocLinks = document.getElementsByClassName('toc-link');
-    
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            isAutoScroll = true
-        })
-    }
-
-    let tocs = document.getElementsByClassName('toc-link active');
-
-    var sl = new Scroll(400);
-    
-    sl.addEventListener("start", function (e) {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
-        }
-    });
-    
-    sl.addEventListener("scroll", function () {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
-        }
-    });
-    
-
-    sl.addEventListener("end", function () {
-        for(let i = 0; i < tocs.length; i++) {
-            tocs[i].style.backgroundColor = '#FF6200'
-            tocs[i].style.color = 'white'
-        }
-        isAutoScroll = false
-    });
-});
-</script>
-<script>
-function Scroll(delay) {
-    this.initialY = scrollY;
-    this.callbacks = {
-        start  : null,
-        scroll : null,
-        end    : null,
-    };
-    this.timeout = {
-        delay  : delay || 150,
-        handle : null,
-    };
-    this.handler = Scroll.handler.bind(this);
-    window.addEventListener("scroll", this.handler);
-}
-
-Scroll.handler = function (e) {
-    if (this.initialY == 0) {
-        if (this.timeout.handle == null) {
-            if (this.callbacks.start) {
-                this.callbacks.start.call(this, e);
-            }
-        }
-        if (this.timeout.handle !== null) {
-            clearTimeout(this.timeout.handle);
-        }
-        if (this.callbacks.scroll) {
-            this.callbacks.scroll.call(this, e);
-        }
-        var self = this;
-        this.timeout.handle = setTimeout(function () {
-            self.timeout.handle = null;
-            if (self.callbacks.end) {
-                self.callbacks.end.call(self, e);
-            }
-        }, this.timeout.delay);
-    } else {
-        this.initialY = 0;
-    }
-};
-
-Scroll.prototype.addEventListener = function (event, callback) {
-    if (Object.keys(this.callbacks).includes(event)) {
-        this.callbacks[event] = callback;
-    } else {
-        console.warn("Invalid scroll event: " + event);
-    }
-};
-
-window.addEventListener('DOMContentLoaded',() => {
-    let isAutoScroll = false;
-    let tocLinks = document.getElementsByClassName('toc-link');
-    
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            isAutoScroll = true
-        })
-    }
-
-    let tocs = document.getElementsByClassName('toc-link active');
-
-    var sl = new Scroll(400);
-    
-    sl.addEventListener("start", function (e) {
         for(let i = 0; i < tocs.length; i++) {
             tocs[i].style.backgroundColor = 'transparent'
             tocs[i].style.color = 'black'
         }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
     });
     
     sl.addEventListener("scroll", function () {
-        if (isAutoScroll) {
-            for(let i = 0; i < tocs.length; i++) {
-                tocs[i].style.backgroundColor = 'transparent'
-                tocs[i].style.color = 'black'
-            }
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
         }
     });
     
 
     sl.addEventListener("end", function () {
+
         for(let i = 0; i < tocs.length; i++) {
             tocs[i].style.backgroundColor = '#FF6200'
             tocs[i].style.color = 'white'
         }
-        isAutoScroll = false
-    });
-});
-</script>
-<script>
-function Scroll(delay) {
-    this.initialY = scrollY;
-    this.callbacks = {
-        start  : null,
-        scroll : null,
-        end    : null,
-    };
-    this.timeout = {
-        delay  : delay || 150,
-        handle : null,
-    };
-    this.handler = Scroll.handler.bind(this);
-    window.addEventListener("scroll", this.handler);
-}
 
-Scroll.handler = function (e) {
-    if (this.initialY == 0) {
-        if (this.timeout.handle == null) {
-            if (this.callbacks.start) {
-                this.callbacks.start.call(this, e);
-            }
-        }
-        if (this.timeout.handle !== null) {
-            clearTimeout(this.timeout.handle);
-        }
-        if (this.callbacks.scroll) {
-            this.callbacks.scroll.call(this, e);
-        }
-        var self = this;
-        this.timeout.handle = setTimeout(function () {
-            self.timeout.handle = null;
-            if (self.callbacks.end) {
-                self.callbacks.end.call(self, e);
-            }
-        }, this.timeout.delay);
-    } else {
-        this.initialY = 0;
-    }
-};
-
-Scroll.prototype.addEventListener = function (event, callback) {
-    if (Object.keys(this.callbacks).includes(event)) {
-        this.callbacks[event] = callback;
-    } else {
-        console.warn("Invalid scroll event: " + event);
-    }
-};
-
-window.addEventListener('DOMContentLoaded',() => {
-    let tocLinks = document.getElementsByClassName('toc-link');
-    
-    let activeToc = document.getElementsByClassName('toc-link active');
-
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            for(let i = 0; i < tocs.length; i++) {
-                activeToc[i].classList.add('toc-unstyled')
-            }
-        })
-    }
-    
-    var sl = new Scroll(400);
-    
-    sl.addEventListener("end", function () {
-        for(let i = 0; i < activeToc.length; i++) {
-            activeToc[i].classList.remove('toc-unstyled')
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
         }
     });
 });
@@ -7162,24 +6880,51 @@ Scroll.prototype.addEventListener = function (event, callback) {
 };
 
 window.addEventListener('DOMContentLoaded',() => {
-    let tocLinks = document.getElementsByClassName('toc-link');
-    
-    let activeToc = document.getElementsByClassName('toc-link active');
 
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            console.log('hi')
-            for(let i = 0; i < tocs.length; i++) {
-                activeToc[i].classList.add('toc-unstyled')
-            }
-        })
-    }
-    
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
     var sl = new Scroll(400);
     
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
     sl.addEventListener("end", function () {
-        for(let i = 0; i < activeToc.length; i++) {
-            activeToc[i].classList.remove('toc-unstyled')
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
         }
     });
 });
@@ -7234,23 +6979,51 @@ Scroll.prototype.addEventListener = function (event, callback) {
 };
 
 window.addEventListener('DOMContentLoaded',() => {
-    let tocLinks = document.getElementsByClassName('toc-link');
-    
-    let activeToc = document.getElementsByClassName('toc-link active');
 
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            for(let i = 0; i < activeToc.length; i++) {
-                activeToc[i].classList.add('toc-unstyled')
-            }
-        })
-    }
-    
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
     var sl = new Scroll(400);
     
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
     sl.addEventListener("end", function () {
-        for(let i = 0; i < activeToc.length; i++) {
-            activeToc[i].classList.remove('toc-unstyled')
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
         }
     });
 });
@@ -7305,21 +7078,249 @@ Scroll.prototype.addEventListener = function (event, callback) {
 };
 
 window.addEventListener('DOMContentLoaded',() => {
-    let tocLinks = document.getElementsByClassName('toc-link');
-    
-    for(let i = 0; i < tocLinks.length; i++) {
-        tocLinks[i].addEventListener('click', () => {
-            for(let i = 0; i < tocLinks.length; i++) {
-                tocLinks[i].classList.add('toc-unstyled')
-            }
-        })
-    }
-    
+
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
     var sl = new Scroll(400);
     
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
     sl.addEventListener("end", function () {
-        for(let i = 0; i < tocLinks.length; i++) {
-            tocLinks[i].classList.remove('toc-unstyled')
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
+        }
+    });
+});
+</script>
+<script>
+function Scroll(delay) {
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
+    sl.addEventListener("end", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
+        }
+    });
+});
+</script>
+<script>
+function Scroll(delay) {
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+
+    let tocs = document.getElementsByClassName('toc-h1 toc-link active');
+
+    let littleTOCs = document.getElementsByClassName("toc-h2 toc-link active");
+
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("start", function (e) {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+
+    });
+    
+    sl.addEventListener("scroll", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = 'transparent'
+            tocs[i].style.color = 'black'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = 'transparent'
+            littleTOCs[i].style.color = 'black'
+        }
+    });
+    
+
+    sl.addEventListener("end", function () {
+
+        for(let i = 0; i < tocs.length; i++) {
+            tocs[i].style.backgroundColor = '#FF6200'
+            tocs[i].style.color = 'white'
+        }
+
+        for(let i = 0; i < littleTOCs.length; i++) {
+            littleTOCs[i].style.backgroundColor = '#FF6200'
+            littleTOCs[i].style.color = 'white'
         }
     });
 });
