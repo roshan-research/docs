@@ -55,6 +55,7 @@ body {
     height: 100%;
 
     & > div {
+      width: 100%;
       height: 100%;
       overflow: auto;
 
@@ -63,6 +64,10 @@ body {
       scrollbar-width: none; /* Firefox */
       &::-webkit-scrollbar {
         display: none;
+      }
+
+      & .toc-list-h1 {
+        width: 100%;
       }
     }
   }

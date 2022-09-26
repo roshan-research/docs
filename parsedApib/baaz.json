@@ -221,7 +221,7 @@
             ]
         },
         {
-            "title": "جستجوی معمولی",
+            "title": "جستجوی معمولی با GET",
             "href": "/{index_name}/{types}/query{?fields,text,size,from}",
             "hrefVariables": [
                 {
@@ -292,6 +292,47 @@
                         "method": "GET",
                         "headerAttributes": [],
                         "sections": []
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n    \"items\": [\n        {\n            \"_score\": 9.680344,\n            \"highlight\": {\n                \"title\": [\n                    \"ماجرای <em>نیمروز</em>\"\n                ]\n            },\n            \"id\": \"1\",\n            \"title\": \"ماجرای نیمروز\",\n            \"labels\": [\n                \"هیجانی\",\n                \"ماجراجویی\"\n            ],\n            \"importance\": 100,\n            \"type\": \"movie\"\n        }\n    ],\n    \"didYouMean\": \"<em>نیمروز</em>\"\n}\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "جستجوی معمولی با POST",
+            "href": "/{index_name}/{types}/query",
+            "hrefVariables": [],
+            "copies": [
+                "این روش جستجو همانند جستجو معمولی با GET است با این تفاوت که پارامترها به صورت زیر در بدنه قرار میگیرند و همچنین `fields` باید به صورت آرایه ای از string تعریف شود."
+            ],
+            "transitions": [
+                {
+                    "title": "مثال",
+                    "copies": [
+                        "خروجی مقابل در پاسخ به این درخواست است:\n\n`http://api.sobhe.ir:7000/index1/movie/query`\n\nعبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است."
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n\"text\": \"نیم‌روز\",\n\"fields\": [\"title\"],\n\"size\": 2,\n\"from\": 0\n}\n"
+                            }
+                        ]
                     },
                     "httpResponse": {
                         "headerAttributes": [],
@@ -693,6 +734,53 @@
                             {
                                 "type": "messageBody",
                                 "content": "{\n  \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n  \"items\": [\n    [\n      \"شهر موشها\",\n      0.02682\n    ],\n    [\n      \"سال ۱۳۶۴\",\n      0.03944\n    ],\n    [\n      \"محمدعلی طالبی\",\n      0.03944\n    ],\n    [\n      \"مرضیه برومند\",\n      0.03944\n    ],\n    [\n      \"فیلم سینمایی\",\n      0.07857\n    ]\n  ]\n}\n\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "دریافت آمار ایندکس",
+            "href": "/{index_name}/{types}/stats",
+            "hrefVariables": [
+                {
+                    "title": "string",
+                    "description": "شناسهٔ ایندکس.",
+                    "key": "index_name",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                },
+                {
+                    "title": "string",
+                    "description": "انواعی که میخواهید آمار آنها را دریافت کنید.",
+                    "key": "types",
+                    "typeAttributes": [
+                        "required"
+                    ]
+                }
+            ],
+            "copies": [
+                "این تابع، آمار مربوط به ایندکس را میدهد. برای دریافت این آمار، درخواست خود را با متد GET ارسال کنید."
+            ],
+            "transitions": [
+                {
+                    "title": "مثال",
+                    "copies": [
+                        "خروجی مقابل در پاسخ به این درخواست است:\n\n`http://api.sobhe.ir:7000/index1/movie/stats`\n\nپاسخ این درخواست شامل آمار زیر درباره ی `index1` در نوع `movie` است."
+                    ],
+                    "httpRequest": {
+                        "method": "GET",
+                        "headerAttributes": [],
+                        "sections": []
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n    \"docs_number\": 2,\n    \"index_size\": 0,\n    \"indexing_doc\": 0,\n    \"search_queries\": 0\n}\n\n"
                             }
                         ]
                     }

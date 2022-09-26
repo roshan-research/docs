@@ -446,7 +446,7 @@ print(response_body)
 
 <dl style="background-color:transparent;"><code>DELETE /{index_name}/index</code></dl>
 
-# جستجوی معمولی
+# جستجوی معمولی با GET
 
 <p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
 <table style="float:right;text-align:center;font-family:IRANYekan;">
@@ -576,6 +576,99 @@ print(response_body)
 عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
+
+# جستجوی معمولی با POST
+
+این روش جستجو همانند جستجو معمولی با GET است با این تفاوت که پارامترها به صورت زیر در بدنه قرار میگیرند و همچنین `fields` باید به صورت آرایه ای از string تعریف شود.
+
+
+## مثال
+
+> Request
+
+```plaintext
+{
+    "text": "نیم‌روز",
+    "fields": [
+        "title"
+    ],
+    "size": 2,
+    "from": 0
+}
+```
+
+```shell
+curl  --request POST \ 
+      --header "Content-Type: application/json" \
+      --data-binary {
+    "text": "نیم‌روز",
+    "fields": [
+        "title"
+    ],
+    "size": 2,
+    "from": 0
+} \
+      http://api.sobhe.ir:7000/{index_name}/{types}/query
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+{
+    "text": "نیم‌روز",
+    "fields": [
+        "title"
+    ],
+    "size": 2,
+    "from": 0
+}
+"""
+
+headers = {
+  'Content-Type': 'application/json',
+}
+request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/query', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+> Response 
+
+```json
+{
+    "items": [
+        {
+            "_score": 9.680344,
+            "highlight": {
+                "title": [
+                    "ماجرای <em>نیمروز</em>"
+                ]
+            },
+            "id": "1",
+            "title": "ماجرای نیمروز",
+            "labels": [
+                "هیجانی",
+                "ماجراجویی"
+            ],
+            "importance": 100,
+            "type": "movie"
+        }
+    ],
+    "didYouMean": "<em>نیمروز</em>"
+}
+
+
+```
+
+خروجی مقابل در پاسخ به این درخواست است:
+
+`http://api.sobhe.ir:7000/index1/movie/query`
+
+عبارت `نیم‌روز` در فیلد `title` تمام آیتم‌های موجود در `index1` که تایپ آن `movie` است جستجو می‌شود و نتایج از آیتم شمارهٔ `۰` به‌بعد و به تعداد `۲` عدد بازمی‌گردد. در مثال مقابل چون فقط یک نتیجه وجود داشته همان یک نتیجه بازگردانده شده است.
+
+<dl style="background-color:transparent;"><code>POST /{index_name}/{types}/query</code></dl>
 
 # جستجوی درلحظه‌
 
@@ -1132,4 +1225,88 @@ print(response_body)
 ```
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/{field}/keyterms</code></dl>
+
+# دریافت آمار ایندکس
+
+<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            توضیحات
+        </th>
+        <th>
+            کلید
+        </th>
+    </tr>
+<tr>
+<td>
+شناسهٔ ایندکس.
+</td>
+<td style="font-weight: bold">
+index_name
+</td>
+</tr>
+<tr>
+<td>
+انواعی که میخواهید آمار آنها را دریافت کنید.
+</td>
+<td style="font-weight: bold">
+types
+</td>
+</tr></table>
+
+این تابع، آمار مربوط به ایندکس را میدهد. برای دریافت این آمار، درخواست خود را با متد GET ارسال کنید.
+
+
+## مثال
+
+> Request
+
+```plaintext
+""
+```
+
+```shell
+curl  --request GET \ 
+      \
+      --data-binary "" \
+      http://api.sobhe.ir:7000/{index_name}/{types}/stats
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+""
+"""
+
+headers = {
+  
+}
+request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/stats', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print(response_body)
+```
+
+> Response 
+
+```json
+{
+    "docs_number": 2,
+    "index_size": 0,
+    "indexing_doc": 0,
+    "search_queries": 0
+}
+
+
+```
+
+خروجی مقابل در پاسخ به این درخواست است:
+
+`http://api.sobhe.ir:7000/index1/movie/stats`
+
+پاسخ این درخواست شامل آمار زیر درباره ی `index1` در نوع `movie` است.
+
+<dl style="background-color:transparent;"><code>GET /{index_name}/{types}/stats</code></dl>
 
