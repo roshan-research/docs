@@ -1874,19 +1874,17 @@ Value: <span style="background-color: #00A693;
 
 <p><br><br></p>
 <h1 id='c6402bef63'>فهرست گزارش‌ها</h1>
-<p>با دریافت نام دیتاست و شناسهٔ یک برچسب، فهرستی از گزارش‌های حاوی این برچسب را برمی‌گرداند. نتایج این تابع همانند تابع <a href="#4cca5c6c3c">فهرست تشخیص‌ها</a> صفحه‌بندی شده و پاسخ برگشتی نیز همانند آن است.</p>
+<p>با دریافت شناسهٔ یک برچسب، فهرستی از گزارش‌های حاوی این برچسب را برمی‌گرداند. نتایج این تابع همانند تابع <a href="#4cca5c6c3c">فهرست تشخیص‌ها</a> صفحه‌بندی شده و پاسخ برگشتی نیز همانند آن است.</p>
 <h2 id='8e687366d5-19'>نمونه</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "dataset": "iran",
     "tag_id": 2
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
     <span class="s2">"tag_id"</span>: 2
 <span class="o">}</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_tag_reports/
@@ -1894,7 +1892,6 @@ Value: <span style="background-color: #00A693;
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
 {
-    "dataset": "iran",
     "tag_id": 2
 }
 """</span>
@@ -1922,23 +1919,7 @@ Value: <span style="background-color: #00A693;
 <dl style="background-color:transparent;"><code>POST /api/list_tag_reports/</code></dl>
 
 <dl>
-<strong>dataset(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    dataset slug
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام دیتاستی که می‌خواهید فهرست گزارش‌های آن را دریافت کنید.</p>
-
-<p><br><br>
-<dl>
-<strong>tag_&quot;id&quot;(required)</strong>
+<strong>tag_"id"(required)</strong>
 <br>
 <br>
 Value: <span style="background-color: #00A693;
@@ -1947,7 +1928,7 @@ Value: <span style="background-color: #00A693;
                     border-radius: 2px">
                     0
                     </span>
-</dl></p>
+</dl>
 
 <p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  شناسهٔ برچسبی که می‌خواهید گزارش‌های مربوط به آن برگردانده شود.</p>
@@ -1966,7 +1947,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر این پارامتر ارسال نشود همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.</p>
 
 <p><br><br></p>
 <h1 id='67bdd09b38'>فهرست گزارش‌های مشکوک</h1>
@@ -2043,7 +2024,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.</p>
+<img src="./images/vector.svg" alt="vector">  اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر این پارامتر ارسال نشود همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.</p>
 
 <p><br><br></p>
 <h1 id='24b1ef3079'>فهرست دیتاست‌ها</h1>

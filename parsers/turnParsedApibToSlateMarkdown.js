@@ -101,7 +101,7 @@ const writeParameters = (json) => {
     let parametersText = '';
 
     if(json.hrefVariables.length !== 0) {
-        parametersText += '<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>\n';
+        parametersText += '<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>\n';
     parametersText += `<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>

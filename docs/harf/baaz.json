@@ -1,7 +1,7 @@
 <h1 id='fc30c6605b'>باز</h1>
-<p>باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:baaz@roshan-ai.ir">baaz@roshan-ai.ir</a> درخواست دهید.</p>
+<p>باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید با ارسال یک ایمیل به <a href="mailto:baaz@roshan-ai.ir">baaz@roshan-ai.ir</a> درخواست دهید.</p>
 <h1 id='8f2d3c81ae'>ایندکس</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -21,7 +21,7 @@ index_name
 </td>
 </tr></table>
 
-<p>قبل از اینکه بتوانید جستجو کنید ابتدا باید داده‌ها را ایندکس کنید. این تابع با دریافت یک شناسه، محتوای شما را تحت این شناسه ایندکس می‌کند.</p>
+<p>قبل از جستجو ابتدا باید داده‌ها را ایندکس کنید. این تابع محتوای شما را تحت شناسهٔ داده‌شده ایندکس می‌کند.</p>
 <h2 id='5499c86d17'>ایندکس‌کردن محتوا</h2>
 <blockquote>
 <p>Request</p>
@@ -199,7 +199,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نوع محتوا را مشخص می‌کند. درواقع هر `type` نمایندهٔ یک دسته از محتواست. مثلاً در نمونهٔ مقابل، مشخصات فیلم‌ها با تایپ movie و مشخصات افراد با تایپ `person` ارسال شده است. این فیلد قابل جستجو نیست.</p>
+<img src="./images/vector.svg" alt="vector">  نوع محتوا را مشخص می‌کند. درواقع هر `type` نمایندهٔ یک دسته از محتواست. مثلاً در نمونهٔ مقابل، مشخصات فیلم‌ها با تایپ ‍‍`movie` و مشخصات افراد با تایپ `person` ارسال شده است. این فیلد قابل جستجو نیست.</p>
 
 <p><br><br>
 <dl>
@@ -215,7 +215,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  شناسهٔ محتواست که باید در سطح هر `type` منحصربه‌فرد باشد. اگر محتوایی با `type` و `id` یکسان ارسال شود خطایی صادر نمی‌شود بلکه محتوای جدید جایگزین قبلی می‌شود.</p>
+<img src="./images/vector.svg" alt="vector">  شناسهٔ محتواست که باید در سطح هر `type` منحصربه‌فرد باشد. اگر محتوایی با `type` و `id` یکسان ارسال شود جایگزین قبلی خواهد شد.</p>
 
 <p><br><br>
 <dl>
@@ -247,7 +247,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  میزان اهمیت محتواست. هرچه این عدد بیشتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج جستجو اثر می‌گذارد.</p>
+<img src="./images/vector.svg" alt="vector">  میزان اهمیت محتواست. هرچه این عدد بیشتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج اثر می‌گذارد.</p>
 
 <p><br><br>
 <dl>
@@ -263,7 +263,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - تاریخ محتواست. هرچه این تاریخ جدیدتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج جستجو اثر می‌گذارد.</p>
+<img src="./images/vector.svg" alt="vector">  07-08 10:30:00 (string) - تاریخ محتواست. هرچه این تاریخ جدیدتر باشد جایگاه محتوا در نتایج جستجو بالاتر است. این فیلد قابل جستجو نیست و فقط روی ترتیب نتایج اثر می‌گذارد.</p>
 
 <p><br><br>
 <dl>
@@ -290,7 +290,7 @@ Value: <span style="background-color: #00A693;
 </dl></p>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  به جز فیلدهای بالا هر فیلد دیگری می‌توانید تعریف کنید. این فیلدها قابل جستجو هستند و بعداً می‌توانید نتایج جستجو را بر اساس آن محدود کنید. فیلدهایی که اضافه می‌کنید فقط باید حاوی متن باشند. این فیلد می‌تواند یک **فیلد ساده حاوی متن** باشد مثل `director` در مثال مقابل یا یک **آرایهٔ حاوی مقادیر متنی** مثل `actors` یا یک **کلاس حاوی مقادیر متنی** مثل `data`.</p>
+<img src="./images/vector.svg" alt="vector">  به جز فیلدهای بالا هر فیلد دیگری می‌توانید تعریف کنید. این فیلدها قابل جستجو هستند و بعداً می‌توانید نتایج جستجو را بر اساس آن محدود کنید. فیلدهایی که اضافه می‌کنید فقط باید حاوی متن باشند. این فیلد می‌تواند یک **فیلد ساده حاوی متن** باشد مثل `director` یا یک **آرایهٔ حاوی مقادیر متنی** مثل `actors` یا یک **کلاس حاوی مقادیر متنی** مثل `data`.</p>
 
 <p><br><br></p>
 <h2 id='0c032d100f'>ویرایش محتوای ایندکس</h2>
@@ -348,7 +348,7 @@ Value: <span style="background-color: #00A693;
        </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>برای ویرایش محتوای یک ایندکس درخواست خود را با متد <code>PUT</code> ارسال کنید و در بدنهٔ درخواست، آرایهٔ <code>items</code> را به‌همراه فیلدهایی که می‌خواهید مقدارشان تغییر کند ضمیمه کنید. در هر محتوا واردکردن دو فیلد <code>type</code> و <code>id</code> برای یافتن محتوا ضروری است. به‌جز این‌ها هر فیلد دیگری وارد کنید مقدار آن‌ها ویرایش می‌شود. بقیهٔ فیلدهایی که وارد نکرده‌اید دست‌نخورده باقی می‌مانند. مثلاً در نمونهٔ مقابل، محتوایی با تایپ movie و شناسهٔ ۱ در ایندکس جستجو می‌شود و مقدار فیلد importance آن به ۲۰۰ تغییر می‌کند.</p>
+<p>برای ویرایش محتوای یک ایندکس درخواست خود را با متد <code>PUT</code> ارسال کنید و در بدنهٔ درخواست، آرایهٔ <code>items</code> را به‌همراه فیلدهایی که می‌خواهید مقدارشان تغییر کند ضمیمه کنید. در هر محتوا واردکردن دو فیلد <code>type</code> و <code>id</code> برای یافتن محتوا ضروری است. به‌جز این‌ها هر فیلد دیگری وارد کنید مقدار آن‌ها ویرایش می‌شود. بقیهٔ فیلدهایی که وارد نکرده‌اید دست‌نخورده باقی می‌ماند. مثلاً در نمونهٔ مقابل، محتوایی با تایپ movie و شناسهٔ ۱ در ایندکس جستجو می‌شود و مقدار فیلد importance آن به ۲۰۰ تغییر می‌کند.</p>
 
 <dl style="background-color:transparent;"><code>PUT /{index_name}/index</code></dl>
 <h2 id='d6813cc994'>حذف محتوای ایندکس</h2>
@@ -397,11 +397,11 @@ Value: <span style="background-color: #00A693;
        </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>برای حذف یک یا چند محتوا درخواست خود را با متد <code>DELETE</code> ارسال کنید و در بدنهٔ درخواست دو پارامتر <code>type</code> و <code>ids</code> را مقداردهی کنید. با ارسال این درخواست آن دسته از محتواهایی که نوعشان برابر <code>type</code> است و شناسه‌شان در آرایهٔ <code>ids</code> وجود دارد از ایندکس حذف می‌شوند. <mark>اگر هیچ پارامتری وارد نکنید کل ایندکس حذف می‌شود.</mark> </p>
+<p>برای حذف یک یا چند محتوا، درخواست خود را با متد <code>DELETE</code> ارسال کنید و در بدنهٔ درخواست دو پارامتر <code>type</code> و <code>ids</code> را مقداردهی کنید. با ارسال این درخواست آن دسته از محتواهایی که نوعشان برابر <code>type</code> است و شناسهٔ آن‌ها در آرایهٔ <code>ids</code> وجود دارد از ایندکس حذف می‌شود.  <strong>گر هیچ پارامتری وارد نکنید کل ایندکس حذف می‌شود.</strong> همچنین اگر در بدنه ی درخواست فقط پارامتر <code>type</code> وارد شود و <code>ids</code> وارد نشود همه ی محتواهایی با آن <code>type</code> حذف می‌شود.</p>
 
 <dl style="background-color:transparent;"><code>DELETE /{index_name}/index</code></dl>
 <h1 id='get'>جستجوی معمولی با GET</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -520,7 +520,7 @@ from
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/query{?fields,text,size,from}</code></dl>
 <h1 id='post'>جستجوی معمولی با POST</h1>
-<p>این روش جستجو همانند جستجو معمولی با GET است با این تفاوت که پارامترها به صورت زیر در بدنه قرار میگیرند و همچنین <code>fields</code> باید به صورت آرایه ای از string تعریف شود.</p>
+<p>این روش جستجو همانند جستجو معمولی با GET است با این تفاوت که پارامترها به صورتی که می‌بینید در بدنهٔ درخواست ارسال می‌شود.</p>
 <h2 id='b40d4b44b2-2'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -600,7 +600,7 @@ from
 
 <dl style="background-color:transparent;"><code>POST /{index_name}/{types}/query</code></dl>
 <h1 id='175d0d146c'>جستجوی درلحظه‌</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -652,7 +652,7 @@ from
 </td>
 </tr></table>
 
-<p>این تابع همزمان با تایپ کاربر جستجو می‌کند و دو تفاوت مهم با <a href="#5a91792863">جستجوی معمولی</a> دارد. اولاً فقط در فیلد title جستجو می‌کند و دوماً اگر بخشی از کلمه نیز در فیلد title وجود داشته باشد به عنوان نتیجه بازمی‌گرداند. به‌عنوان مثال در نمونه‌درخواست مقابل با جستجوی «ماجر»، فیلم «ماجرای نیمروز» جزو یکی از نتایج است. دقت کنید این تابع جستجو را فقط از ابتدای کلمه انجام می‌دهد. یعنی مثلاً‌ در نمونهٔ مقابل با جستجوی «ماجر»، «نیم» و «ماجرای نیمر» به نتایج مشابهی می‌رسید ولی جستجوی «جرای»، «روز» نتایجی در پی نخواهد داشت چون این‌ها بخشی از ابتدای کلمات نیست.</p>
+<p>این تابع همزمان همزمان با نوشتنِ کاربر جستجو می‌کند و دو تفاوت مهم با <a href="#5a91792863">جستجوی معمولی</a> دارد. اولاً فقط در فیلد title جستجو می‌کند و دوماً اگر بخشی از کلمه نیز در فیلد title وجود داشته باشد به عنوان نتیجه بازمی‌گرداند. به‌عنوان مثال در نمونه‌درخواست مقابل با جستجوی «ماجر»، فیلم «ماجرای نیمروز» جزو یکی از نتایج است. دقت کنید این تابع جستجو را فقط از ابتدای کلمه انجام می‌دهد. یعنی مثلاً‌ در نمونهٔ مقابل با جستجوی «ماجر»، «نیم» و «ماجرای نیمر» به نتایج مشابهی می‌رسید ولی جستجوی «جرای»، «روز» نتایجی در پی نخواهد داشت چون این‌ها بخشی از ابتدای کلمات نیست.</p>
 <h2 id='b40d4b44b2-3'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -704,7 +704,7 @@ from
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/complete{?text,size,from}</code></dl>
 <h1 id='1343ad4c0b'>‌پیشنهاد جستجو</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -780,7 +780,7 @@ text
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/suggest{?text}</code></dl>
 <h1 id='2a07a58f62'>محتواهای مشابه</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -808,7 +808,7 @@ types
 </td>
 </tr></table>
 
-<p>با دریافت اطلاعات مربوط به یک محتوا، شبیه‌ترین محتواها را به‌همراه میزان مشابهت هر یک از آن‌ها برمی‌گرداند. تنها وارد کردن فیلد <code>Title‌</code> در بدنهٔ این درخواست اجباری است. بقیهٔ فیلدها اختیاری است. هرچه فیلدهای بیشتری وارد کنید نتایج جستجو دقیق‌تر می‌شود. همچنین شما فقط می‌توانید فیلدهای دارای مقادیر متنی را وارد کنید.</p>
+<p>با دریافت اطلاعات مربوط به یک محتوا، شبیه‌ترین محتواها را به‌همراه میزان مشابهت هر یک از آن‌ها برمی‌گرداند. فقط واردکردن فیلد <code>Title‌</code> در بدنهٔ این درخواست اجباری است. بقیهٔ فیلدها اختیاری است. هرچه فیلدهای بیشتری وارد کنید نتایج جستجو دقیق‌تر می‌شود. همچنین فقط می‌توانید فیلدهای دارای مقادیر متنی را وارد کنید.</p>
 <h2 id='b40d4b44b2-5'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -856,7 +856,7 @@ types
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>POST /{index_name}/{types}/similars</code></dl>
 <h1 id='ee384ab3c4'>محتواهای منبع</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -884,7 +884,7 @@ types
 </td>
 </tr></table>
 
-<p>با دریافت اطلاعات مربوط به یک محتوا، منابعی را که این محتوا با استفاده از آنها درست شده یافته و میزان تشابه را برای هر بخش مشخص می‌کند.</p>
+<p>با دریافت اطلاعات مربوط به یک محتوا، منابعی را که این محتوا با استفاده از آنها درست شده می‌یابد و میزان تشابه را برای هر بخش مشخص می‌کند.</p>
 <h2 id='b40d4b44b2-6'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -930,7 +930,7 @@ types
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>POST /{index_name}/{types}/sources</code></dl>
 <h1 id='ba7b994b13'>‌عبارات کلیدی</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -1086,7 +1086,7 @@ field
 </span></code></pre></div>
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/{field}/keyterms</code></dl>
 <h1 id='bd9d41c076'>دریافت آمار ایندکس</h1>
-<p style="font-size: 20px;font-family:IRANYekan;">پارامتر های آدرس</p>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
 <table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
@@ -1114,7 +1114,7 @@ types
 </td>
 </tr></table>
 
-<p>این تابع، آمار مربوط به ایندکس را میدهد. برای دریافت این آمار، درخواست خود را با متد GET ارسال کنید.</p>
+<p>برای دریافت آمار مربوط به <code>types</code> از یک ایندکس خاص کافی است درخواست خود را با متد GET به این تابع ارسال کنید. همچنین اگر پارامتر <code>types</code> را وارد نکنید، آمار مربوط به تمامی <code>types</code> های ایندکس داده میشود. در پاسخ بازگشتی <code>docs_number</code>تعداد اسناد روی ایندکس، <code>index_size</code>اندازهٔ ایندکس روی دیسک به بایت، <code>indexing_doc</code>تعداد سندهای درحال ایندکس‌شدن و <code>search_queries</code>تعداد کل جستجوهای انجام‌شده روی ایندکس موردنظر را نشان می‌دهد.</p>
 <h2 id='b40d4b44b2-7'>مثال</h2>
 <blockquote>
 <p>Request</p>

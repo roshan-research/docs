@@ -1495,7 +1495,7 @@
             "href": "/api/list_tag_reports/",
             "hrefVariables": [],
             "copies": [
-                "با دریافت نام دیتاست و شناسهٔ یک برچسب، فهرستی از گزارش‌های حاوی این برچسب را برمی‌گرداند. نتایج این تابع همانند تابع <a href=\"#4cca5c6c3c\">فهرست تشخیص‌ها</a> صفحه‌بندی شده و پاسخ برگشتی نیز همانند آن است."
+                "با دریافت شناسهٔ یک برچسب، فهرستی از گزارش‌های حاوی این برچسب را برمی‌گرداند. نتایج این تابع همانند تابع <a href=\"#4cca5c6c3c\">فهرست تشخیص‌ها</a> صفحه‌بندی شده و پاسخ برگشتی نیز همانند آن است."
             ],
             "transitions": [
                 {
@@ -1518,16 +1518,6 @@
                                 "type": "dataStructure",
                                 "members": [
                                     {
-                                        "description": "نام دیتاستی که می‌خواهید فهرست گزارش‌های آن را دریافت کنید.",
-                                        "typeAttributes": [
-                                            "required"
-                                        ],
-                                        "key": "dataset",
-                                        "value": "dataset slug",
-                                        "valueType": "string",
-                                        "enumaration": []
-                                    },
-                                    {
                                         "description": "شناسهٔ برچسبی که می‌خواهید گزارش‌های مربوط به آن برگردانده شود.",
                                         "typeAttributes": [
                                             "required"
@@ -1538,7 +1528,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.",
+                                        "description": "اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر این پارامتر ارسال نشود همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.",
                                         "typeAttributes": [],
                                         "key": "reported_positive",
                                         "value": false,
@@ -1550,12 +1540,12 @@
                             {
                                 "type": "messageBody",
                                 "contentType": "application/json",
-                                "content": "    {\n      \"dataset\": \"iran\",\n      \"tag_id\": 2\n    }\n"
+                                "content": "    {              \n      \"tag_id\": 2\n    }\n"
                             },
                             {
                                 "type": "messageBodySchema",
                                 "contentType": "application/schema+json",
-                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"dataset\": {\n      \"type\": \"string\"\n    },\n    \"tag_\\\"id\\\"\": {\n      \"type\": \"number\"\n    },\n    \"reported_positive\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"dataset\",\n    \"tag_\\\"id\\\"\"\n  ]\n}"
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"tag_\\\"id\\\"\": {\n      \"type\": \"number\"\n    },\n    \"reported_positive\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"tag_\\\"id\\\"\"\n  ]\n}"
                             }
                         ]
                     },
@@ -1609,7 +1599,7 @@
                                         "enumaration": []
                                     },
                                     {
-                                        "description": "اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر `none` باشد (مقدار پیش‌فرض) همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.",
+                                        "description": "اگر `true` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `true` است. اگر `false` باشد فقط گزارش‌هایی را برمی‌گرداند که مقدار `positive` آن برابر `false` است. اگر این پارامتر ارسال نشود همهٔ گزارش‌ها را صرفنظر از مقدار `positive` برمی‌گرداند.",
                                         "typeAttributes": [],
                                         "key": "reported_positive",
                                         "value": false,

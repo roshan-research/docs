@@ -196,19 +196,34 @@ http://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
-from websocket import create_connection                                              
-header = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
+from websocket import create_connection 
+
+def make_socket_connection(url, header):
+    socket = create_connection(url, header=header)
+    return socket
+
+def read_wave_file_as_binary(wave_file):
+    with open(wave_file ,'rb') as f:
+        binary=f.read()
+        return binary
+
+def convert_wave_to_text(binary, socket, window_size=32000):
+    number_of_window = (len(binary) + 1) // window_size
+    for i in range(number_of_window):
+        socket.send_binary(binary[window_size*i:window_size*(i+1)])
+        data = socket.recv()
+    socket.send("finalize")
+    data= socket.recv()
+    socket.close()
+
+def main():
+    header = {'Authorization' : 'Token ...'}
+    url = "wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/"
+    wave_file = "Your wave file path"
+    binary = read_wave_file_as_binary(wave_file)
+    socket = make_socket_connection(url, header)
+    convert_wave_to_text(binary, socket)
+main()
 
 ```
 
@@ -379,7 +394,7 @@ Value: <span style="background-color: #00A693;
 <br><br>
 # هم ترازی متن و گفتار
 
-این تابع با دریافت یک فایل صوتی یا ویدیویی به همراه متن آن نشان می‌دهد که هر کلمه در کدام بخش از صدا ادا شده است. مبنای تفکیک کلمات «فاصله» است مثلاً در کلمهٔ «می روم»، «می» یک کلمه و «روم» یک کلمه در نظر گرفته می‌شود. در پاسخ ارسالی `media_url`همان آدرس فایل ورودی است. `duration` طول فایل است و `segments` لیست کلماتِ موجود در پارامتر `text` است که زمان تشخیص شروع و پایان هر کدام از آن‌ها مشخص شده است. متن کلمه در پارامتر `text`، زمان شروع در پارامتر `start` و زمان پایان در پارمتر `end` قرار می‌گیرد.
+این تابع با دریافت یک فایل صوتی یا ویدیویی به همراه متنِ آن نشان می‌دهد که هر کلمه در کدام بخش از صدا ادا شده است. در پاسخ ارسالی `media_url`همان آدرس فایل ورودی است. `duration` طول فایل است و `segments` لیست کلماتِ موجود در پارامتر `text` است که زمان تشخیص شروع و پایان هر کدام از آن‌ها مشخص شده است. متن کلمه در پارامتر `text`، زمان شروع در پارامتر `start` و زمان پایان در پارمتر `end` قرار می‌گیرد.
 
 
 ## مثال: آپلود فایل
@@ -634,53 +649,98 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-from websocket import create_connection                                              
-header = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
+from websocket import create_connection 
+
+def make_socket_connection(url, header):
+    socket = create_connection(url, header=header)
+    return socket
+
+def read_wave_file_as_binary(wave_file):
+    with open(wave_file ,'rb') as f:
+        binary=f.read()
+        return binary
+
+def convert_wave_to_text(binary, socket, window_size=32000):
+    number_of_window = (len(binary) + 1) // window_size
+    for i in range(number_of_window):
+        socket.send_binary(binary[window_size*i:window_size*(i+1)])
+        data = socket.recv()
+    socket.send("finalize")
+    data= socket.recv()
+    socket.close()
+
+def main():
+    header = {'Authorization' : 'Token ...'}
+    url = "wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/"
+    wave_file = "Your wave file path"
+    binary = read_wave_file_as_binary(wave_file)
+    socket = make_socket_connection(url, header)
+    convert_wave_to_text(binary, socket)
+main()
 
 ```
 
 ```shell
-from websocket import create_connection                                              
-header = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
+from websocket import create_connection 
+
+def make_socket_connection(url, header):
+    socket = create_connection(url, header=header)
+    return socket
+
+def read_wave_file_as_binary(wave_file):
+    with open(wave_file ,'rb') as f:
+        binary=f.read()
+        return binary
+
+def convert_wave_to_text(binary, socket, window_size=32000):
+    number_of_window = (len(binary) + 1) // window_size
+    for i in range(number_of_window):
+        socket.send_binary(binary[window_size*i:window_size*(i+1)])
+        data = socket.recv()
+    socket.send("finalize")
+    data= socket.recv()
+    socket.close()
+
+def main():
+    header = {'Authorization' : 'Token ...'}
+    url = "wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/"
+    wave_file = "Your wave file path"
+    binary = read_wave_file_as_binary(wave_file)
+    socket = make_socket_connection(url, header)
+    convert_wave_to_text(binary, socket)
+main()
 
 ```
 
 ```python
-from websocket import create_connection                                              
-header = {'Authorization' : 'Token ...'}
-ws = create_connection("wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/", header=header)
-with open('sample.wav' ,'rb') as f:
-    bs=f.read()
-window_size = 32000
-number_of_window = (len(bs) + 1) // window_size
-for i in range(number_of_window):
-    ws.send_binary(bs[window_size*i:window_size*(i+1)])
-    data = ws.recv()
-ws.send("finalize")
-data= ws.recv()
-ws.close()
+from websocket import create_connection 
+
+def make_socket_connection(url, header):
+    socket = create_connection(url, header=header)
+    return socket
+
+def read_wave_file_as_binary(wave_file):
+    with open(wave_file ,'rb') as f:
+        binary=f.read()
+        return binary
+
+def convert_wave_to_text(binary, socket, window_size=32000):
+    number_of_window = (len(binary) + 1) // window_size
+    for i in range(number_of_window):
+        socket.send_binary(binary[window_size*i:window_size*(i+1)])
+        data = socket.recv()
+    socket.send("finalize")
+    data= socket.recv()
+    socket.close()
+
+def main():
+    header = {'Authorization' : 'Token ...'}
+    url = "wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/"
+    wave_file = "Your wave file path"
+    binary = read_wave_file_as_binary(wave_file)
+    socket = make_socket_connection(url, header)
+    convert_wave_to_text(binary, socket)
+main()
 
 ```
 
