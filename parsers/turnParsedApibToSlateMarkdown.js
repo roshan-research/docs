@@ -1,5 +1,11 @@
 const fs = require('fs');
 
+let uploadCode = `import requests
+headers = {'Authorization': 'Token TOKEN_KEY',}
+files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+response = requests.post('https://harf.roshan-ai.ir/api/transcribe_files//', headers=headers, files=files)
+print(response)`;
+
 let websocketCode = `from websocket import create_connection 
 
 def make_socket_connection(url, header):
@@ -342,7 +348,7 @@ files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)\n\`\`\`\n\n`;
         } else if(apiTitleGlobal === "حرف") {
-            return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
+            return `\`\`\`python\n${uploadCode}\n\`\`\`\n\n`;
         }
     }
 

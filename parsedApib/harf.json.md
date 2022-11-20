@@ -196,35 +196,11 @@ http://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
-from websocket import create_connection 
-
-def make_socket_connection(url, header):
-    socket = create_connection(url, header=header)
-    return socket
-
-def read_wave_file_as_binary(wave_file):
-    with open(wave_file ,'rb') as f:
-        binary=f.read()
-        return binary
-
-def convert_wave_to_text(binary, socket, window_size=32000):
-    number_of_window = (len(binary) + 1) // window_size
-    for i in range(number_of_window):
-        socket.send_binary(binary[window_size*i:window_size*(i+1)])
-        data = socket.recv()
-    socket.send("finalize")
-    data= socket.recv()
-    socket.close()
-
-def main():
-    header = {'Authorization' : 'Token ...'}
-    url = "wss://harf.roshan-ai.ir/ws_api/transcribe_files/wav/sync/"
-    wave_file = "Your wave file path"
-    binary = read_wave_file_as_binary(wave_file)
-    socket = make_socket_connection(url, header)
-    convert_wave_to_text(binary, socket)
-main()
-
+import requests
+headers = {'Authorization': 'Token TOKEN_KEY',}
+files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+response = requests.post('https://harf.roshan-ai.ir/api/transcribe_files//', headers=headers, files=files)
+print(response)
 ```
 
 > Response 
