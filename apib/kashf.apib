@@ -439,29 +439,6 @@ HOST: https://kashf.roshan-ai.ir
             "state": "waiting"
         }
 
-## دریافت دیتاست [/api/export_dataset/]
-دیتاست موردنظر را در قالب یک فایل csv برمی‌گرداند.
-
-### نمونه [POST]
-+ Request (application/json)
-    + Headers
-            Authorization: Token TOKEN_KEY
-    + Attributes
-        - dataset: dataset slug (string, required) - نام دیتاست که می‌خواهید دریافت کنید.
-        - original_urls: true (boolean) - اگر `true` باشد (مقدار پیش‌فرض)، آدرس اصلی تصاویر و ویدیوها را در فایل خروجی قرار می‌دهد.
-        - tag_names: false (boolean) - اگر `true` باشد، به‌جای شناسهٔ برچسب، عنوان برچسب در خروجی ظاهر می‌شود. مقدار پیش‌فرض:`false`.
-    + Body
-            {
-                "dataset": "iran",
-                "original_urls": true,
-                "tag_names": true
-            }
-+ Response 200 (application/json)
-        {
-            "dataset": "iran",
-            "state": "waiting"
-        }
-
 ## اضافه‌کردن داده به دیتاست [/api/import_dataset/]
 مجموعه‌ای از داده‌های جدید را در قالب یک فایل csv به دیتاست موردنظر اضافه می‌کند. به جای آدرس فایل csv می‌توانید فایل را به طور مستقیم و در قالب یک تقاضای multipart/form-data ارسال کنید.
 
