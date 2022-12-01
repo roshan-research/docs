@@ -7,6 +7,6 @@
 - `sh update.sh kashf`
 - `sh update.sh parde`
 
-For building all above projects at the the same time, don't pass any argument: `sh build.sh`
+Don't pass any arguments if you want to build all above projects at the same time: `sh update.sh`
 
 All [dependencies](https://github.com/slatedocs/slate/wiki/Using-Slate-Natively) will be installed automatically.
