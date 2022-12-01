@@ -1,58 +1,12 @@
-#### [  موارد مورد نیاز برای بیلد گرفتن از پروژه](https://github.com/slatedocs/slate/wiki/Using-Slate-Natively)
+## Building instructions:
 
-##### سپس در پوشه پروژه دستور زیر را اجرا کنید
-```shell
-sh update.sh
-```
+- `sh build.sh alefba`
+- `sh build.sh baaz`
+- `sh build.sh golrokh`
+- `sh build.sh harf`
+- `sh build.sh kashf`
+- `sh build.sh parde`
 
-اگر با خطایی مواجه شدید. ممکن هست مشکل از سینتکس نادرست بلوپرینت شما باشد یا مشکل از خود پارسر باشد
-با توجه به پیام های خطایی که دریافت میکنید باید برسی کنید که ایراد از کدام بخش است.
+For building all above projects at the the same time, don't pass any argument: `sh build.sh`
 
-
-ضمنا
-میتوانید به صورت مستقیم پارسر هارا اجرا کنید
-در پوشه 
-\
-parsers
-\
-با دستور 
-```shell
-node parser.js make-jsons
-```
-بلوپرینت ها را به 
-\
-json
-\
-تبدیل کنید
-
-و با دستور
-```shell
-node parser.js make-markdowns
-```
-جیسون ها را به 
-\
-markdown
-\
-تبدیل کنید
-
-و با چک کردن فایل های داخل پوشه 
-\
-parsedapib
-\
-از صحت عملکرد پارسر ها اطمینان حاصل کنید.
-
-
-\
-\
-در نهایت برای چک کردن درستی کل فرآیند میتوانید 
-فایل
-\
-<code>
-index.html
-</code>
-\
-موجود در پوشه هر محصول در پوشه
-\
-docs
-\
-را در مرورگر خود باز کنید و خروجی را مشاهده کنید.
+All [dependencies](https://github.com/slatedocs/slate/wiki/Using-Slate-Natively) will be installed automatically.
