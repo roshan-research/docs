@@ -2,9 +2,9 @@ const fs = require('fs');
 
 let uploadCode = `import requests
 headers = {'Authorization': 'Token TOKEN_KEY',}
-files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+files = {'media': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://harf.roshan-ai.ir/api/transcribe_files//', headers=headers, files=files)
-print(response)`;
+print(response.text)`;
 
 let websocketCode = `from websocket import create_connection 
 
@@ -332,7 +332,7 @@ function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyCon
         curlText += " --header \"" + requestHeaderAttributes[i].key + ": " + requestHeaderAttributes[i].value + "\"";
     }
     curlText += " \\\n"
-    curlText += "      --data-binary " + requestMessageBodyContent + " \\\n";
+    curlText += "      --data-binary '" + requestMessageBodyContent + "' \\\n";
     curlText += "      " + resourceUrl + "\n";
     curlText += "```\n\n";
     return curlText;
@@ -359,11 +359,15 @@ print(response)\n\`\`\`\n\n`;
 
     let pythonText = "```python\n";
     pythonText +=
-    "from urllib2 import Request, urlopen\n" +
+    "try:\n"+
+    "   from urllib2 import Request, urlopen\n" +
+    "expect ImportError:\n"+ 
+    "   from urllib.request import urlopen, Request\n"+
+    "from encodings import utf_8\n"+
     "\n" +
-    "values = \"\"\"\n";
+    "values = bytes(\"\"\"\n";
     pythonText += requestMessageBodyContent + "\n" +
-    "\"\"\"\n" +
+    "\"\"\"\n,'utf-8')" +
     "\n" +
     "headers = {\n";
     pythonText += "  ";
@@ -375,7 +379,7 @@ print(response)\n\`\`\`\n\n`;
     "request = Request('" + resourceUrl + "', data=values, headers=headers)\n" +
     "\n" +
     "response_body = urlopen(request).read()\n" +
-    "print(response_body)\n" +
+    "print(utf_8.decode(response_body)\n" +
     "```\n\n";
     return pythonText;
 }
