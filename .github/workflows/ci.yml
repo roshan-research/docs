@@ -16,7 +16,7 @@ jobs:
       - name: Install and Build
         run: |
           echo "Install Requirements."
-          sudo apt install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
+          sudo apt-get install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
           sudo gem update --system
           sudo gem install bundler
           cd ./slate_project && bundle install && cd ..
