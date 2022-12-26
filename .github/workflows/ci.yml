@@ -14,10 +14,13 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Set up Ruby
-        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
-        with:
-          ruby-version: '3.1'    
-        
+        run: |
+          wget -O ruby-install-0.8.5.tar.gz https://github.com/postmodern/ruby-install/archive/v0.8.5.tar.gz
+          tar -xzvf ruby-install-0.8.5.tar.gz
+          cd ruby-install-0.8.5/
+          sudo make install
+          ruby-install ruby
+          
       - name: Install and Build
         run: |
           echo "Install Requirements."
