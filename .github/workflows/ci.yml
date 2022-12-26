@@ -12,20 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
-      - name: Set up Ruby
-        run: |
-          wget -O ruby-install-0.8.5.tar.gz https://github.com/postmodern/ruby-install/archive/v0.8.5.tar.gz
-          tar -xzvf ruby-install-0.8.5.tar.gz
-          cd ruby-install-0.8.5/
-          sudo make install
-          ruby-install ruby
           
       - name: Install and Build
         run: |
           echo "Install Requirements."
           sudo apt update          
-          #sudo apt install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
+          sudo apt install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
           sudo gem update --system
           sudo gem install bundler
           cd ./slate_project && bundle install && cd ..
