@@ -13,20 +13,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        with:
+          ruby-version: '3.1'    
+        
       - name: Install and Build
         run: |
           echo "Install Requirements."
-          sudo apt update
-          sudo apt-get update
-          brew update && brew upgrade ruby-build
-          sudo apt install rbenv
-          sudo apt-get install autoconf bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
-          rbenv install 3.1.2
-          rbenv global 3.1.2
-          sudo gem install bundler
+          sudo apt update          
           #sudo apt install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
-          #sudo gem update --system
-          #sudo gem install bundler
+          sudo gem update --system
+          sudo gem install bundler
           cd ./slate_project && bundle install && cd ..
           npm install drafter
           echo "Running install script"
