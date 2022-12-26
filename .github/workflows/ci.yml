@@ -18,7 +18,7 @@ jobs:
           echo "Install Requirements."
           sudo apt install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
           sudo gem update --system
-          sudo gem install bundler
+          sudo gem install bundler -v 2.6.0
           cd ./slate_project && bundle install && cd ..
           npm install drafter
           echo "Running install script"
