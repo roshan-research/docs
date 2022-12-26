@@ -18,7 +18,7 @@ jobs:
           echo "Install Requirements."
           sudo apt update
           sudo apt-get update
-          brew update && brew upgrade
+          brew update && brew upgrade ruby-build
           sudo apt install rbenv
           sudo apt-get install autoconf bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
           rbenv install 3.1.2
