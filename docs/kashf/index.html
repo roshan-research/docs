@@ -455,27 +455,31 @@
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"title"</span>: <span class="s2">"New Place"</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "title": "New Place"
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/create_tag/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "title": "New Place"
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/create_tag/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -552,16 +556,20 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"tag_id"</span>: 111111111,
-    <span class="s2">"title"</span>: <span class="s2">"Old Place"</span>,
-    <span class="s2">"active"</span>: <span class="nb">true</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "tag_id": 111111111,
+    "title": "Old Place",
+    "active": true
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/update_tag/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "tag_id": 111111111,
@@ -569,14 +577,14 @@ Value: <span style="background-color: #00A693;
     "active": true
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/update_tag/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -666,25 +674,29 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"tag_id"</span>: 111111111
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "tag_id": 111111111
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/delete_tag/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "tag_id": 111111111
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/delete_tag/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -729,17 +741,21 @@ Value: <span style="background-color: #00A693;
 ]
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"content"</span>: <span class="s2">"پیشنهاد میکنم از این بخرید خیلی عالیه."</span>,
-        <span class="s2">"tag_id"</span>: 39,
-        <span class="s2">"positive"</span>: <span class="nb">true</span>
-    <span class="o">}</span>
-<span class="o">]</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'[
+    {
+        "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
+        "tag_id": 39,
+        "positive": true
+    }
+]'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/report_text_tags/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 [
     {
         "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
@@ -748,14 +764,14 @@ Value: <span style="background-color: #00A693;
     }
 ]
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/report_text_tags/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -834,17 +850,21 @@ Value: <span style="background-color: #00A693;
 ]
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"image_url"</span>: <span class="s2">"https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg"</span>,
-        <span class="s2">"tag_id"</span>: 3,
-        <span class="s2">"positive"</span>: <span class="nb">true</span>
-    <span class="o">}</span>
-<span class="o">]</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'[
+    {
+        "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
+        "tag_id": 3,
+        "positive": true
+    }
+]'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/report_image_tags/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 [
     {
         "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
@@ -853,14 +873,14 @@ Value: <span style="background-color: #00A693;
     }
 ]
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/report_image_tags/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -933,21 +953,25 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s2">"{</span><span class="se">\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">image_id</span><span class="se">\"</span><span class="s2">: 1211593,</span><span class="se">\n</span><span class="s2">  </span><span class="se">\"</span><span class="s2">tag_id</span><span class="se">\"</span><span class="s2">: 3,</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/remove_tag_report/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 "{</span><span class="se">\n</span><span class="s">  </span><span class="se">\"</span><span class="s">image_id</span><span class="se">\"</span><span class="s">: 1211593,</span><span class="se">\n</span><span class="s">  </span><span class="se">\"</span><span class="s">tag_id</span><span class="se">\"</span><span class="s">: 3,</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/remove_tag_report/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1024,17 +1048,21 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"digikala"</span>,
-    <span class="s2">"contents"</span>: <span class="o">[</span>
-        <span class="s2">"ارزش خریدنش رو بی شک داره"</span>,
-        <span class="s2">"اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "digikala",
+    "contents": [
+        "ارزش خریدنش رو بی شک داره",
+        "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/tag_texts/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "digikala",
     "contents": [
@@ -1043,14 +1071,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_texts/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1156,17 +1184,21 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"image_urls"</span>: <span class="o">[</span>
-        <span class="s2">"https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg"</span>,
-        <span class="s2">"http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
+        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/tag_images/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "image_urls": [
@@ -1175,14 +1207,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_images/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1271,16 +1303,20 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"faces"</span>,
-    <span class="s2">"image_urls"</span>: <span class="o">[</span>
-        <span class="s2">"https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "faces",
+    "image_urls": [
+        "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/tag_faces/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "faces",
     "image_urls": [
@@ -1288,14 +1324,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_faces/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1377,19 +1413,23 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"every_ms"</span>: 50,
-    <span class="s2">"duration"</span>: 25,
-    <span class="s2">"min_frame_diff"</span>: 0.4,
-    <span class="s2">"video_urls"</span>: <span class="o">[</span>
-        <span class="s2">"https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/tag_video_frames/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "every_ms": 50,
@@ -1400,14 +1440,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_video_frames/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1565,19 +1605,23 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"faces"</span>,
-    <span class="s2">"every_ms"</span>: 50,
-    <span class="s2">"duration"</span>: 25,
-    <span class="s2">"min_frame_diff"</span>: 0.4,
-    <span class="s2">"video_urls"</span>: <span class="o">[</span>
-        <span class="s2">"https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "faces",
+    "every_ms": 50,
+    "duration": 25,
+    "min_frame_diff": 0.4,
+    "video_urls": [
+        "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/tag_video_faces/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "faces",
     "every_ms": 50,
@@ -1588,14 +1632,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_video_faces/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1708,16 +1752,20 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"aparat"</span>,
-    <span class="s2">"video_urls"</span>: <span class="o">[</span>
-        <span class="s2">"https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"</span>
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "aparat",
+    "video_urls": [
+        "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/tag_videos/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "aparat",
     "video_urls": [
@@ -1725,14 +1773,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/tag_videos/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1812,25 +1860,29 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran"
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/train_dataset/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran"
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/train_dataset/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1872,27 +1924,31 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"max_predictions"</span>: 100
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "max_predictions": 100
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/retag_dataset/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "max_predictions": 100
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/retag_dataset/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1951,29 +2007,33 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"report_items"</span>: <span class="nb">true</span>,
-    <span class="s2">"tag_names"</span>: <span class="nb">true</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "report_items": true,
+    "tag_names": true
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/import_dataset/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "report_items": true,
     "tag_names": true
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/import_dataset/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2048,27 +2108,31 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"tags"</span>: <span class="nb">true</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "tags": true
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/dataset_info/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "tags": true
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/dataset_info/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2143,21 +2207,25 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s2">"    {</span><span class="se">\n</span><span class="s2">      </span><span class="se">\"</span><span class="s2">dataset</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">iran</span><span class="se">\"\n</span><span class="s2">      </span><span class="se">\"</span><span class="s2">tag_id</span><span class="se">\"</span><span class="s2">: 2</span><span class="se">\n</span><span class="s2">    }</span><span class="se">\n</span><span class="s2">"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_tag_predictions/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 "    {</span><span class="se">\n</span><span class="s">      </span><span class="se">\"</span><span class="s">dataset</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">iran</span><span class="se">\"\n</span><span class="s">      </span><span class="se">\"</span><span class="s">tag_id</span><span class="se">\"</span><span class="s">: 2</span><span class="se">\n</span><span class="s">    }</span><span class="se">\n</span><span class="s">"
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/list_tag_predictions/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2216,25 +2284,29 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"tag_id"</span>: 2
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "tag_id": 2
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_tag_reports/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "tag_id": 2
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/list_tag_reports/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2293,25 +2365,29 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"tag_id"</span>: 2
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "tag_id": 2
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "tag_id": 2
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2368,21 +2444,25 @@ Value: <span style="background-color: #00A693;
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s2">""</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_datasets/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 ""
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/list_datasets/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2415,16 +2495,20 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"persica"</span>,
-    <span class="s2">"text_ids"</span>: <span class="o">[</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "persica",
+    "text_ids": [
         11462988
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_texts/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "persica",
     "text_ids": [
@@ -2432,14 +2516,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/list_texts/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2499,16 +2583,20 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"text_ids"</span>: <span class="o">[</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "text_ids": [
         1832
-    <span class="o">]</span>
-<span class="o">}</span> <span class="se">\</span>
+    ]
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/list_images/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "text_ids": [
@@ -2516,14 +2604,14 @@ Value: <span style="background-color: #00A693;
     ]
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/list_images/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2583,16 +2671,20 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"persica"</span>,
-    <span class="s2">"query"</span>: <span class="s2">"اقتصاد مثاومتی"</span>,
-    <span class="s2">"tag_id"</span>: 1482,
-    <span class="s2">"reported"</span>: <span class="nb">false</span>
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "persica",
+    "query": "اقتصاد مثاومتی",
+    "tag_id": 1482,
+    "reported": false
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/search_candidate_texts/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "persica",
     "query": "اقتصاد مثاومتی",
@@ -2600,14 +2692,14 @@ Value: <span style="background-color: #00A693;
     "reported": false
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/search_candidate_texts/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2700,29 +2792,33 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"iran"</span>,
-    <span class="s2">"query"</span>: <span class="s2">"برج آزادی"</span>,
-    <span class="s2">"tag_id"</span>: 2
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "iran",
+    "query": "برج آزادی",
+    "tag_id": 2
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/search_candidate_images/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "iran",
     "query": "برج آزادی",
     "tag_id": 2
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/search_candidate_images/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -2799,29 +2895,33 @@ Value: <span style="background-color: #00A693;
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="o">{</span>
-    <span class="s2">"dataset"</span>: <span class="s2">"faces"</span>,
-    <span class="s2">"query"</span>: <span class="s2">" احسان کرمی"</span>,
-    <span class="s2">"tag_id"</span>: 213243
-<span class="o">}</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "dataset": "faces",
+    "query": " احسان کرمی",
+    "tag_id": 213243
+}'</span> <span class="se">\</span>
       https://kashf.roshan-ai.ir/api/search_candidate_faces/
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="n">expect</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"""
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
 {
     "dataset": "faces",
     "query": " احسان کرمی",
     "tag_id": 213243
 }
 """</span>
-
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/api/search_candidate_faces/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
