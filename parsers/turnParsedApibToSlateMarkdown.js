@@ -361,7 +361,7 @@ print(response)\n\`\`\`\n\n`;
     pythonText +=
     "try:\n"+
     "   from urllib2 import Request, urlopen\n" +
-    "expect ImportError:\n"+ 
+    "except ImportError:\n"+ 
     "   from urllib.request import urlopen, Request\n"+
     "from encodings import utf_8\n"+
     "\n" +
@@ -379,7 +379,7 @@ print(response)\n\`\`\`\n\n`;
     "request = Request('" + resourceUrl + "', data=values, headers=headers)\n" +
     "\n" +
     "response_body = urlopen(request).read()\n" +
-    "print(utf_8.decode(response_body)\n" +
+    "print(utf_8.decode(response_body))\n" +
     "```\n\n";
     return pythonText;
 }
