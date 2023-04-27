@@ -156,14 +156,14 @@ HOST: https://kashf.roshan-ai.ir
         - image_"id": (number) - شناسهٔ تصویر گزارش‌شده که می‌خواهید حذف کنید. این شناسه را می‌توانید از طریق تابع <a href="#d447349868">فهرست گزارش‌های برچسب</a> پیدا کنید.
         - tag_"id": (number, required) - یک متن یا تصویر می‌تواند چندین برچسب بخورد. با کمک این پارامتر اعلام می‌کنید که متن یا تصویری که می‌خواهید حذف کنید مربوط به کدام برچسب است.   
     + Body
-        {
-          "image_id": 1211593,
-          "tag_id": 3,
-        }
+            {
+                "image_id": 1211593,
+                "tag_id": 3
+            }
 + Response 200 (application/json)
         {
           "image_id": 1211593,
-          "tag_id": 3,
+          "tag_id": 3
         }
 
 ## برچسب‌گذاری متون [/api/tag_texts/]
@@ -516,7 +516,7 @@ HOST: https://kashf.roshan-ai.ir
         - tag_"id": tad id (number, required) - شناسهٔ برچسب.
     + Body
             {
-              "dataset": "iran"
+              "dataset": "iran",
               "tag_id": 2
             }
 + Response 200 (application/json)
