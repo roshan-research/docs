@@ -291,8 +291,7 @@
                         <div class="ui bottom attached tab segment" data-tab="curl">
                           <pre class="line-numbers" style="white-space: inherit">
                             <code class="language-bash">
-curl  --request {{$transaction.Request.Method}} \
-      {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}--header "{{$m_header.Key}}: {{$m_header.Value}}" {{end}}{{end}}\
+curl  --request {{$transaction.Request.Method}} {{if $transaction.Request.Headers}}{{range $transitionN, $m_header := $transaction.Request.Headers}}--header "{{$m_header.Key}}: {{$m_header.Value}}" {{end}}{{end}}\
       --data-binary "{{$transaction.Request.Body.Body}}" \
       '{{$transition.URL}}'
 
