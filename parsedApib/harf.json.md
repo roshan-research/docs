@@ -54,32 +54,36 @@ meta:
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "media_urls": [
         "https://i.ganjoor.net/a2/41417.mp3"
     ]
-} \
+}' \
       https://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "media_urls": [
         "https://i.ganjoor.net/a2/41417.mp3"
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -198,9 +202,9 @@ http://harf.roshan-ai.ir/api/transcribe_files/
 ```python
 import requests
 headers = {'Authorization': 'Token TOKEN_KEY',}
-files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
+files = {'media': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://harf.roshan-ai.ir/api/transcribe_files//', headers=headers, files=files)
-print(response)
+print(response.text)
 ```
 
 > Response 
@@ -298,30 +302,34 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "media_urls": "List of URLs",
     "wait": true
-} \
+}' \
       https://harf.roshan-ai.ir/api/transcribe_files/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "media_urls": "List of URLs",
     "wait": true
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://harf.roshan-ai.ir/api/transcribe_files/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -387,30 +395,34 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "media_url": "https://i.ganjoor.net/a2/41417.mp3",
     "text": "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."
-} \
+}' \
       https://harf.roshan-ai.ir/api/alignment/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "media_url": "https://i.ganjoor.net/a2/41417.mp3",
     "text": "حکایت یکی را از حکما شنیدم که می گفت: هرگز کسی به جهل خویش اقرار نکرده است، مگر آن کس که چون دیگری در سخن باشد همچنان  تمام ناگفته، سخن آغاز کند."
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://harf.roshan-ai.ir/api/alignment/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 

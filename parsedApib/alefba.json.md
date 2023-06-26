@@ -49,21 +49,25 @@ meta:
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "fix_orientation": true,
     "word_positions": false,
     "type": "general",
     "wait": true,
     "priority": 3
-} \
+}' \
       https://alefba.roshan-ai.ir/api/read_document/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "fix_orientation": true,
@@ -73,14 +77,14 @@ values = """
     "priority": 3
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/read_document/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -92,6 +96,7 @@ print(response_body)
     "page_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1",
     "width": 2125,
     "height": 2750,
+    "angle": 0.0,
     "text": "بوته\n\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
     "parts": [
       {
@@ -101,6 +106,8 @@ print(response_body)
         "text": "درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
         "lines": [
           {
+            "label": 13,
+            "is_bold": false,
             "probability": 1.0,
             "box": "211 305 1707 57",
             "text": "درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"
@@ -114,6 +121,7 @@ print(response_body)
     "page_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=2",
     "width": 2125,
     "height": 2750,
+    "angle": 0.0,
     "text": "انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین\n...",
     "parts": [
       {
@@ -124,6 +132,8 @@ print(response_body)
         "lines": [
           {
             "probability": 1.0,
+            "label": 12,
+            "is_bold": false,
             "box": "210 110 1706 58",
             "text": "انجام این کار البته چندان هم آسان نیست؛ نه برای دانشجوها و نه برای کمک‌استادها، اما حاصل بسیار شیرین"
           },
@@ -245,7 +255,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>۱</code> یعنی خیلی زیاد، <code>۲</code> یعنی زیاد، <code>۳</code> یعنی معمولی، <code>۴</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>1</code> یعنی خیلی زیاد، <code>2</code> یعنی زیاد، <code>3</code> یعنی معمولی، <code>4</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>1</code>.</p>
 <br><br>
 ## مثال: ارسال لینک فایل به‌شکل ناهمگام
 
@@ -265,21 +275,25 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "fix_orientation": true,
     "word_positions": false,
     "type": "general",
     "wait": false,
     "priority": 3
-} \
+}' \
       https://alefba.roshan-ai.ir/api/read_document/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "fix_orientation": true,
@@ -289,14 +303,14 @@ values = """
     "priority": 3
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/read_document/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -418,7 +432,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>۱</code> یعنی خیلی زیاد، <code>۲</code> یعنی زیاد، <code>۳</code> یعنی معمولی، <code>۴</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>1</code> یعنی خیلی زیاد، <code>2</code> یعنی زیاد، <code>3</code> یعنی معمولی، <code>4</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>1</code>.</p>
 <br><br>
 ## مثال: دریافت نتیجه با دادن شناسهٔ پردازش
 
@@ -434,30 +448,34 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "task_id": "...",
     "wait": false
-} \
+}' \
       https://alefba.roshan-ai.ir/api/read_document/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "task_id": "...",
     "wait": false
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/read_document/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -690,7 +708,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. ۱ یعنی خیلی زیاد، ۲ یعنی زیاد، ۳ یعنی معمولی، ۴ یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>1</code> یعنی خیلی زیاد، <code>2</code> یعنی زیاد، <code>3</code> یعنی معمولی، <code>4</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>1</code>.</p>
 <br><br>
 # استخراج متن صفحات مشخصی از یک فایل
 
@@ -716,7 +734,7 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "page_urls": [
         "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
     ],
@@ -724,14 +742,18 @@ curl  --request POST \
     "word_positions": false,
     "wait": true,
     "priority": 3
-} \
+}' \
       https://alefba.roshan-ai.ir/api/read_pages/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "page_urls": [
         "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1"
@@ -742,14 +764,14 @@ values = """
     "priority": 3
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/read_pages/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -759,6 +781,7 @@ print(response_body)
   "page_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf@page=1",
   "width": 2125,
   "height": 2750,
+  "angle": 0.0,
   "text": "بوته\n\nدرس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
   "parts": [
     {
@@ -768,6 +791,8 @@ print(response_body)
       "text": "درس‌های دانشگاهی معمولا با پروژه‌هابی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها\n...",
       "lines": [
         {
+          "label": 12,
+          "is_bold": false,
           "probability": 1.0,
           "box": "211 305 1707 57",
           "text": "درس‌های دانشگاهی معمولا با پروژه‌هایی همراه هستند که سهم قابل‌توجهی از آموزش را بر عهده دارند. این پروژه‌ها"
@@ -882,7 +907,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>۱</code> یعنی خیلی زیاد، <code>۲</code> یعنی زیاد، <code>۳</code> یعنی معمولی، <code>۴</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>۱</code>.</p>
+<img src="./images/vector.svg" alt="vector">  اولویت پردازش را مشخص می‌کند. <code>1</code> یعنی خیلی زیاد، <code>2</code> یعنی زیاد، <code>3</code> یعنی معمولی، <code>4</code> یعنی  کم. فقط همین چهار مقدار. مقدار پیش‌فرض: <code>1</code>.</p>
 <br><br>
 # بررسی وضعیت پردازش
 
@@ -904,32 +929,36 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_urls": [
         "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
     ]
-} \
+}' \
       https://alefba.roshan-ai.ir/api/document_status/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_urls": [
         "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/document_status/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -975,28 +1004,32 @@ Value: [URL, ]
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-} \
+}' \
       https://alefba.roshan-ai.ir/api/document_pages/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/document_pages/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1049,28 +1082,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-} \
+}' \
       https://alefba.roshan-ai.ir/api/download_word/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/download_word/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1115,28 +1152,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-} \
+}' \
       https://alefba.roshan-ai.ir/api/download_excel/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/download_excel/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1184,19 +1225,23 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "quality": 100,
     "img_format": "png",
     "color": false
-} \
+}' \
       https://alefba.roshan-ai.ir/api/download_pdf/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf",
     "quality": 100,
@@ -1204,14 +1249,14 @@ values = """
     "color": false
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/download_pdf/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1251,7 +1296,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  مقدار dpi فایل خروجی. بین <code>۰</code> تا <code>۱۰۰</code>. مقدار پیش‌فرض: <code>۱۰۰</code>.</p>
+<img src="./images/vector.svg" alt="vector">  مقدار dpi فایل خروجی. بین <code>0</code> تا <code>100</code>. مقدار پیش‌فرض: <code>100</code>.</p>
 <br><br>
 <dl>
 <strong>color</strong>
@@ -1286,28 +1331,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
-} \
+}' \
       https://alefba.roshan-ai.ir/api/delete_document/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://bayanbox.ir/view/5067853395275628881/boute.pdf"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://alefba.roshan-ai.ir/api/delete_document/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1355,30 +1404,34 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" --header "Content-Type: application/json" \
-      --data-binary {
+      --data-binary '{
     "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
     "callback_url": "http://192.168.254.3:5013/alefba_post"
-} \
+}' \
       https://alefba.roshan-ai.ir/api/read_document/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "document_url": "http://alefba.roshan-ai.ir/media/files/46/00/166072370361-internship.pdf",
     "callback_url": "http://192.168.254.3:5013/alefba_post"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY','Content-Type': 'application/json',
 }
 request = Request('https://alefba.roshan-ai.ir/api/read_document/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 

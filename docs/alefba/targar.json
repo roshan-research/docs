@@ -1,0 +1,101 @@
+<h1 id='beb90af390'>ترگار</h1>
+<p>ترگار ای پی ای ترجمه است انگلیسی به فارسی و فارسی به انگلیسی است.</p>
+<h1 id='d6d726ba61'>ترجمه متن</h1><h2 id='b40d4b44b2'>مثال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "text": "سلام",
+    "translateFrom": "persian",
+    "translateTo": "english"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "text": "سلام",
+    "translateFrom": "persian",
+    "translateTo": "english"
+}'</span> <span class="se">\</span>
+      http://targar.ir/api/translate/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
+{
+    "text": "سلام",
+    "translateFrom": "persian",
+    "translateTo": "english"
+}
+"""</span>
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://targar.ir/api/translate/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Translation"</span><span class="p">:</span><span class="s2">"Hi."</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>ورودی این تابع متن مورد نظر جهت ترجمه، زبان مبدا و زبان مقصد است و خروجی آن متن ترجمه شده میباشد.</p>
+
+<dl style="background-color:transparent;"><code>POST /api/translate/</code></dl>
+
+<dl>
+<strong>text(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    Text
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  متن جهت ترجمه.</p>
+
+<p><br><br>
+<dl>
+<strong>translateFrom(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    Text
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  زبان مبدا.</p>
+
+<p><br><br>
+<dl>
+<strong>translateTo(required)</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    Text
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="./images/vector.svg" alt="vector">  زبان مقصد.</p>
+
+<p><br><br></p>

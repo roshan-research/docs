@@ -22,7 +22,7 @@ meta:
 
 <b>کشف</b>، مثال‌هایی از یک مفهوم را می‌گیرید و بعد همان مفهوم را در داده‌های جدید پیدا می‌کند. مثلاً به کشف یاد می‌دهید که جملات خیلی عالی بود، سه ماهه خریدم مشکلی نداشتم و این محصول را پیشنهاد می‌کنم، چند نمونه از مفهوم رضایت از خرید کالا است. یا عکس‌هایی از حرم رضوی یا آقای رئیسی را نشان می‌دهید و می‌گویید این‌ها تصویر حرم یا آقای رئیسی است.
 
-با این آموزش‌ها، کشف به‌مرور بالغ‌تر می‌شود و می‌تواند مفاهیم پنهان در دل داده‌های متنی، تصویری یا حتی ویدیویی را کشف کند. کشف مثل یک کودک در‌حال‌رشد است. هرچقدر این کودک، بیشتر و متنوع‌تر بیاموزد، بهتر و دقیق‌تر به شما کمک می‌کند.
+با این آموزش‌ها، کشف به‌مرور بالغ‌تر می‌شود و می‌تواند مفاهیم پنهان در دل داده‌های متنی، تصویری یا حتی ویدیویی را کشف کند. کشف همانند کودک در‌حال‌رشدی است که هرچه مثال‌های بیشتری ببیند بهتر می‌تواند مفاهیم را شناسایی و از هم تفکیک کند.
 
 برای دسترسی به ای‌پی‌آی، به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:kashf@roshan-ai.ir">kashf@roshan-ai.ir</a> درخواست دهید.
 
@@ -63,30 +63,34 @@ meta:
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "title": "New Place"
-} \
+}' \
       https://kashf.roshan-ai.ir/api/create_tag/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "title": "New Place"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/create_tag/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -169,19 +173,23 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "tag_id": 111111111,
     "title": "Old Place",
     "active": true
-} \
+}' \
       https://kashf.roshan-ai.ir/api/update_tag/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "tag_id": 111111111,
@@ -189,14 +197,14 @@ values = """
     "active": true
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/update_tag/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -291,28 +299,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "tag_id": 111111111
-} \
+}' \
       https://kashf.roshan-ai.ir/api/delete_tag/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "tag_id": 111111111
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/delete_tag/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -365,20 +377,24 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary [
+      --data-binary '[
     {
         "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
         "tag_id": 39,
         "positive": true
     }
-] \
+]' \
       https://kashf.roshan-ai.ir/api/report_text_tags/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 [
     {
         "content": "پیشنهاد میکنم از این بخرید خیلی عالیه.",
@@ -387,14 +403,14 @@ values = """
     }
 ]
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/report_text_tags/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -479,20 +495,24 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary [
+      --data-binary '[
     {
         "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
         "tag_id": 3,
         "positive": true
     }
-] \
+]' \
       https://kashf.roshan-ai.ir/api/report_image_tags/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 [
     {
         "image_url": "https://upload.wikimedia.org/wikipedia/fa/thumb/5/54/Tehran-Milad_Tower2.jpg/800px-Tehran-Milad_Tower2.jpg",
@@ -501,14 +521,14 @@ values = """
     }
 ]
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/report_image_tags/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -581,30 +601,43 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
+{
+    "image_id": 1211593,
+    "tag_id": 3
+}
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n" \
+      --data-binary '{
+    "image_id": 1211593,
+    "tag_id": 3
+}' \
       https://kashf.roshan-ai.ir/api/remove_tag_report/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
-"{\n  \"image_id\": 1211593,\n  \"tag_id\": 3,\n}\n"
+values = bytes("""
+{
+    "image_id": 1211593,
+    "tag_id": 3
+}
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/remove_tag_report/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -612,7 +645,7 @@ print(response_body)
 ```json
     {
       "image_id": 1211593,
-      "tag_id": 3,
+      "tag_id": 3
     }
 
 
@@ -687,20 +720,24 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "digikala",
     "contents": [
         "ارزش خریدنش رو بی شک داره",
         "اصلا اصلا کیفیت نداره رنگش بااین عکس زمین تاآسمون فرق داره"
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/tag_texts/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "digikala",
     "contents": [
@@ -709,14 +746,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/tag_texts/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -819,7 +856,7 @@ Value: <span style="background-color: #00A693;
     "dataset": "iran",
     "image_urls": [
         "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/e/e4/City_Theater_of_Tehran_2019_4.jpg"
     ]
 }
 ```
@@ -827,36 +864,40 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "image_urls": [
         "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/e/e4/City_Theater_of_Tehran_2019_4.jpg"
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/tag_images/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "image_urls": [
         "https://media.mehrnews.com/d/2016/08/13/4/2171627.jpg",
-        "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/e/e4/City_Theater_of_Tehran_2019_4.jpg"
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/tag_images/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -874,7 +915,7 @@ print(response_body)
         ]
       },
       {
-        "image_url": "http://teatreshahr.com/cache/51/attach/201806/254582_2927092954_1000_667.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/City_Theater_of_Tehran_2019_4.jpg",
         "tags": [
           {
             "id": 36,
@@ -951,19 +992,23 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "faces",
     "image_urls": [
         "https://media.mehrnews.com/d/2021/12/26/3/4002104.jpg"
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/tag_faces/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "faces",
     "image_urls": [
@@ -971,14 +1016,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/tag_faces/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1066,7 +1111,7 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "every_ms": 50,
     "duration": 25,
@@ -1074,14 +1119,18 @@ curl  --request POST \
     "video_urls": [
         "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/tag_video_frames/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "every_ms": 50,
@@ -1092,14 +1141,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/tag_video_frames/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1260,7 +1309,7 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "faces",
     "every_ms": 50,
     "duration": 25,
@@ -1268,14 +1317,18 @@ curl  --request POST \
     "video_urls": [
         "https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/tag_video_faces/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "faces",
     "every_ms": 50,
@@ -1286,14 +1339,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/tag_video_faces/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1406,19 +1459,23 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "aparat",
     "video_urls": [
         "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/tag_videos/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "aparat",
     "video_urls": [
@@ -1426,14 +1483,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/tag_videos/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1519,28 +1576,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran"
-} \
+}' \
       https://kashf.roshan-ai.ir/api/train_dataset/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/train_dataset/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1590,30 +1651,34 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "max_predictions": 100
-} \
+}' \
       https://kashf.roshan-ai.ir/api/retag_dataset/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "max_predictions": 100
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/retag_dataset/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1659,112 +1724,6 @@ Value: <span style="background-color: #00A693;
 <p style="direction:rtl;font-weight:300;">
 <img src="./images/vector.svg" alt="vector">  حداکثر تعداد داده‌هایی که می‌خواهید بازبینی شود.</p>
 <br><br>
-# دریافت دیتاست
-
-دیتاست موردنظر را در قالب یک فایل csv برمی‌گرداند.
-
-
-## نمونه
-
-> Request
-
-```plaintext
-{
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-}
-```
-
-```shell
-curl  --request POST \ 
-      --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-} \
-      https://kashf.roshan-ai.ir/api/export_dataset/
-```
-
-```python
-from urllib2 import Request, urlopen
-
-values = """
-{
-    "dataset": "iran",
-    "original_urls": true,
-    "tag_names": true
-}
-"""
-
-headers = {
-  'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
-}
-request = Request('https://kashf.roshan-ai.ir/api/export_dataset/', data=values, headers=headers)
-
-response_body = urlopen(request).read()
-print(response_body)
-```
-
-> Response 
-
-```json
-    {
-        "dataset": "iran",
-        "state": "waiting"
-    }
-
-
-```
-
-<dl style="background-color:transparent;"><code>POST /api/export_dataset/</code></dl>
-
-<dl>
-<strong>dataset(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    dataset slug
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  نام دیتاست که می‌خواهید دریافت کنید.</p>
-<br><br>
-<dl>
-<strong>original_urls</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    true
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، آدرس اصلی تصاویر و ویدیوها را در فایل خروجی قرار می‌دهد.</p>
-<br><br>
-<dl>
-<strong>tag_names</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    false
-                    </span>
-</dl>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="./images/vector.svg" alt="vector">  اگر `true` باشد، به‌جای شناسهٔ برچسب، عنوان برچسب در خروجی ظاهر می‌شود. مقدار پیش‌فرض:`false`.</p>
-<br><br>
 # اضافه‌کردن داده به دیتاست
 
 مجموعه‌ای از داده‌های جدید را در قالب یک فایل csv به دیتاست موردنظر اضافه می‌کند. به جای آدرس فایل csv می‌توانید فایل را به طور مستقیم و در قالب یک تقاضای multipart/form-data ارسال کنید.
@@ -1785,32 +1744,36 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "report_items": true,
     "tag_names": true
-} \
+}' \
       https://kashf.roshan-ai.ir/api/import_dataset/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "report_items": true,
     "tag_names": true
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/import_dataset/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1891,30 +1854,34 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "tags": true
-} \
+}' \
       https://kashf.roshan-ai.ir/dataset_info/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "tags": true
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/dataset_info/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1990,30 +1957,43 @@ Value: <span style="background-color: #00A693;
 > Request
 
 ```plaintext
-"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"
+{
+    "dataset": "iran",
+    "tag_id": 2
+}
 ```
 
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n" \
+      --data-binary '{
+    "dataset": "iran",
+    "tag_id": 2
+}' \
       https://kashf.roshan-ai.ir/api/list_tag_predictions/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
-"    {\n      \"dataset\": \"iran\"\n      \"tag_id\": 2\n    }\n"
+values = bytes("""
+{
+    "dataset": "iran",
+    "tag_id": 2
+}
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/list_tag_predictions/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2079,28 +2059,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "tag_id": 2
-} \
+}' \
       https://kashf.roshan-ai.ir/api/list_tag_reports/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "tag_id": 2
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/list_tag_reports/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2166,28 +2150,32 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "tag_id": 2
-} \
+}' \
       https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "tag_id": 2
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/list_tag_notsure_reports/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2251,24 +2239,28 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request GET \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "" \
+      --data-binary '""' \
       https://kashf.roshan-ai.ir/api/list_datasets/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 ""
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/list_datasets/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2311,19 +2303,23 @@ print(response_body)
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "persica",
     "text_ids": [
         11462988
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/list_texts/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "persica",
     "text_ids": [
@@ -2331,14 +2327,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/list_texts/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2405,19 +2401,23 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "text_ids": [
         1832
     ]
-} \
+}' \
       https://kashf.roshan-ai.ir/api/list_images/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "text_ids": [
@@ -2425,14 +2425,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/list_images/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2499,19 +2499,23 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "persica",
     "query": "اقتصاد مثاومتی",
     "tag_id": 1482,
     "reported": false
-} \
+}' \
       https://kashf.roshan-ai.ir/api/search_candidate_texts/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "persica",
     "query": "اقتصاد مثاومتی",
@@ -2519,14 +2523,14 @@ values = """
     "reported": false
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/search_candidate_texts/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2624,32 +2628,36 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "iran",
     "query": "برج آزادی",
     "tag_id": 2
-} \
+}' \
       https://kashf.roshan-ai.ir/api/search_candidate_images/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "iran",
     "query": "برج آزادی",
     "tag_id": 2
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/search_candidate_images/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -2732,32 +2740,36 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "dataset": "faces",
     "query": " احسان کرمی",
     "tag_id": 213243
-} \
+}' \
       https://kashf.roshan-ai.ir/api/search_candidate_faces/
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "dataset": "faces",
     "query": " احسان کرمی",
     "tag_id": 213243
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('https://kashf.roshan-ai.ir/api/search_candidate_faces/', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 

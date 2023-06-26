@@ -100,7 +100,7 @@ index_name
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "items": [
         {
             "type": "movie",
@@ -143,14 +143,18 @@ curl  --request POST \
             }
         }
     ]
-} \
+}' \
       http://api.sobhe.ir:7000/{index_name}/index
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "items": [
         {
@@ -196,14 +200,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/index', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -338,7 +342,7 @@ Value: <span style="background-color: #00A693;
 ```shell
 curl  --request PUT \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "items": [
         {
             "type": "movie",
@@ -346,14 +350,18 @@ curl  --request PUT \
             "importance": 200
         }
     ]
-} \
+}' \
       http://api.sobhe.ir:7000/{index_name}/index
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "items": [
         {
@@ -364,14 +372,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/index', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -403,19 +411,23 @@ print(response_body)
 ```shell
 curl  --request DELETE \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "type": "movie",
     "ids": [
         2
     ]
-} \
+}' \
       http://api.sobhe.ir:7000/{index_name}/index
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "type": "movie",
     "ids": [
@@ -423,14 +435,14 @@ values = """
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/index', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -521,24 +533,28 @@ from
 ```shell
 curl  --request GET \ 
       \
-      --data-binary "" \
+      --data-binary '""' \
       http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 ""
 """
-
+,'utf-8')
 headers = {
   
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -600,21 +616,25 @@ print(response_body)
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" \
-      --data-binary {
+      --data-binary '{
     "text": "نیم‌روز",
     "fields": [
         "title"
     ],
     "size": 2,
     "from": 0
-} \
+}' \
       http://api.sobhe.ir:7000/{index_name}/{types}/query
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "text": "نیم‌روز",
     "fields": [
@@ -624,14 +644,14 @@ values = """
     "from": 0
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/query', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -737,24 +757,28 @@ from
 ```shell
 curl  --request GET \ 
       \
-      --data-binary "" \
+      --data-binary '""' \
       http://api.sobhe.ir:7000/{index_name}/{types}/complete{?text,size,from}
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 ""
 """
-
+,'utf-8')
 headers = {
   
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/complete{?text,size,from}', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -837,24 +861,28 @@ text
 ```shell
 curl  --request GET \ 
       \
-      --data-binary "" \
+      --data-binary '""' \
       http://api.sobhe.ir:7000/{index_name}/{types}/suggest{?text}
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 ""
 """
-
+,'utf-8')
 headers = {
   
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/suggest{?text}', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -919,28 +947,32 @@ types
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "title": "پرویز"
-} \
+}' \
       http://api.sobhe.ir:7000/{index_name}/{types}/similars
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "title": "پرویز"
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/similars', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1005,24 +1037,28 @@ types
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "       {\n         \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},              \n       }\n" \
+      --data-binary '"       {\n         \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},              \n       }\n"' \
       http://api.sobhe.ir:7000/{index_name}/{types}/sources
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 "       {\n         \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},              \n       }\n"
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/sources', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1107,24 +1143,28 @@ field
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "       {\n         \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n         \"topn\": 5            \n       }\n" \
+      --data-binary '"       {\n         \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n         \"topn\": 5            \n       }\n"' \
       http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 "       {\n         \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n         \"topn\": 5            \n       }\n"
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1172,24 +1212,28 @@ print(response_body)
 ```shell
 curl  --request GET \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary "       {\n         \"id\": 3,\n         \"topn\": 5            \n       }\n" \
+      --data-binary '"       {\n         \"id\": 3,\n         \"topn\": 5            \n       }\n"' \
       http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 "       {\n         \"id\": 3,\n         \"topn\": 5            \n       }\n"
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -1269,24 +1313,28 @@ types
 ```shell
 curl  --request GET \ 
       \
-      --data-binary "" \
+      --data-binary '""' \
       http://api.sobhe.ir:7000/{index_name}/{types}/stats
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 ""
 """
-
+,'utf-8')
 headers = {
   
 }
 request = Request('http://api.sobhe.ir:7000/{index_name}/{types}/stats', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 

@@ -1,109 +1,31 @@
 
 FORMAT: 1A
-HOST: http://targar.sobhe.ir
+HOST: http://targar.ir
 
 # ترگار
-ترگار ای پی ای ترجمه است.
-## برچسب‌گذاری تصاویر [/parde/api/tag_images]
+ترگار ای پی ای ترجمه است انگلیسی به فارسی و فارسی به انگلیسی است.
+## ترجمه متن [/api/translate/]
 
 ### مثال [POST]
-ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد `image_url` حاوی لینک تصویر و آرایهٔ `tags` حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد `id`، عنوان برچسب در فیلد `title`و میزان اطمینان به آن برچسب در فیلد `probability`قرار می‌گیرد.
+ورودی این تابع متن مورد نظر جهت ترجمه، زبان مبدا و زبان مقصد است و خروجی آن متن ترجمه شده میباشد.
 
 + Request (application/json)
     + Headers       
         Authorization: Token TOKEN_KEY    
     + Attributes
-        - image_urls: URL (array[string], required) - لیست آدرس تصاویر. 
+        - text:  Text (string, required) - متن جهت ترجمه. 
+        - translateFrom: Text (string, required) - زبان مبدا. 
+        - translateTo: Text (string, required) - زبان مقصد. 
     + Body
         {
-            "image_urls": 
-            [
-                "sample.com/1.jpg"
-            ]
+            "text": "سلام",
+            "translateFrom": "persian",
+            "translateTo": "english"
         }
 + Response 200 (application/json)
-    [
-        {
-            "image_url":"sample.com/1.jpg",
-            "tags": 
-            [
-                {
-                    "id": 82311,
-                    "probability": 0.9,
-                    "title": "نامناسب"
-                },
-                {
-                    "id": 82312,
-                    "probability": 0.67,
-                    "title": "خشونت"
-                }
-            ]
-        }
-    ]
+    
+    {
+        "Translation":"Hi.",
+    }
+    
 
-## برچسب‌گذاری فریم‌های ویدیو [/parde/api/tag_video_frames]
-ورودی این تابع لیستی از آدرس ویدیوها است و خروجی آن برچسب‌های هر ویدیو. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از یک فیلد `video_url` حاوی لینک تصویر و آرایهٔ `frames` حاوی فریم‌های پردازش‌شده است. در هر فریم، شمارهٔ آن در فیلد `frame`، موقعیت زمانی آن در فیلد `time` و برچسب‌های شناسایی‌شده برای آن در فیلد `tags` قرار می‌گیرد.
-
-### مثال [POST]
-+ Request (application/json)
-    + Headers
-        Authorization: Token TOKEN_KEY
-    + Attributes
-        - video_urls: URL (array[string], required) - آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.
-        - every_ms: 100 (number) - هر چند میلی‌ثانیه یک فریم استخراج شود؟
-        - min_frame_diff: 0.4 (number) - کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.
-        - duration: 25 (number) - چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.
-        - wait: true (boolean) - اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `pending` یا `started` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `pending` خواهد بود.
-    + Body    
-        {
-            "video_urls": ["sample.com/1.mp4"],
-            "every_ms": 200, 
-            "duration": 36000, 
-            "min_frame_diff": 0.5
-        }
-+ Response 200 (application/json)
-    [
-        {
-            "video_url": "sample.com/1.mp4",
-            "frames": 
-            [
-                {
-                    "frame": 6,
-                    "time": "0:00:00",
-                    "tags": []
-                },
-                {
-                    "frame": 31,
-                    "time": "0:00:01",
-                    "tags": []
-                },
-                {
-                    "frame": 36,
-                    "time": "0:00:01",
-                    "tags": []
-                },
-                {
-                    "frame": 475,
-                    "time": "0:00:18",
-                    "tags": 
-                    [
-                        {
-                            "id": 86141,
-                            "probability": 0.32,
-                            "title": "وحشتناک"
-                        },
-                        {
-                            "id": 86142,
-                            "probability": 0.49,
-                            "title": "برهنه"
-                        }
-                    ]
-                },
-                {
-                    "frame": 560,
-                    "time": "0:00:22",
-                    "tags": []
-                }
-            ]
-        }
-    ]

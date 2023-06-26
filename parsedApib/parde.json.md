@@ -60,32 +60,36 @@ meta:
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "image_urls": [
         "sample.com/1.jpg"
     ]
-} \
+}' \
       http://api.sobhe.ir/parde/api/tag_images
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "image_urls": [
         "sample.com/1.jpg"
     ]
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir/parde/api/tag_images', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 
@@ -150,21 +154,25 @@ Value: [URL, ]
 ```shell
 curl  --request POST \ 
       --header "Content-Type: application/json" --header "Authorization: Token TOKEN_KEY" \
-      --data-binary {
+      --data-binary '{
     "video_urls": [
         "sample.com/1.mp4"
     ],
     "every_ms": 200,
     "duration": 36000,
     "min_frame_diff": 0.5
-} \
+}' \
       http://api.sobhe.ir/parde/api/tag_video_frames
 ```
 
 ```python
-from urllib2 import Request, urlopen
+try:
+   from urllib2 import Request, urlopen
+except ImportError:
+   from urllib.request import urlopen, Request
+from encodings import utf_8
 
-values = """
+values = bytes("""
 {
     "video_urls": [
         "sample.com/1.mp4"
@@ -174,14 +182,14 @@ values = """
     "min_frame_diff": 0.5
 }
 """
-
+,'utf-8')
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
 request = Request('http://api.sobhe.ir/parde/api/tag_video_frames', data=values, headers=headers)
 
 response_body = urlopen(request).read()
-print(response_body)
+print(utf_8.decode(response_body))
 ```
 
 > Response 

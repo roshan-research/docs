@@ -1,0 +1,101 @@
+{
+    "title": "ترگار",
+    "attributes": [
+        {
+            "key": "FORMAT",
+            "value": "1A"
+        },
+        {
+            "key": "HOST",
+            "value": "http://targar.ir"
+        }
+    ],
+    "copies": [
+        "ترگار ای پی ای ترجمه است انگلیسی به فارسی و فارسی به انگلیسی است."
+    ],
+    "resources": [
+        {
+            "title": "ترجمه متن",
+            "href": "/api/translate/",
+            "hrefVariables": [],
+            "copies": [],
+            "transitions": [
+                {
+                    "title": "مثال",
+                    "copies": [
+                        "ورودی این تابع متن مورد نظر جهت ترجمه، زبان مبدا و زبان مقصد است و خروجی آن متن ترجمه شده میباشد."
+                    ],
+                    "httpRequest": {
+                        "method": "POST",
+                        "headerAttributes": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token TOKEN_KEY"
+                            }
+                        ],
+                        "sections": [
+                            {
+                                "type": "dataStructure",
+                                "members": [
+                                    {
+                                        "description": "متن جهت ترجمه.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "text",
+                                        "value": "Text",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "زبان مبدا.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "translateFrom",
+                                        "value": "Text",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    },
+                                    {
+                                        "description": "زبان مقصد.",
+                                        "typeAttributes": [
+                                            "required"
+                                        ],
+                                        "key": "translateTo",
+                                        "value": "Text",
+                                        "valueType": "string",
+                                        "enumaration": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "messageBody",
+                                "contentType": "application/json",
+                                "content": "{\n    \"text\": \"سلام\",\n    \"translateFrom\": \"persian\",\n    \"translateTo\": \"english\"\n}\n"
+                            },
+                            {
+                                "type": "messageBodySchema",
+                                "contentType": "application/schema+json",
+                                "content": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"text\": {\n      \"type\": \"string\"\n    },\n    \"translateFrom\": {\n      \"type\": \"string\"\n    },\n    \"translateTo\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"text\",\n    \"translateFrom\",\n    \"translateTo\"\n  ]\n}"
+                            }
+                        ]
+                    },
+                    "httpResponse": {
+                        "headerAttributes": [],
+                        "sections": [
+                            {
+                                "type": "messageBody",
+                                "content": "{\n    \"Translation\":\"Hi.\",\n}\n"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
