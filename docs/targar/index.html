@@ -1,0 +1,594 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the پرده API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #303030;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sa {
+  color: #aa759f;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-1086c5ef.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b49a9d77.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;,&quot;python&quot;]">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
+  </div>
+    <div class="toc-wrapper">
+      <div>
+        <a href="#" id="nav-button">
+          <span>
+            <img src="images/navbar-cad8cdcb.png" alt="" />
+            <span>منو</span> 
+          </span>
+        </a>
+        <div>
+          <img src="images/logo-44a6bcfa.svg" class="logo" alt="" />
+            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="جست و جو">
+            </div>
+            <ul class="search-results"></ul>
+          <ul id="toc" class="toc-list-h1">
+              <li>
+                <a href="#8da5da6136" class="toc-h1 toc-link" data-title="پرده">پرده</a>
+              </li>
+              <li>
+                <a href="#9df1b2ddaf" class="toc-h1 toc-link" data-title="برچسب‌گذاری تصاویر">برچسب‌گذاری تصاویر</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#b40d4b44b2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#15b3d80a33" class="toc-h1 toc-link" data-title="برچسب‌گذاری فریم‌های ویدیو">برچسب‌گذاری فریم‌های ویدیو</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#b40d4b44b2-2" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='8da5da6136'>پرده</h1>
+<p>پرده یک ای‌پی‌آی بومی برای تشخیص تصاویر نامناسب است.</p>
+
+<p>در روزگار ما دسترسی به فضای مجازی حتی برای کودکان به‌سادگی میسر است. از طرفی می‌دانیم که در این فضا همه نوع محتوایی هست. محتوای نامناسب آسیب‌زاست خصوصاً برای قشر کودک و نوجوان. دولت‌ها تلاش می‌کنند اینترنت را به محیطی سالم و امن تبدیل کنند اما حجم روزافزون داده‌ها در فضای مجازی امکان نظارت انسانی بر این محیط را بسیار سخت کرده است. راه‌حل، استفاده از هوش ماشینی برای پالایش و فیلتر محتواست.</p>
+
+<p>پرده دقیقاً با همین هدف ساخته شده است.</p>
+
+<p>این ابزار، تصاویر و ویدیوهای نامناسب را در چهار دسته شناسایی و گزارش می‌دهد:</p>
+
+<p>از دید پرده، تصویر و ویدیوی نامناسب در یکی از این چهار دسته قرار می‌گیرد:</p>
+
+<p>۱. <strong>برهنه:</strong> تصاویر و ویدیوهایی که به طرز وقیحانه و حیوان‌واری اعضای جنسی انسان را به نمایش می‌گذارند. حتی رسانه‌های غربی نیز در نمایش این نوع محتوا فیلترهای سفت‌وسختی را برای سنین مختلف درنظر گرفته‌اند. همچنین در بسیاری از شبکه‌های اجتماعی نیز انتشار چنین محتوایی خلاف قوانین است.</p>
+
+<p>۲. <strong>نامناسب:</strong> تعریف اسلام از محتوای «نامناسب» بسیار وسیع‌تر از تعریف سطحی غرب است. در اسلام، نامناسب بودن محتوا صرفاً محدود به برهنگی نیست! شاید بتوان ملاک‌های صداوسیما در انتشار محتوا را نزدیک به همان چیزی دانست که شرع مقدس اسلام اجازه داده است. از دید پرده تصویر و ویدیویی «نامناسب» است که با ملاک‌های صداوسیما در تلویزیون ایران قابل پخش نیست.</p>
+
+<p>۳. <strong>وحشتناک:</strong> فقط محتوای غیراخلاقی نیست که بر روان آدمی اثر منفی می‌گذارد. گاهی دیدن صحنه‌ای دلخراش از یک تصادف رانندگی که حاوی آسیب‌های منزجرکننده‌‌ای مثل سوختگی و لهیدگی است می‌تواند همان تأثیر سوء را در پی داشته باشد.</p>
+
+<p>۴. <strong>خشونت:</strong> گاهی تصویر یا ویدیو حاوی صحنه‌های منزجرکننده نیست ولی این موضوع حاکی از وجود یک خشونت است؛ مثلاً آثار خون روی زمین یا دیوار یا فردی که روی زمین افتاده است. این نوع محتوا می‌تواند نشانی از نامناسب‌بودن محتوا برای کودکان باشد.</p>
+
+<p>پرده می‌تواند با یک سخت‌افزار معمولی <strong>هر ثانیه بیش از ۲۰۰ تصویر</strong> را تحلیل و پالایش کند. این رقم را پژوهشکدهٔ ارتباطات و فناوری اطلاعات ایران، بعد از ارزیابی دقیق عملکرد سامانه روی مجموعه‌ای از تصاویر متعدد اعلام کرده است.</p>
+
+<p>برای دسترسی به این ای‌پی‌آی به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید از طریق ایمیلِ <a href="mailto:parde@roshan-ai.ir">parde@roshan-ai.ir</a> درخواست دهید</p>
+<h1 id='9df1b2ddaf'>برچسب‌گذاری تصاویر</h1><h2 id='b40d4b44b2'>مثال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "image_urls": [
+        "sample.com/1.jpg"
+    ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "image_urls": [
+        "sample.com/1.jpg"
+    ]
+}'</span> <span class="se">\</span>
+      http://api.sobhe.ir/parde/api/tag_images
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
+{
+    "image_urls": [
+        "sample.com/1.jpg"
+    ]
+}
+"""</span>
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir/parde/api/tag_images'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"image_url"</span><span class="p">:</span><span class="s2">"sample.com/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82311</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"نامناسب"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82312</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.67</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خشونت"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre></div>
+<p>ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد <code>image_url</code> حاوی لینک تصویر و آرایهٔ <code>tags</code> حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد <code>id</code>، عنوان برچسب در فیلد <code>title</code>و میزان اطمینان به آن برچسب در فیلد <code>probability</code>قرار می‌گیرد.</p>
+
+<dl style="background-color:transparent;"><code>POST /parde/api/tag_images</code></dl>
+
+<dl>
+<strong>image_urls(required)</strong>
+<br>
+<br>
+Value: [URL, ]
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  لیست آدرس تصاویر.</p>
+
+<p><br><br></p>
+<h1 id='15b3d80a33'>برچسب‌گذاری فریم‌های ویدیو</h1>
+<p>ورودی این تابع لیستی از آدرس ویدیوها است و خروجی آن برچسب‌های هر ویدیو. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از یک فیلد <code>video_url</code> حاوی لینک تصویر و آرایهٔ <code>frames</code> حاوی فریم‌های پردازش‌شده است. در هر فریم، شمارهٔ آن در فیلد <code>frame</code>، موقعیت زمانی آن در فیلد <code>time</code> و برچسب‌های شناسایی‌شده برای آن در فیلد <code>tags</code> قرار می‌گیرد.</p>
+<h2 id='b40d4b44b2-2'>مثال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}'</span> <span class="se">\</span>
+      http://api.sobhe.ir/parde/api/tag_video_frames
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
+   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
+{
+    "video_urls": [
+        "sample.com/1.mp4"
+    ],
+    "every_ms": 200,
+    "duration": 36000,
+    "min_frame_diff": 0.5
+}
+"""</span>
+<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir/parde/api/tag_video_frames'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"video_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample.com/1.mp4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frames"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">475</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:18"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> 
+                </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">86141</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"وحشتناک"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">86142</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.49</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"برهنه"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"frame"</span><span class="p">:</span><span class="w"> </span><span class="mi">560</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0:00:22"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /parde/api/tag_video_frames</code></dl>
+
+<dl>
+<strong>video_urls(required)</strong>
+<br>
+<br>
+Value: [URL, ]
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس ویدیوهایی که می‌خواهید فریم‌های آن برچسب‌گذاری شود.</p>
+
+<p><br><br>
+<dl>
+<strong>every_ms</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    100
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  هر چند میلی‌ثانیه یک فریم استخراج شود؟</p>
+
+<p><br><br>
+<dl>
+<strong>min_frame_diff</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    0.4
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  کمترین تفاوتِ دو فریم که از آن به بعد یک فریم را متفاوت از قبلی بداند. عددی بین ۰ تا ۱.</p>
+
+<p><br><br>
+<dl>
+<strong>duration</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    25
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  چندثانیه از ابتدای ویدیو پردازش شود؟ اگر `null` باشد کل ویدیو پردازش می‌شود.</p>
+
+<p><br><br>
+<dl>
+<strong>wait</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    true
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `pending` یا `started` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `pending` خواهد بود.</p>
+
+<p><br><br></p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">CURL</a>
+                <a href="#" data-language-name="plaintext">RAW</a>
+                <a href="#" data-language-name="python">PYTHON</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+function Scroll(delay) {
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+    let tocLinks = document.getElementsByClassName('toc-link');
+    
+    for(let i = 0; i < tocLinks.length; i++) {
+        tocLinks[i].addEventListener('click', () => {
+            for(let i = 0; i < tocLinks.length; i++) {
+                tocLinks[i].classList.add('toc-unstyled')
+            }
+        })
+    }
+    
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("end", function () {
+        for(let i = 0; i < tocLinks.length; i++) {
+            tocLinks[i].classList.remove('toc-unstyled')
+        }
+    });
+});
+</script>
