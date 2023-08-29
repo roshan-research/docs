@@ -356,7 +356,13 @@ print(response)\n\`\`\`\n\n`;
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
     }
-
+ 
+    for (const key in requestMessageBodyContent) {
+        if (typeof requestMessageBodyContent[key] === "boolean") {
+            requestMessageBodyContent[key] = requestMessageBodyContent[key] ? "True" : "False";
+        }         
+    }
+    
     let pythonText = "```python\n";
     pythonText +=
     "import requests\n"+
@@ -367,6 +373,9 @@ print(response)\n\`\`\`\n\n`;
     "headers = {\n";
     pythonText += "  ";
     for (let i = 0 ; i<requestHeaderAttributes.length;i++){
+        if (requestHeaderAttributes[i].key === "Content-Type" && requestHeaderAttributes[i].value === "application/json") {
+            continue; // Skip adding 'Content-Type': 'application/json' to headers
+        }
         pythonText += "\'" + requestHeaderAttributes[i].key + "\'" + ": " + "\'" + requestHeaderAttributes[i].value + "\'" + ",";
     }
     pythonText += "\n" +
