@@ -367,7 +367,8 @@ print(response)\n\`\`\`\n\n`;
     "headers = {\n";
     pythonText += "  ";
     for (let i = 0 ; i<requestHeaderAttributes.length;i++){
-        pythonText += "\'" + requestHeaderAttributes[i].key + "\'" + ": " + "\'" + requestHeaderAttributes[i].value + "\'" + ",";
+        if (requestHeaderAttributes[i].key !== 'Content-Type' || requestHeaderAttributes[i].value !== 'application/json') {
+            pythonText += "\'" + requestHeaderAttributes[i].key + "\'" + ": " + "\'" + requestHeaderAttributes[i].value + "\'" + ",";
     }
     pythonText += "\n" +
     "}\n" +
