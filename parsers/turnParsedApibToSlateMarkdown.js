@@ -359,15 +359,10 @@ print(response)\n\`\`\`\n\n`;
 
     let pythonText = "```python\n";
     pythonText +=
-    "try:\n"+
-    "   from urllib2 import Request, urlopen\n" +
-    "except ImportError:\n"+ 
-    "   from urllib.request import urlopen, Request\n"+
-    "from encodings import utf_8\n"+
+    "import requests\n"+
     "\n" +
-    "values = bytes(\"\"\"\n";
+    "values = ";
     pythonText += requestMessageBodyContent + "\n" +
-    "\"\"\"\n,'utf-8')" +
     "\n" +
     "headers = {\n";
     pythonText += "  ";
@@ -376,10 +371,9 @@ print(response)\n\`\`\`\n\n`;
     }
     pythonText += "\n" +
     "}\n" +
-    "request = Request('" + resourceUrl + "', data=values, headers=headers)\n" +
+    "response = requests.post('" + resourceUrl + "', data=values, headers=headers)\n" +
     "\n" +
-    "response_body = urlopen(request).read()\n" +
-    "print(utf_8.decode(response_body))\n" +
+    "print(response.json())\n" +
     "```\n\n";
     return pythonText;
 }
