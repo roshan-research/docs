@@ -356,19 +356,13 @@ print(response)\n\`\`\`\n\n`;
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
     }
- 
-    for (const key in requestMessageBodyContent) {
-        if (typeof requestMessageBodyContent[key] === "boolean") {
-            requestMessageBodyContent[key] = requestMessageBodyContent[key] ? "True" : "False";
-        }         
-    }
-    
+
     let pythonText = "```python\n";
     pythonText +=
     "import requests\n"+
     "\n" +
     "values = ";
-    pythonText += requestMessageBodyContent + "\n" +
+    pythonText += requestMessageBodyContent.replace(/:\s*true/g, ": True").replace(/:\s*false/g, ": False") + "\n" +
     "\n" +
     "headers = {\n";
     pythonText += "  ";
