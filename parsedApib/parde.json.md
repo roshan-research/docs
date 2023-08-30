@@ -65,7 +65,7 @@ curl  --request POST \
         "sample.com/1.jpg"
     ]
 }' \
-      https://kashf.roshan-ai.ir/parde/api/tag_images
+      http://api.sobhe.ir/parde/api/tag_images
 ```
 
 ```python
@@ -86,7 +86,7 @@ values = bytes("""
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('https://kashf.roshan-ai.ir/parde/api/tag_images', data=values, headers=headers)
+request = Request('http://api.sobhe.ir/parde/api/tag_images', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(utf_8.decode(response_body))
@@ -162,7 +162,7 @@ curl  --request POST \
     "duration": 36000,
     "min_frame_diff": 0.5
 }' \
-      https://kashf.roshan-ai.ir/parde/api/tag_video_frames
+      http://api.sobhe.ir/parde/api/tag_video_frames
 ```
 
 ```python
@@ -186,7 +186,7 @@ values = bytes("""
 headers = {
   'Content-Type': 'application/json','Authorization': 'Token TOKEN_KEY',
 }
-request = Request('https://kashf.roshan-ai.ir/parde/api/tag_video_frames', data=values, headers=headers)
+request = Request('http://api.sobhe.ir/parde/api/tag_video_frames', data=values, headers=headers)
 
 response_body = urlopen(request).read()
 print(utf_8.decode(response_body))

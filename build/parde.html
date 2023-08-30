@@ -367,7 +367,7 @@ please contact parde@sobhe.ir.</p>
         <span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span>
     <span class="o">]</span>
 <span class="o">}</span> <span class="se">\</span>
-      https://kashf.roshan-ai.ir/parde/api/images_safety
+      http://api.sobhe.ir/parde/api/images_safety
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -381,7 +381,7 @@ please contact parde@sobhe.ir.</p>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/parde/api/images_safety'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir/parde/api/images_safety'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -398,7 +398,7 @@ please contact parde@sobhe.ir.</p>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/parde/api/images_safety"</span><span class="o">);</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://api.sobhe.ir/parde/api/images_safety"</span><span class="o">);</span>
             <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
             <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
@@ -432,7 +432,7 @@ please contact parde@sobhe.ir.</p>
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/parde/api/images_safety"</span><span class="p">;</span>
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/images_safety"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
       <span class="s1">'{
     "image_urls": [
@@ -474,7 +474,7 @@ please contact parde@sobhe.ir.</p>
     <span class="p">{</span>
         <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/parde/api/images_safety"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://api.sobhe.ir/parde/api/images_safety"</span><span class="p">);</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
 
@@ -550,7 +550,7 @@ performance.</p>
     <span class="s2">"image_url"</span>: <span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span>,
     <span class="s2">"is_safe"</span>: <span class="nb">true</span>
 <span class="o">}</span> <span class="se">\</span>
-      https://kashf.roshan-ai.ir/parde/api/report
+      http://api.sobhe.ir/parde/api/report
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -563,7 +563,7 @@ performance.</p>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/parde/api/report'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir/parde/api/report'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -580,7 +580,7 @@ performance.</p>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/parde/api/report"</span><span class="o">);</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://api.sobhe.ir/parde/api/report"</span><span class="o">);</span>
             <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
             <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
@@ -613,7 +613,7 @@ performance.</p>
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/parde/api/report"</span><span class="p">;</span>
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/report"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
       <span class="s1">'{
     "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg",
@@ -654,7 +654,7 @@ performance.</p>
     <span class="p">{</span>
         <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/parde/api/report"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://api.sobhe.ir/parde/api/report"</span><span class="p">);</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
 
@@ -723,7 +723,7 @@ images for predicting image safety more precisely.</p>
       <span class="nt">--data-binary</span> <span class="o">{</span>
     <span class="s2">"image_url"</span>: <span class="s2">"http://www.sobhe.ir/baaz/img/goshawk.jpg"</span>
 <span class="o">}</span> <span class="se">\</span>
-      https://kashf.roshan-ai.ir/parde/api/remove_report
+      http://api.sobhe.ir/parde/api/remove_report
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">"""
@@ -735,7 +735,7 @@ images for predicting image safety more precisely.</p>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'https://kashf.roshan-ai.ir/parde/api/remove_report'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir/parde/api/remove_report'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
@@ -752,7 +752,7 @@ images for predicting image safety more precisely.</p>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
         <span class="k">try</span><span class="o">{</span>
-            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://kashf.roshan-ai.ir/parde/api/remove_report"</span><span class="o">);</span>
+            <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"http://api.sobhe.ir/parde/api/remove_report"</span><span class="o">);</span>
             <span class="nc">URLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
             <span class="nc">HttpURLConnection</span> <span class="n">http</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">con</span><span class="o">;</span>
             <span class="n">http</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
@@ -784,7 +784,7 @@ images for predicting image safety more precisely.</p>
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://kashf.roshan-ai.ir/parde/api/remove_report"</span><span class="p">;</span>
+  <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://api.sobhe.ir/parde/api/remove_report"</span><span class="p">;</span>
   <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span>
       <span class="s1">'{
     "image_url": "http://www.sobhe.ir/baaz/img/goshawk.jpg"
@@ -824,7 +824,7 @@ images for predicting image safety more precisely.</p>
     <span class="p">{</span>
         <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"https://kashf.roshan-ai.ir/parde/api/remove_report"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">httpWebRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"http://api.sobhe.ir/parde/api/remove_report"</span><span class="p">);</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Content-Type"</span><span class="p">]=</span> <span class="s">"application/json"</span><span class="p">;</span>
             <span class="n">httpWebRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">"Authorization"</span><span class="p">]=</span> <span class="s">"Token TOKEN_KEY"</span><span class="p">;</span>
 
