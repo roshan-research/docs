@@ -357,20 +357,19 @@ print(response)\n\`\`\`\n\n`;
         return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
     }
  
+    for (const key in requestMessageBodyContent) {
+        if (typeof requestMessageBodyContent[key] === "boolean") {
+            requestMessageBodyContent[key] = requestMessageBodyContent[key] ? "True" : "False";
+        }         
+    }
+    
     let pythonText = "```python\n";
     pythonText +=
     "import requests\n"+
     "\n" +
-    "values = {\n";
-    for (const key in requestMessageBodyContent) {
-        let value = requestMessageBodyContent[key];
-        if (typeof value === "boolean") {
-            value = value ? "True" : "False";
-        }
-        pythonText += `  "${key}": ${value},\n`;
-    }
-    pythonText += "}\n\n";
-    pythonText +=
+    "values = ";
+    pythonText += requestMessageBodyContent + "\n" +
+    "\n" +
     "headers = {\n";
     pythonText += "  ";
     for (let i = 0 ; i<requestHeaderAttributes.length;i++){
