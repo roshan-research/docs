@@ -3,12 +3,23 @@ on:
   push:
     branches:
       - main
-  
+      - ci/test
   workflow_dispatch:
   
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      ALEFBA_TOKEN_KEY: ${{ secrets.ALEFBA_TOKEN_KEY }}
+      BAAZ_TOKEN_KEY: ${{ secrets.BAAZ_TOKEN_KEY }}
+      DEV_TOKEN_KEY: ${{ secrets.DEV_TOKEN_KEY }}
+      GOLROKH_TOKEN_KEY: ${{ secrets.GOLROKH_TOKEN_KEY }}
+      HARF_TOKEN_KEY: ${{ secrets.HARF_TOKEN_KEY }}
+      KASHF_TOKEN_KEY: ${{ secrets.KASHF_TOKEN_KEY }}
+      NAGHSH_TOKEN_KEY: ${{ secrets.NAGHSH_TOKEN_KEY }}
+      PARDE_TOKEN_KEY: ${{ secrets.PARDE_TOKEN_KEY }}
+      TARGAR_TOKEN_KEY: ${{ secrets.TARGAR_TOKEN_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,7 +27,7 @@ jobs:
       - name: Install and Build
         run: |
           echo "Install Requirements."
-          sudo apt-get update          
+          sudo apt-get update
           sudo apt-get install -y ruby ruby-dev build-essential libffi-dev zlib1g-dev liblzma-dev nodejs patch
           sudo gem install bundler
           cd ./slate_project && sudo bundle install && cd ..
@@ -24,13 +35,24 @@ jobs:
           echo "Running install script"
           sh update.sh
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
-        with:
-          branch: main
-          folder: docs
-          clean: true
-          clean-exclude: |
-            */*.json
-          target-folder: 'docs'
+      - name: Test
+        run: |
+          echo "Installing BeautifulSoup4"
+          pip install beautifulsoup4
+          echo "Changing permissions of extract-curl.py"
+          chmod +x extract-curl.py
+          echo "Running extract-curl.py"
+          python3 extract-curl.py
+          echo "Removing curl_scripts directory"
+          rm -rf curl_scripts
+
+#      - name: Deploy
+#        uses: JamesIves/github-pages-deploy-action@v4.3.0
+#        with:
+#          branch: main
+#          folder: docs
+#          clean: true
+#          clean-exclude: |
+#            */*.json
+#          target-folder: 'docs'
           
