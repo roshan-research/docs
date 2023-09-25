@@ -6,6 +6,7 @@ import re
 def extract_curl_requests(directory):
     scripts_dir = "curl_scripts"
     os.makedirs(scripts_dir, exist_ok=True)
+    subprocess.run(["cp", "docs/boute.pdf", f"{scripts_dir}/example.pdf"])
 
     results = []
 
@@ -38,8 +39,6 @@ def extract_curl_requests(directory):
                 print(f"script {script_filename} created.")
 
                 subprocess.run(["chmod", "+x", script_path])
-
-
                 result = subprocess.run(["bash", script_path], capture_output=True, text=True)
                 output = result.stdout.strip()
 
