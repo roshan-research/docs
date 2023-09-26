@@ -11,7 +11,14 @@ def extract_curl_requests(directory):
 
     results = []
 
+    excluded_dirs = ["baaz", "golrokh", "naghsh", "dev"]
+
     for subdir, dirs, files in os.walk(directory):
+    
+        for excluded_dir in excluded_dirs:
+            if excluded_dir in dirs:
+                dirs.remove(excluded_dir)
+            
         for file in files:
             if file == "index.html":
                 subdir_name = os.path.basename(subdir)
