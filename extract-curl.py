@@ -7,6 +7,7 @@ def extract_curl_requests(directory):
     scripts_dir = "curl_scripts"
     os.makedirs(scripts_dir, exist_ok=True)
     subprocess.run(["cp", "docs/boute.pdf", f"{scripts_dir}/example.pdf"])
+    subprocess.run(["cp", "docs/ganjoor.mp3", f"{scripts_dir}/example.mp3"])
 
     results = []
 
