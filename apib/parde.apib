@@ -25,7 +25,7 @@ HOST: https://kashf.roshan-ai.ir
 
 برای دسترسی به این ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید از طریق ایمیلِ [parde@roshan-ai.ir](mailto:parde@roshan-ai.ir) درخواست دهید
 
-## برچسب‌گذاری تصاویر [/parde/api/tag_images]
+## برچسب‌گذاری تصاویر [/parde/api/tag_images/]
 
 ### مثال [POST]
 ورودی این تابع لیستی از آدرس تصاویر است و خروجی آن برچسب‌های هر تصویر. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از فیلد `image_url` حاوی لینک تصویر و آرایهٔ `tags` حاوی برچسب‌های تصویر است. شناسهٔ هر برچسب در فیلد `id`، عنوان برچسب در فیلد `title`و میزان اطمینان به آن برچسب در فیلد `probability`قرار می‌گیرد.
@@ -39,30 +39,24 @@ HOST: https://kashf.roshan-ai.ir
         {
             "image_urls": 
             [
-                "sample.com/1.jpg"
+                "https://avaymarz.ir/wp-content/uploads/2020/11/5370736.jpg"
             ]
         }
 + Response 200 (application/json)
     [
         {
-            "image_url":"sample.com/1.jpg",
+            "image_url":"https://avaymarz.ir/wp-content/uploads/2020/11/5370736.jpg",
             "tags": 
             [
                 {
-                    "id": 82311,
-                    "probability": 0.9,
-                    "title": "نامناسب"
-                },
-                {
-                    "id": 82312,
-                    "probability": 0.67,
+                    "probability": 0.5,
                     "title": "خشونت"
                 }
             ]
         }
     ]
 
-## برچسب‌گذاری فریم‌های ویدیو [/parde/api/tag_video_frames]
+## برچسب‌گذاری فریم‌های ویدیو [/parde/api/tag_video_frames/]
 ورودی این تابع لیستی از آدرس ویدیوها است و خروجی آن برچسب‌های هر ویدیو. آنچه در پاسخ برگردانده می‌شود آرایه‌ای از آیتم‌هاست. هر آیتم متشکل از یک فیلد `video_url` حاوی لینک تصویر و آرایهٔ `frames` حاوی فریم‌های پردازش‌شده است. در هر فریم، شمارهٔ آن در فیلد `frame`، موقعیت زمانی آن در فیلد `time` و برچسب‌های شناسایی‌شده برای آن در فیلد `tags` قرار می‌گیرد.
 
 ### مثال [POST]
@@ -77,53 +71,103 @@ HOST: https://kashf.roshan-ai.ir
         - wait: true (boolean) - اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `pending` یا `started` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `pending` خواهد بود.
     + Body    
         {
-            "video_urls": ["sample.com/1.mp4"],
+            "video_urls": ["https://uptvstream2.pishtazmovie.ir/uptv-stream/trailer/Army%20of%20the%20Dead%202021%20Trailer.mp4"],
             "every_ms": 200, 
-            "duration": 36000, 
+            "duration": 60, 
             "min_frame_diff": 0.5
         }
 + Response 200 (application/json)
     [
         {
-            "video_url": "sample.com/1.mp4",
-            "frames": 
-            [
+            "video_url": "https://uptvstream2.pishtazmovie.ir/uptv-stream/trailer/Army%20of%20the%20Dead%202021%20Trailer.mp4",
+            "frames": [
                 {
-                    "frame": 6,
+                    "frame": 7,
                     "time": "0:00:00",
-                    "tags": []
-                },
-                {
-                    "frame": 31,
-                    "time": "0:00:01",
-                    "tags": []
-                },
-                {
-                    "frame": 36,
-                    "time": "0:00:01",
-                    "tags": []
-                },
-                {
-                    "frame": 475,
-                    "time": "0:00:18",
-                    "tags": 
-                    [
+                    "tags": [
                         {
                             "id": 86141,
-                            "probability": 0.32,
-                            "title": "وحشتناک"
-                        },
-                        {
-                            "id": 86142,
-                            "probability": 0.49,
-                            "title": "برهنه"
+                            "probability": 0.5,
+                            "title": "خشونت"
                         }
                     ]
                 },
                 {
-                    "frame": 560,
-                    "time": "0:00:22",
-                    "tags": []
+                    "frame": 326,
+                    "time": "0:00:10",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
+                },
+                {
+                    "frame": 356,
+                    "time": "0:00:11",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
+                },
+                {
+                    "frame": 440,
+                    "time": "0:00:14",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
+                },
+                {
+                    "frame": 482,
+                    "time": "0:00:16",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
+                },
+                {
+                    "frame": 612,
+                    "time": "0:00:20",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
+                },
+                {
+                    "frame": 1691,
+                    "time": "0:00:56",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
+                },
+                {
+                    "frame": 1715,
+                    "time": "0:00:57",
+                    "tags": [
+                        {
+                            "id": 86141,
+                            "probability": 0.5,
+                            "title": "خشونت"
+                        }
+                    ]
                 }
             ]
         }

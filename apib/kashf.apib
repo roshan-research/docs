@@ -297,42 +297,20 @@ HOST: https://kashf.roshan-ai.ir
                 "every_ms": 50,
                 "duration": 25,
                 "min_frame_diff": 0.40,
-                "video_urls": ["https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4"]
+                "video_urls": ["https://as-v2.tamasha.com/statics/videos_download/8c/36/0GEqm_8c3618c60750148cf0131e27c055245cf0e8ca74_n_360.mp4"]
             }
 + Response 200 (application/json)
         [
           {
-            "video_url": "https://hw15.cdn.asset.aparat.com/aparat-video/98b7e4cc00c97dffde2ae00567b98a4312759670-480p__79959.mp4",
+            "video_url": "https://as-v2.tamasha.com/statics/videos_download/8c/36/0GEqm_8c3618c60750148cf0131e27c055245cf0e8ca74_n_360.mp4",
             "frames": [
               {
-                "frame": 3,
-                "time": "0:00:00",
+                "frame": 849,
+                "time": "0:00:33",
                 "tags": [
                   {
-                    "id": 0,
-                    "probability": 1.0,
-                    "title": "ناآشنا"
-                  }
-                ]
-              },
-              {
-                "frame": 585,
-                "time": "0:00:23",
-                "tags": [
-                  {
-                    "id": 39127,
-                    "probability": 0.99,
-                    "title": "پل طبیعت"
-                  }
-                ]
-              },
-              {
-                "frame": 603,
-                "time": "0:00:24",
-                "tags": [
-                  {
-                    "id": 2,
-                    "probability": 1.0,
+                    "id": 48,
+                    "probability": 1,
                     "title": "میدان آزادی"
                   }
                 ]
@@ -361,9 +339,39 @@ HOST: https://kashf.roshan-ai.ir
                 "every_ms": 50,
                 "duration": 25,
                 "min_frame_diff": 0.40,
-                "video_urls": ["https://hajifirouz6.cdn.asset.aparat.com/aparat-video/00f33274de87f86afa23a330880e25f042720646-240p.mp4"]
+                "video_urls": ["https://s-v4.tamasha.com/statics/videos_download/56/29/Z8PY1_5629c73df85df766f52f0f6e46277b4bba83769f_n_576.mp4"]
             }
 + Response 200 (application/json)
+        [
+          {
+            "video_url": "https://s-v4.tamasha.com/statics/videos_download/56/29/Z8PY1_5629c73df85df766f52f0f6e46277b4bba83769f_n_576.mp4",
+            "frames": [
+              {
+                "frame": 125,
+                "time": "0:00:04",
+                "faces": [
+                  {
+                    "left": 419,
+                    "top": 76,
+                    "width": 164,
+                    "height": 221,
+                    "cx": 486,
+                    "cy": 197,
+                    "angle": 1.35,
+                    "tags": [
+                              {
+                        "id": 328742,
+                        "probability": 0.91,
+                        "title": "حسین امیرعبداللهیان (سیاسی)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+
 
 ## برچسب‌گذاری کل ویدئو [/api/tag_videos/]
 به جای برچسب‌گذاری تک‌تک فریم‌ها، کل ویدیو را پردازش می‌کند و برای آن فهرستی از برچسب‌ها تولید می‌کند.
@@ -378,22 +386,11 @@ HOST: https://kashf.roshan-ai.ir
         - wait: true (boolean) - اگر `true` باشد (مقدار پیش‌فرض)، تا پایان فرایند پردازش باید منتظر بمانید. اگر `false` باشد، بلافاصله بعد از ارسال درخواست، پاسخی با اعلام وضعیتِ `processing` ارسال می‌شود و در درخواست‌های بعدی اگر نتیجه آماده بود برگردانده می‌شود و اگر نه همچنان روی `processing` خواهد بود.
     + Body
             {
-                "dataset": "aparat",
-                "video_urls": ["https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4"]
+                "dataset": "iran",
+                "video_urls": ["https://as-v2.tamasha.com/statics/videos_download/4b/44/b5X37_4b44bd799670dd01fd5019e44e514dc7e39269b8_n_462.mp4"]
             }
 + Response 200 (application/json)
-        [
-          {
-            "image_url": "https://hajifirouz2.cdn.asset.aparat.cloud/aparat-video/ecf1d6ea175858e4c3bf54585c583e2342171585-240p.mp4",
-            "tags": [
-              {
-                "id": 77,
-                "probability": 1.0,
-                "title": "بسکتبال"
-              }
-            ]
-          }
-        ]
+
 
 ## آموزش مدل [/api/train_dataset/]
 با فرخوانی این تابع، یادگیری ماشین روی دیتاست آغاز می‌شود. در خروجی، وضعیت آموزش برگردانده می‌شود. این وضعیت در ابتدا روی `waiting` است که به معنی انتظار برای تخصیص منابع برای شروع پردازش و آموزش است و اندکی بعد به `training` تغییر می‌کند که به معنی شروع فرایند آموزش است و بعد از پایان آموزش به `trained` تغییر می‌کند.

@@ -36,10 +36,8 @@ def main():
 main()
 `;
 
-let websocketHarfCurl =  `\`\`\`shell\ncurl -X
-POST --header "Authorization: Token TOKEN_KEY"
--F "media=@example.mp3"
-http://harf.roshan-ai.ir/api/transcribe_files/\n\`\`\`\n\n`;
+let websocketHarfCurl =  `\`\`\`shell\ncurl -X POST --header "Authorization: Token TOKEN_KEY" -F "media=@example.mp3" 
+https://harf.roshan-ai.ir/api/transcribe_files/\n\`\`\`\n\n`;
 
 let apiTitleGlobal = "";
 
