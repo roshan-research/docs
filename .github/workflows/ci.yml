@@ -11,12 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ALEFBA_TOKEN_KEY: ${{ secrets.ALEFBA_TOKEN_KEY }}
-      BAAZ_TOKEN_KEY: ${{ secrets.BAAZ_TOKEN_KEY }}
-      DEV_TOKEN_KEY: ${{ secrets.DEV_TOKEN_KEY }}
-      GOLROKH_TOKEN_KEY: ${{ secrets.GOLROKH_TOKEN_KEY }}
       HARF_TOKEN_KEY: ${{ secrets.HARF_TOKEN_KEY }}
       KASHF_TOKEN_KEY: ${{ secrets.KASHF_TOKEN_KEY }}
-      NAGHSH_TOKEN_KEY: ${{ secrets.NAGHSH_TOKEN_KEY }}
       PARDE_TOKEN_KEY: ${{ secrets.PARDE_TOKEN_KEY }}
       TARGAR_TOKEN_KEY: ${{ secrets.TARGAR_TOKEN_KEY }}
 
