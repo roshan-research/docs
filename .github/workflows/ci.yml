@@ -35,6 +35,16 @@ jobs:
           echo "Running install script"
           sh update.sh
 
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          branch: ci/test
+          folder: docs
+          clean: true
+          clean-exclude: |
+            */*.json
+          target-folder: 'docs'
+          
       - name: Test
         run: |
           echo "Installing BeautifulSoup4"
@@ -45,14 +55,3 @@ jobs:
           python3 extract-curl.py
           echo "Removing curl_scripts directory"
           rm -rf curl_scripts
-
-#      - name: Deploy
-#        uses: JamesIves/github-pages-deploy-action@v4.3.0
-#        with:
-#          branch: main
-#          folder: docs
-#          clean: true
-#          clean-exclude: |
-#            */*.json
-#          target-folder: 'docs'
-          
