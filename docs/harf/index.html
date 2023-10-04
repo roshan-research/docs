@@ -398,10 +398,8 @@ Value: <span style="background-color: #00A693;
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"    --{boundary value}\n    Content-Disposition: form-data; name='41417'; filename='FILE NAME'\n    Content-Type: audio/mpeg (according to the type of the uploaded file)\n    {file content}\n    --{boundary value}\n"
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span>
-POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span>
-<span class="nt">-F</span> <span class="s2">"media=@example.mp3"</span>
-http://harf.roshan-ai.ir/api/transcribe_files/
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="nt">-F</span> <span class="s2">"media=@example.mp3"</span> 
+https://harf.roshan-ai.ir/api/transcribe_files/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,}</span>
 <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'media'</span><span class="p">:</span> <span class="p">(</span><span class="s">'FILE NAME'</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">'YOUR FILE PATH'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)),}</span>
