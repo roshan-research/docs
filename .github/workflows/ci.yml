@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - ci/test
   workflow_dispatch:
   
 jobs:
@@ -34,7 +33,7 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
-          branch: ci/test
+          branch: main
           folder: docs
           clean: true
           clean-exclude: |
@@ -44,7 +43,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ci/test          
+          ref: main          
           
       - name: Test
         run: |
