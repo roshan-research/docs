@@ -52,7 +52,7 @@ build_one(){
 }
 
 build_all(){
-    for Item in alefba harf kashf baaz parde golrokh targar ;
+    for Item in alefba harf kashf baaz parde golrokh targar replai ;
   do
     build_one $Item
   done  
