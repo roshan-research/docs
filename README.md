@@ -6,6 +6,7 @@
 - `sh update.sh harf`
 - `sh update.sh kashf`
 - `sh update.sh parde`
+- `sh update.sh replai`
 
 Don't pass any arguments if you want to build all above projects at the same time: `sh update.sh`
 
