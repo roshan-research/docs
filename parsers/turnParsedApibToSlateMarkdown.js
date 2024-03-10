@@ -36,14 +36,14 @@ def main():
 main()
 `;
 
-let websocketHarfCurl =  `\`\`\`shell\ncurl -X
+let websocketHarfCurl = `\`\`\`shell\ncurl -X
 POST --header "Authorization: Token TOKEN_KEY"
 -F "media=@example.mp3"
 http://harf.roshan-ai.ir/api/transcribe_files/\n\`\`\`\n\n`;
 
 let apiTitleGlobal = "";
 
-function turnParsedApibToSlateMarkdown(jsonText,fileName){
+function turnParsedApibToSlateMarkdown(jsonText, fileName) {
     let parsedApibJson = JSON.parse(jsonText);
     let apiTitle = parsedApibJson.title;
     let markDownText = "---\n" +
@@ -69,30 +69,30 @@ function turnParsedApibToSlateMarkdown(jsonText,fileName){
         "    content: Documentation for the " + apiTitle + " API\n" +
         "---\n\n";
 
-        apiTitleGlobal = apiTitle;
+    apiTitleGlobal = apiTitle;
     markDownText += writeApiTitleSection(parsedApibJson);
 
     let hostValue = "";
 
 
     parsedApibJson.attributes.forEach((value) => {
-        if (value.key === "HOST"){
+        if (value.key === "HOST") {
             hostValue = value.value;
         }
     })
     parsedApibJson.resources.forEach((oneResource) => {
-        markDownText += writeResourceSection(oneResource,hostValue);
+        markDownText += writeResourceSection(oneResource, hostValue);
     })
-    fs.writeFile("../parsedApib/" + fileName + ".md" , markDownText, 'utf8', function (err) {
+    fs.writeFile("../parsedApib/" + fileName + ".md", markDownText, 'utf8', function (err) {
         if (err) return console.log(err);
     });
 }
-function writeApiTitleSection(parsedApibJson){
+function writeApiTitleSection(parsedApibJson) {
     let apiTitle = parsedApibJson.title;
     let keepMarkDownText = "# " + apiTitle + "\n\n";
     let hostValue = "";
     parsedApibJson.attributes.forEach((value) => {
-        if (value.key === "HOST"){
+        if (value.key === "HOST") {
             hostValue = value.value;
         }
     })
@@ -106,9 +106,9 @@ function writeApiTitleSection(parsedApibJson){
 const writeParameters = (json) => {
     let parametersText = '';
 
-    if(json.hrefVariables.length !== 0) {
+    if (json.hrefVariables.length !== 0) {
         parametersText += '<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>\n';
-    parametersText += `<table style="float:right;text-align:center;font-family:IRANYekan;">
+        parametersText += `<table style="float:right;text-align:center;font-family:IRANYekan;">
     <tr>
         <th>
             توضیحات
@@ -120,7 +120,7 @@ const writeParameters = (json) => {
         json.hrefVariables.forEach((item) => {
             let parameterRow = "\n<tr>\n";
             let required = 'normal';
-            if(item.typeAttributes[0] === 'required') {
+            if (item.typeAttributes[0] === 'required') {
                 required = 'bold';
             }
             parameterRow += `<td>\n${item.description}\n</td>\n`;
@@ -135,7 +135,7 @@ const writeParameters = (json) => {
     return parametersText;
 }
 
-function writeResourceSection(resourceJson,hostValue){
+function writeResourceSection(resourceJson, hostValue) {
     let resourceHref = resourceJson.href;
     // let attributes = resourceJson.hrefVariables;
     let resourceSectionText = "";
@@ -145,29 +145,29 @@ function writeResourceSection(resourceJson,hostValue){
     let resourceTitle = "";
     let OneResourceText = "";
     let resourceUrl = hostValue + resourceHref;
-    if (hostValue[hostValue.length-1] === "/"){
-        resourceUrl = hostValue.substring(0,hostValue.length-1) + resourceHref;
+    if (hostValue[hostValue.length - 1] === "/") {
+        resourceUrl = hostValue.substring(0, hostValue.length - 1) + resourceHref;
     }
 
     resourceJson.copies.forEach((value) => {
         resourceSectionText += value + "\n\n";
     })
-        resourceTitle = resourceJson.title;
-        OneResourceText += "# " + resourceTitle + "\n\n";
-        OneResourceText += resourceSectionText;
-        if (attributeText !== null){
-            OneResourceText += attributeText;
-        }
-        resourceJson.transitions.forEach((oneTransition) => {
-            let transitionText = writeTransitionSection(oneTransition,isOneTransition,resourceHref,resourceUrl);
-            OneResourceText += transitionText;
-        })
+    resourceTitle = resourceJson.title;
+    OneResourceText += "# " + resourceTitle + "\n\n";
+    OneResourceText += resourceSectionText;
+    if (attributeText !== null) {
+        OneResourceText += attributeText;
+    }
+    resourceJson.transitions.forEach((oneTransition) => {
+        let transitionText = writeTransitionSection(oneTransition, isOneTransition, resourceHref, resourceUrl);
+        OneResourceText += transitionText;
+    })
     return OneResourceText;
 }
-function writeAttributesSection(attributes){
+function writeAttributesSection(attributes) {
     return "\n";
 }
-function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
+function writeTransitionSection(oneTransition, isOneTransition, href, resourceUrl) {
     let transitionTitle = oneTransition.title;
     let transitionTextSection = "";
 
@@ -179,9 +179,9 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
     let requestMessageBodySchema = "";
     let requestMessageBodySchemaContent = "";
     oneTransition.httpRequest.sections.forEach((value) => {
-        if (value.type === "dataStructure"){
+        if (value.type === "dataStructure") {
             value.members.forEach((data) => {
-                let keyString = data.key ;
+                let keyString = data.key;
                 let value;
                 if (data.valueType === "array") {
                     value = "[";
@@ -189,7 +189,7 @@ function writeTransitionSection(oneTransition,isOneTransition,href,resourceUrl){
                         value += element.content + ", ";
                     })
                     value += "]";
-                } else if(data.valueType === "enum") {
+                } else if (data.valueType === "enum") {
                     value = '\n<span className="enum-container">\n';
                     data.enumaration.forEach((element) => {
                         let elementMarkdown = `<span>
@@ -223,16 +223,16 @@ Value: ${value}
 <p style="direction:rtl;font-weight:300;">\n<img src="./images/vector.svg" alt="vector">  ${data.description}</p>\n<br><br>\n`;
             })
         }
-        else if (value.type === "messageBody"){
+        else if (value.type === "messageBody") {
             requestMessageBody += "contentType: " + value.contentType;
-            try{
+            try {
                 requestMessageBodyContent = JSON.parse(value.content);
             }
-            catch (e){
+            catch (e) {
                 requestMessageBodyContent = value.content;
             }
         }
-        else if (value.type === "messageBodySchema"){
+        else if (value.type === "messageBodySchema") {
             requestMessageBodySchema += "contentType: " + value.contentType;
             requestMessageBodySchemaContent = JSON.parse(value.content);
         }
@@ -242,93 +242,93 @@ Value: ${value}
     let responseInsideTable = "";
     oneTransition.httpResponse.headerAttributes.forEach((value) => {
         responseFirstLineTable += value.key + " | ";
-        for (let i = 0 ; i<value.key.length;i++){
+        for (let i = 0; i < value.key.length; i++) {
             responseDashLine += "-"
         }
         responseDashLine += " | ";
         responseInsideTable += value.value + " | ";
     })
-    responseFirstLineTable = responseFirstLineTable.substring(0,responseFirstLineTable.length-3);
-    responseDashLine = responseDashLine.substring(0,responseDashLine.length-3);
-    responseInsideTable = responseInsideTable.substring(0,responseInsideTable.length-3);
+    responseFirstLineTable = responseFirstLineTable.substring(0, responseFirstLineTable.length - 3);
+    responseDashLine = responseDashLine.substring(0, responseDashLine.length - 3);
+    responseInsideTable = responseInsideTable.substring(0, responseInsideTable.length - 3);
 
     let responseMessageBody = "";
     let responseMessageBodyContent = "";
     oneTransition.httpResponse.sections.forEach((value) => {
-        if (value.type === "messageBody"){
+        if (value.type === "messageBody") {
             responseMessageBody += "contentType: " + value.contentType;
             responseMessageBodyContent = value.content;
         }
 
     })
-    requestMessageBodyContent = JSON.stringify(requestMessageBodyContent,null,4);
+    requestMessageBodyContent = JSON.stringify(requestMessageBodyContent, null, 4);
 
-    let curlText = createCurlText(httpMethod,oneTransition.httpRequest.headerAttributes,requestMessageBodyContent,resourceUrl);
-    let pythonText = createPythonText(requestMessageBodyContent,oneTransition.httpRequest.headerAttributes,resourceUrl);
+    let curlText = createCurlText(httpMethod, oneTransition.httpRequest.headerAttributes, requestMessageBodyContent, resourceUrl);
+    let pythonText = createPythonText(httpMethod, requestMessageBodyContent, oneTransition.httpRequest.headerAttributes, resourceUrl);
     // let javaText = createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
     // let phpText = createPhpText(resourceUrl,requestMessageBodyContent,oneTransition.httpRequest.headerAttributes);
     // let csharpText = createCsharpText(resourceUrl,oneTransition.httpRequest.headerAttributes,httpMethod,requestMessageBodyContent);
 
     let RawText = "```plaintext\n";
-    if(oneTransition.httpRequest.headerAttributes.length !== 0 && 
+    if (oneTransition.httpRequest.headerAttributes.length !== 0 &&
         oneTransition.httpRequest.headerAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
-            RawText += websocketCode + "\n";  
+        RawText += websocketCode + "\n";
     } else {
         RawText += requestMessageBodyContent + "\n";
     }
     RawText += "```\n\n";
-    
+
     let jsonText = "";
 
-    if(responseMessageBodyContent !== "") {
+    if (responseMessageBodyContent !== "") {
         jsonText += "```json\n";
         jsonText += responseMessageBodyContent + "\n";
         jsonText += "```\n\n";
     }
 
-        transitionTextSection += "## " + transitionTitle + "\n\n";
-        transitionTextSection += "> Request\n\n";
-        transitionTextSection += RawText;
-        transitionTextSection += curlText;
-        transitionTextSection += pythonText;
-        // transitionTextSection += javaText;
-        // transitionTextSection += phpText;
-        // transitionTextSection += csharpText;
-        transitionTextSection += "> Response " + "\n\n";
-        if (oneTransition.httpResponse.headerAttributes.length === 1){
-            transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
-        }
-        transitionTextSection += jsonText;
-        oneTransition.copies.forEach((value) => {
-            transitionTextSection += value + "\n\n";
-        })
-        transitionTextSection += '<dl style="background-color:transparent;"><code>' + httpMethod + " " + href + "</code></dl>\n\n";
-        if (dataStructure !== ""){
-            transitionTextSection += dataStructure;
-        }
-        return transitionTextSection;
+    transitionTextSection += "## " + transitionTitle + "\n\n";
+    transitionTextSection += "> Request\n\n";
+    transitionTextSection += RawText;
+    transitionTextSection += curlText;
+    transitionTextSection += pythonText;
+    // transitionTextSection += javaText;
+    // transitionTextSection += phpText;
+    // transitionTextSection += csharpText;
+    transitionTextSection += "> Response " + "\n\n";
+    if (oneTransition.httpResponse.headerAttributes.length === 1) {
+        transitionTextSection += "> " + oneTransition.httpResponse.headerAttributes[0].key + ": " + oneTransition.httpResponse.headerAttributes[0].value + "\n\n";
+    }
+    transitionTextSection += jsonText;
+    oneTransition.copies.forEach((value) => {
+        transitionTextSection += value + "\n\n";
+    })
+    transitionTextSection += '<dl style="background-color:transparent;"><code>' + httpMethod + " " + href + "</code></dl>\n\n";
+    if (dataStructure !== "") {
+        transitionTextSection += dataStructure;
+    }
+    return transitionTextSection;
 }
-function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyContent,resourceUrl){
+function createCurlText(httpMethod, requestHeaderAttributes, requestMessageBodyContent, resourceUrl) {
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
-      if(apiTitleGlobal === "الفبا") {
-        return  `\`\`\`shell\ncurl -X
+        if (apiTitleGlobal === "الفبا") {
+            return `\`\`\`shell\ncurl -X
         POST --header "Authorization: Token TOKEN_KEY"
         -F "document=@example.pdf"
         http://alefba.roshan-ai.ir/api/read_document\n\`\`\`\n\n`;
-    } else if(apiTitleGlobal === "حرف") {
-        return websocketHarfCurl;
-    }
+        } else if (apiTitleGlobal === "حرف") {
+            return websocketHarfCurl;
+        }
     }
 
-    if (requestHeaderAttributes.length !== 0 && 
+    if (requestHeaderAttributes.length !== 0 &&
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`shell\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let curlText = "```shell\n";
-    curlText += "curl  --request " + httpMethod +  " \\ \n";
+    curlText += "curl  --request " + httpMethod + " \\ \n";
     curlText += "     ";
-    for (let i = 0 ; i<requestHeaderAttributes.length;i++){
+    for (let i = 0; i < requestHeaderAttributes.length; i++) {
         curlText += " --header \"" + requestHeaderAttributes[i].key + ": " + requestHeaderAttributes[i].value + "\"";
     }
     curlText += " \\\n"
@@ -337,50 +337,50 @@ function createCurlText(httpMethod,requestHeaderAttributes,requestMessageBodyCon
     curlText += "```\n\n";
     return curlText;
 }
-function createPythonText(requestMessageBodyContent,requestHeaderAttributes,resourceUrl){
+function createPythonText(httpMethod, requestMessageBodyContent, requestHeaderAttributes, resourceUrl) {
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
-        
-        if(apiTitleGlobal === "الفبا") {
+
+        if (apiTitleGlobal === "الفبا") {
             return `\`\`\`python\nimport requests
 
 headers = {'Authorization': 'Token TOKEN_KEY',}
 files = {'document': ('FILE NAME', open('YOUR FILE PATH', 'rb')),}
 response = requests.post('https://alefba.roshan-ai.ir/api/read_document/', headers=headers, files=files)
 print(response)\n\`\`\`\n\n`;
-        } else if(apiTitleGlobal === "حرف") {
+        } else if (apiTitleGlobal === "حرف") {
             return `\`\`\`python\n${uploadCode}\n\`\`\`\n\n`;
         }
     }
 
-    if (requestHeaderAttributes.length !== 0 && 
+    if (requestHeaderAttributes.length !== 0 &&
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`python\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let pythonText = "```python\n";
     pythonText +=
-    "import requests\n"+
-    "\n" +
-    "values = ";
+        "import requests\n" +
+        "\n" +
+        "values = ";
     pythonText += requestMessageBodyContent.replace(/:\s*true/g, ": True").replace(/:\s*false/g, ": False") + "\n" +
-    "\n" +
-    "headers = {\n";
+        "\n" +
+        "headers = {\n";
     pythonText += "  ";
-    for (let i = 0 ; i<requestHeaderAttributes.length;i++){
+    for (let i = 0; i < requestHeaderAttributes.length; i++) {
         if (requestHeaderAttributes[i].key === "Content-Type" && requestHeaderAttributes[i].value === "application/json") {
             continue; // Skip adding 'Content-Type': 'application/json' to headers
         }
         pythonText += "\'" + requestHeaderAttributes[i].key + "\'" + ": " + "\'" + requestHeaderAttributes[i].value + "\'" + ",";
     }
     pythonText += "\n" +
-    "}\n" +
-    "response = requests.post('" + resourceUrl + "', data=values, headers=headers)\n" +
-    "\n" +
-    "print(response.json())\n" +
-    "```\n\n";
+        "}\n" +
+        "response = requests." + httpMethod.toLowerCase() +"('" + resourceUrl + "', data=values, headers=headers)\n" +
+        "\n" +
+        "print(response.json())\n" +
+        "```\n\n";
     return pythonText;
 }
-function createJavaText(resourceUrl,httpMethod,requestMessageBodyContent,requestHeaderAttributes){
+function createJavaText(resourceUrl, httpMethod, requestMessageBodyContent, requestHeaderAttributes) {
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
         return `\`\`\`java\nimport java.io.*;
 import java.net.*;
@@ -426,7 +426,7 @@ public class MultiPartRequest {
 }\n\`\`\`\n\n`;
     }
 
-    if (requestHeaderAttributes.length !== 0 && 
+    if (requestHeaderAttributes.length !== 0 &&
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`java\n${websocketCode}\n\`\`\`\n\n`;
     }
@@ -445,7 +445,7 @@ public class MultiPartRequest {
         "\n" +
         "    public static void main(String[] args){\n" +
         "        try{\n" +
-        "            URL url = new URL(\"" + resourceUrl +"\");\n" +
+        "            URL url = new URL(\"" + resourceUrl + "\");\n" +
         "            URLConnection con = url.openConnection();\n" +
         "            HttpURLConnection http = (HttpURLConnection)con;\n" +
         "            http.setRequestMethod(\"" + httpMethod + "\");\n" +
@@ -455,7 +455,7 @@ public class MultiPartRequest {
         "            int length = out.length;\n" +
         "\n" +
         "            http.setFixedLengthStreamingMode(length);\n";
-    for (let i = 0 ; i<requestHeaderAttributes.length;i++){
+    for (let i = 0; i < requestHeaderAttributes.length; i++) {
         javaText += "            http.setRequestProperty(\"" + requestHeaderAttributes[i].key + "\"" + ", " + "\"" + requestHeaderAttributes[i].value + "\"" + ");\n";
     }
     javaText +=
@@ -478,7 +478,7 @@ public class MultiPartRequest {
     javaText += "```\n\n";
     return javaText;
 }
-function createPhpText(resourceUrl,requestMessageBodyContent,requestHeaderAttributes){
+function createPhpText(resourceUrl, requestMessageBodyContent, requestHeaderAttributes) {
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
         return `\`\`\`php\n$fields = array("f1"=>"value1", "another_field2"=>"anothervalue");
 
@@ -547,47 +547,47 @@ function build_data_files($boundary, $fields, $files){
 }\n\`\`\`\n\n`;
     }
 
-    if (requestHeaderAttributes.length !== 0 && 
+    if (requestHeaderAttributes.length !== 0 &&
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`php\n${websocketCode}\n\`\`\`\n\n`;
     }
 
     let phpText = "```php\n";
     phpText += "<?php\n" +
-    "\n" +
-    "  $url = \"" + resourceUrl +"\";\n" +
-    "  $content = json_encode(\n" +
-    "      '" + requestMessageBodyContent + "');\n" +
-    "  $curl = curl_init($url);\n" +
-    "  curl_setopt($curl, CURLOPT_HEADER, false);\n" +
-    "  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n" +
-    "  curl_setopt($curl, CURLOPT_HTTPHEADER,\n" +
-    "          array(\n";
-    for (let i = 0 ; i<requestHeaderAttributes.length;i++){
+        "\n" +
+        "  $url = \"" + resourceUrl + "\";\n" +
+        "  $content = json_encode(\n" +
+        "      '" + requestMessageBodyContent + "');\n" +
+        "  $curl = curl_init($url);\n" +
+        "  curl_setopt($curl, CURLOPT_HEADER, false);\n" +
+        "  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\n" +
+        "  curl_setopt($curl, CURLOPT_HTTPHEADER,\n" +
+        "          array(\n";
+    for (let i = 0; i < requestHeaderAttributes.length; i++) {
         phpText += "              \"" + requestHeaderAttributes[i].key + ": " + requestHeaderAttributes[i].value + "\"" + ",\n";
     }
     phpText +=
-    "              );\n" +
-    "  curl_setopt($curl, CURLOPT_POST, true);\n" +
-    "  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);\n" +
-    "\n" +
-    "  $json_response = curl_exec($curl);\n" +
-    "\n" +
-    "  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);\n" +
-    "\n" +
-    "  if ( $status != 200 ) {\n" +
-    "      die(\"Error: call to URL $url failed with status $status, response $json_response, curl_error \" . curl_error($curl) . \", curl_errno \" . curl_errno($curl));\n" +
-    "  }\n" +
-    "\n" +
-    "\n" +
-    "  curl_close($curl);\n" +
-    "\n" +
-    "  $response = json_decode($json_response, true);\n" +
-    "?>\n";
+        "              );\n" +
+        "  curl_setopt($curl, CURLOPT_POST, true);\n" +
+        "  curl_setopt($curl, CURLOPT_POSTFIELDS, $content);\n" +
+        "\n" +
+        "  $json_response = curl_exec($curl);\n" +
+        "\n" +
+        "  $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);\n" +
+        "\n" +
+        "  if ( $status != 200 ) {\n" +
+        "      die(\"Error: call to URL $url failed with status $status, response $json_response, curl_error \" . curl_error($curl) . \", curl_errno \" . curl_errno($curl));\n" +
+        "  }\n" +
+        "\n" +
+        "\n" +
+        "  curl_close($curl);\n" +
+        "\n" +
+        "  $response = json_decode($json_response, true);\n" +
+        "?>\n";
     phpText += "```\n\n";
     return phpText;
 }
-function createCsharpText(resourceUrl,requestHeaderAttributes,httpMethod,requestMessageBodyContent){
+function createCsharpText(resourceUrl, requestHeaderAttributes, httpMethod, requestMessageBodyContent) {
     if (requestHeaderAttributes.length !== 0 && requestHeaderAttributes[0].value === "multipart/form-data; boundary={boundary value}") {
         return `\`\`\`csharp\nusing System;
 using System.IO;
@@ -637,7 +637,7 @@ namespace MyRequest
 }\n\`\`\`\n\n`;
     }
 
-    if (requestHeaderAttributes.length !== 0 && 
+    if (requestHeaderAttributes.length !== 0 &&
         requestHeaderAttributes[0].value === "ws_api/transcribe_files/wav/sync/") {
         return `\`\`\`csharp\n${websocketCode}\n\`\`\`\n\n`;
     }
@@ -655,7 +655,7 @@ namespace MyRequest
         "        static void Main(string[] args)\n" +
         "        {\n" +
         "            var httpWebRequest = (HttpWebRequest)WebRequest.Create(\"" + resourceUrl + "\");\n";
-    for (let i = 0 ; i<requestHeaderAttributes.length;i++){
+    for (let i = 0; i < requestHeaderAttributes.length; i++) {
         csharpText += "            httpWebRequest.Headers[\"" + requestHeaderAttributes[i].key + "\"]= \"" + requestHeaderAttributes[i].value + "\"" + ";\n";
     }
     csharpText +=
