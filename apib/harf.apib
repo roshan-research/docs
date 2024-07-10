@@ -378,3 +378,193 @@ HOST: https://harf.roshan-ai.ir
 + Request (ws_api/transcribe_files/wav/sync/)
 + Response 200 (application/json)
     {"state":"PENDING"}
+
+## تأیید هویت گوینده [/api/speaker_tasks/verification/]
+هویت گوینده صدا را ارزیابی می‌کند. یک فایل صوتی و تعدادی نمونه‌صدا از یک شخص را دریافت می‌کند و بعد بررسی می‌کد که آیا گوینده فایل صوتی همان گوینده نمونه‌صداهاست یا نه. میزان شباهت را هم با عددی بین ۰ و ۱ مشخص می‌کند.
+
+### مثال [POST]
++ Request (application/json)
+    + Headers
+        Authorization: Token TOKEN_KEY
+    + Attributes
+        - media_url: URL (string, required) - فایل صوتی‌ای که در آن یک شخص صحبت می‌کند. 
+        - target_urls: URL (array[string], required) - نمونه‌صداهای یک شخص.
+    + Body
+        {
+            "media_url": "https://api.ganjoor.net/api/audio/file/2121.mp3", 
+            "target_urls": ["https://api.ganjoor.net/api/audio/file/2191.mp3","https://api.ganjoor.net/api/audio/file/2122.mp3"]
+        }
++ Response 200 (application/json)
+    
+    [
+        {
+            "result": "Verified",
+            "similarity": 0.9412897527217865
+        }
+    ]
+
+## شناسایی هویت گوینده [/api/speaker_tasks/identification/]
+هویت گوینده را شناسایی می‌کند. یک فایل صوتی و تعدادی نمونه‌صدا از اشخاص مختلف می‌گیرد و بعد تعیین می‌کند کدام شخص، محتمل‌ترین گوینده فایل صوتی است. میزان شباهت را هم با عددی بین ۰ و ۱ مشخص می‌کند.
+
+### مثال [POST]
++ Request (application/json)
+    + Headers
+        Authorization: Token TOKEN_KEY
+    + Attributes
+        - media_url: URL (string, required) - فایل صوتی‌ای که در آن یک شخص صحبت می‌کند. 
+        - target_urls: Object (required) - نمونه‌صداهایی از اشخاص مختلف.
+    + Body
+        {
+            "media_url": "https://i.ganjoor.net/a2/41417.mp3", 
+            "target_urls": 
+            {
+                "spk1_name": ["https://api.ganjoor.net/api/audio/file/2191.mp3","https://api.ganjoor.net/api/audio/file/2122.mp3"], 
+                "spk2_name": ["https://api.ganjoor.net/api/audio/file/18992.mp3"]
+            }
+        }
++ Response 200 (application/json)
+    
+    [
+        {
+            "result": "Identified",
+            "most_similar_speaker": "spk1_name",
+            "similarity": 0.67
+        }
+    ]
+
+## تفکیک گوینده‌ها [/api/speaker_tasks/diarization/]
+وینده‌های مختلف را در یک فایل صوتی تفکیک می‌کند. لیستی از فایل‌های صوتی را دریافت می‌کند. در هر فایل صوتی، افراد مختلفی صحبت می‌کنند. برای هر فایل صوتی، گوینده‌های مختلف را با تعیین زمان شروع، پایان و متن صحبت‌هایشان برمی‌گرداند. هویت گوینده‌ها مشخص نیست و صرفاً جهت بازشناختشان از هم با اسامی کلی مانند `speaker_1` و `speaker_2` نشانه‌گذاری می‌شوند.
+
+### مثال [POST]
++ Request (application/json)
+    + Headers
+        Authorization: Token TOKEN_KEY
+    + Attributes
+        - media_urls: URL (array[string], required) - فایل‌های صوتی. 
+    + Body
+        {
+            "media_urls": ["http://harf-dev.roshan-ai.ir/media/files/tmp/football360/football-360-eIMx3-10min.mp3"]
+        }
++ Response 200 (application/json)
+    
+    [
+        {
+            "media_url": "http://harf-dev.roshan-ai.ir/media/files/tmp/football360/football-360-eIMx3-10min.wav",
+            "segments": [
+                {
+                    "start": 0.0,
+                    "end": 36.77,
+                    "speaker": "speaker_3",
+                    "text": "سلام علیکم، میرنگان عزیز فوتبال با سیصد و شصت همراهی همیشگی ما، خیلی خوشحالم که در خدمتتون هستیم، بعد از قهرمانی دوگانه پرسپولیس در لیگ و جام حذفی، فرصت ها و تاثیرگذار این فصل پرسپولیس، مهمان ما هستیم، باشون گپ و گفتی قرار بگیرم که، انشاءالله، به شما متوجه شده بودم، در این حد فاصله چند ساله، پرسپولیس رو دیده بودم."
+                },
+                {
+                    "start": 37.4,
+                    "end": 38.27,
+                    "speaker": "speaker_3",
+                    "text": "دیروز دیروز"
+                },
+                {
+                    "start": 38.27,
+                    "end": 39.52,
+                    "speaker": "speaker_1",
+                    "text": "این ارتباط بود که"
+                },
+                {
+                    "start": 39.52,
+                    "end": 46.85,
+                    "speaker": "speaker_3",
+                    "text": "آره، نه، ندیده بودیم دیگه، خیلی خوش اومدی از سنین از این باید شروع کنی؟"
+                },
+                {
+                    "start": 48.12,
+                    "end": 49.74,
+                    "speaker": "speaker_0",
+                    "text": "از من شروع کنین"
+                },
+                ...
+            ]
+        }
+    ]
+
+## برچسب‌گذاری گوینده‌ها [/api/speaker_tasks/indexing/]
+گوینده‌های مختلف را در یک فایل صوتی، برچسب‌گذاری می‌کند. یک فایل صوتی را که در آن افراد مختلفی صحبت می‌کنند و نمونه‌صداهایی از اشخاص مختلف را می‌گیرد و بعد در خروجی مشخص می‌کند که هر قطعه‌ای از فایل صوتی که در آن یک نفر صحبت کرده، با احتمال قوی مربوط به کدام یک از اشخاصی است که نمونه‌صداهایش را داده‌ایم. برای هر قطعه‌ای از فایل صوتی که گوینده آن تشخیص داده شده، زمان شروع، زمان پایان، شخصی که به احتمال زیاد گوینده آن قطعه است و میزان شباهت و متن صحبت او برگردانده می‌شود.
+
+### مثال [POST]
++ Request (application/json)
+    + Headers
+        Authorization: Token TOKEN_KEY
+    + Attributes
+        - media_url: URL (string, required) - فایل صوتی‌ای که در آن افراد مختلفی صحبت می‌کنند.
+        - target_urls: Object (required) - نمونه‌صداهایی از اشخاص مختلف. 
+    + Body
+        {
+            "media_url": "http://harf-dev.roshan-ai.ir/media/files/tmp/football360/football-360-eIMx3-10min.mp3", 
+            "target_urls": 
+            {
+                "فردوسی‌پور": ["http://harf-dev.roshan-ai.ir/media/files/tmp/football360/ferdosipour-1r2pk.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/ferdosipour-E8B9f.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/ferdosipour-i7OLw.mp3"], 
+                "بیرانوند": ["http://harf-dev.roshan-ai.ir/media/files/tmp/football360/beiranvand-HbdG1.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/beiranvand-U3Ejw.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/beiranvand-mkNGM.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/beiranvand-yStaX.mp3"], 
+                "پورعلی‌گنجی": ["http://harf-dev.roshan-ai.ir/media/files/tmp/football360/pouraliganji-6Te95.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/pouraliganji-IvwsB.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/pouraliganji-footballi.mp3"], 
+                "رفیعی": ["http://harf-dev.roshan-ai.ir/media/files/tmp/football360/rafiei-1gIzL.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/rafiei-PEHxk.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/rafiei-SzY9s.mp3","http://harf-dev.roshan-ai.ir/media/files/tmp/football360/rafiei-g7l1c.mp3"]
+            }
+        }
++ Response 200 (application/json)
+    
+    [
+        {
+            "start": 0.12,
+            "end": 12.87,
+            "result": "Identified",
+            "most_similar_speaker": "فردوسی‌پور",
+            "similarity": 0.86,
+            "text": "سلام علیکم، بینندگان بازی فوتبال سیصد و شصت همراهان همیشگی ما، خیلی خوشحالم که در خدمتتون هستیم، بعد از قهرمانی دوگانه پرسپولیس در لیگ و جام حذفی فرصت و قناعت شمردیم سه تا از"
+        },
+        {
+            "start": 13.38,
+            "end": 35.31,
+            "result": "Identified",
+            "most_similar_speaker": "فردوسی‌پور",
+            "similarity": 0.89,
+            "text": "بازیگر کلیدی و تاثیرگذار این فصل پرسپولیس مهمان ما هستیم باشون گپ و گفتی خواهیم داشت که انشاالله به توجهتون قرار بگیرم از راست شروع کنم سوروش رفیع عزیز، علیزا بیران و مرثا پور علی کنجی که دارم براتون تنگ شده بود، مرثا رو یه بار دیده بودم تو این حد فاصله چند ساله سوروش ندیده بودم اصلا."
+        },
+        {
+            "start": 35.55,
+            "end": 36.81,
+            "result": "Identified",
+            "most_similar_speaker": "فردوسی‌پور",
+            "similarity": 0.75,
+            "text": "خیلی گرم است."
+        },
+        {
+            "start": 37.89,
+            "end": 45.87,
+            "result": "Identified",
+            "most_similar_speaker": "فردوسی‌پور",
+            "similarity": 0.87,
+            "text": "در ارتباط بودی؟ آره، نه، ندیده بودی دیگه، خیلی خوش اومدی از سنی از این مسابقه شروع کنی؟"
+        },
+        {
+            "start": 46.53,
+            "end": 48.45,
+            "result": "unknown",
+            "most_similar_speaker": "بیرانوند",
+            "similarity": 0.51,
+            "text": "هی"
+        },
+        {
+            "start": 48.45,
+            "end": 56.22,
+            "result": "Identified",
+            "most_similar_speaker": "رفیعی",
+            "similarity": 0.81,
+            "text": "از من شروع کن، درود، عرض ادب، خدمت شما، همه ی دوستان و"
+        },
+        {
+            "start": 56.64,
+            "end": 61.62,
+            "result": "Identified",
+            "most_similar_speaker": "رفیعی",
+            "similarity": 0.8,
+            "text": "بینندگان محترم برنامه تون، خیلی خوشحالم که بعد از مدتها دوباره می بینمتون"
+        },
+        ...
+    ]
