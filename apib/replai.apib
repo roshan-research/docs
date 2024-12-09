@@ -1,149 +1,342 @@
-
 FORMAT: 1A
-HOST: https://replai.roshan-ai.ir
+HOST: https://chat.replai.ir/api
 
-# ریپلای
-ریپلای یک دستیار گفتگوی هوشمند است. این ابزار در نقش یک نیروی پشتیبانِ همیشه آنلاین، پیام‌های ارسالی کاربران را در هر ساعت از شبانه‌روز می‌گیرد و بعد از درک مفهوم پیام، از میان پاسخ‌های از پیش آماده شده، پاسخ مناسبی را برای کاربر ارسال یا تولید می‌کند. در محیط دموی این پروژه کاربر می‌تواند فضای تست اختصاصی خود را داشته باشد، اطلاعات آن را شخصی‌سازی کند و این فضا را از طریق واسط گرافیکی یا API ارزیابی کند.
-برای ارزیابی فضا در محیط کاربری گرافیکی بایستی نام کاربری و گذرواژه و برای ارزیابی از طریق API بایستی کلید اتصال به آن را از تیم فروشِ روشن دریافت کنید.
+# Repli
+Repli is an intelligent conversational assistant. It acts as an always-online support agent, receiving users' messages at any time and, after understanding the message, either selects an appropriate pre-prepared response or generates one for the user. In the demo environment of this project, users can have their dedicated testing space, customize its information, and evaluate it via a graphical interface or API. 
+To evaluate the space in the graphical user interface, you must obtain a username and password. For evaluation via API, you need to acquire a connection key from the Roshan sales team.
 
-## آشنایی با اصطلاحات
-برای کار با ریپلای ابتدا لازم است با اصطلاحات مرتبط با این ابزار آشنا شوید. در این بخش، این اصطلاحات معرفی شده است.
+::: note
+## Extensions
+**نام کاربری** و **گذرواژه** را از تیم فروش دریافت کنید.
+:::
 
-### فضای کار (Workspace)
+# Group احراز هویت
 
-فضاهای کار، محیط تست نسخه‌های مختلف ابزار ما هستند که به شیوه‌های مختلفی توسعه پیدا کرده‌اند یا داده‌های مختلفی برای پاسخگویی به پرسش‌ها در نظر می‌گیرند. در محیط کاربری گرافیکی به شما دسترسی یک یا چند فضای کار داده شده که قابل مشاهده و تغییر است و در API از طریق واسط مخصوص می‌توانید اطلاعات فضاهای کاری که دسترسی دارید را دریافت کنید.
+## ورود [/token-auth]
 
-### گفتگو (Chat)
+### دریافت توکن [POST]
 
-در هر فضای کاری می‌توانید گفتگوهای مختلفی را شروع کنید و یا هر زمان که بخواهید گفتگوهای قبلی را ادامه دهید. پیام‌های یک گفتگو این امکان را دارند که با هم ارتباط معنایی داشته باشند که این تابع ویژگی‌های فضای کار است و ممکن است در بعضی فضاهای کار این قابلیت وجود نداشته باشد.
+::: note
+برای استفاده از ای‌پی‌آی ریپلای ابتدا باید `توکن دسترسی` دریافت کنید. این توکن را باید در هیدر تمام درخواست‌های خود وارد کنید.
+:::
 
-### پیام (Message)
+::: warning
+#### <i class="fa fa-warning"></i> اخطار
+`نام کاربری`، `گذرواژه` و `توکن دسترسی` را تنها در اختیار افراد مجاز قرار دهید!
+:::
 
-پیام‌ها، متن‌های ارسالی از سوی کاربر هستند که ریپلای برای هر کدام از آن‌ها یک پاسخ تولید می‌کند. پاسخ به یک پیام، جزو مشخصات همان پیام است و برای ذخیرهٔ پاسخ، یک پیام جدید تولید نمی‌شود.
+### روش استفاده از توکن
 
-## فهرست فضاهای کار موجود [/api/workspaces/]
-فهرست فضاهای کاری منتصب به کاربر جاری را برمی‌گرداند..در پاسخ برگشتی، `id` بیانگر شناسهٔ فضای کاری است، `title` عنوان فضای کاری، `version` نسخه فضای کاری، `texts` نمونه پیام‌های ارسالی برای گفتگو و `icon` تصویر پروفایل فضای کاری است.
+روش ارسال توکن در هیدر درخواست‌ها به صورت زیر است:
 
-### مثال [GET]
+```no-highlight
+Authorization: Token {token}
+```
+
+برای مثال اگر توکن دریافتی `abc123XYZ456sampleToken789` باشد، هیدر درخواست شما باید به صورت زیر باشد:
+
+```no-highlight
+Authorization: Token abc123XYZ456sampleToken789
+```
+
 + Request (application/json)
-    + Headers       
-        Authorization: Token TOKEN_KEY
-+ Response 200 (application/json)
-            [
-                {
-                    "id": 22,
-                    "title": "p24_api",
-                    "version": "1.0.0",
-                    "texts": [
-                        ""
-                    ],
-                    "icon": null
-                }
-            ]
 
-## فهرست گفتگوهای فضای کار [/api/{workspaces_id}/chats/]
-فهرست گفتگوهای یک فضای کاری مشخص را برمی‌گرداند..در پاسخ برگشتی، `date`بیانگر تاریخ شروع گفتگو است، `chats` لیست گفتگوها در این تاریخ، `id` شناسه گفتگو و `title` عنوان گفتگو است. مقدار فیلد title به صورت خودکار توسط سامانه تولید می‌شود.
+    + Attributes
+
+        + username: ali (string, required) - نام کاربری
+        + password: 14524785 (string, required) - گذرواژه
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + token: abc123XYZ456sampleToken789 (string)
+        + first_name: علی (string) - نام
+        + last_name: صادقی (string) - نام خانوادگی
+
++ Response 401 (application/json)
+
+    + Attributes
+
+        + detail: Authentication credentials were not provided. (string)
+
+# Group فضاهای کاری
+
+فضاهای کاری، محیط‌های تستی برای نسخه‌های مختلف ابزار ما هستند که بر اساس رویکردهای مختلف توسعه یافته‌اند یا داده‌های متنوعی را برای پاسخگویی به پرسش‌ها فراهم می‌کنند. در نرم‌افزار تحت‌وبی که در اختیار شما قرار گرفته، شما به یک یا چند فضای کاری دسترسی دارید و هر زمان می‌توانید بین آن‌ها سوئیچ کنید. همچنین از طریق ای‌پی‌آی، امکان مشاهدهٔ اطلاعات فضاهای کاری وجود دارد.
+
+هر فضای کاری دارای این مشخصه‌ها است:
++ id: شناسه فضای کاری
++ title: عنوان فضای کاری
++ version: نسخه فضای کاری. یک فضای کاری ممکن است چند نسخه مختلف داشته باشد
++ image: آدرس تصویر آیکون فضای کاری
++ samples: نمونه پرسش‌های فضای کاری
+
+## فضاهای کاری [/workspaces]
+
+### لیست فضاهای کاری [GET]
+
++ Request (application/json)
+
+    + Headers
+        Authorization: Token abc123XYZ456sampleToken789
+
++ Response 200 (application/json)
+    + Attributes (Workspace)        
+
+
+# Group چت‌ها
+در صورتی که مشتری بخواهد از این سامانه برای پاسخگویی به کاربران خود استفاده کند می تواند از ایجاد رابطه بین چت های سامانه و کاربران خود بهره برداری کند.
+
+## چت‌های یک فضای کاری [/workspaces/{workspace_id}/chats]
 
 + Parameters
- 	+ workspaces_id: (required, number) - شناسهٔ فضای کاری‌ای که می‌خواهید فهرست گفتگوهای آن دریافت کنید.
 
-### مثال [GET]
-+ Request (application/json)
-    + Headers       
-        Authorization: Token TOKEN_KEY
+    + workspace_id: `1` (number) - شناسه فضای کاری مورد نظر
+
+### لیست همه چت‌ها [GET]
+
 + Response 200 (application/json)
-            [
+
+    + Attributes (array[Chat])
+
+### ساخت یک چت جدید [POST]
+
++ Request
+
+    + Body
+
+        {"text":"کدام بانک ها ارز اربعین می‌دهند؟"}
+
++ Response 200
+
+        {
+            "chat_id": 4153,
+            "reply": " با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید.",
+            "message_id": 29292,
+            "suggestions": [
+                "ارز اربعین چقدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+                "چقدر ارز اربعین می‌دهند؟"
+            ]
+        }
+
+### حذف تمام چت‌ها [DELETE]
+
++ Response 200
+
+# Group پیام
+
+## پیام‌های یک چت [/chats/{chat_id}/messages]
+
++ Parameters
+    + chat_id: 1 (number) - شناسه چت مورد نظر
+
+### لیست همه پیام‌ها [GET]
+
++ Response
+
+    + Attributes (array[Message])
+
+### ساخت یک پیام جدید [POST]
+
++ Request
+
+    + Body
+
+            {
+                text: "کدام بانک ها ارز اربعین می‌دهند؟"
+            }
+
++ Response 200
+
+    {
+        "message_id": 29293,
+        "reply": " با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید.",
+        "suggestions": [
+            "ارز اربعین چقدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+            "چقدر ارز اربعین می‌دهند؟"
+        ]
+    }
+
+# Group بازخورد
+
+## بازخورد یک پیام [/chats/messages/{message_id}/{feedback}]
+
++ Parameters
+
+    + message_id: `1` (number) - شناسه پیام
+    + feedback: `like` (enum[string])
+        بازخورد
+
+        + Members
+            + `like`
+            + `dislike`
+
+### افزودن بازخورد [PUT]
+
++ Response 200
+
+    + Body
+
+        {
+            like: true
+        }
+
+### حذف بازخورد [PUT]
+
++ Response 200
+
+
+# Group پایگاه دانش
+
+## سوالات پایگاه دانش یک فضای کاری [/knowledge/{workspace_id}/questions{?page,search,order,rate,suggest}]
+
++ Parameters
+
+    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+
+### لیست همه سوالات [GET]
+
++ Parameters
+
+    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+    + page: `1` (number, optional) - شماره صفحه مورد نظر. Default is `1`.
+    + search: `""` (string, optional) - متن مورد جستجو. Default is an empty string.
+    + order: `-id` (string, optional) - ترتیب چینش سوالات. Default is `-id`.
+    + rate: `true` (boolean, optional) - فیلتر سوالات کلیدی.
+    + suggest: `true` (boolean, optional) - فیلتر سوالات اصلاح شده.
+
++ Response 200
+
+
+        {
+            "count": 3009,
+            "next": "http://chat.replai.ir/api/knowledge/41/messages/?order=-id&page=2&search=",
+            "previous": null,
+            "results": [
                 {
-                    "date": "2024-01-15",
-                    "chats": [
-                        {
-                            "id": 1557,
-                            "title": "آیا گرفتن نوبت در سا"
-                        }
+                    "id": 12607,
+                    "question": "امنیت کشور عراق موقع پیاده‌روی اربعین چگونه است؟",
+                    "answer": "امنیت کشور عراق در طول پیاده‌روی اربعین به طور کلی مناسب است. تدابیر امنیتی ویژه‌ای برای حفاظت از زائران در نظر گرفته شده و نیروهای امنیتی و امدادی در طول مسیر حضور دارند تا امنیت و رفاه زائران را تضمین کنند. احتمال حمله تروریستی در این ایام بسیار کم است.",
+                    "rated": false,
+                    "suggested": false,
+                    "citation": 0,
+                    "references": [
+                        "امنیت کشور عراق موقع پیاده روی چکونه است"
                     ]
                 },
                 {
-                    "date": "2024-01-14",
-                    "chats": [
-                        {
-                            "id": 1553,
-                            "title": "گرفتن نوبت در سامانه"
-                        }
+                    "id": 12606,
+                    "question": "موقع پیاده روی اربعین چه ساعتی بهتر است؟",
+                    "answer": "بهترین ساعت برای پیاده‌روی اربعین، غروب آفتاب تا نماز صبح است، زیرا در این ساعات خنکی بیشتری وجود دارد.",
+                    "rated": false,
+                    "suggested": false,
+                    "citation": 0,
+                    "references": [
+                        "موقع پیاده روی چه ساعتی بهتراست"
                     ]
-                }
+                },
             ]
+        }
 
-## ایجاد یک گفتگوی جدید [/api/{workspace_id}/chats/]
-یک گفتگوی جدید در یک فضای کاری مشخص ایجاد می‌کند. در پاسخ برگشتی، `chat_id`بیانگر شناسه گفتگو است، `text` متن پیام آغازین گفتگو، `reply` متن پاسخ به پیام آغازین گفتگو و `message_id` شناسهٔ پیام آغازین گفتگو است.
+### اضافه کردن سوال [POST]
 
 + Parameters
- 	+ workspaces_id: (required, number) - شناسهٔ فضای کاری‌ای که می‌خواهید یک گفتگوی جدید در آن ایجاد کنید.
 
-### مثال [POST]
-+ Request (application/json)
-    + Headers
-            Authorization: Token TOKEN_KEY    
-    + Attributes
- 	 	- text: (string, required) - متن پیام آغازین گفتگو.
+    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+
++ Request
+
     + Body
-            {
-                "text": "گرفتن نوبت در سامانه پذیرش24 برای من هزینه ای دارد؟"
-            }
-+ Response 200 (application/json)
-            {
-                "chat_id": 1559,
-                "reply": "سامانه پذیرش24 در قبال فرآیند نوبت هیچگونه هزینه ای دریافت نمی‌کند و اگر بعد از ثبت نوبت به درگاه پرداخت متصل شدید، این درگاه متعلق به پزشک و یا مرکز درمانی مربوطه می‌باشد و پذیرش24 هیچ دخل و تصرفی در این هزینه ها ندارد.\n",
-                "message_id": 4760
-            }
 
-## فهرست پیام‌های یک گفتگو [/api/chats/{chat_id}/messages/]
-فهرست پیام‌های موجود در یک گفتگوی مشخص را برمی‌گرداند. در پاسخ برگشتی، `id`بیانگر شناسه پیام است، `text` متن پیام، `reply` متن پاسخ به پیام، `like` نشان‌دهندهٔ پسنیدن پاسخ، `dislike` نشانگر نپسندیدن پاسخ و `created_at` زمان ایجاد پیام است.
+        {
+            "question":"سوال تستی",
+            "answer":"جواب تستی",
+            "workspace":41
+        }
+
++ Response 200 (application/json)
+
+    {
+        "id": 13306,
+        "question": "سوال تستی",
+        "answer": "جواب تستی",
+        "rated": false,
+        "suggested": false,
+        "citation": 0,
+        "references": []
+    }
+
+### اصطلاح سوال [PUT]
 
 + Parameters
- 	+ chat_id: (required, number) - شناسهٔ گفتگویی که می‌خواهید فهرست پیام‌های آن را دریافت کنید.
 
-### مثال [GET]
-+ Request (application/json)
-    + Headers
-            Authorization: Token TOKEN_KEY    
-+ Response 200 (application/json)
-        [
-            {
-                "id": 4702,
-                "text": "چه طور نوبت خود را کنسل کنم؟",
-                "reply": "شما از طریق قسمت “نوبت‌های من” هم از طریق اپلیکیشن و هم از طریق وبسایت میتونید نوبت ثبت شده خودتون رو لغو کنید.\n",
-                "like": 0,
-                "dislike": 0,
-                "created_at": "2024-01-14T15:11:45.496928Z"
-            },
-            {
-                "id": 4701,
-                "text": "گرفتن نوبت در سامانه پذیرش24 برای من هزینه ای دارد؟",
-                "reply": "سامانه پذیرش24 در قبال فرآیند نوبت هیچگونه هزینه ای دریافت نمی‌کند و اگر بعد از ثبت نوبت به درگاه پرداخت متصل شدید، این درگاه متعلق به پزشک و یا مرکز درمانی مربوطه می‌باشد و پذیرش24 هیچ دخل و تصرفی در این هزینه ها ندارد.\n",
-                "like": 0,
-                "dislike": 0,
-                "created_at": "2024-01-14T15:10:28.490395Z"
-            }
-        ]
+    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+    + question_id: `1` (number, required) - شناسه سوال
 
-## ایجاد یک پیام جدید [/api/{chat_id}/messages/]
-یک پیام جدید در یک گفتگوی مشخص ایجاد می‌کند. در پاسخ برگشتی، `text`بیانگر متن پیام جدید است، `message_id` شناسهٔ پیام جدید و `reply` متن پاسخ به این پیام است.
++ Request
 
-+ Parameters
- 	+ chat_id: (required, number) - شناسهٔ گفتگویی که می‌خواهید یک پیام جدید در آن ایجاد کنید.
-
-### مثال [POST]
-+ Request (application/json)
-    + Headers
-            Authorization: Token TOKEN_KEY    
-    + Attributes
- 	 	- text: (string, required) - متن پیام.
     + Body
-            {
-                "text": "چه طور نوبت خود را کنسل کنم؟"
-            }
+
+        {
+            "question":"ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+            "answer":"برای هر زائر اربعین ۲۰۰ هزار دینار عراق به عنوان ارز اربعین ۱۴۰۳ اختصاص یافته است. بر اساس ابلاغ بانک مرکزی، زائران اربعین می‌توانند با مراجعه به شعب منتخب ۷ بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه از تاریخ هفتم مرداد ۱۴۰۳ تا پایان روز سوم شهریور ۱۴۰۳، ارز مسافرتی اربعین را برای سفر به کربلا دریافت کنند. برای دریافت ارز اربعین، ثبت نام و دریافت کد رهگیری سامانه سماح ضروری است. این کد رهگیری برای ثبت نام در سامانه‌های اینترنتی بانک های مختلف مورد نیاز است. ",
+            "suggest":true
+        }
+
 + Response 200 (application/json)
-            {
-                "message_id": 4765,
-                "reply": "شما از طریق قسمت “نوبت‌های من” هم از طریق اپلیکیشن و هم از طریق وبسایت میتونید نوبت ثبت شده خودتون رو لغو کنید.\n"
-            }
+
+    {"detail":"ok"}
+
+    
+### حذف سوال [DELETE]
+
++ Parameters
+
+    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+    + question_id: `1` (number, required) - شناسه سوال
+
++ Response 200
+
+# Group وارد کردن سوال و جواب‌ها از طریق فایل
+
+## آپلود csv به یک فضای کاری [/workspaces/{workspace_id}/upload-qa-csv/]
+
++ Parameters
+
+    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+
+### آپلود فایل سوال و جواب‌ها [POST]
+
++ Request (text/csv)
+
++ Response 200
+
+
+# Data Structures
+
+## Workspace (object)
++ id: 8  (number) - شناسه فضای کاری
++ title: بیمه سامان (string) - عنوان فضای کاری
++ version: 0.0.0.1 (string) - نسخه فضای کاری
++ image: saman.png (string) - آدرس تصویر فضای کاری
++ samples (array[Sample])
+
+
+## Sample (object)
++ text: خرید بیمه تکمیلی بدون بیمه پایه امکان پذیر است؟ (string)
+
+## Chat (object)
++ date: `2024-09-14` (string) - تاریخ چت
++ chats (array[ChatDetail])
+
+## ChatDetail (object)
++ id: 3650 (number) - شناسه چت
++ title: چه کاری انجام میدهی  (string) - عنوان
+
+## Message (object)
++ id: 27073 (number) - شناسه پیام
++ content: لینک خرید ارز اربعین در روبیکا چیست؟ (string) - متن پیام
++ audio: null
++ message_answer: برای خرید ارز اربعین از طریق اپلیکیشن روبیکا، می‌توانید به لینک زیر مراجعه کنید:\n\nhttps://go.rubika.ir/arbaeen1 (string) - پاسخ پیام
++ like: null (string) - وضعیت پسندیده شدن پاسخ پیام
++ created: `2024-09-07T07:48:53.094209Z` (string) - تاریخ ایجاد پیام
