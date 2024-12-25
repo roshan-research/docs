@@ -41,7 +41,7 @@ HOST: https://replai.roshan-ai.ir
                 }
             ]
 
-## فهرست گفتگوهای فضای کار [/api/{workspaces_id}/chats/]
+## فهرست گفتگوهای فضای کار [/api/workspaces/{workspaces_id}/chats/]
 فهرست گفتگوهای یک فضای کاری مشخص را برمی‌گرداند..در پاسخ برگشتی، `date`بیانگر تاریخ شروع گفتگو است، `chats` لیست گفتگوها در این تاریخ، `id` شناسه گفتگو و `title` عنوان گفتگو است. مقدار فیلد title به صورت خودکار توسط سامانه تولید می‌شود.
 
 + Parameters
@@ -73,7 +73,7 @@ HOST: https://replai.roshan-ai.ir
                 }
             ]
 
-## ایجاد یک گفتگوی جدید [/api/{workspace_id}/chats/]
+## ایجاد یک گفتگوی جدید [/api/workspaces/{workspace_id}/chats/]
 یک گفتگوی جدید در یک فضای کاری مشخص ایجاد می‌کند. در پاسخ برگشتی، `chat_id`بیانگر شناسه گفتگو است، `text` متن پیام آغازین گفتگو، `reply` متن پاسخ به پیام آغازین گفتگو و `message_id` شناسهٔ پیام آغازین گفتگو است.
 
 + Parameters
@@ -126,7 +126,7 @@ HOST: https://replai.roshan-ai.ir
             }
         ]
 
-## ایجاد یک پیام جدید [/api/{chat_id}/messages/]
+## ایجاد یک پیام جدید [/api/chats/{chat_id}/messages/]
 یک پیام جدید در یک گفتگوی مشخص ایجاد می‌کند. در پاسخ برگشتی، `text`بیانگر متن پیام جدید است، `message_id` شناسهٔ پیام جدید و `reply` متن پاسخ به این پیام است.
 
 + Parameters
