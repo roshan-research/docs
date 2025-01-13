@@ -2,149 +2,175 @@ FORMAT: 1A
 HOST: https://chat.replai.ir/api
 
 # Repli
-Repli is an intelligent conversational assistant. It acts as an always-online support agent, receiving users' messages at any time and, after understanding the message, either selects an appropriate pre-prepared response or generates one for the user. In the demo environment of this project, users can have their dedicated testing space, customize its information, and evaluate it via a graphical interface or API. 
-To evaluate the space in the graphical user interface, you must obtain a username and password. For evaluation via API, you need to acquire a connection key from the Roshan sales team.
+ریپلای یک دستیار گفتگوی هوشمند است که به‌عنوان پشتیبانی آنلاین، پیام‌های کاربران را دریافت کرده و با تحلیل آن‌ها، پاسخ مناسب را ارسال می‌کند. در نسخه دمو، کاربران می‌توانند فضای تست خود را ایجاد، شخصی‌سازی و از طریق رابط گرافیکی یا API ارزیابی کنند. دسترسی به این امکانات نیازمند دریافت نام کاربری، گذرواژه یا کلید اتصال از تیم فروش روشن است.
 
-::: note
-## Extensions
-**نام کاربری** و **گذرواژه** را از تیم فروش دریافت کنید.
-:::
+# ورود [/token-auth]
 
-# Group احراز هویت
+## دریافت توکن [POST]
 
-## ورود [/token-auth]
++ Request
 
-### دریافت توکن [POST]
+    {
+        "username":"*******",
+        "password":"*******"
+    }
 
-::: note
-برای استفاده از ای‌پی‌آی ریپلای ابتدا باید `توکن دسترسی` دریافت کنید. این توکن را باید در هیدر تمام درخواست‌های خود وارد کنید.
-:::
++ Response 200
 
-::: warning
-#### <i class="fa fa-warning"></i> اخطار
-`نام کاربری`، `گذرواژه` و `توکن دسترسی` را تنها در اختیار افراد مجاز قرار دهید!
-:::
+    {
+        "token": "***********************************",
+        "first_name": '*********************',
+        "last_name": '**********************'
+    }
 
-### روش استفاده از توکن
 
-روش ارسال توکن در هیدر درخواست‌ها به صورت زیر است:
+# فضاهای کاری [/workspaces]
 
-```no-highlight
-Authorization: Token {token}
-```
+فضای کاری یک محیط ایزوله برای گفتگو با چت‌بات در یک موضوع مشخص است. هر فضای کاری می‌تواند به روش متفاوتی پیاده‌سازی شده باشد. می‌تواند داده‌های متفاوتی داشته باشد. می‌تواند عنوان متفاوت، نمونه سوالات متفاوت و تصویر متفاوتی داشته باشد.
 
-برای مثال اگر توکن دریافتی `abc123XYZ456sampleToken789` باشد، هیدر درخواست شما باید به صورت زیر باشد:
+## لیست فضاهای کاری [GET]
 
-```no-highlight
-Authorization: Token abc123XYZ456sampleToken789
-```
-
-+ Request (application/json)
-
-    + Attributes
-
-        + username: ali (string, required) - نام کاربری
-        + password: 14524785 (string, required) - گذرواژه
-
-+ Response 200 (application/json)
-
-    + Attributes
-
-        + token: abc123XYZ456sampleToken789 (string)
-        + first_name: علی (string) - نام
-        + last_name: صادقی (string) - نام خانوادگی
-
-+ Response 401 (application/json)
-
-    + Attributes
-
-        + detail: Authentication credentials were not provided. (string)
-
-# Group فضاهای کاری
-
-فضاهای کاری، محیط‌های تستی برای نسخه‌های مختلف ابزار ما هستند که بر اساس رویکردهای مختلف توسعه یافته‌اند یا داده‌های متنوعی را برای پاسخگویی به پرسش‌ها فراهم می‌کنند. در نرم‌افزار تحت‌وبی که در اختیار شما قرار گرفته، شما به یک یا چند فضای کاری دسترسی دارید و هر زمان می‌توانید بین آن‌ها سوئیچ کنید. همچنین از طریق ای‌پی‌آی، امکان مشاهدهٔ اطلاعات فضاهای کاری وجود دارد.
-
-هر فضای کاری دارای این مشخصه‌ها است:
-+ id: شناسه فضای کاری
-+ title: عنوان فضای کاری
-+ version: نسخه فضای کاری. یک فضای کاری ممکن است چند نسخه مختلف داشته باشد
-+ image: آدرس تصویر آیکون فضای کاری
-+ samples: نمونه پرسش‌های فضای کاری
-
-## فضاهای کاری [/workspaces]
-
-### لیست فضاهای کاری [GET]
-
-+ Request (application/json)
++ Request
 
     + Headers
         Authorization: Token abc123XYZ456sampleToken789
 
-+ Response 200 (application/json)
-    + Attributes (Workspace)        
-
-
-# Group چت‌ها
-در صورتی که مشتری بخواهد از این سامانه برای پاسخگویی به کاربران خود استفاده کند می تواند از ایجاد رابطه بین چت های سامانه و کاربران خود بهره برداری کند.
-
-## چت‌های یک فضای کاری [/workspaces/{workspace_id}/chats]
-
-+ Parameters
-
-    + workspace_id: `1` (number) - شناسه فضای کاری مورد نظر
-
-### لیست همه چت‌ها [GET]
-
-+ Response 200 (application/json)
-
-    + Attributes (array[Chat])
-
-### ساخت یک چت جدید [POST]
-
-+ Request
-
-    + Body
-
-        {"text":"کدام بانک ها ارز اربعین می‌دهند؟"}
-
 + Response 200
 
+    [
         {
-            "chat_id": 4153,
-            "reply": " با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید.",
-            "message_id": 29292,
-            "suggestions": [
-                "ارز اربعین چقدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
-                "چقدر ارز اربعین می‌دهند؟"
+            "id": 57,
+            "title": "pouyanbroker2",
+            "version": "1.0.0",
+            "image": null,
+            "samples": []
+        },
+        {
+            "id": 36,
+            "title": "سیب اپ",
+            "version": "0.0.0.1",
+            "image": null,
+            "samples": []
+        },
+        {
+            "id": 8,
+            "title": "بیمه سامان",
+            "version": "0.0.0.1",
+            "image": null,
+            "samples": [
+                {
+                    "text": "خرید بیمه تکمیلی بدون بیمه پایه امکان پذیر است؟"
+                },
+                {
+                    "text": "آيا دستگاه تست قند خون،سوزن و نوار آن پرداخت ميشود؟"
+                },
+                {
+                    "text": "آيا هزينه هاي مربوط به آزمايشات و سونوگرافي هاي دوران بارداري در بيمه نامه درمان انفرادي پرداخت مي شود؟"
+                },
+                {
+                    "text": "آیا آستیگمات،دوربینی،نزدیک بینی یا جمع قدر مطلق نقص بینایی هر چشم تحت پوشش است؟"
+                }
             ]
         }
+    ]
 
-### حذف تمام چت‌ها [DELETE]
+
+# چت‌های یک فضای کاری [/workspaces/{workspace_id}/chats]
+
+هر چت یک جلسه گفتگو بین کاربر و چت‌بات است. یک فضای کاری می‌تواند چندین جلسه چت داشته باشد. چت‌ها هر روز در تاریخ همان روز دسته‌بندی می‌شوند.
+
++ Parameters
+
+    + workspace_id: `1` (number) - شناسه فضای کاری
+
+## لیست همه چت‌ها [GET]
 
 + Response 200
 
-# Group پیام
+    [
+        {
+            "date": "2024-09-14",
+            "chats": [
+                {
+                    "id": 3650,
+                    "title": "چه کاری انجام میدهی"
+                },
+                {
+                    "id": 3649,
+                    "title": "سلام"
+                }
+            ]
+        },
+        {
+            "date": "2024-09-07",
+            "chats":[
+                {
+                    "id": 3524,
+                    "title": "کدام بانک ها ارز اربعین می‌دهند؟"
+                }
+            ]
+        }
+    ]
 
-## پیام‌های یک چت [/chats/{chat_id}/messages]
+## ساخت یک چت جدید [POST]
+
++ Request        
+    
+    {
+        "text":"کدام بانک ها ارز اربعین می‌دهند؟"
+    }
+
++ Response 200
+
+    {
+        "chat_id": 4153,
+        "reply": " با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید.",
+        "message_id": 29292,
+        "suggestions": [
+            "ارز اربعین چقدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+            "چقدر ارز اربعین می‌دهند؟"
+        ]
+    }
+
+## حذف همه چت‌ها [DELETE]
+
++ Response 200
+
+# پیام‌های یک چت [/chats/{chat_id}/messages]
 
 + Parameters
-    + chat_id: 1 (number) - شناسه چت مورد نظر
+    + chat_id: 1 (number) - شناسه چت
 
-### لیست همه پیام‌ها [GET]
+## لیست همه پیام‌ها [GET]
 
-+ Response
++ Response 200
 
-    + Attributes (array[Message])
+    [
+        {
+            "id": 27073,
+            "content": "لینک خرید ارز اربعین در روبیکا چیست؟",
+            "audio": null,
+            "message_answer": "برای خرید ارز اربعین از طریق اپلیکیشن روبیکا، می‌توانید به لینک زیر مراجعه کنید:\n\nhttps://go.rubika.ir/arbaeen1",
+            "like": null,
+            "created": "2024-09-07T07:48:53.094209Z"
+        },
+        {
+            "id": 27072,
+            "content": "کدام بانک ها ارز اربعین می‌دهند؟",
+            "audio": null,
+            "message_answer": " با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید.",
+            "like": null,
+            "created": "2024-09-07T07:48:47.646516Z"
+        }
+    ]
 
-### ساخت یک پیام جدید [POST]
+## ساخت یک پیام جدید [POST]
 
 + Request
 
-    + Body
-
-            {
-                text: "کدام بانک ها ارز اربعین می‌دهند؟"
-            }
+    {
+        text: "کدام بانک ها ارز اربعین می‌دهند؟"
+    }
 
 + Response 200
 
@@ -157,44 +183,47 @@ Authorization: Token abc123XYZ456sampleToken789
         ]
     }
 
-# Group بازخورد
-
-## بازخورد یک پیام [/chats/messages/{message_id}/{feedback}]
+# لایک و دیسلایک کردم یک پیام [/chats/messages/{message_id}/like]
 
 + Parameters
 
     + message_id: `1` (number) - شناسه پیام
-    + feedback: `like` (enum[string])
-        بازخورد
 
-        + Members
-            + `like`
-            + `dislike`
+## لایک کردن [PUT]
 
-### افزودن بازخورد [PUT]
-
-+ Response 200
-
-    + Body
-
-        {
-            like: true
-        }
-
-### حذف بازخورد [PUT]
++ Body
+    
+    {
+        "like": true
+    }
 
 + Response 200
 
+    {
+        "content":"thank you for your feedback"
+    }
 
-# Group پایگاه دانش
+## دیسلایک کردن [PUT]
 
-## سوالات پایگاه دانش یک فضای کاری [/knowledge/{workspace_id}/questions{?page,search,order,rate,suggest}]
++ Body
+    
+    {
+        "like": null
+    }
+
++ Response 200
+    
+    {
+        "content":"thank you for your feedback"
+    }
+
+# سوالات پایگاه دانش یک فضای کاری [/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
 
-### لیست همه سوالات [GET]
+## لیست همه سوالات [GET]
 
 + Parameters
 
@@ -206,7 +235,6 @@ Authorization: Token abc123XYZ456sampleToken789
     + suggest: `true` (boolean, optional) - فیلتر سوالات اصلاح شده.
 
 + Response 200
-
 
         {
             "count": 3009,
@@ -238,7 +266,7 @@ Authorization: Token abc123XYZ456sampleToken789
             ]
         }
 
-### اضافه کردن سوال [POST]
+## اضافه کردن سوال [POST]
 
 + Parameters
 
@@ -246,15 +274,13 @@ Authorization: Token abc123XYZ456sampleToken789
 
 + Request
 
-    + Body
+    {
+        "question":"سوال تستی",
+        "answer":"جواب تستی",
+        "workspace":41
+    }
 
-        {
-            "question":"سوال تستی",
-            "answer":"جواب تستی",
-            "workspace":41
-        }
-
-+ Response 200 (application/json)
++ Response 200
 
     {
         "id": 13306,
@@ -266,7 +292,7 @@ Authorization: Token abc123XYZ456sampleToken789
         "references": []
     }
 
-### اصطلاح سوال [PUT]
+## اصطلاح سوال [PUT]
 
 + Parameters
 
@@ -275,20 +301,18 @@ Authorization: Token abc123XYZ456sampleToken789
 
 + Request
 
-    + Body
-
-        {
-            "question":"ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
-            "answer":"برای هر زائر اربعین ۲۰۰ هزار دینار عراق به عنوان ارز اربعین ۱۴۰۳ اختصاص یافته است. بر اساس ابلاغ بانک مرکزی، زائران اربعین می‌توانند با مراجعه به شعب منتخب ۷ بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه از تاریخ هفتم مرداد ۱۴۰۳ تا پایان روز سوم شهریور ۱۴۰۳، ارز مسافرتی اربعین را برای سفر به کربلا دریافت کنند. برای دریافت ارز اربعین، ثبت نام و دریافت کد رهگیری سامانه سماح ضروری است. این کد رهگیری برای ثبت نام در سامانه‌های اینترنتی بانک های مختلف مورد نیاز است. ",
-            "suggest":true
-        }
+    {
+        "question":"ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+        "answer":"برای هر زائر اربعین ۲۰۰ هزار دینار عراق به عنوان ارز اربعین ۱۴۰۳ اختصاص یافته است. بر اساس ابلاغ بانک مرکزی، زائران اربعین می‌توانند با مراجعه به شعب منتخب ۷ بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه از تاریخ هفتم مرداد ۱۴۰۳ تا پایان روز سوم شهریور ۱۴۰۳، ارز مسافرتی اربعین را برای سفر به کربلا دریافت کنند. برای دریافت ارز اربعین، ثبت نام و دریافت کد رهگیری سامانه سماح ضروری است. این کد رهگیری برای ثبت نام در سامانه‌های اینترنتی بانک های مختلف مورد نیاز است. ",
+        "suggest":true
+    }
 
 + Response 200 (application/json)
 
     {"detail":"ok"}
 
     
-### حذف سوال [DELETE]
+## حذف سوال [DELETE]
 
 + Parameters
 
@@ -297,46 +321,14 @@ Authorization: Token abc123XYZ456sampleToken789
 
 + Response 200
 
-# Group وارد کردن سوال و جواب‌ها از طریق فایل
-
-## آپلود csv به یک فضای کاری [/workspaces/{workspace_id}/upload-qa-csv/]
+# آپلود csv به یک فضای کاری [/workspaces/{workspace_id}/upload-qa-csv/]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
 
-### آپلود فایل سوال و جواب‌ها [POST]
+## آپلود فایل سوال و جواب‌ها [POST]
 
 + Request (text/csv)
 
 + Response 200
-
-
-# Data Structures
-
-## Workspace (object)
-+ id: 8  (number) - شناسه فضای کاری
-+ title: بیمه سامان (string) - عنوان فضای کاری
-+ version: 0.0.0.1 (string) - نسخه فضای کاری
-+ image: saman.png (string) - آدرس تصویر فضای کاری
-+ samples (array[Sample])
-
-
-## Sample (object)
-+ text: خرید بیمه تکمیلی بدون بیمه پایه امکان پذیر است؟ (string)
-
-## Chat (object)
-+ date: `2024-09-14` (string) - تاریخ چت
-+ chats (array[ChatDetail])
-
-## ChatDetail (object)
-+ id: 3650 (number) - شناسه چت
-+ title: چه کاری انجام میدهی  (string) - عنوان
-
-## Message (object)
-+ id: 27073 (number) - شناسه پیام
-+ content: لینک خرید ارز اربعین در روبیکا چیست؟ (string) - متن پیام
-+ audio: null
-+ message_answer: برای خرید ارز اربعین از طریق اپلیکیشن روبیکا، می‌توانید به لینک زیر مراجعه کنید:\n\nhttps://go.rubika.ir/arbaeen1 (string) - پاسخ پیام
-+ like: null (string) - وضعیت پسندیده شدن پاسخ پیام
-+ created: `2024-09-07T07:48:53.094209Z` (string) - تاریخ ایجاد پیام
