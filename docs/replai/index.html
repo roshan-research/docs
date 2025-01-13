@@ -342,7 +342,7 @@ workspaces_id
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
-      https://replai.roshan-ai.ir/api/<span class="o">{</span>workspaces_id<span class="o">}</span>/chats/
+      https://replai.roshan-ai.ir/api/workspaces/<span class="o">{</span>workspaces_id<span class="o">}</span>/chats/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
@@ -350,7 +350,7 @@ workspaces_id
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://replai.roshan-ai.ir/api/{workspaces_id}/chats/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://replai.roshan-ai.ir/api/workspaces/{workspaces_id}/chats/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
@@ -380,7 +380,7 @@ workspaces_id
 
 
 </span></code></pre></div>
-<dl style="background-color:transparent;"><code>GET /api/{workspaces_id}/chats/</code></dl>
+<dl style="background-color:transparent;"><code>GET /api/workspaces/{workspaces_id}/chats/</code></dl>
 <h1 id='198f391592'>ایجاد یک گفتگوی جدید</h1>
 <p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
 
@@ -415,7 +415,7 @@ workspaces_id
       <span class="nt">--data-binary</span> <span class="s1">'{
     "text": "گرفتن نوبت در سامانه پذیرش24 برای من هزینه ای دارد؟"
 }'</span> <span class="se">\</span>
-      https://replai.roshan-ai.ir/api/<span class="o">{</span>workspace_id<span class="o">}</span>/chats/
+      https://replai.roshan-ai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/chats/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
@@ -425,7 +425,7 @@ workspaces_id
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://replai.roshan-ai.ir/api/{workspace_id}/chats/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://replai.roshan-ai.ir/api/workspaces/{workspace_id}/chats/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
@@ -440,7 +440,7 @@ workspaces_id
 
 
 </span></code></pre></div>
-<dl style="background-color:transparent;"><code>POST /api/{workspace_id}/chats/</code></dl>
+<dl style="background-color:transparent;"><code>POST /api/workspaces/{workspace_id}/chats/</code></dl>
 
 <dl>
 <strong>text(required)</strong>
@@ -559,7 +559,7 @@ chat_id
       <span class="nt">--data-binary</span> <span class="s1">'{
     "text": "چه طور نوبت خود را کنسل کنم؟"
 }'</span> <span class="se">\</span>
-      https://replai.roshan-ai.ir/api/<span class="o">{</span>chat_id<span class="o">}</span>/messages/
+      https://replai.roshan-ai.ir/api/chats/<span class="o">{</span>chat_id<span class="o">}</span>/messages/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
@@ -569,7 +569,7 @@ chat_id
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://replai.roshan-ai.ir/api/{chat_id}/messages/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://replai.roshan-ai.ir/api/chats/{chat_id}/messages/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
@@ -583,7 +583,7 @@ chat_id
 
 
 </span></code></pre></div>
-<dl style="background-color:transparent;"><code>POST /api/{chat_id}/messages/</code></dl>
+<dl style="background-color:transparent;"><code>POST /api/chats/{chat_id}/messages/</code></dl>
 
 <dl>
 <strong>text(required)</strong>
