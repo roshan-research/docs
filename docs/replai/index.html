@@ -1,4 +1,978 @@
 
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Repli API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #303030;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sa {
+  color: #aa759f;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-1086c5ef.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b49a9d77.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;,&quot;python&quot;]">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
+  </div>
+    <div class="toc-wrapper">
+      <div>
+        <a href="#" id="nav-button">
+          <span>
+            <img src="images/navbar-cad8cdcb.png" alt="" />
+            <span>منو</span> 
+          </span>
+        </a>
+        <div>
+          <img src="images/logo-52f97f28.svg" class="logo" alt="" />
+            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="جست و جو">
+            </div>
+            <ul class="search-results"></ul>
+          <ul id="toc" class="toc-list-h1">
+              <li>
+                <a href="#repli" class="toc-h1 toc-link" data-title="Repli">Repli</a>
+              </li>
+              <li>
+                <a href="#06c7b60187" class="toc-h1 toc-link" data-title="ورود">ورود</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#5eab02c7dd" class="toc-h2 toc-link" data-title="دریافت توکن">دریافت توکن</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#b914923146" class="toc-h1 toc-link" data-title="فضاهای کاری">فضاهای کاری</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#a898ec7953" class="toc-h2 toc-link" data-title="لیست فضاهای کاری">لیست فضاهای کاری</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#96d7c4319b" class="toc-h1 toc-link" data-title="چت‌های یک فضای کاری">چت‌های یک فضای کاری</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#c8ef678785" class="toc-h2 toc-link" data-title="لیست همه چت‌ها">لیست همه چت‌ها</a>
+                      </li>
+                      <li>
+                        <a href="#fc5ab48d03" class="toc-h2 toc-link" data-title="ساخت یک چت جدید">ساخت یک چت جدید</a>
+                      </li>
+                      <li>
+                        <a href="#6215a9f7a8" class="toc-h2 toc-link" data-title="حذف همه چت‌ها">حذف همه چت‌ها</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#99c10a7967" class="toc-h1 toc-link" data-title="پیام‌های یک چت">پیام‌های یک چت</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#eebf8a9554" class="toc-h2 toc-link" data-title="لیست همه پیام‌ها">لیست همه پیام‌ها</a>
+                      </li>
+                      <li>
+                        <a href="#1e67197a93" class="toc-h2 toc-link" data-title="ساخت یک پیام جدید">ساخت یک پیام جدید</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#d9f567bb8a" class="toc-h1 toc-link" data-title="لایک و دیسلایک کردم پیام">لایک و دیسلایک کردم پیام</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#063457ac6b" class="toc-h2 toc-link" data-title="لایک کردن">لایک کردن</a>
+                      </li>
+                      <li>
+                        <a href="#9747ebaa05" class="toc-h2 toc-link" data-title="دیسلایک کردن">دیسلایک کردن</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#ee72efbee2" class="toc-h1 toc-link" data-title="سوالات پایگاه دانش یک فضای کاری">سوالات پایگاه دانش یک فضای کاری</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#98607341b5" class="toc-h2 toc-link" data-title="لیست همه سوالات">لیست همه سوالات</a>
+                      </li>
+                      <li>
+                        <a href="#ac823d918d" class="toc-h2 toc-link" data-title="اضافه کردن سوال">اضافه کردن سوال</a>
+                      </li>
+                      <li>
+                        <a href="#fa9a07c6ea" class="toc-h2 toc-link" data-title="اصطلاح سوال">اصطلاح سوال</a>
+                      </li>
+                      <li>
+                        <a href="#e1ad9b28af" class="toc-h2 toc-link" data-title="حذف سوال">حذف سوال</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#csv" class="toc-h1 toc-link" data-title="آپلود csv به یک فضای کاری">آپلود csv به یک فضای کاری</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#bd701ec608" class="toc-h2 toc-link" data-title="آپلود فایل سوال و جواب‌ها">آپلود فایل سوال و جواب‌ها</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='repli'>Repli</h1>
+<p>ریپلای یک دستیار گفتگوی هوشمند است که به‌عنوان پشتیبانی آنلاین، پیام‌های کاربران را دریافت کرده و با تحلیل آن‌ها، پاسخ مناسب را ارسال می‌کند. در نسخه دمو، کاربران می‌توانند فضای تست خود را ایجاد، شخصی‌سازی و از طریق رابط گرافیکی یا API ارزیابی کنند. دسترسی به این امکانات نیازمند دریافت نام کاربری، گذرواژه یا کلید اتصال از تیم فروش روشن است.</p>
+<h1 id='06c7b60187'>ورود</h1><h2 id='5eab02c7dd'>دریافت توکن</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "username": "*******",
+    "password": "*******"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "username": "*******",
+    "password": "*******"
+}'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/token-auth
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"username"</span><span class="p">:</span> <span class="s">"*******"</span><span class="p">,</span>
+    <span class="s">"password"</span><span class="p">:</span> <span class="s">"*******"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/token-auth'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***********************************"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="err">'*********************'</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="err">'**********************'</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /token-auth</code></dl>
+<h1 id='b914923146'>فضاهای کاری</h1>
+<p>فضای کاری یک محیط ایزوله برای گفتگو با چت‌بات در یک موضوع مشخص است. هر فضای کاری می‌تواند به روش متفاوتی پیاده‌سازی شده باشد. می‌تواند داده‌های متفاوتی داشته باشد. می‌تواند عنوان متفاوت، نمونه سوالات متفاوت و تصویر متفاوتی داشته باشد.</p>
+<h2 id='a898ec7953'>لیست فضاهای کاری</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token abc123XYZ456sampleToken789"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/workspaces
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token abc123XYZ456sampleToken789'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pouyanbroker2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"samples"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سیب اپ"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"samples"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"بیمه سامان"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"samples"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خرید بیمه تکمیلی بدون بیمه پایه امکان پذیر است؟"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آيا دستگاه تست قند خون،سوزن و نوار آن پرداخت ميشود؟"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آيا هزينه هاي مربوط به آزمايشات و سونوگرافي هاي دوران بارداري در بيمه نامه درمان انفرادي پرداخت مي شود؟"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"آیا آستیگمات،دوربینی،نزدیک بینی یا جمع قدر مطلق نقص بینایی هر چشم تحت پوشش است؟"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>GET /workspaces</code></dl>
+<h1 id='96d7c4319b'>چت‌های یک فضای کاری</h1>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
+
+<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            توضیحات
+        </th>
+        <th>
+            کلید
+        </th>
+    </tr>
+<tr>
+<td>
+شناسه فضای کاری
+</td>
+<td style="font-weight: bold">
+workspace_id
+</td>
+</tr></table>
+
+<p>هر چت یک جلسه گفتگو بین کاربر و چت‌بات است. یک فضای کاری می‌تواند چندین جلسه چت داشته باشد. چت‌ها هر روز در تاریخ همان روز دسته‌بندی می‌شوند.</p>
+<h2 id='c8ef678785'>لیست همه چت‌ها</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/chats
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces/{workspace_id}/chats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"chats"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3650</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"چه کاری انجام میدهی"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3649</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سلام"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"chats"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3524</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کدام بانک ها ارز اربعین می‌دهند؟"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>GET /workspaces/{workspace_id}/chats</code></dl>
+<h2 id='fc5ab48d03'>ساخت یک چت جدید</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "text": "کدام بانک ها ارز اربعین می‌دهند؟"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "text": "کدام بانک ها ارز اربعین می‌دهند؟"
+}'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/chats
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="s">"کدام بانک ها ارز اربعین می‌دهند؟"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces/{workspace_id}/chats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"chat_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4153</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reply"</span><span class="p">:</span><span class="w"> </span><span class="s2">" با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29292</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"suggestions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"ارز اربعین چقدر است و از کدام بانک‌ها می‌توان تهیه کرد؟"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"چقدر ارز اربعین می‌دهند؟"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /workspaces/{workspace_id}/chats</code></dl>
+<h2 id='6215a9f7a8'>حذف همه چت‌ها</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> DELETE <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/chats
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces/{workspace_id}/chats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+
+<dl style="background-color:transparent;"><code>DELETE /workspaces/{workspace_id}/chats</code></dl>
+<h1 id='99c10a7967'>پیام‌های یک چت</h1>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
+
+<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            توضیحات
+        </th>
+        <th>
+            کلید
+        </th>
+    </tr>
+<tr>
+<td>
+شناسه چت
+</td>
+<td style="font-weight: bold">
+chat_id
+</td>
+</tr></table>
+<h2 id='eebf8a9554'>لیست همه پیام‌ها</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/chats/<span class="o">{</span>chat_id<span class="o">}</span>/messages
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/{chat_id}/messages'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27073</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"لینک خرید ارز اربعین در روبیکا چیست؟"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message_answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"برای خرید ارز اربعین از طریق اپلیکیشن روبیکا، می‌توانید به لینک زیر مراجعه کنید:</span><span class="se">\n\n</span><span class="s2">https://go.rubika.ir/arbaeen1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"like"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-07T07:48:53.094209Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27072</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"کدام بانک ها ارز اربعین می‌دهند؟"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message_answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">" با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"like"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-07T07:48:47.646516Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>GET /chats/{chat_id}/messages</code></dl>
+<h2 id='1e67197a93'>ساخت یک پیام جدید</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    text: \"کدام بانک ها ارز اربعین می‌دهند؟\"\n}\n"
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'"{\n    text: \"کدام بانک ها ارز اربعین می‌دهند؟\"\n}\n"'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/chats/<span class="o">{</span>chat_id<span class="o">}</span>/messages
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\n</span><span class="s">    text: </span><span class="se">\"</span><span class="s">کدام بانک ها ارز اربعین می‌دهند؟</span><span class="se">\"\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/{chat_id}/messages'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"message_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29293</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reply"</span><span class="p">:</span><span class="w"> </span><span class="s2">" با مراجعه به شعب منتخب 7 بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه، می‌توانید ارز اربعین را دریافت کنید."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"suggestions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"ارز اربعین چقدر است و از کدام بانک‌ها می‌توان تهیه کرد؟"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"چقدر ارز اربعین می‌دهند؟"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /chats/{chat_id}/messages</code></dl>
+<h1 id='d9f567bb8a'>لایک و دیسلایک کردم پیام</h1>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
+
+<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            توضیحات
+        </th>
+        <th>
+            کلید
+        </th>
+    </tr>
+<tr>
+<td>
+شناسه پیام
+</td>
+<td style="font-weight: bold">
+message_id
+</td>
+</tr></table>
+<h2 id='063457ac6b'>لایک کردن</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> PUT <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/chats/messages/<span class="o">{</span>message_id<span class="o">}</span>/like
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/messages/{message_id}/like'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"content"</span><span class="p">:</span><span class="s2">"thank you for your feedback"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<ul>
+<li><p>Body (application/json)</p>
+
+<p>{
+    &quot;like&quot;: true
+}</p></li>
+</ul>
+
+<dl style="background-color:transparent;"><code>PUT /chats/messages/{message_id}/like</code></dl>
+<h2 id='9747ebaa05'>دیسلایک کردن</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> PUT <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/chats/messages/<span class="o">{</span>message_id<span class="o">}</span>/like
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/messages/{message_id}/like'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"content"</span><span class="p">:</span><span class="s2">"thank you for your feedback"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<ul>
+<li><p>Body (application/json)</p>
+
+<p>{
+    &quot;like&quot;: null
+}</p></li>
+</ul>
+
+<dl style="background-color:transparent;"><code>PUT /chats/messages/{message_id}/like</code></dl>
+<h1 id='ee72efbee2'>سوالات پایگاه دانش یک فضای کاری</h1>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
+
+<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            توضیحات
+        </th>
+        <th>
+            کلید
+        </th>
+    </tr>
+<tr>
+<td>
+شناسه فضای کاری.
+</td>
+<td style="font-weight: bold">
+workspace_id
+</td>
+</tr></table>
+<h2 id='98607341b5'>لیست همه سوالات</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/knowledge/<span class="o">{</span>workspace_id<span class="o">}</span>/messages<span class="o">{</span>?page,search,order,rate,suggest<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3009</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://chat.replai.ir/api/knowledge/41/messages/?order=-id&amp;page=2&amp;search="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12607</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"امنیت کشور عراق موقع پیاده‌روی اربعین چگونه است؟"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"امنیت کشور عراق در طول پیاده‌روی اربعین به طور کلی مناسب است. تدابیر امنیتی ویژه‌ای برای حفاظت از زائران در نظر گرفته شده و نیروهای امنیتی و امدادی در طول مسیر حضور دارند تا امنیت و رفاه زائران را تضمین کنند. احتمال حمله تروریستی در این ایام بسیار کم است."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"suggested"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"امنیت کشور عراق موقع پیاده روی چکونه است"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12606</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"موقع پیاده روی اربعین چه ساعتی بهتر است؟"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"بهترین ساعت برای پیاده‌روی اربعین، غروب آفتاب تا نماز صبح است، زیرا در این ساعات خنکی بیشتری وجود دارد."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"suggested"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"موقع پیاده روی چه ساعتی بهتراست"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>GET /knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}</code></dl>
+<h2 id='ac823d918d'>اضافه کردن سوال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "question": "سوال تستی",
+    "answer": "جواب تستی",
+    "workspace": 41
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "question": "سوال تستی",
+    "answer": "جواب تستی",
+    "workspace": 41
+}'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/knowledge/<span class="o">{</span>workspace_id<span class="o">}</span>/messages<span class="o">{</span>?page,search,order,rate,suggest<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"question"</span><span class="p">:</span> <span class="s">"سوال تستی"</span><span class="p">,</span>
+    <span class="s">"answer"</span><span class="p">:</span> <span class="s">"جواب تستی"</span><span class="p">,</span>
+    <span class="s">"workspace"</span><span class="p">:</span> <span class="mi">41</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13306</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سوال تستی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"جواب تستی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"suggested"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}</code></dl>
+<h2 id='fa9a07c6ea'>اصطلاح سوال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "question": "ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+    "answer": "برای هر زائر اربعین ۲۰۰ هزار دینار عراق به عنوان ارز اربعین ۱۴۰۳ اختصاص یافته است. بر اساس ابلاغ بانک مرکزی، زائران اربعین می‌توانند با مراجعه به شعب منتخب ۷ بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه از تاریخ هفتم مرداد ۱۴۰۳ تا پایان روز سوم شهریور ۱۴۰۳، ارز مسافرتی اربعین را برای سفر به کربلا دریافت کنند. برای دریافت ارز اربعین، ثبت نام و دریافت کد رهگیری سامانه سماح ضروری است. این کد رهگیری برای ثبت نام در سامانه‌های اینترنتی بانک های مختلف مورد نیاز است. ",
+    "suggest": true
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> PUT <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "question": "ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
+    "answer": "برای هر زائر اربعین ۲۰۰ هزار دینار عراق به عنوان ارز اربعین ۱۴۰۳ اختصاص یافته است. بر اساس ابلاغ بانک مرکزی، زائران اربعین می‌توانند با مراجعه به شعب منتخب ۷ بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه از تاریخ هفتم مرداد ۱۴۰۳ تا پایان روز سوم شهریور ۱۴۰۳، ارز مسافرتی اربعین را برای سفر به کربلا دریافت کنند. برای دریافت ارز اربعین، ثبت نام و دریافت کد رهگیری سامانه سماح ضروری است. این کد رهگیری برای ثبت نام در سامانه‌های اینترنتی بانک های مختلف مورد نیاز است. ",
+    "suggest": true
+}'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/knowledge/<span class="o">{</span>workspace_id<span class="o">}</span>/messages<span class="o">{</span>?page,search,order,rate,suggest<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"question"</span><span class="p">:</span> <span class="s">"ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟"</span><span class="p">,</span>
+    <span class="s">"answer"</span><span class="p">:</span> <span class="s">"برای هر زائر اربعین ۲۰۰ هزار دینار عراق به عنوان ارز اربعین ۱۴۰۳ اختصاص یافته است. بر اساس ابلاغ بانک مرکزی، زائران اربعین می‌توانند با مراجعه به شعب منتخب ۷ بانک ملی، تجارت، صادرات، ملت، پست بانک، پارسیان و سپه از تاریخ هفتم مرداد ۱۴۰۳ تا پایان روز سوم شهریور ۱۴۰۳، ارز مسافرتی اربعین را برای سفر به کربلا دریافت کنند. برای دریافت ارز اربعین، ثبت نام و دریافت کد رهگیری سامانه سماح ضروری است. این کد رهگیری برای ثبت نام در سامانه‌های اینترنتی بانک های مختلف مورد نیاز است. "</span><span class="p">,</span>
+    <span class="s">"suggest"</span><span class="p">:</span> <span class="bp">True</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"detail"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>PUT /knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}</code></dl>
+<h2 id='e1ad9b28af'>حذف سوال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> DELETE <span class="se">\ </span>
+      <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/knowledge/<span class="o">{</span>workspace_id<span class="o">}</span>/messages<span class="o">{</span>?page,search,order,rate,suggest<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+
+<dl style="background-color:transparent;"><code>DELETE /knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}</code></dl>
+<h1 id='csv'>آپلود csv به یک فضای کاری</h1>
+<p style="font-size: 20px;font-family:IRANYekan;">پارامترهای ورودی</p>
+
+<table style="float:right;text-align:center;font-family:IRANYekan;">
+    <tr>
+        <th>
+            توضیحات
+        </th>
+        <th>
+            کلید
+        </th>
+    </tr>
+<tr>
+<td>
+شناسه فضای کاری.
+</td>
+<td style="font-weight: bold">
+workspace_id
+</td>
+</tr></table>
+<h2 id='bd701ec608'>آپلود فایل سوال و جواب‌ها</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: text/csv"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://chat.replai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/upload-qa-csv/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'text/csv'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces/{workspace_id}/upload-qa-csv/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+
+<dl style="background-color:transparent;"><code>POST /workspaces/{workspace_id}/upload-qa-csv/</code></dl>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">CURL</a>
+                <a href="#" data-language-name="plaintext">RAW</a>
+                <a href="#" data-language-name="python">PYTHON</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+
 <script>
 function Scroll(delay) {
     this.initialY = scrollY;
