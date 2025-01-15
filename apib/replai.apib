@@ -189,7 +189,8 @@ HOST: https://chat.replai.ir/api
 
     + message_id: `1` (number) - شناسه پیام
 
-### لایک کردن [PUT]
+### لایک یا دیسلایک کردن [PUT]
+برای لایک کردن مقدار `true` را ارسال کنید و برای دیسلایک کردن مقدار `null` را ارسال کنید.
 
 + Body (application/json)
     
@@ -199,20 +200,6 @@ HOST: https://chat.replai.ir/api
 
 + Response 200 (application/json)
 
-    {
-        "content":"thank you for your feedback"
-    }
-
-### دیسلایک کردن [PUT]
-
-+ Body (application/json)
-    
-    {
-        "like": null
-    }
-
-+ Response 200 (application/json)
-    
     {
         "content":"thank you for your feedback"
     }
