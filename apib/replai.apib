@@ -4,18 +4,18 @@ HOST: https://chat.replai.ir/api
 # Repli
 ریپلای یک دستیار گفتگوی هوشمند است که به‌عنوان پشتیبانی آنلاین، پیام‌های کاربران را دریافت کرده و با تحلیل آن‌ها، پاسخ مناسب را ارسال می‌کند. در نسخه دمو، کاربران می‌توانند فضای تست خود را ایجاد، شخصی‌سازی و از طریق رابط گرافیکی یا API ارزیابی کنند. دسترسی به این امکانات نیازمند دریافت نام کاربری، گذرواژه یا کلید اتصال از تیم فروش روشن است.
 
-# ورود [/token-auth]
+## ورود [/token-auth]
 
-## دریافت توکن [POST]
+### دریافت توکن [POST]
 
-+ Request
++ Request (application/json)
 
     {
         "username":"*******",
         "password":"*******"
     }
 
-+ Response 200
++ Response 200 (application/json)
 
     {
         "token": "***********************************",
@@ -24,18 +24,18 @@ HOST: https://chat.replai.ir/api
     }
 
 
-# فضاهای کاری [/workspaces]
+## فضاهای کاری [/workspaces]
 
 فضای کاری یک محیط ایزوله برای گفتگو با چت‌بات در یک موضوع مشخص است. هر فضای کاری می‌تواند به روش متفاوتی پیاده‌سازی شده باشد. می‌تواند داده‌های متفاوتی داشته باشد. می‌تواند عنوان متفاوت، نمونه سوالات متفاوت و تصویر متفاوتی داشته باشد.
 
-## لیست فضاهای کاری [GET]
+### لیست فضاهای کاری [GET]
 
-+ Request
++ Request (application/json)
 
     + Headers
         Authorization: Token abc123XYZ456sampleToken789
 
-+ Response 200
++ Response 200 (application/json)
 
     [
         {
@@ -75,7 +75,7 @@ HOST: https://chat.replai.ir/api
     ]
 
 
-# چت‌های یک فضای کاری [/workspaces/{workspace_id}/chats]
+## چت‌های یک فضای کاری [/workspaces/{workspace_id}/chats]
 
 هر چت یک جلسه گفتگو بین کاربر و چت‌بات است. یک فضای کاری می‌تواند چندین جلسه چت داشته باشد. چت‌ها هر روز در تاریخ همان روز دسته‌بندی می‌شوند.
 
@@ -83,9 +83,9 @@ HOST: https://chat.replai.ir/api
 
     + workspace_id: `1` (number) - شناسه فضای کاری
 
-## لیست همه چت‌ها [GET]
+### لیست همه چت‌ها [GET]
 
-+ Response 200
++ Response 200 (application/json)
 
     [
         {
@@ -112,15 +112,15 @@ HOST: https://chat.replai.ir/api
         }
     ]
 
-## ساخت یک چت جدید [POST]
+### ساخت یک چت جدید [POST]
 
-+ Request        
++ Request (application/json)
     
     {
         "text":"کدام بانک ها ارز اربعین می‌دهند؟"
     }
 
-+ Response 200
++ Response 200 (application/json)
 
     {
         "chat_id": 4153,
@@ -132,18 +132,18 @@ HOST: https://chat.replai.ir/api
         ]
     }
 
-## حذف همه چت‌ها [DELETE]
+### حذف همه چت‌ها [DELETE]
 
 + Response 200
 
-# پیام‌های یک چت [/chats/{chat_id}/messages]
+## پیام‌های یک چت [/chats/{chat_id}/messages]
 
 + Parameters
     + chat_id: 1 (number) - شناسه چت
 
-## لیست همه پیام‌ها [GET]
+### لیست همه پیام‌ها [GET]
 
-+ Response 200
++ Response 200 (application/json)
 
     [
         {
@@ -164,15 +164,15 @@ HOST: https://chat.replai.ir/api
         }
     ]
 
-## ساخت یک پیام جدید [POST]
+### ساخت یک پیام جدید [POST]
 
-+ Request
++ Request (application/json)
 
     {
         text: "کدام بانک ها ارز اربعین می‌دهند؟"
     }
 
-+ Response 200
++ Response 200 (application/json)
 
     {
         "message_id": 29293,
@@ -183,47 +183,47 @@ HOST: https://chat.replai.ir/api
         ]
     }
 
-# لایک و دیسلایک کردم یک پیام [/chats/messages/{message_id}/like]
+## لایک و دیسلایک کردم پیام [/chats/messages/{message_id}/like]
 
 + Parameters
 
     + message_id: `1` (number) - شناسه پیام
 
-## لایک کردن [PUT]
+### لایک کردن [PUT]
 
-+ Body
++ Body (application/json)
     
     {
         "like": true
     }
 
-+ Response 200
++ Response 200 (application/json)
 
     {
         "content":"thank you for your feedback"
     }
 
-## دیسلایک کردن [PUT]
+### دیسلایک کردن [PUT]
 
-+ Body
++ Body (application/json)
     
     {
         "like": null
     }
 
-+ Response 200
++ Response 200 (application/json)
     
     {
         "content":"thank you for your feedback"
     }
 
-# سوالات پایگاه دانش یک فضای کاری [/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}]
+## سوالات پایگاه دانش یک فضای کاری [/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
 
-## لیست همه سوالات [GET]
+### لیست همه سوالات [GET]
 
 + Parameters
 
@@ -234,7 +234,7 @@ HOST: https://chat.replai.ir/api
     + rate: `true` (boolean, optional) - فیلتر سوالات کلیدی.
     + suggest: `true` (boolean, optional) - فیلتر سوالات اصلاح شده.
 
-+ Response 200
++ Response 200 (application/json)
 
         {
             "count": 3009,
@@ -266,13 +266,13 @@ HOST: https://chat.replai.ir/api
             ]
         }
 
-## اضافه کردن سوال [POST]
+### اضافه کردن سوال [POST]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
 
-+ Request
++ Request (application/json)
 
     {
         "question":"سوال تستی",
@@ -280,7 +280,7 @@ HOST: https://chat.replai.ir/api
         "workspace":41
     }
 
-+ Response 200
++ Response 200 (application/json)
 
     {
         "id": 13306,
@@ -292,14 +292,14 @@ HOST: https://chat.replai.ir/api
         "references": []
     }
 
-## اصطلاح سوال [PUT]
+### اصطلاح سوال [PUT]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
     + question_id: `1` (number, required) - شناسه سوال
 
-+ Request
++ Request (application/json)
 
     {
         "question":"ارز اربعین چه قدر است و از کدام بانک‌ها می‌توان تهیه کرد؟",
@@ -312,7 +312,7 @@ HOST: https://chat.replai.ir/api
     {"detail":"ok"}
 
     
-## حذف سوال [DELETE]
+### حذف سوال [DELETE]
 
 + Parameters
 
@@ -321,13 +321,13 @@ HOST: https://chat.replai.ir/api
 
 + Response 200
 
-# آپلود csv به یک فضای کاری [/workspaces/{workspace_id}/upload-qa-csv/]
+## آپلود csv به یک فضای کاری [/workspaces/{workspace_id}/upload-qa-csv/]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
 
-## آپلود فایل سوال و جواب‌ها [POST]
+### آپلود فایل سوال و جواب‌ها [POST]
 
 + Request (text/csv)
 
