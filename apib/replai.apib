@@ -203,28 +203,3 @@ HOST: https://chat.replai.ir/api
             "چقدر ارز اربعین می‌دهند؟"
         ]
     }
-
-## لایک و دیسلایک پیام [/chats/messages/{message_id}/like]
-برای لایک کردن مقدار `true` را ارسال کنید و برای دیسلایک کردن مقدار `null` را ارسال کنید.
-
-+ Parameters
-
-    + message_id: `1` (number) - شناسه پیام
-
-### لایک یا دیسلایک کردن [PUT]
-
-+ Request (application/json)
-
-    + Headers
-        Authorization: Token ***********************************
-
-    + Body
-        {
-            "like": true
-        }
-
-+ Response 200 (application/json)
-
-    {
-        "content":"thank you for your feedback"
-    }
