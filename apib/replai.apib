@@ -2,9 +2,10 @@ FORMAT: 1A
 HOST: https://chat.replai.ir/api
 
 # ریپلای
-ریپلای یک دستیار گفتگوی هوشمند است که به‌عنوان پشتیبانی آنلاین، پیام‌های کاربران را دریافت کرده و با تحلیل آن‌ها، پاسخ مناسب را ارسال می‌کند. در نسخه دمو، کاربران می‌توانند فضای تست خود را ایجاد، شخصی‌سازی و از طریق رابط گرافیکی یا API ارزیابی کنند. دسترسی به این امکانات نیازمند دریافت نام کاربری، گذرواژه یا کلید اتصال از تیم فروش روشن است.
-
+ریپلای یک دستیار گفتگوی هوشمند است که به‌عنوان پشتیبان آنلاین، پیام‌های کاربران را دریافت و با تحلیل دقیق آن‌ها، پاسخ‌های مناسب ارائه می‌دهد. در نسخه دمو، می‌توانید محیط تست اختصاصی خود را ایجاد کنید، آن را به دلخواه شخصی‌سازی کنید و از طریق رابط کاربری گرافیکی یا API عملکرد آن را ارزیابی نمایند. دسترسی به این قابلیت‌ها مستلزم دریافت نام کاربری، گذرواژه یا کلید اتصال از تیم فروش روشن است.
 ## ورود [/token-auth]
+
+ابتدا نام کاربری و رمز عبوری که در اختیار شما قرار گرفته را در قالب یک درخواست post ارسال کنید تا بتوانید توکن اتصال دریافت کنید. این توکن در تمام درخواست‌های شما بایستی در هیدر آن  درخواست وجود داشته باشد.
 
 ### دریافت توکن [POST]
 
@@ -26,14 +27,14 @@ HOST: https://chat.replai.ir/api
 
 ## فضاهای کاری [/workspaces]
 
-فضای کاری یک محیط ایزوله برای گفتگو با چت‌بات در یک موضوع مشخص است. هر فضای کاری می‌تواند به روش متفاوتی پیاده‌سازی شده باشد. می‌تواند داده‌های متفاوتی داشته باشد. می‌تواند عنوان متفاوت، نمونه سوالات متفاوت و تصویر متفاوتی داشته باشد.
+فضای کاری یک محیط ایزوله برای گفتگو با چت‌بات در یک موضوع مشخص است. هر فضای کاری می‌تواند به روش متفاوتی پیاده‌سازی شده باشد، می‌تواند داده‌های متفاوتی داشته باشد، عنوان، تصویر و نمونه پیام‌های متفاوتی داشته باشد.
 
 ### لیست فضاهای کاری [GET]
 
 + Request (application/json)
 
     + Headers
-        Authorization: Token abc123XYZ456sampleToken789
+        Authorization: Token ***********************************
 
 + Response 200 (application/json)
 
@@ -77,7 +78,7 @@ HOST: https://chat.replai.ir/api
 
 ## چت‌های یک فضای کاری [/workspaces/{workspace_id}/chats]
 
-هر چت یک جلسه گفتگو بین کاربر و چت‌بات است. یک فضای کاری می‌تواند چندین جلسه چت داشته باشد. چت‌ها هر روز در تاریخ همان روز دسته‌بندی می‌شوند.
+هر چت یک جلسه گفتگو بین کاربر و چت‌بات است. یک فضای کاری می‌تواند چندین جلسه چت داشته باشد. چت‌های هر روز در تاریخ همان روز دسته‌بندی می‌شوند.
 
 + Parameters
 
@@ -135,8 +136,10 @@ HOST: https://chat.replai.ir/api
 ### حذف همه چت‌ها [DELETE]
 
 + Response 200
+    + Body
 
 ## پیام‌های یک چت [/chats/{chat_id}/messages]
+هر چت می‌تواند شامل چندین پیام باشد که بین کاربر و چت‌بات مبادله می‌شود. هر یک از این پیام‌ها شناسه و جزئیات خاص خود را داراست.
 
 + Parameters
     + chat_id: 1 (number) - شناسه چت
@@ -183,7 +186,7 @@ HOST: https://chat.replai.ir/api
         ]
     }
 
-## لایک و دیسلایک کردم پیام [/chats/messages/{message_id}/like]
+## لایک و دیسلایک پیام [/chats/messages/{message_id}/like]
 برای لایک کردن مقدار `true` را ارسال کنید و برای دیسلایک کردن مقدار `null` را ارسال کنید.
 
 + Parameters
@@ -192,8 +195,7 @@ HOST: https://chat.replai.ir/api
 
 ### لایک یا دیسلایک کردن [PUT]
 
-+ Body (application/json)
-    
++ Request (application/json)    
     {
         "like": true
     }
@@ -205,21 +207,25 @@ HOST: https://chat.replai.ir/api
     }
 
 ## سوالات پایگاه دانش یک فضای کاری [/knowledge/{workspace_id}/messages{?page,search,order,rate,suggest}]
+پایگاه دانش محلی است که می‌توانید تمام سوالات کاربران و پاسخ‌های ارائه شده از سوی چت‌بات را ببینید.
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+    + page: `1` (integer, optional) - شماره صفحه برای پیمایش پیام‌ها.
+    + search: `chatbot` (string, optional) - عبارت جستجو برای فیلتر کردن پیام‌ها.
+    + order: `-id` (string, optional) - ترتیب چینش سوالات بر اساس شناسه.
+        + Members
+            + `-id` - مرتب‌سازی نزولی بر اساس شناسه.
+            + `+id` - مرتب‌سازی صعودی بر اساس شناسه.
+    + rate: `true` (boolean, optional) - فیلتر سوالات بر اساس اینکه امتیازدهی شده یا نه.
+            + true - سوالاتی که امتیازدهی شده‌اند.
+            + false - سوالاتی که امتیازدهی نشده‌اند.
+        + suggest: `true` (boolean, optional) - فیلتر سوالات بر اساس اینکه جزو سوالات پیشنهادی است یا نه.
+            + true - سوال پیشنهادی است.
+            + false - سوال پیشنهادی نیست.
 
-### لیست همه سوالات [GET]
-
-+ Parameters
-
-    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
-    + page: `1` (number, optional) - شماره صفحه مورد نظر. Default is `1`.
-    + search: `""` (string, optional) - متن مورد جستجو. Default is an empty string.
-    + order: `-id` (string, optional) - ترتیب چینش سوالات. Default is `-id`.
-    + rate: `true` (boolean, optional) - فیلتر سوالات کلیدی.
-    + suggest: `true` (boolean, optional) - فیلتر سوالات اصلاح شده.
+### لیست همه سوال و جواب‌ها [GET]
 
 + Response 200 (application/json)
 
@@ -253,17 +259,13 @@ HOST: https://chat.replai.ir/api
             ]
         }
 
-### اضافه کردن سوال [POST]
-
-+ Parameters
-
-    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
+### اضافه کردن سوال و جواب جدید [POST]
 
 + Request (application/json)
 
     {
-        "question":"سوال تستی",
-        "answer":"جواب تستی",
+        "question":"سوال نمونه",
+        "answer":"جواب نمونه",
         "workspace":41
     }
 
@@ -271,20 +273,22 @@ HOST: https://chat.replai.ir/api
 
     {
         "id": 13306,
-        "question": "سوال تستی",
-        "answer": "جواب تستی",
+        "question": "سوال نمونه",
+        "answer": "جواب نمونه",
         "rated": false,
         "suggested": false,
         "citation": 0,
         "references": []
     }
 
-### اصطلاح سوال [PUT]
+## اصلاح یک سوال و جواب [/knowledge/{workspace_id}/messages/{message_id}]
 
 + Parameters
 
     + workspace_id: `12345` (string, required) - شناسه فضای کاری.
-    + question_id: `1` (number, required) - شناسه سوال
+    + message_id: `2` (string, required) - شناسه پیام
+
+### اصلاح سوال [PUT]
 
 + Request (application/json)
 
@@ -301,14 +305,11 @@ HOST: https://chat.replai.ir/api
     
 ### حذف سوال [DELETE]
 
-+ Parameters
-
-    + workspace_id: `12345` (string, required) - شناسه فضای کاری.
-    + question_id: `1` (number, required) - شناسه سوال
-
 + Response 200
+    + Body
 
-## آپلود csv به یک فضای کاری [/workspaces/{workspace_id}/upload-qa-csv/]
+## آپلود سوال و جواب‌ها در قالب یک CSV به فایل پایگاه دانش [/workspaces/{workspace_id}/upload-qa-csv/]
+در این حالت می‌توانید تمام سوال و جواب‌ها را از قبل در یک فایل CSV آماده کنید و با آپلود کردن آن تمام داده‌های پایگاه دانش را به صورت دسته‌ای وارد کنید. فایل CSV باید یک ستون question و یک ستون answer داشته باشد.
 
 + Parameters
 
@@ -319,3 +320,4 @@ HOST: https://chat.replai.ir/api
 + Request (text/csv)
 
 + Response 200
+    + Body
