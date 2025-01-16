@@ -401,7 +401,7 @@ workspace_id
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
-      <span class="se">\</span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token ***********************************"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
       https://chat.replai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/chats
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
@@ -409,7 +409,7 @@ workspace_id
 <span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token ***********************************'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces/{workspace_id}/chats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -449,23 +449,17 @@ workspace_id
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "text": "کدام بانک ها ارز اربعین می‌دهند؟"
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
-      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s1">'{
-    "text": "کدام بانک ها ارز اربعین می‌دهند؟"
-}'</span> <span class="se">\</span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token ***********************************"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
       https://chat.replai.ir/api/workspaces/<span class="o">{</span>workspace_id<span class="o">}</span>/chats
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"text"</span><span class="p">:</span> <span class="s">"کدام بانک ها ارز اربعین می‌دهند؟"</span>
-<span class="p">}</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token ***********************************'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/workspaces/{workspace_id}/chats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -539,7 +533,7 @@ chat_id
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
-      <span class="se">\</span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token ***********************************"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
       https://chat.replai.ir/api/chats/<span class="o">{</span>chat_id<span class="o">}</span>/messages
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
@@ -547,7 +541,7 @@ chat_id
 <span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token ***********************************'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/{chat_id}/messages'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -583,7 +577,7 @@ chat_id
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    text: \"کدام بانک ها ارز اربعین می‌دهند؟\"\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
-      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token ***********************************"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'"{\n    text: \"کدام بانک ها ارز اربعین می‌دهند؟\"\n}\n"'</span> <span class="se">\</span>
       https://chat.replai.ir/api/chats/<span class="o">{</span>chat_id<span class="o">}</span>/messages
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
@@ -591,7 +585,7 @@ chat_id
 <span class="n">values</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\n</span><span class="s">    text: </span><span class="se">\"</span><span class="s">کدام بانک ها ارز اربعین می‌دهند؟</span><span class="se">\"\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token ***********************************'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/{chat_id}/messages'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -641,7 +635,7 @@ message_id
     "like": true
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> PUT <span class="se">\ </span>
-      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token ***********************************"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'{
     "like": true
 }'</span> <span class="se">\</span>
@@ -653,7 +647,7 @@ message_id
 <span class="p">}</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token ***********************************'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://chat.replai.ir/api/chats/messages/{message_id}/like'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
