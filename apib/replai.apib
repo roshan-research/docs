@@ -86,6 +86,11 @@ HOST: https://chat.replai.ir/api
 
 ### لیست همه چت‌ها [GET]
 
++ Request (application/json)
+
+    + Headers
+        Authorization: Token ***********************************
+
 + Response 200 (application/json)
 
     [
@@ -116,10 +121,14 @@ HOST: https://chat.replai.ir/api
 ### ساخت یک چت جدید [POST]
 
 + Request (application/json)
-    
-    {
-        "text":"کدام بانک ها ارز اربعین می‌دهند؟"
-    }
+
+    + Headers
+        Authorization: Token ***********************************
+
+    + ‌Body
+        {
+            "text":"کدام بانک ها ارز اربعین می‌دهند؟"
+        }
 
 + Response 200 (application/json)
 
@@ -144,6 +153,11 @@ HOST: https://chat.replai.ir/api
     + chat_id: 1 (number) - شناسه چت
 
 ### لیست همه پیام‌ها [GET]
+
++ Request (application/json)
+
+    + Headers
+        Authorization: Token ***********************************
 
 + Response 200 (application/json)
 
@@ -170,9 +184,14 @@ HOST: https://chat.replai.ir/api
 
 + Request (application/json)
 
-    {
-        text: "کدام بانک ها ارز اربعین می‌دهند؟"
-    }
+    + Headers
+        Authorization: Token ***********************************
+    
+    + Body
+
+        {
+            text: "کدام بانک ها ارز اربعین می‌دهند؟"
+        }
 
 + Response 200 (application/json)
 
@@ -194,10 +213,15 @@ HOST: https://chat.replai.ir/api
 
 ### لایک یا دیسلایک کردن [PUT]
 
-+ Request (application/json)    
-    {
-        "like": true
-    }
++ Request (application/json)
+
+    + Headers
+        Authorization: Token ***********************************
+
+    + Body
+        {
+            "like": true
+        }
 
 + Response 200 (application/json)
 
