@@ -1,0 +1,74 @@
+FORMAT: 1A
+HOST: https://roshan-ai.ir
+
+# روشن
+
+با کمک این API می‌توانید وضعیت سه سرویس الفبا و حرف و باز را بررسی کنید. این API اطلاعاتی درباره عملکرد سرویس‌ها ارائه می‌دهد و به توسعه‌دهندگان و تیم‌های پشتیبانی کمک می‌کند تا از دسترس‌پذیری و صحت عملکرد آن‌ها اطمینان یابند. 
+
+برای استفاده از این API نیاز به دریافت توکن دسترسی دارید که می‌توانید آن را از بخش فروش روشن دریافت کنید. تمامی درخواست‌ها باید با هدر `Authorization: Token {your_api_token}` ارسال شوند.
+
+تمام درخواست‌ها باید با هدر `Authorization: Token {your_api_token}` ارسال شوند. این توکن را از بخش فروش دریافت کنید.
+
+# GET /api/healthcheck
+
++ Request الفبا (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+            Host: alefba.roshan-ai.ir
+            
+    + Body
+
+            {
+                "service_urls": ["https://alefba.roshan-ai.ir/api/healthcheck/"]
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }
+
++ Request حرف (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+            Host: harf.roshan-ai.ir
+            
+    + Body
+
+            {
+                "service_urls": ["https://harf.roshan-ai.ir/api/healthcheck/"]
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }
+
++ Request باز (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+            Host: baaz.roshan-ai.ir
+            
+    + Body
+
+            {
+                "service_urls": [
+                    "https://baaz.roshan-ai.ir/healthcheck/"
+                ]
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }
