@@ -410,3 +410,31 @@ HOST: http://api.sobhe.ir:7000/
         "indexing_doc": 0,
         "search_queries": 0
     }
+
+## بررسی وضعیت سلامت ای‌پی‌آی [/api/healthcheck]
+
+وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد `۲۰۰` و متن `Server is up and ready` برمی‌گردد. 
+
+### مثال [GET]
+
++ Request باز (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+            Host: baaz.roshan-ai.ir
+            
+    + Body
+
+            {
+                "service_urls": [
+                    "https://baaz.roshan-ai.ir/healthcheck/"
+                ]
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }

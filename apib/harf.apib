@@ -568,3 +568,30 @@ HOST: https://harf.roshan-ai.ir
         },
         ...
     ]
+
+
+## بررسی وضعیت سلامت ای‌پی‌آی [/api/healthcheck]
+
+وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد `۲۰۰` و متن `Server is up and ready` برمی‌گردد. 
+
+### مثال [GET]
+
++ Request حرف (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+            Host: harf.roshan-ai.ir
+            
+    + Body
+
+            {
+                "service_urls": ["https://harf.roshan-ai.ir/api/healthcheck/"]
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }

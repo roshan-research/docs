@@ -531,3 +531,29 @@ HOST: https://alefba.roshan-ai.ir
           "state":"processing",
           "document_url":"http://192.168.254.3:5013/static/2021-10-12%20%281%29.png"
         }
+
+## بررسی وضعیت سلامت ای‌پی‌آی [/api/healthcheck]
+
+وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد `۲۰۰` و متن `Server is up and ready` برمی‌گردد. 
+
+### مثال [GET]
+
++ Request الفبا (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+            Host: alefba.roshan-ai.ir
+            
+    + Body
+
+            {
+                "service_urls": ["https://alefba.roshan-ai.ir/api/healthcheck/"]
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }
