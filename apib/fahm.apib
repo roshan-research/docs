@@ -1,0 +1,102 @@
+FORMAT: 1A
+HOST: https://fahm.roshan-ai.ir/api/
+
+# فهم
+
+این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است.
+
+## ترجمه [/translate/]
+### ترجمه متن [POST]
+
+این بخش از ای‌پی‌آی برای ترجمه متن از یک زبان به زبان دیگر استفاده می‌شود. کاربر می‌تواند متن موردنظر را همراه با زبان مقصد ارسال کند و ترجمه آن را دریافت نماید.
+
++ Request (application/json)
+
+    + Headers
+            
+            Authorization: Token `ca99734ed144a168def3d44a52e32ff2326d9174`
+
+    + Body
+            
+            {
+                "text": "Hello, how are you? I want to know what day it is today and what time it is.",
+                "lan": "fa"
+            }
+        
+
++ Response 200 (application/json)
+            
+        {
+            "translated_text": "سلام، حال شما چطور است؟ می‌خواهم بدانم امروز چه روزی است و ساعت چند است."
+        }
+    
+
+## خلاصه‌سازی [/summarize/]
+### خلاصه‌سازی متن [POST]
+
+این بخش از ای‌پی‌آی برای خلاصه‌سازی متون طولانی مورد استفاده قرار می‌گیرد. کاربران می‌توانند متن خود را همراه با نوع خلاصه‌سازی و سطح دشواری ارسال کنند و خلاصه‌ای متناسب با درخواست خود دریافت نمایند.
+
++ Request (multipart/form-data)
+
+    + Headers
+            
+            Authorization: Token `ca99734ed144a168def3d44a52e32ff2326d9174`
+
+    + Body
+        
+            text="This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made"
+            type="word"
+            level="level_1"
+
++ Response 200 (application/json)
+    
+        {
+            "summary": "A short story about wine, love, hate, and a winepress set in Madagascar and France."
+        }
+    
+
+## گفت‌وگو [/chat/stream/]
+### چت با هوش مصنوعی [POST]
+
+این بخش از ای‌پی‌آی امکان گفت‌وگو با هوش مصنوعی را فراهم می‌کند. کاربران می‌توانند سوالات خود را ارسال کرده و پاسخ متنی دریافت کنند. این قابلیت می‌تواند برای پاسخ به سوالات عمومی، ارائه اطلاعات و تعاملات هوشمندانه مورد استفاده قرار گیرد.
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Token `e58f7879284cf256af57f899ec8749b5cdba4cd5`
+        
+
+    + Body
+        
+            {
+                "query": "کدام شرکت ها از سیستم پرگار استفاده میکنند",
+                "username": "mahabadi",
+                "token": "e58f7879284cf256af57f899ec8749b5cdba4cd5"
+            }
+        
+
++ Response 200 (application/json)
+    
+        {
+            "response": "شرکت‌های A، B و C از سیستم پرگار استفاده می‌کنند."
+        }
+
+## سلامت ای‌پی‌آی [/healthcheck]
+
+وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد `۲۰۰` و متن `Server is up and ready` برمی‌گردد. 
+
+### بررسی وضعیت سلامت ای‌پی‌آی [GET]
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Token {your_api_token}
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Server is up and ready"
+            }
