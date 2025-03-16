@@ -1591,29 +1591,17 @@ Value: <span style="background-color: #00A693;
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
-    "service_urls": [
-        "https://alefba.roshan-ai.ir/api/healthcheck/"
-    ]
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
-      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token {your_api_token}"</span> <span class="nt">--header</span> <span class="s2">"Host: alefba.roshan-ai.ir"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s1">'{
-    "service_urls": [
-        "https://alefba.roshan-ai.ir/api/healthcheck/"
-    ]
-}'</span> <span class="se">\</span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token {your_api_token}"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
       https://alefba.roshan-ai.ir/api/healthcheck
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"service_urls"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">"https://alefba.roshan-ai.ir/api/healthcheck/"</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token {your_api_token}'</span><span class="p">,</span><span class="s">'Host'</span><span class="p">:</span> <span class="s">'alefba.roshan-ai.ir'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token {your_api_token}'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://alefba.roshan-ai.ir/api/healthcheck'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
