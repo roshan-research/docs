@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://api.sobhe.ir:7000/
+HOST: https://baaz.roshan-ai.ir/
 
 # باز
 باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید با ارسال یک ایمیل به <a href="mailto:baaz@roshan-ai.ir">baaz@roshan-ai.ir</a> درخواست دهید.
@@ -420,16 +420,7 @@ HOST: http://api.sobhe.ir:7000/
 + Request باز (application/json)
     + Headers
 
-            Authorization: Token {your_api_token}
-            Host: baaz.roshan-ai.ir
-            
-    + Body
-
-            {
-                "service_urls": [
-                    "https://baaz.roshan-ai.ir/healthcheck/"
-                ]
-            }
+            Authorization: Token {your_api_token}        
 
 + Response 200 (application/json)
     + Body
