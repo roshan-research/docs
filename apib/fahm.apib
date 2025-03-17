@@ -11,37 +11,42 @@ HOST: https://fahm.roshan-ai.ir/api/
 این بخش از ای‌پی‌آی برای ترجمه متن از یک زبان به زبان دیگر استفاده می‌شود. کاربر می‌تواند متن موردنظر را همراه با زبان مقصد ارسال کند و ترجمه آن را دریافت نماید.
 
 
+values = {
+    "text": "Hello, how are you? I want to know what day it is today and what time it is.",
+    "lan": "fa"
+}
+
   متن (text):
    در این قسمت، متن اصلی که نیاز به ترجمه دارد وارد می‌شود.
 
   زبان مقصد (lan):
    مشخص می‌کند که متن به چه زبانی ترجمه شود.
-   مقادیر قابل قبول: 
-	en  : انگلیسی
-	fa  : فارسی
-	ar  :عربی
+   مقادیر قابل قبول:
+	<code>en</code>  : انگلیسی
+	<code>fa</code>  : فارسی
+	<code>ar</code>  :عربی
 
 
 + Request (application/json)
 
     + Headers
-            
+
             Authorization: Token `YOUR_API_TOKEN`
 
     + Body
-            
+
             {
                 "text": "Hello, how are you? I want to know what day it is today and what time it is.",
                 "lan": "fa"
             }
-        
+
 
 + Response 200 (application/json)
-            
-        {
-            "translated_text": "سلام، حال شما چطور است؟ می‌خواهم بدانم امروز چه روزی است و ساعت چند است."
-        }
-    
+
+            {
+                "translated_text": "سلام، حال شما چطور است؟ می‌خواهم بدانم امروز چه روزی است و ساعت چند است."
+            }
+
 
 ## خلاصه‌سازی [/summarize/]
 ### خلاصه‌سازی متن [POST]
@@ -53,73 +58,75 @@ HOST: https://fahm.roshan-ai.ir/api/
 
 نوع ترجمه (type):
 مشخص می‌کند که خروجی به چه فرمتی باشد:
-Word  : خلاصه به‌صورت متن پیوسته و کامل.
-Conversation : خلاصه به‌صورت مکالمه‌ای.
-Bullet : خلاصه به‌صورت نکات کلیدی و فهرست‌وار.
+<code>Word</code>  : خلاصه به‌صورت متن پیوسته و کامل.
+<code>Conversation</code> : خلاصه به‌صورت مکالمه‌ای.
+<code>Bullet</code> : خلاصه به‌صورت نکات کلیدی و فهرست‌وار.
 
 سطح خلاصه‌سازی (level):
 میزان حجم محتوای خلاصه شده را تعیین می‌کند:
-•Level_1 : کمترین میزان خلاصه‌سازی
-•Level_2 : خلاصه‌ای متعادل
-•Level_3 : بیشترین میزان خلاصه‌سازی
+<code>Level_1</code> : کمترین میزان خلاصه‌سازی
+<code>Level_2</code> : خلاصه‌ای متعادل
+<code>Level_3</code> : بیشترین میزان خلاصه‌سازی
 
 
 + Request (multipart/form-data)
 
     + Headers
-            
+
             Authorization: Token `YOUR_API_TOKEN`
 
     + Body
-        
-            text="This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made"
-            type="word"
-            level="level_1"
+
+            {
+                text="This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made",
+                type="word",
+                level="level_1"
+            }
 
 + Response 200 (application/json)
-    
-        {
-            "summary": "A short story about wine, love, hate, and a winepress set in Madagascar and France."
-        }
-    
+
+            {
+                "summary": "A short story about wine, love, hate, and a winepress set in Madagascar and France."
+            }
+
 
 ## گفت‌وگو [/chat/stream/]
 ### چت با هوش مصنوعی [POST]
 
 این بخش از ای‌پی‌آی امکان گفت‌وگو با هوش مصنوعی را فراهم می‌کند. کاربران می‌توانند سوالات خود را ارسال کرده و پاسخ متنی دریافت کنند. این قابلیت می‌تواند برای پاسخ به سوالات عمومی، ارائه اطلاعات و تعاملات هوشمندانه مورد استفاده قرار گیرد.
 
-عبارت جستجو (query):
+عبارت جستجو <code>(query)</code>:
 متنی که باید در اسناد جستجو شود و نتایج مرتبط با آن پیدا شوند.
 
-نام کاربری (username):
+نام کاربری <code>(username)</code>:
 نام کاربری یکی از اکانت های محصول الفبا یا حرف
 
 
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Token `YOUR_API_TOKEN`
-        
+
 
     + Body
-        
+
             {
                 "query": "کدام شرکت ها از سیستم پرگار استفاده میکنند",
                 "username": "YOUR_USERNAME",
                 "token": "YOUR_API_TOKEN"
             }
-        
+
 
 + Response 200 (application/json)
-    
-        {
-            "response": "شرکت‌های A، B و C از سیستم پرگار استفاده می‌کنند."
-        }
+
+            {
+                "response": "شرکت‌های A، B و C از سیستم پرگار استفاده می‌کنند."
+            }
 
 ## سلامت ای‌پی‌آی [/healthcheck]
 
-وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد `۲۰۰` و متن `Server is up and ready` برمی‌گردد. 
+وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد <code>200</code> و متن <code>Server is up and ready</code> برمی‌گردد.
 
 ### بررسی وضعیت سلامت ای‌پی‌آی [GET]
 
