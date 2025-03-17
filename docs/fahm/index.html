@@ -282,36 +282,41 @@
 <blockquote>
 <p>Response </p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"translated_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سلام، حال شما چطور است؟ می‌خواهم بدانم امروز چه روزی است و ساعت چند است."</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"translated_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سلام، حال شما چطور است؟ می‌خواهم بدانم امروز چه روزی است و ساعت چند است."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>این بخش از ای‌پی‌آی برای ترجمه متن از یک زبان به زبان دیگر استفاده می‌شود. کاربر می‌تواند متن موردنظر را همراه با زبان مقصد ارسال کند و ترجمه آن را دریافت نماید.</p>
+
+<p>values = {
+    &quot;text&quot;: &quot;Hello, how are you? I want to know what day it is today and what time it is.&quot;,
+    &quot;lan&quot;: &quot;fa&quot;
+}</p>
 
 <p>متن (text):
    در این قسمت، متن اصلی که نیاز به ترجمه دارد وارد می‌شود.</p>
 
 <p>زبان مقصد (lan):
    مشخص می‌کند که متن به چه زبانی ترجمه شود.
-   مقادیر قابل قبول: 
-    en  : انگلیسی
-    fa  : فارسی
-    ar  :عربی</p>
+   مقادیر قابل قبول:
+    <code>en</code>  : انگلیسی
+    <code>fa</code>  : فارسی
+    <code>ar</code>  :عربی</p>
 
 <dl style="background-color:transparent;"><code>POST /translate/</code></dl>
 <h1 id='7c47f5d715'>خلاصه‌سازی</h1><h2 id='07fdb22a4a'>خلاصه‌سازی متن</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"text=\"This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made\"\ntype=\"word\"\nlevel=\"level_1\"\n"
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    text=\"This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made\",\n    type=\"word\",\n    level=\"level_1\"\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: multipart/form-data"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token </span><span class="sb">`</span>YOUR_API_TOKEN<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s1">'"text=\"This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made\"\ntype=\"word\"\nlevel=\"level_1\"\n"'</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'"{\n    text=\"This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made\",\n    type=\"word\",\n    level=\"level_1\"\n}\n"'</span> <span class="se">\</span>
       https://fahm.roshan-ai.ir/api/summarize/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"text=</span><span class="se">\"</span><span class="s">This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made</span><span class="se">\"\n</span><span class="s">type=</span><span class="se">\"</span><span class="s">word</span><span class="se">\"\n</span><span class="s">level=</span><span class="se">\"</span><span class="s">level_1</span><span class="se">\"\n</span><span class="s">"</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\n</span><span class="s">    text=</span><span class="se">\"</span><span class="s">This short story is set in Madagascar and France. It tells about wine and love - and hate. And about a winepress, the machine used to press the grapes from which wine is made</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">    type=</span><span class="se">\"</span><span class="s">word</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">    level=</span><span class="se">\"</span><span class="s">level_1</span><span class="se">\"\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'multipart/form-data'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token `YOUR_API_TOKEN`'</span><span class="p">,</span>
@@ -323,9 +328,9 @@
 <blockquote>
 <p>Response </p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A short story about wine, love, hate, and a winepress set in Madagascar and France."</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A short story about wine, love, hate, and a winepress set in Madagascar and France."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>این بخش از ای‌پی‌آی برای خلاصه‌سازی متون طولانی مورد استفاده قرار می‌گیرد. کاربران می‌توانند متن خود را همراه با نوع خلاصه‌سازی و سطح دشواری ارسال کنند و خلاصه‌ای متناسب با درخواست خود دریافت نمایند.</p>
@@ -335,15 +340,15 @@
 
 <p>نوع ترجمه (type):
 مشخص می‌کند که خروجی به چه فرمتی باشد:
-Word  : خلاصه به‌صورت متن پیوسته و کامل.
-Conversation : خلاصه به‌صورت مکالمه‌ای.
-Bullet : خلاصه به‌صورت نکات کلیدی و فهرست‌وار.</p>
+<code>Word</code>  : خلاصه به‌صورت متن پیوسته و کامل.
+<code>Conversation</code> : خلاصه به‌صورت مکالمه‌ای.
+<code>Bullet</code> : خلاصه به‌صورت نکات کلیدی و فهرست‌وار.</p>
 
 <p>سطح خلاصه‌سازی (level):
 میزان حجم محتوای خلاصه شده را تعیین می‌کند:
-•Level_1 : کمترین میزان خلاصه‌سازی
-•Level_2 : خلاصه‌ای متعادل
-•Level_3 : بیشترین میزان خلاصه‌سازی</p>
+<code>Level_1</code> : کمترین میزان خلاصه‌سازی
+<code>Level_2</code> : خلاصه‌ای متعادل
+<code>Level_3</code> : بیشترین میزان خلاصه‌سازی</p>
 
 <dl style="background-color:transparent;"><code>POST /summarize/</code></dl>
 <h1 id='6c039ccdc8'>گفت‌وگو</h1><h2 id='f362a64e20'>چت با هوش مصنوعی</h2>
@@ -381,22 +386,22 @@ Bullet : خلاصه به‌صورت نکات کلیدی و فهرست‌وار.<
 <blockquote>
 <p>Response </p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شرکت‌های A، B و C از سیستم پرگار استفاده می‌کنند."</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شرکت‌های A، B و C از سیستم پرگار استفاده می‌کنند."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>این بخش از ای‌پی‌آی امکان گفت‌وگو با هوش مصنوعی را فراهم می‌کند. کاربران می‌توانند سوالات خود را ارسال کرده و پاسخ متنی دریافت کنند. این قابلیت می‌تواند برای پاسخ به سوالات عمومی، ارائه اطلاعات و تعاملات هوشمندانه مورد استفاده قرار گیرد.</p>
 
-<p>عبارت جستجو (query):
+<p>عبارت جستجو <code>(query)</code>:
 متنی که باید در اسناد جستجو شود و نتایج مرتبط با آن پیدا شوند.</p>
 
-<p>نام کاربری (username):
+<p>نام کاربری <code>(username)</code>:
 نام کاربری یکی از اکانت های محصول الفبا یا حرف</p>
 
 <dl style="background-color:transparent;"><code>POST /chat/stream/</code></dl>
 <h1 id='bbe08bcd64'>سلامت ای‌پی‌آی</h1>
-<p>وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد <code>۲۰۰</code> و متن <code>Server is up and ready</code> برمی‌گردد.</p>
+<p>وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد <code>200</code> و متن <code>Server is up and ready</code> برمی‌گردد.</p>
 <h2 id='8ab1b4b299'>بررسی وضعیت سلامت ای‌پی‌آی</h2>
 <blockquote>
 <p>Request</p>
