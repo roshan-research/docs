@@ -22,9 +22,9 @@ values = {
   زبان مقصد (lan):
    مشخص می‌کند که متن به چه زبانی ترجمه شود.
    مقادیر قابل قبول:
-	<code>en</code>  : انگلیسی
-	<code>fa</code>  : فارسی
-	<code>ar</code>  :عربی
+<code>en</code>  : انگلیسی
+<code>fa</code>  : فارسی
+<code>ar</code>  :عربی
 
 
 + Request (application/json)
@@ -133,7 +133,7 @@ values = {
 + Request (application/json)
     + Headers
 
-            Authorization: Token YOUR_API_TOKEN
+            Authorization: Token `YOUR_API_TOKEN`
 
 + Response 200 (application/json)
     + Body
@@ -149,7 +149,7 @@ values = {
 
 این بخش از ای‌پی‌آی برای استخراج کلیدواژه‌ها و اطلاعات ساختاریافته از یک سند متنی مورد استفاده قرار می‌گیرد. کاربر می‌تواند یک متن را ارسال کند و خروجی شامل لیستی از کلیدواژه‌ها و یک دیکشنری از متادیتا دریافت کند.
 
-- `text` (رشته، ضروری): متن اصلی که باید تحلیل شود.
+- <code>(text)</code> (رشته، ضروری): متن اصلی که باید تحلیل شود.
 
 + Request (application/json)
 
@@ -164,7 +164,8 @@ values = {
             }
 
 + Response 200 (application/json)
-
+    + Body
+            
             {
                 "keywords": [
                     "منطقه یک تهران",
@@ -179,23 +180,6 @@ values = {
                 }
             }
 
-+ Response 400 (application/json)
-
-            {
-                "error": "متن نباید خالی باشد"
-            }
-
-+ Curl Example
-
-        curl --location 'https://fahm.roshan-ai.ir/api/extract/metadata/' \
-        --header 'Authorization: Token YOUR_API_TOKEN' \
-        --header 'Content-Type: application/json' \
-        --data '{
-            "text": "این سند مربوط به منطقه یک تهران بوده و شامل اطلاعات ارزش ملک، مساحت زمین، و عوارض سالانه است. مساحت زمین برابر با ۱۵۰ متر مربع است و ارزش ملک معادل ۲۵۰ میلیون ریال محاسبه شده است."
-        }'
-
-
-# Group درک مطلب
 
 ## پاسخ به سوالات از روی متن [/comprehension/]
 ### پاسخ به سوالات براساس متن [POST]
@@ -203,8 +187,8 @@ values = {
 این ای‌پی‌آی برای پاسخ‌دهی به سوالات بر مبنای متن داده شده طراحی شده است. کاربر می‌تواند چند متن به همراه مجموعه‌ای از سوالات مربوط به هر متن ارسال کند. سیستم به صورت خودکار زبان متن (فارسی یا عربی) را تشخیص داده و تحلیل مناسب را انجام می‌دهد.
 
 **پارامترها:**
-- `contexts` (لیست رشته‌ها، ضروری): مجموعه‌ای از متن‌های مرجع برای پاسخگویی به سوالات.
-- `questions` (لیست لیست‌های رشته، ضروری): مجموعه‌ای از سوالات مربوط به هر زمینه.
+- <code>contexts</code> (لیست رشته‌ها، ضروری): مجموعه‌ای از متن‌های مرجع برای پاسخگویی به سوالات.
+- <code>questions</code> (لیست لیست‌های رشته، ضروری): مجموعه‌ای از سوالات مربوط به هر زمینه.
 
 + Request (application/json)
 
@@ -247,26 +231,10 @@ values = {
                 "error": "An error occurred: list index out of range"
             }
 
-+ Curl Example
-
-        curl --location 'http://127.0.0.1:8686/api/comprehension/' \
-        --header 'Authorization: Token YOUR_API_TOKEN' \
-        --header 'Content-Type: application/json' \
-        --data '{
-            "contexts": [
-                "تهران پایتخت ایران است."
-            ],
-            "questions": [
-                ["پایتخت ایران کجاست؟"]
-            ]
-        }'
         
         
-# Letter Generation API
-
-این API برای تولید نامه‌های رسمی و ساختارمند طراحی شده است. کاربر یک متن شامل دستورالعمل نگارش نامه را ارسال می‌کند و در پاسخ، یک نامه رسمی و مناسب دریافت می‌نماید.
-
 ## تولید نامه [/api/letter/]
+این API برای تولید نامه‌های رسمی و ساختارمند طراحی شده است. کاربر یک متن شامل دستورالعمل نگارش نامه را ارسال می‌کند و در پاسخ، یک نامه رسمی و مناسب دریافت می‌نماید.
 
 ### تولید نامه رسمی بر اساس دستورالعمل [POST]
 
@@ -274,14 +242,13 @@ values = {
 
 **پارامترها:**
 
-- `text` (ضروری): رشته‌ای شامل محتوای دستورالعمل و خواسته کاربر جهت تولید نامه.
+- <code>text</code> (ضروری): رشته‌ای شامل محتوای دستورالعمل و خواسته کاربر جهت تولید نامه.
 
 + Request (application/json)
 
     + Headers
 
-            Authorization: Token YOUR_API_TOKEN
-            Content-Type: application/json
+            Authorization: Token `YOUR_API_TOKEN`
 
     + Body
 
@@ -307,14 +274,3 @@ values = {
           "error": "The specified LLM model was not found.",
           "details": "Failed to generate letter. Please check the model configuration."
         }
-
-### نمونه curl
-
-```bash
-curl -v -X POST \
-  http://localhost:8686/api/letter/ \
-  -H "Authorization: Token YOUR_API_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"text": "سلام. لطفا یک نامه رسمی و محترمانه برای درخواست همکاری در یک پروژه مشترک بنویس. این نامه باید به مدیریت یک شرکت یا سازمان ارسال شود و در آن به موارد زیر اشاره شود:\nمقدمه: شروع نامه با احترام و معرفی کوتاهی از فرستنده.\nهدف از همکاری: توضیحی مختصر درباره زمینه فعالیت دو مجموعه و دلیل پیشنهاد این همکاری.\nمزایا: بیان مزایای همکاری برای هر دو طرف و تأکید بر هم افزایی.\nدرخواست جلسه: پیشنهاد برگزاری یک جلسه برای بررسی جزئیات بیشتر.\nاختتامیه: تشکر از گیرنده نامه و درج اطلاعات تماس.\nنامه باید لحن رسمی، روان و تاثیرگذار داشته باشد. همچنین باید کوتاه، مختصر و در عین حال جامع باشد."}'
-  
-  
