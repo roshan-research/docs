@@ -274,3 +274,125 @@ values = {
           "error": "The specified LLM model was not found.",
           "details": "Failed to generate letter. Please check the model configuration."
         }
+
+## خلاصه‌سازی اسناد ذخیره‌شده [/barid/summarize/]
+### خلاصه‌سازی با شناسه سند [POST]
+
+این ای‌پی‌آی برای خلاصه‌سازی اسنادی که از قبل در ایندکس‌های ذخیره‌سازی قرار دارند استفاده می‌شود.
+
+**پارامترها:**
+- <code>document_id</code> (لیست): شناسه‌های اسناد موردنظر.
+- <code>document_index</code> (رشته): ایندکس محل ذخیره‌سازی اسناد.
+- <code>document_type</code> (رشته): نوع سند (مثلاً "نامه").
+- <code>document_content_key</code> (رشته): کلید محتوای اصلی (مثلاً "body").
+- <code>type</code> (رشته): نوع خلاصه‌سازی. مقادیر قابل قبول: `word`, `conversation`, `bullet`.
+- <code>level</code> (رشته): سطح خلاصه‌سازی. مقادیر قابل قبول: `level_1`, `level_2`, `level_3`.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token YOUR_API_TOKEN
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "document_id": [
+                "Document Id",
+                "Document Id"
+              ],
+              "document_index": "Document Index",
+              "document_type": "نامه",
+              "document_content_key": "body",
+              "type": "word",
+              "level": "level_2"
+            }
+
++ نمونه cURL
+
+        curl --location 'https://fahm.roshan-ai.ir/api/barid/summarize/' \
+        --header 'Authorization: Token Api_Token' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "document_id": [
+            "Document Id",
+            "Document Id"
+          ],
+          "document_index": "Document Index",
+          "document_type": "نامه",
+          "document_content_key": "body",
+          "type": "word",
+          "level": "level_2"
+        }'
+
+
++ Response 200 (application/json)
+
+        {
+          "summaries": [
+            "خلاصه سند اول...",
+            "خلاصه سند دوم..."
+          ]
+        }
+
+## درک مطلب اسناد ذخیره‌شده [/barid/comprehension/]
+### پاسخ به سوالات بر اساس اسناد ایندکس‌شده [POST]
+
+این ای‌پی‌آی برای پاسخ به سوالات بر پایه‌ی اسنادی که از قبل در ایندکس مشخصی ذخیره شده‌اند استفاده می‌شود. با ارسال شناسه سند (یا چند سند)، ایندکس مربوطه، نوع سند و لیستی از سوالات، سیستم پاسخ‌های متنی را از دل محتوای اسناد استخراج می‌کند.
+
+**پارامترها:**
+- <code>document_id</code> (لیست رشته): لیستی از شناسه‌های سند.
+- <code>document_index</code> (رشته): نام ایندکس محل ذخیره‌سازی اسناد.
+- <code>document_type</code> (رشته): نوع سند (مثلاً "نامه").
+- <code>document_content_key</code> (رشته): کلید محتوای مورد تحلیل (مانند "body").
+- <code>questions</code> (لیست رشته): لیستی از سوالات متنی که باید به آن‌ها پاسخ داده شود.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token YOUR_API_TOKEN
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "document_id": [
+                "Document Id",
+                "Document Id"
+              ],
+              "document_index": "Document Index",
+              "document_type": "نامه",
+              "document_content_key": "body",
+              "questions": [
+                "آقای محمد هادی کیست؟",
+                "میدان ولیعصر کجاست؟"
+              ]
+            }
+
++ نمونه cURL
+
+        curl --location 'https://fahm.roshan-ai.ir/api/barid/comprehension/' \
+        --header 'Authorization: Token Api_Token' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "document_id": [
+            "Document Id",
+            "Document Id"
+          ],
+          "document_index": "Document Index",
+          "document_type": "نامه",
+          "document_content_key": "body",
+          "questions": [
+            "آقای محمد هادی کیست؟"
+          ]
+        }'
+
++ Response 200 (application/json)
+
+        {
+          "answers": [
+            "آقای محمد هادی یکی از افراد نام‌برده در نامه است که ..."
+          ]
+        }
