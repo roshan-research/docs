@@ -518,9 +518,7 @@
 </span></code></pre></div>
 <p>این بخش از ای‌پی‌آی برای استخراج کلیدواژه‌ها و اطلاعات ساختاریافته از یک سند متنی مورد استفاده قرار می‌گیرد. کاربر می‌تواند یک متن را ارسال کند و خروجی شامل لیستی از کلیدواژه‌ها و یک دیکشنری از متادیتا دریافت کند.</p>
 
-<ul>
-<li><code>(text)</code> (رشته، ضروری): متن اصلی که باید تحلیل شود.</li>
-</ul>
+<p><code>(text)</code> (رشته، ضروری): متن اصلی که باید تحلیل شود.</p>
 
 <dl style="background-color:transparent;"><code>POST /extract/metadata/</code></dl>
 <h1 id='74d17dfeb1'>پاسخ به سوالات از روی متن</h1><h2 id='638bc644f0'>پاسخ به سوالات براساس متن</h2>
@@ -588,12 +586,9 @@
 </span></code></pre></div>
 <p>این ای‌پی‌آی برای پاسخ‌دهی به سوالات بر مبنای متن داده شده طراحی شده است. کاربر می‌تواند چند متن به همراه مجموعه‌ای از سوالات مربوط به هر متن ارسال کند. سیستم به صورت خودکار زبان متن (فارسی یا عربی) را تشخیص داده و تحلیل مناسب را انجام می‌دهد.</p>
 
-<p><strong>پارامترها:</strong></p>
-
-<ul>
-<li><p><code>contexts</code> (لیست رشته‌ها، ضروری): مجموعه‌ای از متن‌های مرجع برای پاسخگویی به سوالات.</p></li>
-<li><p><code>questions</code> (لیست لیست‌های رشته، ضروری): مجموعه‌ای از سوالات مربوط به هر زمینه.</p></li>
-</ul>
+<p><strong>پارامترها:</strong>
+<code>contexts</code> (لیست رشته‌ها، ضروری): مجموعه‌ای از متن‌های مرجع برای پاسخگویی به سوالات.
+<code>questions</code> (لیست لیست‌های رشته، ضروری): مجموعه‌ای از سوالات مربوط به هر زمینه.</p>
 
 <dl style="background-color:transparent;"><code>POST /comprehension/</code></dl>
 <h1 id='7c4471c0c1'>تولید نامه</h1>
@@ -636,9 +631,7 @@
 
 <p><strong>پارامترها:</strong></p>
 
-<ul>
-<li><code>text</code> (ضروری): رشته‌ای شامل محتوای دستورالعمل و خواسته کاربر جهت تولید نامه.</li>
-</ul>
+<p><code>text</code> (ضروری): رشته‌ای شامل محتوای دستورالعمل و خواسته کاربر جهت تولید نامه.</p>
 
 <dl style="background-color:transparent;"><code>POST /letter/</code></dl>
 <h1 id='a4de9339a5'>خلاصه‌سازی اسناد ذخیره‌شده</h1><h2 id='a471dbf8a7'>خلاصه‌سازی با شناسه سند</h2>
@@ -704,16 +697,13 @@
 </span></code></pre></div>
 <p>این ای‌پی‌آی برای خلاصه‌سازی اسنادی که از قبل در ایندکس‌های ذخیره‌سازی قرار دارند استفاده می‌شود.</p>
 
-<p><strong>پارامترها:</strong></p>
-
-<ul>
-<li><p><code>document_id</code> (لیست): شناسه‌های اسناد موردنظر.</p></li>
-<li><p><code>document_index</code> (رشته): ایندکس محل ذخیره‌سازی اسناد.</p></li>
-<li><p><code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).</p></li>
-<li><p><code>document_content_key</code> (رشته): کلید محتوای اصلی (مثلاً &quot;body&quot;).</p></li>
-<li><p><code>type</code> (رشته): نوع خلاصه‌سازی. مقادیر قابل قبول: <code>word</code>, <code>conversation</code>, <code>bullet</code>.</p></li>
-<li><p><code>level</code> (رشته): سطح خلاصه‌سازی. مقادیر قابل قبول: <code>level_1</code>, <code>level_2</code>, <code>level_3</code>.</p></li>
-</ul>
+<p><strong>پارامترها:</strong>
+<code>document_id</code> (لیست): شناسه‌های اسناد موردنظر.
+<code>document_index</code> (رشته): ایندکس محل ذخیره‌سازی اسناد.
+<code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
+<code>document_content_key</code> (رشته): کلید محتوای اصلی (مثلاً &quot;body&quot;).
+<code>type</code> (رشته): نوع خلاصه‌سازی. مقادیر قابل قبول: <code>word</code>, <code>conversation</code>, <code>bullet</code>.
+<code>level</code> (رشته): سطح خلاصه‌سازی. مقادیر قابل قبول: <code>level_1</code>, <code>level_2</code>, <code>level_3</code>.</p>
 
 <dl style="background-color:transparent;"><code>POST /barid/summarize/</code></dl>
 <h1 id='1802d9a0d9'>درک مطلب اسناد ذخیره‌شده</h1><h2 id='bd0176351e'>پاسخ به سوالات بر اساس اسناد ایندکس‌شده</h2>
@@ -784,15 +774,12 @@
 </span></code></pre></div>
 <p>این ای‌پی‌آی برای پاسخ به سوالات بر پایه‌ی اسنادی که از قبل در ایندکس مشخصی ذخیره شده‌اند استفاده می‌شود. با ارسال شناسه سند (یا چند سند)، ایندکس مربوطه، نوع سند و لیستی از سوالات، سیستم پاسخ‌های متنی را از دل محتوای اسناد استخراج می‌کند.</p>
 
-<p><strong>پارامترها:</strong></p>
-
-<ul>
-<li><p><code>document_id</code> (لیست رشته): لیستی از شناسه‌های سند.</p></li>
-<li><p><code>document_index</code> (رشته): نام ایندکس محل ذخیره‌سازی اسناد.</p></li>
-<li><p><code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).</p></li>
-<li><p><code>document_content_key</code> (رشته): کلید محتوای مورد تحلیل (مانند &quot;body&quot;).</p></li>
-<li><p><code>questions</code> (لیست رشته): لیستی از سوالات متنی که باید به آن‌ها پاسخ داده شود.</p></li>
-</ul>
+<p><strong>پارامترها:</strong>
+<code>document_id</code> (لیست رشته): لیستی از شناسه‌های سند.
+<code>document_index</code> (رشته): نام ایندکس محل ذخیره‌سازی اسناد.
+<code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
+<code>document_content_key</code> (رشته): کلید محتوای مورد تحلیل (مانند &quot;body&quot;).
+<code>questions</code> (لیست رشته): لیستی از سوالات متنی که باید به آن‌ها پاسخ داده شود.</p>
 
 <dl style="background-color:transparent;"><code>POST /barid/comprehension/</code></dl>
 
