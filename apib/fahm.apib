@@ -218,22 +218,9 @@ values = {
                 ]
             }
 
-+ Response 400 (application/json)
-
-            {
-                "questions": ["This field is required."],
-                "contexts": ["This field is required."]
-            }
-
-+ Response 500 (application/json)
-
-            {
-                "error": "An error occurred: list index out of range"
-            }
-
         
         
-## تولید نامه [/api/letter/]
+## تولید نامه [/letter/]
 این API برای تولید نامه‌های رسمی و ساختارمند طراحی شده است. کاربر یک متن شامل دستورالعمل نگارش نامه را ارسال می‌کند و در پاسخ، یک نامه رسمی و مناسب دریافت می‌نماید.
 
 ### تولید نامه رسمی بر اساس دستورالعمل [POST]
@@ -260,19 +247,6 @@ values = {
 
         {
           "result": "به نام خدا\n\nمدیریت محترم [نام شرکت یا سازمان]\n\nبا سلام و احترام،\n\nاینجانب [نام شما]، به نمایندگی از [نام شرکت/گروه]، ضمن ابراز خرسندی از فعالیت‌های ارزشمند مجموعه محترم شما، تمایل خود را برای همکاری در یک پروژه مشترک اعلام می‌دارم. با توجه به حوزه فعالیت هر دو مجموعه در زمینه‌ی [زمینه فعالیت] و ظرفیت‌های موجود، بر این باوریم که همکاری مشترک می‌تواند موجب ایجاد ارزش افزوده و دستیابی به اهداف مشترک گردد.\n\nهدف از این همکاری، بهره‌گیری از توانمندی‌های دو مجموعه در راستای [توضیح کوتاهی از اهداف و مزایای همکاری] می‌باشد. این تعامل نه‌تنها باعث توسعه و بهبود فرآیندهای کاری خواهد شد، بلکه فرصت‌های جدیدی برای نوآوری و رشد فراهم خواهد کرد.\n\nلذا خواهشمند است در صورت تمایل، زمانی را جهت برگزاری جلسه‌ای مشترک برای بررسی جزئیات بیشتر این همکاری تعیین فرمایید. امیدواریم این تعامل زمینه‌ساز پیشرفت و موفقیت‌های متقابل گردد.\n\nپیشاپیش از حسن توجه و همکاری شما سپاسگزارم. منتظر دریافت پاسخ شما هستم.\n\nبا احترام،\n[نام و نام خانوادگی]\n[سمت]\n[نام شرکت/سازمان]"
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "text": ["This field is required."]
-        }
-
-+ Response 500 (application/json)
-
-        {
-          "error": "The specified LLM model was not found.",
-          "details": "Failed to generate letter. Please check the model configuration."
         }
 
 ## خلاصه‌سازی اسناد ذخیره‌شده [/barid/summarize/]
@@ -308,24 +282,6 @@ values = {
               "type": "word",
               "level": "level_2"
             }
-
-+ نمونه cURL
-
-        curl --location 'https://fahm.roshan-ai.ir/api/barid/summarize/' \
-        --header 'Authorization: Token Api_Token' \
-        --header 'Content-Type: application/json' \
-        --data '{
-          "document_id": [
-            "Document Id",
-            "Document Id"
-          ],
-          "document_index": "Document Index",
-          "document_type": "نامه",
-          "document_content_key": "body",
-          "type": "word",
-          "level": "level_2"
-        }'
-
 
 + Response 200 (application/json)
 
@@ -370,24 +326,6 @@ values = {
                 "میدان ولیعصر کجاست؟"
               ]
             }
-
-+ نمونه cURL
-
-        curl --location 'https://fahm.roshan-ai.ir/api/barid/comprehension/' \
-        --header 'Authorization: Token Api_Token' \
-        --header 'Content-Type: application/json' \
-        --data '{
-          "document_id": [
-            "Document Id",
-            "Document Id"
-          ],
-          "document_index": "Document Index",
-          "document_type": "نامه",
-          "document_content_key": "body",
-          "questions": [
-            "آقای محمد هادی کیست؟"
-          ]
-        }'
 
 + Response 200 (application/json)
 
