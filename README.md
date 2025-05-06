@@ -8,6 +8,7 @@
 - `sh update.sh parde`
 - `sh update.sh replai`
 - `sh update.sh fahm`
+- `sh update.sh barid`
 
 Don't pass any arguments if you want to build all above projects at the same time: `sh update.sh`
 
