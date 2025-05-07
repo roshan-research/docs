@@ -1,0 +1,466 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the فهم API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #303030;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sa {
+  color: #aa759f;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-1086c5ef.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b49a9d77.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;,&quot;python&quot;]">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
+  </div>
+    <div class="toc-wrapper">
+      <div>
+        <a href="#" id="nav-button">
+          <span>
+            <img src="images/navbar-cad8cdcb.png" alt="" />
+            <span>منو</span> 
+          </span>
+        </a>
+        <div>
+          <img src="images/logo-5aff0fd1.svg" class="logo" alt="" />
+            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="جست و جو">
+            </div>
+            <ul class="search-results"></ul>
+          <ul id="toc" class="toc-list-h1">
+              <li>
+                <a href="#3e7ad5d528" class="toc-h1 toc-link" data-title="فهم">فهم</a>
+              </li>
+              <li>
+                <a href="#a4de9339a5" class="toc-h1 toc-link" data-title="خلاصه‌سازی اسناد ذخیره‌شده">خلاصه‌سازی اسناد ذخیره‌شده</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#a471dbf8a7" class="toc-h2 toc-link" data-title="خلاصه‌سازی با شناسه سند">خلاصه‌سازی با شناسه سند</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#1802d9a0d9" class="toc-h1 toc-link" data-title="درک مطلب اسناد ذخیره‌شده">درک مطلب اسناد ذخیره‌شده</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#bd0176351e" class="toc-h2 toc-link" data-title="پاسخ به سوالات بر اساس اسناد ایندکس‌شده">پاسخ به سوالات بر اساس اسناد ایندکس‌شده</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='3e7ad5d528'>فهم</h1>
+<p>این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است.</p>
+<h1 id='a4de9339a5'>خلاصه‌سازی اسناد ذخیره‌شده</h1><h2 id='a471dbf8a7'>خلاصه‌سازی با شناسه سند</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "document_id": [
+        "Document Id",
+        "Document Id"
+    ],
+    "document_index": "Document Index",
+    "document_type": "نامه",
+    "document_content_key": "body",
+    "type": "word",
+    "level": "level_2"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token YOUR_API_TOKEN"</span> <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "document_id": [
+        "Document Id",
+        "Document Id"
+    ],
+    "document_index": "Document Index",
+    "document_type": "نامه",
+    "document_content_key": "body",
+    "type": "word",
+    "level": "level_2"
+}'</span> <span class="se">\</span>
+      https://fahm.roshan-ai.ir/api/barid/summarize/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"document_id"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"Document Id"</span><span class="p">,</span>
+        <span class="s">"Document Id"</span>
+    <span class="p">],</span>
+    <span class="s">"document_index"</span><span class="p">:</span> <span class="s">"Document Index"</span><span class="p">,</span>
+    <span class="s">"document_type"</span><span class="p">:</span> <span class="s">"نامه"</span><span class="p">,</span>
+    <span class="s">"document_content_key"</span><span class="p">:</span> <span class="s">"body"</span><span class="p">,</span>
+    <span class="s">"type"</span><span class="p">:</span> <span class="s">"word"</span><span class="p">,</span>
+    <span class="s">"level"</span><span class="p">:</span> <span class="s">"level_2"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token YOUR_API_TOKEN'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://fahm.roshan-ai.ir/api/barid/summarize/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"summaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"خلاصه سند اول..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"خلاصه سند دوم..."</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>این ای‌پی‌آی برای خلاصه‌سازی اسنادی که از قبل در ایندکس‌های ذخیره‌سازی قرار دارند استفاده می‌شود.</p>
+
+<p><strong>پارامترها:</strong>
+<code>document_id</code> (لیست): شناسه‌های اسناد موردنظر.
+<code>document_index</code> (رشته): ایندکس محل ذخیره‌سازی اسناد.
+<code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
+<code>document_content_key</code> (رشته): کلید محتوای اصلی (مثلاً &quot;body&quot;).
+<code>type</code> (رشته): نوع خلاصه‌سازی. مقادیر قابل قبول: <code>word</code>, <code>conversation</code>, <code>bullet</code>.
+<code>level</code> (رشته): سطح خلاصه‌سازی. مقادیر قابل قبول: <code>level_1</code>, <code>level_2</code>, <code>level_3</code>.</p>
+
+<dl style="background-color:transparent;"><code>POST /barid/summarize/</code></dl>
+<h1 id='1802d9a0d9'>درک مطلب اسناد ذخیره‌شده</h1><h2 id='bd0176351e'>پاسخ به سوالات بر اساس اسناد ایندکس‌شده</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "document_id": [
+        "Document Id",
+        "Document Id"
+    ],
+    "document_index": "Document Index",
+    "document_type": "نامه",
+    "document_content_key": "body",
+    "questions": [
+        "آقای محمد هادی کیست؟",
+        "میدان ولیعصر کجاست؟"
+    ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token YOUR_API_TOKEN"</span> <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "document_id": [
+        "Document Id",
+        "Document Id"
+    ],
+    "document_index": "Document Index",
+    "document_type": "نامه",
+    "document_content_key": "body",
+    "questions": [
+        "آقای محمد هادی کیست؟",
+        "میدان ولیعصر کجاست؟"
+    ]
+}'</span> <span class="se">\</span>
+      https://fahm.roshan-ai.ir/api/barid/comprehension/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"document_id"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"Document Id"</span><span class="p">,</span>
+        <span class="s">"Document Id"</span>
+    <span class="p">],</span>
+    <span class="s">"document_index"</span><span class="p">:</span> <span class="s">"Document Index"</span><span class="p">,</span>
+    <span class="s">"document_type"</span><span class="p">:</span> <span class="s">"نامه"</span><span class="p">,</span>
+    <span class="s">"document_content_key"</span><span class="p">:</span> <span class="s">"body"</span><span class="p">,</span>
+    <span class="s">"questions"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"آقای محمد هادی کیست؟"</span><span class="p">,</span>
+        <span class="s">"میدان ولیعصر کجاست؟"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token YOUR_API_TOKEN'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://fahm.roshan-ai.ir/api/barid/comprehension/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"آقای محمد هادی یکی از افراد نام‌برده در نامه است که ..."</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>این ای‌پی‌آی برای پاسخ به سوالات بر پایه‌ی اسنادی که از قبل در ایندکس مشخصی ذخیره شده‌اند استفاده می‌شود. با ارسال شناسه سند (یا چند سند)، ایندکس مربوطه، نوع سند و لیستی از سوالات، سیستم پاسخ‌های متنی را از دل محتوای اسناد استخراج می‌کند.</p>
+
+<p><strong>پارامترها:</strong>
+<code>document_id</code> (لیست رشته): لیستی از شناسه‌های سند.
+<code>document_index</code> (رشته): نام ایندکس محل ذخیره‌سازی اسناد.
+<code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
+<code>document_content_key</code> (رشته): کلید محتوای مورد تحلیل (مانند &quot;body&quot;).
+<code>questions</code> (لیست رشته): لیستی از سوالات متنی که باید به آن‌ها پاسخ داده شود.</p>
+
+<dl style="background-color:transparent;"><code>POST /barid/comprehension/</code></dl>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">CURL</a>
+                <a href="#" data-language-name="plaintext">RAW</a>
+                <a href="#" data-language-name="python">PYTHON</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+function Scroll(delay) {
+    this.initialY = scrollY;
+    this.callbacks = {
+        start  : null,
+        scroll : null,
+        end    : null,
+    };
+    this.timeout = {
+        delay  : delay || 150,
+        handle : null,
+    };
+    this.handler = Scroll.handler.bind(this);
+    window.addEventListener("scroll", this.handler);
+}
+
+Scroll.handler = function (e) {
+    if (this.initialY == 0) {
+        if (this.timeout.handle == null) {
+            if (this.callbacks.start) {
+                this.callbacks.start.call(this, e);
+            }
+        }
+        if (this.timeout.handle !== null) {
+            clearTimeout(this.timeout.handle);
+        }
+        if (this.callbacks.scroll) {
+            this.callbacks.scroll.call(this, e);
+        }
+        var self = this;
+        this.timeout.handle = setTimeout(function () {
+            self.timeout.handle = null;
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
+            }
+        }, this.timeout.delay);
+    } else {
+        this.initialY = 0;
+    }
+};
+
+Scroll.prototype.addEventListener = function (event, callback) {
+    if (Object.keys(this.callbacks).includes(event)) {
+        this.callbacks[event] = callback;
+    } else {
+        console.warn("Invalid scroll event: " + event);
+    }
+};
+
+window.addEventListener('DOMContentLoaded',() => {
+    let tocLinks = document.getElementsByClassName('toc-link');
+    
+    for(let i = 0; i < tocLinks.length; i++) {
+        tocLinks[i].addEventListener('click', () => {
+            for(let i = 0; i < tocLinks.length; i++) {
+                tocLinks[i].classList.add('toc-unstyled')
+            }
+        })
+    }
+    
+    var sl = new Scroll(400);
+    
+    sl.addEventListener("end", function () {
+        for(let i = 0; i < tocLinks.length; i++) {
+            tocLinks[i].classList.remove('toc-unstyled')
+        }
+    });
+});
+</script>
