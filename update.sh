@@ -46,8 +46,9 @@ build_one(){
     mv ./source/$1.json.md ./source/index.html.md
     cp ../logos/$1/logo.svg ./source/images/    
     bundle exec middleman build    
-    rm -r ../docs/$1/*
-    cp -r ./build/* ../docs/$1
+    rm -rf ../docs/$1/*
+    mkdir -p "../docs/$1"
+    cp -r ./build/* "../docs/$1"
     echo "$1 documentations are updated"
 }
 
