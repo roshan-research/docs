@@ -316,10 +316,10 @@
 <p>این ای‌پی‌آی برای خلاصه‌سازی اسنادی که از قبل در ایندکس‌های ذخیره‌سازی قرار دارند استفاده می‌شود.</p>
 
 <p><strong>پارامترها:</strong>
-<code>document_id</code> (لیست): شناسه‌های اسناد موردنظر.
-<code>document_index</code> (رشته): ایندکس محل ذخیره‌سازی اسناد.
-<code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
-<code>document_content_key</code> (رشته): کلید محتوای اصلی (مثلاً &quot;body&quot;).
+<code>id</code> (لیست): شناسه‌های اسناد موردنظر.
+<code>index</code> (رشته): ایندکس محل ذخیره‌سازی اسناد.
+<code>type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
+<code>content_key</code> (رشته): کلید محتوای اصلی (مثلاً &quot;body&quot;).
 <code>type</code> (رشته): نوع خلاصه‌سازی. مقادیر قابل قبول: <code>word</code>, <code>conversation</code>, <code>bullet</code>.
 <code>level</code> (رشته): سطح خلاصه‌سازی. مقادیر قابل قبول: <code>level_1</code>, <code>level_2</code>, <code>level_3</code>.</p>
 
@@ -438,11 +438,12 @@
 <p>این ای‌پی‌آی برای پاسخ به سوالات بر پایه‌ی اسنادی که از قبل در ایندکس مشخصی ذخیره شده‌اند استفاده می‌شود. با ارسال شناسه سند (یا چند سند)، ایندکس مربوطه، نوع سند و لیستی از سوالات، سیستم پاسخ‌های متنی را از دل محتوای اسناد استخراج می‌کند.</p>
 
 <p><strong>پارامترها:</strong>
-<code>document_id</code> (لیست رشته): لیستی از شناسه‌های سند.
-<code>document_index</code> (رشته): نام ایندکس محل ذخیره‌سازی اسناد.
-<code>document_type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
-<code>document_content_key</code> (رشته): کلید محتوای مورد تحلیل (مانند &quot;body&quot;).
-<code>questions</code> (لیست رشته): لیستی از سوالات متنی که باید به آن‌ها پاسخ داده شود.</p>
+<code>id</code> (لیست رشته): لیستی از شناسه‌های سند.
+<code>index</code> (رشته): نام ایندکس محل ذخیره‌سازی اسناد.
+<code>type</code> (رشته): نوع سند (مثلاً &quot;نامه&quot;).
+<code>content_key</code> (رشته): کلید محتوای مورد تحلیل (مانند &quot;body&quot;).
+<code>questions</code>: لیستی از سوالات متنی که باید به آن‌ها پاسخ داده شود. هر سوال یک آبجکت است که دارای دو کلید text و type است. 
+مقدار text همان سوال است و مقدار type نوع سوال را مشخص میکند که در حالت پیش فرض str است. این مقدار اختیاری است.</p>
 
 <dl style="background-color:transparent;"><code>POST /barid/comprehension/</code></dl>
 
