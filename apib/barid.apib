@@ -28,25 +28,29 @@ HOST: https://fahm.roshan-ai.ir/api/
     + Body
 
             {
-              "document_id": [
-                "Document Id",
-                "Document Id"
-              ],
-              "document_index": "Document Index",
-              "document_type": "نامه",
-              "document_content_key": "body",
-              "type": "word",
-              "level": "level_2"
+                "baaz_documents": [
+                    {
+                        "index": "pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58",
+                        "type": "نامه",
+                        "id": "ed47bf9c-0102-4a95-a9e6-dff362f3b276",
+                        "content_key": "body"
+                    },
+                    {
+                        "index": "pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58",
+                        "type": "پست",
+                        "id": "b44cdd93-fe37-4a5d-8ae8-e58d549668aa",
+                        "content_key": "body"
+                    }
+                ],
+                "type": "word",
+                "level": "level_1"
             }
 
 + Response 200 (application/json)
 
-        {
-          "summaries": [
-            "خلاصه سند اول...",
-            "خلاصه سند دوم..."
-          ]
-        }
+            {
+                "summarized_result": "جناب آقای غلامرضا صادقزاده تست کننده مهلت 22/02/1404. محمدرضا اوبایی، مالک محصول، به عنوان مدیر تست امضاهای 1 تا 20 را دارد."
+            }
 
 ## درک مطلب اسناد ذخیره‌شده [/barid/comprehension/]
 ### پاسخ به سوالات بر اساس اسناد ایندکس‌شده [POST]
@@ -70,23 +74,44 @@ HOST: https://fahm.roshan-ai.ir/api/
     + Body
 
             {
-              "document_id": [
-                "Document Id",
-                "Document Id"
-              ],
-              "document_index": "Document Index",
-              "document_type": "نامه",
-              "document_content_key": "body",
-              "questions": [
-                "آقای محمد هادی کیست؟",
-                "میدان ولیعصر کجاست؟"
-              ]
+                "baaz_documents": [
+                    {
+                        "index": "pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58",
+                        "type": "نامه",
+                        "id": "ed47bf9c-0102-4a95-a9e6-dff362f3b276",
+                        "content_key": "body"
+                    },
+                    {
+                        "index": "pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58",
+                        "type": "پست",
+                        "id": "b44cdd93-fe37-4a5d-8ae8-e58d549668aa",
+                        "content_key": "body"
+                    }
+                ],
+                "questions": [
+                    {
+                        "text": "امضا ها در چه تاریخی انجام شده اند ؟",
+                        "type": "str"
+                    },
+                    {
+                        "text": "چندتا امضا انجام شده ؟"
+                    }
+                ]
             }
 
 + Response 200 (application/json)
 
-        {
-          "answers": [
-            "آقای محمد هادی یکی از افراد نام‌برده در نامه است که ..."
-          ]
-        }
+            {
+                "result": [
+                    [
+                        {
+                            "text": "22/02/1404",
+                            "score": 1
+                        },
+                        {
+                            "text": 20,
+                            "score": 1
+                        }
+                    ]
+                ]
+            }
