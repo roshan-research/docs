@@ -10,41 +10,31 @@ HOST: https://fahm.roshan-ai.ir/api/
 
 این بخش از ای‌پی‌آی برای ترجمه متن از یک زبان به زبان دیگر استفاده می‌شود. کاربر می‌تواند متن موردنظر را همراه با زبان مقصد ارسال کند و ترجمه آن را دریافت نماید.
 
-
-values = {
-    "text": "Hello, how are you? I want to know what day it is today and what time it is.",
-    "lan": "fa"
-}
-
-  متن (text):
-   در این قسمت، متن اصلی که نیاز به ترجمه دارد وارد می‌شود.
-
-  زبان مقصد (lan):
-   مشخص می‌کند که متن به چه زبانی ترجمه شود.
-   مقادیر قابل قبول:
-<code>en</code>  : انگلیسی
-<code>fa</code>  : فارسی
-<code>ar</code>  :عربی
-
-
 + Request (application/json)
 
     + Headers
 
             Authorization: Token `YOUR_API_TOKEN`
+    
+    + Attributes
+        - text (string, required) - متنی که باید ترجمه شود. اگر می‌خواهید به فارسی ترجمه کنید، متن ورودی باید انگلیسی باشد. اگر می‌خواهید به انگلیسی ترجمه کنید، متن ورودی باید فارسی باشد.
+        - to (boolean, required) -  زبانی که باید به آن ترجمه شود.
+            + Members
+                    + `en` - انگلیسی
+                    + `fa` - فارسی
 
     + Body
 
             {
-                "text": "Hello, how are you? I want to know what day it is today and what time it is.",
-                "lan": "fa"
+                "text":"Hello. How are you?",
+                "to":"fa"
             }
 
 
 + Response 200 (application/json)
 
             {
-                "translated_text": "سلام، حال شما چطور است؟ می‌خواهم بدانم امروز چه روزی است و ساعت چند است."
+              "result": "```\nسلام. چطوری؟\n```"
             }
 
 
