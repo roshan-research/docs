@@ -20,8 +20,8 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - text: بدون مقدار پیش‌فرض (string, required) - متنی که باید ترجمه شود.
-        - to: بدون مقدار پیش‌فرض (enum[string], required) -  به کدام زبان ترجمه شود؟
+        - text: - (string, required) - متنی که باید ترجمه شود.
+        - to: - (enum[string], required) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -38,92 +38,4 @@ HOST: https://fahm.roshan-ai.ir/api
 
             {
                 "result": "```\nسلام. چطوری؟\n```"
-            }
-            
-### ترجمه متن فارسی به انگلیسی [POST]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Token YOUR_API_TOKEN
-    
-    + Attributes
-        - text: بدون مقدار پیش‌فرض (string, required) - متنی که باید ترجمه شود.
-        - to: بدون مقدار پیش‌فرض (enum[string], required) -  به کدام زبان ترجمه شود؟
-            + Members
-                + en - انگلیسی
-                + fa - فارسی
-    
-    + Body
-
-            {
-              "text": "به نام خداوند بخشنده مهربان",
-              "to": "en"
-            }
-
-
-+ Response 200 (application/json)
-
-            {
-                "result": "```\nIn the name of the Lord, the Forgiving, the Merciful\n```"
-            }
-            
-
-### ترجمه سند از انگلیسی به فارسی [POST]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Token YOUR_API_TOKEN
-    
-    + Attributes
-        - document_url: بدون مقدار پیش‌فرض (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
-        - to: بدون مقدار پیش‌فرض (enum[string], required) -  به کدام زبان ترجمه شود؟
-            + Members
-                + en - انگلیسی
-                + fa - فارسی
-    
-    + Body
-
-            {
-                "document_url": "http://alefba-dev.roshan-ai.ir/media/files/37/01/sample_en.txt",
-                "to": "fa",
-            }
-
-
-+ Response 200 (application/json)
-
-            {
-              "result": "```\nسلام. چطوری؟\n```"
-            }
-            
-### ترجمه سند از فارسی به انگلیسی [POST]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Token YOUR_API_TOKEN
-    
-    + Attributes
-        - document_url: بدون مقدار پیش‌فرض (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
-        - to: بدون مقدار پیش‌فرض (enum[string], required) -  به کدام زبان ترجمه شود؟
-            + Members
-                + en - انگلیسی
-                + fa - فارسی
-    
-    + Body
-
-            {
-                "document_url": "http://alefba-dev.roshan-ai.ir/media/files/37/01/sample_fa.txt",
-                "to": "fa",
-            }
-
-
-+ Response 200 (application/json)
-
-            {
-                "result": "```\nIn the name of the Lord, the Forgiving, the Merciful\n```"
             }
