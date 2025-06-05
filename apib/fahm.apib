@@ -20,12 +20,11 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - document_url: URL (string, required) - لینک فایل ورودی
-        - type: general (enum[string]) - نوع فایل ورودی. مقدار پیش‌فرض: <code>general</code>.
+        - text: URL (string, required) - متنی که باید ترجمه شود
+        - to: general (enum[string]) - به کدام زبان ترجمه شود؟
             + Members
-                + `general` - عمومی
-                + `ID-card` - کارت‌های شناسایی
-                + `excel` - جداول
+                + `en` - انگلیسی
+                + `fa` - فارسی
     
     + Body
 
