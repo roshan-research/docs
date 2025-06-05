@@ -226,6 +226,14 @@
                       </li>
                   </ul>
               </li>
+              <li>
+                <a href="#7c47f5d715" class="toc-h1 toc-link" data-title="خلاصه‌سازی">خلاصه‌سازی</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#6fadb82b25" class="toc-h2 toc-link" data-title="خلاصه‌سازی متنی">خلاصه‌سازی متنی</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
         </div>
       </div>
@@ -503,6 +511,98 @@ Value: <span style="background-color: #00A693;
 
 <p style="direction:rtl;font-weight:300;">
 <img src="images/vector-c3fae21d.svg" alt="vector">  (enum[string], required) -  به کدام زبان ترجمه شود؟</p>
+
+<p><br><br></p>
+<h1 id='7c47f5d715'>خلاصه‌سازی</h1>
+<p>یک متن را به صورت معمولی یا به صورت یک فهرست یا در قالب یک گفتگو خلاصه می‌کند. همچنین امکان تعیین میزان حجم خلاصه در سه سطح کم، متوسط و زیاد وجود دارد.</p>
+<h2 id='6fadb82b25'>خلاصه‌سازی متنی</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "text": "سلام، وقت شما بخیر؛ وقت شما هم بخیر، امیدوارم حال‌تان خوب باشد؛ سپاسگزارم، بله متشکرم، امیدوارم حال شما هم مساعد باشد؛ بله، ممنون از لطفتان، در خدمت هستم؛ خواستم درباره جلسه‌ی فردا با شما هماهنگ کنم؛ بله حتماً، چه ساعتی مد نظر دارید؟ اگر موافق باشید ساعت ده صبح مناسب است؛ بله، زمان مناسبی‌ست، مکان جلسه همان دفتر مرکزی خواهد بود؟ بله، طبق برنامه در دفتر مرکزی برگزار می‌شود؛ بسیار خوب، حتماً رأس ساعت ده در محل حاضر خواهم بود؛ سپاسگزارم از همکاری شما، اگر موردی بود در تماس خواهم بود؛ خواهش می‌کنم، بنده هم در صورت نیاز اطلاع خواهم داد، روز خوش؛ همچنین، روزتان بخیر و به امید دیدار.",
+    "type": "word",
+    "level": "level_1"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: multipart/form-data"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token YOUR_API_TOKEN"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "text": "سلام، وقت شما بخیر؛ وقت شما هم بخیر، امیدوارم حال‌تان خوب باشد؛ سپاسگزارم، بله متشکرم، امیدوارم حال شما هم مساعد باشد؛ بله، ممنون از لطفتان، در خدمت هستم؛ خواستم درباره جلسه‌ی فردا با شما هماهنگ کنم؛ بله حتماً، چه ساعتی مد نظر دارید؟ اگر موافق باشید ساعت ده صبح مناسب است؛ بله، زمان مناسبی‌ست، مکان جلسه همان دفتر مرکزی خواهد بود؟ بله، طبق برنامه در دفتر مرکزی برگزار می‌شود؛ بسیار خوب، حتماً رأس ساعت ده در محل حاضر خواهم بود؛ سپاسگزارم از همکاری شما، اگر موردی بود در تماس خواهم بود؛ خواهش می‌کنم، بنده هم در صورت نیاز اطلاع خواهم داد، روز خوش؛ همچنین، روزتان بخیر و به امید دیدار.",
+    "type": "word",
+    "level": "level_1"
+}'</span> <span class="se">\</span>
+      https://fahm.roshan-ai.ir/api/summarization/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="s">"سلام، وقت شما بخیر؛ وقت شما هم بخیر، امیدوارم حال‌تان خوب باشد؛ سپاسگزارم، بله متشکرم، امیدوارم حال شما هم مساعد باشد؛ بله، ممنون از لطفتان، در خدمت هستم؛ خواستم درباره جلسه‌ی فردا با شما هماهنگ کنم؛ بله حتماً، چه ساعتی مد نظر دارید؟ اگر موافق باشید ساعت ده صبح مناسب است؛ بله، زمان مناسبی‌ست، مکان جلسه همان دفتر مرکزی خواهد بود؟ بله، طبق برنامه در دفتر مرکزی برگزار می‌شود؛ بسیار خوب، حتماً رأس ساعت ده در محل حاضر خواهم بود؛ سپاسگزارم از همکاری شما، اگر موردی بود در تماس خواهم بود؛ خواهش می‌کنم، بنده هم در صورت نیاز اطلاع خواهم داد، روز خوش؛ همچنین، روزتان بخیر و به امید دیدار."</span><span class="p">,</span>
+    <span class="s">"type"</span><span class="p">:</span> <span class="s">"word"</span><span class="p">,</span>
+    <span class="s">"level"</span><span class="p">:</span> <span class="s">"level_1"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'multipart/form-data'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token YOUR_API_TOKEN'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://fahm.roshan-ai.ir/api/summarization/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"جلسه فردا ساعت ده صبح در دفتر مرکزی قرار گرفته است. هر دو طرف به زمان و مکان اعلام شده موافقت کرده‌اند. پیام‌ها با لحن مهربانی و احترام پایان یافته است."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /summarization/</code></dl>
+
+<dl>
+<strong>text</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  (string, required) - متنی که باید خلاصه شود.</p>
+
+<p><br><br>
+<dl>
+<strong>type</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  (enum[string], required) -  در چه قالبی خلاصه شود؟</p>
+
+<p><br><br>
+<dl>
+<strong>level</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  (enum[string], required) - ح حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.</p>
 
 <p><br><br></p>
 
