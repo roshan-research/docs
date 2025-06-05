@@ -1,4 +1,319 @@
 
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the فهم API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #303030;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sa {
+  color: #aa759f;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-1086c5ef.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-9801298e.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b49a9d77.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;,&quot;python&quot;]">
+  <div style="position:fixed;z-index:50;height:4px;width:100%;background-color:#FF6200;">
+  </div>
+    <div class="toc-wrapper">
+      <div>
+        <a href="#" id="nav-button">
+          <span>
+            <img src="images/navbar-cad8cdcb.png" alt="" />
+            <span>منو</span> 
+          </span>
+        </a>
+        <div>
+          <img src="images/logo-86650b37.svg" class="logo" alt="" />
+            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="جست و جو">
+            </div>
+            <ul class="search-results"></ul>
+          <ul id="toc" class="toc-list-h1">
+              <li>
+                <a href="#3e7ad5d528" class="toc-h1 toc-link" data-title="فهم">فهم</a>
+              </li>
+              <li>
+                <a href="#45ce7ccafc" class="toc-h1 toc-link" data-title="ترجمه">ترجمه</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#bc7a15c80e" class="toc-h2 toc-link" data-title="ترجمه متن انگلیسی به فارسی">ترجمه متن انگلیسی به فارسی</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='3e7ad5d528'>فهم</h1>
+<p>این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است.</p>
+
+<p>برای استفاده از این ای‌پی‌آی نیازمند توکن هستید. این توکن را از بخش فروش دریافت کنید.</p>
+<h1 id='45ce7ccafc'>ترجمه</h1>
+<p>یک متن را از انگلیسی به فارسی یا از فارسی به انگلیسی ترجمه می‌کند. زبان‌های دیگر پشتیبانی نمی‌شود.</p>
+<h2 id='bc7a15c80e'>ترجمه متن انگلیسی به فارسی</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "text": "Hello. How are you?",
+    "to": "fa"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token YOUR_API_TOKEN"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "text": "Hello. How are you?",
+    "to": "fa"
+}'</span> <span class="se">\</span>
+      https://fahm.roshan-ai.ir/api/translation/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="s">"Hello. How are you?"</span><span class="p">,</span>
+    <span class="s">"to"</span><span class="p">:</span> <span class="s">"fa"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token YOUR_API_TOKEN'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://fahm.roshan-ai.ir/api/translation/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"```</span><span class="se">\n</span><span class="s2">سلام. چطوری؟</span><span class="se">\n</span><span class="s2">```"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /translation/</code></dl>
+
+<dl>
+<strong>text</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  (string, required) - متنی که باید ترجمه شود.</p>
+
+<p><br><br>
+<dl>
+<strong>to</strong>
+<br>
+<br>
+Value: <span style="background-color: #00A693;
+                    border-color: #00A693;
+                    border-width: 3px;
+                    border-radius: 2px">
+                    undefined
+                    </span>
+</dl></p>
+
+<p style="direction:rtl;font-weight:300;">
+<img src="images/vector-c3fae21d.svg" alt="vector">  (enum[string], required) -  به کدام زبان ترجمه شود؟</p>
+
+<p><br><br></p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">CURL</a>
+                <a href="#" data-language-name="plaintext">RAW</a>
+                <a href="#" data-language-name="python">PYTHON</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+
 <script>
 function Scroll(delay) {
     this.initialY = scrollY;
