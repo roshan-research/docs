@@ -20,8 +20,11 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token TOKEN_KEY
 
     + Attributes
-        - text (string, required) - متنی که باید ترجمه شود.
-        - to (enum[string], required) -  به کدام زبان ترجمه شود؟ که می‌تواند یکی از دو مقدار en یا fa باشد.
+        - text: one (string, required) - متنی که باید ترجمه شود.
+        - to: fa (enum[string], required) -  به کدام زبان ترجمه شود؟
+            + Members
+                + en - انگلیسی
+                + fa - فارسی
     
     + Body
 
