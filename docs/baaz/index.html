@@ -290,6 +290,14 @@
                       </li>
                   </ul>
               </li>
+              <li>
+                <a href="#8ab1b4b299" class="toc-h1 toc-link" data-title="بررسی وضعیت سلامت ای‌پی‌آی">بررسی وضعیت سلامت ای‌پی‌آی</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#b40d4b44b2-8" class="toc-h2 toc-link" data-title="مثال">مثال</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
         </div>
       </div>
@@ -415,67 +423,60 @@ index_name
         }
     ]
 }'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/index
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/index
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-{
-    "items": [
-        {
-            "type": "movie",
-            "id": 1,
-            "title": "ماجرای نیمروز",
-            "director": "محمدحسین مهدویان",
-            "actors": [
-                "جواد عزتی",
-                "هادی حجازی‌فر"
-            ],
-            "labels": [
-                "هیجانی",
-                "ماجراجویی"
-            ],
-            "importance": 100,
-            "data": {
-                "url": "https://www.filimo.com/m/czWum"
-            }
-        },
-        {
-            "type": "movie",
-            "id": 2,
-            "title": "ایستاده در غبار",
-            "director": "محمدحسین مهدویان",
-            "labels": [
-                "هیجانی",
-                "جنگی"
-            ],
-            "importance": 50,
-            "data": {
-                "url": "https://www.filimo.com/m/fsa4n"
-            }
-        },
-        {
-            "type": "person",
-            "id": 1,
-            "title": "ابراهیم حاتمی‌کیا",
-            "data": {
-                "url": "https://www.filimo.com/crew/ابراهیم_حاتمی_کیا"
-            }
-        }
-    ]
-}
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"items"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"movie"</span><span class="p">,</span>
+            <span class="s">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s">"title"</span><span class="p">:</span> <span class="s">"ماجرای نیمروز"</span><span class="p">,</span>
+            <span class="s">"director"</span><span class="p">:</span> <span class="s">"محمدحسین مهدویان"</span><span class="p">,</span>
+            <span class="s">"actors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s">"جواد عزتی"</span><span class="p">,</span>
+                <span class="s">"هادی حجازی‌فر"</span>
+            <span class="p">],</span>
+            <span class="s">"labels"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s">"هیجانی"</span><span class="p">,</span>
+                <span class="s">"ماجراجویی"</span>
+            <span class="p">],</span>
+            <span class="s">"importance"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://www.filimo.com/m/czWum"</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"movie"</span><span class="p">,</span>
+            <span class="s">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s">"title"</span><span class="p">:</span> <span class="s">"ایستاده در غبار"</span><span class="p">,</span>
+            <span class="s">"director"</span><span class="p">:</span> <span class="s">"محمدحسین مهدویان"</span><span class="p">,</span>
+            <span class="s">"labels"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s">"هیجانی"</span><span class="p">,</span>
+                <span class="s">"جنگی"</span>
+            <span class="p">],</span>
+            <span class="s">"importance"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+            <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://www.filimo.com/m/fsa4n"</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"person"</span><span class="p">,</span>
+            <span class="s">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s">"title"</span><span class="p">:</span> <span class="s">"ابراهیم حاتمی‌کیا"</span><span class="p">,</span>
+            <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://www.filimo.com/crew/ابراهیم_حاتمی_کیا"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -620,32 +621,25 @@ Value: <span style="background-color: #00A693;
         }
     ]
 }'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/index
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/index
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-{
-    "items": [
-        {
-            "type": "movie",
-            "id": 1,
-            "importance": 200
-        }
-    ]
-}
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"items"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"movie"</span><span class="p">,</span>
+            <span class="s">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s">"importance"</span><span class="p">:</span> <span class="mi">200</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -676,29 +670,22 @@ Value: <span style="background-color: #00A693;
         2
     ]
 }'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/index
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/index
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-{
-    "type": "movie",
-    "ids": [
-        2
-    ]
-}
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"type"</span><span class="p">:</span> <span class="s">"movie"</span><span class="p">,</span>
+    <span class="s">"ids"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">2</span>
+    <span class="p">]</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/index'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -781,24 +768,17 @@ from
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query<span class="o">{</span>?fields,text,size,from<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query<span class="o">{</span>?fields,text,size,from<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-""
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query{?fields,text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/query{?fields,text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -858,31 +838,24 @@ from
     "size": 2,
     "from": 0
 }'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/query
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-{
-    "text": "نیم‌روز",
-    "fields": [
-        "title"
-    ],
-    "size": 2,
-    "from": 0
-}
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="s">"نیم‌روز"</span><span class="p">,</span>
+    <span class="s">"fields"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"title"</span>
+    <span class="p">],</span>
+    <span class="s">"size"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">"from"</span><span class="p">:</span> <span class="mi">0</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/query'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/query'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -980,24 +953,17 @@ from
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/complete<span class="o">{</span>?text,size,from<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/complete<span class="o">{</span>?text,size,from<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-""
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/complete{?text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/complete{?text,size,from}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1072,24 +1038,17 @@ text
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/suggest<span class="o">{</span>?text<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/suggest<span class="o">{</span>?text<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-""
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/suggest{?text}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/suggest{?text}'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1148,26 +1107,19 @@ types
       <span class="nt">--data-binary</span> <span class="s1">'{
     "title": "پرویز"
 }'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/similars
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/similars
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-{
-    "title": "پرویز"
-}
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"title"</span><span class="p">:</span> <span class="s">"پرویز"</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/similars'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/similars'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1224,24 +1176,17 @@ types
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'"       {\n         \"doc\": {\"description\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\"},              \n       }\n"'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/sources
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/sources
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-"       {</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">doc</span><span class="se">\"</span><span class="s">: {</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.</span><span class="se">\"</span><span class="s">},              </span><span class="se">\n</span><span class="s">       }</span><span class="se">\n</span><span class="s">"
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">"       {</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">doc</span><span class="se">\"</span><span class="s">: {</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.</span><span class="se">\"</span><span class="s">},              </span><span class="se">\n</span><span class="s">       }</span><span class="se">\n</span><span class="s">"</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/sources'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/sources'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1318,24 +1263,17 @@ field
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'"       {\n         \"text\": \"شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.\",\n         \"topn\": 5            \n       }\n"'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/<span class="o">{</span>field<span class="o">}</span>/keyterms
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/<span class="o">{</span>field<span class="o">}</span>/keyterms
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-"       {</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">topn</span><span class="se">\"</span><span class="s">: 5            </span><span class="se">\n</span><span class="s">       }</span><span class="se">\n</span><span class="s">"
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">"       {</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">شهر موشها فیلم سینمایی عروسکی تولیدی سال ۱۳۶۴ به کارگردانی سینمایی محمدعلی طالبی و کارگردانی عروسکی مرضیه برومند است. این فیلم سینمایی برای ردهٔ سنی کودکان ساخته شده و عروسک‌های بازیگر آن قبلاً در سریال تلویزیونی مدرسه موش‌ها ایفای نقش کرده بودند.</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">topn</span><span class="se">\"</span><span class="s">: 5            </span><span class="se">\n</span><span class="s">       }</span><span class="se">\n</span><span class="s">"</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/{field}/keyterms'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1377,24 +1315,17 @@ field
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token TOKEN_KEY"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'"       {\n         \"id\": 3,\n         \"topn\": 5            \n       }\n"'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/<span class="o">{</span>field<span class="o">}</span>/keyterms
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/<span class="o">{</span>field<span class="o">}</span>/keyterms
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-"       {</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">: 3,</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">topn</span><span class="se">\"</span><span class="s">: 5            </span><span class="se">\n</span><span class="s">       }</span><span class="se">\n</span><span class="s">"
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">"       {</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">: 3,</span><span class="se">\n</span><span class="s">         </span><span class="se">\"</span><span class="s">topn</span><span class="se">\"</span><span class="s">: 5            </span><span class="se">\n</span><span class="s">       }</span><span class="se">\n</span><span class="s">"</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token TOKEN_KEY'</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/{field}/keyterms'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/{field}/keyterms'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1466,24 +1397,17 @@ types
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
       <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
-      http://api.sobhe.ir:7000/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/stats
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">try</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
-<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
-   <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span><span class="p">,</span> <span class="n">Request</span>
-<span class="kn">from</span> <span class="nn">encodings</span> <span class="kn">import</span> <span class="n">utf_8</span>
+      https://baaz.roshan-ai.ir/<span class="o">{</span>index_name<span class="o">}</span>/<span class="o">{</span>types<span class="o">}</span>/stats
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">"""
-""
-"""</span>
-<span class="p">,</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'http://api.sobhe.ir:7000/{index_name}/{types}/stats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/{index_name}/{types}/stats'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">response_body</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">utf_8</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_body</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response </p>
@@ -1504,6 +1428,38 @@ types
 <p>پاسخ این درخواست شامل آمار زیر درباره ی <code>index1</code> در نوع <code>movie</code> است.</p>
 
 <dl style="background-color:transparent;"><code>GET /{index_name}/{types}/stats</code></dl>
+<h1 id='8ab1b4b299'>بررسی وضعیت سلامت ای‌پی‌آی</h1>
+<p>وضعیت سلامت ای‌پی‌آی را بررسی می‌کند. در صورتی که سالم باشد پاسخی با کد <code>۲۰۰</code> و متن <code>Server is up and ready</code> برمی‌گردد.</p>
+<h2 id='b40d4b44b2-8'>مثال</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>""
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> GET <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: ApiKey {your_api_token}"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'""'</span> <span class="se">\</span>
+      https://baaz.roshan-ai.ir/healthcheck
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'ApiKey {your_api_token}'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://baaz.roshan-ai.ir/healthcheck'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Server is up and ready"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>GET /healthcheck</code></dl>
 
       </div>
       <div class="dark-box">
