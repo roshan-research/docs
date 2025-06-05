@@ -21,7 +21,7 @@ HOST: https://fahm.roshan-ai.ir/api
     
     + Attributes
         - text: - (string, required) - متنی که باید ترجمه شود.
-        - to: - (enum[string], required) -  به کدام زبان ترجمه شود؟
+        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -50,7 +50,7 @@ HOST: https://fahm.roshan-ai.ir/api
     
     + Attributes
         - text: - (string, required) - متنی که باید ترجمه شود.
-        - to: - (enum[string], required) -  به کدام زبان ترجمه شود؟
+        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -80,7 +80,7 @@ HOST: https://fahm.roshan-ai.ir/api
     
     + Attributes
         - document_url: - (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
-        - to: - (enum[string], required) -  به کدام زبان ترجمه شود؟
+        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -109,7 +109,7 @@ HOST: https://fahm.roshan-ai.ir/api
     
     + Attributes
         - document_url: - (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
-        - to: - (enum[string], required) -  به کدام زبان ترجمه شود؟
+        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -142,13 +142,13 @@ HOST: https://fahm.roshan-ai.ir/api
             
     + Attributes
         - text: - (string, required) - متنی که باید خلاصه شود.
-        - type: - (enum[string], required) -  در چه قالبی خلاصه شود؟
+        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string], required) - ح حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: - (enum[string]) - ح حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -178,13 +178,13 @@ HOST: https://fahm.roshan-ai.ir/api
             
     + Attributes
         - text: - (string, required) - متنی که باید خلاصه شود.
-        - type: - (enum[string], required) -  در چه قالبی خلاصه شود؟
+        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string], required) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: - (enum[string]) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -215,13 +215,13 @@ HOST: https://fahm.roshan-ai.ir/api
             
     + Attributes
         - text: - (string, required) - متنی که باید خلاصه شود.
-        - type: - (enum[string], required) -  در چه قالبی خلاصه شود؟
+        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string], required) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: - (enum[string]) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -252,13 +252,13 @@ HOST: https://fahm.roshan-ai.ir/api
             
     + Attributes
         - document_url: - (string, required) - آدرس سندی که می‌خواهید خلاصه شود روی سامانه الفبا.
-        - type: - (enum[string], required) -  در چه قالبی خلاصه شود؟
+        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string], required) - حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: - (enum[string]) - حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
