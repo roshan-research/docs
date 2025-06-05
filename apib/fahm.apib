@@ -21,7 +21,7 @@ HOST: https://fahm.roshan-ai.ir/api
     
     + Attributes
         - text (string, required) - متنی که باید ترجمه شود
-        - to: fa (enum[string]) - به کدام زبان ترجمه شود؟
+        - to: fa (enum[string], required) - به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -49,8 +49,8 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - text: - (string, required) - متنی که باید ترجمه شود.
-        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
+        - text (string, required) - متنی که باید ترجمه شود.
+        - to: en (enum[string], required) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -79,8 +79,8 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - document_url: - (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
-        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
+        - document_url (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
+        - to: fa (enum[string], required) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -108,8 +108,8 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - document_url: - (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
-        - to: - (enum[string]) -  به کدام زبان ترجمه شود؟
+        - document_url (string, required) - آدرس سندی که باید ترجمه شود روی سامانه الفبا.
+        - to: fa (enum[string], required) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
                 + fa - فارسی
@@ -141,14 +141,14 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - text: - (string, required) - متنی که باید خلاصه شود.
-        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
+        - text (string, required) - متنی که باید خلاصه شود.
+        - type: word (enum[string], required) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string]) - ح حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: level1 (enum[string], required) - ح حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -177,14 +177,14 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - text: - (string, required) - متنی که باید خلاصه شود.
-        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
+        - text (string, required) - متنی که باید خلاصه شود.
+        - type: word (enum[string], required) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string]) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: level_1 (enum[string], required) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -214,14 +214,14 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - text: - (string, required) - متنی که باید خلاصه شود.
-        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
+        - text (string, required) - متنی که باید خلاصه شود.
+        - type: word (enum[string], required) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string]) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: level_1 (enum[string], required) -  حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -251,14 +251,14 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - document_url: - (string, required) - آدرس سندی که می‌خواهید خلاصه شود روی سامانه الفبا.
-        - type: - (enum[string]) -  در چه قالبی خلاصه شود؟
+        - document_url (string, required) - آدرس سندی که می‌خواهید خلاصه شود روی سامانه الفبا.
+        - type: word (enum[string], required) -  در چه قالبی خلاصه شود؟
             + Members
                 + word - معمولی
                 + bullet - فهرست‌وار
                 + conversation - گفتگو
                 
-        - level: - (enum[string]) - حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
+        - level: level_1 (enum[string], required) - حجم خلاصه چقدر باشد؟ در حالت conversation فقط level_1 قابل قبول است.
             + Members
                 + level_1 - کم
                 + level_2 - متوسط
@@ -314,7 +314,7 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - text: - (string, required) - متنی که می‌خواهید کلمات کلیدی و متادیتای آن استخراج شود.
+        - text (string, required) - متنی که می‌خواهید کلمات کلیدی و متادیتای آن استخراج شود.
 
     + Body
 
@@ -351,8 +351,8 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - questions: - (array[string], required) - سوالاتی که باید پاسخ داده شود.
-        - contexts: - (array[string], required) -  متنی که باید جواب سوالات از آن استخراج شود.
+        - questions (array[string], required) - سوالاتی که باید پاسخ داده شود.
+        - contexts (array[string], required) -  متنی که باید جواب سوالات از آن استخراج شود.
 
     + Body
 
@@ -390,8 +390,8 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - content: - (string, required) - نامه‌ای که می‌خواهید تولید شود.
-        - description: - (string, required) -  توضیح دربارهٔ اینکه نامهچه ساختاری داشته باشد.
+        - content (string, required) - نامه‌ای که می‌خواهید تولید شود.
+        - description (string, required) -  توضیح دربارهٔ اینکه نامهچه ساختاری داشته باشد.
 
     + Body
 
