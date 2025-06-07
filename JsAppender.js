@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let folderNames = ['alefba','baaz','golrokh','harf','kashf','naghsh','parde',"replai","fahm","barid"];
+let folderNames = ['alefba','baaz','golrokh','harf','kashf','naghsh','parde',"replai","fahm"];
 
 let scrollingCode = fs.readFileSync("scrolling.js",'utf8',() => {});
 
