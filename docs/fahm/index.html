@@ -266,11 +266,11 @@
         <h1 id='3e7ad5d528'>فهم</h1>
 <p>این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است. برای دریافت توکن با بخش فروش تماس بگیرید.</p>
 
-<p>در مستندات حاضر، هرگاه نیاز به درج آدرس یک سند از سامانه الفبا باشد، ابتدا وارد پنل الفبای خود شوید و سند مورد نظر را باز کنید، سپس گزینه «نمایش تصویر اصلی» را انتخاب کرده و روی تصویر سند کلیک راست کنید و آن را در تب جدید باز نمایید؛ آدرسی شبیه <code>https://alefba.roshan-ai.ir/page_image/http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf@page=1</code>؛ آدرس اصلی سند همان بخشی است که بین <code>page_image/</code> و <code>@page</code> قرار دارد، برای مثال در این نمونه، آدرس سند برابر است با <code>http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf</code>. است</p>
+<p>در مستندات حاضر، هرگاه نیاز به درج آدرس یک سند از سامانه الفبا باشد، ابتدا وارد پنل الفبای خود شوید و سند مورد نظر را باز کنید، سپس گزینه «نمایش تصویر اصلی» را انتخاب کرده و روی تصویر سند کلیک راست کنید و آن را در تب جدید باز نمایید؛ آدرسی شبیه https://alefba.roshan-ai.ir/page_image/http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf@page=1 است. آدرس سند همان بخشی است که بین <code>page_image/</code> و <code>@page</code> قرار دارد، برای مثال در این نمونه، آدرس سند برابر است با http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf است.</p>
 <h1 id='45ce7ccafc'>ترجمه</h1>
 <p>یک متن را از هر زبانی به فارسی یا انگلیسی ترجمه می‌کند. زبان مبداً هر زبانی می‌تواند باشد ولی زبان مقصد فقط فارسی یا انگلیسی پشتیبانی می‌شود.</p>
 
-<p>در پاسخ خروجی in_token تعداد توکن‌های ورودی، out_token تعداد توکن‌های خروجی است. language زبانی است که به آن ترجمه می‌شود و در صورتی که به جای متن لینک اسناد خود را در سامانه الفبا داده باشید، document_url آدرس آن اسناد است که در ورودی نیز ارسال کرده‌اید. chat_id، content متنی است که برای ترجمه ارسال کرده‌اید و chat_id شناسه گفتگوی مربوطه است.</p>
+<p>در پاسخ خروجی in_token تعداد توکن‌های ورودی، out_token تعداد توکن‌های خروجی است. language زبانی است که به آن ترجمه می‌شود و در صورتی که به جای متن لینک اسناد خود را در سامانه الفبا داده باشید، document_url آدرس آن اسناد است که در ورودی نیز ارسال کرده‌اید. content متنی است که برای ترجمه ارسال کرده‌اید و chat_id شناسه گفتگوی مربوطه است.</p>
 <h2 id='3fb12daa10'>ترجمه متن به فارسی</h2>
 <blockquote>
 <p>Request</p>
@@ -498,7 +498,7 @@ Value: [undefined, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس اسناد که باید ترجمه شود روی سامانه الفبا.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس اسنادی که باید ترجمه شود روی سامانه الفبا.</p>
 
 <p><br><br>
 <dl>
@@ -587,7 +587,7 @@ fa
 <dl style="background-color:transparent;"><code>POST /translation/</code></dl>
 
 <dl>
-<strong>document_url(required)</strong>
+<strong>document_urls(required)</strong>
 <br>
 <br>
 Value: [undefined, ]
@@ -1078,7 +1078,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  نامه‌ای که می‌خواهید تولید شود.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  متنی که می‌خواهید تولید شود.</p>
 
 <p><br><br></p>
 
