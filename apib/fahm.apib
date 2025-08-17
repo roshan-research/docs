@@ -5,13 +5,13 @@ HOST: https://fahm.roshan-ai.ir/api
 
 این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است. برای دریافت توکن با بخش فروش تماس بگیرید.
 
-در مستندات حاضر، هرگاه نیاز به درج آدرس یک سند از سامانه الفبا باشد، ابتدا وارد پنل الفبای خود شوید و سند مورد نظر را باز کنید، سپس گزینه «نمایش تصویر اصلی» را انتخاب کرده و روی تصویر سند کلیک راست کنید و آن را در تب جدید باز نمایید؛ آدرسی شبیه `https://alefba.roshan-ai.ir/page_image/http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf@page=1`؛ آدرس اصلی سند همان بخشی است که بین `page_image/` و `@page` قرار دارد، برای مثال در این نمونه، آدرس سند برابر است با `http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf`. است
+در مستندات حاضر، هرگاه نیاز به درج آدرس یک سند از سامانه الفبا باشد، ابتدا وارد پنل الفبای خود شوید و سند مورد نظر را باز کنید، سپس گزینه «نمایش تصویر اصلی» را انتخاب کرده و روی تصویر سند کلیک راست کنید و آن را در تب جدید باز نمایید؛ آدرسی شبیه https://alefba.roshan-ai.ir/page_image/http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf@page=1 است. آدرس سند همان بخشی است که بین `page_image/` و `@page` قرار دارد، برای مثال در این نمونه، آدرس سند برابر است با http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf است.
 
 ## ترجمه [/translation/]
 
 یک متن را از هر زبانی به فارسی یا انگلیسی ترجمه می‌کند. زبان مبداً هر زبانی می‌تواند باشد ولی زبان مقصد فقط فارسی یا انگلیسی پشتیبانی می‌شود.
 
-در پاسخ خروجی in_token تعداد توکن‌های ورودی، out_token تعداد توکن‌های خروجی است. language زبانی است که به آن ترجمه می‌شود و در صورتی که به جای متن لینک اسناد خود را در سامانه الفبا داده باشید، document_url آدرس آن اسناد است که در ورودی نیز ارسال کرده‌اید. chat_id، content متنی است که برای ترجمه ارسال کرده‌اید و chat_id شناسه گفتگوی مربوطه است.
+در پاسخ خروجی in_token تعداد توکن‌های ورودی، out_token تعداد توکن‌های خروجی است. language زبانی است که به آن ترجمه می‌شود و در صورتی که به جای متن لینک اسناد خود را در سامانه الفبا داده باشید، document_url آدرس آن اسناد است که در ورودی نیز ارسال کرده‌اید. content متنی است که برای ترجمه ارسال کرده‌اید و chat_id شناسه گفتگوی مربوطه است.
 
 ### ترجمه متن به فارسی [POST]
 
@@ -97,7 +97,7 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - document_urls (array[string], required) - آدرس اسناد که باید ترجمه شود روی سامانه الفبا.
+        - document_urls (array[string], required) - آدرس اسنادی که باید ترجمه شود روی سامانه الفبا.
         - to: fa (enum[string], required) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
@@ -140,7 +140,7 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
     
     + Attributes
-        - document_url (array[string], required) - آدرس اسنادی که باید ترجمه شود روی سامانه الفبا.
+        - document_urls (array[string], required) - آدرس اسنادی که باید ترجمه شود روی سامانه الفبا.
         - to: fa (enum[string], required) -  به کدام زبان ترجمه شود؟
             + Members
                 + en - انگلیسی
@@ -352,7 +352,7 @@ HOST: https://fahm.roshan-ai.ir/api
             Authorization: Token YOUR_API_TOKEN
             
     + Attributes
-        - content (string, required) - نامه‌ای که می‌خواهید تولید شود.
+        - content (string, required) - متنی که می‌خواهید تولید شود.
 
     + Body
 
