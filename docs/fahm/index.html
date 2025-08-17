@@ -264,9 +264,13 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='3e7ad5d528'>فهم</h1>
-<p>این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است. برای دریافت توکن با بخش فروش تماس بگیرید..</p>
+<p>این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است. برای دریافت توکن با بخش فروش تماس بگیرید.</p>
+
+<p>در مستندات حاضر، هرگاه نیاز به درج آدرس یک سند از سامانه الفبا باشد، ابتدا وارد پنل الفبای خود شوید و سند مورد نظر را باز کنید، سپس گزینه «نمایش تصویر اصلی» را انتخاب کرده و روی تصویر سند کلیک راست کنید و آن را در تب جدید باز نمایید؛ آدرسی شبیه <code>https://alefba.roshan-ai.ir/page_image/http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf@page=1</code>؛ آدرس اصلی سند همان بخشی است که بین <code>page_image/</code> و <code>@page</code> قرار دارد، برای مثال در این نمونه، آدرس سند برابر است با <code>http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf</code>. است</p>
 <h1 id='45ce7ccafc'>ترجمه</h1>
-<p>یک متن را از هر زبانی به فارسی یا انگلیسی ترجمه می‌کند.</p>
+<p>یک متن را از هر زبانی به فارسی یا انگلیسی ترجمه می‌کند. زبان مبداً هر زبانی می‌تواند باشد ولی زبان مقصد فقط فارسی یا انگلیسی پشتیبانی می‌شود.</p>
+
+<p>در پاسخ خروجی in_token تعداد توکن‌های ورودی، out_token تعداد توکن‌های خروجی است. language زبانی است که به آن ترجمه می‌شود و در صورتی که به جای متن لینک اسناد خود را در سامانه الفبا داده باشید، document_url آدرس آن اسناد است که در ورودی نیز ارسال کرده‌اید. chat_id، content متنی است که برای ترجمه ارسال کرده‌اید و chat_id شناسه گفتگوی مربوطه است.</p>
 <h2 id='3fb12daa10'>ترجمه متن به فارسی</h2>
 <blockquote>
 <p>Request</p>
@@ -449,14 +453,14 @@ fa
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    \"document_url\": [\n          \"http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_english_1.pdf\",\n          \"http://alefba.roshan-ai.ir/media/files/14/39/673510445571-sample_english_2.pdf\"\n    ]\n    \"to\": \"fa\",\n}\n"
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"{\n    \"document_urls\": [\n          \"http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_english_1.pdf\",\n          \"http://alefba.roshan-ai.ir/media/files/14/39/673510445571-sample_english_2.pdf\"\n    ]\n    \"to\": \"fa\",\n}\n"
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">--header</span> <span class="s2">"Authorization: Token YOUR_API_TOKEN"</span> <span class="se">\</span>
-      <span class="nt">--data-binary</span> <span class="s1">'"{\n    \"document_url\": [\n          \"http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_english_1.pdf\",\n          \"http://alefba.roshan-ai.ir/media/files/14/39/673510445571-sample_english_2.pdf\"\n    ]\n    \"to\": \"fa\",\n}\n"'</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'"{\n    \"document_urls\": [\n          \"http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_english_1.pdf\",\n          \"http://alefba.roshan-ai.ir/media/files/14/39/673510445571-sample_english_2.pdf\"\n    ]\n    \"to\": \"fa\",\n}\n"'</span> <span class="se">\</span>
       https://fahm.roshan-ai.ir/api/translation/
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">document_url</span><span class="se">\"</span><span class="s">: [</span><span class="se">\n</span><span class="s">          </span><span class="se">\"</span><span class="s">http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_english_1.pdf</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">          </span><span class="se">\"</span><span class="s">http://alefba.roshan-ai.ir/media/files/14/39/673510445571-sample_english_2.pdf</span><span class="se">\"\n</span><span class="s">    ]</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">to</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">fa</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"</span>
+<span class="n">values</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">document_urls</span><span class="se">\"</span><span class="s">: [</span><span class="se">\n</span><span class="s">          </span><span class="se">\"</span><span class="s">http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_english_1.pdf</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">          </span><span class="se">\"</span><span class="s">http://alefba.roshan-ai.ir/media/files/14/39/673510445571-sample_english_2.pdf</span><span class="se">\"\n</span><span class="s">    ]</span><span class="se">\n</span><span class="s">    </span><span class="se">\"</span><span class="s">to</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">fa</span><span class="se">\"</span><span class="s">,</span><span class="se">\n</span><span class="s">}</span><span class="se">\n</span><span class="s">"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token YOUR_API_TOKEN'</span><span class="p">,</span>
@@ -494,7 +498,7 @@ Value: [undefined, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سندی که باید ترجمه شود روی سامانه الفبا.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس اسناد که باید ترجمه شود روی سامانه الفبا.</p>
 
 <p><br><br>
 <dl>
@@ -586,16 +590,11 @@ fa
 <strong>document_url(required)</strong>
 <br>
 <br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
+Value: [undefined, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سندی که باید ترجمه شود روی سامانه الفبا.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس اسنادی که باید ترجمه شود روی سامانه الفبا.</p>
 
 <p><br><br>
 <dl>
@@ -675,6 +674,8 @@ fa
     </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
+<p>متن ورودی را به شکل یک متن کوتاه یا بلند خلاصه می‌کند.</p>
+
 <dl style="background-color:transparent;"><code>POST /summarization/</code></dl>
 
 <dl>
@@ -794,6 +795,8 @@ level_3
     </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
+<p>متن ورودی را به شکل یک فهرست نقطه‌ای کوتاه یا بلند خلاصه می‌کند.</p>
+
 <dl style="background-color:transparent;"><code>POST /summarization/</code></dl>
 
 <dl>
@@ -822,7 +825,7 @@ Value:
 word
 </span>
 <span style="font-family:VazirCode;">
-معمولی
+متنی
 </span>
 <span>
 bullet
@@ -929,16 +932,11 @@ level_3
 <strong>document_url(required)</strong>
 <br>
 <br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
+Value: [undefined, ]
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس سندی که می‌خواهید خلاصه شود روی سامانه الفبا.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  آدرس اسنادی که می‌خواهید خلاصه شود روی سامانه الفبا.</p>
 
 <p><br><br>
 <dl>
@@ -951,7 +949,7 @@ Value:
 word
 </span>
 <span style="font-family:VazirCode;">
-معمولی
+متنی
 </span>
 <span>
 bullet
@@ -1080,23 +1078,7 @@ Value: <span style="background-color: #00A693;
 </dl>
 
 <p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  موضوع نامه‌ای که می‌خواهید تولید شود.</p>
-
-<p><br><br>
-<dl>
-<strong>description(required)</strong>
-<br>
-<br>
-Value: <span style="background-color: #00A693;
-                    border-color: #00A693;
-                    border-width: 3px;
-                    border-radius: 2px">
-                    undefined
-                    </span>
-</dl></p>
-
-<p style="direction:rtl;font-weight:300;">
-<img src="images/vector-c3fae21d.svg" alt="vector">  توضیح دربارهٔ اینکه نامه چه ساختاری داشته باشد.</p>
+<img src="images/vector-c3fae21d.svg" alt="vector">  نامه‌ای که می‌خواهید تولید شود.</p>
 
 <p><br><br></p>
 
