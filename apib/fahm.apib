@@ -368,3 +368,93 @@ HOST: https://fahm.roshan-ai.ir/api
               "content": "نوشتن یک نامه مرخصی"
             }
 
+## دسته‌بندی اطلاعات [/classification/]
+
+لیستی از آدرس فایل‌ها از سامانه الفبا را به همراه مجموعه‌ای از برچسب‌ها دریافت می‌کد و در پاسخ، دسته‌بندی مربوط به هر سند را از بین برچسب‌های ارسال شده شناسایی و به ترتیب برمی‌گرداند.
+
+### مثال: دسته‌بندی چند سند [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token {your_token_here}
+
+    + Body
+
+            {
+              "document_urls": [
+                "http://alefba.roshan-ai.ir/media/files/24/65/757627194571-test_file3.pdf",
+                "http://alefba.roshan-ai.ir/media/files/91/18/345627194571-test_file1.pdf"
+              ],
+              "tags": [
+                {
+                  "title": "سند اداری",
+                  "description": "سند اداری به هر نوع نوشته یا مدرکی گفته می‌شود که در یک سازمان یا مجموعه برای انجام امور مختلف، اعم از خرید و فروش، ارتباط با سایر مجموعه‌ها، ثبت اطلاعات، ارائه گزارش، مستندسازی فرآیندها و غیره استفاده می‌شود"
+                },
+                {
+                  "title": "سند مالی",
+                  "description": "اسناد مالی، عناصر کلیدی در فرآیند ثبت و گزارشگری مالی هستند..."
+                },
+                {
+                  "title": "قرارداد",
+                  "description": "سند قرارداد به نوشته‌ای گفته می‌شود که دو یا چند طرف در آن توافقات و تعهدات خود..."
+                }
+              ]
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+              "results": [
+                {
+                  "tags": [
+                    "سند اداری"
+                  ]
+                },
+                {
+                  "tags": [
+                    "سند مالی"
+                  ]
+                }
+              ],
+              "info": {
+                "document_url": [
+                  {
+                    "url": "http://alefba.roshan-ai.ir/media/files/24/65/757627194571-test_file3.pdf",
+                    "filename": "test_file3.pdf"
+                  },
+                  {
+                    "url": "http://alefba.roshan-ai.ir/media/files/91/18/345627194571-test_file1.pdf",
+                    "filename": "test_file1.pdf"
+                  }
+                ],
+                "title": null,
+                "information": [
+                  {
+                    "title": "سند اداری",
+                    "description": "..."
+                  },
+                  {
+                    "title": "سند مالی",
+                    "description": "..."
+                  },
+                  {
+                    "title": "قرارداد",
+                    "description": "..."
+                  },
+                  {
+                    "title": "غیر مرتبط",
+                    "description": "This category includes texts that do not fit neatly into the above topics..."
+                  }
+                ]
+              },
+              "content": [
+                "به: مدیر عامل شرکت روشن...",
+                "تعایی شرکت‌نفت مناطق‌مرکزی ایران..."
+              ],
+              "chat_id": 3937
+            }
+
