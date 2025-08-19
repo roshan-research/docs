@@ -458,3 +458,87 @@ HOST: https://fahm.roshan-ai.ir/api
               "chat_id": 3937
             }
 
+## استخراج اطلاعات [/information-extraction/]
+
+لیستی از اسناد از سامانه الفبا را به همراه لیستی از سوالات دریافت می‌کند و تلاش می‌کند برای هر سند به همه آن سوالات پاسخ دهد. اگر برای سوالی پاسخی نداشته باشد null برمی‌گرداند. ترتیب پاسخ به اسناد به همان ترتیب لیست اسناد در ورودی است.
+
+### مثال: پاسخ به سوالات روی چند سند [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token {your_token_here}
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "document_urls": [
+                "http://alefba.roshan-ai.ir/media/files/24/65/757627194571-test_file3.pdf",
+                "http://alefba.roshan-ai.ir/media/files/91/18/345627194571-test_file1.pdf"
+              ],
+              "questions": [
+                {
+                  "title": "موضوع",
+                  "text": "موضوع چیست؟",
+                  "type": "str"
+                },
+                {
+                  "title": "فرستنده",
+                  "text": "گیرنده کیست",
+                  "type": "str"
+                },
+                {
+                  "title": "تاریخ",
+                  "text": "نامه در چه تاریخی نوشته شده است",
+                  "type": "date"
+                }
+              ]
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+              "questions": [
+                {
+                  "title": "موضوع",
+                  "type": "str"
+                },
+                {
+                  "title": "فرستنده",
+                  "type": "str"
+                },
+                {
+                  "title": "تاریخ",
+                  "type": "date"
+                }
+              ],
+              "answers": [
+                [
+                  "پاسخ به نامه شماره ۱۲۳۴۵/۱۴۰۲ در خصوص درخواست همکاری در سامانه مدیریت پروژه",
+                  "مدیر عامل شرکت روشن",
+                  "۱۴۰۲/۱۰/۰۵"
+                ],
+                [
+                  "شرکت نفت مناطق مرکزی ایران ",
+                  "مدیریت مهندسی و ساختمان ",
+                  null
+                ]
+              ],
+              "info": {
+                "document_urls": [
+                  {
+                    "url": "http://alefba.roshan-ai.ir/media/files/24/65/757627194571-test_file3.pdf",
+                    "filename": "test_file3.pdf"
+                  },
+                  {
+                    "url": "http://alefba.roshan-ai.ir/media/files/91/18/345627194571-test_file1.pdf",
+                    "filename": "test_file1.pdf"
+                  }
+                ]
+              },
+              "chat_id": 3938
+            }
