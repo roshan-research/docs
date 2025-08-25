@@ -210,6 +210,14 @@
                 <a href="#3e7ad5d528" class="toc-h1 toc-link" data-title="فهم">فهم</a>
               </li>
               <li>
+                <a href="#06c7b60187" class="toc-h1 toc-link" data-title="ورود">ورود</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#5eab02c7dd" class="toc-h2 toc-link" data-title="دریافت توکن">دریافت توکن</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
                 <a href="#45ce7ccafc" class="toc-h1 toc-link" data-title="ترجمه">ترجمه</a>
                   <ul class="toc-list-h2">
                       <li>
@@ -283,6 +291,90 @@
 <p>این ای‌پی‌آی برای انجام عملیات ترجمه، خلاصه‌سازی و گفت‌وگو طراحی شده است. برای دریافت توکن با بخش فروش تماس بگیرید.</p>
 
 <p>در مستندات حاضر، هرگاه نیاز به درج آدرس یک سند از سامانه الفبا باشد، ابتدا وارد پنل الفبای خود شوید و سند مورد نظر را باز کنید، سپس گزینه «نمایش تصویر اصلی» را انتخاب کرده و روی تصویر سند کلیک راست کنید و آن را در تب جدید باز نمایید؛ آدرسی شبیه https://alefba.roshan-ai.ir/page_image/http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf@page=1 است. آدرس سند همان بخشی است که بین <code>page_image/</code> و <code>@page</code> قرار دارد، برای مثال در این نمونه، آدرس سند برابر است با http://alefba.roshan-ai.ir/media/files/94/35/700979345571-sample_persian_1.pdf است.</p>
+<h1 id='06c7b60187'>ورود</h1>
+<p>ابتدا نام کاربری و رمز عبوری که در اختیار شما قرار گرفته را در قالب یک درخواست post ارسال کنید تا بتوانید توکن اتصال دریافت کنید. این توکن در تمام درخواست‌های شما بایستی در هیدر آن  درخواست وجود داشته باشد.</p>
+<h2 id='5eab02c7dd'>دریافت توکن</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
+    "username": "*******",
+    "password": "*******"
+}
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
+      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">--data-binary</span> <span class="s1">'{
+    "username": "*******",
+    "password": "*******"
+}'</span> <span class="se">\</span>
+      https://fahm.roshan-ai.ir/api/account/login/
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"username"</span><span class="p">:</span> <span class="s">"*******"</span><span class="p">,</span>
+    <span class="s">"password"</span><span class="p">:</span> <span class="s">"*******"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://fahm.roshan-ai.ir/api/account/login/'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*********************************"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"alefba_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*********************************"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"harf_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"alefba_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://alefba.roshan-ai.ir"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"harf_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"baaz_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://baaz.roshan-ai.ir"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"********"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<dl style="background-color:transparent;"><code>POST /account/login/</code></dl>
 <h1 id='45ce7ccafc'>ترجمه</h1>
 <p>یک متن را از هر زبانی به فارسی یا انگلیسی ترجمه می‌کند. زبان مبداً هر زبانی می‌تواند باشد ولی زبان مقصد فقط فارسی یا انگلیسی پشتیبانی می‌شود.</p>
 
