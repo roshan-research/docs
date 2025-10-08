@@ -13,14 +13,18 @@ HOST: https://baaz.roshan-ai.ir/
 قبل از جستجو ابتدا باید داده‌ها را ایندکس کنید. این تابع محتوای شما را تحت شناسهٔ داده‌شده ایندکس می‌کند. اگر محتوایی با `type` و `id` یکسان قبلاً ایندکس شده باشد جایگزین آن می‌شود.
 
 + Request (application/json)
+
     + Headers
-        Authorization: Token TOKEN_KEY
+    
+            Authorization: Token TOKEN_KEY
+        
     + Attributes
-        - type: `document` (string, required) - نوع محتوا را مشخص می‌کند.
-        - id: `f264...` (string, required) - شناسهٔ منحصربه‌فرد محتوا در سطح `type`.
-        - title: `عنوان نامه` (string, required) - عنوان محتوا.
-        - content: `ریلیزنوت...` (string, optional) - متن اصلی محتوا.
-        - ...: ... (optional) - سایر فیلدهای دلخواه.
+    
+            -type: `document` (string, required) - نوع محتوا را مشخص می‌کند.
+            -id: `f264...` (string, required) - شناسهٔ منحصربه‌فرد محتوا در سطح `type`.
+            -title: `عنوان نامه` (string, required) - عنوان محتوا.
+            -content: `ریلیزنوت...` (string, optional) - متن اصلی محتوا.
+        
     + Body
 
             {
@@ -62,8 +66,11 @@ HOST: https://baaz.roshan-ai.ir/
 برای ویرایش محتوای یک ایندکس درخواست خود را با متد `PUT` ارسال کنید. در هر محتوا واردکردن دو فیلد `type` و `id` برای یافتن محتوا ضروری است.
 
 + Request (application/json)
+
     + Headers
+    
             Authorization: Token TOKEN_KEY
+            
     + Body
 
             {
@@ -84,36 +91,14 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 ### حذف ایندکس یا نوع [DELETE /delete_index]
-برای حذف کامل یک ایندکس یا حذف تمام محتواهای یک نوع خاص (`type`) از این اندپوینت استفاده کنید.
+برای حذف کامل یک ایندکس یا حذف تمام محتواهای یک نوع خاص (`type`) از این اندپوینت استفاده کنید. برای حذف کل ایندکس یک جیسون خالی بفرستید.
 
-+ Request (برای حذف کل ایندکس) (application/json)
++ Request (application/json)
+
     + Headers
+    
             Authorization: Token TOKEN_KEY
-    + Body
-
-            {}
-
-+ Response 200 (application/json)
-    + Body
-
-            {
-              "index": "TESTDELETE",
-              "doc_type": "ALL",
-              "elasticsearch": {
-                "status": "error",
-                "message": "name 'logger' is not defined"
-              },
-              "weaviate": {
-                "status": "success",
-                "message": null,
-                "deleted_count": null
-              },
-              "status": "partial"
-            }
-
-+ Request (برای حذف یک نوع خاص) (application/json)
-    + Headers
-            Authorization: Token TOKEN_KEY
+            
     + Body
 
             {
@@ -121,6 +106,7 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 + Response 200 (application/json)
+
     + Body
 
             {
@@ -137,12 +123,14 @@ HOST: https://baaz.roshan-ai.ir/
               },
               "status": "partial"
             }
-
+            
 ### اسناد مشابه [POST /similar/documents]
 با دریافت شناسهٔ یک محتوای ایندکس‌شده، شبیه‌ترین محتواها را به آن پیدا کرده و برمی‌گرداند.
 
 + Request (application/json)
+
     + Headers
+    
             Authorization: Token TOKEN_KEY
     + Body
 
@@ -153,6 +141,7 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 + Response 200 (application/json)
+
     + Body
 
             {
@@ -165,7 +154,9 @@ HOST: https://baaz.roshan-ai.ir/
 وضعیت ایندکس شدن یک یا چند سند را بر اساس URL آن‌ها بررسی می‌کند.
 
 + Request (application/json)
+
     + Headers
+    
             Authorization: Token TOKEN_KEY
     + Body
 
@@ -174,6 +165,7 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 + Response 200 (application/json)
+
     + Body
 
             {
@@ -186,10 +178,13 @@ HOST: https://baaz.roshan-ai.ir/
 آمار تعداد اسناد موجود در هر `type` از یک ایندکس خاص را برمی‌گرداند.
 
 + Request
+
     + Headers
+    
         Authorization: Token TOKEN_KEY
 
 + Response 200 (application/json)
+
     + Body
     
             {
@@ -200,6 +195,7 @@ HOST: https://baaz.roshan-ai.ir/
 ## گروه جستجو و محتوا [/{index_name}/{types}]
 
 + Parameters
+
     + index_name: `baaz` (required, string) - شناسهٔ ایندکس.
     + types: `document|person` (required, string) - انواع مورد نظر برای جستجو که با `|` جدا شده‌اند.
 
@@ -207,34 +203,39 @@ HOST: https://baaz.roshan-ai.ir/
 محتوای کامل یک سند ایندکس‌شده را با استفاده از شناسه (`id`) آن بازیابی می‌کند.
 
 + Parameters
+
     + id: `f264...` (required, string) - شناسهٔ محتوا.
 
 + Request
+
     + Headers
-        Authorization: Token TOKEN_KEY
+
+            Authorization: Token TOKEN_KEY
 
 + Response 200 (application/json)
+
     + Body
+
             {
-              "body": "ریلیزنوت اسپرینت 06-04-04Product Backlog ItemProduct Backlog Itemتوضیحاتدر جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها...",
-              "id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-              "time": "2025-07-20 14:30:00",
-              "type": "document",
-              "description": "خلاصه نامه",
-              "title": "عنوان نامه",
-              "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
-              "labels": [
-                "e129e757-316d-4fad-9877-022b26aca152-ContentView",
-                "14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"
-              ]
+                "body": "ریلیزنوت اسپرینت 06-04-04Product Backlog ItemProduct Backlog Itemتوضیحاتدر جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها...",
+                "id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
+                "time": "2025-07-20 14:30:00",
+                "type": "document",
+                "description": "خلاصه نامه",
+                "title": "عنوان نامه",
+                "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
+                "labels": ["e129e757-316d-4fad-9877-022b26aca152-ContentView","14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"]
             }
 
 ### جستجوی معنایی [POST /semantic_query]
 این اندپوینت یک جستجوی معنایی بر اساس مفهوم متن ورودی انجام می‌دهد.
 
 + Request (application/json)
+
     + Headers
-        Authorization: Token TOKEN_KEY
+
+            Authorization: Token TOKEN_KEY
+
     + Body
 
             {
@@ -243,43 +244,44 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 + Response 200 (application/json)
+
     + Body
 
             {
-              "items": [
-                {
-                  "id": "f2646930-64d7-47cc-93c1-e557777f1c489add",
-                  "highlight": {
-                    "content": {
-                      "chunk_1": "04Product Backlog ItemProduct Backlog Itemتوضیحاتدر جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها...",
-                      "chunk_2": "04Product Backlog ItemProduct Backlog Itemتوضیحاتدر جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها...",
-                      "chunk_3": "روش ارسال مخاطبیندر پیشنویس کارپوشه جدید بهتوجه به این که در تنظیمات الگویامکان تغییر روش ارسال مخاطبین در پیشنویس کارپوشه جدید درصورتی که در تنظیمات الگویپیشنویس این قابلیت غیر فعال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روش عال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روشارسال غیرفعال شود در ui جدید پیشنویس ایجاد شده روش ارسال مخاطبین تغییر داده نمیشود ومشکلی که در نگارش های قبلی بود رفع شد...",
-                      "chunk_4": "روش ارسال مخاطبیندر پیشنویس کارپوشه جدید بهتوجه به این که در تنظیمات الگویامکان تغییر روش ارسال مخاطبین در پیشنویس کارپوشه جدید درصورتی که در تنظیمات الگویپیشنویس این قابلیت غیر فعال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روش عال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روشارسال غیرفعال شود در ui جدید پیشنویس ایجاد شده روش ارسال مخاطبین تغییر داده نمیشود ومشکلی که در نگارش های قبلی بود رفع شد...",
-                      "chunk_5": "اتبات-ایجاد ویرایش پیش نویس-امضا سایر-اکشن تایید نام به \"جهت ثبت و ارسال\" تغییر دادهشد در مودال امضای امضاکننده کننده اصلی : 1-لیبیل تایید کننده به \"ثبت کننده نهایی\" تغییر نامداده شد 2-اکشن تایید به \"جهت ثبت و ارسال\" تغییر نام داده شد 3-در حالت ویرایش پیش نویستوسط تایید کننده اکشن تایید به : \"ثبت و ارسال\" تغییر نام داده شدProduct Backlog ItemBugدر نگارش های قبل در جستجو پیشرفته پس از حذف مورد انتخابی، همچنان با همان مورد فیلتروجود دارشت. و فیلتر حذف نمیشد مشکل در این نگارش رفع شد----"
+                "items": [
+                    {
+                        "id": "f2646930-64d7-47cc-93c1-e557777f1c489add",
+                        "highlight": 
+                        {
+                            "content": 
+                            {
+                                "chunk_1": "04Product Backlog ItemProduct Backlog Itemتوضیحاتدر جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها...",
+                                "chunk_2": "04Product Backlog ItemProduct Backlog Itemتوضیحاتدر جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها...",
+                                "chunk_3": "روش ارسال مخاطبیندر پیشنویس کارپوشه جدید بهتوجه به این که در تنظیمات الگویامکان تغییر روش ارسال مخاطبین در پیشنویس کارپوشه جدید درصورتی که در تنظیمات الگویپیشنویس این قابلیت غیر فعال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روش عال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روشارسال غیرفعال شود در ui جدید پیشنویس ایجاد شده روش ارسال مخاطبین تغییر داده نمیشود ومشکلی که در نگارش های قبلی بود رفع شد...",
+                                "chunk_4": "روش ارسال مخاطبیندر پیشنویس کارپوشه جدید بهتوجه به این که در تنظیمات الگویامکان تغییر روش ارسال مخاطبین در پیشنویس کارپوشه جدید درصورتی که در تنظیمات الگویپیشنویس این قابلیت غیر فعال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روش عال شده اگر در الگوی پیشنویس در تنظیمات الگوی امکان تغییر روشارسال غیرفعال شود در ui جدید پیشنویس ایجاد شده روش ارسال مخاطبین تغییر داده نمیشود ومشکلی که در نگارش های قبلی بود رفع شد...",
+                                "chunk_5": "اتبات-ایجاد ویرایش پیش نویس-امضا سایر-اکشن تایید نام به \"جهت ثبت و ارسال\" تغییر دادهشد در مودال امضای امضاکننده کننده اصلی : 1-لیبیل تایید کننده به \"ثبت کننده نهایی\" تغییر نامداده شد 2-اکشن تایید به \"جهت ثبت و ارسال\" تغییر نام داده شد 3-در حالت ویرایش پیش نویستوسط تایید کننده اکشن تایید به : \"ثبت و ارسال\" تغییر نام داده شدProduct Backlog ItemBugدر نگارش های قبل در جستجو پیشرفته پس از حذف مورد انتخابی، همچنان با همان مورد فیلتروجود دارشت. و فیلتر حذف نمیشد مشکل در این نگارش رفع شد----"
+                            }
+                        },
+                        "metadata": {
+                            "labels": ["e129e757-316d-4fad-9877-022b26aca152-ContentView","14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"],
+                            "type": "document",
+                            "title": "عنوان نامه",
+                            "description": "خلاصه نامه",
+                            "time": "2025-07-20 14:30:00",
+                            "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad"
+                        },
+                        "score": 1.0
                     }
-                  },
-                  "metadata": {
-                    "labels": [
-                      "e129e757-316d-4fad-9877-022b26aca152-ContentView",
-                      "14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"
-                    ],
-                    "type": "document",
-                    "title": "عنوان نامه",
-                    "description": "خلاصه نامه",
-                    "time": "2025-07-20 14:30:00",
-                    "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad"
-                  },
-                  "score": 1.0
-                }
-              ]
+                ]
             }
 
-## گروه عمومی
+# گروه عمومی
 
 ### بررسی وضعیت سلامت ای‌پی‌آی [GET /healthcheck]
 وضعیت سلامت ای‌پی‌آی را بررسی می‌کند.
 
 + Response 200 (application/json)
+
     + Body
 
             {
