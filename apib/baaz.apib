@@ -3,14 +3,14 @@ HOST: https://baaz.roshan-ai.ir/
 
 # باز
 
-باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک TOKEN_KEY نیاز دارید که می‌توانید با ارسال یک ایمیل به <a href="mailto:baaz@roshan-ai.ir">baaz@roshan-ai.ir</a> درخواست دهید.
+باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک TOKEN_KEY نیاز دارید که می‌توانید با ارسال یک ایمیل به [baaz@roshan-ai.ir](mailto:baaz@roshan-ai.ir) درخواست دهید.
 
 ## نکات مهم
 
 - **احراز هویت**: تمام درخواست‌ها باید با هدر `Authorization: Token {token}` ارسال شوند.
 - **فرمت زمان**: تمام زمان‌ها در فرمت `YYYY-MM-DD HH:MM:SS` هستند.
 - **محدودیت اندازه**: حداکثر اندازه درخواست‌ها ۱۰ مگابایت است.
-- **کش**: برخی اندپوینت‌ها مانن stats ممکن است از کش استفاده کنند و نتایج را تا ۵ دقیقه ذخیره کنند.
+- **کش**: برخی اندپوینت‌ها مانند stats ممکن است از کش استفاده کنند و نتایج را تا ۵ دقیقه ذخیره کنند.
 - **صفحه‌بندی**: برای اندپوینت‌هایی که تعداد زیادی نتیجه برمی‌گردانند، از پارامترهای `page` و `page_size` استفاده کنید.
 - **محدودیت نرخ**: بیش از ۱۰۰ درخواست در دقیقه منجر به محدودیت موقت دسترسی می‌شود.
 
@@ -54,31 +54,6 @@ HOST: https://baaz.roshan-ai.ir/
 ### ایندکس‌کردن محتوا [POST]
 
 قبل از جستجو ابتدا باید داده‌ها را ایندکس کنید. این تابع محتوای شما را تحت شناسهٔ داده‌شده ایندکس می‌کند. اگر محتوایی با type و id یکسان قبلاً ایندکس شده باشد جایگزین آن می‌شود.
-
-#### پارامترهای بدنه
-
-| پارامتر | نوع | اجباری | پیش‌فرض | توضیحات |
-|---------|-----|--------|---------|---------|
-| items | array | بله | - | آرایه‌ای از اسناد برای افزودن به ایندکس |
-| items[].id | string | بله | - | شناسه یکتای سند |
-| items[].type | string | خیر | "document" | نوع سند |
-| items[].url | string | خیر | "" | آدرس سند |
-| items[].title | string | خیر | null | عنوان سند |
-| items[].time | string | خیر | زمان فعلی | زمان سند (فرمت: YYYY-MM-DD HH:MM:SS) |
-| items[].content | string | بله | - | محتوای اصلی سند |
-| items[].description | string | خیر | "" | توضیحات سند |
-| items[].labels | array | خیر | [] | آرایه‌ای از برچسب‌های سند |
-| items[].chunk_size | integer | خیر | null | اندازه هر قطعه متن (فقط برای اولین آیتم) |
-| items[].chunk_overlap | integer | خیر | null | میزان همپوشانی قطعات (فقط برای اولین آیتم) |
-| items[].embedding_api_url | string | خیر | null | آدرس API تعبیه (فقط برای اولین آیتم) |
-| items[].embedding_api_key | string | خیر | null | کلید API تعبیه (فقط برای اولین آیتم) |
-| items[].embedding_model | string | خیر | null | مدل تعبیه (فقط برای اولین آیتم) |
-| items[].company_name | array | خیر | [] | نام شرکت‌ها |
-| items[].session_number | array | خیر | [] | شماره جلسه‌ها |
-| items[].sender | array | خیر | [] | فرستنده‌ها |
-| items[].recipients | array | خیر | [] | گیرنده‌ها |
-| items[].letter_number | string | خیر | null | شماره نامه |
-| items[].importance | string/integer | خیر | null | میزان اهمیت |
 
 + Request (application/json)
 
@@ -217,19 +192,29 @@ HOST: https://baaz.roshan-ai.ir/
 
 ### حذف ایندکس یا نوع [DELETE]
 
-برای حذف کامل یک ایندکس یا حذف تمام محتواهای یک نوع خاص (type) از این اندپوینت استفاده کنید. برای حذف کل ایندکس یک جیسون خالی بفرستید.
+برای حذف کامل یک ایندکس یا حذف تمام محتواهای یک نوع خاص (type) از این اندپوینت استفاده کنید.
 
 + Request حذف کامل ایندکس (application/json)
-
     + Headers
 
             Authorization: Token TOKEN_KEY
-
     + Body
 
             {}
 
-+ Response 200 (application/json)
++ Request حذف نوع خاص (application/json)
+    + Headers
+
+            Authorization: Token TOKEN_KEY
+    + Attributes (object)
+        + type (string, required) - نوع اسنادی که باید حذف شوند
+    + Body
+
+            {
+                "type": "type2"
+            }
+
++ Response 200 (application/json) - پاسخ برای حذف کامل ایندکس
 
     + Attributes (object)
         + index (string) - نام ایندکس حذف شده
@@ -260,22 +245,7 @@ HOST: https://baaz.roshan-ai.ir/
                 "status": "success"
             }
 
-+ Request حذف نوع خاص (application/json)
-
-    + Headers
-
-            Authorization: Token TOKEN_KEY
-
-    + Attributes (object)
-        + type (string, required) - نوع اسنادی که باید حذف شوند
-
-    + Body
-
-            {
-                "type": "type2"
-            }
-
-+ Response 200 (application/json)
++ Response 200 (application/json) - پاسخ برای حذف نوع خاص
 
     + Body
 
@@ -382,12 +352,6 @@ HOST: https://baaz.roshan-ai.ir/
 
 وضعیت ایندکس شدن یک یا چند سند را بر اساس URL آن‌ها بررسی می‌کند.
 
-#### پارامترهای بدنه
-
-| پارامتر | نوع | اجباری | پیش‌فرض | توضیحات |
-|---------|-----|--------|---------|---------|
-| document_urls | array | بله | - | آرایه‌ای از آدرس‌های اسناد برای بررسی وضعیت |
-
 + Request (application/json)
 
     + Headers
@@ -462,19 +426,6 @@ HOST: https://baaz.roshan-ai.ir/
 
 با دریافت شناسهٔ یک محتوای ایندکس‌شده، شبیه‌ترین محتواها را به آن پیدا کرده و برمی‌گرداند.
 
-#### پارامترهای بدنه
-
-| پارامتر | نوع | اجباری | پیش‌فرض | توضیحات |
-|---------|-----|--------|---------|---------|
-| document_id | string | بله | - | شناسه سند مرجع برای یافتن اسناد مشابه |
-| page_size | integer | خیر | 10 | تعداد نتایج در هر صفحه (1-100) |
-| page | integer | خیر | 1 | شماره صفحه نتایج (شروع از 1) |
-| filter | object | خیر | {} | فیلترهای اضافی برای محدود کردن نتایج |
-| filter.type | string | خیر | null | نوع اسناد برای فیلتر کردن |
-| filter.from_date | string | خیر | null | تاریخ شروع (YYYY-MM-DD HH:MM:SS) |
-| filter.to_date | string | خیر | null | تاریخ پایان (YYYY-MM-DD HH:MM:SS) |
-| filter.labels | array | خیر | null | برچسب‌های اسناد برای فیلتر کردن |
-
 + Request (application/json)
 
     + Headers
@@ -483,17 +434,21 @@ HOST: https://baaz.roshan-ai.ir/
 
     + Attributes (object)
         + document_id (string, required) - شناسه سند مرجع
-        + page_size (number, optional) - تعداد نتایج در هر صفحه
+        + page_size (number, optional) - تعداد نتایج در هر صفحه (1-100)
             + Default: 10
-        + page (number, optional) - شماره صفحه نتایج
+        + page (number, optional) - شماره صفحه نتایج (شروع از 1)
             + Default: 1
         + filter (object, optional) - فیلترهای اضافی
+            + type (string, optional) - نوع اسناد برای فیلتر کردن
+            + from_date (string, optional) - تاریخ شروع (YYYY-MM-DD HH:MM:SS)
+            + to_date (string, optional) - تاریخ پایان (YYYY-MM-DD HH:MM:SS)
+            + labels (array[string], optional) - برچسب‌های اسناد برای فیلتر کردن
 
     + Body
 
-            {   
+            {
                 "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-                "page_size": 10,         
+                "page_size": 10,
                 "page": 1,
                 "filter": {
                     "type": "document"
@@ -657,29 +612,6 @@ HOST: https://baaz.roshan-ai.ir/
 
 این اندپوینت یک جستجوی معنایی بر اساس مفهوم متن ورودی انجام می‌دهد.
 
-#### پارامترهای بدنه
-
-| پارامتر | نوع | اجباری | پیش‌فرض | توضیحات |
-|---------|-----|--------|---------|---------|
-| text | string | بله | - | متن جستجو |
-| size | integer | خیر | 10 | حداکثر تعداد نتایج برگشتی (1-1000) |
-| chunks_per_doc | integer | خیر | 5 | تعداد قطعات برای هر سند |
-| from_date | string | خیر | null | تاریخ شروع جستجو (YYYY-MM-DD) |
-| to_date | string | خیر | null | تاریخ پایان جستجو (YYYY-MM-DD) |
-| ids | array | خیر | null | آرایه‌ای از شناسه‌های اسناد برای محدود کردن جستجو |
-| labels | array | خیر | null | آرایه‌ای از برچسب‌ها برای فیلتر کردن |
-| type | string/array | خیر | null | نوع یا انواع اسناد برای جستجو |
-| smart_search | boolean | خیر | false | فعال‌سازی جستجوی هوشمند |
-| company_name | string/array | خیر | null | نام شرکت برای فیلتر کردن |
-| session_number | string/array | خیر | null | شماره جلسه برای فیلتر کردن |
-| sender | string/array | خیر | null | فرستنده برای فیلتر کردن |
-| recipients | string/array | خیر | null | گیرنده‌ها برای فیلتر کردن |
-| letter_number | string | خیر | null | شماره نامه برای فیلتر کردن |
-| description | string | خیر | null | توضیحات برای فیلتر کردن |
-| search_fields | array | خیر | ["content"] | فیلدهایی که باید جستجو شوند |
-| mode | string | خیر | "default" | حالت جستجو (default یا graphql_raw) |
-| graphql | string | خیر | null | پرس و جوی GraphQL (فقط در حالت graphql_raw) |
-
 + Request (application/json)
 
     + Headers
@@ -688,28 +620,28 @@ HOST: https://baaz.roshan-ai.ir/
 
     + Attributes (object)
         + text (string, required) - متن جستجو
-        + size (number, optional) - حداکثر تعداد نتایج
+        + size (number, optional) - حداکثر تعداد نتایج برگشتی (1-1000)
             + Default: 10
         + chunks_per_doc (number, optional) - تعداد قطعات برای هر سند
             + Default: 5
-        + from_date (string, optional) - تاریخ شروع جستجو
-        + to_date (string, optional) - تاریخ پایان جستجو
-        + ids (array[string], optional) - آرایه‌ای از شناسه‌های اسناد
-        + labels (array[string], optional) - آرایه‌ای از برچسب‌ها
-        + type (string, optional) - نوع یا انواع اسناد
+        + from_date (string, optional) - تاریخ شروع جستجو (YYYY-MM-DD)
+        + to_date (string, optional) - تاریخ پایان جستجو (YYYY-MM-DD)
+        + ids (array[string], optional) - آرایه‌ای از شناسه‌های اسناد برای محدود کردن جستجو
+        + labels (array[string], optional) - آرایه‌ای از برچسب‌ها برای فیلتر کردن
+        + type (string, or array[string], optional) - نوع یا انواع اسناد برای جستجو
         + smart_search (boolean, optional) - فعال‌سازی جستجوی هوشمند
             + Default: false
-        + company_name (string, optional) - نام شرکت
-        + session_number (string, optional) - شماره جلسه
-        + sender (string, optional) - فرستنده
-        + recipients (string, optional) - گیرنده‌ها
-        + letter_number (string, optional) - شماره نامه
-        + description (string, optional) - توضیحات
-        + search_fields (array[string], optional) - فیلدهای جستجو
+        + company_name (string, or array[string], optional) - نام شرکت برای فیلتر کردن
+        + session_number (string, or array[string], optional) - شماره جلسه برای فیلتر کردن
+        + sender (string, or array[string], optional) - فرستنده برای فیلتر کردن
+        + recipients (string, or array[string], optional) - گیرنده‌ها برای فیلتر کردن
+        + letter_number (string, optional) - شماره نامه برای فیلتر کردن
+        + description (string, optional) - توضیحات برای فیلتر کردن
+        + search_fields (array[string], optional) - فیلدهایی که باید جستجو شوند
             + Default: `["content"]`
-        + mode (string, optional) - حالت جستجو
+        + mode (string, optional) - حالت جستجو (default یا graphql_raw)
             + Default: `default`
-        + graphql (string, optional) - پرس و جوی GraphQL
+        + graphql (string, optional) - پرس و جوی GraphQL (فقط در حالت graphql_raw)
 
     + Body
 
@@ -793,53 +725,13 @@ HOST: https://baaz.roshan-ai.ir/
 + content (string, required) - محتوای اصلی سند
 + description (string, optional) - توضیحات سند
 + labels (array[string], optional) - آرایه‌ای از برچسب‌های سند
-+ chunk_size (number, optional) - اندازه هر قطعه متن
-+ chunk_overlap (number, optional) - میزان همپوشانی قطعات
-+ embedding_api_url (string, optional) - آدرس API تعبیه
-+ embedding_api_key (string, optional) - کلید API تعبیه
-+ embedding_model (string, optional) - مدل تعبیه
++ chunk_size (number, optional) - اندازه هر قطعه متن (فقط برای اولین آیتم)
++ chunk_overlap (number, optional) - میزان همپوشانی قطعات (فقط برای اولین آیتم)
++ embedding_api_url (string, optional) - آدرس API تعبیه (فقط برای اولین آیتم)
++ embedding_api_key (string, optional) - کلید API تعبیه (فقط برای اولین آیتم)
++ embedding_model (string, optional) - مدل تعبیه (فقط برای اولین آیتم)
 + company_name (array[string], optional) - نام شرکت‌ها
 + session_number (array[string], optional) - شماره جلسه‌ها
 + sender (array[string], optional) - فرستنده‌ها
 + recipients (array[string], optional) - گیرنده‌ها
-+ letter_number (string, optional) - شماره نامه
-+ importance (string, optional) - میزان اهمیت
-
-## DocumentDetail (object)
-+ body (string) - متن کامل سند
-+ id (string) - شناسه یکتای سند
-+ time (string) - زمان سند
-+ type (string) - نوع سند
-+ description (string) - توضیحات سند
-+ title (string) - عنوان سند
-+ url (string) - آدرس سند
-+ labels (array[string]) - برچسب‌های سند
-+ company_name (array[string], optional) - نام شرکت‌ها
-+ session_number (array[string], optional) - شماره جلسه‌ها
-+ sender (array[string], optional) - فرستنده‌ها
-+ recipients (array[string], optional) - گیرنده‌ها
-+ letter_number (string, optional) - شماره نامه
-+ importance (string, optional) - میزان اهمیت
-
-## SimilarDocument (object)
-+ id (string) - شناسه سند مشابه
-+ title (string) - عنوان سند مشابه
-+ url (string) - آدرس سند مشابه
-+ time (string) - زمان سند مشابه
-+ description (string) - توضیحات سند مشابه
-+ similarity_score (number) - امتیاز شباهت (0-1)
-+ type (string) - نوع سند مشابه
-+ labels (array[string]) - برچسب‌های سند مشابه
-
-## SearchResultItem (object)
-+ id (string) - شناسه سند
-+ highlight (object) - قطعات هایلایت شده
-    + content (object) - محتوای هایلایت شده
-+ metadata (object) - متاداده سند
-    + labels (array[string]) - برچسب‌های سند
-    + type (string) - نوع سند
-    + title (string) - عنوان سند
-    + description (string) - توضیحات سند
-    + time (string) - زمان سند
-    + url (string) - آدرس سند
-+ score (number) - امتیاز تطابق
++ letter_num
