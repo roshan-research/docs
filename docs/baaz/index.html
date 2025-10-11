@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the  API"
+            content="Documentation for the باز API"
         >
     <title>API Reference</title>
 
@@ -206,6 +206,17 @@
             </div>
             <ul class="search-results"></ul>
           <ul id="toc" class="toc-list-h1">
+              <li>
+                <a href="#fc30c6605b" class="toc-h1 toc-link" data-title="باز">باز</a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#bfa094a264" class="toc-h2 toc-link" data-title="نکات مهم">نکات مهم</a>
+                      </li>
+                      <li>
+                        <a href="#116bc8c17f" class="toc-h2 toc-link" data-title="خطاهای عمومی">خطاهای عمومی</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
         </div>
       </div>
@@ -213,7 +224,67 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        
+        <h1 id='fc30c6605b'>باز</h1>
+<p>باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک <code>TOKEN_KEY</code> نیاز دارید که می‌توانید با ارسال یک ایمیل به baaz@roshan-ai.ir درخواست دهید.</p>
+<h2 id='bfa094a264'>نکات مهم</h2>
+<ul>
+<li><p><strong>احراز هویت</strong>: تمام درخواست‌ها باید با هدر <code>Authorization: Token {token}</code> ارسال شوند.</p></li>
+<li><p><strong>فرمت زمان</strong>: تمام زمان‌ها در فرمت <code>YYYY-MM-DD HH:MM:SS</code> هستند.</p></li>
+<li><p><strong>محدودیت اندازه</strong>: حداكثر اندازه درخواست‌ها ۱۰ مگابایت است.</p></li>
+<li><p><strong>کش</strong>: برخی اندپوینت‌ها مانند stats ممکن است از کش استفاده کنند و نتایج را تا ۵ دقیقه ذخیره کنند.</p></li>
+<li><p><strong>صفحه‌بندی</strong>: برای اندپوینت‌هایی که تعداد زیادی نتیجه برمی‌گردانند، از پارامترهای <code>page</code> و <code>page_size</code> استفاده کنید.</p></li>
+<li><p><strong>محدودیت نرخ</strong>: بیش از ۱۰۰ درخواست در دقیقه منجر به محدودیت موقت دسترسی می‌شود.</p></li>
+</ul>
+<h2 id='116bc8c17f'>خطاهای عمومی</h2>
+<table><thead>
+<tr>
+<th>کد وضعیت</th>
+<th>عنوان خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>پارامترهای درخواست نامعتبر هستند</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>توکن احراز هویت نامعتبر یا منقضی شده است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>دسترسی به منبع درخواستی مجاز نیست</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>منبع درخواستی یافت نشد</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>روش HTTP درخواستی برای این اندپوینت پشتیبانی نمی‌شود</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>تعداد درخواست‌ها بیش از حد مجاز است</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>خطای داخلی سرور</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>سرویس موقتاً در دسترس نیست</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
