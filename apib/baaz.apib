@@ -27,45 +27,52 @@ HOST: https://baaz.roshan-ai.ir/
 | 500 | Internal Server Error | خطای داخلی سرور |
 | 503 | Service Unavailable | سرویس موقتاً در دسترس نیست |
 
-# Group ایندکس‌کردن و ویرایش محتوا
+## افزودن اسناد به ایندکس [/{index}/index]
 
-## /index/{index_name}
+این اندپوینت برای افزودن اسناد جدید به ایندکس استفاده می‌شود.
 
 + Parameters
-    + index_name: baaz (string, required) - شناسهٔ ایندکس
+    + index: `Ocr_2002` (string, required) - نام ایندکس.
 
-### افزودن محتوای جدید [POST]
-
-این اندپوینت برای افزودن اسناد جدید به یک ایندکس استفاده می‌شود. اگر سندی با `type` و `id` یکسان از قبل موجود باشد، با ارسال درخواست `POST` محتوای آن جایگزین خواهد شد.
+### افزودن و ویرایش [POST]
 
 + Request (application/json)
 
     + Headers
-
+    
             Authorization: Token TOKEN_KEY
-
+        
     + Attributes
         - items (array, required) - آرایه‌ای از اسناد برای افزودن به ایندکس.
             + (object)
                 - id (string, required) - شناسه یکتای سند.
-                - content (string, required) - محتوای اصلی سند.
-                - type: "document" (string, optional) - نوع سند.
-                - url: "" (string, optional) - آدرس سند.
+                - type (string, optional) - نوع سند.
+                    + Default: `document`
+                - url (string, optional) - آدرس سند.
+                    + Default: `""`
                 - title (string, optional) - عنوان سند.
-                - time (string, optional) - زمان سند (فرمت: `YYYY-MM-DD HH:MM:SS`). در صورت عدم ارسال، زمان فعلی ثبت می‌شود.
-                - description: "" (string, optional) - توضیحات سند.
-                - labels: [] (array[string], optional) - آرایه‌ای از برچسب‌های سند.
-                - company_name: [] (array[string], optional) - نام شرکت‌ها.
-                - session_number: [] (array[string], optional) - شماره جلسه‌ها.
-                - sender: [] (array[string], optional) - فرستنده‌ها.
-                - recipients: [] (array[string], optional) - گیرنده‌ها.
+                - time (string, optional) - زمان سند (فرمت: YYYY-MM-DD HH:MM:SS).
+                    + Default: زمان فعلی
+                - content (string, required) - محتوای اصلی سند.
+                - description (string, optional) - توضیحات سند.
+                    + Default: `""`
+                - labels (array[string], optional) - آرایه‌ای از برچسب‌های سند.
+                    + Default: `[]`
+                - chunk_size (number, optional) - اندازه هر قطعه متن (فقط برای اولین آیتم).
+                - chunk_overlap (number, optional) - میزان همپوشانی قطعات (فقط برای اولین آیتم).
+                - embedding_api_url (string, optional) - آدرس API تعبیه (فقط برای اولین آیتم).
+                - embedding_api_key (string, optional) - کلید API تعبیه (فقط برای اولین آیتم).
+                - embedding_model (string, optional) - مدل تعبیه (فقط برای اولین آیتم).
+                - company_name (array[string], optional) - نام شرکت‌ها.
+                    + Default: `[]`
+                - session_number (array[string], optional) - شماره جلسه‌ها.
+                    + Default: `[]`
+                - sender (array[string], optional) - فرستنده‌ها.
+                    + Default: `[]`
+                - recipients (array[string], optional) - گیرنده‌ها.
+                    + Default: `[]`
                 - letter_number (string, optional) - شماره نامه.
                 - importance (string, optional) - میزان اهمیت.
-                - chunk_size (number, optional) - اندازه هر قطعه متن (فقط برای اولین آیتم اعمال می‌شود).
-                - chunk_overlap (number, optional) - میزان همپوشانی قطعات (فقط برای اولین آیتم اعمال می‌شود).
-                - embedding_api_url (string, optional) - آدرس API تعبیه (فقط برای اولین آیتم اعمال می‌شود).
-                - embedding_api_key (string, optional) - کلید API تعبیه (فقط برای اولین آیتم اعمال می‌شود).
-                - embedding_model (string, optional) - مدل تعبیه (فقط برای اولین آیتم اعمال می‌شود).
 
     + Body
 
@@ -77,9 +84,12 @@ HOST: https://baaz.roshan-ai.ir/
                         "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
                         "title": "عنوان نامه",
                         "time": "2025-07-20 14:30:00",
-                        "content": "ریلیزنوت اسپرینت 06-04-04Product Backlog Item...",
+                        "content": "ریلیزنوت اسپرینت 06-04-04...",
                         "description": "خلاصه نامه",
-                        "labels": ["label1", "label2"]
+                        "labels": [
+                            "e129e757-316d-4fad-9877-022b26aca152-ContentView",
+                            "14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"
+                        ]
                     }
                 ]
             }
@@ -89,38 +99,54 @@ HOST: https://baaz.roshan-ai.ir/
     + Body
 
             {
-                "ids": [
-                    "f2646930-64d7-47cc-93c1-e557777f1c489ad"
-                ],
+                "ids": ["f2646930-64d7-47cc-93c1-e557777f1c489ad"],
                 "indexing_results": {
-                    "f2646930-64d7-47cc-93c1-e557777f1c489ad": {
-                        "status": "success",
-                        "source": "elasticsearch",
-                        "weaviate_status": "pending",
-                        "uuid": "f918e18e-11ce-5299-9c56-6560df76f0ed"
-                    }
+                    "successful": 1,
+                    "failed": 0,
+                    "errors": []
                 }
             }
 
-### ویرایش یک سند موجود [PUT]
-برای ویرایش، کافیست `type` و `id` سند مورد نظر را به همراه فیلدهایی که قصد تغییرشان را دارید ارسال کنید.
+
+## جستجوی معنایی [/{index}/document/semantic_query]
+این اندپوینت برای جستجوی معنایی در اسناد استفاده می‌شود.
+
++ Parameters
+    + index: `ocr_2001` (string, required) - نام ایندکس.
+
+### جستجو [POST]
 
 + Request (application/json)
 
     + Headers
-
+    
             Authorization: Token TOKEN_KEY
 
+    + Attributes
+        - text (string, required) - متن جستجو.
+        - size: 10 (number, optional) - حداکثر تعداد نتایج برگشتی (1-1000).
+        - chunks_per_doc: 5 (number, optional) - تعداد قطعات برای هر سند.
+        - from_date (string, optional) - تاریخ شروع جستجو (YYYY-MM-DD).
+        - to_date (string, optional) - تاریخ پایان جستجو (YYYY-MM-DD).
+        - ids (array[string], optional) - آرایه‌ای از شناسه‌های اسناد برای محدود کردن جستجو.
+        - labels (array[string], optional) - آرایه‌ای از برچسب‌ها برای فیلتر کردن.
+        - type (string, optional) - نوع یا انواع اسناد برای جستجو.
+        - smart_search: false (boolean, optional) - فعال‌سازی جستجوی هوشمند.
+        - company_name (string, optional) - نام شرکت برای فیلتر کردن.
+        - session_number (string, optional) - شماره جلسه برای فیلتر کردن.
+        - sender (string, optional) - فرستنده برای فیلتر کردن.
+        - recipients (string, optional) - گیرنده‌ها برای فیلتر کردن.
+        - letter_number (string, optional) - شماره نامه برای فیلتر کردن.
+        - description (string, optional) - توضیحات برای فیلتر کردن.
+        - search_fields: `["content"]` (array[string], optional) - فیلدهایی که باید جستجو شوند.
+        - mode: `default` (string, optional) - حالت جستجو (default یا graphql_raw).
+        - graphql (string, optional) - پرس و جوی GraphQL (فقط در حالت graphql_raw).
+    
     + Body
 
             {
-                "items": [
-                    {
-                        "type": "movie",
-                        "id": "1",
-                        "importance": 200
-                    }
-                ]
+                "text": "۴ فیلتر گردش نام ببر",
+                "size": 200
             }
 
 + Response 200 (application/json)
@@ -128,52 +154,107 @@ HOST: https://baaz.roshan-ai.ir/
     + Body
 
             {
-                "ids": ["1"]
+                "results": [
+                    {
+                        "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
+                        "document_title": "عنوان نامه",
+                        "document_url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
+                        "document_time": "2025-07-20 14:30:00",
+                        "document_type": "document",
+                        "document_description": "خلاصه نامه",
+                        "document_labels": ["e129e757-316d-4fad-9877-022b26aca152-ContentView"],
+                        "chunks": [
+                            {
+                                "text": "در جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها",
+                                "score": 0.92
+                            }
+                        ]
+                    }
+                ],
+                "total": 1,
+                "query_time_ms": 120
             }
 
-# Group مدیریت ایندکس
 
-## /delete_index/{index_name}
-
-این اندپوینت به شما امکان می‌دهد تا یک ایندکس کامل را حذف کنید یا فقط اسناد با یک `type` خاص را از درون یک ایندکس پاک کنید.
+## بررسی وضعیت اسناد [/{index}/document_status]
+این اندپوینت برای بررسی وضعیت اسناد در ایندکس استفاده می‌شود.
 
 + Parameters
-    + index_name: TESTDELETE (string, required) - شناسهٔ ایندکسی که باید حذف شود.
+    + index: `pargar-6b8e...` (string, required) - نام ایندکس.
+
+### بررسی وضعیت [POST]
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token TOKEN_KEY
+            
+    + Attributes
+        - document_urls (array[string], required) - آرایه‌ای از آدرس‌های اسناد برای بررسی وضعیت.
+        
+    + Body
+    
+            {
+                "document_urls": ["https://baaz.roshan-ai.ir/pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58/نامه/view?id=c81d4530-f78f-48a1-9654-b1a3cd73f30d"]
+            }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "documents": {
+                    "https://baaz.roshan-ai.ir/pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58/نامه/view?id=c81d4530-f78f-48a1-9654-b1a3cd73f30d": {
+                        "exists": true,
+                        "indexed_at": "2025-07-20T14:30:00Z",
+                        "document_id": "c81d4530-f78f-48a1-9654-b1a3cd73f30d"
+                    }
+                },
+                "total_checked": 1,
+                "total_existing": 1
+            }
+
+## حذف ایندکس یا نوع [/{index}/delete_index]
+این اندپوینت برای حذف کامل یک ایندکس یا حذف اسناد با نوع مشخص از ایندکس استفاده می‌شود.
+
++ Parameters
+    + index: `TESTDELETE` (string, required) - نام ایندکس.
 
 ### حذف [DELETE]
 
-+ Request "حذف کامل ایندکس" (application/json)
-
-    برای حذف کل ایندکس، یک درخواست با بدنه خالی ارسال کنید.
-
++ Request حذف کامل ایندکس (application/json)
     + Headers
-
+    
             Authorization: Token TOKEN_KEY
     + Body
 
             {}
 
 + Response 200 (application/json)
-
     + Body
 
             {
                 "index": "TESTDELETE",
                 "doc_type": "ALL",
-                "elasticsearch": { "status": "success", "message": null },
-                "weaviate": { "status": "success", "message": null, "deleted_count": null },
+                "elasticsearch": {
+                    "status": "success",
+                    "message": null
+                },
+                "weaviate": {
+                    "status": "success",
+                    "message": null,
+                    "deleted_count": null
+                },
                 "status": "success"
             }
-
-+ Request "حذف تمام اسناد یک نوع خاص" (application/json)
-
-    برای حذف اسناد با یک `type` مشخص، آن `type` را در بدنه درخواست ارسال کنید.
-
+            
++ Request حذف اسناد با نوع مشخص (application/json)
     + Headers
-
+    
             Authorization: Token TOKEN_KEY
     + Attributes
-        - type (string, required) - نوع اسنادی که باید حذف شوند.
+        - type: `type2` (string, required) - نوع اسنادی که باید حذف شوند.
     + Body
 
             {
@@ -181,36 +262,42 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 + Response 200 (application/json)
-
     + Body
 
             {
                 "index": "TESTDELETE",
                 "doc_type": "type2",
-                "elasticsearch": { "status": "success", "message": null },
-                "weaviate": { "status": "success", "message": "Successfully deleted 42 documents of type 'type2'", "deleted_count": 42 },
+                "elasticsearch": {
+                    "status": "success",
+                    "message": null
+                },
+                "weaviate": {
+                    "status": "success",
+                    "message": null,
+                    "deleted_count": 42
+                },
                 "status": "success"
             }
 
-## /stats/{index_name}
 
-این تابع آمار کلی یک ایندکس، شامل تعداد اسناد، حجم و تعداد جستجوها به تفکیک هر `type` را برمی‌گرداند.
+## دریافت آمار ایندکس [/{index}/stats]
+این اندپوینت برای دریافت آمار و اطلاعات ایندکس استفاده می‌شود.
 
 + Parameters
-    + index_name: ocr_2002 (string, required) - شناسهٔ ایندکس
+    + index: `ocr_2002` (string, required) - نام ایندکس.
 
 ### دریافت آمار [GET]
 
 + Request
 
     + Headers
-
+    
             Authorization: Token TOKEN_KEY
 
 + Response 200 (application/json)
 
     + Body
-
+    
             {
                 "ocr_2002_document": {
                     "docs_number": 1254,
@@ -226,92 +313,46 @@ HOST: https://baaz.roshan-ai.ir/
                 }
             }
 
-# Group وضعیت اسناد
 
-## /document_status/{index_name}
-
-این تابع با دریافت آرایه‌ای از آدرس‌های (`url`) اسناد، وضعیت ایندکس شدن آن‌ها را بررسی کرده و مشخص می‌کند که آیا در ایندکس موجود هستند یا خیر.
+## یافتن اسناد مشابه [/{index}/similar/documents]
+این اندپوینت برای یافتن اسناد مشابه با یک سند مشخص استفاده می‌شود.
 
 + Parameters
-    + index_name: pargar-v1 (string, required) - شناسهٔ ایندکس
+    + index: `ocr_2002` (string, required) - نام ایندکس.
 
-### بررسی وضعیت [POST]
+### یافتن مشابه [POST]
 
 + Request (application/json)
 
     + Headers
-
-            Authorization: Token TOKEN_KEY
-
-    + Attributes
-        - document_urls (array[string], required) - آرایه‌ای از آدرس‌های اسناد برای بررسی وضعیت.
-
-    + Body
-
-            {
-                "document_urls": [
-                    "https://baaz.roshan-ai.ir/pargar-v1/نامه/view?id=c81d4530"
-                ]
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "documents": {
-                    "https://baaz.roshan-ai.ir/pargar-v1/نامه/view?id=c81d4530": {
-                        "exists": true,
-                        "indexed_at": "2025-07-20T14:30:00Z",
-                        "document_id": "c81d4530-f78f-48a1-9654-b1a3cd73f30d"
-                    }
-                },
-                "total_checked": 1,
-                "total_existing": 1
-            }
-
-# Group جستجو
-
-## /similar/documents/{index_name}
-
-با ارسال شناسه (`id`) یک سند، این اندپوینت لیستی از اسناد مشابه را بر اساس محتوای معنایی آن‌ها برمی‌گرداند.
-
-+ Parameters
-    + index_name: ocr_2002 (string, required) - شناسهٔ ایندکس
-
-### یافتن اسناد مشابه [POST]
-
-+ Request (application/json)
-
-    + Headers
-
+    
             Authorization: Token TOKEN_KEY
 
     + Attributes
         - document_id (string, required) - شناسه سند مرجع برای یافتن اسناد مشابه.
-        - page_size: 10 (number, optional) - تعداد نتایج در هر صفحه (محدوده: 1-100).
+        - page_size: 10 (number, optional) - تعداد نتایج در هر صفحه (1-100).
         - page: 1 (number, optional) - شماره صفحه نتایج (شروع از 1).
         - filter (object, optional) - فیلترهای اضافی برای محدود کردن نتایج.
-            + type (string, optional) - فیلتر بر اساس نوع اسناد.
-            + from_date (string, optional) - تاریخ شروع (فرمت: `YYYY-MM-DD HH:MM:SS`).
-            + to_date (string, optional) - تاریخ پایان (فرمت: `YYYY-MM-DD HH:MM:SS`).
-            + labels (array[string], optional) - فیلتر بر اساس برچسب‌های اسناد.
-
+            - type (string, optional) - نوع اسناد برای فیلتر کردن.
+            - from_date (string, optional) - تاریخ شروع (YYYY-MM-DD HH:MM:SS).
+            - to_date (string, optional) - تاریخ پایان (YYYY-MM-DD HH:MM:SS).
+            - labels (array[string], optional) - برچسب‌های اسناد برای فیلتر کردن.
+            
     + Body
-
-            {
-                "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-                "page_size": 10,
-                "page": 1,
-                "filter": {
-                    "type": "document"
-                }
+    
+            {   
+              "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
+              "page_size": 10,         
+              "page": 1,
+              "filter": {
+                "type": "document"
+              }
             }
 
 + Response 200 (application/json)
 
     + Body
-
+    
             {
                 "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
                 "similar_documents": [
@@ -331,21 +372,20 @@ HOST: https://baaz.roshan-ai.ir/
                 "page_size": 10
             }
 
-## /view/{index_name}/{types}{?id}
 
-این تابع محتوای کامل و تمام فیلدهای یک سند ایندکس‌شده را با استفاده از شناسه (`id`) آن بازیابی می‌کند.
+## مشاهده جزئیات سند [/{index}/document/view{?id}]
+این اندپوینت برای مشاهده جزئیات کامل یک سند استفاده می‌شود.
 
 + Parameters
-    + index_name: ocr_2002 (string, required) - شناسهٔ ایندکس
-    + types: document (string, required) - انواع مورد نظر برای جستجو که با `|` جدا شده‌اند.
-    + id: f2646930-64d7-47cc-93c1-e557777f1c489ad (string, required) - شناسهٔ محتوا
+    + index: `ocr_2002` (string, required) - نام ایندکس.
+    + id: `f264...` (string, required) - شناسه سند.
 
-### مشاهده سند [GET]
+### مشاهده [GET]
 
 + Request
 
     + Headers
-
+    
             Authorization: Token TOKEN_KEY
 
 + Response 200 (application/json)
@@ -353,14 +393,17 @@ HOST: https://baaz.roshan-ai.ir/
     + Body
 
             {
-                "body": "ریلیزنوت اسپرینت 06-04-04...",
                 "id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-                "time": "2025-07-20 14:30:00",
                 "type": "document",
-                "description": "خلاصه نامه",
                 "title": "عنوان نامه",
+                "content": "متن کامل سند...",
+                "time": "2025-07-20 14:30:00",
                 "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
-                "labels": ["label1", "label2"],
+                "description": "خلاصه نامه",
+                "labels": [
+                    "e129e757-316d-4fad-9877-022b26aca152-ContentView",
+                    "14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"
+                ],
                 "company_name": ["شرکت الف", "شرکت ب"],
                 "session_number": ["123", "456"],
                 "sender": ["فرستنده الف"],
@@ -369,94 +412,15 @@ HOST: https://baaz.roshan-ai.ir/
                 "importance": "بالا"
             }
 
-## /semantic_query/{index_name}/{types}
+## بررسی وضعیت سلامت ای‌پی‌آی [/healthcheck]
+وضعیت سلامت ای‌پی‌آی را بررسی می‌کند.
 
-این اندپوینت یک جستجوی معنایی بر اساس مفهوم متن ورودی انجام می‌دهد و نتایج مرتبط را به همراه بخش‌های هایلایت شده از متن برمی‌گرداند.
-
-+ Parameters
-    + index_name: ocr_2001 (string, required) - شناسهٔ ایندکس
-    + types: document (string, required) - انواع مورد نظر برای جستجو که با `|` جدا شده‌اند.
-
-### جستجو [POST]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Token TOKEN_KEY
-
-    + Attributes
-        - text (string, required) - متن جستجو.
-        - size: 10 (number, optional) - حداکثر تعداد نتایج برگشتی (محدوده: 1-1000).
-        - chunks_per_doc: 5 (number, optional) - تعداد قطعات (chunks) مرتبط برای هر سند.
-        - from_date (string, optional) - تاریخ شروع جستجو (فرمت: `YYYY-MM-DD`).
-        - to_date (string, optional) - تاریخ پایان جستجو (فرمت: `YYYY-MM-DD`).
-        - ids (array[string], optional) - محدود کردن جستجو به شناسه‌های خاص.
-        - labels (array[string], optional) - فیلتر کردن نتایج بر اساس برچسب‌ها.
-        - type (string, optional) - فیلتر کردن بر اساس نوع یا انواع سند.
-        - smart_search: false (boolean, optional) - فعال‌سازی جستجوی هوشمند.
-        - company_name (string, optional) - فیلتر بر اساس نام شرکت.
-        - session_number (string, optional) - فیلتر بر اساس شماره جلسه.
-        - sender (string, optional) - فیلتر بر اساس فرستنده.
-        - recipients (string, optional) - فیلتر بر اساس گیرنده‌ها.
-        - letter_number (string, optional) - فیلتر بر اساس شماره نامه.
-        - description (string, optional) - فیلتر بر اساس توضیحات.
-        - search_fields: `["content"]` (array[string], optional) - فیلدهایی که باید جستجو شوند.
-        - mode: "default" (string, optional) - حالت جستجو. مقادیر مجاز: `default` یا `graphql_raw`.
-        - graphql (string, optional) - پرس و جوی GraphQL خام (فقط در حالت `graphql_raw`).
-
-    + Body
-
-            {
-                "text": "۴ فیلتر گردش نام ببر",
-                "size": 200
-            }
+### مثال [GET]
 
 + Response 200 (application/json)
 
     + Body
-
-            {
-                "items": [
-                    {
-                        "id": "f2646930-64d7-47cc-93c1-e557777f1c489add",
-                        "highlight": {
-                            "content": {
-                                "chunk_1": "در جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من...",
-                                "chunk_2": "..."
-                            }
-                        },
-                        "metadata": {
-                            "labels": ["label1", "label2"],
-                            "type": "document",
-                            "title": "عنوان نامه",
-                            "description": "خلاصه نامه",
-                            "time": "2025-07-20 14:30:00",
-                            "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad"
-                        },
-                        "score": 1.0
-                    }
-                ]
-            }
-
-# Group سلامت سرور
-
-## /healthcheck
-
-این تابع وضعیت سلامت و در دسترس بودن سرور ای‌پی‌آی را بررسی می‌کند. در صورتی که سرور فعال باشد، پاسخی با کد وضعیت ۲۰۰ برمی‌گرداند.
-
-### بررسی سلامت [GET]
-
-+ Request
-
-    + Headers
-
-            Authorization: Token TOKEN_KEY
-
-+ Response 200 (application/json)
-
-    + Body
-
+    
             {
                 "status": "ok",
                 "message": "Server is up and ready"
