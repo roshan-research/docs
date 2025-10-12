@@ -1,9 +1,9 @@
 FORMAT: 1A
-HOST: https://baaz.roshan-ai.ir/
+HOST: https://baaz.roshan-ai.ir
 
-# باز
+# مستندات API باز
 
-باز یک ای‌پی‌آی بومی برای جستجو در محتوای فارسی است. برای دسترسی به این ای‌پی‌آی به یک `TOKEN_KEY` نیاز دارید که می‌توانید با ارسال یک ایمیل به baaz@roshan-ai.ir درخواست دهید.
+باز یک محصول بومی برای جستجو در محتوای فارسی است.
 
 ## نکات مهم
 
@@ -27,75 +27,62 @@ HOST: https://baaz.roshan-ai.ir/
 | 500 | Internal Server Error | خطای داخلی سرور |
 | 503 | Service Unavailable | سرویس موقتاً در دسترس نیست |
 
-## افزودن اسناد به ایندکس [/{index}/index]
+# افزودن اسناد به ایندکس [/{index}/index]
 
-این اندپوینت برای افزودن اسناد جدید به ایندکس استفاده می‌شود.
+این اندپوینت برای افزودن یا به‌روزرسانی دسته‌ای از اسناد در یک ایندکس مشخص استفاده می‌شود.
 
-+ Parameters
-    + index: `Ocr_2002` (string, required) - نام ایندکس.
+## مثال [POST]
 
-### افزودن و ویرایش [POST]
+اسناد جدیدی را به ایندکس اضافه می‌کند.
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکسی که اسناد به آن اضافه می‌شوند.
+
+### هدرهای درخواست
+*   **Authorization** (رشته، اجباری) - توکن احراز هویت شما به صورت Token {token}.
+*   **Content-Type** (رشته، اجباری) - باید application/json باشد.
+
+### بدنه درخواست
+بدنه درخواست باید یک آبجکت JSON شامل کلید items باشد:
+*   **items** (آرایه، اجباری) - آرایه‌ای از آبجکت‌های سند. هر آبجکت شامل فیلدهای زیر است:
+    *   **id** (رشته، اجباری) - شناسه یکتای سند.
+    *   **content** (رشته، اجباری) - محتوای اصلی سند که برای جستجو ایندکس می‌شود.
+    *   **type** (رشته، اختیاری) - نوع سند. مقدار پیش‌فرض document است.
+    *   **title** (رشته، اختیاری) - عنوان سند.
+    *   **time** (رشته، اختیاری) - زمان سند با فرمت YYYY-MM-DD HH:MM:SS.
+
+### پاسخ‌ها
+*   **200 OK**: عملیات با موفقیت انجام شد.
+*   **400 Bad Request**: داده‌های ارسالی نامعتبر هستند (مثلاً فیلدهای اجباری ارسال نشده‌اند).
+*   **401 Unauthorized**: توکن احراز هویت نامعتبر است یا ارسال نشده است.
+*   **500 Internal Server Error**: خطایی در سمت سرور رخ داده است.
+
+### پارامترهای پاسخ (200 OK)
+*   **ids** (آرایه از رشته‌ها) - لیستی از شناسه‌های اسنادی که با موفقیت پردازش شده‌اند.
+*   **indexing_results** (آبجکت) - خلاصه‌ای از نتیجه عملیات ایندکس.
+    *   **successful** (عدد صحیح) - تعداد اسناد موفق.
+    *   **failed** (عدد صحیح) - تعداد اسناد ناموفق.
+    *   **errors** (آرایه) - لیستی از خطاهای رخ داده در صورت وجود.
 
 + Request (application/json)
-
     + Headers
-    
-            Authorization: Token TOKEN_KEY
-        
-    + Attributes
-        - items (array, required) - آرایه‌ای از اسناد برای افزودن به ایندکس.
-            + (object)
-                - id (string, required) - شناسه یکتای سند.
-                - type (string, optional) - نوع سند.
-                    + Default: `document`
-                - url (string, optional) - آدرس سند.
-                    + Default: `""`
-                - title (string, optional) - عنوان سند.
-                - time (string, optional) - زمان سند (فرمت: YYYY-MM-DD HH:MM:SS).
-                    + Default: زمان فعلی
-                - content (string, required) - محتوای اصلی سند.
-                - description (string, optional) - توضیحات سند.
-                    + Default: `""`
-                - labels (array[string], optional) - آرایه‌ای از برچسب‌های سند.
-                    + Default: `[]`
-                - chunk_size (number, optional) - اندازه هر قطعه متن (فقط برای اولین آیتم).
-                - chunk_overlap (number, optional) - میزان همپوشانی قطعات (فقط برای اولین آیتم).
-                - embedding_api_url (string, optional) - آدرس API تعبیه (فقط برای اولین آیتم).
-                - embedding_api_key (string, optional) - کلید API تعبیه (فقط برای اولین آیتم).
-                - embedding_model (string, optional) - مدل تعبیه (فقط برای اولین آیتم).
-                - company_name (array[string], optional) - نام شرکت‌ها.
-                    + Default: `[]`
-                - session_number (array[string], optional) - شماره جلسه‌ها.
-                    + Default: `[]`
-                - sender (array[string], optional) - فرستنده‌ها.
-                    + Default: `[]`
-                - recipients (array[string], optional) - گیرنده‌ها.
-                    + Default: `[]`
-                - letter_number (string, optional) - شماره نامه.
-                - importance (string, optional) - میزان اهمیت.
+
+            Authorization: Token {your_token}
+            Content-Type: application/json
 
     + Body
 
             {
                 "items": [
                     {
-                        "type": "document",
                         "id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-                        "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
-                        "title": "عنوان نامه",
-                        "time": "2025-07-20 14:30:00",
-                        "content": "ریلیزنوت اسپرینت 06-04-04...",
-                        "description": "خلاصه نامه",
-                        "labels": [
-                            "e129e757-316d-4fad-9877-022b26aca152-ContentView",
-                            "14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"
-                        ]
+                        "content": "متن محتوای سند برای ایندکس شدن...",
+                        "title": "عنوان نامه"
                     }
                 ]
             }
 
 + Response 200 (application/json)
-
     + Body
 
             {
@@ -108,49 +95,46 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 
-## جستجوی معنایی [/{index}/document/semantic_query]
-این اندپوینت برای جستجوی معنایی در اسناد استفاده می‌شود.
+# جستجوی معنایی [/{index}/document/semantic_query]
 
-+ Parameters
-    + index: `ocr_2001` (string, required) - نام ایندکس.
+این اندپوینت برای انجام جستجوی معنایی در محتوای اسناد یک ایندکس استفاده می‌شود.
 
-### جستجو [POST]
+## مثال [POST]
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکسی که جستجو در آن انجام می‌شود.
+
+### هدرهای درخواست
+*   **Authorization** (رشته، اجباری) - توکن احراز هویت.
+*   **Content-Type** (رشته، اجباری) - باید application/json باشد.
+
+### بدنه درخواست
+*   **text** (رشته، اجباری) - متن مورد نظر برای جستجو.
+*   **size** (عدد صحیح، اختیاری) - حداکثر تعداد نتایج. مقدار پیش‌فرض ۱۰ است.
+
+### پاسخ‌ها
+*   **200 OK**: جستجو با موفقیت انجام شد.
+*   **400 Bad Request**: پارامتر اجباری text ارسال نشده است.
+*   **401 Unauthorized**: توکن احراز هویت نامعتبر است.
+*   **500 Internal Server Error**: خطایی در فرآیند جستجو رخ داده است.
+
+### پارامترهای پاسخ (200 OK)
+*   **results** (آرایه) - لیستی از نتایج جستجو. هر نتیجه یک آبجکت با فیلدهای زیر است:
+    *   **document_id** (رشته) - شناسه سند یافت شده.
+    *   **document_title** (رشته) - عنوان سند.
+    *   **chunks** (آرایه) - قطعات متنی مرتبط با جستجو که هر کدام شامل text و score هستند.
+*   **total** (عدد صحیح) - تعداد کل نتایج یافت شده.
+*   **query_time_ms** (عدد صحیح) - زمان اجرای کوئری به میلی‌ثانیه.
 
 + Request (application/json)
-
-    + Headers
-    
-            Authorization: Token TOKEN_KEY
-
-    + Attributes
-        - text (string, required) - متن جستجو.
-        - size: 10 (number, optional) - حداکثر تعداد نتایج برگشتی (1-1000).
-        - chunks_per_doc: 5 (number, optional) - تعداد قطعات برای هر سند.
-        - from_date (string, optional) - تاریخ شروع جستجو (YYYY-MM-DD).
-        - to_date (string, optional) - تاریخ پایان جستجو (YYYY-MM-DD).
-        - ids (array[string], optional) - آرایه‌ای از شناسه‌های اسناد برای محدود کردن جستجو.
-        - labels (array[string], optional) - آرایه‌ای از برچسب‌ها برای فیلتر کردن.
-        - type (string, optional) - نوع یا انواع اسناد برای جستجو.
-        - smart_search: false (boolean, optional) - فعال‌سازی جستجوی هوشمند.
-        - company_name (string, optional) - نام شرکت برای فیلتر کردن.
-        - session_number (string, optional) - شماره جلسه برای فیلتر کردن.
-        - sender (string, optional) - فرستنده برای فیلتر کردن.
-        - recipients (string, optional) - گیرنده‌ها برای فیلتر کردن.
-        - letter_number (string, optional) - شماره نامه برای فیلتر کردن.
-        - description (string, optional) - توضیحات برای فیلتر کردن.
-        - search_fields: `["content"]` (array[string], optional) - فیلدهایی که باید جستجو شوند.
-        - mode: `default` (string, optional) - حالت جستجو (default یا graphql_raw).
-        - graphql (string, optional) - پرس و جوی GraphQL (فقط در حالت graphql_raw).
-    
     + Body
 
             {
                 "text": "۴ فیلتر گردش نام ببر",
-                "size": 200
+                "size": 5
             }
 
 + Response 200 (application/json)
-
     + Body
 
             {
@@ -158,17 +142,7 @@ HOST: https://baaz.roshan-ai.ir/
                     {
                         "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
                         "document_title": "عنوان نامه",
-                        "document_url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
-                        "document_time": "2025-07-20 14:30:00",
-                        "document_type": "document",
-                        "document_description": "خلاصه نامه",
-                        "document_labels": ["e129e757-316d-4fad-9877-022b26aca152-ContentView"],
-                        "chunks": [
-                            {
-                                "text": "در جدول گردش های پیش نویس و نامه و پبام چهار فیلتر اضافه شد فقط گردش های من، گردشهای مدیر من، گردش های زیر مجموعه من ،همه ی گردش ها",
-                                "score": 0.92
-                            }
-                        ]
+                        "chunks": [ { "text": "...", "score": 0.92 } ]
                     }
                 ],
                 "total": 1,
@@ -176,36 +150,45 @@ HOST: https://baaz.roshan-ai.ir/
             }
 
 
-## بررسی وضعیت اسناد [/{index}/document_status]
-این اندپوینت برای بررسی وضعیت اسناد در ایندکس استفاده می‌شود.
+# بررسی وضعیت اسناد [/{index}/document_status]
 
-+ Parameters
-    + index: `pargar-6b8e...` (string, required) - نام ایندکس.
+این اندپوینت وضعیت وجود و ایندکس شدن یک یا چند سند را بر اساس URL آن‌ها بررسی می‌کند.
 
-### بررسی وضعیت [POST]
+## مثال [POST]
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکس مورد نظر.
+
+### بدنه درخواست
+*   **document_urls** (آرایه از رشته‌ها، اجباری) - آرایه‌ای از آدرس‌های URL اسناد برای بررسی.
+
+### پاسخ‌ها
+*   **200 OK**: بررسی با موفقیت انجام شد.
+*   **400 Bad Request**: بدنه درخواست خالی است یا فیلد document_urls ارسال نشده است.
+*   **401 Unauthorized**: توکن احراز هویت نامعتبر است.
+*   **500 Internal Server Error**: خطای داخلی سرور هنگام بررسی وضعیت رخ داده است.
+
+### پارامترهای پاسخ (200 OK)
+*   **documents** (آبجکت) - یک آبجکت که کلیدهای آن URL اسناد و مقادیر آن وضعیت هر سند است.
+    *   **exists** (بولین) - نشان می‌دهد که آیا سند در ایندکس وجود دارد.
+    *   **indexed_at** (رشته) - زمان ایندکس شدن سند (در صورت وجود).
+    *   **document_id** (رشته) - شناسه سند در ایندکس (در صورت وجود).
+*   **total_checked** (عدد صحیح) - تعداد کل اسناد بررسی شده.
+*   **total_existing** (عدد صحیح) - تعداد اسناد موجود در ایندکس.
 
 + Request (application/json)
-
-    + Headers
-    
-            Authorization: Token TOKEN_KEY
-            
-    + Attributes
-        - document_urls (array[string], required) - آرایه‌ای از آدرس‌های اسناد برای بررسی وضعیت.
-        
     + Body
-    
+
             {
-                "document_urls": ["https://baaz.roshan-ai.ir/pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58/نامه/view?id=c81d4530-f78f-48a1-9654-b1a3cd73f30d"]
+                "document_urls": ["https://.../view?id=c81d4530-f78f-48a1-9654-b1a3cd73f30d"]
             }
 
 + Response 200 (application/json)
-
     + Body
-    
+
             {
                 "documents": {
-                    "https://baaz.roshan-ai.ir/pargar-6b8e75e2-e4e6-42fc-9e6a-818239fe8f58/نامه/view?id=c81d4530-f78f-48a1-9654-b1a3cd73f30d": {
+                    "https://.../view?id=c81d4530...": {
                         "exists": true,
                         "indexed_at": "2025-07-20T14:30:00Z",
                         "document_id": "c81d4530-f78f-48a1-9654-b1a3cd73f30d"
@@ -215,21 +198,32 @@ HOST: https://baaz.roshan-ai.ir/
                 "total_existing": 1
             }
 
-## حذف ایندکس یا نوع [/{index}/delete_index]
-این اندپوینت برای حذف کامل یک ایندکس یا حذف اسناد با نوع مشخص از ایندکس استفاده می‌شود.
 
-+ Parameters
-    + index: `TESTDELETE` (string, required) - نام ایندکس.
+# حذف ایندکس [/{index}/delete_index]
 
-### حذف [DELETE]
+این منبع برای حذف کامل یک ایندکس یا حذف اسناد با نوع مشخص از آن استفاده می‌شود.
 
-+ Request حذف کامل ایندکس (application/json)
+## مثالی از کامل ایندکس [DELETE]
+
+**احتیاط:** این عملیات غیرقابل بازگشت است و تمام داده‌های ایندکس را حذف می‌کند.
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکسی که باید حذف شود.
+
+### پاسخ‌ها
+*   **200 OK**: ایندکس با موفقیت حذف شد.
+*   **401 Unauthorized**: توکن احراز هویت نامعتبر است.
+*   **500 Internal Server Error**: خطایی در فرآیند حذف ایندکس رخ داده است.
+
+### پارامترهای پاسخ (200 OK)
+*   **index** (رشته) - نام ایندکس حذف شده.
+*   **doc_type** (رشته) - نوع اسناد حذف شده (در این حالت ALL).
+*   **status** (رشته) - وضعیت کلی عملیات (success).
+
++ Request
     + Headers
-    
-            Authorization: Token TOKEN_KEY
-    + Body
 
-            {}
+            Authorization: Token {your_token}
 
 + Response 200 (application/json)
     + Body
@@ -237,24 +231,30 @@ HOST: https://baaz.roshan-ai.ir/
             {
                 "index": "TESTDELETE",
                 "doc_type": "ALL",
-                "elasticsearch": {
-                    "status": "success",
-                    "message": null
-                },
-                "weaviate": {
-                    "status": "success",
-                    "message": null,
-                    "deleted_count": null
-                },
                 "status": "success"
             }
-            
-+ Request حذف اسناد با نوع مشخص (application/json)
-    + Headers
-    
-            Authorization: Token TOKEN_KEY
-    + Attributes
-        - type: `type2` (string, required) - نوع اسنادی که باید حذف شوند.
+
+
+## مثالی از حذف اسناد بر اساس نوع [DELETE]
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکس.
+
+### بدنه درخواست
+*   **type** (رشته، اجباری) - نوع اسنادی که باید حذف شوند.
+
+### پاسخ‌ها
+*   **200 OK**: اسناد با نوع مشخص با موفقیت حذف شدند.
+*   **401 Unauthorized**: توکن احراز هویت نامعتبر است.
+*   **500 Internal Server Error**: خطایی در فرآیند حذف اسناد رخ داده است.
+
+### پارامترهای پاسخ (200 OK)
+*   **index** (رشته) - نام ایندکس.
+*   **doc_type** (رشته) - نوع اسناد حذف شده.
+*   **weaviate .deleted_count** (عدد صحیح) - تعداد اسناد حذف شده از موتور وکتور.
+*   **status** (رشته) - وضعیت کلی عملیات.
+
++ Request (application/json)
     + Body
 
             {
@@ -267,160 +267,154 @@ HOST: https://baaz.roshan-ai.ir/
             {
                 "index": "TESTDELETE",
                 "doc_type": "type2",
-                "elasticsearch": {
-                    "status": "success",
-                    "message": null
-                },
-                "weaviate": {
-                    "status": "success",
-                    "message": null,
-                    "deleted_count": 42
-                },
+                "weaviate": { "deleted_count": 42 },
                 "status": "success"
             }
 
 
-## دریافت آمار ایندکس [/{index}/stats]
-این اندپوینت برای دریافت آمار و اطلاعات ایندکس استفاده می‌شود.
+# دریافت آمار ایندکس [/{index}/stats]
 
-+ Parameters
-    + index: `ocr_2002` (string, required) - نام ایندکس.
+این اندپوینت آمار کلی یک ایندکس را برمی‌گرداند.
 
-### دریافت آمار [GET]
+## مثال [GET]
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکس برای دریافت آمار.
+
+### پاسخ‌ها
+*   **200 OK**: آمار ایندکس با موفقیت دریافت شد.
+*   **401 Unauthorized**: توکن احراز هویت نامعتبر است.
+*   **404 Not Found**: ایندکس مورد نظر یافت نشد.
+*   **500 Internal Server Error**: خطای داخلی سرور.
+
+### پارامترهای پاسخ (200 OK)
+پاسخ این اندپوینت یک آبجکت است که کلیدهای آن به صورت داینامیک و بر اساس الگوی {index_name}_{document_type} ساخته می‌شوند. هر آبجکت شامل فیلدهای زیر است:
+*   **docs_number** (عدد صحیح) - تعداد کل اسناد.
+*   **index_size** (عدد صحیح) - حجم ایندکس به بایت.
 
 + Request
-
     + Headers
-    
-            Authorization: Token TOKEN_KEY
+
+            Authorization: Token {your_token}
 
 + Response 200 (application/json)
-
     + Body
-    
+
             {
                 "ocr_2002_document": {
                     "docs_number": 1254,
-                    "index_size": 52428800,
-                    "indexing_doc": 0,
-                    "search_queries": 5678
-                },
-                "ocr_2002_letter": {
-                    "docs_number": 879,
-                    "index_size": 31457280,
-                    "indexing_doc": 0,
-                    "search_queries": 3456
+                    "index_size": 52428800
                 }
             }
 
 
-## یافتن اسناد مشابه [/{index}/similar/documents]
-این اندپوینت برای یافتن اسناد مشابه با یک سند مشخص استفاده می‌شود.
+# یافتن اسناد مشابه [/{index}/similar/documents]
 
-+ Parameters
-    + index: `ocr_2002` (string, required) - نام ایندکس.
+این اندپوینت لیستی از اسناد مشابه با یک سند مرجع را برمی‌گرداند.
 
-### یافتن مشابه [POST]
+## مثال [POST]
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکس.
+
+### بدنه درخواست
+*   **document_id** (رشته، اجباری) - شناسه سند مرجع.
+*   **page_size** (عدد صحیح، اختیاری) - تعداد نتایج در هر صفحه (پیش‌فرض: ۱۰).
+*   **page** (عدد صحیح، اختیاری) - شماره صفحه نتایج (پیش‌فرض: ۱).
+
+### پاسخ‌ها
+*   **200 OK**: اسناد مشابه با موفقیت یافت شدند.
+*   **400 Bad Request**: پارامتر اجباری document_id ارسال نشده است.
+*   **404 Not Found**: سند مرجع در ایندکس یافت نشد.
+
+### پارامترهای پاسخ (200 OK)
+*   **document_id** (رشته) - شناسه سند مرجع که برای جستجو استفاده شد.
+*   **similar_documents** (آرایه) - لیستی از اسناد مشابه. هر سند یک آبجکت با فیلدهای id, title, similarity_score و غیره است.
+*   **total_results** (عدد صحیح) - تعداد کل نتایج یافت شده.
 
 + Request (application/json)
-
-    + Headers
-    
-            Authorization: Token TOKEN_KEY
-
-    + Attributes
-        - document_id (string, required) - شناسه سند مرجع برای یافتن اسناد مشابه.
-        - page_size: 10 (number, optional) - تعداد نتایج در هر صفحه (1-100).
-        - page: 1 (number, optional) - شماره صفحه نتایج (شروع از 1).
-        - filter (object, optional) - فیلترهای اضافی برای محدود کردن نتایج.
-            - type (string, optional) - نوع اسناد برای فیلتر کردن.
-            - from_date (string, optional) - تاریخ شروع (YYYY-MM-DD HH:MM:SS).
-            - to_date (string, optional) - تاریخ پایان (YYYY-MM-DD HH:MM:SS).
-            - labels (array[string], optional) - برچسب‌های اسناد برای فیلتر کردن.
-            
     + Body
-    
-            {   
-              "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-              "page_size": 10,         
-              "page": 1,
-              "filter": {
-                "type": "document"
-              }
+
+            {
+                "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
+                "page_size": 10
             }
 
 + Response 200 (application/json)
-
     + Body
-    
+
             {
                 "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
                 "similar_documents": [
                     {
                         "id": "another-document-id",
                         "title": "عنوان سند مشابه",
-                        "url": "https://example.com/document",
-                        "time": "2025-07-15 10:30:00",
-                        "description": "توضیحات سند مشابه",
-                        "similarity_score": 0.85,
-                        "type": "document",
-                        "labels": ["label1", "label2"]
+                        "similarity_score": 0.85
                     }
                 ],
-                "total_results": 5,
-                "page": 1,
-                "page_size": 10
+                "total_results": 5
             }
 
 
-## مشاهده جزئیات سند [/{index}/document/view{?id}]
-این اندپوینت برای مشاهده جزئیات کامل یک سند استفاده می‌شود.
+# مشاهده جزئیات سند [/{index}/document/view{?id}]
 
-+ Parameters
-    + index: `ocr_2002` (string, required) - نام ایندکس.
-    + id: `f264...` (string, required) - شناسه سند.
+این اندپوینت جزئیات کامل یک سند را با استفاده از شناسه آن برمی‌گرداند.
 
-### مشاهده [GET]
+## مثال [GET]
+
+### پارامترهای URL
+*   **index** (رشته، اجباری) - نام ایندکس.
+
+### پارامترهای کوئری
+*   **id** (رشته، اجباری) - شناسه سندی که باید مشاهده شود.
+
+### پاسخ‌ها
+*   **200 OK**: جزئیات سند با موفقیت دریافت شد.
+*   **400 Bad Request**: پارامتر کوئری id ارسال نشده است.
+*   **404 Not Found**: سند مورد نظر در ایندکس یافت نشد.
+
+### پارامترهای پاسخ (200 OK)
+بدنه پاسخ یک آبجکت JSON است که شامل تمام فیلدهای ذخیره شده برای سند مورد نظر است. فیلدهای اصلی عبارتند از:
+*   **id** (رشته) - شناسه یکتای سند.
+*   **type** (رشته) - نوع سند.
+*   **title** (رشته) - عنوان سند.
+*   **content** (رشته) - محتوای کامل سند.
+*   و سایر فیلدهای مرتبط...
 
 + Request
-
     + Headers
-    
-            Authorization: Token TOKEN_KEY
+
+            Authorization: Token {your_token}
 
 + Response 200 (application/json)
-
     + Body
 
             {
                 "id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
                 "type": "document",
                 "title": "عنوان نامه",
-                "content": "متن کامل سند...",
-                "time": "2025-07-20 14:30:00",
-                "url": "../correspondence/#/viewletter/d8ef171d-0f08-4e95-b71a-e1adee5905ad",
-                "description": "خلاصه نامه",
-                "labels": [
-                    "e129e757-316d-4fad-9877-022b26aca152-ContentView",
-                    "14ddddaa-6cd6-4683-97ec-f8c8b0fd6423-ViewLetter"
-                ],
-                "company_name": ["شرکت الف", "شرکت ب"],
-                "session_number": ["123", "456"],
-                "sender": ["فرستنده الف"],
-                "recipients": ["گیرنده الف", "گیرنده ب"],
-                "letter_number": "LTR-123456",
-                "importance": "بالا"
+                "content": "متن کامل سند..."
             }
 
-## بررسی وضعیت سلامت ای‌پی‌آی [/healthcheck]
-وضعیت سلامت ای‌پی‌آی را بررسی می‌کند.
+# بررسی وضعیت سلامت ای‌پی‌آی [/healthcheck]
 
-### مثال [GET]
+این اندپوینت برای بررسی وضعیت کلی و سلامت سرویس API استفاده می‌شود.
+
+## مثال [GET]
+
+یک پاسخ ساده برای تأیید اینکه سرویس فعال و در دسترس است، برمی‌گرداند. این اندپوینت هیچ پارامتر ورودی نیاز ندارد.
+
+### پاسخ‌ها
+*   **200 OK**: سرویس فعال و در دسترس است.
+*   **503 Service Unavailable**: سرویس به طور موقت در دسترس نیست یا یکی از وابستگی‌های آن دچار مشکل شده است.
+
+### پارامترهای پاسخ (200 OK)
+*   **status** (رشته) - وضعیت کلی سرویس که در حالت موفقیت‌آمیز برابر با ok است.
+*   **message** (رشته) - یک پیام توصیفی درباره وضعیت سرور.
 
 + Response 200 (application/json)
-
     + Body
-    
+
             {
                 "status": "ok",
                 "message": "Server is up and ready"
