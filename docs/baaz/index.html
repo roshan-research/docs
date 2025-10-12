@@ -245,10 +245,10 @@
                 <a href="#80eeca0f36" class="toc-h1 toc-link" data-title="حذف ایندکس">حذف ایندکس</a>
                   <ul class="toc-list-h2">
                       <li>
-                        <a href="#d91c905768" class="toc-h2 toc-link" data-title="مثالی از کامل ایندکس">مثالی از کامل ایندکس</a>
+                        <a href="#d78ed89108" class="toc-h2 toc-link" data-title="مثالی از حذف کامل ایندکس">مثالی از حذف کامل ایندکس</a>
                       </li>
                       <li>
-                        <a href="#b6f081a4e7" class="toc-h2 toc-link" data-title="مثالی از حذف اسناد بر اساس نوع">مثالی از حذف اسناد بر اساس نوع</a>
+                        <a href="#0d6be7c19a" class="toc-h2 toc-link" data-title="مثالی از حذف اسنادی از یک ایندکس">مثالی از حذف اسنادی از یک ایندکس</a>
                       </li>
                   </ul>
               </li>
@@ -299,7 +299,7 @@
 <li><p><strong>فرمت زمان</strong>: تمام زمان‌ها در فرمت <code>YYYY-MM-DD HH:MM:SS</code> هستند.</p></li>
 <li><p><strong>محدودیت اندازه</strong>: حداكثر اندازه درخواست‌ها ۱۰ مگابایت است.</p></li>
 <li><p><strong>کش</strong>: برخی اندپوینت‌ها مانند stats ممکن است از کش استفاده کنند و نتایج را تا ۵ دقیقه ذخیره کنند.</p></li>
-<li><p><strong>صفحه‌بندی</strong>: برای اندپوینت‌هایی که تعداد زیادی نتیجه برمی‌گردانند، از پارامترهای <code>page</code> و <code>page_size</code> استفاده کنید.</p></li>
+<li><p><strong>صفحه‌بندی</strong>: برای اندپوینت‌هایی که تعداد زیادی نتیجه برمی‌گردانند، از پارامترهای page و page_size استفاده کنید.</p></li>
 <li><p><strong>محدودیت نرخ</strong>: بیش از ۱۰۰ درخواست در دقیقه منجر به محدودیت موقت دسترسی می‌شود.</p></li>
 </ul>
 <h2 id='116bc8c17f'>خطاهای عمومی</h2>
@@ -409,9 +409,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
-<p>اسناد جدیدی را به ایندکس اضافه می‌کند.</p>
-<h3 id='url'>پارامترهای URL</h3>
+</span></code></pre></div><h3 id='url'>پارامترهای URL</h3>
 <ul>
 <li>  <strong>index</strong> (رشته، اجباری) - نام ایندکسی که اسناد به آن اضافه می‌شوند.</li>
 </ul>
@@ -430,32 +428,46 @@
 <li>  <strong>id</strong> (رشته، اجباری) - شناسه یکتای سند.</li>
 <li>  <strong>content</strong> (رشته، اجباری) - محتوای اصلی سند که برای جستجو ایندکس می‌شود.</li>
 <li>  <strong>type</strong> (رشته، اختیاری) - نوع سند. مقدار پیش‌فرض document است.</li>
-<li>  <strong>title</strong> (رشته، اختیاری) - عنوان سند.</li>
-<li>  <strong>time</strong> (رشته، اختیاری) - زمان سند با فرمت YYYY-MM-DD HH:MM:SS.</li>
+<li>  <strong>url</strong> (رشته، اختیاری) - آدرس سند. مقدار پیش‌فرض &quot;&quot; است.</li>
+<li>  <strong>title</strong> (رشته، اختیاری) - عنوان سند. مقدار پیش‌فرض null است.</li>
+<li>  <strong>time</strong> (رشته، اختیاری) - زمان سند با فرمت YYYY-MM-DD HH:MM:SS. مقدار پیش‌فرض زمان فعلی است.</li>
+<li>  <strong>description</strong> (رشته، اختیاری) - توضیحات سند. مقدار پیش‌فرض &quot;&quot; است.</li>
+<li>  <strong>labels</strong> (آرایه، اختیاری) - آرایه‌ای از برچسب‌های سند. مقدار پیش‌فرض [] است.</li>
+<li>  <strong>chunk_size</strong> (عدد صحیح، اختیاری) - اندازه هر قطعه متن (فقط برای اولین آیتم).</li>
+<li>  <strong>chunk_overlap</strong> (عدد صحیح، اختیاری) - میزان همپوشانی قطعات (فقط برای اولین آیتم).</li>
+<li>  <strong>embedding_api_url</strong> (رشته، اختیاری) - آدرس API تعبیه (فقط برای اولین آیتم).</li>
+<li>  <strong>embedding_api_key</strong> (رشته، اختیاری) - کلید API تعبیه (فقط برای اولین آیتم).</li>
+<li>  <strong>embedding_model</strong> (رشته، اختیاری) - مدل تعبیه (فقط برای اولین آیتم).</li>
+<li>  <strong>company_name</strong> (آرایه، اختیاری) - نام شرکت‌ها.</li>
+<li>  <strong>session_number</strong> (آرایه، اختیاری) - شماره جلسه‌ها.</li>
+<li>  <strong>sender</strong> (آرایه، اختیاری) - فرستنده‌ها.</li>
+<li>  <strong>recipients</strong> (آرایه، اختیاری) - گیرنده‌ها.</li>
+<li>  <strong>letter_number</strong> (رشته، اختیاری) - شماره نامه.</li>
+<li>  <strong>importance</strong> (رشته/عدد صحیح، اختیاری) - میزان اهمیت.</li>
 </ul></li>
 </ul>
 <h3 id='4ae35036dd'>پاسخ‌ها</h3>
 <ul>
 <li><p><strong>200 OK</strong>: عملیات با موفقیت انجام شد.</p></li>
-<li><p><strong>400 Bad Request</strong>: داده‌های ارسالی نامعتبر هستند (مثلاً فیلدهای اجباری ارسال نشده‌اند).</p></li>
-<li><p><strong>401 Unauthorized</strong>: توکن احراز هویت نامعتبر است یا ارسال نشده است.</p></li>
-<li><p><strong>500 Internal Server Error</strong>: خطایی در سمت سرور رخ داده است.</p></li>
+<li><p><strong>400 Bad Request</strong>: خطا در فرآیند ایندکس کردن.</p></li>
+<li><p><strong>401 Unauthorized</strong>: توکن نامعتبر یا منقضی شده است.</p></li>
+<li><p><strong>500 Internal Server Error</strong>: خطای داخلی سرور.</p></li>
 </ul>
 <h3 id='200-ok'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
-<li><p><strong>ids</strong> (آرایه از رشته‌ها) - لیستی از شناسه‌های اسنادی که با موفقیت پردازش شده‌اند.</p></li>
+<li><p><strong>ids</strong> (آرایه از رشته‌ها) - آرایه‌ای از شناسه‌های اسناد ایندکس شده.</p></li>
 <li><p><strong>indexing_results</strong> (آبجکت) - خلاصه‌ای از نتیجه عملیات ایندکس.</p>
 
 <ul>
-<li>  <strong>successful</strong> (عدد صحیح) - تعداد اسناد موفق.</li>
+<li>  <strong>successful</strong> (عدد صحیح) - تعداد اسناد موفق ایندکس شده.</li>
 <li>  <strong>failed</strong> (عدد صحیح) - تعداد اسناد ناموفق.</li>
-<li>  <strong>errors</strong> (آرایه) - لیستی از خطاهای رخ داده در صورت وجود.</li>
+<li>  <strong>errors</strong> (آرایه) - آرایه‌ای از خطاها (در صورت وجود).</li>
 </ul></li>
 </ul>
 
 <dl style="background-color:transparent;"><code>POST /{index}/index</code></dl>
 <h1 id='cfcecfad54'>جستجوی معنایی</h1>
-<p>این اندپوینت برای انجام جستجوی معنایی در محتوای اسناد یک ایندکس استفاده می‌شود.</p>
+<p>این اندپوینت برای انجام جستجوی معنایی در اسناد استفاده می‌شود.</p>
 <h2 id='b40d4b44b2-2'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -512,23 +524,49 @@
 <h3 id='4724d544f4-2'>بدنه درخواست</h3>
 <ul>
 <li><p><strong>text</strong> (رشته، اجباری) - متن مورد نظر برای جستجو.</p></li>
-<li><p><strong>size</strong> (عدد صحیح، اختیاری) - حداکثر تعداد نتایج. مقدار پیش‌فرض ۱۰ است.</p></li>
+<li><p><strong>size</strong> (عدد صحیح، اختیاری) - حداکثر تعداد نتایج برگشتی (بین ۱ تا ۱۰۰۰). مقدار پیش‌فرض ۱۰ است.</p></li>
+<li><p><strong>chunks_per_doc</strong> (عدد صحیح، اختیاری) - تعداد قطعات برای هر سند. مقدار پیش‌فرض ۵ است.</p></li>
+<li><p><strong>from_date</strong> (رشته، اختیاری) - تاریخ شروع جستجو (YYYY-MM-DD).</p></li>
+<li><p><strong>to_date</strong> (رشته، اختیاری) - تاریخ پایان جستجو (YYYY-MM-DD).</p></li>
+<li><p><strong>ids</strong> (آرایه، اختیاری) - آرایه‌ای از شناسه‌های اسناد برای محدود کردن جستجو.</p></li>
+<li><p><strong>labels</strong> (آرایه، اختیاری) - آرایه‌ای از برچسب‌ها برای فیلتر کردن.</p></li>
+<li><p><strong>type</strong> (رشته/آرایه، اختیاری) - نوع یا انواع اسناد برای جستجو.</p></li>
+<li><p><strong>smart_search</strong> (بولین، اختیاری) - فعال‌سازی جستجوی هوشمند. مقدار پیش‌فرض false است.</p></li>
+<li><p><strong>company_name</strong> (رشته/آرایه، اختیاری) - نام شرکت برای فیلتر کردن.</p></li>
+<li><p><strong>session_number</strong> (رشته/آرایه، اختیاری) - شماره جلسه برای فیلتر کردن.</p></li>
+<li><p><strong>sender</strong> (رشته/آرایه، اختیاری) - فرستنده برای فیلتر کردن.</p></li>
+<li><p><strong>recipients</strong> (رشته/آرایه، اختیاری) - گیرنده‌ها برای فیلتر کردن.</p></li>
+<li><p><strong>letter_number</strong> (رشته، اختیاری) - شماره نامه برای فیلتر کردن.</p></li>
+<li><p><strong>description</strong> (رشته، اختیاری) - توضیحات برای فیلتر کردن.</p></li>
+<li><p><strong>search_fields</strong> (آرایه، اختیاری) - فیلدهایی که باید جستجو شوند. مقدار پیش‌فرض [&quot;content&quot;] است.</p></li>
+<li><p><strong>mode</strong> (رشته، اختیاری) - حالت جستجو (default یا graphql_raw). مقدار پیش‌فرض &quot;default&quot; است.</p></li>
+<li><p><strong>graphql</strong> (رشته، اختیاری) - پرس و جوی GraphQL (فقط در حالت graphql_raw).</p></li>
 </ul>
 <h3 id='4ae35036dd-2'>پاسخ‌ها</h3>
 <ul>
 <li><p><strong>200 OK</strong>: جستجو با موفقیت انجام شد.</p></li>
-<li><p><strong>400 Bad Request</strong>: پارامتر اجباری text ارسال نشده است.</p></li>
+<li><p><strong>400 Bad Request</strong>: پارامتر text ارسال نشده یا JSON نامعتبر است.</p></li>
 <li><p><strong>401 Unauthorized</strong>: توکن احراز هویت نامعتبر است.</p></li>
 <li><p><strong>500 Internal Server Error</strong>: خطایی در فرآیند جستجو رخ داده است.</p></li>
 </ul>
 <h3 id='200-ok-2'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
-<li><p><strong>results</strong> (آرایه) - لیستی از نتایج جستجو. هر نتیجه یک آبجکت با فیلدهای زیر است:</p>
+<li><p><strong>results</strong> (آرایه) - آرایه‌ای از نتایج جستجو. هر نتیجه یک آبجکت با فیلدهای زیر است:</p>
 
 <ul>
-<li>  <strong>document_id</strong> (رشته) - شناسه سند یافت شده.</li>
+<li>  <strong>document_id</strong> (رشته) - شناسه سند.</li>
 <li>  <strong>document_title</strong> (رشته) - عنوان سند.</li>
-<li>  <strong>chunks</strong> (آرایه) - قطعات متنی مرتبط با جستجو که هر کدام شامل text و score هستند.</li>
+<li>  <strong>document_url</strong> (رشته) - آدرس سند.</li>
+<li>  <strong>document_time</strong> (رشته) - زمان سند.</li>
+<li>  <strong>document_type</strong> (رشته) - نوع سند.</li>
+<li>  <strong>document_description</strong> (رشته) - توضیحات سند.</li>
+<li>  <strong>document_labels</strong> (آرایه) - برچسب‌های سند.</li>
+<li>  <strong>chunks</strong> (آرایه) - قطعات متنی مرتبط با جستجو که هر کدام شامل text و score هستند.
+
+<ul>
+<li>  <strong>text</strong> (رشته) - متن قطعه.</li>
+<li>  <strong>score</strong> (عدد) - امتیاز تطابق (بین ۰ تا ۱).</li>
+</ul></li>
 </ul></li>
 <li><p><strong>total</strong> (عدد صحیح) - تعداد کل نتایج یافت شده.</p></li>
 <li><p><strong>query_time_ms</strong> (عدد صحیح) - زمان اجرای کوئری به میلی‌ثانیه.</p></li>
@@ -536,7 +574,7 @@
 
 <dl style="background-color:transparent;"><code>POST /{index}/document/semantic_query</code></dl>
 <h1 id='8aa27b1d24'>بررسی وضعیت اسناد</h1>
-<p>این اندپوینت وضعیت وجود و ایندکس شدن یک یا چند سند را بر اساس URL آن‌ها بررسی می‌کند.</p>
+<p>این اندپوینت برای بررسی وضعیت اسناد در ایندکس استفاده می‌شود.</p>
 <h2 id='b40d4b44b2-3'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -590,7 +628,7 @@
 </ul>
 <h3 id='4724d544f4-3'>بدنه درخواست</h3>
 <ul>
-<li>  <strong>document_urls</strong> (آرایه از رشته‌ها، اجباری) - آرایه‌ای از آدرس‌های URL اسناد برای بررسی.</li>
+<li>  <strong>document_urls</strong> (آرایه از رشته‌ها، اجباری) - آرایه‌ای از آدرس‌های اسناد برای بررسی وضعیت.</li>
 </ul>
 <h3 id='4ae35036dd-3'>پاسخ‌ها</h3>
 <ul>
@@ -601,11 +639,11 @@
 </ul>
 <h3 id='200-ok-3'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
-<li><p><strong>documents</strong> (آبجکت) - یک آبجکت که کلیدهای آن URL اسناد و مقادیر آن وضعیت هر سند است.</p>
+<li><p><strong>documents</strong> (آبجکت) - نگاشت از آدرس‌های اسناد به وضعیت آن‌ها. هر کلید یک URL است و مقدار آن یک آبجکت با فیلدهای زیر:</p>
 
 <ul>
-<li>  <strong>exists</strong> (بولین) - نشان می‌دهد که آیا سند در ایندکس وجود دارد.</li>
-<li>  <strong>indexed_at</strong> (رشته) - زمان ایندکس شدن سند (در صورت وجود).</li>
+<li>  <strong>exists</strong> (بولین) - آیا سند در ایندکس وجود دارد.</li>
+<li>  <strong>indexed_at</strong> (رشته) - زمان ایندکس شدن (در صورت وجود).</li>
 <li>  <strong>document_id</strong> (رشته) - شناسه سند در ایندکس (در صورت وجود).</li>
 </ul></li>
 <li><p><strong>total_checked</strong> (عدد صحیح) - تعداد کل اسناد بررسی شده.</p></li>
@@ -615,7 +653,7 @@
 <dl style="background-color:transparent;"><code>POST /{index}/document_status</code></dl>
 <h1 id='80eeca0f36'>حذف ایندکس</h1>
 <p>این منبع برای حذف کامل یک ایندکس یا حذف اسناد با نوع مشخص از آن استفاده می‌شود.</p>
-<h2 id='d91c905768'>مثالی از کامل ایندکس</h2>
+<h2 id='d78ed89108'>مثالی از حذف کامل ایندکس</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -641,6 +679,8 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TESTDELETE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"doc_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"elasticsearch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"weaviate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nl">"deleted_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -659,12 +699,14 @@
 <h3 id='200-ok-4'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
 <li><p><strong>index</strong> (رشته) - نام ایندکس حذف شده.</p></li>
-<li><p><strong>doc_type</strong> (رشته) - نوع اسناد حذف شده (در این حالت ALL).</p></li>
-<li><p><strong>status</strong> (رشته) - وضعیت کلی عملیات (success).</p></li>
+<li><p><strong>doc_type</strong> (رشته) - نوع سند حذف شده (ALL برای کل ایندکس).</p></li>
+<li><p><strong>elasticsearch.status</strong> (رشته) - وضعیت حذف در Elasticsearch (success یا error).</p></li>
+<li><p><strong>weaviate.status</strong> (رشته) - وضعیت حذف در Weaviate (success یا error).</p></li>
+<li><p><strong>status</strong> (رشته) - وضعیت کلی عملیات (success یا partial).</p></li>
 </ul>
 
 <dl style="background-color:transparent;"><code>DELETE /{index}/delete_index</code></dl>
-<h2 id='b6f081a4e7'>مثالی از حذف اسناد بر اساس نوع</h2>
+<h2 id='0d6be7c19a'>مثالی از حذف اسنادی از یک ایندکس</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -717,8 +759,8 @@
 <h3 id='200-ok-5'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
 <li><p><strong>index</strong> (رشته) - نام ایندکس.</p></li>
-<li><p><strong>doc_type</strong> (رشته) - نوع اسناد حذف شده.</p></li>
-<li><p><strong>weaviate .deleted_count</strong> (عدد صحیح) - تعداد اسناد حذف شده از موتور وکتور.</p></li>
+<li><p><strong>doc_type</strong> (رشته) - نوع سند حذف شده.</p></li>
+<li><p><strong>weaviate.deleted_count</strong> (عدد صحیح) - تعداد اسناد حذف شده از Weaviate.</p></li>
 <li><p><strong>status</strong> (رشته) - وضعیت کلی عملیات.</p></li>
 </ul>
 
@@ -751,7 +793,9 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"ocr_2002_document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"docs_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1254</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"index_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">52428800</span><span class="w">
+        </span><span class="nl">"index_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">52428800</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"indexing_doc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"search_queries"</span><span class="p">:</span><span class="w"> </span><span class="mi">5678</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -770,33 +814,38 @@
 <p>پاسخ این اندپوینت یک آبجکت است که کلیدهای آن به صورت داینامیک و بر اساس الگوی {index_name}_{document_type} ساخته می‌شوند. هر آبجکت شامل فیلدهای زیر است:</p>
 
 <ul>
-<li><p><strong>docs_number</strong> (عدد صحیح) - تعداد کل اسناد.</p></li>
-<li><p><strong>index_size</strong> (عدد صحیح) - حجم ایندکس به بایت.</p></li>
+<li><p><strong>docs_number</strong> (عدد صحیح) - تعداد اسناد در ایندکس.</p></li>
+<li><p><strong>index_size</strong> (عدد صحیح) - اندازه ایندکس به بایت.</p></li>
+<li><p><strong>indexing_doc</strong> (عدد صحیح) - تعداد اسناد در حال ایندکس شدن.</p></li>
+<li><p><strong>search_queries</strong> (عدد صحیح) - تعداد کل جستجوهای انجام شده.</p></li>
 </ul>
 
 <dl style="background-color:transparent;"><code>GET /{index}/stats</code></dl>
 <h1 id='ed0c41c5d7'>یافتن اسناد مشابه</h1>
-<p>این اندپوینت لیستی از اسناد مشابه با یک سند مرجع را برمی‌گرداند.</p>
+<p>این اندپوینت لیستی از اسناد مشابه با یک سند مشخص استفاده می‌شود.</p>
 <h2 id='b40d4b44b2-5'>مثال</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{
     "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-    "page_size": 10
+    "page_size": 10,
+    "page": 1
 }
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">--request</span> POST <span class="se">\ </span>
       <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
       <span class="nt">--data-binary</span> <span class="s1">'{
     "document_id": "f2646930-64d7-47cc-93c1-e557777f1c489ad",
-    "page_size": 10
+    "page_size": 10,
+    "page": 1
 }'</span> <span class="se">\</span>
       https://baaz.roshan-ai.ir/<span class="o">{</span>index<span class="o">}</span>/similar/documents
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"document_id"</span><span class="p">:</span> <span class="s">"f2646930-64d7-47cc-93c1-e557777f1c489ad"</span><span class="p">,</span>
-    <span class="s">"page_size"</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="s">"page_size"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s">"page"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -818,7 +867,9 @@
             </span><span class="nl">"similarity_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='url-7'>پارامترهای URL</h3>
@@ -827,26 +878,49 @@
 </ul>
 <h3 id='4724d544f4-5'>بدنه درخواست</h3>
 <ul>
-<li><p><strong>document_id</strong> (رشته، اجباری) - شناسه سند مرجع.</p></li>
-<li><p><strong>page_size</strong> (عدد صحیح، اختیاری) - تعداد نتایج در هر صفحه (پیش‌فرض: ۱۰).</p></li>
-<li><p><strong>page</strong> (عدد صحیح، اختیاری) - شماره صفحه نتایج (پیش‌فرض: ۱).</p></li>
+<li><p><strong>document_id</strong> (رشته، اجباری) - شناسه سند مرجع برای یافتن اسناد مشابه.</p></li>
+<li><p><strong>page_size</strong> (عدد صحیح، اختیاری) - تعداد نتایج در هر صفحه (۱ تا ۱۰۰). مقدار پیش‌فرض ۱۰ است.</p></li>
+<li><p><strong>page</strong> (عدد صحیح، اختیاری) - شماره صفحه نتایج (شروع از ۱). مقدار پیش‌فرض ۱ است.</p></li>
+<li><p><strong>filter</strong> (آبجکت، اختیاری) - فیلترهای اضافی برای محدود کردن نتایج.</p>
+
+<ul>
+<li>  <strong>type</strong> (رشته، اختیاری) - نوع اسناد برای فیلتر کردن.</li>
+<li>  <strong>from_date</strong> (رشته، اختیاری) - تاریخ شروع (YYYY-MM-DD HH:MM:SS).</li>
+<li>  <strong>to_date</strong> (رشته، اختیاری) - تاریخ پایان (YYYY-MM-DD HH:MM:SS).</li>
+<li>  <strong>labels</strong> (آرایه، اختیاری) - برچسب‌های اسناد برای فیلتر کردن.</li>
+</ul></li>
 </ul>
 <h3 id='4ae35036dd-7'>پاسخ‌ها</h3>
 <ul>
 <li><p><strong>200 OK</strong>: اسناد مشابه با موفقیت یافت شدند.</p></li>
-<li><p><strong>400 Bad Request</strong>: پارامتر اجباری document_id ارسال نشده است.</p></li>
+<li><p><strong>400 Bad Request</strong>: شناسه سند مرجع ارسال نشده یا مقادیر صفحه نامعتبر است.</p></li>
+<li><p><strong>401 Unauthorized</strong>: توکن نامعتبر یا منقضی شده است.</p></li>
 <li><p><strong>404 Not Found</strong>: سند مرجع در ایندکس یافت نشد.</p></li>
+<li><p><strong>500 Internal Server Error</strong>: خطای داخلی سرور.</p></li>
 </ul>
 <h3 id='200-ok-7'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
-<li><p><strong>document_id</strong> (رشته) - شناسه سند مرجع که برای جستجو استفاده شد.</p></li>
-<li><p><strong>similar_documents</strong> (آرایه) - لیستی از اسناد مشابه. هر سند یک آبجکت با فیلدهای id, title, similarity_score و غیره است.</p></li>
+<li><p><strong>document_id</strong> (رشته) - شناسه سند مرجع.</p></li>
+<li><p><strong>similar_documents</strong> (آرایه) - آرایه‌ای از اسناد مشابه. هر سند یک آبجکت شامل فیلدهای زیر است:</p>
+
+<ul>
+<li>  <strong>id</strong> (رشته) - شناسه سند مشابه.</li>
+<li>  <strong>title</strong> (رشته) - عنوان سند مشابه.</li>
+<li>  <strong>url</strong> (رشته) - آدرس سند مشابه.</li>
+<li>  <strong>time</strong> (رشته) - زمان سند مشابه.</li>
+<li>  <strong>description</strong> (رشته) - توضیحات سند مشابه.</li>
+<li>  <strong>similarity_score</strong> (عدد) - امتیاز شباهت (بین ۰ تا ۱).</li>
+<li>  <strong>type</strong> (رشته) - نوع سند مشابه.</li>
+<li>  <strong>labels</strong> (آرایه) - برچسب‌های سند مشابه.</li>
+</ul></li>
 <li><p><strong>total_results</strong> (عدد صحیح) - تعداد کل نتایج یافت شده.</p></li>
+<li><p><strong>page</strong> (عدد صحیح) - شماره صفحه فعلی.</p></li>
+<li><p><strong>page_size</strong> (عدد صحیح) - تعداد نتایج در هر صفحه.</p></li>
 </ul>
 
 <dl style="background-color:transparent;"><code>POST /{index}/similar/documents</code></dl>
 <h1 id='6e01798973'>مشاهده جزئیات سند</h1>
-<p>این اندپوینت جزئیات کامل یک سند را با استفاده از شناسه آن برمی‌گرداند.</p>
+<p>این اندپوینت برای مشاهده جزئیات کامل یک سند استفاده می‌شود.</p>
 <h2 id='b40d4b44b2-6'>مثال</h2>
 <blockquote>
 <p>Request</p>
@@ -889,17 +963,28 @@
 <ul>
 <li><p><strong>200 OK</strong>: جزئیات سند با موفقیت دریافت شد.</p></li>
 <li><p><strong>400 Bad Request</strong>: پارامتر کوئری id ارسال نشده است.</p></li>
+<li><p><strong>401 Unauthorized</strong>: توکن نامعتبر یا منقضی شده است.</p></li>
 <li><p><strong>404 Not Found</strong>: سند مورد نظر در ایندکس یافت نشد.</p></li>
+<li><p><strong>500 Internal Server Error</strong>: خطای داخلی سرور.</p></li>
 </ul>
 <h3 id='200-ok-8'>پارامترهای پاسخ (200 OK)</h3>
-<p>بدنه پاسخ یک آبجکت JSON است که شامل تمام فیلدهای ذخیره شده برای سند مورد نظر است. فیلدهای اصلی عبارتند از:</p>
+<p>بدنه پاسخ یک آبجکت JSON است که شامل تمام فیلدهای ذخیره شده برای سند مورد نظر است:</p>
 
 <ul>
 <li><p><strong>id</strong> (رشته) - شناسه یکتای سند.</p></li>
 <li><p><strong>type</strong> (رشته) - نوع سند.</p></li>
 <li><p><strong>title</strong> (رشته) - عنوان سند.</p></li>
-<li><p><strong>content</strong> (رشته) - محتوای کامل سند.</p></li>
-<li><p>و سایر فیلدهای مرتبط...</p></li>
+<li><p><strong>content</strong> (رشته) - متن کامل سند.</p></li>
+<li><p><strong>time</strong> (رشته) - زمان سند.</p></li>
+<li><p><strong>url</strong> (رشته) - آدرس سند.</p></li>
+<li><p><strong>description</strong> (رشته) - توضیحات سند.</p></li>
+<li><p><strong>labels</strong> (آرایه) - برچسب‌های سند.</p></li>
+<li><p><strong>company_name</strong> (آرایه) - نام شرکت‌ها.</p></li>
+<li><p><strong>session_number</strong> (آرایه) - شماره جلسه‌ها.</p></li>
+<li><p><strong>sender</strong> (آرایه) - فرستنده‌ها.</p></li>
+<li><p><strong>recipients</strong> (آرایه) - گیرنده‌ها.</p></li>
+<li><p><strong>letter_number</strong> (رشته) - شماره نامه.</p></li>
+<li><p><strong>importance</strong> (رشته/عدد صحیح) - میزان اهمیت.</p></li>
 </ul>
 
 <dl style="background-color:transparent;"><code>GET /{index}/document/view{?id}</code></dl>
@@ -934,11 +1019,11 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>یک پاسخ ساده برای تأیید اینکه سرویس فعال و در دسترس است، برمی‌گرداند. این اندپوینت هیچ پارامتر ورودی نیاز ندارد.</p>
+<p>یک پاسخ ساده برای تأیید اینکه سرویس فعال و در دسترس است، برمی‌گرداند.</p>
 <h3 id='4ae35036dd-9'>پاسخ‌ها</h3>
 <ul>
 <li><p><strong>200 OK</strong>: سرویس فعال و در دسترس است.</p></li>
-<li><p><strong>503 Service Unavailable</strong>: سرویس به طور موقت در دسترس نیست یا یکی از وابستگی‌های آن دچار مشکل شده است.</p></li>
+<li><p><strong>503 Service Unavailable</strong>: سرویس به طور موقت در دسترس نیست.</p></li>
 </ul>
 <h3 id='200-ok-9'>پارامترهای پاسخ (200 OK)</h3>
 <ul>
